@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Views.Forms;
 
-namespace SLStudio.Application
+namespace SLStudio
 {
-    class Program
+    static class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Ponto de entrada principal para o aplicativo.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new frmMain());
         }
     }
 }
