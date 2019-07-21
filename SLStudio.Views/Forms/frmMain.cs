@@ -44,7 +44,7 @@ namespace Views.Forms
             /*using (frmSplashScreen splash = new frmSplashScreen())
             {
                 splash.Show();
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
                 splash.Close();
             }
 

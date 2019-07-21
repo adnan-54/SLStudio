@@ -198,5 +198,20 @@
   <ItemGroup>
     <None Include="Resources\SelectAll_16x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Run_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ASX_Edit_blue_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Merge_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FolderBottomPanel_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CloseSolution_16x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
