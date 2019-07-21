@@ -114,6 +114,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\ShowMessage.cs" />
     <EmbeddedResource Include="Forms\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +213,37 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CloseSolution_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SLStudio.Models\SLStudio.Models.csproj">
+      <Project>{E4DC3948-A471-40A6-964D-827840C06A8D}</Project>
+      <Name>SLStudio.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLStudio.Presenters\SLStudio.Presenters.csproj">
+      <Project>{A5644302-BE4A-4479-841E-DDE868D1E013}</Project>
+      <Name>SLStudio.Presenters</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Create_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_create_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_create_new_folder_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_cancel_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\outline_folder_open_black_18dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnZoom.Image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnZoom.NoFocusImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

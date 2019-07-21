@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Presenters
+namespace Models
 {
-    public static class Mod
+    public class File
     {
+        public string name;
     }
 }

@@ -10,50 +10,45 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Views.Util;
 
 namespace Views.Forms
 {
     public partial class frmMain : Form
     {
-        public frmMain()
-        {
-            InitializeComponent();
-            //this.Opacity = 0;
-        }
+        private Models.Project project;
 
-        private void SobreToolStripMenuItem_Click(object sender, EventArgs e)
+        public Models.Project Project
         {
-            using(frmAbout about = new frmAbout())
+            get
             {
-                about.ShowDialog();
+                return project;
+            }
+            set
+            {
+                project = value;
+                this.Text = $"SLStudio - {project.name}";
             }
         }
 
-        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
+        public frmMain()
         {
-            this.Close();
+            frmSplashScreen splashScreen = new frmSplashScreen();
+            splashScreen.ShowDialog();
+            InitializeComponent();
         }
 
-        private void NovoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            /*using (frmSplashScreen splash = new frmSplashScreen())
-            {
-                splash.Show();
-                Thread.Sleep(1000);
-                splash.Close();
-            }
-
-            this.Opacity = 100;
-
             using (frmStartScreen startScreen = new frmStartScreen())
             {
                 startScreen.ShowDialog();
-            }*/
+                if(startScreen.DialogResult == DialogResult.Yes)
+                {
+                    this.Project = startScreen.project;
+                }
+            }
         }
     }
 }

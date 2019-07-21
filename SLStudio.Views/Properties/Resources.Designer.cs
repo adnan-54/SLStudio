@@ -103,6 +103,26 @@ namespace Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap btnZoom_Image {
+            get {
+                object obj = ResourceManager.GetObject("btnZoom.Image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnZoom_NoFocusImage {
+            get {
+                object obj = ResourceManager.GetObject("btnZoom.NoFocusImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CloseSolution_16x {
             get {
                 object obj = ResourceManager.GetObject("CloseSolution_16x", resourceCulture);
@@ -116,6 +136,16 @@ namespace Views.Properties {
         internal static System.Drawing.Bitmap CopyToClipboard_16x {
             get {
                 object obj = ResourceManager.GetObject("CopyToClipboard_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Create_16x {
+            get {
+                object obj = ResourceManager.GetObject("Create_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -186,6 +216,46 @@ namespace Views.Properties {
         internal static System.Drawing.Bitmap OpenFile_16x {
             get {
                 object obj = ResourceManager.GetObject("OpenFile_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_cancel_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_cancel_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_create_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_create_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_create_new_folder_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_create_new_folder_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_folder_open_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_folder_open_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

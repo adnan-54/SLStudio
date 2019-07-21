@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Views", "SLStudio.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Application", "SLStudio.Application\SLStudio.Application.csproj", "{3FF9DC7D-C696-47CA-91C8-4747649AFBF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Logger", "SLStudio.Logger\SLStudio.Logger.csproj", "{A013CBC0-BCF9-4EBB-B635-F8B2BACF4EA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Log", "SLStudio.Log\SLStudio.Log.csproj", "{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{3FF9DC7D-C696-47CA-91C8-4747649AFBF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FF9DC7D-C696-47CA-91C8-4747649AFBF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FF9DC7D-C696-47CA-91C8-4747649AFBF7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A013CBC0-BCF9-4EBB-B635-F8B2BACF4EA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A013CBC0-BCF9-4EBB-B635-F8B2BACF4EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A013CBC0-BCF9-4EBB-B635-F8B2BACF4EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A013CBC0-BCF9-4EBB-B635-F8B2BACF4EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

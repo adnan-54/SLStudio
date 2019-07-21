@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("SLStudio.Logger")]
+[assembly: AssemblyTitle("SLStudio.Log")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SLStudio.Logger")]
+[assembly: AssemblyProduct("SLStudio.Log")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("a013cbc0-bcf9-4ebb-b635-f8b2bacf4ea8")]
+[assembly: Guid("d35cbe1a-6f1b-403f-8f62-9fde40510e6c")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //
