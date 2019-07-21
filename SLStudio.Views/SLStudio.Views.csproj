@@ -88,16 +88,43 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSplashScreen.Designer.cs">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmStartScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmStartScreen.Designer.cs">
+      <DependentUpon>frmStartScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSplashScreen.resx">
+      <DependentUpon>frmSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmStartScreen.resx">
+      <DependentUpon>frmStartScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -122,6 +149,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenFileIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OpenFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Import_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Export_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewFile_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SaveAs_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Restart_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Exit_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Undo_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Redo_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ASX_Copy_grey_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ASX_Copy_blue_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ASX_Paste_blue_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CopyToClipboard_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SelectAll_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

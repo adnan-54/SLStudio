@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,33 +15,45 @@ namespace Views.Forms
 {
     public partial class frmMain : Form
     {
-        List<string> filesNames = new List<string>();
-
         public frmMain()
         {
             InitializeComponent();
+            //this.Opacity = 0;
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void SobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Multiselect = true })
+            using(frmAbout about = new frmAbout())
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    foreach(String fn in ofd.FileNames)
-                    {
-                        string fileName = Path.GetFileNameWithoutExtension(fn);
-                        filesNames.Add(fileName);
-                        listBox1.Items.Add(fileName);
-                        lblFilesSelected.Text = $"Files selected: {filesNames.Count()}";
-                    }
-                }
+                about.ShowDialog();
             }
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void SairToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void NovoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            /*using (frmSplashScreen splash = new frmSplashScreen())
+            {
+                splash.Show();
+                Thread.Sleep(5000);
+                splash.Close();
+            }
+
+            this.Opacity = 100;
+
+            using (frmStartScreen startScreen = new frmStartScreen())
+            {
+                startScreen.ShowDialog();
+            }*/
         }
     }
 }
