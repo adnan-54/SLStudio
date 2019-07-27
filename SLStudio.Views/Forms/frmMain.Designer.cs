@@ -978,7 +978,6 @@
             this.Text = "SLStudio";
             this.toolTip.SetToolTip(this, "SLStudio");
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);

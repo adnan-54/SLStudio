@@ -84,7 +84,6 @@
             this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile3.UseSelectable = true;
             this.metroTile3.UseTileImage = true;
-            this.metroTile3.Click += new System.EventHandler(this.MetroTile3_Click);
             // 
             // metroTile2
             // 
@@ -99,7 +98,6 @@
             this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile2.UseSelectable = true;
             this.metroTile2.UseTileImage = true;
-            this.metroTile2.Click += new System.EventHandler(this.MetroTile2_Click);
             // 
             // metroTile1
             // 
@@ -114,7 +112,6 @@
             this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.metroTile1.UseSelectable = true;
             this.metroTile1.UseTileImage = true;
-            this.metroTile1.Click += new System.EventHandler(this.MetroTile1_Click);
             // 
             // frmStartScreen
             // 

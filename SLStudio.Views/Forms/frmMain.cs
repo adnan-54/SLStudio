@@ -16,39 +16,11 @@ namespace Views.Forms
 {
     public partial class frmMain : Form
     {
-        private Models.Project project;
-
-        public Models.Project Project
-        {
-            get
-            {
-                return project;
-            }
-            set
-            {
-                project = value;
-                this.Text = $"SLStudio - {project.name}";
-            }
-        }
-
         public frmMain()
         {
             frmSplashScreen splashScreen = new frmSplashScreen();
             splashScreen.ShowDialog();
             InitializeComponent();
-        }
-
-
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            using (frmStartScreen startScreen = new frmStartScreen())
-            {
-                startScreen.ShowDialog();
-                if(startScreen.DialogResult == DialogResult.Yes)
-                {
-                    this.Project = startScreen.project;
-                }
-            }
         }
     }
 }
