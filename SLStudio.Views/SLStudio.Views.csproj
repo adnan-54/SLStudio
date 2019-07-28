@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{75C917BC-A6EF-4B4D-8F6B-AF0C24893CAB}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Views</RootNamespace>
     <AssemblyName>Views</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -31,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu_UI_v1.5.3">
@@ -112,7 +115,6 @@
     <Compile Include="Forms\frmStartScreen.Designer.cs">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\ShowMessage.cs" />
     <EmbeddedResource Include="Forms\frmAbout.resx">
@@ -244,6 +246,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\btnZoom.NoFocusImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Settings_12x_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InformationSymbol_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

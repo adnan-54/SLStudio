@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Application", "SLS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Log", "SLStudio.Log\SLStudio.Log.csproj", "{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.SLRR", "SLStudio.SLRR\SLStudio.SLRR.csproj", "{634D5F75-F21A-43D9-AB3A-A538D859046F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D35CBE1A-6F1B-403F-8F62-9FDE40510E6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{634D5F75-F21A-43D9-AB3A-A538D859046F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{634D5F75-F21A-43D9-AB3A-A538D859046F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{634D5F75-F21A-43D9-AB3A-A538D859046F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{634D5F75-F21A-43D9-AB3A-A538D859046F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

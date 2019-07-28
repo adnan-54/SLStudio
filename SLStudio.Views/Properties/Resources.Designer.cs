@@ -193,6 +193,16 @@ namespace Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap InformationSymbol_16x {
+            get {
+                object obj = ResourceManager.GetObject("InformationSymbol_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Merge_16x {
             get {
                 object obj = ResourceManager.GetObject("Merge_16x", resourceCulture);
@@ -316,6 +326,16 @@ namespace Views.Properties {
         internal static System.Drawing.Bitmap SelectAll_16x {
             get {
                 object obj = ResourceManager.GetObject("SelectAll_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Settings_12x_16x {
+            get {
+                object obj = ResourceManager.GetObject("Settings_12x_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

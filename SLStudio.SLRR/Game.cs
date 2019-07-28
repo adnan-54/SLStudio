@@ -1,16 +1,14 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Models
+namespace SLRR
 {
-    public class Project : IDisposable
+    public static class Game
     {
-        public void Dispose()
+        public static void Start(string path)
         {
             throw new NotImplementedException();
         }

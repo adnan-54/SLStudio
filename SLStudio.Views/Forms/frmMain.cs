@@ -18,8 +18,11 @@ namespace Views.Forms
     {
         public frmMain()
         {
-            frmSplashScreen splashScreen = new frmSplashScreen();
-            splashScreen.ShowDialog();
+            using(frmSplashScreen splashScreen = new frmSplashScreen())
+            {
+                splashScreen.ShowDialog();
+            }
+
             InitializeComponent();
         }
     }
