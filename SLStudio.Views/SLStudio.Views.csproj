@@ -97,6 +97,12 @@
     <Compile Include="Forms\frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmCreateNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCreateNew.Designer.cs">
+      <DependentUpon>frmCreateNew.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,9 @@
     <Compile Include="Util\ShowMessage.cs" />
     <EmbeddedResource Include="Forms\frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCreateNew.resx">
+      <DependentUpon>frmCreateNew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -252,6 +261,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InformationSymbol_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Log_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Event_16x_24.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Event_16x_32.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Event_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

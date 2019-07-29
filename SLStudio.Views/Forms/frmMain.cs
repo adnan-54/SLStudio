@@ -16,6 +16,20 @@ namespace Views.Forms
 {
     public partial class frmMain : Form
     {
+        private Models.Solution _solution;
+        public Models.Solution Solution
+        {
+            get
+            {
+                return _solution;
+            }
+            set
+            {
+                _solution = value;
+                this.Text = "SLStudio - " + value.GetName();
+            }
+        }
+
         public frmMain()
         {
             using(frmSplashScreen splashScreen = new frmSplashScreen())
@@ -24,6 +38,24 @@ namespace Views.Forms
             }
 
             InitializeComponent();
+        }
+
+        private void CreateNew(object sender, EventArgs e)
+        {
+            try
+            {
+                using(frmCreateNew frm = new frmCreateNew())
+                {
+                    if(frm.ShowDialog() == DialogResult.OK)
+                    {
+                        Solution = frm.solution;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                ShowMessage.Exception(ex);
+            }
         }
     }
 }

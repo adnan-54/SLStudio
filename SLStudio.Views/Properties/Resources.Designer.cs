@@ -153,6 +153,36 @@ namespace Views.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Event_16x {
+            get {
+                object obj = ResourceManager.GetObject("Event_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Event_16x_24 {
+            get {
+                object obj = ResourceManager.GetObject("Event_16x_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Event_16x_32 {
+            get {
+                object obj = ResourceManager.GetObject("Event_16x_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Exit_16x {
             get {
                 object obj = ResourceManager.GetObject("Exit_16x", resourceCulture);
@@ -196,6 +226,16 @@ namespace Views.Properties {
         internal static System.Drawing.Bitmap InformationSymbol_16x {
             get {
                 object obj = ResourceManager.GetObject("InformationSymbol_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Log_16x {
+            get {
+                object obj = ResourceManager.GetObject("Log_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +356,16 @@ namespace Views.Properties {
         internal static System.Drawing.Bitmap SaveAs_16x {
             get {
                 object obj = ResourceManager.GetObject("SaveAs_16x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Search_16x {
+            get {
+                object obj = ResourceManager.GetObject("Search_16x", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
