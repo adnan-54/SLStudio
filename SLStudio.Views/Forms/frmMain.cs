@@ -32,15 +32,15 @@ namespace Views.Forms
 
         public frmMain()
         {
-            using(frmSplashScreen splashScreen = new frmSplashScreen())
+            InitializeComponent();
+
+            using (frmSplashScreen splashScreen = new frmSplashScreen())
             {
                 splashScreen.ShowDialog();
             }
-
-            InitializeComponent();
         }
 
-        private void CreateNew(object sender, EventArgs e)
+        private void CreateNewSolution(object sender, EventArgs e)
         {
             try
             {

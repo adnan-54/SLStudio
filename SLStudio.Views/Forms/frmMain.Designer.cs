@@ -32,13 +32,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.lbxExplorerFiles = new System.Windows.Forms.MenuStrip();
             this.btnFileMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileNewMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileOpenMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileResetMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileMergeMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFileSaveMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileSaveAsMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFileImportMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnFileExportMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnFileExitMS = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditUndoMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditRedoMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEditCropMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditCopyMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditPasteMS = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditDeleteMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnEditSelectAllMS = new System.Windows.Forms.ToolStripMenuItem();
             this.btnProjectMS = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionarProjetoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.blankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +64,15 @@
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.proprietsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnDebugMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDebugStartMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDebugOptionsMS = new System.Windows.Forms.ToolStripMenuItem();
             this.btnToolsMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnToolsOptionsMS = new System.Windows.Forms.ToolStripMenuItem();
             this.btnHelpMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnHelpAboutMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnHelpLogMS = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.BottomToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
@@ -68,25 +89,18 @@
             this.tvwExplorerSolution = new System.Windows.Forms.TabPage();
             this.tvwSolution = new System.Windows.Forms.TreeView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.novoToolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.tvwExplorerFiles = new System.Windows.Forms.TabPage();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.cbbInstalacaoAlvoTS = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.tspForm = new System.Windows.Forms.ToolStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.stpForm = new System.Windows.Forms.StatusStrip();
-            this.miniToolStrip = new System.Windows.Forms.ToolStrip();
-            this.novoToolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnNewTS = new System.Windows.Forms.ToolStripButton();
             this.btnOpenTS = new System.Windows.Forms.ToolStripButton();
             this.btnSalvarTS = new System.Windows.Forms.ToolStripButton();
@@ -95,27 +109,9 @@
             this.btnEditarInstalacoesTS = new System.Windows.Forms.ToolStripButton();
             this.btnIniciarInstalacaoTS = new System.Windows.Forms.ToolStripButton();
             this.btnAbrirPastaProjeto = new System.Windows.Forms.ToolStripButton();
-            this.btnFileNewMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileOpenMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileResetMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileMergeMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileSaveMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileSaveAsMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileImportMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileExportMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnFileExitMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditUndoMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditRedoMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditCropMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditCopyMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditPasteMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditSelectAllMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDebugStartMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDebugOptionsMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnToolsOptionsMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnHelpAboutMS = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnHelpLogMS = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.tspForm = new System.Windows.Forms.ToolStrip();
             this.novoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.abrirToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.salvarToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -124,6 +120,10 @@
             this.copiarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.colarToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.ajudaToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.stpForm = new System.Windows.Forms.StatusStrip();
+            this.miniToolStrip = new System.Windows.Forms.ToolStrip();
             this.lbxExplorerFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eprForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -176,20 +176,101 @@
             this.btnFileMS.Size = new System.Drawing.Size(37, 23);
             this.btnFileMS.Text = "File";
             // 
+            // btnFileNewMS
+            // 
+            this.btnFileNewMS.Image = global::Views.Properties.Resources.NewFile_16x;
+            this.btnFileNewMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileNewMS.Name = "btnFileNewMS";
+            this.btnFileNewMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.btnFileNewMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileNewMS.Text = "New";
+            this.btnFileNewMS.Click += new System.EventHandler(this.CreateNewSolution);
+            // 
+            // btnFileOpenMS
+            // 
+            this.btnFileOpenMS.Image = global::Views.Properties.Resources.OpenFile_16x;
+            this.btnFileOpenMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileOpenMS.Name = "btnFileOpenMS";
+            this.btnFileOpenMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.btnFileOpenMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileOpenMS.Text = "Open";
+            // 
+            // btnFileResetMS
+            // 
+            this.btnFileResetMS.Image = global::Views.Properties.Resources.Restart_16x;
+            this.btnFileResetMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileResetMS.Name = "btnFileResetMS";
+            this.btnFileResetMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.btnFileResetMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileResetMS.Text = "Reset";
+            // 
+            // btnFileMergeMS
+            // 
+            this.btnFileMergeMS.Image = global::Views.Properties.Resources.Merge_16x;
+            this.btnFileMergeMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileMergeMS.Name = "btnFileMergeMS";
+            this.btnFileMergeMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.btnFileMergeMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileMergeMS.Text = "Merge";
+            // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
             this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            // 
+            // btnFileSaveMS
+            // 
+            this.btnFileSaveMS.Image = global::Views.Properties.Resources.Save_16x;
+            this.btnFileSaveMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileSaveMS.Name = "btnFileSaveMS";
+            this.btnFileSaveMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.btnFileSaveMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileSaveMS.Text = "Save";
+            // 
+            // btnFileSaveAsMS
+            // 
+            this.btnFileSaveAsMS.Image = global::Views.Properties.Resources.SaveAs_16x;
+            this.btnFileSaveAsMS.Name = "btnFileSaveAsMS";
+            this.btnFileSaveAsMS.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.S)));
+            this.btnFileSaveAsMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileSaveAsMS.Text = "Save As";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
+            // btnFileImportMS
+            // 
+            this.btnFileImportMS.Image = global::Views.Properties.Resources.Import_16x;
+            this.btnFileImportMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileImportMS.Name = "btnFileImportMS";
+            this.btnFileImportMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
+            this.btnFileImportMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileImportMS.Text = "Import";
+            // 
+            // btnFileExportMS
+            // 
+            this.btnFileExportMS.Image = global::Views.Properties.Resources.Export_16x;
+            this.btnFileExportMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFileExportMS.Name = "btnFileExportMS";
+            this.btnFileExportMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+            this.btnFileExportMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileExportMS.Text = "Export";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // btnFileExitMS
+            // 
+            this.btnFileExitMS.Image = global::Views.Properties.Resources.Exit_16x;
+            this.btnFileExitMS.Name = "btnFileExitMS";
+            this.btnFileExitMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.btnFileExitMS.Size = new System.Drawing.Size(180, 22);
+            this.btnFileExitMS.Text = "Exit";
             // 
             // btnEditMS
             // 
@@ -207,10 +288,53 @@
             this.btnEditMS.Size = new System.Drawing.Size(39, 23);
             this.btnEditMS.Text = "Edit";
             // 
+            // btnEditUndoMS
+            // 
+            this.btnEditUndoMS.Image = global::Views.Properties.Resources.Undo_16x;
+            this.btnEditUndoMS.Name = "btnEditUndoMS";
+            this.btnEditUndoMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
+            this.btnEditUndoMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditUndoMS.Text = "Undo";
+            // 
+            // btnEditRedoMS
+            // 
+            this.btnEditRedoMS.Image = global::Views.Properties.Resources.Redo_16x;
+            this.btnEditRedoMS.Name = "btnEditRedoMS";
+            this.btnEditRedoMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
+            this.btnEditRedoMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditRedoMS.Text = "Redo";
+            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(161, 6);
+            // 
+            // btnEditCropMS
+            // 
+            this.btnEditCropMS.Image = global::Views.Properties.Resources.CopyToClipboard_16x;
+            this.btnEditCropMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditCropMS.Name = "btnEditCropMS";
+            this.btnEditCropMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+            this.btnEditCropMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditCropMS.Text = "Crop";
+            // 
+            // btnEditCopyMS
+            // 
+            this.btnEditCopyMS.Image = global::Views.Properties.Resources.ASX_Copy_blue_16x;
+            this.btnEditCopyMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditCopyMS.Name = "btnEditCopyMS";
+            this.btnEditCopyMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
+            this.btnEditCopyMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditCopyMS.Text = "Copy";
+            // 
+            // btnEditPasteMS
+            // 
+            this.btnEditPasteMS.Image = global::Views.Properties.Resources.ASX_Paste_blue_16x;
+            this.btnEditPasteMS.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditPasteMS.Name = "btnEditPasteMS";
+            this.btnEditPasteMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
+            this.btnEditPasteMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditPasteMS.Text = "Paste";
             // 
             // btnEditDeleteMS
             // 
@@ -224,6 +348,14 @@
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(161, 6);
+            // 
+            // btnEditSelectAllMS
+            // 
+            this.btnEditSelectAllMS.Image = global::Views.Properties.Resources.SelectAll_16x;
+            this.btnEditSelectAllMS.Name = "btnEditSelectAllMS";
+            this.btnEditSelectAllMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
+            this.btnEditSelectAllMS.Size = new System.Drawing.Size(164, 22);
+            this.btnEditSelectAllMS.Text = "Select All";
             // 
             // btnProjectMS
             // 
@@ -296,6 +428,21 @@
             this.btnDebugMS.Size = new System.Drawing.Size(54, 23);
             this.btnDebugMS.Text = "Debug";
             // 
+            // btnDebugStartMS
+            // 
+            this.btnDebugStartMS.Image = global::Views.Properties.Resources.Run_16x;
+            this.btnDebugStartMS.Name = "btnDebugStartMS";
+            this.btnDebugStartMS.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.btnDebugStartMS.Size = new System.Drawing.Size(117, 22);
+            this.btnDebugStartMS.Text = "Start";
+            // 
+            // btnDebugOptionsMS
+            // 
+            this.btnDebugOptionsMS.Image = global::Views.Properties.Resources.Settings_12x_16x;
+            this.btnDebugOptionsMS.Name = "btnDebugOptionsMS";
+            this.btnDebugOptionsMS.Size = new System.Drawing.Size(117, 22);
+            this.btnDebugOptionsMS.Text = "Options";
+            // 
             // btnToolsMS
             // 
             this.btnToolsMS.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -303,6 +450,13 @@
             this.btnToolsMS.Name = "btnToolsMS";
             this.btnToolsMS.Size = new System.Drawing.Size(47, 23);
             this.btnToolsMS.Text = "Tools";
+            // 
+            // btnToolsOptionsMS
+            // 
+            this.btnToolsOptionsMS.Image = global::Views.Properties.Resources.Settings_12x_16x;
+            this.btnToolsOptionsMS.Name = "btnToolsOptionsMS";
+            this.btnToolsOptionsMS.Size = new System.Drawing.Size(116, 22);
+            this.btnToolsOptionsMS.Text = "Options";
             // 
             // btnHelpMS
             // 
@@ -315,10 +469,31 @@
             this.btnHelpMS.Size = new System.Drawing.Size(44, 23);
             this.btnHelpMS.Text = "Help";
             // 
+            // btnHelpAboutMS
+            // 
+            this.btnHelpAboutMS.Image = global::Views.Properties.Resources.InformationSymbol_16x;
+            this.btnHelpAboutMS.Name = "btnHelpAboutMS";
+            this.btnHelpAboutMS.Size = new System.Drawing.Size(108, 22);
+            this.btnHelpAboutMS.Text = "About";
+            // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
             this.toolStripSeparator15.Size = new System.Drawing.Size(105, 6);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Image = global::Views.Properties.Resources.Log_16x;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
+            this.toolStripMenuItem1.Text = "Log";
+            // 
+            // btnHelpLogMS
+            // 
+            this.btnHelpLogMS.Image = global::Views.Properties.Resources.Event_16x;
+            this.btnHelpLogMS.Name = "btnHelpLogMS";
+            this.btnHelpLogMS.Size = new System.Drawing.Size(108, 22);
+            this.btnHelpLogMS.Text = "Events";
             // 
             // toolStripSeparator11
             // 
@@ -452,6 +627,15 @@
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
+            // novoToolStripButton2
+            // 
+            this.novoToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.novoToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton2.Image")));
+            this.novoToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.novoToolStripButton2.Name = "novoToolStripButton2";
+            this.novoToolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.novoToolStripButton2.Text = "&Novo";
+            // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
@@ -489,6 +673,15 @@
             this.toolStrip3.Size = new System.Drawing.Size(244, 25);
             this.toolStrip3.TabIndex = 1;
             this.toolStrip3.Text = "toolStrip3";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "&Novo";
             // 
             // toolStripSeparator14
             // 
@@ -538,89 +731,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tspForm
-            // 
-            this.tspForm.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.tspForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.novoToolStripButton,
-            this.abrirToolStripButton,
-            this.salvarToolStripButton,
-            this.imprimirToolStripButton,
-            this.toolStripSeparator6,
-            this.recortarToolStripButton,
-            this.copiarToolStripButton,
-            this.colarToolStripButton,
-            this.toolStripSeparator7,
-            this.ajudaToolStripButton});
-            this.tspForm.Location = new System.Drawing.Point(3, 3);
-            this.tspForm.Name = "tspForm";
-            this.tspForm.Size = new System.Drawing.Size(215, 25);
-            this.tspForm.TabIndex = 3;
-            this.tspForm.Text = "toolStrip1";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(53, 17);
-            this.toolStripStatusLabel1.Text = "SLStudio";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // stpForm
-            // 
-            this.stpForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.toolStripProgressBar1});
-            this.stpForm.Location = new System.Drawing.Point(0, 539);
-            this.stpForm.Name = "stpForm";
-            this.stpForm.Size = new System.Drawing.Size(784, 22);
-            this.stpForm.TabIndex = 0;
-            this.stpForm.Text = "statusStrip1";
-            // 
-            // miniToolStrip
-            // 
-            this.miniToolStrip.AccessibleName = "Nova seleção de item";
-            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
-            this.miniToolStrip.AutoSize = false;
-            this.miniToolStrip.CanOverflow = false;
-            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
-            this.miniToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.miniToolStrip.Location = new System.Drawing.Point(1, 25);
-            this.miniToolStrip.Name = "miniToolStrip";
-            this.miniToolStrip.Size = new System.Drawing.Size(215, 25);
-            this.miniToolStrip.TabIndex = 3;
-            // 
-            // novoToolStripButton2
-            // 
-            this.novoToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.novoToolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("novoToolStripButton2.Image")));
-            this.novoToolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.novoToolStripButton2.Name = "novoToolStripButton2";
-            this.novoToolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.novoToolStripButton2.Text = "&Novo";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "&Novo";
-            // 
             // btnNewTS
             // 
             this.btnNewTS.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -629,7 +739,7 @@
             this.btnNewTS.Name = "btnNewTS";
             this.btnNewTS.Size = new System.Drawing.Size(23, 22);
             this.btnNewTS.Text = "New";
-            this.btnNewTS.Click += new System.EventHandler(this.CreateNew);
+            this.btnNewTS.Click += new System.EventHandler(this.CreateNewSolution);
             // 
             // btnOpenTS
             // 
@@ -694,180 +804,35 @@
             this.btnAbrirPastaProjeto.Size = new System.Drawing.Size(23, 22);
             this.btnAbrirPastaProjeto.Text = "Open solution folder";
             // 
-            // btnFileNewMS
+            // toolStripSeparator6
             // 
-            this.btnFileNewMS.Image = global::Views.Properties.Resources.NewFile_16x;
-            this.btnFileNewMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileNewMS.Name = "btnFileNewMS";
-            this.btnFileNewMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.btnFileNewMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileNewMS.Text = "New";
-            this.btnFileNewMS.Click += new System.EventHandler(this.CreateNew);
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnFileOpenMS
+            // toolStripSeparator7
             // 
-            this.btnFileOpenMS.Image = global::Views.Properties.Resources.OpenFile_16x;
-            this.btnFileOpenMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileOpenMS.Name = "btnFileOpenMS";
-            this.btnFileOpenMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.btnFileOpenMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileOpenMS.Text = "Open";
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnFileResetMS
+            // tspForm
             // 
-            this.btnFileResetMS.Image = global::Views.Properties.Resources.Restart_16x;
-            this.btnFileResetMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileResetMS.Name = "btnFileResetMS";
-            this.btnFileResetMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.btnFileResetMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileResetMS.Text = "Reset";
-            // 
-            // btnFileMergeMS
-            // 
-            this.btnFileMergeMS.Image = global::Views.Properties.Resources.Merge_16x;
-            this.btnFileMergeMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileMergeMS.Name = "btnFileMergeMS";
-            this.btnFileMergeMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
-            this.btnFileMergeMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileMergeMS.Text = "Merge";
-            // 
-            // btnFileSaveMS
-            // 
-            this.btnFileSaveMS.Image = global::Views.Properties.Resources.Save_16x;
-            this.btnFileSaveMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileSaveMS.Name = "btnFileSaveMS";
-            this.btnFileSaveMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.btnFileSaveMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileSaveMS.Text = "Save";
-            // 
-            // btnFileSaveAsMS
-            // 
-            this.btnFileSaveAsMS.Image = global::Views.Properties.Resources.SaveAs_16x;
-            this.btnFileSaveAsMS.Name = "btnFileSaveAsMS";
-            this.btnFileSaveAsMS.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.S)));
-            this.btnFileSaveAsMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileSaveAsMS.Text = "Save As";
-            // 
-            // btnFileImportMS
-            // 
-            this.btnFileImportMS.Image = global::Views.Properties.Resources.Import_16x;
-            this.btnFileImportMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileImportMS.Name = "btnFileImportMS";
-            this.btnFileImportMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.btnFileImportMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileImportMS.Text = "Import";
-            // 
-            // btnFileExportMS
-            // 
-            this.btnFileExportMS.Image = global::Views.Properties.Resources.Export_16x;
-            this.btnFileExportMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnFileExportMS.Name = "btnFileExportMS";
-            this.btnFileExportMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.btnFileExportMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileExportMS.Text = "Export";
-            // 
-            // btnFileExitMS
-            // 
-            this.btnFileExitMS.Image = global::Views.Properties.Resources.Exit_16x;
-            this.btnFileExitMS.Name = "btnFileExitMS";
-            this.btnFileExitMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.btnFileExitMS.Size = new System.Drawing.Size(180, 22);
-            this.btnFileExitMS.Text = "Exit";
-            // 
-            // btnEditUndoMS
-            // 
-            this.btnEditUndoMS.Image = global::Views.Properties.Resources.Undo_16x;
-            this.btnEditUndoMS.Name = "btnEditUndoMS";
-            this.btnEditUndoMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
-            this.btnEditUndoMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditUndoMS.Text = "Undo";
-            // 
-            // btnEditRedoMS
-            // 
-            this.btnEditRedoMS.Image = global::Views.Properties.Resources.Redo_16x;
-            this.btnEditRedoMS.Name = "btnEditRedoMS";
-            this.btnEditRedoMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
-            this.btnEditRedoMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditRedoMS.Text = "Redo";
-            // 
-            // btnEditCropMS
-            // 
-            this.btnEditCropMS.Image = global::Views.Properties.Resources.CopyToClipboard_16x;
-            this.btnEditCropMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditCropMS.Name = "btnEditCropMS";
-            this.btnEditCropMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.btnEditCropMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditCropMS.Text = "Crop";
-            // 
-            // btnEditCopyMS
-            // 
-            this.btnEditCopyMS.Image = global::Views.Properties.Resources.ASX_Copy_blue_16x;
-            this.btnEditCopyMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditCopyMS.Name = "btnEditCopyMS";
-            this.btnEditCopyMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.btnEditCopyMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditCopyMS.Text = "Copy";
-            // 
-            // btnEditPasteMS
-            // 
-            this.btnEditPasteMS.Image = global::Views.Properties.Resources.ASX_Paste_blue_16x;
-            this.btnEditPasteMS.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnEditPasteMS.Name = "btnEditPasteMS";
-            this.btnEditPasteMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
-            this.btnEditPasteMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditPasteMS.Text = "Paste";
-            // 
-            // btnEditSelectAllMS
-            // 
-            this.btnEditSelectAllMS.Image = global::Views.Properties.Resources.SelectAll_16x;
-            this.btnEditSelectAllMS.Name = "btnEditSelectAllMS";
-            this.btnEditSelectAllMS.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.btnEditSelectAllMS.Size = new System.Drawing.Size(164, 22);
-            this.btnEditSelectAllMS.Text = "Select All";
-            // 
-            // btnDebugStartMS
-            // 
-            this.btnDebugStartMS.Image = global::Views.Properties.Resources.Run_16x;
-            this.btnDebugStartMS.Name = "btnDebugStartMS";
-            this.btnDebugStartMS.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.btnDebugStartMS.Size = new System.Drawing.Size(117, 22);
-            this.btnDebugStartMS.Text = "Start";
-            // 
-            // btnDebugOptionsMS
-            // 
-            this.btnDebugOptionsMS.Image = global::Views.Properties.Resources.Settings_12x_16x;
-            this.btnDebugOptionsMS.Name = "btnDebugOptionsMS";
-            this.btnDebugOptionsMS.Size = new System.Drawing.Size(117, 22);
-            this.btnDebugOptionsMS.Text = "Options";
-            // 
-            // btnToolsOptionsMS
-            // 
-            this.btnToolsOptionsMS.Image = global::Views.Properties.Resources.Settings_12x_16x;
-            this.btnToolsOptionsMS.Name = "btnToolsOptionsMS";
-            this.btnToolsOptionsMS.Size = new System.Drawing.Size(116, 22);
-            this.btnToolsOptionsMS.Text = "Options";
-            // 
-            // btnHelpAboutMS
-            // 
-            this.btnHelpAboutMS.Image = global::Views.Properties.Resources.InformationSymbol_16x;
-            this.btnHelpAboutMS.Name = "btnHelpAboutMS";
-            this.btnHelpAboutMS.Size = new System.Drawing.Size(108, 22);
-            this.btnHelpAboutMS.Text = "About";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Image = global::Views.Properties.Resources.Log_16x;
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
-            this.toolStripMenuItem1.Text = "Log";
-            // 
-            // btnHelpLogMS
-            // 
-            this.btnHelpLogMS.Image = global::Views.Properties.Resources.Event_16x;
-            this.btnHelpLogMS.Name = "btnHelpLogMS";
-            this.btnHelpLogMS.Size = new System.Drawing.Size(108, 22);
-            this.btnHelpLogMS.Text = "Events";
+            this.tspForm.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.tspForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.novoToolStripButton,
+            this.abrirToolStripButton,
+            this.salvarToolStripButton,
+            this.imprimirToolStripButton,
+            this.toolStripSeparator6,
+            this.recortarToolStripButton,
+            this.copiarToolStripButton,
+            this.colarToolStripButton,
+            this.toolStripSeparator7,
+            this.ajudaToolStripButton});
+            this.tspForm.Location = new System.Drawing.Point(3, 3);
+            this.tspForm.Name = "tspForm";
+            this.tspForm.Size = new System.Drawing.Size(215, 25);
+            this.tspForm.TabIndex = 3;
+            this.tspForm.Text = "toolStrip1";
             // 
             // novoToolStripButton
             // 
@@ -940,6 +905,41 @@
             this.ajudaToolStripButton.Name = "ajudaToolStripButton";
             this.ajudaToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.ajudaToolStripButton.Text = "&Ajuda";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(53, 17);
+            this.toolStripStatusLabel1.Text = "SLStudio";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // stpForm
+            // 
+            this.stpForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
+            this.stpForm.Location = new System.Drawing.Point(0, 539);
+            this.stpForm.Name = "stpForm";
+            this.stpForm.Size = new System.Drawing.Size(784, 22);
+            this.stpForm.TabIndex = 0;
+            this.stpForm.Text = "statusStrip1";
+            // 
+            // miniToolStrip
+            // 
+            this.miniToolStrip.AccessibleName = "Nova seleção de item";
+            this.miniToolStrip.AccessibleRole = System.Windows.Forms.AccessibleRole.ButtonDropDown;
+            this.miniToolStrip.AutoSize = false;
+            this.miniToolStrip.CanOverflow = false;
+            this.miniToolStrip.Dock = System.Windows.Forms.DockStyle.None;
+            this.miniToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.miniToolStrip.Location = new System.Drawing.Point(1, 25);
+            this.miniToolStrip.Name = "miniToolStrip";
+            this.miniToolStrip.Size = new System.Drawing.Size(215, 25);
+            this.miniToolStrip.TabIndex = 3;
             // 
             // frmMain
             // 
