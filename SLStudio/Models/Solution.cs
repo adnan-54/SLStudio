@@ -6,7 +6,21 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Models
 {
-    public class Solution
+    public class Solution : IDisposable
     {
+
+
+
+        #region IDisposable
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
+        }
+
+        ~Solution()
+        {
+            Dispose();
+        }
+        #endregion
     }
 }
