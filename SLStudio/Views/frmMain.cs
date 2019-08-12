@@ -15,6 +15,14 @@ namespace SLStudio.Views
         public frmMain()
         {
             InitializeComponent();
+            
+        }
+
+        private void XuiButton1_Click(object sender, EventArgs e)
+        {
+            frmLogger logger = new frmLogger();
+            logger.ShowDialog();
+            logger.Dispose();
         }
     }
 }
