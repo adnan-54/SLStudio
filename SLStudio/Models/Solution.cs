@@ -12,7 +12,14 @@ namespace SLStudio.Models
 
         public string solutionName;
         public string solutionDescription;
-        public List<string> authors = new List<string>();
+        public List<string> solutionAuthors = new List<string>();
+
+        public string solutionFileName;
+
+        public string solutionVersion;
+        public int solutionBuild;
+
+        public bool solutionIsReleased;
 
         public DateTime solutionCreationDate;
         public DateTime solutionLastEditDate; 

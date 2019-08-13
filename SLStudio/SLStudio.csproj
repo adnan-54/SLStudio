@@ -87,7 +87,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Solution.cs" />
+    <Compile Include="Presenters\Project.cs" />
     <Compile Include="Presenters\Solution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
