@@ -57,6 +57,33 @@
     <Reference Include="ComponentFactory.Krypton.Workspace">
       <HintPath>..\packages\Krypton\ComponentFactory.Krypton.Workspace.dll</HintPath>
     </Reference>
+    <Reference Include="FlatButton">
+      <HintPath>..\packages\JControls\FlatButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JDragControl">
+      <HintPath>..\packages\JControls\JDragControl.dll</HintPath>
+    </Reference>
+    <Reference Include="JGradient Panel">
+      <HintPath>..\packages\JControls\JGradient Panel.dll</HintPath>
+    </Reference>
+    <Reference Include="JImageButton">
+      <HintPath>..\packages\JControls\JImageButton.dll</HintPath>
+    </Reference>
+    <Reference Include="JMaterialTextbox">
+      <HintPath>..\packages\JControls\JMaterialTextbox.dll</HintPath>
+    </Reference>
+    <Reference Include="JMetroTextBox">
+      <HintPath>..\packages\JControls\JMetroTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="JTextBox">
+      <HintPath>..\packages\JControls\JTextBox.dll</HintPath>
+    </Reference>
+    <Reference Include="JTextBox2">
+      <HintPath>..\packages\JControls\JTextBox2.dll</HintPath>
+    </Reference>
+    <Reference Include="JThinButton">
+      <HintPath>..\packages\JControls\JThinButton.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
     </Reference>
@@ -112,25 +139,40 @@
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
     <Compile Include="Util\Converters.cs" />
+    <Compile Include="Views\BorderLessFormBehavior\FormBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Util\Validate.cs" />
-    <Compile Include="Views\frmLogger.cs">
+    <Compile Include="Views\Controls\RecentFilesList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Controls\RecentFilesList.Designer.cs">
+      <DependentUpon>RecentFilesList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Forms\frmLogger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmLogger.Designer.cs">
+    <Compile Include="Views\Forms\frmLogger.Designer.cs">
       <DependentUpon>frmLogger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmMain.cs">
+    <Compile Include="Views\Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmMain.Designer.cs">
+    <Compile Include="Views\Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmStartScreen.cs">
+    <Compile Include="Views\Forms\frmStartScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmStartScreen.Designer.cs">
+    <Compile Include="Views\Forms\frmStartScreen.Designer.cs">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BorderLessFormBehavior\Native.cs" />
+    <Compile Include="Views\Themes\Light.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Light.settings</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,13 +196,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmLogger.resx">
+    <EmbeddedResource Include="Views\Controls\RecentFilesList.resx">
+      <DependentUpon>RecentFilesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Forms\frmLogger.resx">
       <DependentUpon>frmLogger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmMain.resx">
+    <EmbeddedResource Include="Views\Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmStartScreen.resx">
+    <EmbeddedResource Include="Views\Forms\frmStartScreen.resx">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
@@ -175,6 +220,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Views\Themes\Light.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Light.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\App.config" />
@@ -205,6 +254,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\HelpApplication_16x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_Closed_32xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_32xLG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\WorkflowActivity_32xLG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,5 +1,7 @@
 ﻿using SLStudio.Properties;
 using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SLStudio
@@ -12,6 +14,24 @@ namespace SLStudio
         [STAThread]
         static void Main()
         {
+
+            #region Updated recent files list
+            List<string> toRemoveList = new List<string>(); 
+
+            foreach (string path in Settings.Default.recentFilesList)
+            {
+                if (!File.Exists(path))
+                    toRemoveList.Add(path);
+            }
+
+            foreach(string toRemove in toRemoveList)
+            {
+                Settings.Default.recentFilesList.Remove(toRemove);
+            }
+
+            Settings.Default.Save();
+            #endregion
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Views.frmStartScreen());

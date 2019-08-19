@@ -28,5 +28,18 @@ namespace SLStudio.Models
         {
         
         }
+
+        public void Create()
+        {
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+                throw ex;
+            }
+        }
     }
 }

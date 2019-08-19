@@ -63,6 +63,26 @@ namespace SLStudio.Resources {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap application_32xLG {
+            get {
+                object obj = ResourceManager.GetObject("application_32xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_Closed_32xLG {
+            get {
+                object obj = ResourceManager.GetObject("folder_Closed_32xLG", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GitPullRequest_16x {
             get {
                 object obj = ResourceManager.GetObject("GitPullRequest_16x", resourceCulture);
