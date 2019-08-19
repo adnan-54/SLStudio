@@ -44,8 +44,10 @@
             this.lblName.Size = new System.Drawing.Size(85, 25);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "lblName";
+            this.lblName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
             this.lblName.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
             this.lblName.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);
+            this.lblName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseUp);
             // 
             // lblPath
             // 
@@ -57,8 +59,10 @@
             this.lblPath.Size = new System.Drawing.Size(47, 17);
             this.lblPath.TabIndex = 1;
             this.lblPath.Text = "lblPath";
+            this.lblPath.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
             this.lblPath.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
             this.lblPath.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);
+            this.lblPath.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseUp);
             // 
             // picture
             // 
@@ -68,8 +72,10 @@
             this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picture.TabIndex = 2;
             this.picture.TabStop = false;
+            this.picture.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
             this.picture.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
             this.picture.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);
+            this.picture.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseUp);
             // 
             // RecentFilesList
             // 
@@ -80,8 +86,10 @@
             this.Controls.Add(this.lblName);
             this.Name = "RecentFilesList";
             this.Size = new System.Drawing.Size(941, 57);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
             this.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseUp);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

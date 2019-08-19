@@ -13,9 +13,14 @@ namespace SLStudio.Views.Controls
 {
     public partial class RecentFilesList : UserControl
     {
+        public string thisPath;
+
         public RecentFilesList(string path)
         {
             InitializeComponent();
+
+            this.BackColor = Themes.DefaultTheme.Default.styleTheme;
+            this.ForeColor = Themes.DefaultTheme.Default.styleFont;
 
             string filePath = Path.GetDirectoryName(path);
             string fileName = Path.GetFileNameWithoutExtension(path);
@@ -30,16 +35,28 @@ namespace SLStudio.Views.Controls
             }
             else
                 picture.Image = Resources.Icons.application_32xLG;
+
+            thisPath = path;
         }
 
         private void RecentFilesList_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Themes.Light.Default.styleBorders;
+            this.BackColor = Themes.DefaultTheme.Default.styleBase;
         }
 
         private void RecentFilesList_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Themes.Light.Default.theme;
+            this.BackColor = Themes.DefaultTheme.Default.styleTheme;
+        }
+
+        private void LblPath_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Themes.DefaultTheme.Default.styleSelected;
+        }
+
+        private void LblPath_MouseUp(object sender, MouseEventArgs e)
+        {
+            this.BackColor = Themes.DefaultTheme.Default.styleBase;
         }
     }
 }

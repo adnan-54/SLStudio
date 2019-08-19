@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.Views.Themes" GeneratedClassName="DefaultTheme">
+  <Profiles />
+  <Settings>
+    <Setting Name="styleTheme" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">238, 238, 242</Value>
+    </Setting>
+    <Setting Name="styleBase" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">28, 151, 234</Value>
+    </Setting>
+    <Setting Name="styleSelected" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 122, 204</Value>
+    </Setting>
+    <Setting Name="styleFont" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">12, 12, 12</Value>
+    </Setting>
+    <Setting Name="styleBorders" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 82, 175</Value>
+    </Setting>
+    <Setting Name="styleThemeExtras" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">195, 195, 198</Value>
+    </Setting>
+    <Setting Name="styleLink" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 102, 204</Value>
+    </Setting>
+    <Setting Name="styleSelection" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">252, 252, 253</Value>
+    </Setting>
+    <Setting Name="styleSelection2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">28, 151, 234</Value>
+    </Setting>
+    <Setting Name="styleWorkspace" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">WhiteSmoke</Value>
+    </Setting>
+    <Setting Name="styleError" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">229, 20, 0</Value>
+    </Setting>
+    <Setting Name="styleWarning" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 204, 0</Value>
+    </Setting>
+    <Setting Name="styleInfo" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">27, 161, 226</Value>
+    </Setting>
+    <Setting Name="styleFontMask" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkGray</Value>
+    </Setting>
+    <Setting Name="styleFontLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

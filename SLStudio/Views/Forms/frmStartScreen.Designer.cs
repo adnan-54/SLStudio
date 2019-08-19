@@ -273,8 +273,6 @@
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmStartScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "";
-            this.BackColor = Views.Themes.Light.Default.theme;
             this.panelGetStarted.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.titleBar.ResumeLayout(false);
