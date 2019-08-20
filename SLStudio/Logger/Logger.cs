@@ -1,11 +1,8 @@
 ﻿using Newtonsoft.Json;
+using SLStudio.Util;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SLStudio
@@ -36,6 +33,11 @@ namespace SLStudio
         public static void LogInfo(string message, string description = "")
         {
             Log(message, description, LogType.Info);
+        }
+
+        public static void Initialize()
+        {
+            Create();
         }
 
         public static async void Export()

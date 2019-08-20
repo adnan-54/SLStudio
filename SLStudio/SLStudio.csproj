@@ -116,6 +116,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handlers\Enums\Enums.cs" />
+    <Compile Include="Handlers\Interfaces\Interfaces.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Solution.cs" />
@@ -139,37 +141,37 @@
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
     <Compile Include="Util\Converters.cs" />
-    <Compile Include="Util\BorderLessFormBehavior\FormBase.cs">
+    <Compile Include="ViewsManagers\BorderLessFormBehavior\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Util\Validate.cs" />
-    <Compile Include="Views\Controls\RecentFilesList.cs">
+    <Compile Include="ViewsManagers\CustomComponents\RecentFilesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\Controls\RecentFilesList.Designer.cs">
+    <Compile Include="ViewsManagers\CustomComponents\RecentFilesList.Designer.cs">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Forms\frmLogger.cs">
+    <Compile Include="Views\frmLogger.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\frmLogger.Designer.cs">
+    <Compile Include="Views\frmLogger.Designer.cs">
       <DependentUpon>frmLogger.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Forms\frmMain.cs">
+    <Compile Include="Views\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\frmMain.Designer.cs">
+    <Compile Include="Views\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Forms\frmStartScreen.cs">
+    <Compile Include="Views\frmStartScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Forms\frmStartScreen.Designer.cs">
+    <Compile Include="Views\frmStartScreen.Designer.cs">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Util\BorderLessFormBehavior\Native.cs" />
-    <Compile Include="Views\Themes\DefaultTheme.Designer.cs">
+    <Compile Include="ViewsManagers\BorderLessFormBehavior\Native.cs" />
+    <Compile Include="ViewsManagers\Themes\DefaultTheme.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>DefaultTheme.settings</DependentUpon>
@@ -196,21 +198,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Controls\RecentFilesList.resx">
+    <EmbeddedResource Include="ViewsManagers\CustomComponents\RecentFilesList.resx">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Forms\frmLogger.resx">
+    <EmbeddedResource Include="Views\frmLogger.resx">
       <DependentUpon>frmLogger.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Forms\frmMain.resx">
+    <EmbeddedResource Include="Views\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Forms\frmStartScreen.resx">
+    <EmbeddedResource Include="Views\frmStartScreen.resx">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Properties\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -220,13 +221,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Views\Themes\DefaultTheme.settings">
+    <None Include="ViewsManagers\Themes\DefaultTheme.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>DefaultTheme.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\App.config" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -264,5 +262,6 @@
   <ItemGroup>
     <None Include="Resources\WorkflowActivity_32xLG.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

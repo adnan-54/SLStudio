@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Text;
 
-namespace SLStudio
+namespace SLStudio.Util
 {
     public static class Converters
     {

@@ -1,4 +1,4 @@
-﻿namespace SLStudio.Views.Controls
+﻿namespace SLStudio.Views.CustomComponents
 {
     partial class RecentFilesList
     {

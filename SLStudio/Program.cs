@@ -32,9 +32,12 @@ namespace SLStudio
             Settings.Default.Save();
             #endregion
 
+            Logger.Initialize();
+            Logger.LogInfo("Starting program", DateTime.Now.ToString());
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Views.frmStartScreen());
+            Application.Run(new Views.frmMain());
         }
     }
 }

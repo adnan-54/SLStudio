@@ -1,4 +1,5 @@
 ﻿using SLStudio.Properties;
+using SLStudio.Views.CustomComponents;
 using System;
 using System.Windows.Forms;
 
@@ -12,7 +13,7 @@ namespace SLStudio.Views
             this.FormBorderStyle = FormBorderStyle.Sizable;
             foreach (string path in Settings.Default.recentFilesList)
             {
-                Controls.RecentFilesList control = new Controls.RecentFilesList(path);
+                RecentFilesList control = new RecentFilesList(path);
                 control.Dock = DockStyle.Top;
                 panelOpen.Controls.Add(control);
             }
