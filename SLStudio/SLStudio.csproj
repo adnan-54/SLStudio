@@ -131,9 +131,9 @@
       <DependentUpon>errorMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\errorMessages_ptbr.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>errorMessages_ptbr.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Resources\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -141,15 +141,15 @@
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
     <Compile Include="Util\Converters.cs" />
-    <Compile Include="ViewsManagers\BorderLessFormBehavior\FormBase.cs">
+    <Compile Include="ViewsExtensions\BorderLessFormBehavior\FormBase.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Util\Validate.cs" />
-    <Compile Include="ViewsManagers\CustomComponents\RecentFilesList.cs">
+    <Compile Include="ViewsExtensions\CustomComponents\RecentFilesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewsManagers\CustomComponents\RecentFilesList.Designer.cs">
+    <Compile Include="ViewsExtensions\CustomComponents\RecentFilesList.Designer.cs">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmLogger.cs">
@@ -170,8 +170,8 @@
     <Compile Include="Views\frmStartScreen.Designer.cs">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewsManagers\BorderLessFormBehavior\Native.cs" />
-    <Compile Include="ViewsManagers\Themes\DefaultTheme.Designer.cs">
+    <Compile Include="ViewsExtensions\BorderLessFormBehavior\Native.cs" />
+    <Compile Include="ViewsExtensions\Themes\DefaultTheme.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>DefaultTheme.settings</DependentUpon>
@@ -193,12 +193,13 @@
     <EmbeddedResource Include="Resources\errorMessages_ptbr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>errorMessages_ptbr.Designer.cs</LastGenOutput>
+      <DependentUpon>errorMessages.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewsManagers\CustomComponents\RecentFilesList.resx">
+    <EmbeddedResource Include="ViewsExtensions\CustomComponents\RecentFilesList.resx">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmLogger.resx">
@@ -210,8 +211,12 @@
     <EmbeddedResource Include="Views\frmStartScreen.resx">
       <DependentUpon>frmStartScreen.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="app.config">
+      <DependentUpon>Program.cs</DependentUpon>
+    </None>
+    <None Include="packages.config">
+      <DependentUpon>Program.cs</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -221,7 +226,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ViewsManagers\Themes\DefaultTheme.settings">
+    <None Include="Resources\application_32xLG.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\folder_Closed_32xLG.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\GitPullRequest_16x.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\HelpApplication_16x.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\Input_16x.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\NewSolutionFolder_6289.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\Open_6529.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\WorkflowActivity_32xLG.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="ViewsExtensions\Themes\DefaultTheme.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>DefaultTheme.Designer.cs</LastGenOutput>
     </None>
@@ -237,30 +266,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Input_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Open_6529.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\NewSolutionFolder_6289.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\GitPullRequest_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\HelpApplication_16x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_Closed_32xLG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\application_32xLG.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WorkflowActivity_32xLG.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
