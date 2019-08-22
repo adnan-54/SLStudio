@@ -1,7 +1,11 @@
-﻿namespace SLStudio.Views
+﻿using SLStudio.Views.Themes;
+
+namespace SLStudio.Views
 {
     partial class frmStartScreen
     {
+        ThemesManager themeManager = new ThemesManager();
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -259,6 +263,7 @@
             // 
             // frmStartScreen
             // 
+            this.BackColor = themeManager.styleBase;
             this.ClientSize = new System.Drawing.Size(983, 659);
             this.Controls.Add(this.titleBar);
             this.Controls.Add(this.panelOpen);

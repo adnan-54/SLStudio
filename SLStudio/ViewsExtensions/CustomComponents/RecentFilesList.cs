@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Views.Themes;
+using System;
 using System.IO;
 using System.Windows.Forms;
 
@@ -7,6 +8,20 @@ namespace SLStudio.Views.CustomComponents
     public partial class RecentFilesList : UserControl
     {
         public string thisPath;
+
+        private ThemesManager themeManager = new ThemesManager();
+
+        public ThemesManager ThemeManager
+        {
+            get
+            {
+                return themeManager;
+            }
+            set
+            {
+                themeManager = value;
+            }
+        }
 
         public RecentFilesList(string path)
         {
