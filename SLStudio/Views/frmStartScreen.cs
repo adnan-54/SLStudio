@@ -1,5 +1,6 @@
 ﻿using SLStudio.Properties;
 using SLStudio.Views.CustomComponents;
+using SLStudio.Views.Themes;
 using System;
 using System.Windows.Forms;
 
@@ -10,7 +11,12 @@ namespace SLStudio.Views
         public frmStartScreen()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.Sizable;
+            SetupForm();
+            PopulateRecentFileList();
+        }
+
+        private void PopulateRecentFileList()
+        {
             foreach (string path in Settings.Default.recentFilesList)
             {
                 RecentFilesList control = new RecentFilesList(path);

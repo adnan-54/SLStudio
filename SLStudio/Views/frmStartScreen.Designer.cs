@@ -1,11 +1,7 @@
-﻿using SLStudio.Views.Themes;
-
-namespace SLStudio.Views
+﻿namespace SLStudio.Views
 {
     partial class frmStartScreen
     {
-        ThemesManager themeManager = new ThemesManager();
-
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -212,7 +208,7 @@ namespace SLStudio.Views
             this.titleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleBar.Location = new System.Drawing.Point(0, 0);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(983, 32);
+            this.titleBar.Size = new System.Drawing.Size(981, 32);
             this.titleBar.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -229,7 +225,7 @@ namespace SLStudio.Views
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(983, 32);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(981, 32);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // button1
@@ -238,7 +234,7 @@ namespace SLStudio.Views
             this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(938, 0);
+            this.button1.Location = new System.Drawing.Point(936, 0);
             this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(45, 32);
@@ -252,7 +248,7 @@ namespace SLStudio.Views
             this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.button2.Location = new System.Drawing.Point(893, 0);
+            this.button2.Location = new System.Drawing.Point(891, 0);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 32);
@@ -263,8 +259,7 @@ namespace SLStudio.Views
             // 
             // frmStartScreen
             // 
-            this.BackColor = themeManager.styleBase;
-            this.ClientSize = new System.Drawing.Size(983, 659);
+            this.ClientSize = new System.Drawing.Size(981, 657);
             this.Controls.Add(this.titleBar);
             this.Controls.Add(this.panelOpen);
             this.Controls.Add(this.lblContinueWithoutCode);
@@ -272,11 +267,13 @@ namespace SLStudio.Views
             this.Controls.Add(this.lblGetSarted);
             this.Controls.Add(this.lblOpenRecent);
             this.Controls.Add(this.lblTitle);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "cu", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "frmStartScreen";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panelGetStarted.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);

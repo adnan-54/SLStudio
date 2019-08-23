@@ -27,8 +27,8 @@ namespace SLStudio.Views.CustomComponents
         {
             InitializeComponent();
 
-            this.BackColor = Themes.DefaultTheme.Default.styleTheme;
-            this.ForeColor = Themes.DefaultTheme.Default.styleFont;
+            this.BackColor = ThemeManager.styleTheme;
+            this.ForeColor = ThemeManager.styleSelected;
 
             string filePath = Path.GetDirectoryName(path);
             string fileName = Path.GetFileNameWithoutExtension(path);
@@ -49,22 +49,22 @@ namespace SLStudio.Views.CustomComponents
 
         private void RecentFilesList_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Themes.DefaultTheme.Default.styleBase;
+            this.BackColor = ThemeManager.styleBase;
         }
 
         private void RecentFilesList_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Themes.DefaultTheme.Default.styleTheme;
+            this.BackColor = ThemeManager.styleTheme;
         }
 
         private void LblPath_MouseDown(object sender, MouseEventArgs e)
         {
-            this.BackColor = Themes.DefaultTheme.Default.styleSelected;
+            this.BackColor = ThemeManager.styleSelected;
         }
 
         private void LblPath_MouseUp(object sender, MouseEventArgs e)
         {
-            this.BackColor = Themes.DefaultTheme.Default.styleBase;
+            this.BackColor = ThemeManager.styleBase;
         }
     }
 }

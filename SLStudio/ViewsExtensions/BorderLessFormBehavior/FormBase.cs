@@ -2,11 +2,32 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using SLStudio.Views.Themes;
 
 namespace SLStudio.Views
 {
     public class FormBase : Form
     {
+        private ThemesManager themeManager = new ThemesManager();
+
+        public ThemesManager ThemeManager
+        {
+            get
+            {
+                return themeManager;
+            }
+            set
+            {
+                themeManager = value;
+                themeManager.Refresh(this);
+            }
+        }
+
+        public void SetupForm()
+        {
+            FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
         public void DecorationMouseDown(HitTestValues hit, Point p)
         {
             NativeMethods.ReleaseCapture();

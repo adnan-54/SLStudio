@@ -48,6 +48,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>SLStudio.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
       <HintPath>..\packages\Krypton\ComponentFactory.Krypton.Ribbon.dll</HintPath>
@@ -153,6 +156,7 @@
     <Compile Include="ViewsExtensions\CustomComponents\RecentFilesList.Designer.cs">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsExtensions\Themes\Theme.cs" />
     <Compile Include="ViewsExtensions\Themes\ThemesManager.cs" />
     <Compile Include="Views\frmLogger.cs">
       <SubType>Form</SubType>

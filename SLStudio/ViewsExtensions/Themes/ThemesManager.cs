@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.ViewsExtensions.Themes;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -7,30 +8,17 @@ namespace SLStudio.Views.Themes
 {
     public class ThemesManager
     {
-        public string name;
-        public List<ThemesManager> themes;
-
-        public Color styleTheme;
-        public Color styleBase;
-        public Color styleSelected;
+        public List<Theme> AvaliableThemes;
+        public Theme currentTheme;
 
         public ThemesManager()
         {
-            Initialize();
+
         }
 
         public void Initialize()
         {
-            try
-            {
-                this.styleTheme = ViewsExtensions.Themes.DefaultTheme.Default.styleTheme;
-                this.styleBase = ViewsExtensions.Themes.DefaultTheme.Default.styleBase;
-                this.styleSelected = ViewsExtensions.Themes.DefaultTheme.Default.styleSelected;
-            }
-            catch(Exception ex)
-            {
-                Logger.LogError(ex);
-            }
+            throw new NotImplementedException();
         }
 
         public ThemesManager Load(string themeName)
@@ -68,9 +56,36 @@ namespace SLStudio.Views.Themes
             throw new NotImplementedException();
         }
 
-        public void Refresh(Form form)
+        public void Refresh(Form parent)
         {
-            throw new NotImplementedException();
+            try
+            {
+                foreach (Control children in parent.Controls)
+                {
+                    if (children.HasChildren)
+                        Refresh(children);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+            }
+        }
+
+        private void Refresh(Control parent)
+        {
+            try
+            {
+                foreach (Control children in parent.Controls)
+                {
+                    if (children.HasChildren)
+                        Refresh(children);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+            }
         }
     }
 }
