@@ -2,27 +2,25 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using SLStudio.Views.Themes;
+using SLStudio.ViewsExtensions.Themes;
 
 namespace SLStudio.Views
 {
     public class FormBase : Form
     {
-        private ThemesManager themeManager = new ThemesManager();
-
-        public ThemesManager ThemeManager
+        private Theme theme = new Theme();
+        public Theme Theme
         {
             get
             {
-                return themeManager;
+                return theme;
             }
             set
             {
-                themeManager = value;
-                themeManager.Refresh(this);
+                theme = value;
+                //ThemeManager.Refresh(this);
             }
         }
-
         public void SetupForm()
         {
             FormBorderStyle = FormBorderStyle.Sizable;

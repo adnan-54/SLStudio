@@ -1,43 +1,36 @@
 ﻿using SLStudio.Properties;
+using SLStudio.Views;
 using System;
-using System.Collections.Generic;
-using System.IO;
+using System.Globalization;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SLStudio
 {
-    static class Program
+    internal static class Program
     {
-        /// <summary>
-        /// Ponto de entrada principal para o aplicativo.
-        /// </summary>
         [STAThread]
-        static void Main()
+        private static void Main()
         {
-
-            #region Updated recent files list
-            List<string> toRemoveList = new List<string>(); 
-
-            foreach (string path in Settings.Default.recentFilesList)
-            {
-                if (!File.Exists(path))
-                    toRemoveList.Add(path);
-            }
-
-            foreach(string toRemove in toRemoveList)
-            {
-                Settings.Default.recentFilesList.Remove(toRemove);
-            }
-
-            Settings.Default.Save();
-            #endregion
+            CultureInfo newCulture = new CultureInfo(Settings.Default.languageDefault, true);
+            newCulture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture = newCulture;
+            Thread.CurrentThread.CurrentUICulture = newCulture;
 
             Logger.Initialize();
-            Logger.LogInfo("Starting program", DateTime.Now.ToString());
+            Logger.LogInfo(Resources.LoggerMessages.startingProgram);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Views.frmMain());
+
+            if(Settings.Default.showStartScreen)
+            {
+                Application.Run(new frmStartScreen());
+            }
+            else
+            {
+                Application.Run(new frmMain());
+            }
         }
     }
 }

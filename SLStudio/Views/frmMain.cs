@@ -11,34 +11,12 @@ using System.Windows.Forms;
 
 namespace SLStudio.Views
 {
-    public partial class frmMain : Form
+    public partial class frmMain : FormBase
     {
         public frmMain()
         {
-            if (Settings.Default.showStartScreen)
-            {
-                frmStartScreen startScreen = new frmStartScreen();
-
-                var dialogResult = startScreen.ShowDialog();
-                if (dialogResult == DialogResult.OK)
-                {
-
-                }
-                else
-                if (dialogResult == DialogResult.Yes)
-                {
-
-                }
-                else
-                if (dialogResult == DialogResult.Retry)
-                {
-
-                }
-
-                startScreen.Dispose();
-            }
-
             InitializeComponent();
+            SetupForm();
         }
 
         private void XuiButton1_Click(object sender, EventArgs e)

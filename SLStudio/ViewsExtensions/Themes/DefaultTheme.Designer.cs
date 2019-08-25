@@ -25,181 +25,241 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("238, 238, 242")]
-        public global::System.Drawing.Color styleTheme {
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
+        public global::System.Drawing.Color borders {
             get {
-                return ((global::System.Drawing.Color)(this["styleTheme"]));
+                return ((global::System.Drawing.Color)(this["borders"]));
             }
             set {
-                this["styleTheme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("28, 151, 234")]
-        public global::System.Drawing.Color styleBase {
-            get {
-                return ((global::System.Drawing.Color)(this["styleBase"]));
-            }
-            set {
-                this["styleBase"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
-        public global::System.Drawing.Color styleSelected {
-            get {
-                return ((global::System.Drawing.Color)(this["styleSelected"]));
-            }
-            set {
-                this["styleSelected"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12, 12, 12")]
-        public global::System.Drawing.Color styleFont {
-            get {
-                return ((global::System.Drawing.Color)(this["styleFont"]));
-            }
-            set {
-                this["styleFont"] = value;
+                this["borders"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
-        public global::System.Drawing.Color styleBorders {
+        public global::System.Drawing.Color bordersDark {
             get {
-                return ((global::System.Drawing.Color)(this["styleBorders"]));
+                return ((global::System.Drawing.Color)(this["bordersDark"]));
             }
             set {
-                this["styleBorders"] = value;
+                this["bordersDark"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("195, 195, 198")]
-        public global::System.Drawing.Color styleThemeExtras {
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
+        public global::System.Drawing.Color bordersLight {
             get {
-                return ((global::System.Drawing.Color)(this["styleThemeExtras"]));
+                return ((global::System.Drawing.Color)(this["bordersLight"]));
             }
             set {
-                this["styleThemeExtras"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 102, 204")]
-        public global::System.Drawing.Color styleLink {
-            get {
-                return ((global::System.Drawing.Color)(this["styleLink"]));
-            }
-            set {
-                this["styleLink"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("252, 252, 253")]
-        public global::System.Drawing.Color styleSelection {
-            get {
-                return ((global::System.Drawing.Color)(this["styleSelection"]));
-            }
-            set {
-                this["styleSelection"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("28, 151, 234")]
-        public global::System.Drawing.Color styleSelection2 {
-            get {
-                return ((global::System.Drawing.Color)(this["styleSelection2"]));
-            }
-            set {
-                this["styleSelection2"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
-        public global::System.Drawing.Color styleWorkspace {
-            get {
-                return ((global::System.Drawing.Color)(this["styleWorkspace"]));
-            }
-            set {
-                this["styleWorkspace"] = value;
+                this["bordersLight"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("229, 20, 0")]
-        public global::System.Drawing.Color styleError {
+        public global::System.Drawing.Color error {
             get {
-                return ((global::System.Drawing.Color)(this["styleError"]));
+                return ((global::System.Drawing.Color)(this["error"]));
             }
             set {
-                this["styleError"] = value;
+                this["error"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255, 204, 0")]
-        public global::System.Drawing.Color styleWarning {
+        [global::System.Configuration.DefaultSettingValueAttribute("12, 12, 12")]
+        public global::System.Drawing.Color font {
             get {
-                return ((global::System.Drawing.Color)(this["styleWarning"]));
+                return ((global::System.Drawing.Color)(this["font"]));
             }
             set {
-                this["styleWarning"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("27, 161, 226")]
-        public global::System.Drawing.Color styleInfo {
-            get {
-                return ((global::System.Drawing.Color)(this["styleInfo"]));
-            }
-            set {
-                this["styleInfo"] = value;
+                this["font"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("DarkGray")]
-        public global::System.Drawing.Color styleFontMask {
+        public global::System.Drawing.Color fontDark {
             get {
-                return ((global::System.Drawing.Color)(this["styleFontMask"]));
+                return ((global::System.Drawing.Color)(this["fontDark"]));
             }
             set {
-                this["styleFontMask"] = value;
+                this["fontDark"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("White")]
-        public global::System.Drawing.Color styleFontLight {
+        public global::System.Drawing.Color fontLight {
             get {
-                return ((global::System.Drawing.Color)(this["styleFontLight"]));
+                return ((global::System.Drawing.Color)(this["fontLight"]));
             }
             set {
-                this["styleFontLight"] = value;
+                this["fontLight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("27, 161, 226")]
+        public global::System.Drawing.Color info {
+            get {
+                return ((global::System.Drawing.Color)(this["info"]));
+            }
+            set {
+                this["info"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 102, 204")]
+        public global::System.Drawing.Color link {
+            get {
+                return ((global::System.Drawing.Color)(this["link"]));
+            }
+            set {
+                this["link"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("28, 151, 234")]
+        public global::System.Drawing.Color selection {
+            get {
+                return ((global::System.Drawing.Color)(this["selection"]));
+            }
+            set {
+                this["selection"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
+        public global::System.Drawing.Color selectionDark {
+            get {
+                return ((global::System.Drawing.Color)(this["selectionDark"]));
+            }
+            set {
+                this["selectionDark"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100, 180, 255")]
+        public global::System.Drawing.Color selectionLight {
+            get {
+                return ((global::System.Drawing.Color)(this["selectionLight"]));
+            }
+            set {
+                this["selectionLight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("28, 151, 234")]
+        public global::System.Drawing.Color style {
+            get {
+                return ((global::System.Drawing.Color)(this["style"]));
+            }
+            set {
+                this["style"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("238, 238, 242")]
+        public global::System.Drawing.Color theme {
+            get {
+                return ((global::System.Drawing.Color)(this["theme"]));
+            }
+            set {
+                this["theme"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("195, 195, 198")]
+        public global::System.Drawing.Color themeDark {
+            get {
+                return ((global::System.Drawing.Color)(this["themeDark"]));
+            }
+            set {
+                this["themeDark"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color themeLight {
+            get {
+                return ((global::System.Drawing.Color)(this["themeLight"]));
+            }
+            set {
+                this["themeLight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 204, 0")]
+        public global::System.Drawing.Color warning {
+            get {
+                return ((global::System.Drawing.Color)(this["warning"]));
+            }
+            set {
+                this["warning"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("LightGray")]
+        public global::System.Drawing.Color workspace {
+            get {
+                return ((global::System.Drawing.Color)(this["workspace"]));
+            }
+            set {
+                this["workspace"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DarkGray")]
+        public global::System.Drawing.Color workspaceDark {
+            get {
+                return ((global::System.Drawing.Color)(this["workspaceDark"]));
+            }
+            set {
+                this["workspaceDark"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
+        public global::System.Drawing.Color workspaceLight {
+            get {
+                return ((global::System.Drawing.Color)(this["workspaceLight"]));
+            }
+            set {
+                this["workspaceLight"] = value;
             }
         }
     }

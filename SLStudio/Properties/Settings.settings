@@ -9,8 +9,71 @@
       <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
     </Setting>
-    <Setting Name="themeDefaultThemeName" Type="System.String" Scope="User">
+    <Setting Name="themeDefaultName" Type="System.String" Scope="User">
       <Value Profile="(Default)">default</Value>
+    </Setting>
+    <Setting Name="languageDefault" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en-us</Value>
+    </Setting>
+    <Setting Name="borders" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 82, 175</Value>
+    </Setting>
+    <Setting Name="bordersDark" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 82, 175</Value>
+    </Setting>
+    <Setting Name="bordersLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 82, 175</Value>
+    </Setting>
+    <Setting Name="error" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">229, 20, 0</Value>
+    </Setting>
+    <Setting Name="font" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">12, 12, 12</Value>
+    </Setting>
+    <Setting Name="fontDark" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkGray</Value>
+    </Setting>
+    <Setting Name="fontLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="info" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">27, 161, 226</Value>
+    </Setting>
+    <Setting Name="link" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 102, 204</Value>
+    </Setting>
+    <Setting Name="selection" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">28, 151, 234</Value>
+    </Setting>
+    <Setting Name="selectionDark" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">0, 122, 204</Value>
+    </Setting>
+    <Setting Name="selectionLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">100, 180, 255</Value>
+    </Setting>
+    <Setting Name="style" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">28, 151, 234</Value>
+    </Setting>
+    <Setting Name="theme" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">238, 238, 242</Value>
+    </Setting>
+    <Setting Name="themeDark" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">195, 195, 198</Value>
+    </Setting>
+    <Setting Name="themeLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="warning" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 204, 0</Value>
+    </Setting>
+    <Setting Name="workspace" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">LightGray</Value>
+    </Setting>
+    <Setting Name="workspaceDark" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DarkGray</Value>
+    </Setting>
+    <Setting Name="workspaceLight" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
   </Settings>
 </SettingsFile>

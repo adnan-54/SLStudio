@@ -259,6 +259,7 @@
             // 
             // frmStartScreen
             // 
+            this.BackColor = global::SLStudio.Properties.Settings.Default.borders;
             this.ClientSize = new System.Drawing.Size(981, 657);
             this.Controls.Add(this.titleBar);
             this.Controls.Add(this.panelOpen);
@@ -267,7 +268,10 @@
             this.Controls.Add(this.lblGetSarted);
             this.Controls.Add(this.lblOpenRecent);
             this.Controls.Add(this.lblTitle);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "cu", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "borders", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
