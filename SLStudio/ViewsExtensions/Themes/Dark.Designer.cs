@@ -13,11 +13,11 @@ namespace SLStudio.ViewsExtensions.Themes {
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
-    public sealed partial class DefaultTheme : global::System.Configuration.ApplicationSettingsBase {
+    public sealed partial class Dark : global::System.Configuration.ApplicationSettingsBase {
         
-        private static DefaultTheme defaultInstance = ((DefaultTheme)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new DefaultTheme())));
+        private static Dark defaultInstance = ((Dark)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Dark())));
         
-        public static DefaultTheme Default {
+        public static Dark Default {
             get {
                 return defaultInstance;
             }
@@ -25,7 +25,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
         public global::System.Drawing.Color borders {
             get {
                 return ((global::System.Drawing.Color)(this["borders"]));
@@ -37,7 +37,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
         public global::System.Drawing.Color bordersDark {
             get {
                 return ((global::System.Drawing.Color)(this["bordersDark"]));
@@ -49,7 +49,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 82, 175")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
         public global::System.Drawing.Color bordersLight {
             get {
                 return ((global::System.Drawing.Color)(this["bordersLight"]));
@@ -73,7 +73,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("12, 12, 12")]
+        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
         public global::System.Drawing.Color font {
             get {
                 return ((global::System.Drawing.Color)(this["font"]));
@@ -145,7 +145,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
+        [global::System.Configuration.DefaultSettingValueAttribute("14, 97, 152")]
         public global::System.Drawing.Color selectionDark {
             get {
                 return ((global::System.Drawing.Color)(this["selectionDark"]));
@@ -169,7 +169,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("28, 151, 234")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 122, 204")]
         public global::System.Drawing.Color style {
             get {
                 return ((global::System.Drawing.Color)(this["style"]));
@@ -181,7 +181,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("238, 238, 242")]
+        [global::System.Configuration.DefaultSettingValueAttribute("45, 45, 48")]
         public global::System.Drawing.Color theme {
             get {
                 return ((global::System.Drawing.Color)(this["theme"]));
@@ -193,7 +193,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("195, 195, 198")]
+        [global::System.Configuration.DefaultSettingValueAttribute("51, 51, 55")]
         public global::System.Drawing.Color themeDark {
             get {
                 return ((global::System.Drawing.Color)(this["themeDark"]));
@@ -205,7 +205,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("70, 70, 70")]
         public global::System.Drawing.Color themeLight {
             get {
                 return ((global::System.Drawing.Color)(this["themeLight"]));
@@ -229,7 +229,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("LightGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30, 30, 30")]
         public global::System.Drawing.Color workspace {
             get {
                 return ((global::System.Drawing.Color)(this["workspace"]));
@@ -241,7 +241,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DarkGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30, 30, 30")]
         public global::System.Drawing.Color workspaceDark {
             get {
                 return ((global::System.Drawing.Color)(this["workspaceDark"]));
@@ -253,7 +253,7 @@ namespace SLStudio.ViewsExtensions.Themes {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("WhiteSmoke")]
+        [global::System.Configuration.DefaultSettingValueAttribute("54, 54, 54")]
         public global::System.Drawing.Color workspaceLight {
             get {
                 return ((global::System.Drawing.Color)(this["workspaceLight"]));

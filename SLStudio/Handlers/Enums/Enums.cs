@@ -1,7 +1,8 @@
 ﻿namespace SLStudio.Enums
 {
-    public enum Enums
+    public enum DefaultThemes
     {
-
+        Light,
+        Dark
     }
 }

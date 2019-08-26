@@ -90,12 +90,15 @@
             this.lblDate.AutoSize = true;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(765, 15);
+            this.lblDate.Location = new System.Drawing.Point(762, 13);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(62, 17);
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "dateTime";
             this.lblDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
+            this.lblDate.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
+            this.lblDate.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);
+            this.lblDate.MouseUp += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseUp);
             // 
             // contextMenuStrip1
             // 

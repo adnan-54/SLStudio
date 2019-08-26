@@ -1,34 +1,21 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.ViewsExtensions.Themes" GeneratedClassName="Dark">
   <Profiles />
   <Settings>
-    <Setting Name="showStartScreen" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="recentFilesList" Type="System.Collections.Specialized.StringCollection" Scope="User">
-      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" /&gt;</Value>
-    </Setting>
-    <Setting Name="themeName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Light</Value>
-    </Setting>
-    <Setting Name="languageDefault" Type="System.String" Scope="User">
-      <Value Profile="(Default)">en-us</Value>
-    </Setting>
     <Setting Name="borders" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">0, 82, 175</Value>
+      <Value Profile="(Default)">0, 122, 204</Value>
     </Setting>
     <Setting Name="bordersDark" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">0, 82, 175</Value>
+      <Value Profile="(Default)">0, 122, 204</Value>
     </Setting>
     <Setting Name="bordersLight" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">0, 82, 175</Value>
+      <Value Profile="(Default)">0, 122, 204</Value>
     </Setting>
     <Setting Name="error" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">229, 20, 0</Value>
     </Setting>
     <Setting Name="font" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">12, 12, 12</Value>
+      <Value Profile="(Default)">WhiteSmoke</Value>
     </Setting>
     <Setting Name="fontDark" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">DarkGray</Value>
@@ -46,37 +33,34 @@
       <Value Profile="(Default)">28, 151, 234</Value>
     </Setting>
     <Setting Name="selectionDark" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">0, 122, 204</Value>
+      <Value Profile="(Default)">14, 97, 152</Value>
     </Setting>
     <Setting Name="selectionLight" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">100, 180, 255</Value>
     </Setting>
     <Setting Name="style" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">28, 151, 234</Value>
+      <Value Profile="(Default)">0, 122, 204</Value>
     </Setting>
     <Setting Name="theme" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">238, 238, 242</Value>
+      <Value Profile="(Default)">45, 45, 48</Value>
     </Setting>
     <Setting Name="themeDark" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">195, 195, 198</Value>
+      <Value Profile="(Default)">51, 51, 55</Value>
     </Setting>
     <Setting Name="themeLight" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">White</Value>
+      <Value Profile="(Default)">70, 70, 70</Value>
     </Setting>
     <Setting Name="warning" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">255, 204, 0</Value>
     </Setting>
     <Setting Name="workspace" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">LightGray</Value>
+      <Value Profile="(Default)">30, 30, 30</Value>
     </Setting>
     <Setting Name="workspaceDark" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">DarkGray</Value>
+      <Value Profile="(Default)">30, 30, 30</Value>
     </Setting>
     <Setting Name="workspaceLight" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">WhiteSmoke</Value>
-    </Setting>
-    <Setting Name="themeAutor" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Adnan</Value>
+      <Value Profile="(Default)">54, 54, 54</Value>
     </Setting>
   </Settings>
 </SettingsFile>

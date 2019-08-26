@@ -2,11 +2,12 @@
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using SLStudio.Interfaces;
 using SLStudio.ViewsExtensions.Themes;
 
 namespace SLStudio.Views
 {
-    public class FormBase : Form
+    public class FormBase : Form, ITheme
     {
         private Theme theme = new Theme();
         public Theme Theme
@@ -18,12 +19,14 @@ namespace SLStudio.Views
             set
             {
                 theme = value;
-                //ThemeManager.Refresh(this);
+                ThemeManager.Update(theme, this);
             }
         }
+
         public void SetupForm()
         {
             FormBorderStyle = FormBorderStyle.Sizable;
+            SetStyle(ControlStyles.ResizeRedraw, true);
         }
 
         public void DecorationMouseDown(HitTestValues hit, Point p)

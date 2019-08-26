@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Properties;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -18,8 +19,8 @@ namespace SLStudio.ViewsExtensions.CustomComponents
         {
             InitializeComponent();
 
-            //this.BackColor = ThemeManager.styleTheme;
-            //this.ForeColor = ThemeManager.styleSelected;
+            this.BackColor = Settings.Default.theme;
+            this.ForeColor = Settings.Default.font;
 
             string filePath = Path.GetDirectoryName(path);
             string fileName = Path.GetFileNameWithoutExtension(path);
@@ -42,12 +43,12 @@ namespace SLStudio.ViewsExtensions.CustomComponents
 
         private void RecentFilesList_MouseEnter(object sender, EventArgs e)
         {
-            //this.BackColor = ThemeManager.styleBase;
+            this.BackColor = Settings.Default.selection;
         }
 
         private void RecentFilesList_MouseLeave(object sender, EventArgs e)
         {
-            //this.BackColor = ThemeManager.styleTheme;
+            this.BackColor = Settings.Default.theme;
         }
 
         private void LblPath_MouseDown(object sender, MouseEventArgs e)
@@ -56,12 +57,13 @@ namespace SLStudio.ViewsExtensions.CustomComponents
             {
                 contextMenuStrip1.Show(this, new Point(e.X, e.Y));
             }
-            //this.BackColor = ThemeManager.styleSelected;
+            else
+                this.BackColor = Settings.Default.selectionDark;
         }
 
         private void LblPath_MouseUp(object sender, MouseEventArgs e)
         {
-            //this.BackColor = ThemeManager.styleBase;
+            this.BackColor = Settings.Default.selection;
         }
 
         private void OpenDirectoryToolStripMenuItem_Click(object sender, EventArgs e)

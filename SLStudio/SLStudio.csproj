@@ -167,6 +167,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="Resources\frmStartScreen.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>frmStartScreen.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -177,6 +182,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoggerMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\themes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>themes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
@@ -186,14 +196,22 @@
     </Compile>
     <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Util\Validate.cs" />
-    <Compile Include="ViewsExtensions\CustomControl\RecentFilesList.cs">
+    <Compile Include="ViewsExtensions\CustomControls\CustomFlatButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\RecentFilesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewsExtensions\CustomControl\RecentFilesList.Designer.cs">
+    <Compile Include="ViewsExtensions\CustomControls\RecentFilesList.Designer.cs">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewsExtensions\Themes\DefaultTheme.Designer.cs">
-      <DependentUpon>DefaultTheme.settings</DependentUpon>
+    <Compile Include="ViewsExtensions\Themes\Dark.Designer.cs">
+      <DependentUpon>Dark.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewsExtensions\Themes\Light.Designer.cs">
+      <DependentUpon>Light.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
@@ -237,6 +255,13 @@
       <LastGenOutput>errorMessages_ptbr.Designer.cs</LastGenOutput>
       <DependentUpon>errorMessages.resx</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\frmStartScreen.pt-br.resx">
+      <DependentUpon>frmStartScreen.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\frmStartScreen.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>frmStartScreen.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
@@ -248,7 +273,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LoggerMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewsExtensions\CustomControl\RecentFilesList.resx">
+    <EmbeddedResource Include="Resources\themes.pt-br.resx">
+      <DependentUpon>themes.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\themes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>themes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\RecentFilesList.resx">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\frmLogger.resx">
@@ -300,9 +332,13 @@
     <None Include="Resources\WorkflowActivity_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="ViewsExtensions\Themes\DefaultTheme.settings">
+    <None Include="ViewsExtensions\Themes\Dark.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>DefaultTheme.Designer.cs</LastGenOutput>
+      <LastGenOutput>Dark.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ViewsExtensions\Themes\Light.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Light.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

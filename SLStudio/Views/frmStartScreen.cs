@@ -14,6 +14,9 @@ namespace SLStudio.Views
     {
         public frmStartScreen()
         {
+            InitializeComponent();
+            SetupForm();
+
             #region Updated recent files list
             List<string> toRemoveList = new List<string>();
 
@@ -29,11 +32,26 @@ namespace SLStudio.Views
             }
 
             Settings.Default.Save();
+
+            PopulateRecentFileList();
             #endregion
 
-            InitializeComponent();
-            SetupForm();
-            PopulateRecentFileList();
+            var cult = Thread.CurrentThread.CurrentCulture;
+            var cultUi  = Thread.CurrentThread.CurrentUICulture;
+
+
+            #region Language binding
+            this.Text = Resources.frmStartScreen.startScreen;
+            this.lblTitle.Text = Resources.frmStartScreen.label_slstudio;
+            this.lblOpenRecent.Text = Resources.frmStartScreen.label_open_recent;
+            this.lblGetSarted.Text = Resources.frmStartScreen.label_get_started;
+            this.lblContinueWithoutCode.Text = Resources.frmStartScreen.link_continue;
+            
+            this.btnCreateNew.Text = Resources.frmStartScreen.button_create_new;
+            this.btnOpenProject.Text = Resources.frmStartScreen.button_open_solution;
+            this.btnClone.Text = Resources.frmStartScreen.button_clone_checkout;
+            this.btnTutorials.Text = Resources.frmStartScreen.button_tutorials;
+            #endregion
         }
 
         private void PopulateRecentFileList()
@@ -46,33 +64,20 @@ namespace SLStudio.Views
             }
         }
 
-        Theme dale;
-
-        Random random;
-
-        int r, g, b;
-
-        Color color;
-
         #region Events
         private void OnCreateNew(object sender, EventArgs e)
         {
-            random = new Random();
-            r = random.Next(0, 255);
-            b = random.Next(0, 255);
-            b = random.Next(0, 255);
-            color = Color.FromArgb(r,g,b);
+            this.Theme = new Theme(Enums.DefaultThemes.Dark);
         }
 
         private void OnOpenProjectOrSolution(object sender, EventArgs e)
         {
-            dale = new Theme();
-            dale.Borders = color;
+
         }
 
         private void OnCheckoutProject(object sender, EventArgs e)
         {
-            Theme = dale;
+
         }
 
         private void OnTutorials(object sender, EventArgs e)
@@ -85,14 +90,15 @@ namespace SLStudio.Views
 
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void btnCloseClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void btnCloseMouseEnter(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.error;
         }
         #endregion
     }
