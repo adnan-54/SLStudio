@@ -3,6 +3,7 @@ using SLStudio.ViewsExtensions.CustomComponents;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
@@ -98,5 +99,18 @@ namespace SLStudio.Views
             btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.error;
         }
         #endregion
+
+        private List<Keys> _code = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
+        private List<Keys> pressedKeys = new List<Keys> { Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A };
+        private void FrmStartScreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            pressedKeys.RemoveAt(0);
+            pressedKeys.Add(e.KeyCode);
+
+            if (_code.SequenceEqual(pressedKeys))
+            {
+                MessageBox.Show("KONAMI!!!");
+            }
+        }
     }
 }

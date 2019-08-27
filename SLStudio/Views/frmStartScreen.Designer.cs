@@ -175,6 +175,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -183,6 +184,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SLStudio 2019";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmStartScreen_KeyUp);
             this.panelGetStarted.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
