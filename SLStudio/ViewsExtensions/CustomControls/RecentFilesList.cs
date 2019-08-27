@@ -31,10 +31,10 @@ namespace SLStudio.ViewsExtensions.CustomComponents
             string fileType = Path.GetExtension(path);
             if(fileType == ".sls")
             {
-                picture.Image = Resources.Icons.folder_Closed_32xLG;
+                picture.Image = Resources.Images.Icons.folder_Closed_32xLG;
             }
             else
-                picture.Image = Resources.Icons.application_32xLG;
+                picture.Image = Resources.Images.Icons.application_32xLG;
 
             lblDate.Text = File.GetLastWriteTime(path).ToString();
 

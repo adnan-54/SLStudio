@@ -32,7 +32,7 @@ namespace SLStudio.ViewsExtensions.Themes
 
         public Theme()
         {
-            this.themeName = Resources.themes.themeLight;
+            this.themeName = Resources.Messages.themesMessages.themeLight;
             this.themeAuthor = "Adnan";
             this.borders = Light.Default.borders;
             this.bordersDark = Light.Default.bordersDark;
@@ -60,7 +60,7 @@ namespace SLStudio.ViewsExtensions.Themes
         {
             if (defaultThemeName == DefaultThemes.Light)
             {
-                this.themeName = Resources.themes.themeLight;
+                this.themeName = Resources.Messages.themesMessages.themeLight;
                 this.borders = Light.Default.borders;
                 this.bordersDark = Light.Default.bordersDark;
                 this.bordersLight = Light.Default.bordersLight;
@@ -85,7 +85,7 @@ namespace SLStudio.ViewsExtensions.Themes
             else
             if(defaultThemeName == DefaultThemes.Dark)
             {
-                this.themeName = Resources.themes.themeDark;
+                this.themeName = Resources.Messages.themesMessages.themeDark;
                 this.borders = Dark.Default.borders;
                 this.bordersDark = Dark.Default.bordersDark;
                 this.bordersLight = Dark.Default.bordersLight;

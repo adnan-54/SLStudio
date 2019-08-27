@@ -117,26 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="application_32xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>application_32xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_clone_checkout" xml:space="preserve">
+    <value>Clonar ou fazer check-out</value>
   </data>
-  <data name="folder_Closed_32xLG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>folder_Closed_32xLG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_create_new" xml:space="preserve">
+    <value>Criar um projeto</value>
   </data>
-  <data name="GitPullRequest_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>GitPullRequest_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_open_solution" xml:space="preserve">
+    <value>Abrir um projeto ou uma solulçao</value>
   </data>
-  <data name="HelpApplication_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>HelpApplication_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_tutorials" xml:space="preserve">
+    <value>Tutoriais</value>
   </data>
-  <data name="Input_16x" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Input_16x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label_get_started" xml:space="preserve">
+    <value>Introdução</value>
   </data>
-  <data name="NewSolutionFolder_6289" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>NewSolutionFolder_6289.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label_open_recent" xml:space="preserve">
+    <value>Abrir recente</value>
   </data>
-  <data name="Open_6529" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Open_6529.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="label_slstudio" xml:space="preserve">
+    <value>SL Studio 2019</value>
+  </data>
+  <data name="link_continue" xml:space="preserve">
+    <value>Continuar sem código</value>
+  </data>
+  <data name="startScreen" xml:space="preserve">
+    <value>SLStudio</value>
   </data>
 </root>

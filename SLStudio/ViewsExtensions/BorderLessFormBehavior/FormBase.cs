@@ -27,6 +27,9 @@ namespace SLStudio.Views
         {
             FormBorderStyle = FormBorderStyle.Sizable;
             SetStyle(ControlStyles.ResizeRedraw, true);
+            Icon = Resources.Images.Icons.appIcon;
+            MinimizeBox = true;
+            MaximizeBox = true;
         }
 
         public void DecorationMouseDown(HitTestValues hit, Point p)

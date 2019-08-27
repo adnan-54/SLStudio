@@ -22,7 +22,8 @@ namespace SLStudio.Views
         private void XuiButton1_Click(object sender, EventArgs e)
         {
             frmLogger logger = new frmLogger();
-            logger.ShowDialog();
+            logger.ShowInTaskbar = false;
+            logger.ShowDialog(this);
             logger.Dispose();
         }
     }

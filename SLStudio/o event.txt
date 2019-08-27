@@ -1,0 +1,10 @@
+﻿protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == /*WM_SIZE*/ 0x0005)
+            {
+                dale.Focus();
+                dale.WindowState = this.WindowState;
+            }
+
+            base.WndProc(ref m);
+        }

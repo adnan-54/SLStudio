@@ -68,14 +68,33 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>appIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
@@ -157,35 +176,25 @@
     <Compile Include="Presenters\Solution.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources\errorMessages.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>errorMessages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\errorMessages_ptbr.Designer.cs">
-      <DependentUpon>errorMessages_ptbr.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Include="Resources\frmStartScreen.Designer.cs">
+    <Compile Include="Resources\Forms\frmStartScreen.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>frmStartScreen.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Icons.Designer.cs">
+    <Compile Include="Resources\Images\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\LoggerMessages.Designer.cs">
+    <Compile Include="Resources\Messages\LoggerMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LoggerMessages.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\themes.Designer.cs">
+    <Compile Include="Resources\Messages\themesMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>themes.resx</DependentUpon>
+      <DependentUpon>themesMessages.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs">
       <DependentUpon>Program.cs</DependentUpon>
@@ -246,39 +255,30 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Resources\errorMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>errorMessages.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\errorMessages_ptbr.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>errorMessages_ptbr.Designer.cs</LastGenOutput>
-      <DependentUpon>errorMessages.resx</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\frmStartScreen.pt-br.resx">
+    <EmbeddedResource Include="Resources\Forms\frmStartScreen.pt-br.resx">
       <DependentUpon>frmStartScreen.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\frmStartScreen.resx">
+    <EmbeddedResource Include="Resources\Forms\frmStartScreen.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>frmStartScreen.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Icons.resx">
+    <EmbeddedResource Include="Resources\Images\Icons.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\LoggerMessages.pt-br.resx">
+    <EmbeddedResource Include="Resources\Messages\LoggerMessages.pt-br.resx">
       <DependentUpon>LoggerMessages.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\LoggerMessages.resx">
+    <EmbeddedResource Include="Resources\Messages\LoggerMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LoggerMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\themes.pt-br.resx">
-      <DependentUpon>themes.resx</DependentUpon>
+    <EmbeddedResource Include="Resources\Messages\themes.pt-br.resx">
+      <DependentUpon>themesMessages.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\themes.resx">
+    <EmbeddedResource Include="Resources\Messages\themesMessages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>themes.Designer.cs</LastGenOutput>
+      <LastGenOutput>themesMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\RecentFilesList.resx">
       <DependentUpon>RecentFilesList.cs</DependentUpon>
@@ -308,28 +308,31 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Resources\application_32xLG.png">
+    <None Include="Resources\Images\appIcon.ico">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\folder_Closed_32xLG.png">
+    <None Include="Resources\Images\application_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\GitPullRequest_16x.png">
+    <None Include="Resources\Images\folder_Closed_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\HelpApplication_16x.png">
+    <None Include="Resources\Images\GitPullRequest_16x.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\Input_16x.png">
+    <None Include="Resources\Images\HelpApplication_16x.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\NewSolutionFolder_6289.png">
+    <None Include="Resources\Images\Input_16x.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\Open_6529.png">
+    <None Include="Resources\Images\NewSolutionFolder_6289.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="Resources\WorkflowActivity_32xLG.png">
+    <None Include="Resources\Images\Open_6529.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\Images\WorkflowActivity_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
     <None Include="ViewsExtensions\Themes\Dark.settings">
@@ -354,6 +357,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="appIcon.ico">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Content>
+    <Content Include="o event.txt" />
     <Content Include="TextTemplate.ico">
       <DependentUpon>Program.cs</DependentUpon>
     </Content>
@@ -361,7 +368,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

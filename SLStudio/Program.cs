@@ -18,7 +18,7 @@ namespace SLStudio
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
             Logger.Initialize();
-            Logger.LogInfo(Resources.LoggerMessages.startingProgram);
+            Logger.LogInfo(Resources.Messages.LoggerMessages.startingProgram);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

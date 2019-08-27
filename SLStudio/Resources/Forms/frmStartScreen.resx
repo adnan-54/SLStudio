@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_clone_checkout" xml:space="preserve">
-    <value>Clonar ou fazer check-out</value>
+    <value>Clone or checkout project</value>
   </data>
   <data name="button_create_new" xml:space="preserve">
-    <value>Criar um projeto</value>
+    <value>Create a new project</value>
   </data>
   <data name="button_open_solution" xml:space="preserve">
-    <value>Abrir um projeto ou uma solulçao</value>
+    <value>Open a project or solution</value>
   </data>
   <data name="button_tutorials" xml:space="preserve">
-    <value>Tutoriais</value>
+    <value>Tutorials</value>
   </data>
   <data name="label_get_started" xml:space="preserve">
-    <value>Introdução</value>
+    <value>Get Started</value>
   </data>
   <data name="label_open_recent" xml:space="preserve">
-    <value>Abrir recente</value>
+    <value>Open recent</value>
   </data>
   <data name="label_slstudio" xml:space="preserve">
     <value>SL Studio 2019</value>
   </data>
   <data name="link_continue" xml:space="preserve">
-    <value>Continuar sem código</value>
+    <value>Continue without code</value>
   </data>
   <data name="startScreen" xml:space="preserve">
-    <value>Tela inicial</value>
+    <value>SLStudio</value>
   </data>
 </root>

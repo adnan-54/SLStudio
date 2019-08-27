@@ -1,11 +1,8 @@
 ﻿using SLStudio.Properties;
 using SLStudio.ViewsExtensions.CustomComponents;
-using SLStudio.ViewsExtensions.Themes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
@@ -36,21 +33,17 @@ namespace SLStudio.Views
             PopulateRecentFileList();
             #endregion
 
-            var cult = Thread.CurrentThread.CurrentCulture;
-            var cultUi  = Thread.CurrentThread.CurrentUICulture;
-
-
             #region Language binding
-            this.Text = Resources.frmStartScreen.startScreen;
-            this.lblTitle.Text = Resources.frmStartScreen.label_slstudio;
-            this.lblOpenRecent.Text = Resources.frmStartScreen.label_open_recent;
-            this.lblGetSarted.Text = Resources.frmStartScreen.label_get_started;
-            this.lblContinueWithoutCode.Text = Resources.frmStartScreen.link_continue;
-            
-            this.btnCreateNew.Text = Resources.frmStartScreen.button_create_new;
-            this.btnOpenProject.Text = Resources.frmStartScreen.button_open_solution;
-            this.btnClone.Text = Resources.frmStartScreen.button_clone_checkout;
-            this.btnTutorials.Text = Resources.frmStartScreen.button_tutorials;
+            this.Text = Resources.Forms.frmStartScreen.startScreen;
+            this.lblTitle.Text = Resources.Forms.frmStartScreen.label_slstudio;
+            this.lblOpenRecent.Text = Resources.Forms.frmStartScreen.label_open_recent;
+            this.lblGetSarted.Text = Resources.Forms.frmStartScreen.label_get_started;
+            this.lblContinueWithoutCode.Text = Resources.Forms.frmStartScreen.link_continue;
+
+            /*this.btnCreateNew.Text = Resources.Forms.frmStartScreen.button_create_new;
+            this.btnOpenProject.Text = Resources.Forms.frmStartScreen.button_open_solution;
+            this.btnClone.Text = Resources.Forms.frmStartScreen.button_clone_checkout;
+            this.btnTutorials.Text = Resources.Forms.frmStartScreen.button_tutorials;*/
             #endregion
         }
 
@@ -67,7 +60,7 @@ namespace SLStudio.Views
         #region Events
         private void OnCreateNew(object sender, EventArgs e)
         {
-            this.Theme = new Theme(Enums.DefaultThemes.Dark);
+
         }
 
         private void OnOpenProjectOrSolution(object sender, EventArgs e)
@@ -85,9 +78,13 @@ namespace SLStudio.Views
 
         }
 
-        private void OnContinueWithoutCode(object sender, EventArgs e)
+        private void OnContinueWithoutCode(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            frmMain main = new frmMain();
+            main.Owner = this;
+            main.Show();
+            main.Closed += (s, args) => this.Close();
+            this.Hide();
         }
 
         private void btnCloseClick(object sender, EventArgs e)

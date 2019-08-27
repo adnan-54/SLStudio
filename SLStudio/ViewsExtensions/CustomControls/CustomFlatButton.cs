@@ -20,6 +20,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
             this.MouseEnter += new EventHandler(this.onMouseEnter);
             this.MouseDown += new MouseEventHandler(this.onMouseDown);
             this.MouseUp += new MouseEventHandler(this.onMouseUp);
+            this.DataBindings.Add(new Binding("Backcolor", Settings.Default, "theme"));
         }
 
         private void onMouseEnter(object sender, EventArgs e)
