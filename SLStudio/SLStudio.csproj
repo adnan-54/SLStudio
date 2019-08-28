@@ -167,8 +167,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handlers\Enums\Enums.cs" />
-    <Compile Include="Handlers\Interfaces\Interfaces.cs" />
+    <Compile Include="Extensions\Enums\Enums.cs" />
+    <Compile Include="Extensions\Interfaces\Interfaces.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Solution.cs" />
@@ -368,7 +368,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

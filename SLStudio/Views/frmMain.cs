@@ -21,10 +21,15 @@ namespace SLStudio.Views
 
         private void XuiButton1_Click(object sender, EventArgs e)
         {
-            frmLogger logger = new frmLogger();
-            logger.ShowInTaskbar = false;
-            logger.ShowDialog(this);
-            logger.Dispose();
+            MouseEventArgs me = (MouseEventArgs)e;
+
+            if (me.Button == MouseButtons.Left)
+            {
+                frmLogger logger = new frmLogger();
+                logger.ShowInTaskbar = false;
+                logger.ShowDialog(this);
+                logger.Dispose();
+            }
         }
     }
 }

@@ -40,11 +40,10 @@ namespace SLStudio.Views
             this.lblOpenRecent.Text = Resources.Forms.frmStartScreen.label_open_recent;
             this.lblGetSarted.Text = Resources.Forms.frmStartScreen.label_get_started;
             this.lblContinueWithoutCode.Text = Resources.Forms.frmStartScreen.link_continue;
-
-            /*this.btnCreateNew.Text = Resources.Forms.frmStartScreen.button_create_new;
+            this.btnCreateNew.Text = Resources.Forms.frmStartScreen.button_create_new;
             this.btnOpenProject.Text = Resources.Forms.frmStartScreen.button_open_solution;
             this.btnClone.Text = Resources.Forms.frmStartScreen.button_clone_checkout;
-            this.btnTutorials.Text = Resources.Forms.frmStartScreen.button_tutorials;*/
+            this.btnTutorials.Text = Resources.Forms.frmStartScreen.button_tutorials;
             #endregion
         }
 
@@ -97,6 +96,13 @@ namespace SLStudio.Views
         {
             btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
             btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.error;
+        }
+
+        private void ButtonOnMouseEnter(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            button.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
+            button.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
         }
         #endregion
 
