@@ -14,25 +14,11 @@ namespace SLStudio.Views
         {
             InitializeComponent();
             SetupForm();
-
-            #region Updated recent files list
-            List<string> toRemoveList = new List<string>();
-
-            foreach (string path in Settings.Default.recentFilesList)
-            {
-                if (!File.Exists(path))
-                    toRemoveList.Add(path);
-            }
-
-            foreach (string toRemove in toRemoveList)
-            {
-                Settings.Default.recentFilesList.Remove(toRemove);
-            }
-
-            Settings.Default.Save();
-
             PopulateRecentFileList();
-            #endregion
+
+            DataGridView dgv = new DataGridView();
+            dgv.DataBindings.Add(new Binding("DataSource", Settings.Default, "recentFilesList"));
+            dgv.DataSourceChanged += new EventHandler(this.DgvOnDataSourceChanged);
 
             #region Language binding
             this.Text = Resources.Forms.frmStartScreen.startScreen;
@@ -49,6 +35,23 @@ namespace SLStudio.Views
 
         private void PopulateRecentFileList()
         {
+            panelOpen.Controls.Clear();
+
+            List<string> toRemoveList = new List<string>();
+
+            foreach (string path in Settings.Default.recentFilesList)
+            {
+                if (!File.Exists(path))
+                    toRemoveList.Add(path);
+            }
+
+            foreach (string toRemove in toRemoveList)
+            {
+                Settings.Default.recentFilesList.Remove(toRemove);
+            }
+
+            Settings.Default.Save();
+
             foreach (string path in Settings.Default.recentFilesList)
             {
                 RecentFilesList control = new RecentFilesList(path);
@@ -103,6 +106,11 @@ namespace SLStudio.Views
             var button = (Button)sender;
             button.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
             button.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+        }
+
+        private void DgvOnDataSourceChanged(object sender, EventArgs e)
+        {
+            PopulateRecentFileList();
         }
         #endregion
 

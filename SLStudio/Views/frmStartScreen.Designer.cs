@@ -33,13 +33,13 @@
             this.lblGetSarted = new System.Windows.Forms.Label();
             this.panelGetStarted = new MetroFramework.Controls.MetroPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnTutorials = new System.Windows.Forms.Button();
+            this.btnClone = new System.Windows.Forms.Button();
             this.btnCreateNew = new System.Windows.Forms.Button();
+            this.btnOpenProject = new System.Windows.Forms.Button();
             this.lblContinueWithoutCode = new System.Windows.Forms.LinkLabel();
             this.panelOpen = new System.Windows.Forms.Panel();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnOpenProject = new System.Windows.Forms.Button();
-            this.btnTutorials = new System.Windows.Forms.Button();
-            this.btnClone = new System.Windows.Forms.Button();
             this.panelGetStarted.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +50,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(23, 46);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(187, 37);
+            this.lblTitle.Size = new System.Drawing.Size(192, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "SLStudio 2019";
             // 
@@ -112,6 +112,48 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(345, 301);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
+            // btnTutorials
+            // 
+            this.btnTutorials.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
+            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnTutorials.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTutorials.FlatAppearance.BorderSize = 0;
+            this.btnTutorials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTutorials.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnTutorials.ForeColor = global::SLStudio.Properties.Settings.Default.font;
+            this.btnTutorials.Location = new System.Drawing.Point(0, 230);
+            this.btnTutorials.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btnTutorials.Name = "btnTutorials";
+            this.btnTutorials.Size = new System.Drawing.Size(345, 71);
+            this.btnTutorials.TabIndex = 8;
+            this.btnTutorials.Text = "Tutorials";
+            this.btnTutorials.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTutorials.UseVisualStyleBackColor = false;
+            this.btnTutorials.Click += new System.EventHandler(this.OnTutorials);
+            this.btnTutorials.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
+            // 
+            // btnClone
+            // 
+            this.btnClone.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
+            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnClone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnClone.FlatAppearance.BorderSize = 0;
+            this.btnClone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClone.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnClone.ForeColor = global::SLStudio.Properties.Settings.Default.font;
+            this.btnClone.Location = new System.Drawing.Point(0, 155);
+            this.btnClone.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btnClone.Name = "btnClone";
+            this.btnClone.Size = new System.Drawing.Size(345, 70);
+            this.btnClone.TabIndex = 9;
+            this.btnClone.Text = "Clone";
+            this.btnClone.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClone.UseVisualStyleBackColor = false;
+            this.btnClone.Click += new System.EventHandler(this.OnCheckoutProject);
+            this.btnClone.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
+            // 
             // btnCreateNew
             // 
             this.btnCreateNew.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
@@ -132,6 +174,27 @@
             this.btnCreateNew.UseVisualStyleBackColor = false;
             this.btnCreateNew.Click += new System.EventHandler(this.OnCreateNew);
             this.btnCreateNew.Enter += new System.EventHandler(this.ButtonOnMouseEnter);
+            // 
+            // btnOpenProject
+            // 
+            this.btnOpenProject.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
+            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.btnOpenProject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnOpenProject.FlatAppearance.BorderSize = 0;
+            this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpenProject.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnOpenProject.ForeColor = global::SLStudio.Properties.Settings.Default.font;
+            this.btnOpenProject.Location = new System.Drawing.Point(0, 80);
+            this.btnOpenProject.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.btnOpenProject.Name = "btnOpenProject";
+            this.btnOpenProject.Size = new System.Drawing.Size(345, 70);
+            this.btnOpenProject.TabIndex = 7;
+            this.btnOpenProject.Text = "Open";
+            this.btnOpenProject.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnOpenProject.UseVisualStyleBackColor = false;
+            this.btnOpenProject.Click += new System.EventHandler(this.OnOpenProjectOrSolution);
+            this.btnOpenProject.Enter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // lblContinueWithoutCode
             // 
@@ -183,69 +246,6 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnCloseClick);
             this.btnClose.MouseEnter += new System.EventHandler(this.btnCloseMouseEnter);
-            // 
-            // btnOpenProject
-            // 
-            this.btnOpenProject.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnOpenProject.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnOpenProject.FlatAppearance.BorderSize = 0;
-            this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpenProject.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnOpenProject.ForeColor = global::SLStudio.Properties.Settings.Default.font;
-            this.btnOpenProject.Location = new System.Drawing.Point(0, 80);
-            this.btnOpenProject.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btnOpenProject.Name = "btnOpenProject";
-            this.btnOpenProject.Size = new System.Drawing.Size(345, 70);
-            this.btnOpenProject.TabIndex = 7;
-            this.btnOpenProject.Text = "Open";
-            this.btnOpenProject.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnOpenProject.UseVisualStyleBackColor = false;
-            this.btnOpenProject.Click += new System.EventHandler(this.OnOpenProjectOrSolution);
-            this.btnOpenProject.Enter += new System.EventHandler(this.ButtonOnMouseEnter);
-            // 
-            // btnTutorials
-            // 
-            this.btnTutorials.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnTutorials.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTutorials.FlatAppearance.BorderSize = 0;
-            this.btnTutorials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTutorials.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnTutorials.ForeColor = global::SLStudio.Properties.Settings.Default.font;
-            this.btnTutorials.Location = new System.Drawing.Point(0, 230);
-            this.btnTutorials.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btnTutorials.Name = "btnTutorials";
-            this.btnTutorials.Size = new System.Drawing.Size(345, 71);
-            this.btnTutorials.TabIndex = 8;
-            this.btnTutorials.Text = "Tutorials";
-            this.btnTutorials.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnTutorials.UseVisualStyleBackColor = false;
-            this.btnTutorials.Click += new System.EventHandler(this.OnTutorials);
-            this.btnTutorials.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
-            // 
-            // btnClone
-            // 
-            this.btnClone.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnClone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnClone.FlatAppearance.BorderSize = 0;
-            this.btnClone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClone.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnClone.ForeColor = global::SLStudio.Properties.Settings.Default.font;
-            this.btnClone.Location = new System.Drawing.Point(0, 155);
-            this.btnClone.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.btnClone.Name = "btnClone";
-            this.btnClone.Size = new System.Drawing.Size(345, 70);
-            this.btnClone.TabIndex = 9;
-            this.btnClone.Text = "Clone";
-            this.btnClone.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnClone.UseVisualStyleBackColor = false;
-            this.btnClone.Click += new System.EventHandler(this.OnCheckoutProject);
-            this.btnClone.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // frmStartScreen
             // 

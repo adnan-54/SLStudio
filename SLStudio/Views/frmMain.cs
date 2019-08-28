@@ -19,16 +19,13 @@ namespace SLStudio.Views
             SetupForm();
         }
 
-        private void XuiButton1_Click(object sender, EventArgs e)
+        private void OnButtonCloseClick(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
 
             if (me.Button == MouseButtons.Left)
             {
-                frmLogger logger = new frmLogger();
-                logger.ShowInTaskbar = false;
-                logger.ShowDialog(this);
-                logger.Dispose();
+                this.Dispose();
             }
         }
     }
