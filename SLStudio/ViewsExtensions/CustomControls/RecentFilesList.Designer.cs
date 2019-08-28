@@ -90,7 +90,7 @@
             this.lblDate.AutoSize = true;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(762, 13);
+            this.lblDate.Location = new System.Drawing.Point(828, 15);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(62, 17);
             this.lblDate.TabIndex = 3;

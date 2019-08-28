@@ -1,4 +1,6 @@
-﻿using SLStudio.Properties;
+﻿using SLStudio.Enums;
+using SLStudio.Interfaces;
+using SLStudio.Properties;
 using SLStudio.ViewsExtensions.CustomComponents;
 using System;
 using System.Collections.Generic;
@@ -8,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SLStudio.Views
 {
-    public partial class frmStartScreen : FormBase
+    public partial class frmStartScreen : FormBase, IStartScreen
     {
         public frmStartScreen()
         {
@@ -16,7 +18,14 @@ namespace SLStudio.Views
             SetupForm();
             PopulateRecentFileList();
 
-            #region Language binding
+            #region Theme bindings
+            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
+            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
+            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
+            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
+            #endregion
+
+            #region Language bindings
             this.Text = Resources.Forms.frmStartScreen.startScreen;
             this.lblTitle.Text = Resources.Forms.frmStartScreen.label_slstudio;
             this.lblOpenRecent.Text = Resources.Forms.frmStartScreen.label_open_recent;
@@ -29,6 +38,7 @@ namespace SLStudio.Views
             #endregion
         }
 
+        #region methods
         private void PopulateRecentFileList()
         {
             panelOpen.Controls.Clear();
@@ -50,36 +60,67 @@ namespace SLStudio.Views
 
             foreach (string path in Settings.Default.recentFilesList)
             {
-                RecentFilesList control = new RecentFilesList(path);
+                RecentFilesList control = new RecentFilesList(path, this);
                 control.Dock = DockStyle.Top;
                 panelOpen.Controls.Add(control);
             }
         }
 
+        public void OpenFromRecentList(string path)
+        {
+            
+        }
+
+        public void OpenFromButtons()
+        {
+            
+        }
+
+        public void CloseFromChild()
+        {
+            this.Close();
+        }
+        #endregion
+
         #region Events
         private void OnCreateNew(object sender, EventArgs e)
         {
-
+            frmMain main = new frmMain(this, StartScreenResponse.CreateNew, "");
+            main.Owner = this;
+            main.Show();
+            this.Hide();
         }
 
         private void OnOpenProjectOrSolution(object sender, EventArgs e)
         {
-
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "SLStudio solution (*.sls)|*.sls", Multiselect = false })
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    frmMain main = new frmMain(this, StartScreenResponse.Open, ofd.FileName);
+                    main.Owner = this;
+                    main.Show();
+                    this.Hide();
+                }
+            }
         }
 
         private void OnCheckoutProject(object sender, EventArgs e)
         {
-
+            frmMain main = new frmMain(this, StartScreenResponse.Clone, "");
+            main.Owner = this;
+            main.Show();
+            this.Hide();
         }
 
         private void OnTutorials(object sender, EventArgs e)
         {
-
+            MessageBox.Show("Not implemented yet");
         }
 
         private void OnContinueWithoutCode(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmMain main = new frmMain();
+            frmMain main = new frmMain(this);
             main.Owner = this;
             main.Show();
             this.Hide();
@@ -93,7 +134,7 @@ namespace SLStudio.Views
         private void btnCloseMouseEnter(object sender, EventArgs e)
         {
             btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
-            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.themeDark;
+            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
         }
 
         private void ButtonOnMouseEnter(object sender, EventArgs e)
@@ -102,13 +143,9 @@ namespace SLStudio.Views
             button.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
             button.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
         }
-
-        private void DgvOnDataSourceChanged(object sender, EventArgs e)
-        {
-            PopulateRecentFileList();
-        }
         #endregion
 
+        #region Konami Code
         private List<Keys> _code = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
         private List<Keys> pressedKeys = new List<Keys> { Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A, Keys.A };
         private void FrmStartScreen_KeyUp(object sender, KeyEventArgs e)
@@ -121,5 +158,6 @@ namespace SLStudio.Views
                 MessageBox.Show("KONAMI!!!");
             }
         }
+        #endregion
     }
 }

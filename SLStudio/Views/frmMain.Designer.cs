@@ -72,6 +72,8 @@
             this.btnChangeState.UseCompatibleTextRendering = true;
             this.btnChangeState.UseMnemonic = false;
             this.btnChangeState.UseVisualStyleBackColor = true;
+            this.btnChangeState.Click += new System.EventHandler(this.OnButtonChangeStateClick);
+            this.btnChangeState.MouseEnter += new System.EventHandler(this.TitleBarButtonsOnMouseEnter);
             // 
             // btnMinimize
             // 
@@ -92,6 +94,7 @@
             this.btnMinimize.UseMnemonic = false;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.OnMinimizeClick);
+            this.btnMinimize.MouseEnter += new System.EventHandler(this.TitleBarButtonsOnMouseEnter);
             // 
             // frmMain
             // 

@@ -6,4 +6,10 @@ namespace SLStudio.Interfaces
     {
         Theme Theme { get; set; }
     }
+
+    public interface IStartScreen
+    {
+        void OpenFromRecentList(string path);
+        void CloseFromChild();
+    }
 }

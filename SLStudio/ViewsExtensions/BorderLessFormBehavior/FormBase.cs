@@ -23,7 +23,7 @@ namespace SLStudio.Views
             }
         }
 
-        public void SetupForm()
+        public virtual void SetupForm()
         {
             FormBorderStyle = FormBorderStyle.Sizable;
             SetStyle(ControlStyles.ResizeRedraw, true);

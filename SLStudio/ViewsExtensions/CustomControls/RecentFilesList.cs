@@ -1,4 +1,5 @@
-﻿using SLStudio.Properties;
+﻿using SLStudio.Interfaces;
+using SLStudio.Properties;
 using System;
 using System.Drawing;
 using System.IO;
@@ -8,16 +9,19 @@ namespace SLStudio.ViewsExtensions.CustomComponents
 {
     public partial class RecentFilesList : UserControl
     {
-        public string thisPath;
+        string thisPath;
+        IStartScreen parent;
 
         public RecentFilesList()
         {
             InitializeComponent();
         }
 
-        public RecentFilesList(string path)
+        public RecentFilesList(string path, IStartScreen parent)
         {
             InitializeComponent();
+
+            this.parent = parent;
 
             this.BackColor = Settings.Default.theme;
             this.ForeColor = Settings.Default.font;
@@ -64,6 +68,7 @@ namespace SLStudio.ViewsExtensions.CustomComponents
         private void LblPath_MouseUp(object sender, MouseEventArgs e)
         {
             this.BackColor = Settings.Default.selection;
+            this.parent.OpenFromRecentList(thisPath);
         }
 
         private void OpenDirectoryToolStripMenuItem_Click(object sender, EventArgs e)

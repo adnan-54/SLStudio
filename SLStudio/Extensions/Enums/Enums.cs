@@ -5,4 +5,11 @@
         Light,
         Dark
     }
+
+    public enum StartScreenResponse
+    {
+        Open,
+        Clone,
+        CreateNew
+    }
 }
