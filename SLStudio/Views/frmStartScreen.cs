@@ -16,10 +16,6 @@ namespace SLStudio.Views
             SetupForm();
             PopulateRecentFileList();
 
-            DataGridView dgv = new DataGridView();
-            dgv.DataBindings.Add(new Binding("DataSource", Settings.Default, "recentFilesList"));
-            dgv.DataSourceChanged += new EventHandler(this.DgvOnDataSourceChanged);
-
             #region Language binding
             this.Text = Resources.Forms.frmStartScreen.startScreen;
             this.lblTitle.Text = Resources.Forms.frmStartScreen.label_slstudio;
@@ -86,7 +82,6 @@ namespace SLStudio.Views
             frmMain main = new frmMain();
             main.Owner = this;
             main.Show();
-            main.Closed += (s, args) => this.Close();
             this.Hide();
         }
 
@@ -97,8 +92,8 @@ namespace SLStudio.Views
 
         private void btnCloseMouseEnter(object sender, EventArgs e)
         {
-            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
-            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.error;
+            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
+            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.themeDark;
         }
 
         private void ButtonOnMouseEnter(object sender, EventArgs e)

@@ -50,7 +50,7 @@
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.Location = new System.Drawing.Point(23, 46);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(192, 37);
+            this.lblTitle.Size = new System.Drawing.Size(187, 37);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "SLStudio 2019";
             // 
