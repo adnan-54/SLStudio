@@ -7,9 +7,19 @@ namespace SLStudio.Interfaces
         Theme Theme { get; set; }
     }
 
+    public interface IThemedWindow: ITheme
+    {
+        void UpdateTheme();
+    }
+
     public interface IStartScreen
     {
         void OpenFromRecentList(string path);
         void CloseFromChild();
+    }
+
+    public interface IMultiLanguageWindow
+    {
+        void UpdateLanguage();
     }
 }

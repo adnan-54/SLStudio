@@ -7,29 +7,14 @@ using SLStudio.ViewsExtensions.Themes;
 
 namespace SLStudio.Views
 {
-    public class FormBase : Form, ITheme
+    public class FormBase : Form
     {
-        private Theme theme = new Theme();
-        public Theme Theme
-        {
-            get
-            {
-                return theme;
-            }
-            set
-            {
-                theme = value;
-                ThemeManager.Update(theme, this);
-            }
-        }
+        //Todo: universal title bar with parameters
 
         public virtual void SetupForm()
         {
             FormBorderStyle = FormBorderStyle.Sizable;
-            SetStyle(ControlStyles.ResizeRedraw, true);
             Icon = Resources.Images.Icons.appIcon;
-            MinimizeBox = true;
-            MaximizeBox = true;
         }
 
         public void DecorationMouseDown(HitTestValues hit, Point p)

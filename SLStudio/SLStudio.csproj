@@ -339,6 +339,9 @@
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Dark.Designer.cs</LastGenOutput>
     </None>
+    <None Include="ViewsExtensions\Themes\UserCurrent .settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+    </None>
     <None Include="ViewsExtensions\Themes\Light.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Light.Designer.cs</LastGenOutput>
@@ -368,7 +371,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

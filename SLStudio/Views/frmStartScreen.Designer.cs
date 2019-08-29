@@ -39,7 +39,6 @@
             this.btnOpenProject = new System.Windows.Forms.Button();
             this.lblContinueWithoutCode = new System.Windows.Forms.LinkLabel();
             this.panelOpen = new System.Windows.Forms.Panel();
-            this.btnClose = new System.Windows.Forms.Button();
             this.panelGetStarted.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +130,6 @@
             this.btnTutorials.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnTutorials.UseVisualStyleBackColor = false;
             this.btnTutorials.Click += new System.EventHandler(this.OnTutorials);
-            this.btnTutorials.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // btnClone
             // 
@@ -152,7 +150,6 @@
             this.btnClone.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnClone.UseVisualStyleBackColor = false;
             this.btnClone.Click += new System.EventHandler(this.OnCheckoutProject);
-            this.btnClone.MouseEnter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // btnCreateNew
             // 
@@ -173,7 +170,6 @@
             this.btnCreateNew.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnCreateNew.UseVisualStyleBackColor = false;
             this.btnCreateNew.Click += new System.EventHandler(this.OnCreateNew);
-            this.btnCreateNew.Enter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // btnOpenProject
             // 
@@ -194,7 +190,6 @@
             this.btnOpenProject.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnOpenProject.UseVisualStyleBackColor = false;
             this.btnOpenProject.Click += new System.EventHandler(this.OnOpenProjectOrSolution);
-            this.btnOpenProject.Enter += new System.EventHandler(this.ButtonOnMouseEnter);
             // 
             // lblContinueWithoutCode
             // 
@@ -226,27 +221,6 @@
             this.panelOpen.Size = new System.Drawing.Size(479, 489);
             this.panelOpen.TabIndex = 6;
             // 
-            // btnClose
-            // 
-            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnClose.FlatAppearance.BorderSize = 0;
-            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClose.Font = new System.Drawing.Font("Segoe UI Semilight", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(936, 0);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.btnClose.Size = new System.Drawing.Size(45, 32);
-            this.btnClose.TabIndex = 0;
-            this.btnClose.TabStop = false;
-            this.btnClose.Text = "x";
-            this.btnClose.UseCompatibleTextRendering = true;
-            this.btnClose.UseMnemonic = false;
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnCloseClick);
-            this.btnClose.MouseEnter += new System.EventHandler(this.btnCloseMouseEnter);
-            // 
             // frmStartScreen
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -255,7 +229,6 @@
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(981, 657);
             this.ControlBox = false;
-            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.panelOpen);
             this.Controls.Add(this.lblContinueWithoutCode);
             this.Controls.Add(this.panelGetStarted);
@@ -294,7 +267,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.LinkLabel lblContinueWithoutCode;
         private System.Windows.Forms.Panel panelOpen;
-        private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnCreateNew;
         private System.Windows.Forms.Button btnOpenProject;
         private System.Windows.Forms.Button btnTutorials;

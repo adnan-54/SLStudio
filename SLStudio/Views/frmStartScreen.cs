@@ -2,6 +2,7 @@
 using SLStudio.Interfaces;
 using SLStudio.Properties;
 using SLStudio.ViewsExtensions.CustomComponents;
+using SLStudio.ViewsExtensions.Themes;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,32 +11,29 @@ using System.Windows.Forms;
 
 namespace SLStudio.Views
 {
-    public partial class frmStartScreen : FormBase, IStartScreen
+    public partial class frmStartScreen : FormBase, IStartScreen, IThemedWindow, IMultiLanguageWindow
     {
+        private Theme theme;
+        public Theme Theme
+        {
+            get
+            {
+                return theme;
+            }
+            set
+            {
+                theme = value;
+                UpdateTheme();
+            }
+        }
+
         public frmStartScreen()
         {
             InitializeComponent();
             SetupForm();
             PopulateRecentFileList();
-
-            #region Theme bindings
-            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
-            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
-            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
-            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
-            #endregion
-
-            #region Language bindings
-            this.Text = Resources.Forms.frmStartScreen.startScreen;
-            this.lblTitle.Text = Resources.Forms.frmStartScreen.label_slstudio;
-            this.lblOpenRecent.Text = Resources.Forms.frmStartScreen.label_open_recent;
-            this.lblGetSarted.Text = Resources.Forms.frmStartScreen.label_get_started;
-            this.lblContinueWithoutCode.Text = Resources.Forms.frmStartScreen.link_continue;
-            this.btnCreateNew.Text = Resources.Forms.frmStartScreen.button_create_new;
-            this.btnOpenProject.Text = Resources.Forms.frmStartScreen.button_open_solution;
-            this.btnClone.Text = Resources.Forms.frmStartScreen.button_clone_checkout;
-            this.btnTutorials.Text = Resources.Forms.frmStartScreen.button_tutorials;
-            #endregion
+            UpdateTheme();
+            UpdateLanguage();
         }
 
         #region methods
@@ -71,14 +69,34 @@ namespace SLStudio.Views
             
         }
 
-        public void OpenFromButtons()
-        {
-            
-        }
-
         public void CloseFromChild()
         {
             this.Close();
+        }
+
+        public void UpdateTheme()
+        {
+            btnCreateNew.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
+            btnCreateNew.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+            btnOpenProject.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
+            btnOpenProject.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+            btnClone.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
+            btnClone.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+            btnTutorials.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
+            btnTutorials.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
+        }
+
+        public void UpdateLanguage()
+        {
+            this.Text = Resources.Forms.frmStartScreen.startScreen;
+            this.lblTitle.Text = Resources.Forms.frmStartScreen.label_slstudio;
+            this.lblOpenRecent.Text = Resources.Forms.frmStartScreen.label_open_recent;
+            this.lblGetSarted.Text = Resources.Forms.frmStartScreen.label_get_started;
+            this.lblContinueWithoutCode.Text = Resources.Forms.frmStartScreen.link_continue;
+            this.btnCreateNew.Text = Resources.Forms.frmStartScreen.button_create_new;
+            this.btnOpenProject.Text = Resources.Forms.frmStartScreen.button_open_solution;
+            this.btnClone.Text = Resources.Forms.frmStartScreen.button_clone_checkout;
+            this.btnTutorials.Text = Resources.Forms.frmStartScreen.button_tutorials;
         }
         #endregion
 
@@ -124,24 +142,6 @@ namespace SLStudio.Views
             main.Owner = this;
             main.Show();
             this.Hide();
-        }
-
-        private void btnCloseClick(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnCloseMouseEnter(object sender, EventArgs e)
-        {
-            btnClose.FlatAppearance.MouseOverBackColor = Settings.Default.error;
-            btnClose.FlatAppearance.MouseDownBackColor = Settings.Default.style;
-        }
-
-        private void ButtonOnMouseEnter(object sender, EventArgs e)
-        {
-            var button = (Button)sender;
-            button.FlatAppearance.MouseDownBackColor = Settings.Default.selection;
-            button.FlatAppearance.MouseOverBackColor = Settings.Default.themeLight;
         }
         #endregion
 
