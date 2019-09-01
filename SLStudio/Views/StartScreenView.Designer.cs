@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Views
 {
-    partial class frmStartScreen
+    partial class StartScreenView
     {
         /// <summary>
         /// Required designer variable.
@@ -113,14 +113,10 @@
             // 
             // btnTutorials
             // 
-            this.btnTutorials.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnTutorials.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnTutorials.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTutorials.FlatAppearance.BorderSize = 0;
             this.btnTutorials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTutorials.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnTutorials.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.btnTutorials.Location = new System.Drawing.Point(0, 230);
             this.btnTutorials.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnTutorials.Name = "btnTutorials";
@@ -133,14 +129,10 @@
             // 
             // btnClone
             // 
-            this.btnClone.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnClone.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnClone.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClone.FlatAppearance.BorderSize = 0;
             this.btnClone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClone.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnClone.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.btnClone.Location = new System.Drawing.Point(0, 155);
             this.btnClone.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnClone.Name = "btnClone";
@@ -153,14 +145,10 @@
             // 
             // btnCreateNew
             // 
-            this.btnCreateNew.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnCreateNew.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnCreateNew.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnCreateNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCreateNew.FlatAppearance.BorderSize = 0;
             this.btnCreateNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCreateNew.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnCreateNew.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.btnCreateNew.Location = new System.Drawing.Point(0, 5);
             this.btnCreateNew.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnCreateNew.Name = "btnCreateNew";
@@ -173,14 +161,10 @@
             // 
             // btnOpenProject
             // 
-            this.btnOpenProject.BackColor = global::SLStudio.Properties.Settings.Default.themeDark;
-            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "themeDark", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.btnOpenProject.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.btnOpenProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenProject.FlatAppearance.BorderSize = 0;
             this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenProject.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnOpenProject.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.btnOpenProject.Location = new System.Drawing.Point(0, 80);
             this.btnOpenProject.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
             this.btnOpenProject.Name = "btnOpenProject";
@@ -193,14 +177,10 @@
             // 
             // lblContinueWithoutCode
             // 
-            this.lblContinueWithoutCode.ActiveLinkColor = global::SLStudio.Properties.Settings.Default.selectionLight;
             this.lblContinueWithoutCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblContinueWithoutCode.AutoSize = true;
-            this.lblContinueWithoutCode.DataBindings.Add(new System.Windows.Forms.Binding("LinkColor", global::SLStudio.Properties.Settings.Default, "link", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.lblContinueWithoutCode.DataBindings.Add(new System.Windows.Forms.Binding("ActiveLinkColor", global::SLStudio.Properties.Settings.Default, "selectionLight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.lblContinueWithoutCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContinueWithoutCode.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblContinueWithoutCode.LinkColor = global::SLStudio.Properties.Settings.Default.link;
             this.lblContinueWithoutCode.Location = new System.Drawing.Point(797, 449);
             this.lblContinueWithoutCode.Name = "lblContinueWithoutCode";
             this.lblContinueWithoutCode.Size = new System.Drawing.Size(138, 17);
@@ -212,8 +192,8 @@
             // 
             // panelOpen
             // 
-            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOpen.AutoScroll = true;
             this.panelOpen.Location = new System.Drawing.Point(30, 145);
@@ -225,7 +205,6 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = global::SLStudio.Properties.Settings.Default.theme;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(981, 657);
             this.ControlBox = false;
@@ -235,11 +214,8 @@
             this.Controls.Add(this.lblGetSarted);
             this.Controls.Add(this.lblOpenRecent);
             this.Controls.Add(this.lblTitle);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "theme", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(0, 0);

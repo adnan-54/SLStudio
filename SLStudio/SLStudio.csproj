@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SLStudio</RootNamespace>
     <AssemblyName>SLStudio</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -64,9 +64,7 @@
   <PropertyGroup>
     <StartupObject>SLStudio.Program</StartupObject>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationIcon>appIcon.ico</ApplicationIcon>
   </PropertyGroup>
@@ -95,6 +93,9 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ComponentFactory.Krypton.Ribbon">
@@ -170,6 +171,11 @@
     <Compile Include="Extensions\Enums\Enums.cs" />
     <Compile Include="Extensions\Interfaces\Interfaces.cs" />
     <Compile Include="Logger\Logger.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Solution.cs" />
     <Compile Include="Presenters\Project.cs" />
@@ -186,111 +192,123 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Messages\LoggerMessages.Designer.cs">
+    <Compile Include="Resources\Messages\Logger.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>LoggerMessages.resx</DependentUpon>
+      <DependentUpon>Logger.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\Messages\themesMessages.Designer.cs">
+    <Compile Include="Resources\Messages\ThemeManager.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>themesMessages.resx</DependentUpon>
+      <DependentUpon>ThemeManager.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Sounds\Sounds.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sounds.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\Converters.cs" />
-    <Compile Include="ViewsExtensions\BorderLessFormBehavior\FormBase.cs">
+    <Compile Include="ViewsExtensions\CustomControls\CustomBorderLessForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="Util\Validate.cs" />
+    <Compile Include="ViewsExtensions\CustomControls\Native.cs">
+      <DependentUpon>CustomBorderLessForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsExtensions\CustomControls\CustomFlatButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ViewsExtensions\CustomControls\RecentFilesList.cs">
+    <Compile Include="ViewsExtensions\CustomControls\CustomRecentFilesList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewsExtensions\CustomControls\RecentFilesList.Designer.cs">
-      <DependentUpon>RecentFilesList.cs</DependentUpon>
+    <Compile Include="ViewsExtensions\CustomControls\CustomRecentFilesList.Designer.cs">
+      <DependentUpon>CustomRecentFilesList.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewsExtensions\Themes\Dark.Designer.cs">
+    <Compile Include="ViewsExtensions\Languages\LanguageManager.cs" />
+    <Compile Include="ViewsExtensions\Themes\Presets\Dark.Designer.cs">
       <DependentUpon>Dark.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewsExtensions\Themes\Light.Designer.cs">
+    <Compile Include="ViewsExtensions\Themes\Presets\UserCurrent.Designer.cs">
+      <DependentUpon>UserCurrent.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="ViewsExtensions\Themes\Presets\Light.Designer.cs">
       <DependentUpon>Light.settings</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewsExtensions\Themes\Theme.cs" />
     <Compile Include="ViewsExtensions\Themes\ThemeManager.cs" />
-    <Compile Include="Views\frmLogger.cs">
+    <Compile Include="Views\LoggerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmLogger.Designer.cs">
-      <DependentUpon>frmLogger.cs</DependentUpon>
+    <Compile Include="Views\LoggerView.Designer.cs">
+      <DependentUpon>LoggerView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmMain.cs">
+    <Compile Include="Views\MainView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
+    <Compile Include="Views\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\frmStartScreen.cs">
+    <Compile Include="Views\StartScreenView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\frmStartScreen.Designer.cs">
-      <DependentUpon>frmStartScreen.cs</DependentUpon>
+    <Compile Include="Views\StartScreenView.Designer.cs">
+      <DependentUpon>StartScreenView.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewsExtensions\BorderLessFormBehavior\Native.cs" />
+    <EmbeddedResource Include="Resources\Messages\Logger.pt-br.resx">
+      <DependentUpon>Logger.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages\ThemeManager.pt-br.resx">
+      <DependentUpon>ThemeManager.resx</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Resources\Forms\frmStartScreen.pt-br.resx">
       <DependentUpon>frmStartScreen.resx</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Forms\frmStartScreen.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>frmStartScreen.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Images\Icons.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Icons.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Messages\LoggerMessages.pt-br.resx">
-      <DependentUpon>LoggerMessages.resx</DependentUpon>
+    <EmbeddedResource Include="Resources\Messages\Logger.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logger.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Messages\LoggerMessages.resx">
+    <EmbeddedResource Include="Resources\Messages\ThemeManager.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ThemeManager.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Sounds\Sounds.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>LoggerMessages.Designer.cs</LastGenOutput>
+      <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Messages\themes.pt-br.resx">
-      <DependentUpon>themesMessages.resx</DependentUpon>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomRecentFilesList.resx">
+      <DependentUpon>CustomRecentFilesList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Resources\Messages\themesMessages.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>themesMessages.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="Views\LoggerView.resx">
+      <DependentUpon>LoggerView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewsExtensions\CustomControls\RecentFilesList.resx">
-      <DependentUpon>RecentFilesList.cs</DependentUpon>
+    <EmbeddedResource Include="Views\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmLogger.resx">
-      <DependentUpon>frmLogger.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmMain.resx">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\frmStartScreen.resx">
-      <DependentUpon>frmStartScreen.cs</DependentUpon>
+    <EmbeddedResource Include="Views\StartScreenView.resx">
+      <DependentUpon>StartScreenView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config">
       <DependentUpon>Program.cs</DependentUpon>
@@ -335,14 +353,18 @@
     <None Include="Resources\Images\WorkflowActivity_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
-    <None Include="ViewsExtensions\Themes\Dark.settings">
+    <None Include="Resources\Sounds\dayrace_loose.wav">
+      <DependentUpon>Sounds.resx</DependentUpon>
+    </None>
+    <None Include="ViewsExtensions\Themes\Presets\Dark.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Dark.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ViewsExtensions\Themes\UserCurrent .settings">
+    <None Include="ViewsExtensions\Themes\Presets\UserCurrent.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>UserCurrent.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ViewsExtensions\Themes\Light.settings">
+    <None Include="ViewsExtensions\Themes\Presets\Light.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Light.Designer.cs</LastGenOutput>
     </None>
@@ -363,11 +385,11 @@
     <Content Include="appIcon.ico">
       <DependentUpon>Program.cs</DependentUpon>
     </Content>
-    <Content Include="o event.txt" />
     <Content Include="TextTemplate.ico">
       <DependentUpon>Program.cs</DependentUpon>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

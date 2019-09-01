@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Properties {
+namespace SLStudio.Resources.Sounds {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Sounds {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Sounds() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Resources.Sounds.Sounds", typeof(Sounds).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,48 +61,11 @@ namespace SLStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///&lt;html&gt;&lt;head&gt;&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=windows-1252&quot;&gt;
-        ///&lt;style&gt;
-        ///html
-        ///{
-        ///	margin: 0px;
-        ///	height: 100%;
-        ///	width: 100%;
-        ///}
-        ///
-        ///body
-        ///{
-        ///	font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif;
-        ///	margin: 0px;
-        ///	min-height: 100%;
-        ///	width: 100%;
-        ///}
-        ///
-        ///table 
-        ///{
-        ///	border-collapse: collapse;
-        ///	width: 100%;
-        ///}
-        ///
-        ///th, td 
-        ///{
-        ///	text-align: left;
-        ///	border-bottom: 1px solid #ddd;
-        ///	padding: 8px;
-        ///}
-        ///
-        ///tr:nth-child(even)
-        ///{
-        ///	background-color: #f2f2f2
-        ///}
-        ///
-        ///tr:hover 
-        /// [rest of string was truncated]&quot;;.
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static string logHtmlPage {
+        internal static System.IO.UnmanagedMemoryStream dayrace_loose {
             get {
-                return ResourceManager.GetString("logHtmlPage", resourceCulture);
+                return ResourceManager.GetStream("dayrace_loose", resourceCulture);
             }
         }
     }

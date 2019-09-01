@@ -1,9 +1,11 @@
-﻿namespace SLStudio.Enums
+﻿namespace SLStudio.Extensions.Enums
 {
     public enum DefaultThemes
     {
         Light,
-        Dark
+        Dark,
+        UserDefault,
+        None
     }
 
     public enum StartScreenResponse

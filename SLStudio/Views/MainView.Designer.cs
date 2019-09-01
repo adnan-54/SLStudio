@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Views
 {
-    partial class frmMain
+    partial class MainView
     {
         /// <summary>
         /// Required designer variable.
@@ -52,7 +52,6 @@
             this.btnClose.UseMnemonic = false;
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.OnButtonCloseClick);
-            this.btnClose.MouseLeave += new System.EventHandler(this.OnButtonCloseEnter);
             // 
             // btnChangeState
             // 
@@ -73,7 +72,6 @@
             this.btnChangeState.UseMnemonic = false;
             this.btnChangeState.UseVisualStyleBackColor = true;
             this.btnChangeState.Click += new System.EventHandler(this.OnButtonChangeStateClick);
-            this.btnChangeState.MouseEnter += new System.EventHandler(this.TitleBarButtonsOnMouseEnter);
             // 
             // btnMinimize
             // 
@@ -94,26 +92,22 @@
             this.btnMinimize.UseMnemonic = false;
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.OnMinimizeClick);
-            this.btnMinimize.MouseEnter += new System.EventHandler(this.TitleBarButtonsOnMouseEnter);
             // 
-            // frmMain
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = global::SLStudio.Properties.Settings.Default.theme;
             this.ClientSize = new System.Drawing.Size(992, 609);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnChangeState);
             this.Controls.Add(this.btnClose);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::SLStudio.Properties.Settings.Default, "theme", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DataBindings.Add(new System.Windows.Forms.Binding("ForeColor", global::SLStudio.Properties.Settings.Default, "font", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ForeColor = global::SLStudio.Properties.Settings.Default.font;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 0);
-            this.Name = "frmMain";
+            this.Name = "MainView";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMain";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainViewOnClosed);
             this.ResumeLayout(false);
 
         }

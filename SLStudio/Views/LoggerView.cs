@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
 {
-    public partial class frmLogger : MetroFramework.Forms.MetroForm
+    public partial class LoggerView : MetroFramework.Forms.MetroForm
     {
-        public frmLogger()
+        public LoggerView()
         {
             InitializeComponent();
         }

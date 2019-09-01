@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.ViewsExtensions.Themes" GeneratedClassName="DefaultTheme">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.ViewsExtensions.Themes.DefaultPresets" GeneratedClassName="UserCurrent">
   <Profiles />
   <Settings>
     <Setting Name="borders" Type="System.Drawing.Color" Scope="User">
@@ -61,6 +61,12 @@
     </Setting>
     <Setting Name="workspaceLight" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">WhiteSmoke</Value>
+    </Setting>
+    <Setting Name="name" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="author" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

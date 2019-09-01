@@ -1,6 +1,6 @@
-﻿namespace SLStudio.ViewsExtensions.CustomComponents
+﻿namespace SLStudio.ViewsExtensions.CustomControls
 {
-    partial class RecentFilesList
+    partial class CustomRecentFilesList
     {
         /// <summary> 
         /// Required designer variable.
@@ -87,14 +87,15 @@
             // lblDate
             // 
             this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDate.AutoSize = true;
             this.lblDate.BackColor = System.Drawing.Color.Transparent;
             this.lblDate.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(828, 15);
+            this.lblDate.Location = new System.Drawing.Point(696, 15);
             this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(62, 17);
+            this.lblDate.Size = new System.Drawing.Size(221, 17);
             this.lblDate.TabIndex = 3;
             this.lblDate.Text = "dateTime";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDate.UseCompatibleTextRendering = true;
             this.lblDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LblPath_MouseDown);
             this.lblDate.MouseEnter += new System.EventHandler(this.RecentFilesList_MouseEnter);
             this.lblDate.MouseLeave += new System.EventHandler(this.RecentFilesList_MouseLeave);

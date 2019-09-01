@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Views
 {
-    partial class frmLogger
+    partial class LoggerView
     {
         /// <summary>
         /// Required designer variable.

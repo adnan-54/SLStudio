@@ -18,18 +18,18 @@ namespace SLStudio
             Thread.CurrentThread.CurrentUICulture = newCulture;
 
             Logger.Initialize();
-            Logger.LogInfo(Resources.Messages.LoggerMessages.startingProgram);
+            Logger.LogInfo(Resources.Messages.Logger.startingProgram);
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             if(Settings.Default.showStartScreen)
             {
-                Application.Run(new frmStartScreen());
+                Application.Run(new StartScreenView());
             }
             else
             {
-                Application.Run(new frmMain());
+                Application.Run(new MainView());
             }
         }
     }

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using SLStudio.Extensions.Enums;
+using SLStudio.ViewsExtensions.Themes;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using SLStudio.Interfaces;
-using SLStudio.ViewsExtensions.Themes;
 
-namespace SLStudio.Views
+namespace SLStudio.ViewsExtensions.CustomControls
 {
-    public class FormBase : Form
+    public class CustomBorderLessForm : Form
     {
         //Todo: universal title bar with parameters
 

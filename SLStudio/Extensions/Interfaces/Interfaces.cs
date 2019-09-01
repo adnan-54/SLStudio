@@ -1,25 +1,21 @@
 ﻿using SLStudio.ViewsExtensions.Themes;
 
-namespace SLStudio.Interfaces
+namespace SLStudio.Extensions.Interfaces
 {
-    public interface ITheme
+    public interface IThemedControl
     {
         Theme Theme { get; set; }
+        void UpdateTheme();
     }
 
-    public interface IThemedWindow: ITheme
+    public interface IMultiLanguageControl
     {
-        void UpdateTheme();
+        void UpdateLanguage();
     }
 
     public interface IStartScreen
     {
         void OpenFromRecentList(string path);
         void CloseFromChild();
-    }
-
-    public interface IMultiLanguageWindow
-    {
-        void UpdateLanguage();
     }
 }

@@ -1,75 +1,133 @@
-﻿using SLStudio.Properties;
+﻿using SLStudio.Extensions.Enums;
+using SLStudio.Extensions.Interfaces;
 using System;
-using System.Reflection;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SLStudio.ViewsExtensions.Themes
 {
     public static class ThemeManager
     {
-        public static void Update(Theme newTheme, Form parent)
+        private static string themesPath = Path.Combine(Application.StartupPath, "themes");
+        private static List<IThemedControl> ThemedControls = new List<IThemedControl>();
+
+        public static bool AddControl(IThemedControl control)
         {
             try
             {
-                Refresh(parent);
+                ThemedControls.Add(control);
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+            }
 
-                Settings.Default.borders = newTheme.borders;
-                Settings.Default.bordersDark = newTheme.bordersDark;
-                Settings.Default.bordersLight = newTheme.bordersLight;
-                Settings.Default.error = newTheme.error;
-                Settings.Default.font = newTheme.font;
-                Settings.Default.fontDark = newTheme.fontDark;
-                Settings.Default.fontLight = newTheme.fontLight;
-                Settings.Default.info = newTheme.info;
-                Settings.Default.link = newTheme.link;
-                Settings.Default.selection = newTheme.selection;
-                Settings.Default.selectionDark = newTheme.selectionDark;
-                Settings.Default.selectionLight = newTheme.selectionLight;
-                Settings.Default.style = newTheme.style;
-                Settings.Default.theme = newTheme.theme;
-                Settings.Default.themeDark = newTheme.themeDark;
-                Settings.Default.themeLight = newTheme.themeLight;
-                Settings.Default.warning = newTheme.warning;
-                Settings.Default.workspace = newTheme.workspace;
-                Settings.Default.workspaceDark = newTheme.workspaceDark;
-                Settings.Default.workspaceLight = newTheme.workspaceLight;
-                Settings.Default.themeName = newTheme.themeName;
-                Settings.Default.themeAutor = newTheme.themeAuthor;
-                Settings.Default.Save();
+            return true;
+        }
+
+        public static bool RemoveControl(IThemedControl control)
+        {
+            try
+            {
+                ThemedControls.Remove(control);
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex);
             }
+
+            return true;
         }
 
-        public static void Refresh(Form parent)
+        public static bool UpdateControls()
         {
             try
             {
-                var properties = parent.GetType().GetProperties();
+                UpdateThemedControlsList();
 
-                foreach(PropertyInfo property in properties)
+                foreach (IThemedControl control in ThemedControls)
                 {
-                    MessageBox.Show(property.ToString() + ": " + property.GetValue(parent).ToString());
+                    control.UpdateTheme();
                 }
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex);
+                return false;
             }
+
+            return true;
         }
 
-        public static void Refresh(Control control)
+        public static bool ApplyTheme(Theme theme)
         {
             try
             {
+                UpdateThemedControlsList();
 
+                foreach (IThemedControl control in ThemedControls)
+                {
+                    control.Theme = theme;
+                }
+
+                UpdateControls();
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+                return false;
+            }
+
+            return true;
+        }
+
+        public static bool ApplyTheme(IThemedControl control, Theme theme)
+        {
+            try
+            {
+                UpdateThemedControlsList();
+                control.Theme = theme;
+                control.UpdateTheme();
             }
             catch (Exception ex)
             {
                 Logger.LogError(ex);
+                return false;
             }
+
+            return true;
+        }
+
+        public static List<Theme> GetAvaliableThemes()
+        {
+            List<Theme> AvaliableThemes = new List<Theme>();
+
+            AvaliableThemes.Add(new Theme(DefaultThemes.Light));
+            AvaliableThemes.Add(new Theme(DefaultThemes.Dark));
+
+            //Todo: serialize themes from themes directory
+
+            return AvaliableThemes;
+        }
+         
+        private static bool UpdateThemedControlsList()
+        {
+            try
+            {
+                foreach (IThemedControl control in ThemedControls)
+                {
+                    if (control == null)
+                        ThemedControls.Remove(control);
+                }
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
+                return false;
+            }
+
+            return true;
         }
     }
 }

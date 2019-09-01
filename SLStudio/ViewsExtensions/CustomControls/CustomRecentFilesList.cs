@@ -1,30 +1,47 @@
-﻿using SLStudio.Interfaces;
-using SLStudio.Properties;
+﻿using SLStudio.Extensions.Enums;
+using SLStudio.Extensions.Interfaces;
+using SLStudio.ViewsExtensions.Themes;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace SLStudio.ViewsExtensions.CustomComponents
+namespace SLStudio.ViewsExtensions.CustomControls
 {
-    public partial class RecentFilesList : UserControl
+    public partial class CustomRecentFilesList : UserControl, IThemedControl, IMultiLanguageControl
     {
+        private Theme theme = new Theme(DefaultThemes.UserDefault);
+        public Theme Theme
+        {
+            get
+            {
+                return theme;
+            }
+            set
+            {
+                theme = value;
+            }
+        }
+
         string thisPath;
         IStartScreen parent;
 
-        public RecentFilesList()
+        //Todo: finish this
+
+        public CustomRecentFilesList()
         {
             InitializeComponent();
+            UpdateTheme();
+            ThemeManager.AddControl(this);
         }
 
-        public RecentFilesList(string path, IStartScreen parent)
+        public CustomRecentFilesList(string path, IStartScreen parent)
         {
             InitializeComponent();
+            UpdateTheme();
+            ThemeManager.AddControl(this);
 
             this.parent = parent;
-
-            this.BackColor = Settings.Default.theme;
-            this.ForeColor = Settings.Default.font;
 
             string filePath = Path.GetDirectoryName(path);
             string fileName = Path.GetFileNameWithoutExtension(path);
@@ -45,14 +62,25 @@ namespace SLStudio.ViewsExtensions.CustomComponents
             thisPath = path;
         }
 
+        public void UpdateTheme()
+        {
+            this.BackColor = theme.theme;
+            this.ForeColor = theme.font;
+        }
+
+        public void UpdateLanguage()
+        {
+            throw new NotImplementedException();
+        }
+
         private void RecentFilesList_MouseEnter(object sender, EventArgs e)
         {
-            this.BackColor = Settings.Default.selection;
+            this.BackColor = theme.selection;
         }
 
         private void RecentFilesList_MouseLeave(object sender, EventArgs e)
         {
-            this.BackColor = Settings.Default.theme;
+            this.BackColor = theme.theme;
         }
 
         private void LblPath_MouseDown(object sender, MouseEventArgs e)
@@ -62,13 +90,16 @@ namespace SLStudio.ViewsExtensions.CustomComponents
                 contextMenuStrip1.Show(this, new Point(e.X, e.Y));
             }
             else
-                this.BackColor = Settings.Default.selectionDark;
+                this.BackColor = theme.selectionDark;
         }
 
         private void LblPath_MouseUp(object sender, MouseEventArgs e)
         {
-            this.BackColor = Settings.Default.selection;
-            this.parent.OpenFromRecentList(thisPath);
+            if (e.Button == MouseButtons.Left)
+            {
+                this.BackColor = theme.selection;
+                this.parent.OpenFromRecentList(thisPath);
+            }
         }
 
         private void OpenDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
