@@ -215,6 +215,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\Validate.cs" />
+    <Compile Include="ViewsExtensions\CustomControls\CustomCloseButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\CustomCloseButton.Designer.cs">
+      <DependentUpon>CustomCloseButton.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsExtensions\CustomControls\Native.cs">
       <DependentUpon>CustomBorderLessForm.cs</DependentUpon>
     </Compile>
@@ -297,6 +303,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomCloseButton.resx">
+      <DependentUpon>CustomCloseButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomRecentFilesList.resx">
       <DependentUpon>CustomRecentFilesList.cs</DependentUpon>

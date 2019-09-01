@@ -39,6 +39,7 @@
             this.btnOpenProject = new System.Windows.Forms.Button();
             this.lblContinueWithoutCode = new System.Windows.Forms.LinkLabel();
             this.panelOpen = new System.Windows.Forms.Panel();
+            this.customCloseButton1 = new SLStudio.ViewsExtensions.CustomControls.CustomCloseButton();
             this.panelGetStarted.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -113,6 +114,7 @@
             // 
             // btnTutorials
             // 
+            this.btnTutorials.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnTutorials.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnTutorials.FlatAppearance.BorderSize = 0;
             this.btnTutorials.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -129,6 +131,7 @@
             // 
             // btnClone
             // 
+            this.btnClone.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnClone.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnClone.FlatAppearance.BorderSize = 0;
             this.btnClone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -145,6 +148,7 @@
             // 
             // btnCreateNew
             // 
+            this.btnCreateNew.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnCreateNew.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCreateNew.FlatAppearance.BorderSize = 0;
             this.btnCreateNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -161,6 +165,7 @@
             // 
             // btnOpenProject
             // 
+            this.btnOpenProject.BackColor = System.Drawing.SystemColors.HotTrack;
             this.btnOpenProject.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenProject.FlatAppearance.BorderSize = 0;
             this.btnOpenProject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -192,8 +197,8 @@
             // 
             // panelOpen
             // 
-            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panelOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelOpen.AutoScroll = true;
             this.panelOpen.Location = new System.Drawing.Point(30, 145);
@@ -201,13 +206,28 @@
             this.panelOpen.Size = new System.Drawing.Size(479, 489);
             this.panelOpen.TabIndex = 6;
             // 
-            // frmStartScreen
+            // customCloseButton1
+            // 
+            this.customCloseButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.customCloseButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.customCloseButton1.CausesValidation = false;
+            this.customCloseButton1.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customCloseButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.customCloseButton1.Location = new System.Drawing.Point(936, 0);
+            this.customCloseButton1.Margin = new System.Windows.Forms.Padding(0);
+            this.customCloseButton1.Name = "customCloseButton1";
+            this.customCloseButton1.Size = new System.Drawing.Size(45, 32);
+            this.customCloseButton1.TabIndex = 7;
+            this.customCloseButton1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonCloseOnClick);
+            // 
+            // StartScreenView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.CausesValidation = false;
             this.ClientSize = new System.Drawing.Size(981, 657);
             this.ControlBox = false;
+            this.Controls.Add(this.customCloseButton1);
             this.Controls.Add(this.panelOpen);
             this.Controls.Add(this.lblContinueWithoutCode);
             this.Controls.Add(this.panelGetStarted);
@@ -222,7 +242,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(981, 657);
-            this.Name = "frmStartScreen";
+            this.Name = "StartScreenView";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SLStudio 2019";
@@ -247,5 +267,6 @@
         private System.Windows.Forms.Button btnOpenProject;
         private System.Windows.Forms.Button btnTutorials;
         private System.Windows.Forms.Button btnClone;
+        private ViewsExtensions.CustomControls.CustomCloseButton customCloseButton1;
     }
 }

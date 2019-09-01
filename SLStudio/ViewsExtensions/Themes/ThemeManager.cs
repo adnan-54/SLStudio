@@ -26,20 +26,6 @@ namespace SLStudio.ViewsExtensions.Themes
             return true;
         }
 
-        public static bool RemoveControl(IThemedControl control)
-        {
-            try
-            {
-                ThemedControls.Remove(control);
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex);
-            }
-
-            return true;
-        }
-
         public static bool UpdateControls()
         {
             try
@@ -82,7 +68,7 @@ namespace SLStudio.ViewsExtensions.Themes
             return true;
         }
 
-        public static bool ApplyTheme(IThemedControl control, Theme theme)
+        public static bool ApplyTheme(this IThemedControl control, Theme theme)
         {
             try
             {

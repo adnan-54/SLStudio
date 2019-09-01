@@ -1,6 +1,5 @@
 ﻿using SLStudio.Extensions.Enums;
 using SLStudio.Extensions.Interfaces;
-using SLStudio.Properties;
 using SLStudio.ViewsExtensions.CustomControls;
 using SLStudio.ViewsExtensions.Language;
 using SLStudio.ViewsExtensions.Themes;
@@ -28,7 +27,9 @@ namespace SLStudio.Views
         }
 
         #region IThemedControl, IMultiLanguageControl
+
         private Theme theme = new Theme(DefaultThemes.UserDefault);
+
         public Theme Theme
         {
             get
@@ -43,14 +44,14 @@ namespace SLStudio.Views
 
         public void UpdateTheme()
         {
-            btnClose.FlatAppearance.MouseOverBackColor = theme.error;
+            /*btnClose.FlatAppearance.MouseOverBackColor = theme.error;
             btnClose.FlatAppearance.MouseDownBackColor = theme.style;
 
             btnMinimize.FlatAppearance.MouseOverBackColor = theme.themeLight;
             btnChangeState.FlatAppearance.MouseOverBackColor = theme.themeLight;
 
             btnMinimize.FlatAppearance.MouseDownBackColor = theme.style;
-            btnChangeState.FlatAppearance.MouseDownBackColor = theme.style;
+            btnChangeState.FlatAppearance.MouseDownBackColor = theme.style;*/
 
             this.BackColor = theme.theme;
             this.ForeColor = theme.font;
@@ -58,11 +59,12 @@ namespace SLStudio.Views
 
         public void UpdateLanguage()
         {
-            
         }
-        #endregion
+
+        #endregion IThemedControl, IMultiLanguageControl
 
         #region Events
+
         private void OnButtonCloseClick(object sender, EventArgs e)
         {
             MouseEventArgs me = (MouseEventArgs)e;
@@ -85,7 +87,7 @@ namespace SLStudio.Views
 
         private void OnButtonChangeStateClick(object sender, EventArgs e)
         {
-            if(this.WindowState == FormWindowState.Normal)
+            if (this.WindowState == FormWindowState.Normal)
             {
                 this.WindowState = FormWindowState.Maximized;
             }
@@ -93,13 +95,13 @@ namespace SLStudio.Views
             {
                 this.WindowState = FormWindowState.Normal;
             }
-
         }
 
         private void MainViewOnClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-        #endregion
+
+        #endregion Events
     }
 }

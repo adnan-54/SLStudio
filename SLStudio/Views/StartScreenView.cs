@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
@@ -128,32 +129,17 @@ namespace SLStudio.Views
         #region Events
         private void OnCreateNew(object sender, EventArgs e)
         {
-            MainView main = new MainView(this);
-            main.Owner = this;
-            main.Show();
-            this.Hide();
+            MessageBox.Show("Not implemented yet");
         }
 
         private void OnOpenProjectOrSolution(object sender, EventArgs e)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "SLStudio solution (*.sls)|*.sls", Multiselect = false })
-            {
-                if (ofd.ShowDialog() == DialogResult.OK)
-                {
-                    MainView main = new MainView(this);
-                    main.Owner = this;
-                    main.Show();
-                    this.Hide();
-                }
-            }
+            MessageBox.Show("Not implemented yet");
         }
 
         private void OnCheckoutProject(object sender, EventArgs e)
         {
-            MainView main = new MainView(this);
-            main.Owner = this;
-            main.Show();
-            this.Hide();
+            MessageBox.Show("Not implemented yet");
         }
 
         private void OnTutorials(object sender, EventArgs e)
@@ -163,10 +149,14 @@ namespace SLStudio.Views
 
         private void OnContinueWithoutCode(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            this.Hide();
             MainView main = new MainView(this);
             main.Owner = this;
             main.Show();
-            this.Hide();
+        }
+        private void ButtonCloseOnClick(object sender, MouseEventArgs e)
+        {
+            this.Close();
         }
         #endregion
 
