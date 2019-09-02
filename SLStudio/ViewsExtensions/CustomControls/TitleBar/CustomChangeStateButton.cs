@@ -24,11 +24,30 @@ namespace SLStudio.ViewsExtensions.CustomControls
             }
         }
 
+        private string maximizeIcon = Char.ConvertFromUtf32(0xE922);
+        private string restoreIcon = Char.ConvertFromUtf32(0xE923);
+
         private string toolTipString = Resources.Messages.Global.maximize;
 
         public CustomChangeStateButton()
         {
             InitializeComponent();
+
+            string fontName = "Segoe MDL2 Assets";
+            float fontSize = 9;
+
+
+            using (Font fontTester = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel))
+            {
+                if (fontTester.Name != fontName)
+                {
+                    var marlett = new Font("Marlett", 9.0f);
+                    icon.Font = marlett;
+
+                    maximizeIcon = "2";
+                    restoreIcon = "1";
+                }
+            }
 
             UpdateTheme();
             ThemeManager.AddControl(this);
@@ -36,7 +55,6 @@ namespace SLStudio.ViewsExtensions.CustomControls
             UpdateLanguage();
             LanguageManager.AddControl(this);
 
-            
         }
 
         #region IThemedControl, IMultiLanguageControl
@@ -58,19 +76,13 @@ namespace SLStudio.ViewsExtensions.CustomControls
             this.BackColor = theme.theme;
             this.ForeColor = theme.font;
 
-            string fontName = "Segoe MDL2 Assets";
-            float fontSize = 9;
-
-            using (Font fontTester = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel))
+            if (parent.WindowState == FormWindowState.Maximized)
             {
-                if (fontTester.Name == fontName)
-                {
-                    return;
-                }
-                else
-                {
-                    MessageBox.Show("n tem instalado essa merda");
-                }
+                icon.Text = restoreIcon;
+            }
+            else
+            {
+                icon.Text = maximizeIcon;
             }
         }
 
@@ -85,8 +97,6 @@ namespace SLStudio.ViewsExtensions.CustomControls
                 else
                     toolTipString = Resources.Messages.Global.maximize;
             }
-            
-            this.toolTip.SetToolTip(this.icon, toolTipString);
         }
         #endregion IThemedControl, IMultiLanguageControl
 
@@ -116,14 +126,12 @@ namespace SLStudio.ViewsExtensions.CustomControls
             {
                 if (parent.WindowState == FormWindowState.Maximized)
                 {
-                    icon.Text = Char.ConvertFromUtf32(0xE922);
-                    toolTipString = Resources.Messages.Global.maximize;
+                    icon.Text = restoreIcon;
                     parent.WindowState = FormWindowState.Normal;
                 }
                 else
                 {
-                    icon.Text = Char.ConvertFromUtf32(0xE923);
-                    toolTipString = Resources.Messages.Global.restore;
+                    icon.Text = maximizeIcon;
                     parent.WindowState = FormWindowState.Maximized;
                 }
 
