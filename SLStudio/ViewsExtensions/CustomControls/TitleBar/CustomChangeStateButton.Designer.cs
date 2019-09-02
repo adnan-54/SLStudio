@@ -55,7 +55,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.Controls.Add(this.icon);
-            this.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CustomChangeStateButton";
             this.Size = new System.Drawing.Size(45, 32);

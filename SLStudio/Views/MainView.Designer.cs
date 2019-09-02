@@ -28,58 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonClose = new SLStudio.ViewsExtensions.CustomControls.CustomCloseButton();
-            this.buttonChangeState = new SLStudio.ViewsExtensions.CustomControls.CustomChangeStateButton();
-            this.customMinimizeButton1 = new SLStudio.ViewsExtensions.CustomControls.CustomMinimizeButton();
+            this.closeButton = new SLStudio.ViewsExtensions.CustomControls.CustomCloseButton();
+            this.changeStateButton = new SLStudio.ViewsExtensions.CustomControls.CustomChangeStateButton();
+            this.minimizeButton = new SLStudio.ViewsExtensions.CustomControls.CustomMinimizeButton();
             this.SuspendLayout();
             // 
-            // buttonClose
+            // closeButton
             // 
-            this.buttonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.buttonClose.CausesValidation = false;
-            this.buttonClose.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.buttonClose.Location = new System.Drawing.Point(979, 0);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(45, 32);
-            this.buttonClose.TabIndex = 0;
-            this.buttonClose.TabStop = false;
-            this.buttonClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonCloseOnMouseClick);
+            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.closeButton.CausesValidation = false;
+            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.closeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.closeButton.Location = new System.Drawing.Point(979, 0);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.ParentForm_ = this;
+            this.closeButton.Size = new System.Drawing.Size(45, 32);
+            this.closeButton.TabIndex = 4;
             // 
-            // buttonChangeState
+            // changeStateButton
             // 
-            this.buttonChangeState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonChangeState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.buttonChangeState.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F);
-            this.buttonChangeState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.buttonChangeState.Location = new System.Drawing.Point(934, 0);
-            this.buttonChangeState.Margin = new System.Windows.Forms.Padding(0);
-            this.buttonChangeState.Name = "buttonChangeState";
-            this.buttonChangeState.Size = new System.Drawing.Size(45, 32);
-            this.buttonChangeState.TabIndex = 1;
-            this.buttonChangeState.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ButtonChangeStateOnMouseClick);
+            this.changeStateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.changeStateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.changeStateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.changeStateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.changeStateButton.Location = new System.Drawing.Point(934, 0);
+            this.changeStateButton.Margin = new System.Windows.Forms.Padding(0);
+            this.changeStateButton.Name = "changeStateButton";
+            this.changeStateButton.ParentForm_ = this;
+            this.changeStateButton.Size = new System.Drawing.Size(45, 32);
+            this.changeStateButton.TabIndex = 5;
             // 
-            // customMinimizeButton1
+            // minimizeButton
             // 
-            this.customMinimizeButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customMinimizeButton1.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.customMinimizeButton1.Location = new System.Drawing.Point(889, 0);
-            this.customMinimizeButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.customMinimizeButton1.Name = "customMinimizeButton1";
-            this.customMinimizeButton1.ParentForm = this;
-            this.customMinimizeButton1.Size = new System.Drawing.Size(45, 32);
-            this.customMinimizeButton1.TabIndex = 2;
+            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.minimizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.minimizeButton.Location = new System.Drawing.Point(889, 0);
+            this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
+            this.minimizeButton.Name = "minimizeButton";
+            this.minimizeButton.ParentForm_ = this;
+            this.minimizeButton.Size = new System.Drawing.Size(45, 32);
+            this.minimizeButton.TabIndex = 6;
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 720);
-            this.Controls.Add(this.customMinimizeButton1);
-            this.Controls.Add(this.buttonChangeState);
-            this.Controls.Add(this.buttonClose);
+            this.Controls.Add(this.minimizeButton);
+            this.Controls.Add(this.changeStateButton);
+            this.Controls.Add(this.closeButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 0);
             this.MinimumSize = new System.Drawing.Size(800, 600);
@@ -94,8 +95,8 @@
 
         #endregion
 
-        private ViewsExtensions.CustomControls.CustomCloseButton buttonClose;
-        private ViewsExtensions.CustomControls.CustomChangeStateButton buttonChangeState;
-        private ViewsExtensions.CustomControls.CustomMinimizeButton customMinimizeButton1;
+        private ViewsExtensions.CustomControls.CustomCloseButton closeButton;
+        private ViewsExtensions.CustomControls.CustomMinimizeButton minimizeButton;
+        private ViewsExtensions.CustomControls.CustomChangeStateButton changeStateButton;
     }
 }

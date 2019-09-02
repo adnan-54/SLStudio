@@ -17,6 +17,19 @@ namespace SLStudio.ViewsExtensions.CustomControls
 {
     public partial class CustomCloseButton : UserControl, IThemedControl, IMultiLanguageControl
     {
+        private CustomBorderLessForm parent;
+        public CustomBorderLessForm ParentForm_
+        {
+            get
+            {
+                return parent;
+            }
+            set
+            {
+                parent = value;
+            }
+        }
+
         public CustomCloseButton()
         {
             InitializeComponent();
@@ -46,11 +59,6 @@ namespace SLStudio.ViewsExtensions.CustomControls
         }
         #endregion IThemedControl, IMultiLanguageControl
 
-        protected override void OnMouseClick(MouseEventArgs e)
-        {
-            base.OnMouseClick(e);
-        }
-
         private void OnMouseEnter(object sender, EventArgs e)
         {
             Transition.run(labelClose, "BackColor", theme.error, new TransitionType_Linear(120));
@@ -76,9 +84,10 @@ namespace SLStudio.ViewsExtensions.CustomControls
 
         private void OnMouseClick(object sender, MouseEventArgs e)
         {
-            this.OnMouseClick(e);
+            if (e.Button == MouseButtons.Left && parent != null)
+            {
+                parent.Close();
+            }
         }
-
-        
     }
 }

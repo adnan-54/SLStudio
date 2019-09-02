@@ -21,8 +21,6 @@ namespace SLStudio.Views
 
             UpdateLanguage();
             LanguageManager.AddControl(this);
-
-            buttonChangeState.State = this.WindowState;
         }
 
         #region IThemedControl, IMultiLanguageControl
@@ -53,21 +51,7 @@ namespace SLStudio.Views
         #endregion IThemedControl, IMultiLanguageControl
 
         #region Events
-        private void ButtonCloseOnMouseClick(object sender, MouseEventArgs e)
-        {
-            if(e.Button == MouseButtons.Left)
-                Application.Exit();
-        }
 
-        private void ButtonChangeStateOnMouseClick(object sender, MouseEventArgs e)
-        {
-            if(this.WindowState == FormWindowState.Maximized)
-                this.WindowState = FormWindowState.Normal;
-            else
-                this.WindowState = FormWindowState.Maximized;
-
-            buttonChangeState.State = this.WindowState;
-        }
         #endregion Events
 
     }
