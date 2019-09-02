@@ -16,6 +16,5 @@ namespace SLStudio.Extensions.Interfaces
     public interface IStartScreen
     {
         void OpenFromRecentList(string path);
-        void CloseFromChild();
     }
 }

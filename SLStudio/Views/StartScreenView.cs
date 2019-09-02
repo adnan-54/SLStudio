@@ -6,10 +6,10 @@ using SLStudio.ViewsExtensions.Language;
 using SLStudio.ViewsExtensions.Themes;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
@@ -119,11 +119,6 @@ namespace SLStudio.Views
         {
             
         }
-
-        public void CloseFromChild()
-        {
-            this.Close();
-        }
         #endregion
 
         #region Events
@@ -149,33 +144,13 @@ namespace SLStudio.Views
 
         private void OnContinueWithoutCode(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.Hide();
-            MainView main = new MainView(this);
-            main.Owner = this;
-            main.Show();
-        }
-        private void ButtonCloseOnClick(object sender, MouseEventArgs e)
-        {
             this.Close();
         }
-        #endregion
 
-        #region Konami Code
-        private List<Keys> code = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
-        private List<Keys> pressedKeys = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
-
-        private void FrmStartScreen_KeyUp(object sender, KeyEventArgs e)
+        private void ButtonCloseOnClick(object sender, MouseEventArgs e)
         {
-            pressedKeys.RemoveAt(0);
-            pressedKeys.Add(e.KeyCode);
-
-            if(pressedKeys.SequenceEqual(code))
-            {
-                SoundPlayer player = new SoundPlayer(Resources.Sounds.Sounds.dayrace_loose);
-                player.Play();
-                MessageBox.Show("SehLoiro Studio", "Fon");
-
-            }
+            if (e.Button == MouseButtons.Left)
+                Application.Exit();
         }
         #endregion
     }

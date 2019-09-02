@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 namespace SLStudio.ViewsExtensions.CustomControls
-{ 
+{
     public enum GetWindow_Cmd : uint
     {
         GW_HWNDFIRST = 0,

@@ -10,25 +10,25 @@ using System.Windows.Forms;
 using SLStudio.Extensions.Interfaces;
 using SLStudio.ViewsExtensions.Themes;
 using SLStudio.Extensions.Enums;
+using SLStudio.ViewsExtensions.Language;
+using Transitions;
 
 namespace SLStudio.ViewsExtensions.CustomControls
 {
-    public partial class CustomCloseButton : UserControl, IThemedControl
+    public partial class CustomCloseButton : UserControl, IThemedControl, IMultiLanguageControl
     {
-        private Color onHoverBackColor;
-        private Color onHoverForeColor;
-        private Color onClickBackColor;
-        private Color onClickForeColor;
-
         public CustomCloseButton()
         {
             InitializeComponent();
 
             UpdateTheme();
             ThemeManager.AddControl(this);
+
+            UpdateLanguage();
+            LanguageManager.AddControl(this);
         }
 
-        #region IThemedControl
+        #region IThemedControl, IMultiLanguageControl
         private Theme theme = new Theme(DefaultThemes.UserDefault);
         public Theme Theme { get => theme; set => theme = value; }
 
@@ -39,14 +39,12 @@ namespace SLStudio.ViewsExtensions.CustomControls
 
             labelClose.BackColor = theme.theme;
             labelClose.ForeColor = theme.font;
-
-            onHoverBackColor = theme.error;
-            onHoverForeColor = theme.fontLight;
-            onClickBackColor = theme.selection;
-            onClickForeColor = theme.font;
         }
-
-        #endregion IThemedControl
+        public void UpdateLanguage()
+        {
+            this.toolTip.SetToolTip(this.labelClose, Resources.Messages.Global.close);
+        }
+        #endregion IThemedControl, IMultiLanguageControl
 
         protected override void OnMouseClick(MouseEventArgs e)
         {
@@ -55,30 +53,32 @@ namespace SLStudio.ViewsExtensions.CustomControls
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            labelClose.BackColor = onHoverBackColor;
-            labelClose.ForeColor = onHoverForeColor;
+            Transition.run(labelClose, "BackColor", theme.error, new TransitionType_Linear(120));
+            Transition.run(labelClose, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            labelClose.BackColor = theme.theme;
-            labelClose.ForeColor = theme.font;
+            Transition.run(labelClose, "BackColor", theme.theme, new TransitionType_Linear(120));
+            Transition.run(labelClose, "ForeColor", theme.font, new TransitionType_Linear(120));
         }
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            labelClose.BackColor = theme.selection;
-            labelClose.ForeColor = theme.fontLight;
+            Transition.run(labelClose, "BackColor", theme.selection, new TransitionType_Linear(120));
+            Transition.run(labelClose, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
         }
 
         private void OnMouseUp(object sender, MouseEventArgs e)
         {
-            labelClose.BackColor = onHoverBackColor;
-            labelClose.ForeColor = onHoverForeColor;
+            Transition.run(labelClose, "BackColor", theme.error, new TransitionType_Linear(120));
+            Transition.run(labelClose, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
         }
 
         private void OnMouseClick(object sender, MouseEventArgs e)
         {
             this.OnMouseClick(e);
         }
+
+        
     }
 }

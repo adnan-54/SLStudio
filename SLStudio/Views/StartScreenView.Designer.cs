@@ -183,12 +183,11 @@
             // lblContinueWithoutCode
             // 
             this.lblContinueWithoutCode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblContinueWithoutCode.AutoSize = true;
             this.lblContinueWithoutCode.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContinueWithoutCode.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
-            this.lblContinueWithoutCode.Location = new System.Drawing.Point(797, 449);
+            this.lblContinueWithoutCode.Location = new System.Drawing.Point(590, 446);
             this.lblContinueWithoutCode.Name = "lblContinueWithoutCode";
-            this.lblContinueWithoutCode.Size = new System.Drawing.Size(138, 17);
+            this.lblContinueWithoutCode.Size = new System.Drawing.Size(345, 17);
             this.lblContinueWithoutCode.TabIndex = 5;
             this.lblContinueWithoutCode.TabStop = true;
             this.lblContinueWithoutCode.Text = "Continue without code";
@@ -246,7 +245,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SLStudio 2019";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.FrmStartScreen_KeyUp);
             this.panelGetStarted.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);

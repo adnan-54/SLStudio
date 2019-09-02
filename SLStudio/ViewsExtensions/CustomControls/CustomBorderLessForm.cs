@@ -1,22 +1,119 @@
-﻿using SLStudio.Extensions.Enums;
-using SLStudio.ViewsExtensions.Themes;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Media;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Transitions;
 
 namespace SLStudio.ViewsExtensions.CustomControls
 {
     public class CustomBorderLessForm : Form
     {
+        //personal behavior
+        public bool useCustomBorders = false;
+        public bool bordersToTop = true;
+        public Color borderOnFocusColor = Themes.Presets.UserCurrent.Default.selection;
+        public Color borderOffFocusColor = Themes.Presets.UserCurrent.Default.selectionLight;
+        public int borderSize = 2;
+
+        Panel topBorder = new Panel();
+        Panel bottomBorder = new Panel();
+        Panel leftBorder = new Panel();
+        Panel rightBorder = new Panel();
+
+        public void UpdateBorders()
+        {
+            topBorder.BackColor = borderOnFocusColor;
+            topBorder.Dock = DockStyle.Top;
+            topBorder.Height = borderSize;
+            topBorder.Visible = useCustomBorders;
+
+            bottomBorder.BackColor = borderOnFocusColor;
+            bottomBorder.Dock = DockStyle.Bottom;
+            bottomBorder.Height = borderSize;
+            bottomBorder.Visible = useCustomBorders;
+
+            leftBorder.BackColor = borderOnFocusColor;
+            leftBorder.Dock = DockStyle.Left;
+            leftBorder.Width = borderSize;
+            leftBorder.Visible = useCustomBorders;
+
+            rightBorder.BackColor = borderOnFocusColor;
+            rightBorder.Dock = DockStyle.Right;
+            rightBorder.Width = borderSize;
+            rightBorder.Visible = useCustomBorders;
+
+            if(bordersToTop)
+            {
+                topBorder.BringToFront();
+                topBorder.BringToFront();
+
+                bottomBorder.BringToFront();
+                bottomBorder.BringToFront();
+
+                leftBorder.BringToFront();
+                leftBorder.BringToFront();
+
+                rightBorder.BringToFront();
+                rightBorder.BringToFront();
+            }
+        }
+
+        protected override void OnDeactivate(EventArgs e)
+        {
+            Transition.run(topBorder, "BackColor", borderOffFocusColor, new TransitionType_Linear(100));
+            Transition.run(bottomBorder, "BackColor", borderOffFocusColor, new TransitionType_Linear(100));
+            Transition.run(leftBorder, "BackColor", borderOffFocusColor, new TransitionType_Linear(100));
+            Transition.run(rightBorder, "BackColor", borderOffFocusColor, new TransitionType_Linear(100));
+
+            base.OnDeactivate(e);
+        }
+
+        protected override void OnActivated(EventArgs e)
+        {
+            Transition.run(topBorder, "BackColor", borderOnFocusColor, new TransitionType_Linear(100));
+            Transition.run(bottomBorder, "BackColor", borderOnFocusColor, new TransitionType_Linear(100));
+            Transition.run(leftBorder, "BackColor", borderOnFocusColor, new TransitionType_Linear(100));
+            Transition.run(rightBorder, "BackColor", borderOnFocusColor, new TransitionType_Linear(100));
+
+            base.OnActivated(e);
+        }
+
         //Todo: universal title bar with parameters
 
         public virtual void SetupForm()
         {
-            FormBorderStyle = FormBorderStyle.Sizable;
-            Icon = Resources.Images.Icons.appIcon;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.Icon = Resources.Images.Icons.appIcon;
+
+            this.Controls.Add(topBorder);
+            this.Controls.Add(bottomBorder);
+            this.Controls.Add(leftBorder);
+            this.Controls.Add(rightBorder);
+            UpdateBorders();
         }
 
+        private List<Keys> code = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
+        private List<Keys> pressedKeys = new List<Keys> { Keys.Up, Keys.Up, Keys.Down, Keys.Down, Keys.Left, Keys.Right, Keys.Left, Keys.Right, Keys.B, Keys.A };
+
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            pressedKeys.RemoveAt(0);
+            pressedKeys.Add(e.KeyCode);
+
+            if (pressedKeys.SequenceEqual(code))
+            {
+                SoundPlayer player = new SoundPlayer(Resources.Sounds.Sounds.dayrace_loose);
+                player.Play();
+                MessageBox.Show(this, "SehLoiro Studio", "Fon", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            base.OnKeyUp(e);
+        }
+
+        //borderless behavior
         public void DecorationMouseDown(HitTestValues hit, Point p)
         {
             NativeMethods.ReleaseCapture();

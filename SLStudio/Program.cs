@@ -23,13 +23,13 @@ namespace SLStudio
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            if(Settings.Default.showStartScreen)
-            {
-                Application.Run(new StartScreenView());
-            }
-            else
+            try
             {
                 Application.Run(new MainView());
+            }
+            catch(Exception ex)
+            {
+                Logger.LogError(ex);
             }
         }
     }

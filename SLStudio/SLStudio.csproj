@@ -163,6 +163,9 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Transitions, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\dot-net-transitions.1.2.1.0\lib\net40-full\Transitions.dll</HintPath>
+    </Reference>
     <Reference Include="XanderUI">
       <HintPath>..\packages\XanderUI\XanderUI.dll</HintPath>
     </Reference>
@@ -192,6 +195,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Icons.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Messages\Global.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Global.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Messages\Logger.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -215,11 +223,23 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\Validate.cs" />
-    <Compile Include="ViewsExtensions\CustomControls\CustomCloseButton.cs">
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomChangeStateButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ViewsExtensions\CustomControls\CustomCloseButton.Designer.cs">
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomChangeStateButton.Designer.cs">
+      <DependentUpon>CustomChangeStateButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomCloseButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomCloseButton.Designer.cs">
       <DependentUpon>CustomCloseButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.Designer.cs">
+      <DependentUpon>CustomMinimizeButton.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsExtensions\CustomControls\Native.cs">
       <DependentUpon>CustomBorderLessForm.cs</DependentUpon>
@@ -269,6 +289,13 @@
     <Compile Include="Views\StartScreenView.Designer.cs">
       <DependentUpon>StartScreenView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources\Messages\Global.pt-br.resx">
+      <DependentUpon>Global.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Messages\Global.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Global.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Messages\Logger.pt-br.resx">
       <DependentUpon>Logger.resx</DependentUpon>
     </EmbeddedResource>
@@ -304,11 +331,17 @@
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomCloseButton.resx">
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomChangeStateButton.resx">
+      <DependentUpon>CustomChangeStateButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomCloseButton.resx">
       <DependentUpon>CustomCloseButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomRecentFilesList.resx">
       <DependentUpon>CustomRecentFilesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.resx">
+      <DependentUpon>CustomMinimizeButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoggerView.resx">
       <DependentUpon>LoggerView.cs</DependentUpon>

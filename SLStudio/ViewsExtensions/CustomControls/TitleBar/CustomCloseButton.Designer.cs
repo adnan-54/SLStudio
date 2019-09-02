@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelClose = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // labelClose
@@ -42,6 +44,7 @@
             this.labelClose.TabIndex = 0;
             this.labelClose.Text = "";
             this.labelClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip.SetToolTip(this.labelClose, "Close");
             this.labelClose.UseCompatibleTextRendering = true;
             this.labelClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
             this.labelClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
@@ -66,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
