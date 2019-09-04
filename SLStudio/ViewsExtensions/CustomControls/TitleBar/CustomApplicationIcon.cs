@@ -47,7 +47,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
 
         private void OnMouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if(ParentForm_ != null)
+            if(ParentForm_ != null && e.Button == MouseButtons.Left)
             {
                 ParentForm_.Close();
                 this.Dispose();
@@ -70,6 +70,11 @@ namespace SLStudio.ViewsExtensions.CustomControls
                 if (e.Button == MouseButtons.Left)
                 {
                     ParentForm_.ShowSystemMenu(e.Button, new Point(0, this.Height));
+                }
+                else
+                if(e.Button == MouseButtons.Right)
+                {
+                    ParentForm_.ShowSystemMenu(e.Button);
                 }
             }
         }
