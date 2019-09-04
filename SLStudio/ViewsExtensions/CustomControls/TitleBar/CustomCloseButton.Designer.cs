@@ -29,46 +29,45 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.labelClose = new System.Windows.Forms.Label();
+            this.glyph = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // labelClose
+            // glyph
             // 
-            this.labelClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelClose.Font = new System.Drawing.Font("Segoe MDL2 Assets", 9F);
-            this.labelClose.Location = new System.Drawing.Point(0, 0);
-            this.labelClose.Margin = new System.Windows.Forms.Padding(0);
-            this.labelClose.Name = "labelClose";
-            this.labelClose.Size = new System.Drawing.Size(45, 32);
-            this.labelClose.TabIndex = 0;
-            this.labelClose.Text = "";
-            this.labelClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip.SetToolTip(this.labelClose, "Close");
-            this.labelClose.UseCompatibleTextRendering = true;
-            this.labelClose.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
-            this.labelClose.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
-            this.labelClose.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.labelClose.MouseLeave += new System.EventHandler(this.OnMouseLeave);
-            this.labelClose.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
+            this.glyph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glyph.Location = new System.Drawing.Point(0, 0);
+            this.glyph.Margin = new System.Windows.Forms.Padding(0);
+            this.glyph.Name = "glyph";
+            this.glyph.Size = new System.Drawing.Size(45, 32);
+            this.glyph.TabIndex = 0;
+            this.glyph.Text = "x";
+            this.glyph.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip.SetToolTip(this.glyph, "Close");
+            this.glyph.UseCompatibleTextRendering = true;
+            this.glyph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
+            this.glyph.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
+            this.glyph.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.glyph.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.glyph.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
             // 
             // CustomCloseButton
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CausesValidation = false;
-            this.Controls.Add(this.labelClose);
+            this.Controls.Add(this.glyph);
             this.DoubleBuffered = true;
-            this.Font = new System.Drawing.Font("Segoe MDL2 Assets", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CustomCloseButton";
             this.Size = new System.Drawing.Size(45, 32);
+            this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label labelClose;
+        private System.Windows.Forms.Label glyph;
         private System.Windows.Forms.ToolTip toolTip;
     }
 }

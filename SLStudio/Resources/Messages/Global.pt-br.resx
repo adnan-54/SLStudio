@@ -120,6 +120,9 @@
   <data name="close" xml:space="preserve">
     <value>Fechar</value>
   </data>
+  <data name="help" xml:space="preserve">
+    <value>Ajuda</value>
+  </data>
   <data name="maximize" xml:space="preserve">
     <value>Maximizar</value>
   </data>

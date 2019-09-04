@@ -146,7 +146,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
                 SetWindowRegion(Handle, 0, 0, Width, Height);
         }
 
-        protected void ShowSystemMenu(MouseButtons buttons)
+        public void ShowSystemMenu(MouseButtons buttons)
         {
             ShowSystemMenu(buttons, MousePosition);
         }
@@ -156,7 +156,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
             return (int)(((ushort)lowPart) | (uint)(highPart << 16));
         }
 
-        protected void ShowSystemMenu(MouseButtons buttons, Point pos)
+        public void ShowSystemMenu(MouseButtons buttons, Point pos)
         {
             NativeMethods.SendMessage(Handle, (int)WindowMessages.WM_SYSMENU, 0, MakeLong((short)pos.X, (short)pos.Y));
         }

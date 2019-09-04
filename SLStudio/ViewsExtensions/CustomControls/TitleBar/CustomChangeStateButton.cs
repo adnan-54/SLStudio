@@ -11,128 +11,133 @@ namespace SLStudio.ViewsExtensions.CustomControls
 {
     public partial class CustomChangeStateButton : UserControl, IThemedControl, IMultiLanguageControl
     {
-        private CustomBorderLessForm parent;
-        public CustomBorderLessForm ParentForm_
-        {
-            get
-            {
-                return parent;
-            }
-            set
-            {
-                parent = value;
-            }
-        }
+        private CustomBorderLessForm parentForm;
+        public CustomBorderLessForm ParentForm_ { get => parentForm; set => parentForm = value; }
 
         private string maximizeIcon = Char.ConvertFromUtf32(0xE922);
         private string restoreIcon = Char.ConvertFromUtf32(0xE923);
-
         private string toolTipString = Resources.Messages.Global.maximize;
+
+        private FormWindowState oldParentState;
+
+        private Timer refreshGlyphTimer;
 
         public CustomChangeStateButton()
         {
             InitializeComponent();
-
-            string fontName = "Segoe MDL2 Assets";
-            float fontSize = 9;
-
-
-            using (Font fontTester = new Font(fontName, fontSize, FontStyle.Regular, GraphicsUnit.Pixel))
-            {
-                if (fontTester.Name != fontName)
-                {
-                    var marlett = new Font("Marlett", 9.0f);
-                    icon.Font = marlett;
-
-                    maximizeIcon = "2";
-                    restoreIcon = "1";
-                }
-            }
 
             UpdateTheme();
             ThemeManager.AddControl(this);
 
             UpdateLanguage();
             LanguageManager.AddControl(this);
-
         }
 
         #region IThemedControl, IMultiLanguageControl
         private Theme theme = new Theme(DefaultThemes.UserDefault);
-        public Theme Theme
-        {
-            get
-            {
-                return theme;
-            }
-            set
-            {
-                theme = value;
-            }
-        }
+        public Theme Theme { get => theme; set => theme = value; }
 
         public void UpdateTheme()
         {
             this.BackColor = theme.theme;
             this.ForeColor = theme.font;
-
-            if (parent.WindowState == FormWindowState.Maximized)
-            {
-                icon.Text = restoreIcon;
-            }
-            else
-            {
-                icon.Text = maximizeIcon;
-            }
         }
 
         public void UpdateLanguage()
         {
-            if (parent != null)
-            {
-                if (parent.WindowState == FormWindowState.Maximized)
-                {
-                    toolTipString = Resources.Messages.Global.restore;
-                }
-                else
-                    toolTipString = Resources.Messages.Global.maximize;
-            }
+            this.toolTip.SetToolTip(this.glyph, toolTipString);
         }
         #endregion IThemedControl, IMultiLanguageControl
 
+        private void UpdateState()
+        {
+            if (ParentForm_ != null)
+            {
+                if (ParentForm_.WindowState == FormWindowState.Maximized)
+                    ParentForm_.WindowState = FormWindowState.Normal;
+                else
+                    ParentForm_.WindowState = FormWindowState.Maximized;
+            }
+        }
+
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            Transition.run(icon, "BackColor", theme.selection, new TransitionType_Linear(120));
+            if (e.Button == MouseButtons.Left)
+                Transition.run(glyph, "BackColor", theme.selection, new TransitionType_Linear(120));
         }
 
         private void OnMouseEnter(object sender, EventArgs e)
         {
-            Transition.run(icon, "BackColor", theme.themeLight, new TransitionType_Linear(120));
+            Transition.run(glyph, "BackColor", theme.themeLight, new TransitionType_Linear(120));
         }
 
         private void OnMouseLeave(object sender, EventArgs e)
         {
-            Transition.run(icon, "BackColor", theme.theme, new TransitionType_Linear(120));
+            Transition.run(glyph, "BackColor", theme.theme, new TransitionType_Linear(120));
         }
 
         private void OnMouseUp(object sender, MouseEventArgs e)
         {
-            Transition.run(icon, "BackColor", theme.themeLight, new TransitionType_Linear(120));
+            if (e.Button == MouseButtons.Left)
+                Transition.run(glyph, "BackColor", theme.themeLight, new TransitionType_Linear(120));
+            else
+            if (e.Button == MouseButtons.Right)
+                ParentForm_.ShowSystemMenu(e.Button);
         }
 
         private void OnMouseClick(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left && parent != null)
-            {
-                if (parent.WindowState == FormWindowState.Maximized)
+            if (e.Button == MouseButtons.Left)
+                UpdateState();
+        }
+
+        private void OnLoad(object sender, EventArgs e)
+        {
+            string fontName = "Segoe MDL2 Assets";
+            float fontSize = 9.0f;
+
+            using (Font fontTester = new Font(fontName, fontSize, GraphicsUnit.Pixel))
+            { 
+
+                if (fontTester.Name == fontName)
                 {
-                    icon.Text = restoreIcon;
-                    parent.WindowState = FormWindowState.Normal;
+                    var segoeMdl2Assets = new Font("Segoe MDL2 Assets", 9.0f);
+                    glyph.Font = segoeMdl2Assets;
+
+                    maximizeIcon = Char.ConvertFromUtf32(0xE922);
+                    restoreIcon = Char.ConvertFromUtf32(0xE923);
                 }
                 else
                 {
-                    icon.Text = maximizeIcon;
-                    parent.WindowState = FormWindowState.Maximized;
+                    var marlett = new Font("Marlett", 12.0f);
+                    glyph.Font = marlett;
+
+                    maximizeIcon = "1";
+                    restoreIcon = "2";
+                }
+            }
+
+            refreshGlyphTimer = new Timer();
+            refreshGlyphTimer.Interval = 100;
+            refreshGlyphTimer.Start();
+            refreshGlyphTimer.Tick += RefreshGlyphTimerOnTick;
+        }
+
+        private void RefreshGlyphTimerOnTick(object sender, EventArgs e)
+        {
+            if (ParentForm_ != null && ParentForm_.WindowState != oldParentState)
+            {
+                oldParentState = ParentForm_.WindowState;
+
+                if (ParentForm_.WindowState == FormWindowState.Maximized)
+                {
+                    toolTipString = Resources.Messages.Global.restore;
+                    glyph.Text = restoreIcon;
+                }
+                else
+                {
+                    toolTipString = Resources.Messages.Global.maximize;
+                    glyph.Text = maximizeIcon;
                 }
 
                 UpdateLanguage();

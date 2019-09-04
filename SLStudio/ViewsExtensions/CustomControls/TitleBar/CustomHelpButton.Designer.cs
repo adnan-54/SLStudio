@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.ViewsExtensions.CustomControls
 {
-    partial class CustomMinimizeButton
+    partial class CustomHelpButton
     {
         /// <summary> 
         /// Required designer variable.
@@ -39,25 +39,27 @@
             this.glyph.Location = new System.Drawing.Point(0, 0);
             this.glyph.Margin = new System.Windows.Forms.Padding(0);
             this.glyph.Name = "glyph";
-            this.glyph.Size = new System.Drawing.Size(45, 32);
+            this.glyph.Size = new System.Drawing.Size(32, 32);
             this.glyph.TabIndex = 0;
-            this.glyph.Text = "_";
+            this.glyph.Text = "?";
             this.glyph.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip.SetToolTip(this.glyph, "Minimize");
+            this.toolTip.SetToolTip(this.glyph, "Help");
             this.glyph.UseCompatibleTextRendering = true;
+            this.glyph.Click += new System.EventHandler(this.OnClick);
             this.glyph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
             this.glyph.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
             this.glyph.MouseEnter += new System.EventHandler(this.OnMouseEnter);
             this.glyph.MouseLeave += new System.EventHandler(this.OnMouseLeave);
             this.glyph.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
             // 
-            // CustomMinimizeButton
+            // CustomHelpButton
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.glyph);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.Name = "CustomMinimizeButton";
-            this.Size = new System.Drawing.Size(45, 32);
+            this.Name = "CustomHelpButton";
+            this.Size = new System.Drawing.Size(32, 32);
             this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
 

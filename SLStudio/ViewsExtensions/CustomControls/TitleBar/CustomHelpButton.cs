@@ -9,12 +9,12 @@ using Transitions;
 
 namespace SLStudio.ViewsExtensions.CustomControls
 {
-    public partial class CustomCloseButton : UserControl, IThemedControl, IMultiLanguageControl
+    public partial class CustomHelpButton : UserControl, IThemedControl, IMultiLanguageControl
     {
         private CustomBorderLessForm parentForm;
         public CustomBorderLessForm ParentForm_ { get => parentForm; set => parentForm = value; }
 
-        public CustomCloseButton()
+        public CustomHelpButton()
         {
             InitializeComponent();
 
@@ -39,50 +39,48 @@ namespace SLStudio.ViewsExtensions.CustomControls
         }
         public void UpdateLanguage()
         {
-            this.toolTip.SetToolTip(this.glyph, Resources.Messages.Global.close);
+            this.toolTip.SetToolTip(this.glyph, Resources.Messages.Global.help);
         }
         #endregion IThemedControl, IMultiLanguageControl
 
-        private void OnMouseEnter(object sender, EventArgs e)
+        private void OnClick(object sender, EventArgs e)
         {
-            Transition.run(glyph, "BackColor", theme.error, new TransitionType_Linear(120));
-            Transition.run(glyph, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
+            this.OnClick(e);
         }
 
-        private void OnMouseLeave(object sender, EventArgs e)
+        private void OnMouseClick(object sender, MouseEventArgs e)
         {
-            Transition.run(glyph, "BackColor", theme.theme, new TransitionType_Linear(120));
-            Transition.run(glyph, "ForeColor", theme.font, new TransitionType_Linear(120));
+            this.OnMouseClick(e);
         }
+
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
                 Transition.run(glyph, "BackColor", theme.selection, new TransitionType_Linear(120));
-                Transition.run(glyph, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
             }
+        }
+
+        private void OnMouseEnter(object sender, EventArgs e)
+        {
+            Transition.run(glyph, "BackColor", theme.themeLight, new TransitionType_Linear(120));
+        }
+
+        private void OnMouseLeave(object sender, EventArgs e)
+        {
+            Transition.run(glyph, "BackColor", theme.theme, new TransitionType_Linear(120));
         }
 
         private void OnMouseUp(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
-                Transition.run(glyph, "BackColor", theme.error, new TransitionType_Linear(120));
-                Transition.run(glyph, "ForeColor", theme.fontLight, new TransitionType_Linear(120));
+                Transition.run(glyph, "BackColor", theme.themeLight, new TransitionType_Linear(120));
             }
             else
             if (e.Button == MouseButtons.Right)
             {
                 ParentForm_.ShowSystemMenu(e.Button);
-            }
-        }
-
-        private void OnMouseClick(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && ParentForm_ != null)
-            {
-                this.Dispose();
-                ParentForm_.Close();
             }
         }
 
@@ -98,14 +96,14 @@ namespace SLStudio.ViewsExtensions.CustomControls
                     var segoeMdl2Assets = new Font("Segoe MDL2 Assets", 9.0f);
                     glyph.Font = segoeMdl2Assets;
 
-                    glyph.Text = Char.ConvertFromUtf32(0xE8BB);
+                    glyph.Text = Char.ConvertFromUtf32(0xE897);
                 }
                 else
                 {
                     var marlett = new Font("Marlett", 12.0f);
                     glyph.Font = marlett;
 
-                    glyph.Text = "r";
+                    glyph.Text = "s";
                 }
             }
         }

@@ -223,6 +223,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Util\Validate.cs" />
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomApplicationIcon.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomApplicationIcon.Designer.cs">
+      <DependentUpon>CustomApplicationIcon.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomChangeStateButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -234,6 +240,12 @@
     </Compile>
     <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomCloseButton.Designer.cs">
       <DependentUpon>CustomCloseButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomHelpButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomHelpButton.Designer.cs">
+      <DependentUpon>CustomHelpButton.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.cs">
       <SubType>UserControl</SubType>
@@ -331,6 +343,9 @@
       <LastGenOutput>Sounds.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomApplicationIcon.resx">
+      <DependentUpon>CustomApplicationIcon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomChangeStateButton.resx">
       <DependentUpon>CustomChangeStateButton.cs</DependentUpon>
     </EmbeddedResource>
@@ -339,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\CustomRecentFilesList.resx">
       <DependentUpon>CustomRecentFilesList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomHelpButton.resx">
+      <DependentUpon>CustomHelpButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.resx">
       <DependentUpon>CustomMinimizeButton.cs</DependentUpon>
@@ -369,6 +387,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\Images\appIcon.ico">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\Images\appIconSmall.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
+    <None Include="Resources\Images\appIconSmall_blackWhite.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
     <None Include="Resources\Images\application_32xLG.png">

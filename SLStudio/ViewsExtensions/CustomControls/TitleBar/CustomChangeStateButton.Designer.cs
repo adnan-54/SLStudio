@@ -29,43 +29,43 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.icon = new System.Windows.Forms.Label();
+            this.glyph = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
-            // icon
+            // glyph
             // 
-            this.icon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.icon.Location = new System.Drawing.Point(0, 0);
-            this.icon.Margin = new System.Windows.Forms.Padding(0);
-            this.icon.Name = "icon";
-            this.icon.Size = new System.Drawing.Size(45, 32);
-            this.icon.TabIndex = 0;
-            this.icon.Text = "";
-            this.icon.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.toolTip.SetToolTip(this.icon, "Maximize");
-            this.icon.UseCompatibleTextRendering = true;
-            this.icon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
-            this.icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
-            this.icon.MouseEnter += new System.EventHandler(this.OnMouseEnter);
-            this.icon.MouseLeave += new System.EventHandler(this.OnMouseLeave);
-            this.icon.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
+            this.glyph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.glyph.Location = new System.Drawing.Point(0, 0);
+            this.glyph.Margin = new System.Windows.Forms.Padding(0);
+            this.glyph.Name = "glyph";
+            this.glyph.Size = new System.Drawing.Size(45, 32);
+            this.glyph.TabIndex = 0;
+            this.glyph.Text = "/";
+            this.glyph.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolTip.SetToolTip(this.glyph, "Maximize");
+            this.glyph.UseCompatibleTextRendering = true;
+            this.glyph.MouseClick += new System.Windows.Forms.MouseEventHandler(this.OnMouseClick);
+            this.glyph.MouseDown += new System.Windows.Forms.MouseEventHandler(this.OnMouseDown);
+            this.glyph.MouseEnter += new System.EventHandler(this.OnMouseEnter);
+            this.glyph.MouseLeave += new System.EventHandler(this.OnMouseLeave);
+            this.glyph.MouseUp += new System.Windows.Forms.MouseEventHandler(this.OnMouseUp);
             // 
             // CustomChangeStateButton
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.Controls.Add(this.icon);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.Controls.Add(this.glyph);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "CustomChangeStateButton";
             this.Size = new System.Drawing.Size(45, 32);
+            this.Load += new System.EventHandler(this.OnLoad);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label icon;
+        private System.Windows.Forms.Label glyph;
         private System.Windows.Forms.ToolTip toolTip;
     }
 }
