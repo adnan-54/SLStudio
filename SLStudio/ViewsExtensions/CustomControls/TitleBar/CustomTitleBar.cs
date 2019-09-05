@@ -1,0 +1,99 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using SLStudio.Extensions.Interfaces;
+using SLStudio.ViewsExtensions.Themes;
+
+namespace SLStudio.ViewsExtensions.CustomControls
+{
+    public partial class CustomTitleBar : UserControl, IThemedControl
+    {
+        public CustomBorderLessForm ParentForm_ { get; set; }
+
+        public string TitleText
+        {
+            get { return title.Text; }
+            set { title.Text = value; }
+        }
+
+        public ContentAlignment TitleAlignment
+        {
+            get { return title.TextAlign; }
+            set { title.TextAlign = value; }
+        }
+
+        public Font TextFont
+        {
+            get { return title.Font; }
+            set { title.Font = value; }
+        }
+
+        public CustomTitleBar()
+        {
+            InitializeComponent();
+
+            UpdateTheme();
+            ThemeManager.AddControl(this);
+        }
+
+        private Theme theme = new Theme(Extensions.Enums.DefaultThemes.UserDefault);
+        public Theme Theme { get => theme; set => theme = value; }
+
+        public void UpdateTheme()
+        {
+            this.BackColor = theme.theme;
+            this.ForeColor = theme.font;
+        }
+
+        private void OnMouseUp(object sender, MouseEventArgs e)
+        {
+            if (ParentForm_ != null)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    ParentForm_.ShowSystemMenu(e.Button);
+                }
+                else
+                if (e.Button == MouseButtons.Middle)
+                {
+                    ParentForm_.Close();
+                    this.Dispose();
+                }
+            }
+        }
+
+        private void OnMouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && ParentForm_ != null)
+            {
+                if (ParentForm_.WindowState == FormWindowState.Maximized)
+                    ParentForm_.WindowState = FormWindowState.Normal;
+                else
+                    ParentForm_.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void OnLoad(object sender, EventArgs e)
+        {
+            if (ParentForm_ != null)
+                ParentForm_.TextChanged += (s, args) => TitleText = ParentForm_.Text;
+        }
+
+        private void OnMouseDown(object sender, MouseEventArgs e)
+        {
+            if (ParentForm_ != null)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    ParentForm_.DecorationMouseDown(HitTestValues.HTCAPTION);
+                }
+            }
+        }
+    }
+}

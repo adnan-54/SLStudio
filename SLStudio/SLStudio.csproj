@@ -265,6 +265,12 @@
     <Compile Include="ViewsExtensions\CustomControls\CustomRecentFilesList.Designer.cs">
       <DependentUpon>CustomRecentFilesList.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomTitleBar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ViewsExtensions\CustomControls\TitleBar\CustomTitleBar.Designer.cs">
+      <DependentUpon>CustomTitleBar.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewsExtensions\Languages\LanguageManager.cs" />
     <Compile Include="ViewsExtensions\Themes\Presets\Dark.Designer.cs">
       <DependentUpon>Dark.settings</DependentUpon>
@@ -360,6 +366,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomMinimizeButton.resx">
       <DependentUpon>CustomMinimizeButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewsExtensions\CustomControls\TitleBar\CustomTitleBar.resx">
+      <DependentUpon>CustomTitleBar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoggerView.resx">
       <DependentUpon>LoggerView.cs</DependentUpon>
@@ -459,7 +468,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" />
+      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

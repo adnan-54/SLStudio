@@ -34,6 +34,7 @@
             this.minimizeButton = new SLStudio.ViewsExtensions.CustomControls.CustomMinimizeButton();
             this.customHelpButton1 = new SLStudio.ViewsExtensions.CustomControls.CustomHelpButton();
             this.customApplicationIcon1 = new SLStudio.ViewsExtensions.CustomControls.CustomApplicationIcon();
+            this.customTitleBar1 = new SLStudio.ViewsExtensions.CustomControls.CustomTitleBar();
             this.SuspendLayout();
             // 
             // closeButton
@@ -94,6 +95,8 @@
             // 
             // customApplicationIcon1
             // 
+            this.customApplicationIcon1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.customApplicationIcon1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
             this.customApplicationIcon1.Location = new System.Drawing.Point(0, 0);
             this.customApplicationIcon1.Margin = new System.Windows.Forms.Padding(0);
             this.customApplicationIcon1.Name = "customApplicationIcon1";
@@ -103,11 +106,28 @@
             this.customApplicationIcon1.Size = new System.Drawing.Size(45, 32);
             this.customApplicationIcon1.TabIndex = 8;
             // 
+            // customTitleBar1
+            // 
+            this.customTitleBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.customTitleBar1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.customTitleBar1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.customTitleBar1.Location = new System.Drawing.Point(45, 0);
+            this.customTitleBar1.Margin = new System.Windows.Forms.Padding(0);
+            this.customTitleBar1.Name = "customTitleBar1";
+            this.customTitleBar1.ParentForm_ = this;
+            this.customTitleBar1.Size = new System.Drawing.Size(812, 32);
+            this.customTitleBar1.TabIndex = 9;
+            this.customTitleBar1.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customTitleBar1.TitleAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.customTitleBar1.TitleText = "SLStudio";
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 720);
+            this.Controls.Add(this.customTitleBar1);
             this.Controls.Add(this.customApplicationIcon1);
             this.Controls.Add(this.customHelpButton1);
             this.Controls.Add(this.minimizeButton);
@@ -132,5 +152,6 @@
         private ViewsExtensions.CustomControls.CustomChangeStateButton changeStateButton;
         private ViewsExtensions.CustomControls.CustomHelpButton customHelpButton1;
         private ViewsExtensions.CustomControls.CustomApplicationIcon customApplicationIcon1;
+        private ViewsExtensions.CustomControls.CustomTitleBar customTitleBar1;
     }
 }
