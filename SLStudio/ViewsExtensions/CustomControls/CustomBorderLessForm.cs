@@ -87,6 +87,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
         {
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.Icon = Resources.Images.Icons.appIcon;
+            this.KeyPreview = true;
 
             this.Controls.Add(topBorder);
             this.Controls.Add(bottomBorder);
