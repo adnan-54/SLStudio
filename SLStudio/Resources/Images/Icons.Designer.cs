@@ -93,6 +93,16 @@ namespace SLStudio.Resources.Images {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap appIconSmall_white {
+            get {
+                object obj = ResourceManager.GetObject("appIconSmall_white", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap application_32xLG {
             get {
                 object obj = ResourceManager.GetObject("application_32xLG", resourceCulture);

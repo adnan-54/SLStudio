@@ -9,7 +9,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
 {
     public partial class CustomApplicationIcon : UserControl, IThemedControl
     {
-        private Image onFocusIcon;
+        private Image onFocusIcon = Resources.Images.Icons.appIconSmall_white;
         public Image OnFocusIcon
         {
             get => onFocusIcon;
@@ -20,7 +20,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
             }
         }
 
-        private Image offFocusItem;
+        private Image offFocusItem = Resources.Images.Icons.appIconSmall_blackWhite;
         public Image OffFocusItem { get => offFocusItem; set => offFocusItem = value; }
 
         private CustomBorderLessForm parentForm;
@@ -32,6 +32,8 @@ namespace SLStudio.ViewsExtensions.CustomControls
 
             UpdateTheme();
             ThemeManager.AddControl(this);
+
+            icon.Image = OnFocusIcon;
         }
 
         #region IThemedControl
@@ -69,7 +71,7 @@ namespace SLStudio.ViewsExtensions.CustomControls
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    ParentForm_.ShowSystemMenu(e.Button, new Point(0, this.Height));
+                    ParentForm_.ShowSystemMenu(e.Button, new Point(ParentForm_.Location.X, ParentForm_.Location.Y+this.Height));
                 }
                 else
                 if(e.Button == MouseButtons.Right)

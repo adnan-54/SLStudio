@@ -53,6 +53,5 @@ namespace SLStudio.Views
         #region Events
 
         #endregion Events
-
     }
 }

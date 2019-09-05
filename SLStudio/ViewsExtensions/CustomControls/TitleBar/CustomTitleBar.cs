@@ -14,6 +14,20 @@ namespace SLStudio.ViewsExtensions.CustomControls
 {
     public partial class CustomTitleBar : UserControl, IThemedControl
     {
+        private Theme theme = new Theme(Extensions.Enums.DefaultThemes.UserDefault);
+        private DateTime titleClickTime = DateTime.MinValue;
+        private Point titleClickPosition = Point.Empty;
+
+        public CustomTitleBar()
+        {
+            InitializeComponent();
+
+            UpdateTheme();
+            ThemeManager.AddControl(this);
+        }
+
+        public Theme Theme { get => theme; set => theme = value; }
+
         public CustomBorderLessForm ParentForm_ { get; set; }
 
         public string TitleText
@@ -33,17 +47,6 @@ namespace SLStudio.ViewsExtensions.CustomControls
             get { return title.Font; }
             set { title.Font = value; }
         }
-
-        public CustomTitleBar()
-        {
-            InitializeComponent();
-
-            UpdateTheme();
-            ThemeManager.AddControl(this);
-        }
-
-        private Theme theme = new Theme(Extensions.Enums.DefaultThemes.UserDefault);
-        public Theme Theme { get => theme; set => theme = value; }
 
         public void UpdateTheme()
         {
@@ -84,13 +87,20 @@ namespace SLStudio.ViewsExtensions.CustomControls
             if (ParentForm_ != null)
                 ParentForm_.TextChanged += (s, args) => TitleText = ParentForm_.Text;
         }
-
+        
         private void OnMouseDown(object sender, MouseEventArgs e)
         {
-            if (ParentForm_ != null)
+            if (e.Button == MouseButtons.Left && ParentForm_ != null)
             {
-                if (e.Button == MouseButtons.Left)
+                var clickTime = (DateTime.Now - titleClickTime).TotalMilliseconds;
+                if (clickTime < SystemInformation.DoubleClickTime && e.Location == titleClickPosition)
                 {
+                    return;
+                }
+                else
+                {
+                    titleClickTime = DateTime.Now;
+                    titleClickPosition = e.Location;
                     ParentForm_.DecorationMouseDown(HitTestValues.HTCAPTION);
                 }
             }

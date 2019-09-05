@@ -404,6 +404,9 @@
     <None Include="Resources\Images\appIconSmall_blackWhite.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
+    <None Include="Resources\Images\appIconSmall_white.png">
+      <DependentUpon>Icons.resx</DependentUpon>
+    </None>
     <None Include="Resources\Images\application_32xLG.png">
       <DependentUpon>Icons.resx</DependentUpon>
     </None>
