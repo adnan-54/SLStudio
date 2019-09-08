@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Models
 {
-    public class SolutionModel
+    public class Rpk
     {
+        private string rpkName;
+        private string rpkDirectory;
 
+        public Rpk()
+        {
+
+        }
     }
 }

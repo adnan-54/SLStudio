@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SLStudio.WPF
+namespace SLStudio.Logger
 {
-    public class CreateNewSolutionViewModel
+    public class Logger
     {
-
     }
 }

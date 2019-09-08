@@ -80,25 +80,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainWindow\MainWindowView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow\Menu\New\Solution\CreateNewSolutionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindow\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow\MainWindowViewModel.cs" />
-    <Compile Include="MainWindow\Menu\New\Solution\CreateNewSolutionView.xaml.cs">
-      <DependentUpon>CreateNewSolutionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MainWindow\Menu\New\Solution\CreateNewSolutionViewModel.cs" />
-    <Compile Include="MainWindow\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -116,6 +102,12 @@
       <Project>{53c03034-84e8-4c21-8b3d-7f2367df192e}</Project>
       <Name>SLStudio.Resources</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
