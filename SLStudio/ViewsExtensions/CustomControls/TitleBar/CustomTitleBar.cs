@@ -85,7 +85,11 @@ namespace SLStudio.ViewsExtensions.CustomControls
         private void OnLoad(object sender, EventArgs e)
         {
             if (ParentForm_ != null)
+            {
                 ParentForm_.TextChanged += (s, args) => TitleText = ParentForm_.Text;
+                ParentForm_.Activated += (s, args) => this.ForeColor = theme.font;
+                ParentForm_.Deactivate += (s, args) => this.ForeColor = theme.fontDark;
+            }
         }
         
         private void OnMouseDown(object sender, MouseEventArgs e)

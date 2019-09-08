@@ -24,23 +24,14 @@ namespace SLStudio.Views
         }
 
         #region IThemedControl, IMultiLanguageControl
-        private Theme theme = new Theme(DefaultThemes.UserDefault);
-        public Theme Theme
-        {
-            get
-            {
-                return theme;
-            }
-            set
-            {
-                theme = value;
-            }
-        }
+        public Theme Theme { get; set; }
 
         public void UpdateTheme()
         {
-            this.BackColor = theme.theme;
-            this.ForeColor = theme.font;
+            Theme = new Theme(DefaultThemes.UserDefault);
+
+            this.BackColor = Theme.theme;
+            this.ForeColor = Theme.font;
         }
 
         public void UpdateLanguage()

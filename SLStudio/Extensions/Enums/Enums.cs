@@ -14,4 +14,14 @@
         Clone,
         CreateNew
     }
+
+    public enum SolutionTargetVersion
+    {
+        Target221,
+        Target221Mwm,
+        Target230Le,
+        Target231,
+        Target240,
+        TargetOther
+    }
 }

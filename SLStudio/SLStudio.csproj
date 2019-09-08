@@ -219,6 +219,7 @@
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\Converters.cs" />
+    <Compile Include="Util\ShowMessage.cs" />
     <Compile Include="ViewsExtensions\CustomControls\CustomBorderLessForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,7 +472,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2000/1/1" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UseUniversalClock="True" />
+      <UserProperties BuildVersion_UseUniversalClock="True" BuildVersion_UseGlobalSettings="True" BuildVersion_UpdateFileVersion="True" BuildVersion_UpdateAssemblyVersion="True" BuildVersion_StartDate="2000/1/1" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

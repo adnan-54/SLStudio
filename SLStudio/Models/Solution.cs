@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SLStudio.Extensions.Enums;
+using SLStudio.Util;
+using System;
 using System.Collections.Generic;
 
 namespace SLStudio.Models
@@ -10,6 +12,8 @@ namespace SLStudio.Models
         public string solutionName;
         public string solutionDescription;
         public List<string> solutionAuthors = new List<string>();
+
+        public SolutionTargetVersion solutionTargetVersion;
 
         public string solutionFileName;
 
@@ -26,17 +30,19 @@ namespace SLStudio.Models
         
         }
 
-        public void Create()
+        public Solution Create()
         {
             try
             {
-
+                Solution solution = new Solution();
             }
             catch(Exception ex)
             {
                 Logger.LogError(ex);
-                throw ex;
+                ShowMessage.Error(ex);
             }
+
+            return new Solution();
         }
     }
 }

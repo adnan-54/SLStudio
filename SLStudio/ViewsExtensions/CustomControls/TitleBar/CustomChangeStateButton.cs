@@ -121,6 +121,12 @@ namespace SLStudio.ViewsExtensions.CustomControls
             refreshGlyphTimer.Interval = 100;
             refreshGlyphTimer.Start();
             refreshGlyphTimer.Tick += RefreshGlyphTimerOnTick;
+
+            if (ParentForm_ != null)
+            {
+                ParentForm_.Activated += (s, args) => glyph.ForeColor = theme.font;
+                ParentForm_.Deactivate += (s, args) => glyph. ForeColor = theme.fontDark;
+            }
         }
 
         private void RefreshGlyphTimerOnTick(object sender, EventArgs e)

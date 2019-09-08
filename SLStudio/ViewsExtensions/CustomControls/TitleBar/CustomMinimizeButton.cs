@@ -102,6 +102,12 @@ namespace SLStudio.ViewsExtensions.CustomControls
                     glyph.Text = "0";
                 }
             }
+
+            if (ParentForm_ != null)
+            {
+                ParentForm_.Activated += (s, args) => glyph.ForeColor = theme.font;
+                ParentForm_.Deactivate += (s, args) => glyph.ForeColor = theme.fontDark;
+            }
         }
     }
 }

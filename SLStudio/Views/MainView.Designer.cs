@@ -29,69 +29,55 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
-            this.closeButton = new SLStudio.ViewsExtensions.CustomControls.CustomCloseButton();
-            this.changeStateButton = new SLStudio.ViewsExtensions.CustomControls.CustomChangeStateButton();
-            this.minimizeButton = new SLStudio.ViewsExtensions.CustomControls.CustomMinimizeButton();
-            this.customHelpButton1 = new SLStudio.ViewsExtensions.CustomControls.CustomHelpButton();
+            this.ButtonClose = new SLStudio.ViewsExtensions.CustomControls.CustomCloseButton();
+            this.ButtonChangeState = new SLStudio.ViewsExtensions.CustomControls.CustomChangeStateButton();
+            this.ButtonMinimize = new SLStudio.ViewsExtensions.CustomControls.CustomMinimizeButton();
             this.customTitleBar1 = new SLStudio.ViewsExtensions.CustomControls.CustomTitleBar();
-            this.customApplicationIcon1 = new SLStudio.ViewsExtensions.CustomControls.CustomApplicationIcon();
+            this.ApplicationIcon = new SLStudio.ViewsExtensions.CustomControls.CustomApplicationIcon();
             this.SuspendLayout();
             // 
-            // closeButton
+            // ButtonClose
             // 
-            this.closeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.closeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.closeButton.CausesValidation = false;
-            this.closeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.closeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.closeButton.Location = new System.Drawing.Point(979, 0);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.closeButton.Name = "closeButton";
-            this.closeButton.ParentForm_ = this;
-            this.closeButton.Size = new System.Drawing.Size(45, 32);
-            this.closeButton.TabIndex = 4;
-            this.closeButton.TabStop = false;
+            this.ButtonClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.ButtonClose.CausesValidation = false;
+            this.ButtonClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.ButtonClose.Location = new System.Drawing.Point(1142, 0);
+            this.ButtonClose.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonClose.Name = "ButtonClose";
+            this.ButtonClose.ParentForm_ = this;
+            this.ButtonClose.Size = new System.Drawing.Size(52, 37);
+            this.ButtonClose.TabIndex = 4;
+            this.ButtonClose.TabStop = false;
             // 
-            // changeStateButton
+            // ButtonChangeState
             // 
-            this.changeStateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.changeStateButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.changeStateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.changeStateButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.changeStateButton.Location = new System.Drawing.Point(934, 0);
-            this.changeStateButton.Margin = new System.Windows.Forms.Padding(0);
-            this.changeStateButton.Name = "changeStateButton";
-            this.changeStateButton.ParentForm_ = this;
-            this.changeStateButton.Size = new System.Drawing.Size(45, 32);
-            this.changeStateButton.TabIndex = 5;
-            this.changeStateButton.TabStop = false;
+            this.ButtonChangeState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonChangeState.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.ButtonChangeState.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.ButtonChangeState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.ButtonChangeState.Location = new System.Drawing.Point(1090, 0);
+            this.ButtonChangeState.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonChangeState.Name = "ButtonChangeState";
+            this.ButtonChangeState.ParentForm_ = this;
+            this.ButtonChangeState.Size = new System.Drawing.Size(52, 37);
+            this.ButtonChangeState.TabIndex = 5;
+            this.ButtonChangeState.TabStop = false;
             // 
-            // minimizeButton
+            // ButtonMinimize
             // 
-            this.minimizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.minimizeButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.minimizeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.minimizeButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.minimizeButton.Location = new System.Drawing.Point(889, 0);
-            this.minimizeButton.Margin = new System.Windows.Forms.Padding(0);
-            this.minimizeButton.Name = "minimizeButton";
-            this.minimizeButton.ParentForm_ = this;
-            this.minimizeButton.Size = new System.Drawing.Size(45, 32);
-            this.minimizeButton.TabIndex = 6;
-            this.minimizeButton.TabStop = false;
-            // 
-            // customHelpButton1
-            // 
-            this.customHelpButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.customHelpButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.customHelpButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.customHelpButton1.Location = new System.Drawing.Point(857, 0);
-            this.customHelpButton1.Margin = new System.Windows.Forms.Padding(0);
-            this.customHelpButton1.Name = "customHelpButton1";
-            this.customHelpButton1.ParentForm_ = this;
-            this.customHelpButton1.Size = new System.Drawing.Size(32, 32);
-            this.customHelpButton1.TabIndex = 7;
-            this.customHelpButton1.TabStop = false;
+            this.ButtonMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ButtonMinimize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.ButtonMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.ButtonMinimize.Location = new System.Drawing.Point(1037, 0);
+            this.ButtonMinimize.Margin = new System.Windows.Forms.Padding(0);
+            this.ButtonMinimize.Name = "ButtonMinimize";
+            this.ButtonMinimize.ParentForm_ = this;
+            this.ButtonMinimize.Size = new System.Drawing.Size(52, 37);
+            this.ButtonMinimize.TabIndex = 6;
+            this.ButtonMinimize.TabStop = false;
             // 
             // customTitleBar1
             // 
@@ -102,39 +88,39 @@
             this.customTitleBar1.Margin = new System.Windows.Forms.Padding(0);
             this.customTitleBar1.Name = "customTitleBar1";
             this.customTitleBar1.ParentForm_ = this;
-            this.customTitleBar1.Size = new System.Drawing.Size(1024, 32);
+            this.customTitleBar1.Size = new System.Drawing.Size(1195, 37);
             this.customTitleBar1.TabIndex = 9;
-            this.customTitleBar1.TextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.customTitleBar1.TextFont = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.customTitleBar1.TitleAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.customTitleBar1.TitleText = "SLStudio";
             // 
-            // customApplicationIcon1
+            // ApplicationIcon
             // 
-            this.customApplicationIcon1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
-            this.customApplicationIcon1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
-            this.customApplicationIcon1.Location = new System.Drawing.Point(0, 0);
-            this.customApplicationIcon1.Margin = new System.Windows.Forms.Padding(0);
-            this.customApplicationIcon1.Name = "customApplicationIcon1";
-            this.customApplicationIcon1.OffFocusItem = ((System.Drawing.Image)(resources.GetObject("customApplicationIcon1.OffFocusItem")));
-            this.customApplicationIcon1.OnFocusIcon = ((System.Drawing.Image)(resources.GetObject("customApplicationIcon1.OnFocusIcon")));
-            this.customApplicationIcon1.ParentForm_ = this;
-            this.customApplicationIcon1.Size = new System.Drawing.Size(45, 32);
-            this.customApplicationIcon1.TabIndex = 10;
+            this.ApplicationIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(242)))));
+            this.ApplicationIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(12)))), ((int)(((byte)(12)))));
+            this.ApplicationIcon.Location = new System.Drawing.Point(0, 0);
+            this.ApplicationIcon.Margin = new System.Windows.Forms.Padding(0);
+            this.ApplicationIcon.Name = "ApplicationIcon";
+            this.ApplicationIcon.OffFocusItem = ((System.Drawing.Image)(resources.GetObject("ApplicationIcon.OffFocusItem")));
+            this.ApplicationIcon.OnFocusIcon = ((System.Drawing.Image)(resources.GetObject("ApplicationIcon.OnFocusIcon")));
+            this.ApplicationIcon.ParentForm_ = this;
+            this.ApplicationIcon.Size = new System.Drawing.Size(52, 37);
+            this.ApplicationIcon.TabIndex = 10;
             // 
             // MainView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1024, 720);
-            this.Controls.Add(this.customApplicationIcon1);
-            this.Controls.Add(this.customHelpButton1);
-            this.Controls.Add(this.minimizeButton);
-            this.Controls.Add(this.changeStateButton);
-            this.Controls.Add(this.closeButton);
+            this.ClientSize = new System.Drawing.Size(1195, 831);
+            this.Controls.Add(this.ApplicationIcon);
+            this.Controls.Add(this.ButtonMinimize);
+            this.Controls.Add(this.ButtonChangeState);
+            this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.customTitleBar1);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(0, 0);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(933, 692);
             this.Name = "MainView";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -146,11 +132,10 @@
 
         #endregion
 
-        private ViewsExtensions.CustomControls.CustomCloseButton closeButton;
-        private ViewsExtensions.CustomControls.CustomMinimizeButton minimizeButton;
-        private ViewsExtensions.CustomControls.CustomChangeStateButton changeStateButton;
-        private ViewsExtensions.CustomControls.CustomHelpButton customHelpButton1;
+        private ViewsExtensions.CustomControls.CustomCloseButton ButtonClose;
+        private ViewsExtensions.CustomControls.CustomMinimizeButton ButtonMinimize;
+        private ViewsExtensions.CustomControls.CustomChangeStateButton ButtonChangeState;
         private ViewsExtensions.CustomControls.CustomTitleBar customTitleBar1;
-        private ViewsExtensions.CustomControls.CustomApplicationIcon customApplicationIcon1;
+        private ViewsExtensions.CustomControls.CustomApplicationIcon ApplicationIcon;
     }
 }
