@@ -1,6 +1,8 @@
-﻿namespace SLStudio.Presenters
+﻿using SLStudio.Extensions.Interfaces;
+
+namespace SLStudio.Presenters
 {
-    public static class Solution
+    public class Solution
     {
     }
 }

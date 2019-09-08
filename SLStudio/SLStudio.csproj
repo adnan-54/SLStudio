@@ -173,6 +173,7 @@
   <ItemGroup>
     <Compile Include="Extensions\Enums\Enums.cs" />
     <Compile Include="Extensions\Interfaces\Interfaces.cs" />
+    <Compile Include="Extensions\Interfaces\Models\ISolution.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -189,6 +190,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>frmStartScreen.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Forms\MainView.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainView.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources\Images\Icons.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -308,6 +314,13 @@
     <Compile Include="Views\StartScreenView.Designer.cs">
       <DependentUpon>StartScreenView.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Resources\Forms\MainView.pt-br.resx">
+      <DependentUpon>MainView.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Forms\MainView.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainView.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Messages\Global.pt-br.resx">
       <DependentUpon>Global.resx</DependentUpon>
     </EmbeddedResource>

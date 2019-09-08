@@ -97,6 +97,11 @@ namespace SLStudio.ViewsExtensions.Themes
             return AvaliableThemes;
         }
          
+        public static Theme GetDefaultTheme()
+        {
+            return new Theme(DefaultThemes.UserDefault);
+        }
+
         private static bool UpdateThemedControlsList()
         {
             try
