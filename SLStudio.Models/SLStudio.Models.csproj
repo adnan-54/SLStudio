@@ -44,6 +44,8 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rpk.cs" />
+    <Compile Include="Rpk\Click.cs" />
+    <Compile Include="Rpk\Mesh.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

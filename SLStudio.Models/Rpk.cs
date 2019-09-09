@@ -8,8 +8,8 @@ namespace SLStudio.Models
 {
     public class Rpk
     {
-        private string rpkName;
-        private string rpkDirectory;
+        public string rpkName;
+        public string rpkDirectory;
 
         public Rpk()
         {

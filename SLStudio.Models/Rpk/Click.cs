@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Models
 {
-    public class Mod
+    public class Click
     {
-        public string modName;
-        public string modDescription;
-
-        public List<Rpk> modRpks;
-
-        public Mod() { }
     }
 }
