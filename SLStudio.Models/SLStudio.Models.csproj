@@ -46,6 +46,7 @@
     <Compile Include="Rpk.cs" />
     <Compile Include="Rpk\Click.cs" />
     <Compile Include="Rpk\Mesh.cs" />
+    <Compile Include="Rpk\Sound.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
