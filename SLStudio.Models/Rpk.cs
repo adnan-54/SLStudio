@@ -11,6 +11,8 @@ namespace SLStudio.Models
         public string rpkName;
         public string rpkDirectory;
 
+        public ExternalLinks externalLinks;
+
         public Rpk()
         {
 
