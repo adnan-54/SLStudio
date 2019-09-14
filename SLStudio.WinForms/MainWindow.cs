@@ -1,4 +1,5 @@
-﻿using SLStudio.Models;
+﻿using SLStudio.Logging;
+using SLStudio.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,8 @@ namespace SLStudio.WinForms
 {
     public partial class MainWindow : Form
     {
+        static readonly ILog logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.ToString());
+
         private Mod mod;
         public Mod CurrentMod
         {
@@ -30,14 +33,18 @@ namespace SLStudio.WinForms
         public MainWindow()
         {
             InitializeComponent();
+
+            logger.Info("message", "title");
+
+            dataGridView1.DataSource = LogManager.GetLog();
         }
 
         private void ModToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(CreateNewModWindow createNew = new CreateNewModWindow(this))
+            /*using(CreateNewModWindow createNew = new CreateNewModWindow(this))
             {
                 var dialogResult = createNew.ShowDialog(this);
-            }
+            }*/
         }
     }
 }

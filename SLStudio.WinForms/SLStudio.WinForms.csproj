@@ -91,6 +91,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj">
+      <Project>{d099c92a-94fe-4038-afb6-0a611bffb786}</Project>
+      <Name>SLStudio.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SLStudio.Models\SLStudio.Models.csproj">
       <Project>{DBE26D14-4F33-44CC-8345-AA3C72B70317}</Project>
       <Name>SLStudio.Models</Name>
