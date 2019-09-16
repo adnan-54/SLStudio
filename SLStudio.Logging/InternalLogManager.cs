@@ -64,7 +64,7 @@ namespace SLStudio.Logging
             using (SQLiteCommand command = new SQLiteCommand())
             {
                 command.Connection = LogConnection;
-                command.CommandText = "CREATE TABLE TB_LOGS" +
+                command.CommandText = "CREATE TABLE IF NOT EXISTS TB_LOGS" +
                                       "("+
                                          "Id INTEGER PRIMARY KEY,"+
                                          "Type VARCHAR(10)," +
@@ -82,6 +82,8 @@ namespace SLStudio.Logging
 
         public void InsertIntoLog(string type, string title, string message, string origin, DateTime date)
         {
+            CreateLogTable();
+
             LogConnection = new SQLiteConnection(LogConnectionString);
             LogConnection.Open();
 
