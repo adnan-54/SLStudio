@@ -1,13 +1,6 @@
 ﻿using SLStudio.Logging;
 using SLStudio.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SLStudio.WinForms
@@ -33,10 +26,6 @@ namespace SLStudio.WinForms
         public MainWindow()
         {
             InitializeComponent();
-
-            logger.Info("message", "title");
-
-            dataGridView1.DataSource = LogManager.GetLog();
         }
 
         private void ModToolStripMenuItem_Click(object sender, EventArgs e)

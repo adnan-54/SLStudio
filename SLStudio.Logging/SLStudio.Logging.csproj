@@ -66,7 +66,6 @@
     <Compile Include="Logger.cs" />
     <Compile Include="InternalLogManager.cs" />
     <Compile Include="LogManager.cs" />
-    <Compile Include="LogTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SLStudio.Logging
 {
-    public class InternalLogManager
+    internal class InternalLogManager
     {
         private readonly string LogDirectory;
         private readonly string LogFileName;

@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Logging", "SLStudio.Logging\SLStudio.Logging.csproj", "{D099C92A-94FE-4038-AFB6-0A611BFFB786}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{017C8782-39E6-4440-82CF-D8644AF8A1EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,10 +80,12 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{95E24665-CE5F-4C16-938F-3157A2F4323A} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
+		{B509BA89-E4B1-4E8A-B035-B09884FA645D} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
 		{D099C92A-94FE-4038-AFB6-0A611BFFB786} = {7425EBC3-F4C6-458B-9496-7964C43A132D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal
