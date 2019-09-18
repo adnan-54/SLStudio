@@ -121,5 +121,23 @@ namespace SLStudio.Logging
 
             return log;
         }
+
+        public void ClearLog()
+        {
+            LogConnection = new SQLiteConnection(LogConnectionString);
+            LogConnection.Open();
+
+            using (SQLiteCommand command = new SQLiteCommand())
+            {
+                command.Connection = LogConnection;
+                command.CommandText = "DROP TABLE TB_LOGS;";
+
+                command.ExecuteNonQuery();
+            }
+
+            LogConnection.Close();
+
+            InsertIntoLog("Info", "Log cleaned", "Log cleaned successfully", "", DateTime.Now);
+        }
     }
 }
