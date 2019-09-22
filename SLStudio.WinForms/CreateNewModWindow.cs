@@ -35,7 +35,6 @@ namespace SLStudio.WinForms
                 Mod mod = new Mod();
                 mod.modName = this.TextBoxModName.Text;
                 mod.modDescription = this.TextBoxModDescription.Text;
-                parent.CurrentMod = mod;
                 this.Close();
             }
         }
