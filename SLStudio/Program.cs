@@ -1,4 +1,5 @@
 ﻿using SLStudio.Properties;
+using SLStudio.Settings;
 using SLStudio.Views;
 using System;
 using System.Globalization;
@@ -12,10 +13,10 @@ namespace SLStudio
         [STAThread]
         private static void Main()
         {
-            CultureInfo newCulture = new CultureInfo(Settings.Default.languageDefault, true);
+            /*CultureInfo newCulture = new CultureInfo(Settings.Default.languageDefault, true);
             newCulture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = newCulture;
-            Thread.CurrentThread.CurrentUICulture = newCulture;
+            Thread.CurrentThread.CurrentUICulture = newCulture;*/
 
             Logger.Initialize();
             Logger.LogInfo(Resources.Messages.Logger.startingProgram);

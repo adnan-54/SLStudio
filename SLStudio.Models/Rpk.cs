@@ -8,10 +8,10 @@ namespace SLStudio.Models
 {
     public class Rpk
     {
-        public string rpkName;
-        public string rpkDirectory;
+        public string Name { get; set; }
+        public string Directory { get; set; }
 
-        public ExternalLinks externalLinks;
+        public List<Rpk> ExternalLinks { get; set; }
 
         public Rpk()
         {

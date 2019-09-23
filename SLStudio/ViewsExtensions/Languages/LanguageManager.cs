@@ -56,8 +56,8 @@ namespace SLStudio.ViewsExtensions.Language
                 Thread.CurrentThread.CurrentCulture = newCulture;
                 Thread.CurrentThread.CurrentUICulture = newCulture;
 
-                Settings.Default.languageDefault = language;
-                Settings.Default.Save();
+                //Settings.Default.languageDefault = language;
+                //Settings.Default.Save();
 
                 UpdateControls();
             }

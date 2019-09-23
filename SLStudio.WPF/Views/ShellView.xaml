@@ -1,0 +1,46 @@
+﻿<Window x:Class="SLStudio.WPF.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SLStudio.WPF.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        Title="SLStudio" MinHeight="600" MinWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Menu-->
+        <Menu Grid.Row="0">
+            <MenuItem Header="placeholder"></MenuItem>
+        </Menu>
+
+        <!--Content-->
+        <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+            <TabControl Grid.Column="0">
+                <TabItem Header="placeholder"/>
+                <TabItem Header="placeholder"/>
+                <TabItem Header="placeholder"/>
+            </TabControl>
+            
+            <TabControl Grid.Column="1" MinWidth="256">
+                <TabItem Header="placeholder"/>
+                <TabItem Header="placeholder"/>
+                <TabItem Header="placeholder"/>
+            </TabControl>
+        </Grid>
+
+        <!--StatusBar-->
+        <StatusBar Grid.Row="2">
+            <StatusBarItem Content="placeholder"/>
+        </StatusBar>
+    </Grid>
+</Window>

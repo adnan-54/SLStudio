@@ -1,15 +1,10 @@
 ﻿using SLStudio.Extensions.Enums;
 using SLStudio.Extensions.Interfaces;
-using SLStudio.Properties;
 using SLStudio.ViewsExtensions.CustomControls;
 using SLStudio.ViewsExtensions.Language;
 using SLStudio.ViewsExtensions.Themes;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Media;
 using System.Windows.Forms;
 
 namespace SLStudio.Views
@@ -92,32 +87,32 @@ namespace SLStudio.Views
         {
             panelOpen.Controls.Clear();
 
-            List<string> toRemoveList = new List<string>();
+            //List<string> toRemoveList = new List<string>();
 
-            foreach (string path in Settings.Default.recentFilesList)
-            {
-                if (!File.Exists(path))
-                    toRemoveList.Add(path);
-            }
+            //foreach (string path in Settings.Default.recentFilesList)
+            //{
+            //    if (!File.Exists(path))
+            //        toRemoveList.Add(path);
+            //}
 
-            foreach (string toRemove in toRemoveList)
-            {
-                Settings.Default.recentFilesList.Remove(toRemove);
-            }
+            //foreach (string toRemove in toRemoveList)
+            //{
+            //    Settings.Default.recentFilesList.Remove(toRemove);
+            //}
 
-            Settings.Default.Save();
+            //Settings.Default.Save();
 
-            foreach (string path in Settings.Default.recentFilesList)
-            {
-                CustomRecentFilesList control = new CustomRecentFilesList(path, this);
-                control.Dock = DockStyle.Top;
-                panelOpen.Controls.Add(control);
-            }
+            //foreach (string path in Settings.Default.recentFilesList)
+            //{
+            //    CustomRecentFilesList control = new CustomRecentFilesList(path, this);
+            //    control.Dock = DockStyle.Top;
+            //    panelOpen.Controls.Add(control);
+            //}
         }
 
         public void OpenFromRecentList(string path)
         {
-            
+
         }
         #endregion
 
