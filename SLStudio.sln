@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Language", "Language", "{6A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.WPF", "SLStudio.WPF\SLStudio.WPF.csproj", "{5A5DE61B-9646-4795-BE38-A407BC71DC94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.WinForms", "SLStudio.WinForms\SLStudio.WinForms.csproj", "{F8E0BAA3-AE1F-4243-947D-8D0441207D51}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,14 @@ Global
 		{5A5DE61B-9646-4795-BE38-A407BC71DC94}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A5DE61B-9646-4795-BE38-A407BC71DC94}.Release|x64.ActiveCfg = Release|Any CPU
 		{5A5DE61B-9646-4795-BE38-A407BC71DC94}.Release|x64.Build.0 = Release|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Debug|x64.Build.0 = Debug|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|x64.ActiveCfg = Release|Any CPU
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -123,9 +133,10 @@ Global
 		{B6644116-CB5D-4D30-9826-074B2AEB8BB1} = {6A6A0FC8-0459-4601-A4CB-8BE7D01EE0C6}
 		{B98709B4-7273-4E63-B4C0-8AE8CD5C56F4} = {7425EBC3-F4C6-458B-9496-7964C43A132D}
 		{5A5DE61B-9646-4795-BE38-A407BC71DC94} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
+		{F8E0BAA3-AE1F-4243-947D-8D0441207D51} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal
