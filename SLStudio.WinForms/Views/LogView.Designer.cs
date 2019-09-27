@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.Log = new System.Windows.Forms.DataGridView();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.ButtonOk = new System.Windows.Forms.Button();
-            this.ButtonExport = new System.Windows.Forms.Button();
-            this.ButtonClear = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Message = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Origin = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ButtonOk = new System.Windows.Forms.Button();
+            this.ButtonExport = new System.Windows.Forms.Button();
+            this.ButtonClear = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Log)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -59,7 +59,6 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 0);
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -70,18 +69,18 @@
             // 
             this.Log.AllowUserToAddRows = false;
             this.Log.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Log.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Log.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.Log.BackgroundColor = System.Drawing.SystemColors.Control;
             this.Log.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Log.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Log.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.Log.ColumnHeadersHeight = 32;
             this.Log.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.Log.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -91,17 +90,17 @@
             this.Message,
             this.Origin,
             this.Date});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Log.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Log.DefaultCellStyle = dataGridViewCellStyle6;
             this.Log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Log.GridColor = System.Drawing.SystemColors.Control;
-            this.Log.Location = new System.Drawing.Point(6, 6);
+            this.Log.Location = new System.Drawing.Point(0, 0);
             this.Log.Margin = new System.Windows.Forms.Padding(0);
             this.Log.MultiSelect = false;
             this.Log.Name = "Log";
@@ -114,64 +113,9 @@
             this.Log.RowTemplate.ReadOnly = true;
             this.Log.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Log.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Log.Size = new System.Drawing.Size(788, 525);
+            this.Log.Size = new System.Drawing.Size(800, 531);
             this.Log.TabIndex = 0;
             this.Log.VirtualMode = true;
-            // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.Controls.Add(this.ButtonOk);
-            this.flowLayoutPanel1.Controls.Add(this.ButtonExport);
-            this.flowLayoutPanel1.Controls.Add(this.ButtonClear);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 531);
-            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(788, 30);
-            this.flowLayoutPanel1.TabIndex = 1;
-            // 
-            // ButtonOk
-            // 
-            this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.ButtonOk.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonOk.Location = new System.Drawing.Point(710, 3);
-            this.ButtonOk.Name = "ButtonOk";
-            this.ButtonOk.Size = new System.Drawing.Size(75, 23);
-            this.ButtonOk.TabIndex = 3;
-            this.ButtonOk.Text = "&Ok";
-            this.ButtonOk.UseCompatibleTextRendering = true;
-            this.ButtonOk.UseVisualStyleBackColor = true;
-            this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
-            // 
-            // ButtonExport
-            // 
-            this.ButtonExport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonExport.Location = new System.Drawing.Point(629, 3);
-            this.ButtonExport.Name = "ButtonExport";
-            this.ButtonExport.Size = new System.Drawing.Size(75, 23);
-            this.ButtonExport.TabIndex = 2;
-            this.ButtonExport.Text = "&Export";
-            this.ButtonExport.UseCompatibleTextRendering = true;
-            this.ButtonExport.UseVisualStyleBackColor = true;
-            this.ButtonExport.Click += new System.EventHandler(this.ButtonExportOnClick);
-            // 
-            // ButtonClear
-            // 
-            this.ButtonClear.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonClear.Location = new System.Drawing.Point(548, 3);
-            this.ButtonClear.Name = "ButtonClear";
-            this.ButtonClear.Size = new System.Drawing.Size(75, 23);
-            this.ButtonClear.TabIndex = 1;
-            this.ButtonClear.Text = "&Clear";
-            this.ButtonClear.UseCompatibleTextRendering = true;
-            this.ButtonClear.UseVisualStyleBackColor = true;
-            this.ButtonClear.Click += new System.EventHandler(this.ButtonClearOnClick);
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkDoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerWorkCompleted);
             // 
             // Id
             // 
@@ -226,6 +170,61 @@
             this.Date.ReadOnly = true;
             this.Date.Width = 60;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.ButtonOk);
+            this.flowLayoutPanel1.Controls.Add(this.ButtonExport);
+            this.flowLayoutPanel1.Controls.Add(this.ButtonClear);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 531);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 30);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // ButtonOk
+            // 
+            this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.ButtonOk.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonOk.Location = new System.Drawing.Point(722, 3);
+            this.ButtonOk.Name = "ButtonOk";
+            this.ButtonOk.Size = new System.Drawing.Size(75, 23);
+            this.ButtonOk.TabIndex = 3;
+            this.ButtonOk.Text = "&Ok";
+            this.ButtonOk.UseCompatibleTextRendering = true;
+            this.ButtonOk.UseVisualStyleBackColor = true;
+            this.ButtonOk.Click += new System.EventHandler(this.ButtonOkOnClick);
+            // 
+            // ButtonExport
+            // 
+            this.ButtonExport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonExport.Location = new System.Drawing.Point(641, 3);
+            this.ButtonExport.Name = "ButtonExport";
+            this.ButtonExport.Size = new System.Drawing.Size(75, 23);
+            this.ButtonExport.TabIndex = 2;
+            this.ButtonExport.Text = "&Export";
+            this.ButtonExport.UseCompatibleTextRendering = true;
+            this.ButtonExport.UseVisualStyleBackColor = true;
+            this.ButtonExport.Click += new System.EventHandler(this.ButtonExportOnClick);
+            // 
+            // ButtonClear
+            // 
+            this.ButtonClear.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonClear.Location = new System.Drawing.Point(560, 3);
+            this.ButtonClear.Name = "ButtonClear";
+            this.ButtonClear.Size = new System.Drawing.Size(75, 23);
+            this.ButtonClear.TabIndex = 1;
+            this.ButtonClear.Text = "&Clear";
+            this.ButtonClear.UseCompatibleTextRendering = true;
+            this.ButtonClear.UseVisualStyleBackColor = true;
+            this.ButtonClear.Click += new System.EventHandler(this.ButtonClearOnClick);
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorkDoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorkerWorkCompleted);
+            // 
             // LogView
             // 
             this.AcceptButton = this.ButtonOk;
@@ -236,7 +235,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "LogView";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Log";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tableLayoutPanel1.ResumeLayout(false);

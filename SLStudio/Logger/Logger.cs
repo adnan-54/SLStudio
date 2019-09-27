@@ -10,7 +10,7 @@ namespace SLStudio
     public static class Logger
     {
         private static string logPath = Path.Combine(Application.StartupPath, "logger");
-        private static string logName = "logger.log";
+        private static string logName = "loggerJson.log";
         private static string logPathName = Path.Combine(logPath, logName);
 
         enum LogType { Error, Warning, Info, Other }
