@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBE26D14-4F33-44CC-8345-AA3C72B70317}</ProjectGuid>
+    <ProjectGuid>{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SLStudio.Models</RootNamespace>
-    <AssemblyName>SLStudio.Models</AssemblyName>
+    <RootNamespace>SLStudio.WinForms.WindowsManager</RootNamespace>
+    <AssemblyName>SLStudio.WinForms.WindowsManager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,11 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Solution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Project.cs" />
-    <Compile Include="Rpk\ExternalLinks.cs" />
-    <Compile Include="Rpk\IResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinForms", "WinForms", "{76
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{8F640E27-B8B4-4350-96F9-D4D7CABD593D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.WinForms.WindowsManager", "SLStudio.WinForms.WindowsManager\SLStudio.WinForms.WindowsManager.csproj", "{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,14 @@ Global
 		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|x64.ActiveCfg = Release|Any CPU
 		{F8E0BAA3-AE1F-4243-947D-8D0441207D51}.Release|x64.Build.0 = Release|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Debug|x64.Build.0 = Debug|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Release|x64.ActiveCfg = Release|Any CPU
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -140,9 +150,10 @@ Global
 		{F8E0BAA3-AE1F-4243-947D-8D0441207D51} = {7694E525-E076-4EAD-BF13-3C4D4C71B05C}
 		{7694E525-E076-4EAD-BF13-3C4D4C71B05C} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
 		{8F640E27-B8B4-4350-96F9-D4D7CABD593D} = {017C8782-39E6-4440-82CF-D8644AF8A1EC}
+		{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725} = {7694E525-E076-4EAD-BF13-3C4D4C71B05C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
 		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal

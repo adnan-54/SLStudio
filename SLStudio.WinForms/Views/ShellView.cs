@@ -18,5 +18,17 @@ namespace SLStudio.WinForms.Views
             LogView logView = new LogView();
             logView.ShowDialog(this);
         }
+
+        private void OnAboutViewClick(object sender, EventArgs e)
+        {
+            AboutView about = new AboutView();
+            about.ShowDialog(this);
+        }
+
+        private void ModToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateNewSolutionView newSolution = new CreateNewSolutionView();
+            newSolution.ShowDialog(this);
+        }
     }
 }
