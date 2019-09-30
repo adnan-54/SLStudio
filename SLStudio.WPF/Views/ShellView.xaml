@@ -26,7 +26,18 @@
                 </Grid.ColumnDefinitions>
 
             <TabControl Grid.Column="0">
-                <TabItem Header="placeholder"/>
+                <TabItem Header="placeholder">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <DataGrid Grid.Row="0" ItemsSource="{Binding LogFdp}"/>
+                        <Button Grid.Row="1" Content="Tomar no CUUUUUUUU"/>
+
+                    </Grid>
+                </TabItem>
                 <TabItem Header="placeholder"/>
                 <TabItem Header="placeholder"/>
             </TabControl>

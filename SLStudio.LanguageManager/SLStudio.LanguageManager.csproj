@@ -7,8 +7,8 @@
     <ProjectGuid>{383CC26C-16BA-4F6D-B173-B99C29AC0717}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SLStudio.Language</RootNamespace>
-    <AssemblyName>SLStudio.Language</AssemblyName>
+    <RootNamespace>SLStudio.LanguageManager</RootNamespace>
+    <AssemblyName>SLStudio.LanguageManager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Settings {
+namespace SLStudio.SettingsManager {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

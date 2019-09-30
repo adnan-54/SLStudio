@@ -481,12 +481,6 @@
       <DependentUpon>Program.cs</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SLStudio.Settings\SLStudio.Settings.csproj">
-      <Project>{B98709B4-7273-4E63-B4C0-8AE8CD5C56F4}</Project>
-      <Name>SLStudio.Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

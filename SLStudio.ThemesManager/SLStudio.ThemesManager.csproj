@@ -7,8 +7,8 @@
     <ProjectGuid>{35B87DDA-52CE-45BE-892E-A8C474E36733}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SLStudio.Themes</RootNamespace>
-    <AssemblyName>SLStudio.Themes</AssemblyName>
+    <RootNamespace>SLStudio.ThemesManager</RootNamespace>
+    <AssemblyName>SLStudio.ThemesManager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

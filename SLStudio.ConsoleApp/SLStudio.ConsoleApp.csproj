@@ -49,11 +49,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SLStudio.Settings\SLStudio.Settings.csproj">
-      <Project>{b98709b4-7273-4e63-b4c0-8ae8cd5c56f4}</Project>
-      <Name>SLStudio.Settings</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
