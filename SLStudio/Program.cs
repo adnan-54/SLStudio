@@ -1,9 +1,5 @@
-﻿using SLStudio.Properties;
-using SLStudio.Settings;
-using SLStudio.Views;
+﻿using SLStudio.Views;
 using System;
-using System.Globalization;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace SLStudio

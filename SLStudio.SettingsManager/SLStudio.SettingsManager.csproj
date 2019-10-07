@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LanguageManager.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>LanguageManager.settings</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDefault.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -50,6 +55,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="LanguageManager.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>LanguageManager.Designer.cs</LastGenOutput>
+    </None>
     <None Include="UserDefault.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>UserDefault.Designer.cs</LastGenOutput>

@@ -1,4 +1,4 @@
-﻿namespace SLStudio.Language
+﻿namespace SLStudio.LanguageManager
 {
     public enum AvaliableLanguages
     {

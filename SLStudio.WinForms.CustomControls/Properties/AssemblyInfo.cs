@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("SLStudio.WinForms.WindowsManager")]
+[assembly: AssemblyTitle("SLStudio.WinForms.CustomControls")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SLStudio.WinForms.WindowsManager")]
+[assembly: AssemblyProduct("SLStudio.WinForms.CustomControls")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("c4aa90dc-5e01-4a8e-9db8-65987d5dc725")]
+[assembly: Guid("74bdb8dc-11f8-4549-bb1a-0497000a2174")]
 
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //

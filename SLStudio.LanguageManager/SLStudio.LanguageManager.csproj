@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AvaliableLanguages.cs" />
+    <Compile Include="IMultiLanguageObject.cs" />
     <Compile Include="LanguageManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,6 +51,10 @@
     <ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj">
       <Project>{D099C92A-94FE-4038-AFB6-0A611BFFB786}</Project>
       <Name>SLStudio.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLStudio.SettingsManager\SLStudio.SettingsManager.csproj">
+      <Project>{b98709b4-7273-4e63-b4c0-8ae8cd5c56f4}</Project>
+      <Name>SLStudio.SettingsManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

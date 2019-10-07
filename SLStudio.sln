@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.SettingsManager", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.ThemesManager", "SLStudio.ThemesManager\SLStudio.ThemesManager.csproj", "{35B87DDA-52CE-45BE-892E-A8C474E36733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.WinForms.CustomControls", "SLStudio.WinForms.CustomControls\SLStudio.WinForms.CustomControls.csproj", "{74BDB8DC-11F8-4549-BB1A-0497000A2174}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -133,6 +135,14 @@ Global
 		{35B87DDA-52CE-45BE-892E-A8C474E36733}.Release|Any CPU.Build.0 = Release|Any CPU
 		{35B87DDA-52CE-45BE-892E-A8C474E36733}.Release|x64.ActiveCfg = Release|Any CPU
 		{35B87DDA-52CE-45BE-892E-A8C474E36733}.Release|x64.Build.0 = Release|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Debug|x64.Build.0 = Debug|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Release|x64.ActiveCfg = Release|Any CPU
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -151,9 +161,10 @@ Global
 		{383CC26C-16BA-4F6D-B173-B99C29AC0717} = {93AB787D-FECA-4AD2-A3C5-4B1E3E9028C3}
 		{B98709B4-7273-4E63-B4C0-8AE8CD5C56F4} = {93AB787D-FECA-4AD2-A3C5-4B1E3E9028C3}
 		{35B87DDA-52CE-45BE-892E-A8C474E36733} = {93AB787D-FECA-4AD2-A3C5-4B1E3E9028C3}
+		{74BDB8DC-11F8-4549-BB1A-0497000A2174} = {6B22157F-C344-4DD3-A31E-24424393158C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 	EndGlobalSection
 EndGlobal
