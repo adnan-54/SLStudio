@@ -106,6 +106,10 @@
       <Project>{d099c92a-94fe-4038-afb6-0a611bffb786}</Project>
       <Name>SLStudio.Logging</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SLStudio.WinForms.WindowsManager\SLStudio.WinForms.WindowsManager.csproj">
+      <Project>{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}</Project>
+      <Name>SLStudio.WinForms.WindowsManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="appIcon.ico" />
