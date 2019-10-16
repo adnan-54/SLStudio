@@ -30,5 +30,11 @@ namespace SLStudio.WinForms.Views
             CreateNewSolutionView newSolution = new CreateNewSolutionView();
             newSolution.ShowDialog(this);
         }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            TodoView todoView = new TodoView();
+            todoView.ShowDialog(this);
+        }
     }
 }

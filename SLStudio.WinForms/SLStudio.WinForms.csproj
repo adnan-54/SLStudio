@@ -59,6 +59,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,29 +73,35 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\AboutView.cs">
+    <Compile Include="Views\MenuStrip\Studio\AboutView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\AboutView.Designer.cs">
+    <Compile Include="Views\MenuStrip\Studio\AboutView.Designer.cs">
       <DependentUpon>AboutView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CreateNewSolutionView.cs">
+    <Compile Include="Views\MenuStrip\File\CreateNewSolutionView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\CreateNewSolutionView.Designer.cs">
+    <Compile Include="Views\MenuStrip\File\CreateNewSolutionView.Designer.cs">
       <DependentUpon>CreateNewSolutionView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogView.cs">
+    <Compile Include="Views\MenuStrip\Studio\LogView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\LogView.Designer.cs">
+    <Compile Include="Views\MenuStrip\Studio\LogView.Designer.cs">
       <DependentUpon>LogView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShellView.cs">
+    <Compile Include="Views\Shell\ShellView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\ShellView.Designer.cs">
+    <Compile Include="Views\Shell\ShellView.Designer.cs">
       <DependentUpon>ShellView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenuStrip\Studio\TodoView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MenuStrip\Studio\TodoView.Designer.cs">
+      <DependentUpon>TodoView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -127,18 +134,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\AboutView.resx">
+    <EmbeddedResource Include="Views\MenuStrip\Studio\AboutView.resx">
       <DependentUpon>AboutView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CreateNewSolutionView.resx">
+    <EmbeddedResource Include="Views\MenuStrip\File\CreateNewSolutionView.resx">
       <DependentUpon>CreateNewSolutionView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\LogView.resx">
+    <EmbeddedResource Include="Views\MenuStrip\Studio\LogView.resx">
       <DependentUpon>LogView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\ShellView.resx">
+    <EmbeddedResource Include="Views\MenuStrip\Studio\TodoView.resx">
+      <DependentUpon>TodoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Shell\ShellView.resx">
       <DependentUpon>ShellView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

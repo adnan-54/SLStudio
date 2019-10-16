@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBE26D14-4F33-44CC-8345-AA3C72B70317}</ProjectGuid>
+    <ProjectGuid>{6872FFC0-D340-467F-8200-37184439F602}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SLStudio.Models</RootNamespace>
-    <AssemblyName>SLStudio.Models</AssemblyName>
+    <RootNamespace>SLStudio.Presenters</RootNamespace>
+    <AssemblyName>SLStudio.Presenters</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,12 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Studio\Modules\TodoList\TodoListModel.cs" />
-    <Compile Include="Studio\Solution.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Studio\Project.cs" />
-    <Compile Include="SLRR\Rpk\ExternalLinks.cs" />
-    <Compile Include="SLRR\Rpk\IResource.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

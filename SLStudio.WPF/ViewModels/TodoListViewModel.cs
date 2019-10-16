@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SLStudio.WinForms.CustomControls
+namespace SLStudio.WPF.ViewModels
 {
-    public class Class1
+    class TodoListViewModel : Screen
     {
     }
 }

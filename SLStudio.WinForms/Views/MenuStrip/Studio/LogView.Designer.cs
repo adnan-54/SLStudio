@@ -62,7 +62,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 561);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(867, 596);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Log
@@ -100,8 +100,8 @@
             this.Log.DefaultCellStyle = dataGridViewCellStyle3;
             this.Log.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Log.GridColor = System.Drawing.SystemColors.Control;
-            this.Log.Location = new System.Drawing.Point(0, 0);
-            this.Log.Margin = new System.Windows.Forms.Padding(0);
+            this.Log.Location = new System.Drawing.Point(6, 6);
+            this.Log.Margin = new System.Windows.Forms.Padding(6, 6, 6, 0);
             this.Log.MultiSelect = false;
             this.Log.Name = "Log";
             this.Log.ReadOnly = true;
@@ -113,7 +113,7 @@
             this.Log.RowTemplate.ReadOnly = true;
             this.Log.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.Log.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Log.Size = new System.Drawing.Size(800, 531);
+            this.Log.Size = new System.Drawing.Size(855, 560);
             this.Log.TabIndex = 0;
             this.Log.VirtualMode = true;
             // 
@@ -177,17 +177,18 @@
             this.flowLayoutPanel1.Controls.Add(this.ButtonClear);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 531);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 566);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(800, 30);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(867, 30);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // ButtonOk
             // 
             this.ButtonOk.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.ButtonOk.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonOk.Location = new System.Drawing.Point(722, 3);
+            this.ButtonOk.Location = new System.Drawing.Point(786, 3);
+            this.ButtonOk.Margin = new System.Windows.Forms.Padding(3, 3, 6, 3);
             this.ButtonOk.Name = "ButtonOk";
             this.ButtonOk.Size = new System.Drawing.Size(75, 23);
             this.ButtonOk.TabIndex = 3;
@@ -199,7 +200,7 @@
             // ButtonExport
             // 
             this.ButtonExport.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonExport.Location = new System.Drawing.Point(641, 3);
+            this.ButtonExport.Location = new System.Drawing.Point(705, 3);
             this.ButtonExport.Name = "ButtonExport";
             this.ButtonExport.Size = new System.Drawing.Size(75, 23);
             this.ButtonExport.TabIndex = 2;
@@ -211,7 +212,7 @@
             // ButtonClear
             // 
             this.ButtonClear.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonClear.Location = new System.Drawing.Point(560, 3);
+            this.ButtonClear.Location = new System.Drawing.Point(624, 3);
             this.ButtonClear.Name = "ButtonClear";
             this.ButtonClear.Size = new System.Drawing.Size(75, 23);
             this.ButtonClear.TabIndex = 1;
@@ -231,7 +232,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.ButtonOk;
-            this.ClientSize = new System.Drawing.Size(800, 561);
+            this.ClientSize = new System.Drawing.Size(867, 596);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "LogView";

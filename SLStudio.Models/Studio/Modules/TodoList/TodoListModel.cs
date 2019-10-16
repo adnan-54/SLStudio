@@ -1,44 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SLStudio.Models.Studio.Modules.TodoList
 {
-    public class TodoListModel : ITodoListModel
+    public class TodoListModel
     {
         public TodoListModel()
         {
-            Items = new List<ITodoItemModel>();
+            AddedDate = DateTime.Now;
+            Childrens = new List<TodoListModel>();
         }
 
-        public IList<ITodoItemModel> Items { get; }
-        public ITodoItemModel SelectedItem { get; set; }
+        public string Title { get; set; }
+        public string Description { get; set; }
 
-        public void AddNewItem()
-        {
-            throw new NotImplementedException();
-        }
+        public DateTime AddedDate { get; }
+        public DateTime? Deadline { get; set; }
+        public DateTime? FinishedDate { get; set; }
 
-        public void EditItem()
-        {
-            throw new NotImplementedException();
-        }
+        public bool IsCompleted { get; set; }
+        public bool IsStared { get; set; }
 
-        public void RemoveItem()
-        {
-            throw new NotImplementedException();
-        }
+        public int Progress { get; set; }
+
+        public TodoItemPriority? Priority { get; set; }
+
+        public TodoListModel Parent { get; }
+        public IList<TodoListModel> Childrens { get; }
     }
 
-    public interface ITodoListModel
+    public enum TodoItemPriority
     {
-        IList<ITodoItemModel> Items { get; }
-        ITodoItemModel SelectedItem { get; set; }
-
-        void AddNewItem();
-        void EditItem();
-        void RemoveItem();
+        Low,
+        Medium,
+        High
     }
 }
