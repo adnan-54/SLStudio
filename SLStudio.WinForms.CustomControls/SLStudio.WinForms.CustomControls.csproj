@@ -50,6 +50,9 @@
     <Compile Include="SLStudioCustomExpander.Designer.cs">
       <DependentUpon>SLStudioCustomExpander.cs</DependentUpon>
     </Compile>
+    <Compile Include="SLStudioCustomTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="SLStudioCustomExpander.resx">

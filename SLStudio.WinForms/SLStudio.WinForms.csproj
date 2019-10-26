@@ -69,26 +69,32 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WeifenLuo.WinFormsUI.Docking, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.dll</HintPath>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking.ThemeVS2015, Version=3.0.6.0, Culture=neutral, PublicKeyToken=5cded1a1a0a7b481, processorArchitecture=MSIL">
+      <HintPath>..\packages\DockPanelSuite.ThemeVS2015.3.0.6\lib\net40\WeifenLuo.WinFormsUI.Docking.ThemeVS2015.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\MenuStrip\Studio\AboutView.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\AboutView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MenuStrip\Studio\AboutView.Designer.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\AboutView.Designer.cs">
       <DependentUpon>AboutView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuStrip\File\CreateNewSolutionView.cs">
+    <Compile Include="Views\Shell\MenuStrip\File\CreateNewSolutionView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MenuStrip\File\CreateNewSolutionView.Designer.cs">
+    <Compile Include="Views\Shell\MenuStrip\File\CreateNewSolutionView.Designer.cs">
       <DependentUpon>CreateNewSolutionView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuStrip\Studio\LogView.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\LogView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MenuStrip\Studio\LogView.Designer.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\LogView.Designer.cs">
       <DependentUpon>LogView.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Shell\ShellView.cs">
@@ -97,21 +103,26 @@
     <Compile Include="Views\Shell\ShellView.Designer.cs">
       <DependentUpon>ShellView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenuStrip\Studio\TodoView.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\TodoView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\MenuStrip\Studio\TodoView.Designer.cs">
+    <Compile Include="Views\Shell\MenuStrip\Studio\TodoView.Designer.cs">
       <DependentUpon>TodoView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="app.manifest" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj">
       <Project>{d099c92a-94fe-4038-afb6-0a611bffb786}</Project>
       <Name>SLStudio.Logging</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLStudio.WinForms.CustomControls\SLStudio.WinForms.CustomControls.csproj">
+      <Project>{74bdb8dc-11f8-4549-bb1a-0497000a2174}</Project>
+      <Name>SLStudio.WinForms.CustomControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\SLStudio.WinForms.WindowsManager\SLStudio.WinForms.WindowsManager.csproj">
       <Project>{C4AA90DC-5E01-4A8E-9DB8-65987D5DC725}</Project>
@@ -134,16 +145,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\MenuStrip\Studio\AboutView.resx">
+    <EmbeddedResource Include="Views\Shell\MenuStrip\Studio\AboutView.resx">
       <DependentUpon>AboutView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MenuStrip\File\CreateNewSolutionView.resx">
+    <EmbeddedResource Include="Views\Shell\MenuStrip\File\CreateNewSolutionView.resx">
       <DependentUpon>CreateNewSolutionView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MenuStrip\Studio\LogView.resx">
+    <EmbeddedResource Include="Views\Shell\MenuStrip\Studio\LogView.resx">
       <DependentUpon>LogView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\MenuStrip\Studio\TodoView.resx">
+    <EmbeddedResource Include="Views\Shell\MenuStrip\Studio\TodoView.resx">
       <DependentUpon>TodoView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Shell\ShellView.resx">
