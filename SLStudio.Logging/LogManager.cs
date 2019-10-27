@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemini.Modules.Output;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -10,15 +11,28 @@ namespace SLStudio.Logging
 {
     public static class LogManager
     {
+        private static readonly List<Logger> loggers = new List<Logger>();
+        private static readonly InternalLogManager internalManager = InternalLogManager.GetInstance();
         public static bool IsInitialized { get; private set; } = false;
 
-        private static List<Logger> loggers = new List<Logger>();
+        public static void Initialize(IOutput output)
+        {
+            if (IsInitialized)
+                return;
+
+            internalManager.Output = output;
+
+            if (!internalManager.LogDirectoryExists())
+                internalManager.CreateLogDirectory();
+
+            if (!internalManager.LogFileExists())
+                internalManager.CreateLogFile();
+
+            IsInitialized = true;
+        }
 
         public static ILog GetLogger(string name)
         {
-            if (!IsInitialized)
-                Initialize();
-
             foreach (Logger log in loggers)
             {
                 if (log.Name == name)
@@ -31,32 +45,13 @@ namespace SLStudio.Logging
             return newLogger;
         }
 
-        public static void Initialize()
-        {
-            if (IsInitialized)
-                return;
-
-            InternalLogManager internalManager = InternalLogManager.GetInstance();
-
-            if (!internalManager.LogDirectoryExists())
-                internalManager.CreateLogDirectory();
-
-            if (!internalManager.LogFileExists())
-                internalManager.CreateLogFile();
-
-            IsInitialized = true;
-        }
-
         public static DataTable GetLog()
         {
-            InternalLogManager internalManager = InternalLogManager.GetInstance();
-
             return internalManager.GetLog();
         }
 
         public static async Task ExportLogToHtml()
         {
-            InternalLogManager internalManager = InternalLogManager.GetInstance();
             DataTable log = internalManager.GetLog();
 
             StringBuilder sb = new StringBuilder();
@@ -125,8 +120,6 @@ namespace SLStudio.Logging
 
         public static void ClearLog()
         {
-            InternalLogManager internalManager = InternalLogManager.GetInstance();
-
             internalManager.ClearLog();
         }
     }

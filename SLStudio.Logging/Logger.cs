@@ -4,7 +4,7 @@ namespace SLStudio.Logging
 {
     internal class Logger : ILog
     {
-        InternalLogManager internalLog = InternalLogManager.GetInstance();
+        readonly InternalLogManager internalLog = InternalLogManager.GetInstance();
 
         public string Name { get; private set; }
 

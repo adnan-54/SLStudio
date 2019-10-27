@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemini.Modules.Output;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
@@ -12,12 +13,12 @@ namespace SLStudio.Logging
 {
     internal class InternalLogManager
     {
+        static InternalLogManager Instance { get; set; } = null;
+        
         private readonly string LogDirectory;
         private readonly string LogFileName;
         private readonly string LogConnectionString;
         private SQLiteConnection LogConnection;
-
-        static InternalLogManager Instance { get; set; } = null;
 
         private InternalLogManager()
         {
@@ -34,6 +35,8 @@ namespace SLStudio.Logging
 
             return Instance;
         }
+
+        public IOutput Output { get; set; }
 
         public bool LogDirectoryExists()
         {
@@ -103,6 +106,8 @@ namespace SLStudio.Logging
             }
 
             LogConnection.Close();
+
+            Output.AppendLine($"{type} ({origin} | {date}): {title} - {message}");
         }
 
         public DataTable GetLog()
