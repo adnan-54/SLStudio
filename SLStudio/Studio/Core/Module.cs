@@ -1,6 +1,9 @@
-﻿using Gemini.Framework;
+﻿using Caliburn.Micro;
+using Gemini.Framework;
+using Gemini.Framework.Services;
 using SLStudio.Studio.Modules.StartPage.ViewModels;
 using System.ComponentModel.Composition;
+using System.Reflection;
 using System.Windows;
 
 namespace SLStudio.Studio.Core
@@ -8,9 +11,19 @@ namespace SLStudio.Studio.Core
     [Export(typeof(IModule))]
     public class Module : ModuleBase
     {
+        private readonly IResourceManager resourceManager;
+
+        [ImportingConstructor]
+        public Module(IResourceManager resourceManager)
+        {
+            this.resourceManager = resourceManager;
+        }
+
         public override void Initialize()
         {
             MainWindow.WindowState = WindowState.Maximized;
+            MainWindow.Icon = resourceManager.GetBitmap("appIcon.ico", Assembly.GetExecutingAssembly().GetAssemblyName());
+            MainWindow.Title = "";
 
             Shell.OpenDocument(new StartPageViewModel());
 

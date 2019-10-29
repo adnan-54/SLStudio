@@ -19,7 +19,6 @@
 
 	<DockPanel>
 		<StackPanel DockPanel.Dock="Top" Orientation="Vertical">
-			<ContentControl cal:View.Model="{Binding MainMenu}" />
 			<ContentControl cal:View.Model="{Binding ToolBars}" />
 		</StackPanel>
 
