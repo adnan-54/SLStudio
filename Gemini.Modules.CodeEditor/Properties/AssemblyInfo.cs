@@ -38,6 +38,6 @@ using System.Windows;
                                       // app, or any theme specific resource dictionaries)
 )]
 
-[assembly: AssemblyVersion("19.10.28.29")]
-[assembly: AssemblyFileVersion("19.10.28.29")]
-[assembly: AssemblyInformationalVersion("19.10.28.29")]
+[assembly: AssemblyVersion("19.10.30.31")]
+[assembly: AssemblyFileVersion("19.10.30.31")]
+[assembly: AssemblyInformationalVersion("19.10.30.31")]
