@@ -121,15 +121,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Studio\Core\Module.cs" />
-    <Compile Include="Studio\Modules\StartPage\Resources\StartPageView.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StartPageView.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Studio\Modules\StartPage\ViewModels\StartPageViewModel.cs" />
-    <Compile Include="Studio\Modules\StartPage\Views\StartPageView.xaml.cs">
+    <Compile Include="Studio\Module.cs" />
+    <Compile Include="Studio\Modules\Pages\StartPage\ViewModels\StartPageViewModel.cs" />
+    <Compile Include="Studio\Modules\Pages\StartPage\Views\StartPageView.xaml.cs">
       <DependentUpon>StartPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Studio\StudioConstants.cs" />
+    <Compile Include="Studio\StudioSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>StudioSettings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +142,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Studio\StudioSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>StudioSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Gemini.Modules.CodeEditor\Gemini.Modules.CodeEditor.csproj">
@@ -166,24 +171,25 @@
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.6.4.3.0\analyzers\dotnet\cs\Gu.Roslyn.CodeFixExtensions.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Studio\Modules\StartPage\Resources\StartPageView.pt-br.resx" />
-    <EmbeddedResource Include="Studio\Modules\StartPage\Resources\StartPageView.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>StartPageView.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Studio\Modules\StartPage\Views\StartPageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Studio\Core\Definitions\" />
-    <Folder Include="Studio\Core\Handlers\" />
+    <Folder Include="Studio\Behaviors\" />
+    <Folder Include="Studio\Controls\" />
+    <Folder Include="Studio\Converters\" />
+    <Folder Include="Studio\Editors\" />
+    <Folder Include="Studio\Menus\" />
+    <Folder Include="Studio\Modules\Pages\StartPage\Resources\" />
+    <Folder Include="Studio\Modules\Tools\" />
+    <Folder Include="Studio\Modules\Windows\CreateNewSolution\Resources\" />
+    <Folder Include="Studio\Modules\Windows\CreateNewSolution\ViewModels\" />
+    <Folder Include="Studio\Modules\Windows\CreateNewSolution\Views\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="appIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Studio\Modules\Pages\StartPage\Views\StartPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

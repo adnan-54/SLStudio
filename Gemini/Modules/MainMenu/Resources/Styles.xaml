@@ -18,7 +18,7 @@
         <Setter Property="b:MenuBehavior.UpdateCommandUiItems" Value="True" />
     </Style>
 
-	<HierarchicalDataTemplate x:Key="menuTemplate" ItemsSource="{Binding Children}">
-		<ContentPresenter Content="{Binding Path=Text}" RecognizesAccessKey="True" />
-	</HierarchicalDataTemplate>
+    <HierarchicalDataTemplate x:Key="menuTemplate" ItemsSource="{Binding Children}">
+        <ContentPresenter Content="{Binding Path=Text}" RecognizesAccessKey="True" />
+    </HierarchicalDataTemplate>
 </ResourceDictionary>

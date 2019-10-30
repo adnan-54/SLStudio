@@ -1,12 +1,12 @@
 ﻿using Caliburn.Micro;
 using Gemini.Framework;
 using Gemini.Framework.Services;
-using SLStudio.Studio.Modules.StartPage.ViewModels;
+using SLStudio.Studio.Modules.Pages.StartPage.ViewModels;
 using System.ComponentModel.Composition;
 using System.Reflection;
 using System.Windows;
 
-namespace SLStudio.Studio.Core
+namespace SLStudio.Studio
 {
     [Export(typeof(IModule))]
     public class Module : ModuleBase

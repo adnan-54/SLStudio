@@ -13,10 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SLStudio.Studio.Modules.StartPage.Views
+namespace SLStudio.Studio.Modules.Pages.StartPage.Views
 {
     /// <summary>
-    /// Interação lógica para StartPageView.xam
+    /// Interaction logic for StartPageView.xaml
     /// </summary>
     public partial class StartPageView : UserControl
     {
