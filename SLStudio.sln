@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Core", "SLStudio.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Solution", "SLStudio.Solution\SLStudio.Solution.csproj", "{BA919FA8-F41F-49E2-9F3E-74EF6A34A9E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Logging", "SLStudio.Logging\SLStudio.Logging.csproj", "{24CEC96A-1EB5-4FA1-90E1-7CCD0067F321}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{BA919FA8-F41F-49E2-9F3E-74EF6A34A9E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA919FA8-F41F-49E2-9F3E-74EF6A34A9E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA919FA8-F41F-49E2-9F3E-74EF6A34A9E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24CEC96A-1EB5-4FA1-90E1-7CCD0067F321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24CEC96A-1EB5-4FA1-90E1-7CCD0067F321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24CEC96A-1EB5-4FA1-90E1-7CCD0067F321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24CEC96A-1EB5-4FA1-90E1-7CCD0067F321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,7 +81,7 @@ Global
 		{BA919FA8-F41F-49E2-9F3E-74EF6A34A9E2} = {CC50A3AE-C364-46A5-A908-D1050C7CCF6F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 	EndGlobalSection
 EndGlobal
