@@ -7,8 +7,8 @@
     <AssemblyOriginatorKeyFile>sn.snk</AssemblyOriginatorKeyFile>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>3.6.00</Version>
-    <AssemblyVersion>19.10.11</AssemblyVersion>
-    <FileVersion>19.10.11</FileVersion>
+    <AssemblyVersion>19.10.12</AssemblyVersion>
+    <FileVersion>19.10.12</FileVersion>
     <Company>Open Source</Company>
     <Product>Dirkster.AvalonDock</Product>
     <Copyright>2017-2019</Copyright>

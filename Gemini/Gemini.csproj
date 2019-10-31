@@ -281,13 +281,13 @@
     <Compile Include="Modules\Toolbox\Commands\ViewToolboxCommandDefinition.cs" />
     <Compile Include="Modules\Toolbox\Commands\ViewToolboxCommandHandler.cs" />
     <Compile Include="Modules\Toolbox\Design\DesignTimeToolboxViewModel.cs" />
+    <Compile Include="Modules\Toolbox\IToolbox.cs" />
     <Compile Include="Modules\Toolbox\MenuDefinitions.cs" />
     <Compile Include="Modules\Toolbox\Models\ToolboxItem.cs" />
-    <Compile Include="Modules\Toolbox\Services\ToolboxService.cs" />
-    <Compile Include="Modules\Toolbox\ToolboxItemAttribute.cs" />
-    <Compile Include="Modules\Toolbox\IToolbox.cs" />
     <Compile Include="Modules\Toolbox\Services\IToolboxService.cs" />
+    <Compile Include="Modules\Toolbox\Services\ToolboxService.cs" />
     <Compile Include="Modules\Toolbox\ToolboxDragDrop.cs" />
+    <Compile Include="Modules\Toolbox\ToolboxItemAttribute.cs" />
     <Compile Include="Modules\Toolbox\ViewModels\ToolboxItemViewModel.cs" />
     <Compile Include="Modules\Toolbox\ViewModels\ToolboxViewModel.cs" />
     <Compile Include="Modules\Toolbox\Views\ToolboxView.xaml.cs">
@@ -368,8 +368,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Modules\Toolbox\Views\ToolboxView.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Modules\UndoRedo\Views\HistoryView.xaml">
       <SubType>Designer</SubType>
