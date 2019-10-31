@@ -7,8 +7,8 @@
     <SignAssembly>false</SignAssembly>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>3.6.00</Version>
-    <AssemblyVersion>19.10.2</AssemblyVersion>
-    <FileVersion>19.10.2</FileVersion>
+    <AssemblyVersion>19.10.10</AssemblyVersion>
+    <FileVersion>19.10.10</FileVersion>
     <Company>Open Source</Company>
     <Product>Dirkster.AvalonDock</Product>
     <Copyright>2017-2019</Copyright>
