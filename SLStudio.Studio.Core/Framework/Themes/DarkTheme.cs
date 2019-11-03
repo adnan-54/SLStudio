@@ -9,7 +9,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
     {
         public virtual string Name
         {
-            get { return "Dark"; }
+            get { return Properties.Resources.ThemeDarkName; }
         }
 
         public virtual IEnumerable<Uri> ApplicationResources
@@ -17,7 +17,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
             get
             {
                 yield return new Uri("pack://application:,,,/Xceed.Wpf.AvalonDock.Themes.VS2013;component/DarkTheme.xaml");
-                yield return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Themes/VS2013/DarkTheme.xaml");
+                yield return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Themes/VS2013/DarkTheme.xaml");
             }
         }
 

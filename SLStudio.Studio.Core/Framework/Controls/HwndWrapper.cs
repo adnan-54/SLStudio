@@ -1,5 +1,4 @@
-﻿using SLStudio.Studio.Core.Framework.Win32;
-using System;
+﻿using System;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -11,72 +10,39 @@ namespace SLStudio.Studio.Core.Framework.Controls
 {
     public abstract class HwndWrapper : HwndHost
     {
-        #region Fields
         private const string WindowClass = "GraphicsDeviceControlHostWindowClass";
-
         private IntPtr _hWnd;
-
         private IntPtr _hWndPrev;
-
         private bool _applicationHasFocus;
-
         private bool _mouseInWindow;
-
         private Point _previousPosition;
-
         private readonly HwndMouseState _mouseState = new HwndMouseState();
-
         private bool _isMouseCaptured;
-        #endregion
 
-        #region Events
         public event EventHandler<HwndMouseEventArgs> HwndLButtonDown;
-
         public event EventHandler<HwndMouseEventArgs> HwndLButtonUp;
-
         public event EventHandler<HwndMouseEventArgs> HwndLButtonDblClick;
-
         public event EventHandler<HwndMouseEventArgs> HwndRButtonDown;
-
         public event EventHandler<HwndMouseEventArgs> HwndRButtonUp;
-
         public event EventHandler<HwndMouseEventArgs> HwndRButtonDblClick;
-
         public event EventHandler<HwndMouseEventArgs> HwndMButtonDown;
-
         public event EventHandler<HwndMouseEventArgs> HwndMButtonUp;
-
         public event EventHandler<HwndMouseEventArgs> HwndMButtonDblClick;
-
         public event EventHandler<HwndMouseEventArgs> HwndX1ButtonDown;
-
         public event EventHandler<HwndMouseEventArgs> HwndX1ButtonUp;
-
         public event EventHandler<HwndMouseEventArgs> HwndX1ButtonDblClick;
-
         public event EventHandler<HwndMouseEventArgs> HwndX2ButtonDown;
-
         public event EventHandler<HwndMouseEventArgs> HwndX2ButtonUp;
-
         public event EventHandler<HwndMouseEventArgs> HwndX2ButtonDblClick;
-
         public event EventHandler<HwndMouseEventArgs> HwndMouseMove;
-
         public event EventHandler<HwndMouseEventArgs> HwndMouseEnter;
-
         public event EventHandler<HwndMouseEventArgs> HwndMouseLeave;
-
         public event EventHandler<HwndMouseEventArgs> HwndMouseWheel;
-        #endregion
-
-        #region Properties
         public new bool IsMouseCaptured
         {
             get { return _isMouseCaptured; }
         }
-        #endregion
 
-        #region Construction and Disposal
         protected HwndWrapper()
         {
             Application.Current.Activated += OnApplicationActivated;
@@ -99,9 +65,6 @@ namespace SLStudio.Studio.Core.Framework.Controls
 
             base.Dispose(disposing);
         }
-        #endregion
-
-        #region Public Methods
         public new void CaptureMouse()
         {
             if (_isMouseCaptured)
@@ -119,13 +82,11 @@ namespace SLStudio.Studio.Core.Framework.Controls
             NativeMethods.ReleaseCapture();
             _isMouseCaptured = false;
         }
-        #endregion
 
-        #region Graphics Device Control Implementation
         private void OnCompositionTargetRendering(object sender, EventArgs e)
         {
-            var width = (int)ActualWidth;
-            var height = (int)ActualHeight;
+            var width = (int) ActualWidth;
+            var height = (int) ActualHeight;
 
             if (width < 1 || height < 1)
                 return;
@@ -161,7 +122,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
             bool fireR = _mouseState.RightButton == MouseButtonState.Pressed;
             bool fireX1 = _mouseState.X1Button == MouseButtonState.Pressed;
             bool fireX2 = _mouseState.X2Button == MouseButtonState.Pressed;
-
+            
             _mouseState.LeftButton = MouseButtonState.Released;
             _mouseState.MiddleButton = MouseButtonState.Released;
             _mouseState.RightButton = MouseButtonState.Released;
@@ -182,9 +143,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
 
             _mouseInWindow = false;
         }
-        #endregion
 
-        #region HWND Management
         protected override HandleRef BuildWindowCore(HandleRef hwndParent)
         {
             _hWnd = CreateHostWindow(hwndParent.Handle);
@@ -203,13 +162,13 @@ namespace SLStudio.Studio.Core.Framework.Controls
 
             return NativeMethods.CreateWindowEx(0, WindowClass, "",
                NativeMethods.WS_CHILD | NativeMethods.WS_VISIBLE,
-               0, 0, (int)Width, (int)Height, hWndParent, IntPtr.Zero, IntPtr.Zero, 0);
+               0, 0, (int) Width, (int) Height, hWndParent, IntPtr.Zero, IntPtr.Zero, 0);
         }
 
         private void RegisterWindowClass()
         {
             var wndClass = new NativeMethods.WNDCLASSEX();
-            wndClass.cbSize = (uint)Marshal.SizeOf(wndClass);
+            wndClass.cbSize = (uint) Marshal.SizeOf(wndClass);
             wndClass.hInstance = NativeMethods.GetModuleHandle(null);
             wndClass.lpfnWndProc = NativeMethods.DefaultWindowProc;
             wndClass.lpszClassName = WindowClass;
@@ -217,9 +176,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
 
             NativeMethods.RegisterClassEx(ref wndClass);
         }
-        #endregion
 
-        #region WndProc Implementation
         protected override IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
@@ -265,33 +222,33 @@ namespace SLStudio.Studio.Core.Framework.Controls
                     RaiseHwndMButtonDblClick(new HwndMouseEventArgs(_mouseState, MouseButton.Middle));
                     break;
                 case NativeMethods.WM_XBUTTONDOWN:
-                    if (((int)wParam & NativeMethods.MK_XBUTTON1) != 0)
+                    if (((int) wParam & NativeMethods.MK_XBUTTON1) != 0)
                     {
                         _mouseState.X1Button = MouseButtonState.Pressed;
                         RaiseHwndX1ButtonDown(new HwndMouseEventArgs(_mouseState));
                     }
-                    else if (((int)wParam & NativeMethods.MK_XBUTTON2) != 0)
+                    else if (((int) wParam & NativeMethods.MK_XBUTTON2) != 0)
                     {
                         _mouseState.X2Button = MouseButtonState.Pressed;
                         RaiseHwndX2ButtonDown(new HwndMouseEventArgs(_mouseState));
                     }
                     break;
                 case NativeMethods.WM_XBUTTONUP:
-                    if (((int)wParam & NativeMethods.MK_XBUTTON1) != 0)
+                    if (((int) wParam & NativeMethods.MK_XBUTTON1) != 0)
                     {
                         _mouseState.X1Button = MouseButtonState.Released;
                         RaiseHwndX1ButtonUp(new HwndMouseEventArgs(_mouseState));
                     }
-                    else if (((int)wParam & NativeMethods.MK_XBUTTON2) != 0)
+                    else if (((int) wParam & NativeMethods.MK_XBUTTON2) != 0)
                     {
                         _mouseState.X2Button = MouseButtonState.Released;
                         RaiseHwndX2ButtonUp(new HwndMouseEventArgs(_mouseState));
                     }
                     break;
                 case NativeMethods.WM_XBUTTONDBLCLK:
-                    if (((int)wParam & NativeMethods.MK_XBUTTON1) != 0)
+                    if (((int) wParam & NativeMethods.MK_XBUTTON1) != 0)
                         RaiseHwndX1ButtonDblClick(new HwndMouseEventArgs(_mouseState, MouseButton.XButton1));
-                    else if (((int)wParam & NativeMethods.MK_XBUTTON2) != 0)
+                    else if (((int) wParam & NativeMethods.MK_XBUTTON2) != 0)
                         RaiseHwndX2ButtonDblClick(new HwndMouseEventArgs(_mouseState, MouseButton.XButton2));
                     break;
                 case NativeMethods.WM_MOUSEMOVE:
@@ -299,8 +256,8 @@ namespace SLStudio.Studio.Core.Framework.Controls
                         break;
 
                     _mouseState.ScreenPosition = PointToScreen(new Point(
-                        NativeMethods.GetXLParam((int)lParam),
-                        NativeMethods.GetYLParam((int)lParam)));
+                        NativeMethods.GetXLParam((int) lParam),
+                        NativeMethods.GetYLParam((int) lParam)));
 
                     if (!_mouseInWindow)
                     {
@@ -313,7 +270,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
 
                         var tme = new NativeMethods.TRACKMOUSEEVENT
                         {
-                            cbSize = Marshal.SizeOf(typeof(NativeMethods.TRACKMOUSEEVENT)),
+                            cbSize = Marshal.SizeOf(typeof (NativeMethods.TRACKMOUSEEVENT)),
                             dwFlags = NativeMethods.TME_LEAVE,
                             hWnd = hwnd
                         };
@@ -437,6 +394,5 @@ namespace SLStudio.Studio.Core.Framework.Controls
         {
             HwndMouseWheel?.Invoke(this, args);
         }
-        #endregion
     }
 }

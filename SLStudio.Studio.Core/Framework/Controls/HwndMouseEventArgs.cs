@@ -28,7 +28,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
         {
             return relativeTo.PointFromScreen(ScreenPosition);
         }
-        
+
         public HwndMouseEventArgs(HwndMouseState state)
         {
             LeftButton = state.LeftButton;
@@ -46,8 +46,7 @@ namespace SLStudio.Studio.Core.Framework.Controls
             HorizontalWheelDelta = mouseHWheelDelta;
         }
         
-        public HwndMouseEventArgs(HwndMouseState state, MouseButton doubleClickButton)
-            : this(state)
+        public HwndMouseEventArgs(HwndMouseState state, MouseButton doubleClickButton) : this(state)
         {
             DoubleClickButton = doubleClickButton;
         }

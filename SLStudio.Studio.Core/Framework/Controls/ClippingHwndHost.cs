@@ -1,5 +1,4 @@
-﻿using SLStudio.Studio.Core.Framework.Win32;
-using System.Collections;
+﻿using System.Collections;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Interop;

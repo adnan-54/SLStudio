@@ -6,15 +6,14 @@ using System.Linq;
 using System.Windows;
 
 namespace SLStudio.Studio.Core.Framework.Themes
-
 {
     [Export(typeof(IThemeManager))]
     public class ThemeManager : IThemeManager
     {
         public event EventHandler CurrentThemeChanged;
 
-        private readonly SettingsPropertyChangedEventManager<Settings.Studio> _settingsEventManager =
-            new SettingsPropertyChangedEventManager<Settings.Studio>(Settings.Studio.Default);
+        private readonly SettingsPropertyChangedEventManager<Properties.Settings> _settingsEventManager =
+            new SettingsPropertyChangedEventManager<Properties.Settings>(Properties.Settings.Default);
 
         private ResourceDictionary _applicationResourceDictionary;
 

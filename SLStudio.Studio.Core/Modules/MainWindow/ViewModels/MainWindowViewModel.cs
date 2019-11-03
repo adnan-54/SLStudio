@@ -1,122 +1,97 @@
-﻿using Caliburn.Micro;
-using SLStudio.Studio.Core.Enums;
-using System.ComponentModel.Composition;
+﻿using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Media;
+using Caliburn.Micro;
+using Gemini.Framework.Commands;
+using Gemini.Framework.Services;
+using Gemini.Properties;
 
-namespace SLStudio.Studio.Core.Modules.MainWindow.ViewModels
+namespace Gemini.Modules.MainWindow.ViewModels
 {
     [Export(typeof(IMainWindow))]
-    class MainWindowViewModel : Conductor<IShell>, IMainWindow, IPartImportsSatisfiedNotification
+    public class MainWindowViewModel : Conductor<IShell>, IMainWindow, IPartImportsSatisfiedNotification
     {
-        public MainWindowViewModel()
-        {
-            UpdateStatusColor();
-        }
+#pragma warning disable 649
+        [Import]
+        private IShell _shell;
 
         [Import]
-        private IShell shell;
-        public IShell Shell
-        {
-            get { return shell; }
-            set
-            {
-                shell = value;
-                NotifyOfPropertyChange(() => Shell);
-            }
-        }
+        private IResourceManager _resourceManager;
 
-        private Brush statusColor;
-        public Brush StatusColor
-        {
-            get { return statusColor; }
-            set
-            {
-                statusColor = value;
-                NotifyOfPropertyChange(() => StatusColor);
+        [Import]
+        private ICommandKeyGestureService _commandKeyGestureService;
+#pragma warning restore 649
 
-            }
-        }
-
-        private WindowState windowState = WindowState.Maximized;
+        private WindowState _windowState = WindowState.Normal;
         public WindowState WindowState
         {
-            get { return windowState; }
+            get { return _windowState; }
             set
             {
-                windowState = value;
+                _windowState = value;
                 NotifyOfPropertyChange(() => WindowState);
             }
         }
 
-        private string title = "SLStudio";
-        public string Title
+        private double _width = 1000.0;
+        public double Width
         {
-            get { return title; }
+            get { return _width; }
             set
             {
-                title = value;
+                _width = value;
+                NotifyOfPropertyChange(() => Width);
+            }
+        }
+
+        private double _height = 800.0;
+        public double Height
+        {
+            get { return _height; }
+            set
+            {
+                _height = value;
+                NotifyOfPropertyChange(() => Height);
+            }
+        }
+
+        private string _title = Resources.MainWindowDefaultTitle;
+        public string Title
+        {
+            get { return _title; }
+            set
+            {
+                _title = value;
                 NotifyOfPropertyChange(() => Title);
             }
         }
 
-        private MainWindowStatus status = MainWindowStatus.Idle;
-        public MainWindowStatus Status
+        private ImageSource _icon;
+        public ImageSource Icon
         {
-            get { return status; }
+            get { return _icon; }
             set
             {
-                status = value;
-                NotifyOfPropertyChange(() => Status);
-                UpdateStatusColor();
+                _icon = value;
+                NotifyOfPropertyChange(() => Icon);
             }
         }
 
-        private void UpdateStatusColor()
+        public IShell Shell
         {
-            Color color = new Color();
-            switch(status)
-            {
-                case (MainWindowStatus.Busy):
-                {
-                    color.R = 104;
-                    color.G = 33;
-                    color.B = 122;
-                    color.A = 255;
-
-                    StatusColor = new SolidColorBrush(color);
-                    break;
-                }
-                case (MainWindowStatus.Running):
-                {
-                    color.R = 202;
-                    color.G = 81;
-                    color.B = 0;
-                    color.A = 255;
-
-                    StatusColor = new SolidColorBrush(color);
-                    break;
-                }
-                default:
-                {
-                    color.R = 0;
-                    color.G = 122;
-                    color.B = 204;
-                    color.A = 255;
-
-                    StatusColor = new SolidColorBrush(color);
-                    break;
-                }
-            }
+            get { return _shell; }
         }
 
         void IPartImportsSatisfiedNotification.OnImportsSatisfied()
         {
-            ActivateItem(shell);
+            if (_icon == null)
+                _icon = _resourceManager.GetBitmap("Resources/Icons/Gemini-32.png");
+            ActivateItem(_shell);
         }
 
         protected override void OnViewLoaded(object view)
         {
+            _commandKeyGestureService.BindKeyGestures((UIElement) view);
             base.OnViewLoaded(view);
         }
     }

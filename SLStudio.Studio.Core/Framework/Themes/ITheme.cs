@@ -8,7 +8,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
         string Name { get; }
         
         IEnumerable<Uri> ApplicationResources { get; }
-        
+
         IEnumerable<Uri> MainWindowResources { get; }
     }
 }

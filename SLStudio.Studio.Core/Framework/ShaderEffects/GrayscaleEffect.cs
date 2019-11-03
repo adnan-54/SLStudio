@@ -9,7 +9,7 @@ namespace SLStudio.Studio.Core.Framework.ShaderEffects
 
         public Brush Input
         {
-            get { return (Brush)GetValue(InputProperty); }
+            get { return (Brush) GetValue(InputProperty); }
             set { SetValue(InputProperty, value); }
         }
 

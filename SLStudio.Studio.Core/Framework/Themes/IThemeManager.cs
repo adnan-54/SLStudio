@@ -8,6 +8,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
         event EventHandler CurrentThemeChanged;
 
         List<ITheme> Themes { get; }
+
         ITheme CurrentTheme { get; }
 
         bool SetCurrentTheme(string name);

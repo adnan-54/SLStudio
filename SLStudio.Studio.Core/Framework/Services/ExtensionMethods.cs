@@ -6,11 +6,11 @@ using System.Reflection;
 namespace SLStudio.Studio.Core.Framework.Services
 {
     public static class ExtensionMethods
-    {
-        public static string GetExecutingAssemblyName()
-        {
-            return Assembly.GetExecutingAssembly().GetAssemblyName();
-        }
+	{
+		public static string GetExecutingAssemblyName()
+		{
+			return Assembly.GetExecutingAssembly().GetAssemblyName();
+		}
 
         public static string GetPropertyName<TProperty>(Expression<Func<TProperty>> property)
         {
@@ -21,5 +21,5 @@ namespace SLStudio.Studio.Core.Framework.Services
         {
             return property.GetMemberInfo().Name;
         }
-    }
+	}
 }

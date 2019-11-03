@@ -1,28 +1,46 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using Gemini.Framework;
+using Gemini.Modules.Shell.ViewModels;
 
-namespace SLStudio.Studio.Core.Modules.Shell.Views
+namespace Gemini.Modules.Shell.Views
 {
-    /// <summary>
-    /// Interaction logic for ShellView.xaml
-    /// </summary>
-    public partial class ShellView : UserControl
-    {
-        public ShellView()
+	public partial class ShellView : IShellView
+	{
+	    public ShellView()
+		{
+			InitializeComponent();
+		}
+
+	    public void LoadLayout(Stream stream, Action<ITool> addToolCallback, Action<IDocument> addDocumentCallback,
+                               Dictionary<string, ILayoutItem> itemsState)
+	    {
+            LayoutUtility.LoadLayout(Manager, stream, addDocumentCallback, addToolCallback, itemsState);
+	    }
+
+        public void SaveLayout(Stream stream)
         {
-            InitializeComponent();
+            LayoutUtility.SaveLayout(Manager, stream);
         }
-    }
+
+	    private void OnManagerLayoutUpdated(object sender, EventArgs e)
+	    {
+	        UpdateFloatingWindows();
+	    }
+
+	    public void UpdateFloatingWindows()
+	    {
+	        var mainWindow = Window.GetWindow(this);
+	        var mainWindowIcon = (mainWindow != null) ? mainWindow.Icon : null;
+            var showFloatingWindowsInTaskbar = ((ShellViewModel) DataContext).ShowFloatingWindowsInTaskbar;
+	        foreach (var window in Manager.FloatingWindows)
+	        {
+                window.Icon = mainWindowIcon;
+	            window.ShowInTaskbar = showFloatingWindowsInTaskbar;
+	        }
+	    }
+	}
 }

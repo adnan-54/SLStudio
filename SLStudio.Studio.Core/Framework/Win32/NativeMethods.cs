@@ -5,7 +5,6 @@ namespace SLStudio.Studio.Core.Framework.Win32
 {
     internal static class NativeMethods
     {
-        #region Constants
         public const int GWL_STYLE = -16;
         public const int GWL_EXSTYLE = -20;
 
@@ -46,9 +45,7 @@ namespace SLStudio.Studio.Core.Framework.Win32
         public const int IDC_ARROW = 32512;
 
         public const uint TME_LEAVE = 0x00000002;
-        #endregion
 
-        #region Delegates and Structs
         public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 
         public static readonly WndProc DefaultWindowProc = DefWindowProc;
@@ -86,9 +83,7 @@ namespace SLStudio.Studio.Core.Framework.Win32
             public int X;
             public int Y;
         }
-        #endregion
 
-        #region DllImports
         [DllImport("user32.dll")]
         public extern static int GetWindowLong(IntPtr hwnd, int index);
 
@@ -158,9 +153,7 @@ namespace SLStudio.Studio.Core.Framework.Win32
 
         [DllImport("user32.dll")]
         public static extern int ShowCursor(bool bShow);
-        #endregion
 
-        #region Helpers
         public static int GetXLParam(int lParam)
         {
             return LowWord(lParam);
@@ -178,13 +171,12 @@ namespace SLStudio.Studio.Core.Framework.Win32
 
         public static int LowWord(int input)
         {
-            return (short)(input & 0xffff);
+            return (short) (input & 0xffff);
         }
 
         public static int HighWord(int input)
         {
-            return (short)(input >> 16);
+            return (short) (input >> 16);
         }
-        #endregion
     }
 }

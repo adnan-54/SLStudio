@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 
@@ -9,7 +9,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
     {
         public virtual string Name
         {
-            get { return "Blue"; }
+            get { return Properties.Resources.ThemeBlueName; }
         }
 
         public virtual IEnumerable<Uri> ApplicationResources
@@ -17,7 +17,7 @@ namespace SLStudio.Studio.Core.Framework.Themes
             get
             {
                 yield return new Uri("pack://application:,,,/Xceed.Wpf.AvalonDock.Themes.VS2013;component/BlueTheme.xaml");
-                yield return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Themes/VS2013/BlueTheme.xaml");
+                yield return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Themes/VS2013/BlueTheme.xaml");
             }
         }
 

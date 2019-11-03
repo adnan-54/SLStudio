@@ -1,5 +1,4 @@
-﻿using SLStudio.Studio.Core.Framework.Win32;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SLStudio.Studio.Core.Framework.Controls
 {
