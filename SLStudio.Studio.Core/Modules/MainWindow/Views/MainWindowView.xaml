@@ -11,7 +11,8 @@
                    mc:Ignorable="d" Title="{Binding Title}" Height="600" Width="800"
                    WindowStartupLocation="CenterScreen" WindowState="{Binding WindowState}"
                    ResizeMode="CanResizeWithGrip" UseLayoutRounding="True"
-                   Style="{DynamicResource MainWindowStyle}"
+                   BorderBrush="{Binding StatusColor}" GlowBrush="{Binding StatusColor}" NonActiveGlowBrush="{Binding StatusColor}"
+                   BorderThickness="1" Style="{DynamicResource MainWindowStyle}"
                    WindowCloseButtonStyle="{DynamicResource MetroWindowButtonStyle}"
 				   WindowMinButtonStyle="{DynamicResource MetroWindowButtonStyle}"
 				   WindowMaxButtonStyle="{DynamicResource MetroWindowButtonStyle}">
@@ -30,9 +31,32 @@
         <metroBehaviors:BorderlessWindowBehavior />
         <behaviors:CustomGlowWindowBehavior />
     </i:Interaction.Behaviors>
-    
+
+    <!--TitleBar Menu-->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands ShowLastSeparator="False">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="6, 0, 0, 0"/>
+                <ContentControl Margin="6, 0, 0, 0" cal:View.Model="{Binding MainMenu}"/>
+            </StackPanel>
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+
     <!--Content-->
     <Grid>
-        <ContentControl cal:View.Model="{Binding Shell}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Toolbar-->
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBars}"/>
+        
+        <!--Shell-->
+        <ContentControl Grid.Row="1" cal:View.Model="{Binding Shell}" />
+
+        <!--StatusBar-->
+        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}" IsTabStop="False" />
     </Grid>
 </metro:MetroWindow>

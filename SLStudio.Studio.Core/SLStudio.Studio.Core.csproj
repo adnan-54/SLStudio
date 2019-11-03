@@ -73,7 +73,8 @@
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AvalonDock\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
@@ -84,6 +85,9 @@
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
     </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2013">
+      <HintPath>..\packages\AvalonDock\Xceed.Wpf.AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
     <Reference Include="Xceed.Wpf.Toolkit, Version=3.6.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.6.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
@@ -91,8 +95,26 @@
   <ItemGroup>
     <Compile Include="Behaviors\CustomGlowWindowBehavior.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Enums\AvaliableThemes.cs" />
     <Compile Include="Enums\MainWindowStatus.cs" />
     <Compile Include="Enums\AvaliableLanguages.cs" />
+    <Compile Include="Framework\Controls\ClippingHwndHost.cs" />
+    <Compile Include="Framework\Controls\DynamicStyle.cs" />
+    <Compile Include="Framework\Controls\ExpanderEx.cs" />
+    <Compile Include="Framework\Controls\HwndMouse.cs" />
+    <Compile Include="Framework\Controls\HwndMouseEventArgs.cs" />
+    <Compile Include="Framework\Controls\HwndMouseState.cs" />
+    <Compile Include="Framework\Controls\HwndWrapper.cs" />
+    <Compile Include="Framework\Controls\SliderEx.cs" />
+    <Compile Include="Framework\Services\ExtensionMethods.cs" />
+    <Compile Include="Framework\Services\SettingsPropertyChangedEventManager.cs" />
+    <Compile Include="Framework\Themes\BlueTheme.cs" />
+    <Compile Include="Framework\Themes\DarkTheme.cs" />
+    <Compile Include="Framework\Themes\ITheme.cs" />
+    <Compile Include="Framework\Themes\IThemeManager.cs" />
+    <Compile Include="Framework\Themes\LightTheme.cs" />
+    <Compile Include="Framework\Themes\ThemeManager.cs" />
+    <Compile Include="Framework\Win32\NativeMethods.cs" />
     <Compile Include="Modules\MainWindow\IMainWindow.cs" />
     <Compile Include="Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Modules\MainWindow\Views\MainWindowView.xaml.cs">
@@ -109,16 +131,19 @@
       <DependentUpon>SpashScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Framework\ShaderEffects\ShaderEffectUtility.cs" />
+    <Compile Include="Framework\ShaderEffects\ShaderEffectBase.cs" />
+    <Compile Include="Framework\ShaderEffects\GrayscaleEffect.cs" />
+    <Compile Include="Resources\Themes\VS2013\Controls\Converters\TreeViewIndentConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Converters\" />
     <Folder Include="Helpers\" />
-    <Folder Include="Modules\Shell\Resources\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <Resource Include="Framework\ShaderEffects\GrayscaleEffect.ps" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SLStudio.Studio.Settings\SLStudio.Studio.Settings.csproj">
@@ -138,6 +163,90 @@
     <Page Include="Modules\SplashScreen\Views\SpashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\BlueTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Button.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\CheckBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\ColorCanvas.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\ColorPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\ComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Focus.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Label.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Menu.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Merged.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\ScrollBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Slider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\TextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Toolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Tooltip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\TreeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\Window.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\Controls\WindowCommands.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\DarkTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Themes\VS2013\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
