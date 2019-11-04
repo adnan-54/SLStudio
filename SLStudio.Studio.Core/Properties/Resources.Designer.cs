@@ -367,7 +367,7 @@ namespace SLStudio.Studio.Core.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [Default Title].
+        ///   Looks up a localized string similar to SLStudio.
         /// </summary>
         internal static string MainWindowDefaultTitle {
             get {

@@ -220,7 +220,7 @@
     <value>Requires restart</value>
   </data>
   <data name="MainWindowDefaultTitle" xml:space="preserve">
-    <value>[Default Title]</value>
+    <value>SLStudio</value>
   </data>
   <data name="SaveChangesBeforeClosingMessage" xml:space="preserve">
     <value>Save changes to the {0} "{1}" before closing?</value>

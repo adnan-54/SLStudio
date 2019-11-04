@@ -20,7 +20,7 @@ namespace SLStudio.Studio.Core.Modules.MainWindow.ViewModels
         [Import]
         private ICommandKeyGestureService _commandKeyGestureService;
 
-        private WindowState _windowState = WindowState.Normal;
+        private WindowState _windowState = WindowState.Maximized;
         public WindowState WindowState
         {
             get { return _windowState; }
