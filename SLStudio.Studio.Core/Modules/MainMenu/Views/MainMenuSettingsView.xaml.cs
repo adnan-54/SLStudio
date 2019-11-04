@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Gemini.Modules.MainMenu.Views
+namespace SLStudio.Studio.Core.Modules.MainMenu.Views
 {
     /// <summary>
     ///     Interaction logic for MainMenuSettingsView.xaml

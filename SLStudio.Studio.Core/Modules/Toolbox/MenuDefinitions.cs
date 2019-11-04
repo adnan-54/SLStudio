@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.Composition;
-using Gemini.Framework.Menus;
-using Gemini.Modules.Toolbox.Commands;
+﻿using SLStudio.Studio.Core.Framework.Menus;
+using SLStudio.Studio.Core.Modules.Toolbox.Commands;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.Toolbox
+namespace SLStudio.Studio.Core.Modules.Toolbox
 {
     public static class MenuDefinitions
     {

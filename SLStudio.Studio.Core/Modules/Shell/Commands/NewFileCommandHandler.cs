@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Framework.Threading;
+using SLStudio.Studio.Core.Properties;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using System.Windows;
-using Caliburn.Micro;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Services;
-using Gemini.Framework.Threading;
-using Gemini.Properties;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class NewFileCommandHandler : ICommandListHandler<NewFileCommandListDefinition>
@@ -44,7 +44,7 @@ namespace Gemini.Modules.Shell.Commands
 
         public Task Run(Command command)
         {
-            var tag = (NewFileTag) command.Tag;
+            var tag = (NewFileTag)command.Tag;
             var editor = tag.EditorProvider.Create();
 
             var viewAware = (IViewAware)editor;
@@ -52,12 +52,12 @@ namespace Gemini.Modules.Shell.Commands
             {
                 var frameworkElement = (FrameworkElement)e.View;
 
-                RoutedEventHandler loadedHandler = null;
-                loadedHandler = async (sender2, e2) =>
+                async void loadedHandler(object sender2, RoutedEventArgs e2)
                 {
                     frameworkElement.Loaded -= loadedHandler;
-                    await tag.EditorProvider.New(editor, string.Format(Resources.FileNewUntitled, (_newFileCounter++) + tag.FileType.FileExtension));
-                };
+                    await tag.EditorProvider.New(editor, string.Format(Resources.FileNewUntitled, _newFileCounter++ + tag.FileType.FileExtension));
+                }
+
                 frameworkElement.Loaded += loadedHandler;
             };
 

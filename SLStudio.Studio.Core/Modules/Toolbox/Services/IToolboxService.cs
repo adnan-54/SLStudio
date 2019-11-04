@@ -1,8 +1,8 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Modules.Toolbox.Models;
+using System;
 using System.Collections.Generic;
-using Gemini.Modules.Toolbox.Models;
 
-namespace Gemini.Modules.Toolbox.Services
+namespace SLStudio.Studio.Core.Modules.Toolbox.Services
 {
     public interface IToolboxService
     {

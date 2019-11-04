@@ -1,11 +1,10 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
+using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using Gemini.Framework.Commands;
-using Gemini.Modules.Shell.Commands;
-using Gemini.Properties;
 
-namespace Gemini.Modules.UndoRedo.Commands
+namespace SLStudio.Studio.Core.Modules.UndoRedo.Commands
 {
     [CommandDefinition]
     public class UndoCommandDefinition : CommandDefinition
@@ -29,7 +28,7 @@ namespace Gemini.Modules.UndoRedo.Commands
 
         public override Uri IconSource
         {
-            get { return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/Undo.png"); }
+            get { return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Icons/Undo.png"); }
         }
 
         [Export]

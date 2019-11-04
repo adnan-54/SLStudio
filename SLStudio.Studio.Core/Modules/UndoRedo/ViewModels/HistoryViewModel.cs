@@ -1,14 +1,14 @@
+using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Properties;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Caliburn.Micro;
-using Gemini.Framework;
-using Gemini.Framework.Services;
-using Gemini.Properties;
 
-namespace Gemini.Modules.UndoRedo.ViewModels
+namespace SLStudio.Studio.Core.Modules.UndoRedo.ViewModels
 {
     [Export(typeof(IHistoryTool))]
     public class HistoryViewModel : Tool, IHistoryTool
@@ -69,7 +69,7 @@ namespace Gemini.Modules.UndoRedo.ViewModels
 
             shell.ActiveDocumentChanged += (sender, e) =>
             {
-                UndoRedoManager = (shell.ActiveItem != null) ? shell.ActiveItem.UndoRedoManager : null;
+                UndoRedoManager = shell.ActiveItem?.UndoRedoManager;
             };
             if (shell.ActiveItem != null)
                 UndoRedoManager = shell.ActiveItem.UndoRedoManager;

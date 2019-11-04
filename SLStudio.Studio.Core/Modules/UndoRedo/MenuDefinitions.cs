@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.Composition;
-using Gemini.Framework.Menus;
-using Gemini.Modules.UndoRedo.Commands;
+﻿using SLStudio.Studio.Core.Framework.Menus;
+using SLStudio.Studio.Core.Modules.UndoRedo.Commands;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.UndoRedo
+namespace SLStudio.Studio.Core.Modules.UndoRedo
 {
     public static class MenuDefinitions
     {

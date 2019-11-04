@@ -1,6 +1,8 @@
 using Caliburn.Micro;
 using SLStudio.Studio.Core.Framework.Services;
 using SLStudio.Studio.Core.Framework.ToolBars;
+using SLStudio.Studio.Core.Modules.ToolBars;
+using SLStudio.Studio.Core.Modules.ToolBars.Models;
 using System.Windows.Input;
 
 namespace SLStudio.Studio.Core.Framework

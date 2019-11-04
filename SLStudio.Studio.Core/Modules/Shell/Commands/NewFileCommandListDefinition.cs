@@ -1,6 +1,6 @@
-﻿using Gemini.Framework.Commands;
+﻿using SLStudio.Studio.Core.Framework.Commands;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandDefinition]
     public class NewFileCommandListDefinition : CommandListDefinition

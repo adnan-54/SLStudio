@@ -1,35 +1,30 @@
-﻿using System;
-using Gemini.Modules.Toolbox.Models;
+﻿using SLStudio.Studio.Core.Modules.Toolbox.Models;
+using System;
 
-namespace Gemini.Modules.Toolbox.ViewModels
+namespace SLStudio.Studio.Core.Modules.Toolbox.ViewModels
 {
     public class ToolboxItemViewModel
     {
-        private readonly ToolboxItem _model;
-
-        public ToolboxItem Model
-        {
-            get { return _model; }
-        }
+        public ToolboxItem Model { get; }
 
         public string Name
         {
-            get { return _model.Name; }
+            get { return Model.Name; }
         }
 
         public virtual string Category
         {
-            get { return _model.Category; }
+            get { return Model.Category; }
         }
 
         public virtual Uri IconSource
         {
-            get { return _model.IconSource; }
+            get { return Model.IconSource; }
         }
 
         public ToolboxItemViewModel(ToolboxItem model)
         {
-            _model = model;
+            Model = model;
         }
     }
 }

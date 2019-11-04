@@ -1,7 +1,7 @@
-﻿namespace Gemini.Modules.Toolbox
+﻿namespace SLStudio.Studio.Core.Modules.Toolbox
 {
     public static class ToolboxDragDrop
     {
-        public const string DataFormat = "GeminiToolboxItem";
+        public const string DataFormat = "StudioToolboxItem";
     }
 }

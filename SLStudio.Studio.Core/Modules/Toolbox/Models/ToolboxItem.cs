@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gemini.Modules.Toolbox.Models
+namespace SLStudio.Studio.Core.Modules.Toolbox.Models
 {
     public class ToolboxItem
     {

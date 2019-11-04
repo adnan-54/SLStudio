@@ -1,9 +1,9 @@
-﻿using Gemini.Framework;
+﻿using SLStudio.Studio.Core.Framework;
 
-namespace Gemini.Modules.Toolbox
+namespace SLStudio.Studio.Core.Modules.Toolbox
 {
     public interface IToolbox : ITool
     {
-         
+
     }
 }

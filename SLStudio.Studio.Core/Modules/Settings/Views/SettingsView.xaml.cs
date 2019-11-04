@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace Gemini.Modules.Settings.Views
+namespace SLStudio.Studio.Core.Modules.Settings.Views
 {
     /// <summary>
     /// Interaction logic for SettingsView.xaml

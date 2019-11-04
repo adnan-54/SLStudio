@@ -1,4 +1,6 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.Shell.Commands;
 using System;
 using System.ComponentModel.Composition;
 

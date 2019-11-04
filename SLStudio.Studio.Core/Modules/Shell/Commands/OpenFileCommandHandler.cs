@@ -1,14 +1,14 @@
-﻿using System.ComponentModel.Composition;
+﻿using Caliburn.Micro;
+using Microsoft.Win32;
+using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
+using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using Caliburn.Micro;
-using Gemini.Framework;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Services;
-using Microsoft.Win32;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class OpenFileCommandHandler : CommandHandlerBase<OpenFileCommandDefinition>
@@ -25,10 +25,11 @@ namespace Gemini.Modules.Shell.Commands
 
         public override async Task Run(Command command)
         {
-            var dialog = new OpenFileDialog();
-
-            dialog.Filter = "All Supported Files|" + string.Join(";", _editorProviders
-                .SelectMany(x => x.FileTypes).Select(x => "*" + x.FileExtension));
+            var dialog = new OpenFileDialog
+            {
+                Filter = "All Supported Files|" + string.Join(";", _editorProviders
+                .SelectMany(x => x.FileTypes).Select(x => "*" + x.FileExtension))
+            };
 
             dialog.Filter += "|" + string.Join("|", _editorProviders
                 .SelectMany(x => x.FileTypes)
@@ -48,17 +49,17 @@ namespace Gemini.Modules.Shell.Commands
 
             var editor = provider.Create();
 
-            var viewAware = (IViewAware) editor;
+            var viewAware = (IViewAware)editor;
             viewAware.ViewAttached += (sender, e) =>
             {
-                var frameworkElement = (FrameworkElement) e.View;
+                var frameworkElement = (FrameworkElement)e.View;
 
-                RoutedEventHandler loadedHandler = null;
-                loadedHandler = async (sender2, e2) =>
+                async void loadedHandler(object sender2, RoutedEventArgs e2)
                 {
                     frameworkElement.Loaded -= loadedHandler;
                     await provider.Open(editor, path);
-                };
+                }
+
                 frameworkElement.Loaded += loadedHandler;
             };
 

@@ -1,27 +1,23 @@
 using Caliburn.Micro;
 
-namespace Gemini.Modules.UndoRedo.ViewModels
+namespace SLStudio.Studio.Core.Modules.UndoRedo.ViewModels
 {
     public class HistoryItemViewModel : PropertyChangedBase
     {
-        private readonly IUndoableAction _action;
-
-        public IUndoableAction Action
-        {
-            get { return _action; }
-        }
+        public IUndoableAction Action { get; }
 
         private readonly string _name;
         public string Name
         {
-            get { return _name ?? _action.Name; }
+            get { return _name ?? Action.Name; }
         }
 
         private HistoryItemType _itemType;
         public HistoryItemType ItemType
         {
             get { return _itemType; }
-            set {
+            set
+            {
                 if (_itemType == value)
                     return;
 
@@ -33,7 +29,7 @@ namespace Gemini.Modules.UndoRedo.ViewModels
 
         public HistoryItemViewModel(IUndoableAction action)
         {
-            _action = action;
+            Action = action;
         }
 
         public HistoryItemViewModel(string name)

@@ -1,13 +1,13 @@
-﻿using Gemini.Framework;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Services;
+﻿using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class SaveAllFilesCommandHandler : CommandHandlerBase<SaveAllFilesCommandDefinition>

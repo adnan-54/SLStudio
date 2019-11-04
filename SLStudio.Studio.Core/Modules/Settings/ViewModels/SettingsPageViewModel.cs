@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Gemini.Modules.Settings.ViewModels
+namespace SLStudio.Studio.Core.Modules.Settings.ViewModels
 {
     public class SettingsPageViewModel
     {

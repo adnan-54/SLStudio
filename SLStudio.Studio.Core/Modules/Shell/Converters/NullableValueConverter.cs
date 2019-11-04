@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Gemini.Modules.Shell.Converters
+namespace SLStudio.Studio.Core.Modules.Shell.Converters
 {
     public class NullableValueConverter : IValueConverter
     {

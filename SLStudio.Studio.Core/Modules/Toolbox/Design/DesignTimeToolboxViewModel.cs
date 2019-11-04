@@ -1,6 +1,6 @@
-﻿using Gemini.Modules.Toolbox.ViewModels;
+﻿using SLStudio.Studio.Core.Modules.Toolbox.ViewModels;
 
-namespace Gemini.Modules.Toolbox.Design
+namespace SLStudio.Studio.Core.Modules.Toolbox.Design
 {
     public class DesignTimeToolboxViewModel : ToolboxViewModel
     {

@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework.Themes;
+using SLStudio.Studio.Core.Modules.Settings;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using Caliburn.Micro;
-using Gemini.Framework.Themes;
-using Gemini.Modules.Settings;
 
-namespace Gemini.Modules.MainMenu.ViewModels
+namespace SLStudio.Studio.Core.Modules.MainMenu.ViewModels
 {
-    [Export(typeof (ISettingsEditor))]
+    [Export(typeof(ISettingsEditor))]
     [PartCreationPolicy(CreationPolicy.NonShared)]
     public class MainMenuSettingsViewModel : PropertyChangedBase, ISettingsEditor
     {
@@ -15,10 +15,7 @@ namespace Gemini.Modules.MainMenu.ViewModels
         private readonly static List<string> _availableLanguages = new List<string> {
             string.Empty,
             "en",
-            "de",
-            "ru",
-            "zh-Hans",
-            "ko",
+            "pt-br"
         };
 
         private ITheme _selectedTheme;

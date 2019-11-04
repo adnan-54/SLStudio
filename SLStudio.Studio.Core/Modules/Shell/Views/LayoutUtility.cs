@@ -1,12 +1,12 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Gemini.Framework;
 using Xceed.Wpf.AvalonDock;
 using Xceed.Wpf.AvalonDock.Layout;
 using Xceed.Wpf.AvalonDock.Layout.Serialization;
 
-namespace Gemini.Modules.Shell.Views
+namespace SLStudio.Studio.Core.Modules.Shell.Views
 {
     internal static class LayoutUtility
     {
@@ -23,18 +23,11 @@ namespace Gemini.Modules.Shell.Views
 
             layoutSerializer.LayoutSerializationCallback += (s, e) =>
                 {
-                    ILayoutItem item;
-                    if (items.TryGetValue(e.Model.ContentId, out item))
+                    if (items.TryGetValue(e.Model.ContentId, out ILayoutItem item))
                     {
                         e.Content = item;
 
-                        var tool = item as ITool;
-                        var anchorable = e.Model as LayoutAnchorable;
-
-                        var document = item as IDocument;
-                        var layoutDocument = e.Model as LayoutDocument;
-
-                        if (tool != null && anchorable != null)
+                        if (item is ITool tool && e.Model is LayoutAnchorable anchorable)
                         {
                             addToolCallback(tool);
                             tool.IsVisible = anchorable.IsVisible;
@@ -47,12 +40,10 @@ namespace Gemini.Modules.Shell.Views
                             return;
                         }
 
-                        if (document != null && layoutDocument != null)
+                        if (item is IDocument document && e.Model is LayoutDocument layoutDocument)
                         {
                             addDocumentCallback(document);
 
-                            // Nasty hack to get around issue that occurs if documents are loaded from state,
-                            // and more documents are opened programmatically.
                             layoutDocument.GetType().GetProperty("IsLastFocusedDocument").SetValue(layoutDocument, false, null);
 
                             document.IsSelected = layoutDocument.IsSelected;
@@ -60,7 +51,6 @@ namespace Gemini.Modules.Shell.Views
                         }
                     }
 
-                    // Don't create any panels if something went wrong.
                     e.Cancel = true;
                 };
 

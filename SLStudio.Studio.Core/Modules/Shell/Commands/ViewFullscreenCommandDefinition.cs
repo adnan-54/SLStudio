@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using Gemini.Framework.Commands;
-using Gemini.Properties;
+using SLStudio.Studio.Core.Properties;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandDefinition]
     public class ViewFullScreenCommandDefinition : CommandDefinition
@@ -28,7 +28,7 @@ namespace Gemini.Modules.Shell.Commands
 
         public override Uri IconSource
         {
-            get { return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/FullScreen.png"); }
+            get { return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Icons/FullScreen.png"); }
         }
 
         [Export]

@@ -1,7 +1,7 @@
-﻿using System.Windows;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
+using System.Windows;
 
-namespace Gemini.Modules.StatusBar.ViewModels
+namespace SLStudio.Studio.Core.Modules.StatusBar.ViewModels
 {
     public class StatusBarItemViewModel : PropertyChangedBase
     {

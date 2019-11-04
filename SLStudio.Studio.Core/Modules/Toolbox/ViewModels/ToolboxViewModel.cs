@@ -1,17 +1,16 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.Toolbox.Services;
+using SLStudio.Studio.Core.Properties;
 using System.ComponentModel;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Windows;
 using System.Windows.Data;
-using Caliburn.Micro;
-using Gemini.Framework;
-using Gemini.Framework.Services;
-using Gemini.Modules.Toolbox.Services;
-using Gemini.Properties;
 using System.Windows.Input;
 
-namespace Gemini.Modules.Toolbox.ViewModels
+namespace SLStudio.Studio.Core.Modules.Toolbox.ViewModels
 {
     [Export(typeof(IToolbox))]
     public class ToolboxViewModel : Tool, IToolbox
@@ -21,7 +20,7 @@ namespace Gemini.Modules.Toolbox.ViewModels
 
         public ICommand SearchCommand
         {
-            get { return _searchCommand == null ? _searchCommand = new RelayCommand(a => Search(a as string)) : _searchCommand; }
+            get { return _searchCommand ?? (_searchCommand = new RelayCommand(a => Search(a as string))); }
         }
 
         private readonly IToolboxService _toolboxService;
@@ -63,7 +62,7 @@ namespace Gemini.Modules.Toolbox.ViewModels
         {
             _items.Clear();
 
-            if (shell.ActiveItem == null) 
+            if (shell.ActiveItem == null)
                 return;
 
             _items.AddRange(_toolboxService.GetToolboxItems(shell.ActiveItem.GetType())

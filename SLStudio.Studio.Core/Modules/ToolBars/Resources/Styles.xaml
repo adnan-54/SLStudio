@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					xmlns:toolbars="clr-namespace:Gemini.Framework.ToolBars">
+					xmlns:toolbars="clr-namespace:SLStudio.Studio.Core.Framework.ToolBars">
 	<Image x:Key="ToolBarButtonImage" x:Shared="false" Source="{Binding IconSource}">
 		<Image.Style>
 			<Style TargetType="Image">

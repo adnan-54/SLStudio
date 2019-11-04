@@ -1,4 +1,7 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Modules.MainMenu;
+using SLStudio.Studio.Core.Modules.StatusBar;
+using SLStudio.Studio.Core.Modules.ToolBars;
 using System;
 
 namespace SLStudio.Studio.Core.Framework.Services

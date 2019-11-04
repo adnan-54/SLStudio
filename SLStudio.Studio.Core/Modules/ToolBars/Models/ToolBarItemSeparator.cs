@@ -1,7 +1,7 @@
-﻿namespace Gemini.Modules.ToolBars.Models
+﻿namespace SLStudio.Studio.Core.Modules.ToolBars.Models
 {
-	public class ToolBarItemSeparator : ToolBarItemBase
-	{
-		 
-	}
+    public class ToolBarItemSeparator : ToolBarItemBase
+    {
+
+    }
 }

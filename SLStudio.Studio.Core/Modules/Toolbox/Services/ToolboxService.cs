@@ -1,11 +1,11 @@
+using Caliburn.Micro;
+using SLStudio.Studio.Core.Modules.Toolbox.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
-using Caliburn.Micro;
-using Gemini.Modules.Toolbox.Models;
 
-namespace Gemini.Modules.Toolbox.Services
+namespace SLStudio.Studio.Core.Modules.Toolbox.Services
 {
     [Export(typeof(IToolboxService))]
     public class ToolboxService : IToolboxService
@@ -24,7 +24,7 @@ namespace Gemini.Modules.Toolbox.Services
                         DocumentType = attribute.DocumentType,
                         Name = attribute.Name,
                         Category = attribute.Category,
-                        IconSource = (attribute.IconSource != null) ? new Uri(attribute.IconSource) : null,
+                        IconSource = attribute.IconSource != null ? new Uri(attribute.IconSource) : null,
                         ItemType = x,
                     };
                 })
@@ -34,8 +34,7 @@ namespace Gemini.Modules.Toolbox.Services
 
         public IEnumerable<ToolboxItem> GetToolboxItems(Type documentType)
         {
-            IEnumerable<ToolboxItem> result;
-            if (_toolboxItems.TryGetValue(documentType, out result))
+            if (_toolboxItems.TryGetValue(documentType, out IEnumerable<ToolboxItem> result))
                 return result;
             return new List<ToolboxItem>();
         }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Gemini.Modules.Toolbox
+namespace SLStudio.Studio.Core.Modules.Toolbox
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false)]
     public class ToolboxItemAttribute : Attribute

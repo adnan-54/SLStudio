@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.Composition;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
+using System.ComponentModel.Composition;
 using System.Windows.Input;
-using Gemini.Framework.Commands;
-using Gemini.Properties;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandDefinition]
     public class ExitCommandDefinition : CommandDefinition

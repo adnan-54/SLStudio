@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.Composition;
-using Gemini.Framework.ToolBars;
-using Gemini.Properties;
+﻿using SLStudio.Studio.Core.Framework.ToolBars;
+using SLStudio.Studio.Core.Properties;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.ToolBars
+namespace SLStudio.Studio.Core.Modules.ToolBars
 {
     internal static class ToolBarDefinitions
     {

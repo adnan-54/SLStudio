@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
+using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
-using Gemini.Framework.Commands;
-using Gemini.Properties;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandDefinition]
     public class OpenFileCommandDefinition : CommandDefinition
@@ -28,7 +28,7 @@ namespace Gemini.Modules.Shell.Commands
 
         public override Uri IconSource
         {
-            get { return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/Open.png"); }
+            get { return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Icons/Open.png"); }
         }
 
         [Export]

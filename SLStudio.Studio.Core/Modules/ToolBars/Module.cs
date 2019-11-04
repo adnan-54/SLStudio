@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Windows;
-using Gemini.Framework;
 
-namespace Gemini.Modules.ToolBars
+namespace SLStudio.Studio.Core.Modules.ToolBars
 {
     [Export(typeof(IModule))]
     public class Module : ModuleBase
@@ -15,7 +15,7 @@ namespace Gemini.Modules.ToolBars
             {
                 yield return new ResourceDictionary
                 {
-                    Source = new Uri("/Gemini;component/Modules/ToolBars/Resources/Styles.xaml", UriKind.Relative)
+                    Source = new Uri("/SLStudio.Studio.Core;component/Modules/ToolBars/Resources/Styles.xaml", UriKind.Relative)
                 };
             }
         }

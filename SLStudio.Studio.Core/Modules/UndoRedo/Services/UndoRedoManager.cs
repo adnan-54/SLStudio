@@ -1,7 +1,7 @@
-using System;
 using Caliburn.Micro;
+using System;
 
-namespace Gemini.Modules.UndoRedo.Services
+namespace SLStudio.Studio.Core.Modules.UndoRedo.Services
 {
     public class UndoRedoManager : PropertyChangedBase, IUndoRedoManager
     {
@@ -65,7 +65,6 @@ namespace Gemini.Modules.UndoRedo.Services
         {
             if (UndoActionCount < ActionStack.Count)
             {
-                // We currently have items that can be redone, remove those
                 for (var i = ActionStack.Count - 1; i >= UndoActionCount; i--)
                     ActionStack.RemoveAt(i);
 
@@ -110,8 +109,6 @@ namespace Gemini.Modules.UndoRedo.Services
             if (UndoActionCount < 1)
                 throw new InvalidOperationException();
 
-            // Find the action first to prevent endless loops and to only update UndoActions once
-            // Do the loop in reverse from the end of the undo actions to skip searching any redo actions
             var i = UndoActionCount - 1;
             for (; i >= 0; i--)
             {
@@ -166,8 +163,6 @@ namespace Gemini.Modules.UndoRedo.Services
             if (RedoActionCount < 1)
                 throw new InvalidOperationException();
 
-            // Find the action first to prevent endless loops and to only update UndoActions once
-            // Do the loop from the end of the undo actions to skip searching any undo actions
             var i = UndoActionCount;
             for (; i < ActionStack.Count; i++)
             {

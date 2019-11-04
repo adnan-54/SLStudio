@@ -1,4 +1,4 @@
-﻿namespace Gemini.Modules.UndoRedo.ViewModels
+﻿namespace SLStudio.Studio.Core.Modules.UndoRedo.ViewModels
 {
     public enum HistoryItemType
     {

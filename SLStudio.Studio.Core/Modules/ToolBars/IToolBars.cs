@@ -1,10 +1,10 @@
 ﻿using Caliburn.Micro;
 
-namespace Gemini.Modules.ToolBars
+namespace SLStudio.Studio.Core.Modules.ToolBars
 {
     public interface IToolBars
     {
-        IObservableCollection<IToolBar> Items {get;}
+        IObservableCollection<IToolBar> Items { get; }
         bool Visible { get; set; }
     }
 }

@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.Composition;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.ToolBars;
+using SLStudio.Studio.Core.Modules.ToolBars.Models;
+using System.ComponentModel.Composition;
 using System.Linq;
-using Gemini.Framework.Commands;
-using Gemini.Framework.ToolBars;
-using Gemini.Modules.ToolBars.Models;
 
-namespace Gemini.Modules.ToolBars
+namespace SLStudio.Studio.Core.Modules.ToolBars
 {
     [Export(typeof(IToolBarBuilder))]
     public class ToolBarBuilder : IToolBarBuilder

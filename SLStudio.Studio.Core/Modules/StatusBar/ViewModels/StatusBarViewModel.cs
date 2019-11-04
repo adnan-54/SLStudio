@@ -1,29 +1,29 @@
-﻿using System.ComponentModel.Composition;
+﻿using Caliburn.Micro;
+using System.ComponentModel.Composition;
 using System.Windows;
-using Caliburn.Micro;
 
-namespace Gemini.Modules.StatusBar.ViewModels
+namespace SLStudio.Studio.Core.Modules.StatusBar.ViewModels
 {
-	[Export(typeof(IStatusBar))]
-	public class StatusBarViewModel : PropertyChangedBase, IStatusBar
-	{
+    [Export(typeof(IStatusBar))]
+    public class StatusBarViewModel : PropertyChangedBase, IStatusBar
+    {
         private readonly StatusBarItemCollection _items;
-	    public IObservableCollection<StatusBarItemViewModel> Items
-	    {
+        public IObservableCollection<StatusBarItemViewModel> Items
+        {
             get { return _items; }
-	    }
+        }
 
-	    public StatusBarViewModel()
+        public StatusBarViewModel()
         {
             _items = new StatusBarItemCollection();
         }
 
-	    public void AddItem(string message, GridLength width)
-	    {
-	        Items.Add(new StatusBarItemViewModel(message, width));
-	    }
+        public void AddItem(string message, GridLength width)
+        {
+            Items.Add(new StatusBarItemViewModel(message, width));
+        }
 
-	    private class StatusBarItemCollection : BindableCollection<StatusBarItemViewModel>
+        private class StatusBarItemCollection : BindableCollection<StatusBarItemViewModel>
         {
             protected override void InsertItemBase(int index, StatusBarItemViewModel item)
             {
@@ -37,5 +37,5 @@ namespace Gemini.Modules.StatusBar.ViewModels
                 base.SetItemBase(index, item);
             }
         }
-	}
+    }
 }

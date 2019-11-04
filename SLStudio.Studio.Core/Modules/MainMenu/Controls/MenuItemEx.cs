@@ -1,5 +1,5 @@
-﻿using Gemini.Modules.MainMenu.Models;
-using SLStudio.Studio.Core.Framework.Controls;
+﻿using SLStudio.Studio.Core.Framework.Controls;
+using SLStudio.Studio.Core.Modules.MainMenu.Models;
 using System.Windows;
 using System.Windows.Controls;
 

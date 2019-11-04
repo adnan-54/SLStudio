@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using Gu.Localization;
 using SLStudio.Studio.Core.Framework.Services;
 using System;
 using System.Collections.Generic;
@@ -36,13 +37,12 @@ namespace SLStudio.Studio.Core
 
             if (!string.IsNullOrWhiteSpace(code))
             {
-                //Todo: language logic here
-                /*var culture = CultureInfo.GetCultureInfo(code);
+                var culture = CultureInfo.GetCultureInfo(code);
                 if (!Translator.Cultures.Contains(culture))
                     culture = CultureInfo.InvariantCulture;
                 Translator.Culture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
-                Thread.CurrentThread.CurrentCulture = culture;*/
+                Thread.CurrentThread.CurrentCulture = culture;
             }
         }
 

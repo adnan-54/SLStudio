@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Windows.Input;
-using Caliburn.Micro;
-using Gemini.Framework;
-using Gemini.Properties;
 
-namespace Gemini.Modules.Settings.ViewModels
+namespace SLStudio.Studio.Core.Modules.Settings.ViewModels
 {
-    [Export(typeof (SettingsViewModel))]
+    [Export(typeof(SettingsViewModel))]
     public class SettingsViewModel : WindowBase
     {
         private IEnumerable<ISettingsEditor> _settingsEditors;
@@ -88,7 +88,7 @@ namespace Gemini.Modules.Settings.ViewModels
                 return pages;
             }
 
-            string[] path = settingsEditor.SettingsPagePath.Split(new[] {'\\'}, StringSplitOptions.RemoveEmptyEntries);
+            string[] path = settingsEditor.SettingsPagePath.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string pathElement in path)
             {
@@ -96,7 +96,7 @@ namespace Gemini.Modules.Settings.ViewModels
 
                 if (page == null)
                 {
-                    page = new SettingsPageViewModel {Name = pathElement};
+                    page = new SettingsPageViewModel { Name = pathElement };
                     pages.Add(page);
                 }
 

@@ -1,4 +1,4 @@
-﻿namespace Gemini.Modules.Settings
+﻿namespace SLStudio.Studio.Core.Modules.Settings
 {
     public interface ISettingsEditor
     {

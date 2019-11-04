@@ -1,4 +1,6 @@
 ﻿using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.MainMenu;
+using SLStudio.Studio.Core.Modules.ToolBars;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;

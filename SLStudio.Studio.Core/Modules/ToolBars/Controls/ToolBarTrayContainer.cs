@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace Gemini.Modules.ToolBars.Controls
+namespace SLStudio.Studio.Core.Modules.ToolBars.Controls
 {
     public class ToolBarTrayContainer : ContentControl
     {
@@ -9,6 +9,6 @@ namespace Gemini.Modules.ToolBars.Controls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ToolBarTrayContainer),
                 new FrameworkPropertyMetadata(typeof(ToolBarTrayContainer)));
-        } 
+        }
     }
 }

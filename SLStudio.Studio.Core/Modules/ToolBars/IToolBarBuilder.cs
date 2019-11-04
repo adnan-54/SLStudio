@@ -1,6 +1,6 @@
-using Gemini.Framework.ToolBars;
+using SLStudio.Studio.Core.Framework.ToolBars;
 
-namespace Gemini.Modules.ToolBars
+namespace SLStudio.Studio.Core.Modules.ToolBars
 {
     public interface IToolBarBuilder
     {

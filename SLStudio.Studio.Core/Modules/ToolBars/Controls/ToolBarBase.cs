@@ -1,9 +1,9 @@
-﻿using System.Windows;
+﻿using SLStudio.Studio.Core.Framework.Controls;
+using SLStudio.Studio.Core.Modules.ToolBars.Models;
+using System.Windows;
 using System.Windows.Controls;
-using Gemini.Framework.Controls;
-using Gemini.Modules.ToolBars.Models;
 
-namespace Gemini.Modules.ToolBars.Controls
+namespace SLStudio.Studio.Core.Modules.ToolBars.Controls
 {
     public class ToolBarBase : ToolBar
     {

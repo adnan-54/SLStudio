@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.Shell.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
-using Caliburn.Micro;
-using Gemini.Framework;
-using Gemini.Framework.Services;
-using Gemini.Modules.Shell.Views;
 
-namespace Gemini.Modules.Shell.Services
+namespace SLStudio.Studio.Core.Modules.Shell.Services
 {
     [Export(typeof(ILayoutItemStatePersister))]
     public class LayoutItemStatePersister : ILayoutItemStatePersister
@@ -24,7 +24,6 @@ namespace Gemini.Modules.Shell.Services
                     IEnumerable<ILayoutItem> itemStates = shell.Documents.Concat(shell.Tools.Cast<ILayoutItem>());
 
                     int itemCount = 0;
-                    // reserve some space for items count, it'll be updated later
                     writer.Write(itemCount);
 
                     foreach (var item in itemStates)
@@ -37,12 +36,10 @@ namespace Gemini.Modules.Shell.Services
                                 .GetCustomAttributes(typeof(ExportAttribute), false)
                                 .Cast<ExportAttribute>().ToList();
 
-                        // get exports with explicit types or names that inherit from ILayoutItem
                         var exportTypes = new List<Type>();
                         var foundExportContract = false;
                         foreach (var att in exportAttributes)
                         {
-                            // select the contract type if it is of type ILayoutitem.
                             var type = att.ContractType;
                             if (LayoutBaseType.IsAssignableFrom(type))
                             {
@@ -51,7 +48,6 @@ namespace Gemini.Modules.Shell.Services
                                 continue;
                             }
 
-                            // select the contract name if it is of type ILayoutItem.
                             type = GetTypeFromContractNameAsILayoutItem(att);
                             if (LayoutBaseType.IsAssignableFrom(type))
                             {
@@ -59,11 +55,9 @@ namespace Gemini.Modules.Shell.Services
                                 foundExportContract = true;
                             }
                         }
-                        // select the viewmodel type if it is of type ILayoutItem.
                         if (!foundExportContract && LayoutBaseType.IsAssignableFrom(itemType))
                             exportTypes.Add(itemType);
 
-                        // throw exceptions here, instead of failing silently. These are design time errors.
                         var firstExport = exportTypes.FirstOrDefault();
                         if (firstExport == null)
                             throw new InvalidOperationException(string.Format(
@@ -77,17 +71,12 @@ namespace Gemini.Modules.Shell.Services
                         if (string.IsNullOrEmpty(selectedTypeName))
                             throw new InvalidOperationException(string.Format(
                                 "Could not retrieve the assembly qualified type name for {0}, most likely because the type is generic.", firstExport));
-                        // TODO: it is possible to save generic types. It requires that every generic parameter is saved, along with its position in the generic tree... A lot of work.
 
                         writer.Write(selectedTypeName);
                         writer.Write(item.ContentId);
 
-                        // Here's the tricky part. Because some items might fail to save their state, or they might be removed (a plug-in assembly deleted and etc.)
-                        // we need to save the item's state size to be able to skip the data during deserialization.
-                        // Save current stream position. We'll need it later.
                         long stateSizePosition = writer.BaseStream.Position;
 
-                        // Reserve some space for item state size
                         writer.Write(0L);
 
                         long stateSize;
@@ -103,13 +92,11 @@ namespace Gemini.Modules.Shell.Services
                             stateSize = 0;
                         }
 
-                        // Go back to the position before item's state and write the actual value.
                         writer.BaseStream.Seek(stateSizePosition, SeekOrigin.Begin);
                         writer.Write(stateSize);
 
                         if (stateSize > 0)
                         {
-                            // Got to the end of the stream
                             writer.BaseStream.Seek(0, SeekOrigin.End);
                         }
 
@@ -168,9 +155,7 @@ namespace Gemini.Modules.Shell.Services
 
                         if (contentType != null)
                         {
-                            var contentInstance = IoC.GetInstance(contentType, null) as ILayoutItem;
-
-                            if (contentInstance != null)
+                            if (IoC.GetInstance(contentType, null) is ILayoutItem contentInstance)
                             {
                                 layoutItems.Add(contentId, contentInstance);
 
@@ -186,7 +171,6 @@ namespace Gemini.Modules.Shell.Services
                             }
                         }
 
-                        // Skip state data block if we couldn't read it.
                         if (skipStateData)
                         {
                             reader.BaseStream.Seek(stateEndPosition, SeekOrigin.Begin);

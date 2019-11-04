@@ -1,45 +1,44 @@
-﻿using System.ComponentModel.Composition;
-using Gemini.Framework.Services;
-using Gemini.Modules.MainMenu.Models;
-using ExtensionMethods = Gemini.Framework.Services.ExtensionMethods;
+﻿using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.MainMenu.Models;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.MainMenu.ViewModels
+namespace SLStudio.Studio.Core.Modules.MainMenu.ViewModels
 {
-	[Export(typeof(IMenu))]
+    [Export(typeof(IMenu))]
     public class MainMenuViewModel : MenuModel, IPartImportsSatisfiedNotification
-	{
+    {
         private readonly IMenuBuilder _menuBuilder;
 
-	    private bool _autoHide;
+        private bool _autoHide;
 
-	    private readonly SettingsPropertyChangedEventManager<Properties.Settings> _settingsEventManager =
-	        new SettingsPropertyChangedEventManager<Properties.Settings>(Properties.Settings.Default);
+        private readonly SettingsPropertyChangedEventManager<Properties.Settings> _settingsEventManager =
+            new SettingsPropertyChangedEventManager<Properties.Settings>(Properties.Settings.Default);
 
         [ImportingConstructor]
-	    public MainMenuViewModel(IMenuBuilder menuBuilder)
-	    {
+        public MainMenuViewModel(IMenuBuilder menuBuilder)
+        {
             _menuBuilder = menuBuilder;
             _autoHide = Properties.Settings.Default.AutoHideMainMenu;
             _settingsEventManager.AddListener(s => s.AutoHideMainMenu, value => { AutoHide = value; });
-		}
+        }
 
-	    public bool AutoHide
-	    {
-	        get { return _autoHide; }
-	        private set
-	        {
-	            if (_autoHide == value)
-	                return;
+        public bool AutoHide
+        {
+            get { return _autoHide; }
+            private set
+            {
+                if (_autoHide == value)
+                    return;
 
-	            _autoHide = value;
+                _autoHide = value;
 
-	            NotifyOfPropertyChange(ExtensionMethods.GetPropertyName(() => AutoHide));
-	        }
-	    }
+                NotifyOfPropertyChange(ExtensionMethods.GetPropertyName(() => AutoHide));
+            }
+        }
 
-	    void IPartImportsSatisfiedNotification.OnImportsSatisfied()
-	    {
-	        _menuBuilder.BuildMenuBar(MenuDefinitions.MainMenuBar, this);
-	    }
-	}
+        void IPartImportsSatisfiedNotification.OnImportsSatisfied()
+        {
+            _menuBuilder.BuildMenuBar(MenuDefinitions.MainMenuBar, this);
+        }
+    }
 }

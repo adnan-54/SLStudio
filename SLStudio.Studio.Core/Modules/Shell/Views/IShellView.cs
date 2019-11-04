@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Gemini.Framework;
 
-namespace Gemini.Modules.Shell.Views
+namespace SLStudio.Studio.Core.Modules.Shell.Views
 {
     public interface IShellView
     {

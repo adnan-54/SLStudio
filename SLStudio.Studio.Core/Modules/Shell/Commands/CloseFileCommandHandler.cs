@@ -1,10 +1,10 @@
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Framework.Threading;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Services;
-using Gemini.Framework.Threading;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class CloseFileCommandHandler : CommandHandlerBase<CloseFileCommandDefinition>

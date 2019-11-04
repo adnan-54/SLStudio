@@ -1,7 +1,7 @@
-﻿using Gemini.Framework.Commands;
-using Gemini.Properties;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
 
-namespace Gemini.Modules.Settings.Commands
+namespace SLStudio.Studio.Core.Modules.Settings.Commands
 {
     [CommandDefinition]
     public class OpenSettingsCommandDefinition : CommandDefinition

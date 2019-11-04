@@ -1,10 +1,10 @@
-﻿using Gemini.Framework.Commands;
-using Gemini.Properties;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
 using System;
 using System.ComponentModel.Composition;
 using System.Windows.Input;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandDefinition]
     public class SaveAllFilesCommandDefinition : CommandDefinition
@@ -28,9 +28,9 @@ namespace Gemini.Modules.Shell.Commands
 
         public override Uri IconSource
         {
-            get 
+            get
             {
-                return new Uri("pack://application:,,,/Gemini;component/Resources/Icons/SaveAll.png"); 
+                return new Uri("pack://application:,,,/SLStudio.Studio.Core;component/Resources/Icons/SaveAll.png");
             }
         }
 

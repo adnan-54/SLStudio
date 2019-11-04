@@ -1,9 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Threading;
+using System.Threading.Tasks;
 using System.Windows;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Threading;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class ViewFullScreenCommandHandler : CommandHandlerBase<ViewFullScreenCommandDefinition>

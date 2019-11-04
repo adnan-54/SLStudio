@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.Composition;
-using Gemini.Framework.Menus;
-using Gemini.Modules.Shell.Commands;
-using Gemini.Properties;
+﻿using SLStudio.Studio.Core.Framework.Menus;
+using SLStudio.Studio.Core.Modules.Shell.Commands;
+using SLStudio.Studio.Core.Properties;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.Shell
+namespace SLStudio.Studio.Core.Modules.Shell
 {
     public static class MenuDefinitions
     {

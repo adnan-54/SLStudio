@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework.Win32;
+using System;
 using System.Windows;
 using System.Windows.Interactivity;
 using System.Windows.Interop;

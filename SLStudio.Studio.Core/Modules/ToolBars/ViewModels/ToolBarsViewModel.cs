@@ -1,9 +1,9 @@
-﻿using System.ComponentModel.Composition;
-using Caliburn.Micro;
-using Gemini.Modules.ToolBars.Controls;
-using Gemini.Modules.ToolBars.Views;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Modules.ToolBars.Controls;
+using SLStudio.Studio.Core.Modules.ToolBars.Views;
+using System.ComponentModel.Composition;
 
-namespace Gemini.Modules.ToolBars.ViewModels
+namespace SLStudio.Studio.Core.Modules.ToolBars.ViewModels
 {
     [Export(typeof(IToolBars))]
     public class ToolBarsViewModel : ViewAware, IToolBars
@@ -38,12 +38,8 @@ namespace Gemini.Modules.ToolBars.ViewModels
         {
             _toolBarBuilder.BuildToolBars(this);
 
-            // TODO: Ideally, the ToolBarTray control would expose ToolBars
-            // as a dependency property. We could use an attached property
-            // to workaround this. But for now, toolbars need to be
-            // created prior to the following code being run.
             foreach (var toolBar in Items)
-                ((IToolBarsView) view).ToolBarTray.ToolBars.Add(new MainToolBar
+                ((IToolBarsView)view).ToolBarTray.ToolBars.Add(new MainToolBar
                 {
                     ItemsSource = toolBar
                 });

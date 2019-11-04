@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Framework.Threading;
+using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
-using Gemini.Framework;
-using Gemini.Framework.Commands; 
-using Gemini.Framework.Services;
-using Gemini.Framework.Threading;
 
-namespace Gemini.Modules.Shell.Commands
+namespace SLStudio.Studio.Core.Modules.Shell.Commands
 {
     [CommandHandler]
     public class SwitchToDocumentListCommandHandler : ICommandListHandler<SwitchToDocumentCommandListDefinition>
@@ -35,7 +35,7 @@ namespace Gemini.Modules.Shell.Commands
 
         public Task Run(Command command)
         {
-            _shell.OpenDocument((IDocument) command.Tag);
+            _shell.OpenDocument((IDocument)command.Tag);
             return TaskUtility.Completed;
         }
     }

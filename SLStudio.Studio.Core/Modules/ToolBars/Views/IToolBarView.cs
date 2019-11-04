@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Gemini.Modules.ToolBars.Views
+namespace SLStudio.Studio.Core.Modules.ToolBars.Views
 {
     public interface IToolBarsView
     {

@@ -1,7 +1,7 @@
-﻿using Gemini.Framework.Commands;
-using Gemini.Properties;
+﻿using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Properties;
 
-namespace Gemini.Modules.UndoRedo.Commands
+namespace SLStudio.Studio.Core.Modules.UndoRedo.Commands
 {
     [CommandDefinition]
     public class ViewHistoryCommandDefinition : CommandDefinition

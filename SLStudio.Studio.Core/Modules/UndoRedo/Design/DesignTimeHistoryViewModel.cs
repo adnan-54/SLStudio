@@ -1,6 +1,6 @@
-using Gemini.Modules.UndoRedo.ViewModels;
+using SLStudio.Studio.Core.Modules.UndoRedo.ViewModels;
 
-namespace Gemini.Modules.UndoRedo.Design
+namespace SLStudio.Studio.Core.Modules.UndoRedo.Design
 {
     public class DesignTimeHistoryViewModel : HistoryViewModel
     {

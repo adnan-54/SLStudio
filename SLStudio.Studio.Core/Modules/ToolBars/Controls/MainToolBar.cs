@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace Gemini.Modules.ToolBars.Controls
+namespace SLStudio.Studio.Core.Modules.ToolBars.Controls
 {
     public class MainToolBar : ToolBarBase
     {

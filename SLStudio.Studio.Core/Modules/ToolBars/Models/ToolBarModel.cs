@@ -1,9 +1,9 @@
 ﻿using Caliburn.Micro;
 
-namespace Gemini.Modules.ToolBars.Models
+namespace SLStudio.Studio.Core.Modules.ToolBars.Models
 {
-	public class ToolBarModel : BindableCollection<ToolBarItemBase>, IToolBar
-	{
-        
-	}
+    public class ToolBarModel : BindableCollection<ToolBarItemBase>, IToolBar
+    {
+
+    }
 }

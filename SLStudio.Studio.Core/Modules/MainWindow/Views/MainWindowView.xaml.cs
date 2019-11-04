@@ -1,10 +1,10 @@
-﻿namespace Gemini.Modules.MainWindow.Views
+﻿namespace SLStudio.Studio.Core.Modules.MainWindow.Views
 {
-	public partial class MainWindowView
+    public partial class MainWindowView
     {
         public MainWindowView()
-		{
-			InitializeComponent();
-		}
-	}
+        {
+            InitializeComponent();
+        }
+    }
 }

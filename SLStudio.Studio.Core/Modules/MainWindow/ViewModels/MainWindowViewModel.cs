@@ -1,17 +1,16 @@
-﻿using System.ComponentModel.Composition;
+﻿using Caliburn.Micro;
+using SLStudio.Studio.Core.Framework.Commands;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Properties;
+using System.ComponentModel.Composition;
 using System.Windows;
 using System.Windows.Media;
-using Caliburn.Micro;
-using Gemini.Framework.Commands;
-using Gemini.Framework.Services;
-using Gemini.Properties;
 
-namespace Gemini.Modules.MainWindow.ViewModels
+namespace SLStudio.Studio.Core.Modules.MainWindow.ViewModels
 {
     [Export(typeof(IMainWindow))]
     public class MainWindowViewModel : Conductor<IShell>, IMainWindow, IPartImportsSatisfiedNotification
     {
-#pragma warning disable 649
         [Import]
         private IShell _shell;
 
@@ -20,7 +19,6 @@ namespace Gemini.Modules.MainWindow.ViewModels
 
         [Import]
         private ICommandKeyGestureService _commandKeyGestureService;
-#pragma warning restore 649
 
         private WindowState _windowState = WindowState.Normal;
         public WindowState WindowState
@@ -91,7 +89,7 @@ namespace Gemini.Modules.MainWindow.ViewModels
 
         protected override void OnViewLoaded(object view)
         {
-            _commandKeyGestureService.BindKeyGestures((UIElement) view);
+            _commandKeyGestureService.BindKeyGestures((UIElement)view);
             base.OnViewLoaded(view);
         }
     }

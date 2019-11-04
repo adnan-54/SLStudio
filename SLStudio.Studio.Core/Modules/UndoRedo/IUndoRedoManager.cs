@@ -1,8 +1,8 @@
+using Caliburn.Micro;
 using System;
 using System.ComponentModel;
-using Caliburn.Micro;
 
-namespace Gemini.Modules.UndoRedo
+namespace SLStudio.Studio.Core.Modules.UndoRedo
 {
     public interface IUndoRedoManager : INotifyPropertyChanged
     {

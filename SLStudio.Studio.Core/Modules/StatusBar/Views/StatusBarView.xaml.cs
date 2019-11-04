@@ -1,9 +1,9 @@
-﻿using System.Linq;
+﻿using SLStudio.Studio.Core.Modules.StatusBar.ViewModels;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using Gemini.Modules.StatusBar.ViewModels;
 
-namespace Gemini.Modules.StatusBar.Views
+namespace SLStudio.Studio.Core.Modules.StatusBar.Views
 {
     /// <summary>
     /// Interaction logic for StatusBarView.xaml
@@ -19,7 +19,7 @@ namespace Gemini.Modules.StatusBar.Views
 
         private void OnStatusBarGridLoaded(object sender, RoutedEventArgs e)
         {
-            _statusBarGrid = (Grid) sender;
+            _statusBarGrid = (Grid)sender;
             RefreshGridColumns();
         }
 

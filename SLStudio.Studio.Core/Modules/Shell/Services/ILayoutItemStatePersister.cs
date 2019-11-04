@@ -1,7 +1,7 @@
-using Gemini.Framework.Services;
-using Gemini.Modules.Shell.Views;
+using SLStudio.Studio.Core.Framework.Services;
+using SLStudio.Studio.Core.Modules.Shell.Views;
 
-namespace Gemini.Modules.Shell.Services
+namespace SLStudio.Studio.Core.Modules.Shell.Services
 {
     public interface ILayoutItemStatePersister
     {

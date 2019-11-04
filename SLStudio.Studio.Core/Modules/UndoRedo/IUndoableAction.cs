@@ -1,4 +1,4 @@
-﻿namespace Gemini.Modules.UndoRedo
+﻿namespace SLStudio.Studio.Core.Modules.UndoRedo
 {
     public interface IUndoableAction
     {

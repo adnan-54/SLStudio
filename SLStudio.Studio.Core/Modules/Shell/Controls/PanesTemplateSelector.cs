@@ -1,8 +1,8 @@
-﻿using System.Windows;
+﻿using SLStudio.Studio.Core.Framework;
+using System.Windows;
 using System.Windows.Controls;
-using Gemini.Framework;
 
-namespace Gemini.Modules.Shell.Controls
+namespace SLStudio.Studio.Core.Modules.Shell.Controls
 {
     public class PanesTemplateSelector : DataTemplateSelector
     {

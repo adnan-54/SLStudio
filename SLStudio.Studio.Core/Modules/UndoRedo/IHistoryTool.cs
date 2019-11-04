@@ -1,6 +1,6 @@
-﻿using Gemini.Framework;
+﻿using SLStudio.Studio.Core.Framework;
 
-namespace Gemini.Modules.UndoRedo
+namespace SLStudio.Studio.Core.Modules.UndoRedo
 {
     public interface IHistoryTool : ITool
     {

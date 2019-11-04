@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SLStudio.Studio.Core.Framework;
+using SLStudio.Studio.Core.Modules.Toolbox;
+using SLStudio.Studio.Core.Modules.Toolbox.ViewModels;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Gemini.Framework;
-using Gemini.Modules.Toolbox.ViewModels;
 
-namespace Gemini.Modules.Toolbox.Views
+namespace SLStudio.Studio.Core.Modules.Toolbox.Views
 {
     /// <summary>
     /// Interaction logic for ToolboxView.xaml
@@ -23,7 +24,7 @@ namespace Gemini.Modules.Toolbox.Views
         private void OnListBoxPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var listBoxItem = VisualTreeUtility.FindParent<ListBoxItem>(
-                (DependencyObject) e.OriginalSource);
+                (DependencyObject)e.OriginalSource);
             _draggingItem = listBoxItem != null;
 
             _mouseStartPosition = e.GetPosition(ListBox);
@@ -43,12 +44,12 @@ namespace Gemini.Modules.Toolbox.Views
                 Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
                 var listBoxItem = VisualTreeUtility.FindParent<ListBoxItem>(
-                    (DependencyObject) e.OriginalSource);
+                    (DependencyObject)e.OriginalSource);
 
                 if (listBoxItem == null)
                     return;
 
-                var itemViewModel = (ToolboxItemViewModel) ListBox.ItemContainerGenerator.
+                var itemViewModel = (ToolboxItemViewModel)ListBox.ItemContainerGenerator.
                     ItemFromContainer(listBoxItem);
 
                 var dragData = new DataObject(ToolboxDragDrop.DataFormat, itemViewModel.Model);
