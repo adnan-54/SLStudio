@@ -222,6 +222,9 @@
   <data name="MainWindowDefaultTitle" xml:space="preserve">
     <value>SLStudio</value>
   </data>
+  <data name="OutputDisplayName" xml:space="preserve">
+    <value>Output</value>
+  </data>
   <data name="SaveChangesBeforeClosingMessage" xml:space="preserve">
     <value>Save changes to the {0} "{1}" before closing?</value>
   </data>
@@ -275,6 +278,12 @@
   </data>
   <data name="ViewMenuText" xml:space="preserve">
     <value>_View</value>
+  </data>
+  <data name="ViewOutputCommandText" xml:space="preserve">
+    <value>_Output</value>
+  </data>
+  <data name="ViewOutputCommandToolTip" xml:space="preserve">
+    <value>Output</value>
   </data>
   <data name="ViewToolboxCommandText" xml:space="preserve">
     <value>Toolbo_x</value>

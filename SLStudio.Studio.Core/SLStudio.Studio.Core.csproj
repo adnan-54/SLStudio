@@ -223,6 +223,16 @@
     <Compile Include="Modules\MainWindow\Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Output\Commands\ViewOutputCommandDefinition.cs" />
+    <Compile Include="Modules\Output\Commands\ViewOutputCommandHandler.cs" />
+    <Compile Include="Modules\Output\IOutput.cs" />
+    <Compile Include="Modules\Output\MenuDefinitions.cs" />
+    <Compile Include="Modules\Output\ViewModels\OutputWriter.cs" />
+    <Compile Include="Modules\Output\ViewModels\OutputViewModel.cs" />
+    <Compile Include="Modules\Output\Views\IOutputView.cs" />
+    <Compile Include="Modules\Output\Views\OutputView.xaml.cs">
+      <DependentUpon>OutputView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Settings\Commands\OpenSettingsCommandDefinition.cs" />
     <Compile Include="Modules\Settings\Commands\OpenSettingsCommandHandler.cs" />
     <Compile Include="Modules\Settings\ISettingsEditor.cs" />
@@ -341,18 +351,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Framework\ShaderEffects\GrayscaleEffect.ps" />
+    <Resource Include="Framework\ShaderEffects\GrayscaleEffect.ps" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SLStudio.Studio.Settings\SLStudio.Studio.Settings.csproj">
-      <Project>{0b5aac67-b795-425d-ab5c-a67496d48c6c}</Project>
-      <Name>SLStudio.Studio.Settings</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Page Include="Modules\MainMenu\Resources\Styles.xaml">
@@ -375,6 +379,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <Page Include="Modules\Output\Views\OutputView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\Settings\Views\SettingsView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -501,6 +509,9 @@
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.0.2.2.6\analyzers\dotnet\cs\Gu.Localization.Analyzers.dll" />
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.0.2.2.6\analyzers\dotnet\cs\Gu.Roslyn.AnalyzerExtensions.dll" />
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.0.2.2.6\analyzers\dotnet\cs\Gu.Roslyn.CodeFixExtensions.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Logging\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

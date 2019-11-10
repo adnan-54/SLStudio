@@ -376,6 +376,15 @@ namespace SLStudio.Studio.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        internal static string OutputDisplayName {
+            get {
+                return ResourceManager.GetString("OutputDisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save changes to the {0} &quot;{1}&quot; before closing?.
         /// </summary>
         internal static string SaveChangesBeforeClosingMessage {
@@ -534,6 +543,24 @@ namespace SLStudio.Studio.Core.Properties {
         internal static string ViewMenuText {
             get {
                 return ResourceManager.GetString("ViewMenuText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Output.
+        /// </summary>
+        internal static string ViewOutputCommandText {
+            get {
+                return ResourceManager.GetString("ViewOutputCommandText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        internal static string ViewOutputCommandToolTip {
+            get {
+                return ResourceManager.GetString("ViewOutputCommandToolTip", resourceCulture);
             }
         }
         
