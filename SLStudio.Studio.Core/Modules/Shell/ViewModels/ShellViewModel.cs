@@ -2,6 +2,7 @@
 using SLStudio.Studio.Core.Framework;
 using SLStudio.Studio.Core.Framework.Services;
 using SLStudio.Studio.Core.Framework.Themes;
+using SLStudio.Studio.Core.Modules.Logging;
 using SLStudio.Studio.Core.Modules.MainMenu;
 using SLStudio.Studio.Core.Modules.Shell.Services;
 using SLStudio.Studio.Core.Modules.Shell.Views;
@@ -13,12 +14,15 @@ using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using LogManager = SLStudio.Studio.Core.Modules.Logging.LogManager;
 
 namespace SLStudio.Studio.Core.Modules.Shell.ViewModels
 {
     [Export(typeof(IShell))]
     public class ShellViewModel : Conductor<IDocument>.Collection.OneActive, IShell
     {
+        private static readonly ILogger logger = LogManager.GetLogger(nameof(ShellViewModel));
+
         public event EventHandler ActiveDocumentChanging;
         public event EventHandler ActiveDocumentChanged;
 
@@ -115,6 +119,8 @@ namespace SLStudio.Studio.Core.Modules.Shell.ViewModels
             ((IActivate)this).Activate();
 
             _tools = new BindableCollection<ITool>();
+
+            logger.Debug("test", "shupa meu pito");
         }
 
         protected override void OnViewLoaded(object view)
