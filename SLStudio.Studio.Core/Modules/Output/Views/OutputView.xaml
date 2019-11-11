@@ -17,7 +17,7 @@
             <Button Content="Clear" x:Name="ClearAll"/>
             
             <!--TextWrap-->
-            <ToggleButton Margin="3, 0, 0, 0" Content="Word Wrap" IsChecked="{Binding IsTextWrapping}"/>
+            <CheckBox Margin="3, 0, 0, 0" Content="Word Wrap" IsChecked="{Binding IsTextWrapping}"/>
         </StackPanel>
         
         <!--Output-->

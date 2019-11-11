@@ -21,8 +21,6 @@ namespace SLStudio.Studio.Core.Modules.Shell.ViewModels
     [Export(typeof(IShell))]
     public class ShellViewModel : Conductor<IDocument>.Collection.OneActive, IShell
     {
-        private static readonly ILogger logger = LogManager.GetLogger(nameof(ShellViewModel));
-
         public event EventHandler ActiveDocumentChanging;
         public event EventHandler ActiveDocumentChanged;
 
@@ -119,8 +117,6 @@ namespace SLStudio.Studio.Core.Modules.Shell.ViewModels
             ((IActivate)this).Activate();
 
             _tools = new BindableCollection<ITool>();
-
-            logger.Debug("test", "shupa meu pito");
         }
 
         protected override void OnViewLoaded(object view)

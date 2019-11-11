@@ -17,7 +17,7 @@ namespace SLStudio.Studio.Core.Modules.Logging
     {
         private static readonly List<Logger> currentLoggers = new List<Logger>();
         private static readonly IOutput output = IoC.Get<IOutput>();
-        private static readonly string logFileName = "Logger.log";
+        private static readonly string logFileName = "Logger2.log";
         private static readonly string logDirectory = Path.Combine(Application.StartupPath, "Logger");
         private static readonly string logFullPath = Path.Combine(logDirectory, logFileName);
         private static readonly string logConnectionString = $"Data Source={logFullPath};Version=3;datetimeformat=CurrentCulture";
@@ -66,28 +66,20 @@ namespace SLStudio.Studio.Core.Modules.Logging
 
         public static void ClearLog()
         {
-            var confirmationDialog = MessageBox.Show("Are you sure? This action can not be reverted!", "Clear Log", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirmationDialog == DialogResult.Yes)
+            DialogResult confirmationDialog = MessageBox.Show(Resources.LoggerResources.ClearConfirmation, Resources.LoggerResources.Clear, MessageBoxButtons.OKCancel, MessageBoxIcon.Question); ;
+            if (confirmationDialog == DialogResult.OK)
             {
-                logConnection.Open();
-
                 try
                 {
-                    using (SQLiteCommand command = new SQLiteCommand())
-                    {
-                        command.Connection = logConnection;
-                        command.CommandText = "DROP TABLE TB_LOGS;";
+                    if (File.Exists(logFullPath))
+                        File.Delete(logFullPath);
 
-                        command.ExecuteNonQuery();
-                    }
-                    CreateTable();
+                    CreateDatabase();
                 }
                 catch { }
                 finally
                 {
-                    logConnection.Close();
-                    InsertIntoLog("Info", "Log cleaned", "Log cleaned successfully", "LogManager", DateTime.Now);
+                    InsertIntoLog("Log cleaned", "Log cleaned successfully", "Info", "LogManager", DateTime.Now);
                 }
             }
         }

@@ -215,9 +215,26 @@
     <Compile Include="Framework\VisualTreeUtility.cs" />
     <Compile Include="Framework\Win32\NativeMethods.cs" />
     <Compile Include="Framework\WindowBase.cs" />
+    <Compile Include="Modules\Logging\Commands\OpenLogsCommandDefinition.cs" />
+    <Compile Include="Modules\Logging\Commands\OpenLogsCommandHandler.cs" />
     <Compile Include="Modules\Logging\ILogger.cs" />
     <Compile Include="Modules\Logging\Logger.cs" />
     <Compile Include="Modules\Logging\LogManager.cs" />
+    <Compile Include="Modules\Logging\MenuDefinitions.cs" />
+    <Compile Include="Modules\Logging\Resources\LoggerResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoggerResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logging\Resources\LoggerResources.pt-br.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LoggerResources.pt-br.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logging\ViewModels\LoggerViewModel.cs" />
+    <Compile Include="Modules\Logging\Views\LoggerView.xaml.cs">
+      <DependentUpon>LoggerView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\MainMenu\Behaviors\MenuBehavior.cs" />
     <Compile Include="Modules\MainMenu\Controls\MenuEx.cs" />
     <Compile Include="Modules\MainMenu\Controls\MenuItemEx.cs" />
@@ -365,6 +382,14 @@
     <Compile Include="Themes\VS2013\Controls\Converters\TreeViewIndentConverter.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modules\Logging\Resources\LoggerResources.pt-br.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoggerResources.pt-br.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\Logging\Resources\LoggerResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LoggerResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -380,6 +405,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modules\Logging\Views\LoggerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\MainMenu\Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -531,10 +560,7 @@
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.0.2.2.6\analyzers\dotnet\cs\Gu.Roslyn.AnalyzerExtensions.dll" />
     <Analyzer Include="..\packages\Gu.Localization.Analyzers.0.2.2.6\analyzers\dotnet\cs\Gu.Roslyn.CodeFixExtensions.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\Logging\ViewModels\" />
-    <Folder Include="Modules\Logging\Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
