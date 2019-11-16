@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Java", "Java", "{AB00CA7E-C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sls", "Sls", "{F1BEDEF7-12FB-418E-AC95-F779300B068E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.ObjectFactory", "SLStudio.ObjectFactory\SLStudio.ObjectFactory.csproj", "{1DE6694D-6999-4504-BD1F-6FD3D94AE6B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Logging", "SLStudio.Logging\SLStudio.Logging.csproj", "{7A7A27EA-C74A-400C-91A3-33F36F15AE2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{C4055250-7BB5-40A1-8B15-8946671BFCB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4055250-7BB5-40A1-8B15-8946671BFCB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4055250-7BB5-40A1-8B15-8946671BFCB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DE6694D-6999-4504-BD1F-6FD3D94AE6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DE6694D-6999-4504-BD1F-6FD3D94AE6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DE6694D-6999-4504-BD1F-6FD3D94AE6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DE6694D-6999-4504-BD1F-6FD3D94AE6B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7A27EA-C74A-400C-91A3-33F36F15AE2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7A27EA-C74A-400C-91A3-33F36F15AE2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7A27EA-C74A-400C-91A3-33F36F15AE2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7A27EA-C74A-400C-91A3-33F36F15AE2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,7 +73,7 @@ Global
 		{F1BEDEF7-12FB-418E-AC95-F779300B068E} = {BEC7A3A5-E122-47F9-B468-4DB221A45306}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 	EndGlobalSection
 EndGlobal

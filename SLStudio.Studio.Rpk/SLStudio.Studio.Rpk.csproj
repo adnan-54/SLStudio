@@ -41,7 +41,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Module.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SLStudio.Studio.Core\SLStudio.Studio.Core.csproj">
+      <Project>{7ab93601-ff1d-4be1-84e3-006b14f48aba}</Project>
+      <Name>SLStudio.Studio.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\RpkEditor\Resources\" />
+    <Folder Include="Modules\RpkEditor\ViewModels\" />
+    <Folder Include="Modules\RpkEditor\Views\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
