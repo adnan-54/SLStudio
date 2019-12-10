@@ -43,5 +43,11 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SLStudio\SLStudio.csproj">
+      <Project>{fd89ad0b-7073-4d7a-a8c1-c0a5d4e1f667}</Project>
+      <Name>SLStudio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

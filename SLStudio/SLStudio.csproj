@@ -92,7 +92,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Module.cs" />
+    <Compile Include="Core\Module.cs" />
+    <Compile Include="Core\Modules\SplashScreen\SplashScreen.xaml.cs">
+      <DependentUpon>SplashScreen.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\SplashScreen\Resources\SplashScreen.pt-br.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,11 +108,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Modules\MainWindow\Views\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Core\Bootstrapper.cs" />
     <Compile Include="Modules\SplashScreen\Resources\SplashScreen.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -132,14 +131,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Modules\InitialWindow\ViewModels\" />
-    <Folder Include="Modules\InitialWindow\Views\" />
-    <Folder Include="Modules\Shell\ViewModels\" />
-    <Folder Include="Modules\Shell\Views\" />
-    <Folder Include="Resources\Icons\" />
+    <Folder Include="Core\Services\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Modules\MainWindow\Views\MainWindowView.xaml">
+    <Page Include="Core\Modules\SplashScreen\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

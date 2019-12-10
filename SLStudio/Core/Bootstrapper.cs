@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
-using SLStudio.Modules.SplashScreen.ViewModels;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
@@ -10,7 +9,7 @@ using System.Windows;
 
 namespace SLStudio
 {
-    public class Bootstrapper : BootstrapperBase
+    public sealed class Bootstrapper : BootstrapperBase
     {
         private readonly SimpleContainer container = new SimpleContainer();
 
@@ -18,6 +17,11 @@ namespace SLStudio
         {
             PreInitialize();
             Initialize();
+        } 
+
+        protected override void Configure()
+        {
+            container.Instance(container);
         }
 
         private void PreInitialize()
@@ -30,19 +34,6 @@ namespace SLStudio
             culture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
-        }
-
-        protected override void Configure()
-        {
-            container.Instance(container);
-            container.Singleton<IWindowManager, WindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<SplashScreenViewModel>();
-        }
-
-        protected override void OnStartup(object sender, StartupEventArgs e)
-        {
-            DisplayRootViewFor<SplashScreenViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)

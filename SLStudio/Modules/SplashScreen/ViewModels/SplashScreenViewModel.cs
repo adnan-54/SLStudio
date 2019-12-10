@@ -1,8 +1,5 @@
 ﻿using Caliburn.Micro;
-using System;
-using System.Linq;
 using System.Reflection;
-using System.Threading;
 
 namespace SLStudio.Modules.SplashScreen.ViewModels
 {
