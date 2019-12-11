@@ -96,7 +96,7 @@
     <Compile Include="Core\Modules\SplashScreen\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SplashScreen\Resources\SplashScreen.pt-br.Designer.cs">
+    <Compile Include="Core\Modules\SplashScreen\SplashScreen\Resources\SplashScreen.pt-br.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SplashScreen.pt-br.resx</DependentUpon>
@@ -109,13 +109,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Bootstrapper.cs" />
-    <Compile Include="Modules\SplashScreen\Resources\SplashScreen.Designer.cs">
+    <Compile Include="Core\Modules\SplashScreen\SplashScreen\Resources\SplashScreen.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SplashScreen.resx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
-    <Compile Include="Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
+    <Compile Include="Core\Modules\SplashScreen\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
+    <Compile Include="Core\Modules\SplashScreen\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -132,23 +132,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Services\" />
+    <Folder Include="Modules\Rpk\" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Core\Modules\SplashScreen\SplashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modules\SplashScreen\Views\SplashScreenView.xaml">
+    <Page Include="Core\Modules\SplashScreen\SplashScreen\Views\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreen.pt-br.resx">
+    <EmbeddedResource Include="Core\Modules\SplashScreen\SplashScreen\Resources\SplashScreen.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreen.pt-br.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreen.resx">
+    <EmbeddedResource Include="Core\Modules\SplashScreen\SplashScreen\Resources\SplashScreen.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreen.Designer.cs</LastGenOutput>
     </EmbeddedResource>

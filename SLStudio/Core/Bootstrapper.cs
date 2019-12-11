@@ -17,11 +17,6 @@ namespace SLStudio
         {
             PreInitialize();
             Initialize();
-        } 
-
-        protected override void Configure()
-        {
-            container.Instance(container);
         }
 
         private void PreInitialize()
@@ -34,6 +29,11 @@ namespace SLStudio
             culture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
+        }
+
+        protected override void Configure()
+        {
+            container.Instance(container);
         }
 
         protected override object GetInstance(Type service, string key)
