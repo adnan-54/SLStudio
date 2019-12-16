@@ -7,9 +7,9 @@ using System.Globalization;
 using System.Threading;
 using System.Windows;
 
-namespace SLStudio
+namespace SLStudio.Core
 {
-    public sealed class Bootstrapper : BootstrapperBase
+    public class Bootstrapper : BootstrapperBase
     {
         private readonly SimpleContainer container = new SimpleContainer();
 
@@ -34,6 +34,11 @@ namespace SLStudio
         protected override void Configure()
         {
             container.Instance(container);
+            container.Singleton<ISplashScreenService, SplashScreenService>();
+            container.Singleton<IBootstrapperService, BootstrapperService>();
+
+            var bootstrapper = IoC.Get<IBootstrapperService>();
+            bootstrapper.Initialize();
         }
 
         protected override object GetInstance(Type service, string key)
