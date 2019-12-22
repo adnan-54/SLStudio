@@ -36,6 +36,11 @@ namespace SLStudio.Core
             container.Instance(container);
             container.Singleton<ISplashScreenService, SplashScreenService>();
             container.Singleton<IBootstrapperService, BootstrapperService>();
+        }
+
+        protected override void OnStartup(object sender, StartupEventArgs e)
+        {
+            base.OnStartup(sender, e);
 
             var bootstrapper = IoC.Get<IBootstrapperService>();
             bootstrapper.Initialize();
