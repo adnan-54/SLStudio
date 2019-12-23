@@ -10,14 +10,14 @@
                    WindowTitleBrush="{DynamicResource AccentBaseColorBrush}" NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
                    GlowBrush="{DynamicResource AccentBaseColorBrush}" NonActiveGlowBrush="{DynamicResource AccentColorBrush2}"
                    BorderBrush="{DynamicResource AccentBaseColorBrush}" NonActiveBorderBrush="{DynamicResource AccentColorBrush2}" BorderThickness="1.5">
-
     <!--TitleBar Left Template-->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">
             <StackPanel Orientation="Horizontal">
                 <!--Menu-->
                 <Menu Margin="6, 0, 0, 0">
-                    <MenuItem Header="File"/>
+                    <MenuItem Header="File">
+                    </MenuItem>
                 </Menu>
             </StackPanel>
         </metro:WindowCommands>
@@ -33,10 +33,9 @@
         <!--ToolBar-->
         <ContentControl Grid.Row="0"/>
 
-
         <!--Shell-->
-        <ContentControl Grid.Row="1"/>
-
+        <ContentControl Grid.RowSpan="1"/>
+        
         <!--StatusBar-->
         <ContentControl Grid.Row="2"/>
     </Grid>
