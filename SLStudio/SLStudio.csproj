@@ -96,9 +96,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Framework\IMainWindow.cs" />
     <Compile Include="Core\Framework\IModule.cs" />
     <Compile Include="Core\Framework\IShell.cs" />
     <Compile Include="Core\Module.cs" />
+    <Compile Include="Core\Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Core\Modules\MainWindow\Views\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -150,6 +155,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Modules\Shell\Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -165,6 +174,9 @@
   <ItemGroup>
     <Resource Include="Core\Modules\Shell\Resources\icon.png" />
     <Resource Include="Core\Modules\Shell\Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Modules\MainWindow\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

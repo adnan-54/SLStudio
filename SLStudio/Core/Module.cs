@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Framework;
-using SLStudio.Core.Modules;
+using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 
 namespace SLStudio.Core
@@ -19,6 +19,7 @@ namespace SLStudio.Core
             container.Singleton<IEventAggregator, EventAggregator>();
 
             //core services
+            container.Singleton<IMainWindow, MainWindowViewModel>();
             container.Singleton<IShell, ShellViewModel>();
         }
     }

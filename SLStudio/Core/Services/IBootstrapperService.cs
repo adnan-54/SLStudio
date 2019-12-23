@@ -44,10 +44,10 @@ namespace SLStudio.Core
             isInitialized = true;
 
             var windowManager = IoC.Get<IWindowManager>();
-            var shell = IoC.Get<IShell>();
+            var mainWindow = IoC.Get<IMainWindow>();
             
             splashScreen.Hide();
-            windowManager.ShowWindow(shell);
+            windowManager.ShowWindow(mainWindow);
             splashScreen.Close();
         }
 
