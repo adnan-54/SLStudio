@@ -1,18 +1,14 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core;
-using System.Windows;
 
 namespace SLStudio.Modules.Tests
 {
-    class Module : IModule
+    class Module : ModuleBase
     {
-        public bool ShouldBeLoaded => true;
+        public override string ModuleName => "Tests";
+        public override string ModuleDescrition => "Tests module.";
 
-        public string ModuleName => "Test Module";
-
-        public string ModuleDescrition => "Used for tests";
-
-        public void Register(SimpleContainer container)
+        public override void Register(SimpleContainer container)
         {
 
         }

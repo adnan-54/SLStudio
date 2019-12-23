@@ -1,34 +1,18 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro;
-using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
 using System.Windows;
 
 namespace SLStudio.Core
 {
     public class Bootstrapper : BootstrapperBase
     {
-        private readonly SimpleContainer container = new SimpleContainer();
+        private readonly SimpleContainer container;
 
         public Bootstrapper()
         {
-            PreInitialize();
+            container = new SimpleContainer();
             Initialize();
-        }
-
-        private void PreInitialize()
-        {
-            string themeAccent = Settings.Default.ThemeAccent;
-            string themeBase = Settings.Default.ThemeBase;
-            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(themeAccent), ThemeManager.GetAppTheme(themeBase));
-
-            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
-            culture.NumberFormat.NumberDecimalSeparator = ".";
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
         }
 
         protected override void Configure()

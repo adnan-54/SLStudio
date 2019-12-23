@@ -1,7 +1,14 @@
 ﻿using Caliburn.Micro;
+using MahApps.Metro;
+using SLStudio.Core.Framework;
+using SLStudio.Properties;
 using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SLStudio.Core
 {
@@ -9,41 +16,85 @@ namespace SLStudio.Core
     {
         private readonly SimpleContainer container;
         private readonly ISplashScreenService splashScreen;
-
+        private readonly List<IModule> modules;
+        
+        private bool isInitialized;
+        
         public BootstrapperService(SimpleContainer container, ISplashScreenService splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
+            
+            modules = new List<IModule>();
+            isInitialized = false;
         }
 
-        public void Initialize()
+        public IList<IModule> Modules => modules;
+
+        public async Task Initialize()
         {
+            if (isInitialized)
+                return;
+
+            LoadUserSettings();
             splashScreen.Show();
 
-            var types = GetType().Assembly.GetTypes();
-            var modules = types.Where(type => type.IsClass &&
-                                      type.Name.Equals("Module") &&
-                                      type.GetInterface(nameof(IModule)) != null).ToList();
+            await LoadModulesAsync();
 
-            foreach (var module in modules)
-            {
-                var instance = Activator.CreateInstance(module) as IModule;
-                LoadModule(instance);
-            }
+            isInitialized = true;
+
+            var windowManager = IoC.Get<IWindowManager>();
+            var shell = IoC.Get<IShell>();
+            
+            splashScreen.Hide();
+            windowManager.ShowWindow(shell);
+            splashScreen.Close();
         }
 
-        private void LoadModule(IModule module)
+        private void LoadUserSettings()
         {
-            if(module != null && module.ShouldBeLoaded)
+            string themeAccent = Settings.Default.ThemeAccent;
+            string themeBase = Settings.Default.ThemeBase;
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(themeAccent), ThemeManager.GetAppTheme(themeBase));
+
+            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+        }
+
+        private async Task LoadModulesAsync()
+        {
+            await Task.Run(() =>
             {
-                splashScreen.UpdateStatus(module.ModuleName);
-                module.Register(container);
-            }
+                GetType().Assembly.GetTypes().Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
+                .ToList()
+                .ForEach(type =>
+                {
+                    var instance = Activator.CreateInstance(type) as IModule;
+                    modules.Add(instance);
+                });
+
+                var orderedModules = modules.OrderByDescending(p => p.ModulePriority).ToList();
+                modules.Clear();
+                modules.AddRange(orderedModules);
+                orderedModules.Clear();
+
+                foreach (var module in modules)
+                {
+                    if (module != null && module.ShouldBeLoaded)
+                    {
+                        splashScreen.UpdateStatus(module.ModuleName);
+                        module.Register(container);
+                    }
+                }
+            });
         }
     }
 
     public interface IBootstrapperService
     {
-        void Initialize();
+        IList<IModule> Modules { get; }
+        Task Initialize();
     }
 }
