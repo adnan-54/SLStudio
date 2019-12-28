@@ -133,8 +133,12 @@
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Modules\StatusBar\Resources\ViewModels\StatusBarViewModel.cs" />
-    <Compile Include="Core\Modules\StatusBar\Resources\Views\StatusBarView.xaml.cs">
+    <Compile Include="Core\Modules\StartPage\ViewModels\StartPageViewModel.cs" />
+    <Compile Include="Core\Modules\StartPage\Views\StartPageView.xaml.cs">
+      <DependentUpon>StartPageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
+    <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\Toolbar\ViewModels\ToolbarViewModel.cs" />
@@ -195,7 +199,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Core\Modules\StatusBar\Resources\Views\StatusBarView.xaml">
+    <Page Include="Core\Modules\StartPage\Views\StartPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\StatusBar\Views\StatusBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,7 +221,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Modules\Shell\Resources\" />
-    <Folder Include="Core\Modules\StatusBar\Resources\Resources\" />
+    <Folder Include="Core\Modules\StartPage\Resources\" />
+    <Folder Include="Core\Modules\StatusBar\Resources\" />
     <Folder Include="Core\Modules\Toolbar\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

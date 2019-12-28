@@ -2,6 +2,7 @@
 using SLStudio.Core.Framework;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
+using SLStudio.Core.Modules.StartPage.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
 using SLStudio.Core.Modules.Toolbar.ViewModels;
 

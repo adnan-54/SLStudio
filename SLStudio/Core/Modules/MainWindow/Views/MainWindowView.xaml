@@ -9,7 +9,7 @@
                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                    mc:Ignorable="d" Icon="pack://application:,,,/Core/Modules/MainWindow/Resources/icon.png"
                    MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="{Binding WindowState}" 
-                   WindowTitleBrush="{DynamicResource AccentBaseColorBrush}" NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
+                   WindowTitleBrush="{Binding StateColor}" NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
                    GlowBrush="{Binding StateColor}" NonActiveGlowBrush="{Binding StateColor}"
                    BorderBrush="{Binding StateColor}" NonActiveBorderBrush="{Binding StateColor}" BorderThickness="1.2, 1, 1.2, 1">
 
