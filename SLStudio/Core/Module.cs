@@ -2,6 +2,8 @@
 using SLStudio.Core.Framework;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
+using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
+using SLStudio.Core.Modules.Toolbar.ViewModels;
 
 namespace SLStudio.Core
 {
@@ -18,9 +20,11 @@ namespace SLStudio.Core
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
 
-            //core services
+            //core
             container.Singleton<IMainWindow, MainWindowViewModel>();
+            container.Singleton<IToolbar, ToolbarViewModel>();
             container.Singleton<IShell, ShellViewModel>();
+            container.Singleton<IStatusBar, StatusBarViewModel>();
         }
     }
 }

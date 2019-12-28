@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SLStudio.Core.Modules.Shell.Views
+namespace SLStudio.Core.Modules.StatusBar.Resources.Views
 {
     /// <summary>
-    /// Interaction logic for ShellView.xaml
+    /// Interaction logic for StatusBarView.xaml
     /// </summary>
-    public partial class ShellView : UserControl
+    public partial class StatusBarView : UserControl
     {
-        public ShellView()
+        public StatusBarView()
         {
             InitializeComponent();
         }

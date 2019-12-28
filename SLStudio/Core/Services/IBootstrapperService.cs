@@ -84,6 +84,9 @@ namespace SLStudio.Core
                 {
                     if (module != null && module.ShouldBeLoaded)
                     {
+                        if (!Settings.Default.FastSplashScreen)
+                            Thread.Sleep(Settings.Default.SplashScreenSleepTime);
+
                         splashScreen.UpdateStatus(module.ModuleName);
                         module.Register(container);
                     }
