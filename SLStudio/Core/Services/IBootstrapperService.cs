@@ -1,14 +1,10 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro;
-using SLStudio.Core.Framework;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace SLStudio.Core
 {
@@ -36,7 +32,6 @@ namespace SLStudio.Core
             if (isInitialized)
                 return;
 
-            LoadUserSettings();
             splashScreen.Show();
 
             await LoadModulesAsync();
@@ -49,18 +44,6 @@ namespace SLStudio.Core
             splashScreen.Hide();
             windowManager.ShowWindow(mainWindow);
             splashScreen.Close();
-        }
-
-        private void LoadUserSettings()
-        {
-            string themeAccent = Settings.Default.ThemeAccent;
-            string themeBase = Settings.Default.ThemeBase;
-            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(themeAccent), ThemeManager.GetAppTheme(themeBase));
-
-            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
-            culture.NumberFormat.NumberDecimalSeparator = ".";
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
         }
 
         private async Task LoadModulesAsync()

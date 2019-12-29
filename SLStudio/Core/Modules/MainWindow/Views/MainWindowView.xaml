@@ -7,19 +7,41 @@
                    xmlns:cal="http://www.caliburnproject.org"
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.MainWindow.Resources"
                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-                   mc:Ignorable="d" Icon="pack://application:,,,/Core/Modules/MainWindow/Resources/icon.png"
-                   MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="{Binding WindowState}" 
-                   WindowTitleBrush="{Binding StateColor}" NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
-                   GlowBrush="{Binding StateColor}" NonActiveGlowBrush="{Binding StateColor}"
-                   BorderBrush="{Binding StateColor}" NonActiveBorderBrush="{Binding StateColor}" BorderThickness="1.2, 1, 1.2, 1">
-
+                   mc:Ignorable="d" Icon="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png"
+                   ShowIconOnTitleBar="False" TitleForeground="Transparent"
+                   MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen" WindowState="Maximized" 
+                   WindowTitleBrush="{DynamicResource AccentColorBrush}" NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
+                   GlowBrush="{DynamicResource AccentColorBrush}" NonActiveGlowBrush="{DynamicResource AccentColorBrush2}"
+                   BorderBrush="{DynamicResource AccentColorBrush}" NonActiveBorderBrush="{DynamicResource AccentColorBrush2}" BorderThickness="1.3, 1, 1.3, 1">
+   
+    <!--WindowButtonCommands-->
+    <metro:MetroWindow.WindowButtonCommands>
+        <metro:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
+    </metro:MetroWindow.WindowButtonCommands>
+    
     <!--TitleBar Left Template-->
     <metro:MetroWindow.LeftWindowCommands>
-        <metro:WindowCommands>
+        <metro:WindowCommands ShowLastSeparator="False">
             <StackPanel Orientation="Horizontal">
+                <!--Icon-->
+                <Rectangle Fill="{DynamicResource HighlightBrush}" Margin="6, 0, 0, 0"
+                           Height="32" Width="32">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush ImageSource="pack://application:,,,/Core/Modules/MainWindow/Resources/logoWhite.png"/>
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                
                 <!--Menu-->
-                <Menu Margin="6, 0, 6, 0">
-                    <MenuItem Header="_File"/>
+                <Menu Margin="6, 0, 6, 0" Style="{DynamicResource MetroMenu}">
+                    <!--File-->
+                    <MenuItem Header="{x:Static resx:MainWindow.File}">
+                        <!--Close-->
+                        <MenuItem Header="Close" InputGestureText="Alt+F4"/>
+                    </MenuItem>
+                    
+                    <!--Options-->
+                    <MenuItem Header="{x:Static resx:MainWindow.Options}"
+                              cal:Message.Attach="ShowOptions()" />
                 </Menu>
             </StackPanel>
         </metro:WindowCommands>

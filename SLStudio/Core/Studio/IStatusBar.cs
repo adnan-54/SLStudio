@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core.Framework
+namespace SLStudio.Core
 {
-    public interface IToolbar
+    public interface IStatusBar
     {
     }
 }

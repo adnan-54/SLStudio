@@ -1,8 +1,7 @@
 ﻿using Caliburn.Micro;
-using SLStudio.Core.Framework;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
+using SLStudio.Core.Modules.Options.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
-using SLStudio.Core.Modules.StartPage.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
 using SLStudio.Core.Modules.Toolbar.ViewModels;
 

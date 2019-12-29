@@ -1,6 +1,10 @@
 ﻿using Caliburn.Micro;
+using MahApps.Metro;
+using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using System.Windows;
 
 namespace SLStudio.Core
@@ -24,7 +28,14 @@ namespace SLStudio.Core
 
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(sender, e);
+            string themeAccent = Settings.Default.ThemeAccent;
+            string themeBase = Settings.Default.ThemeBase;
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(themeAccent), ThemeManager.GetAppTheme(themeBase));
+
+            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
 
             var bootstrapper = IoC.Get<IBootstrapperService>();
             bootstrapper.Initialize();

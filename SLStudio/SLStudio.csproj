@@ -96,11 +96,25 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Framework\IMainWindow.cs" />
-    <Compile Include="Core\Framework\IModule.cs" />
-    <Compile Include="Core\Framework\IShell.cs" />
-    <Compile Include="Core\Framework\IStatusBar.cs" />
-    <Compile Include="Core\Framework\IToolbar.cs" />
+    <Compile Include="Core\Modules\Options\Resources\OptionsResx.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OptionsResx.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Options\Resources\OptionsResx.pt-br.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OptionsResx.pt-br.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Options\ViewModels\OptionsViewModel.cs" />
+    <Compile Include="Core\Modules\Options\Views\OptionsView.xaml.cs">
+      <DependentUpon>OptionsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Studio\IMainWindow.cs" />
+    <Compile Include="Core\Services\IModuleService.cs" />
+    <Compile Include="Core\Studio\IShell.cs" />
+    <Compile Include="Core\Studio\IStatusBar.cs" />
+    <Compile Include="Core\Studio\IToolbar.cs" />
     <Compile Include="Core\Module.cs" />
     <Compile Include="Core\Modules\MainWindow\Resources\MainWindow.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -177,6 +191,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\Options\Resources\OptionsResx.pt-br.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OptionsResx.pt-br.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\Options\Resources\OptionsResx.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>OptionsResx.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreen.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreen.pt-br.Designer.cs</LastGenOutput>
@@ -188,6 +210,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\Options\Views\OptionsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -224,6 +250,10 @@
     <Folder Include="Core\Modules\StartPage\Resources\" />
     <Folder Include="Core\Modules\StatusBar\Resources\" />
     <Folder Include="Core\Modules\Toolbar\Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core\Modules\MainWindow\Resources\logoInverted.png" />
+    <Resource Include="Core\Modules\MainWindow\Resources\logoWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
