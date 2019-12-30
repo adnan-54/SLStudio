@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--LeftMargin-->
+    <Thickness x:Key="SmallLeftMargin">3, 0, 0, 0</Thickness>
+    <Thickness x:Key="LeftMargin">6, 0, 0, 0</Thickness>
+    <Thickness x:Key="LargeLeftMargin">12, 0, 0, 0</Thickness>
+
+    <!--UpperMargin-->
+    <Thickness x:Key="SmallUpperMargin">0, 3, 0, 0</Thickness>
+    <Thickness x:Key="UpperMargin">0, 6, 0, 0</Thickness>
+    <Thickness x:Key="LargeUpperMargin">0, 12, 0, 0</Thickness>
+
+    <!--RightMargin-->
+    <Thickness x:Key="SmallRightMargin">0, 0, 3, 0</Thickness>
+    <Thickness x:Key="RightMargin">0, 0, 6, 0</Thickness>
+    <Thickness x:Key="LargeRightMargin">0, 0, 12, 0</Thickness>
+
+    <!--BottomMargin-->
+    <Thickness x:Key="SmallBottomMargin">0, 0, 0, 3</Thickness>
+    <Thickness x:Key="BottomMargin">0, 0, 0, 6</Thickness>
+    <Thickness x:Key="LargeBottomMargin">0, 0, 0, 12</Thickness>
+
+    <!--FullMargin-->
+    <Thickness x:Key="SmallFullMargin">3</Thickness>
+    <Thickness x:Key="FullMargin">6</Thickness>
+    <Thickness x:Key="LargeFullMargin">12</Thickness>
+
+    <!--DefaultWindowPadding-->
+    <Thickness x:Key="DefaultWindowPadding">6</Thickness>
+</ResourceDictionary>

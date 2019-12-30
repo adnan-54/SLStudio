@@ -5,34 +5,10 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.Options.Resources"
-                   xmlns:cal="http://www.caliburnproject.org"
-                   mc:Ignorable="d" Icon="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png"
-                   ShowMaxRestoreButton="False" ShowMinButton="False"
-                   MinHeight="450" MinWidth="600" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
-                   SizeToContent="WidthAndHeight" TitleCaps="False" ShowIconOnTitleBar="False"
-                   ShowInTaskbar="False" EnableDWMDropShadow="True" AllowsTransparency="True"
-                   WindowTitleBrush="{DynamicResource AccentColorBrush}" 
-                   NonActiveWindowTitleBrush="{DynamicResource AccentColorBrush2}"
+                   xmlns:cal="http://www.caliburnproject.org" 
+                   mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+                   SizeToContent="WidthAndHeight" Style="{StaticResource ActionWindowStyle}"
                    cal:Message.Attach="[Event Closing] = [Action OnClose($eventArgs)]">
-
-    <!--WindowButtonCommands-->
-    <metro:MetroWindow.WindowButtonCommands>
-        <metro:WindowButtonCommands Template="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
-    </metro:MetroWindow.WindowButtonCommands>
-
-    <!--TitleBar Left Template-->
-    <metro:MetroWindow.LeftWindowCommands>
-        <metro:WindowCommands>
-            <!--Icon-->
-            <Rectangle Fill="{DynamicResource HighlightBrush}" Margin="6, 0, 6, 0"
-                        Height="32" Width="32">
-                <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="pack://application:,,,/Core/Modules/MainWindow/Resources/logoWhite.png"/>
-                </Rectangle.OpacityMask>
-            </Rectangle>
-        </metro:WindowCommands>
-    </metro:MetroWindow.LeftWindowCommands>
-    
     <!--Content-->
     <Grid>
         <Grid.RowDefinitions>
@@ -42,49 +18,52 @@
         </Grid.RowDefinitions>
 
         <!--Options-->
-        <StackPanel Grid.Row="0" Margin="6">
+        <StackPanel Grid.Row="0" Margin="{StaticResource FullMargin}">
             <!--Language-->
             <Label Content="{x:Static resx:OptionsResx.Language}"/>
             <ComboBox ItemsSource="{Binding AvaliableLanguages}" SelectedItem="{Binding SelectedLanguage}"
                       DisplayMemberPath="Name" SelectedValuePath="Value"/>
 
             <!--PreviewThemes-->
-            <CheckBox x:Name="PreviewThemes"
-                      Content="{x:Static resx:OptionsResx.PreviewThemes}" Margin="0, 12, 0, 0"/>
+            <CheckBox x:Name="PreviewThemes" Margin="{StaticResource SmallUpperMargin}"
+                      Content="{x:Static resx:OptionsResx.PreviewThemes}"/>
             
             <!--Theme-->
-            <Label Content="{x:Static resx:OptionsResx.Theme}" Margin="0, 3, 0, 0"/>
+            <Label Content="{x:Static resx:OptionsResx.Theme}" Margin="{StaticResource SmallUpperMargin}"/>
             <ComboBox ItemsSource="{Binding AvaliableThemes}" SelectedItem="{Binding SelectedTheme}"
                       DisplayMemberPath="Name" SelectedValuePath="Value"/>
             
             <!--Accent-->
-            <Label Content="{x:Static resx:OptionsResx.Accent}" Margin="0, 3, 0, 0"/>
+            <Label Content="{x:Static resx:OptionsResx.Accent}" Margin="{StaticResource SmallUpperMargin}"/>
             <ComboBox ItemsSource="{Binding AvaliableAccents}" SelectedItem="{Binding SelectedAccent}"
                       DisplayMemberPath="Name" SelectedValuePath="Value"/>
 
             <!--ShowInitialScreen-->
-            <CheckBox x:Name="ShowInitialScreen"
-                      Content="{x:Static resx:OptionsResx.ShowInitialScreen}" Margin="0, 6, 0, 0"/>
+            <CheckBox x:Name="ShowInitialScreen" Margin="{StaticResource SmallUpperMargin}"
+                      Content="{x:Static resx:OptionsResx.ShowInitialScreen}"/>
             
             <!--FastSplashScreen-->
-            <CheckBox x:Name="FastSplashScreen" 
-                      Content="{x:Static resx:OptionsResx.FastSplashScreen}" Margin="0, 6, 0, 0"/>
+            <CheckBox x:Name="FastSplashScreen" Margin="{StaticResource SmallUpperMargin}"
+                      Content="{x:Static resx:OptionsResx.FastSplashScreen}"/>
 
             <!--SplashScreenSleepTime-->
             <StackPanel metro:VisibilityHelper.IsCollapsed="{Binding FastSplashScreen}">
-                <Label Content="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="0, 3, 0, 0"/>
+                <Label Content="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="{StaticResource SmallUpperMargin}"/>
                 <metro:NumericUpDown Value="{Binding SplashScreenSleepTime, TargetNullValue=0}" Minimum="0" Maximum="20000"/>
             </StackPanel>
         </StackPanel>
         
         <!--NeedsRestart-->
         <StackPanel Grid.Row="1" metro:VisibilityHelper.IsVisible="{Binding NeedsRestart}"
-                    Margin="6, 0, 6, 0" Orientation="Horizontal">
-            <TextBlock Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="33" Foreground="Red"/>
+                    Margin="{StaticResource UpperMargin}" Orientation="Horizontal">
+            <Image Width="16" Height="16" Margin="{StaticResource LeftMargin}"
+                   Source="pack://application:,,,/Core/Resources/Images/VS2017/StatusWarning_16x.png"/>
+            <TextBlock Margin="{StaticResource LeftMargin}" Foreground="{DynamicResource DisabledMenuItemForeground}"
+                       Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16"/>
         </StackPanel>
         
         <!--Actions-->
-        <Grid Grid.Row="2" Margin="6">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
@@ -94,19 +73,19 @@
             
             <!--Reset-->
             <Button x:Name="Reset" Grid.Column="0"
-                    Content="{x:Static resx:OptionsResx.Reset}" Margin="6" MinWidth="100"
-                    Style="{DynamicResource MetroFlatButton}"/>
-            
+                    Content="{x:Static resx:OptionsResx.Reset}"
+                    Style="{StaticResource ActionButtonStyle}"/>
+
             <!--Cancel-->
             <Button x:Name="Cancel" Grid.Column="2" IsCancel="True"
-                    Content="{x:Static resx:OptionsResx.Cancel}" Margin="6" MinWidth="100"
-                    Style="{DynamicResource MetroFlatButton}"/>
+                    Content="{x:Static resx:OptionsResx.Cancel}"
+                    Style="{StaticResource ActionButtonStyle}"/>
             
             <!--Save-->
             <Button x:Name="Save" Grid.Column="3" IsDefault="True"
+                    Content="{x:Static resx:OptionsResx.Save}"
                     IsEnabled="{Binding HasChanges}"
-                    Content="{x:Static resx:OptionsResx.Save}" Margin="6" MinWidth="100" 
-                    Style="{DynamicResource MetroFlatButton}"/>
+                    Style="{StaticResource ActionButtonStyle}"/>
         </Grid>
     </Grid>
 </metro:MetroWindow>

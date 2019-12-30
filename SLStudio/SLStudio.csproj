@@ -96,6 +96,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Behaviors\DefaultWindowStyleBehavior.cs" />
     <Compile Include="Core\Modules\Options\Resources\OptionsResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,11 +111,11 @@
     <Compile Include="Core\Modules\Options\Views\OptionsView.xaml.cs">
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Studio\IMainWindow.cs" />
+    <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
     <Compile Include="Core\Services\IModuleService.cs" />
-    <Compile Include="Core\Studio\IShell.cs" />
-    <Compile Include="Core\Studio\IStatusBar.cs" />
-    <Compile Include="Core\Studio\IToolbar.cs" />
+    <Compile Include="Core\Modules\Shell\IShell.cs" />
+    <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
+    <Compile Include="Core\Modules\Toolbar\IToolbar.cs" />
     <Compile Include="Core\Module.cs" />
     <Compile Include="Core\Modules\MainWindow\Resources\MainWindow.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -237,23 +238,41 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Core\Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Resources\Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Resources\Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Core\Modules\MainWindow\Resources\icon.png" />
-    <Resource Include="Core\Modules\MainWindow\Resources\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Core\Converters\" />
     <Folder Include="Core\Modules\Shell\Resources\" />
     <Folder Include="Core\Modules\StartPage\Resources\" />
     <Folder Include="Core\Modules\StatusBar\Resources\" />
     <Folder Include="Core\Modules\Toolbar\Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Core\Modules\MainWindow\Resources\icon.png" />
+    <Resource Include="Core\Modules\MainWindow\Resources\logo.png" />
     <Resource Include="Core\Modules\MainWindow\Resources\logoInverted.png" />
     <Resource Include="Core\Modules\MainWindow\Resources\logoWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core\Resources\Images\VS2017\StatusWarning_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

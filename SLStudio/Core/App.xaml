@@ -8,6 +8,12 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Clean/CleanWindow.xaml" />
+
+                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Converters.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Resources.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Templates.xaml"/>
 
                 <ResourceDictionary>
                     <local:Bootstrapper x:Key="Bootstrapper"/>

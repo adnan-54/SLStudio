@@ -58,7 +58,9 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             {
                 previewThemes = value;
                 NotifyOfPropertyChange(() => PreviewThemes);
-                TryApplyTheme();
+
+                if (PreviewThemes)
+                    ApplyTheme(SelectedAccent?.Value, SelectedTheme?.Value);
             }
         }
 
@@ -73,7 +75,9 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 selectedTheme = value;
                 NotifyOfPropertyChange(() => SelectedTheme);
                 NotifyOfPropertyChange(() => HasChanges);
-                TryApplyTheme();
+
+                if (PreviewThemes)
+                    ApplyTheme(SelectedAccent?.Value, SelectedTheme?.Value);
             }
         }
 
@@ -88,7 +92,9 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 selectedAccents = value;
                 NotifyOfPropertyChange(() => SelectedAccent);
                 NotifyOfPropertyChange(() => HasChanges);
-                TryApplyTheme();
+
+                if (PreviewThemes)
+                    ApplyTheme(SelectedAccent?.Value, SelectedTheme?.Value);
             }
         }
 
@@ -144,16 +150,14 @@ namespace SLStudio.Core.Modules.Options.ViewModels
 
         public bool NeedsRestart => SelectedLanguage.Value != Settings.Default.LanguageCode;
 
-        private void TryApplyTheme()
+        private void ApplyTheme(string accentKey, string themeKey)
         {
-            try
-            {
-                if(PreviewThemes)
-                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(SelectedAccent.Value), ThemeManager.GetAppTheme(SelectedTheme.Value));
-                else
-                    ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(Settings.Default.ThemeAccent), ThemeManager.GetAppTheme(Settings.Default.ThemeBase));
-            }
-            catch { }
+            if (string.IsNullOrEmpty(accentKey))
+                accentKey = Settings.Default.ThemeAccent;
+            if (string.IsNullOrEmpty(themeKey))
+                themeKey = Settings.Default.ThemeBase;
+
+            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(accentKey), ThemeManager.GetAppTheme(themeKey));
         }
 
         public void Reset()
@@ -164,52 +168,23 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 Settings.Default.Reset();
                 Settings.Default.Save();
 
-                PreviewThemes = true;
-
+                SelectedLanguage = AvaliableLanguages.First(l => l.Value == Settings.Default.LanguageCode);
                 SelectedTheme = AvaliableThemes.First(t => t.Value == Settings.Default.ThemeBase);
                 SelectedAccent = AvaliableAccents.First(a => a.Value == Settings.Default.ThemeAccent);
                 ShowInitialScreen = Settings.Default.ShowInitialScreen;
                 FastSplashScreen = Settings.Default.FastSplashScreen;
                 SplashScreenSleepTime = Settings.Default.SplashScreenSleepTime;
 
-                if (NeedsRestart)
-                {
-                    var result2 = MessageBox.Show(OptionsResx.NeedsRestartDialog, OptionsResx.NeedsRestartTitle, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                    if (result2 == MessageBoxResult.Yes)
-                    {
-                        SelectedLanguage = AvaliableLanguages.First(l => l.Value == Settings.Default.LanguageCode);
-
-                        System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
-                        Application.Current.Shutdown();
-                    }
-                    else
-                        SelectedLanguage = AvaliableLanguages.First(l => l.Value == Settings.Default.LanguageCode);
-                }
-                else
-                    SelectedLanguage = AvaliableLanguages.First(l => l.Value == Settings.Default.LanguageCode);
-
                 TryClose();
             }
-        }
 
-        public void Cancel()
-        {
-            if(HasChanges)
-            {
-                var result = MessageBox.Show(OptionsResx.DiscardChangesDialog, OptionsResx.DiscardChanges, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if(result == MessageBoxResult.Yes)
-                {
-                    PreviewThemes = true;
-                    SelectedTheme = AvaliableThemes.First(t => t.Value == Settings.Default.ThemeBase);
-                    SelectedAccent = AvaliableAccents.First(a => a.Value == Settings.Default.ThemeAccent);
-
-                    TryClose();
-                }
-            }
         }
 
         public void Save()
         {
+            var  shouldRestart = NeedsRestart;
+
+            Settings.Default.LanguageCode = SelectedLanguage.Value;
             Settings.Default.ThemeBase = SelectedTheme.Value;
             Settings.Default.ThemeAccent = SelectedAccent.Value;
             Settings.Default.ShowInitialScreen = ShowInitialScreen;
@@ -217,30 +192,14 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             Settings.Default.SplashScreenSleepTime = SplashScreenSleepTime;
             Settings.Default.Save();
 
-            PreviewThemes = true;
-            TryApplyTheme();
-
-            if (NeedsRestart)
+            if(shouldRestart)
             {
                 var result = MessageBox.Show(OptionsResx.NeedsRestartDialog, OptionsResx.NeedsRestartTitle, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if(result == MessageBoxResult.Yes)
+                if (result == MessageBoxResult.Yes)
                 {
-                    Settings.Default.LanguageCode = SelectedLanguage.Value;
-                    Settings.Default.Save();
-
                     System.Diagnostics.Process.Start(Application.ResourceAssembly.Location);
                     Application.Current.Shutdown();
                 }
-                else
-                {
-                    Settings.Default.LanguageCode = SelectedLanguage.Value;
-                    Settings.Default.Save();
-                }
-            }
-            else
-            {
-                Settings.Default.LanguageCode = SelectedLanguage.Value;
-                Settings.Default.Save();
             }
 
             TryClose();
@@ -251,16 +210,14 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             if (HasChanges)
             {
                 var result = MessageBox.Show(OptionsResx.DiscardChangesDialog, OptionsResx.DiscardChanges, MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                if (result == MessageBoxResult.No)
                 {
-                    PreviewThemes = true;
-
-                    SelectedTheme = AvaliableThemes.First(t => t.Value == Settings.Default.ThemeBase);
-                    SelectedAccent = AvaliableAccents.First(a => a.Value == Settings.Default.ThemeAccent);
-                }
-                else
                     e.Cancel = true;
+                    return;
+                }
             }
+
+            ApplyTheme(Settings.Default.ThemeAccent, Settings.Default.ThemeBase);
         }
     }
 
