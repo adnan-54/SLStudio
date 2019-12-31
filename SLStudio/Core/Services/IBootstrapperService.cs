@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
-    class BootstrapperService : IBootstrapperService
+    internal class BootstrapperService : IBootstrapperService
     {
         private readonly SimpleContainer container;
         private readonly ISplashScreenService splashScreen;
         private readonly List<IModule> modules;
-        
+
         private bool isInitialized;
-        
+
         public BootstrapperService(SimpleContainer container, ISplashScreenService splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
-            
+
             modules = new List<IModule>();
             isInitialized = false;
         }
@@ -40,7 +40,7 @@ namespace SLStudio.Core
 
             var windowManager = IoC.Get<IWindowManager>();
             var mainWindow = IoC.Get<IMainWindow>();
-            
+
             splashScreen.Hide();
             windowManager.ShowWindow(mainWindow);
             splashScreen.Close();
@@ -81,6 +81,7 @@ namespace SLStudio.Core
     public interface IBootstrapperService
     {
         IList<IModule> Modules { get; }
+
         Task Initialize();
     }
 }

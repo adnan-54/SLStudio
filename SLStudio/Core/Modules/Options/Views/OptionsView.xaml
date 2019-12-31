@@ -5,87 +5,87 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.Options.Resources"
-                   xmlns:cal="http://www.caliburnproject.org" 
+                   xmlns:cal="http://www.caliburnproject.org"
                    mc:Ignorable="d" WindowStartupLocation="CenterScreen"
                    SizeToContent="WidthAndHeight" Style="{StaticResource ActionWindowStyle}"
                    cal:Message.Attach="[Event Closing] = [Action OnClose($eventArgs)]">
     <!--Content-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--Options-->
         <StackPanel Grid.Row="0" Margin="{StaticResource FullMargin}">
             <!--Language-->
-            <Label Content="{x:Static resx:OptionsResx.Language}"/>
+            <Label Content="{x:Static resx:OptionsResx.Language}" />
             <ComboBox ItemsSource="{Binding AvaliableLanguages}" SelectedItem="{Binding SelectedLanguage}"
-                      DisplayMemberPath="Name" SelectedValuePath="Value"/>
+                      DisplayMemberPath="Name" SelectedValuePath="Value" />
 
             <!--PreviewThemes-->
             <CheckBox x:Name="PreviewThemes" Margin="{StaticResource SmallUpperMargin}"
-                      Content="{x:Static resx:OptionsResx.PreviewThemes}"/>
-            
+                      Content="{x:Static resx:OptionsResx.PreviewThemes}" />
+
             <!--Theme-->
-            <Label Content="{x:Static resx:OptionsResx.Theme}" Margin="{StaticResource SmallUpperMargin}"/>
+            <Label Content="{x:Static resx:OptionsResx.Theme}" Margin="{StaticResource SmallUpperMargin}" />
             <ComboBox ItemsSource="{Binding AvaliableThemes}" SelectedItem="{Binding SelectedTheme}"
-                      DisplayMemberPath="Name" SelectedValuePath="Value"/>
-            
+                      DisplayMemberPath="Name" SelectedValuePath="Value" />
+
             <!--Accent-->
-            <Label Content="{x:Static resx:OptionsResx.Accent}" Margin="{StaticResource SmallUpperMargin}"/>
+            <Label Content="{x:Static resx:OptionsResx.Accent}" Margin="{StaticResource SmallUpperMargin}" />
             <ComboBox ItemsSource="{Binding AvaliableAccents}" SelectedItem="{Binding SelectedAccent}"
-                      DisplayMemberPath="Name" SelectedValuePath="Value"/>
+                      DisplayMemberPath="Name" SelectedValuePath="Value" />
 
             <!--ShowInitialScreen-->
             <CheckBox x:Name="ShowInitialScreen" Margin="{StaticResource SmallUpperMargin}"
-                      Content="{x:Static resx:OptionsResx.ShowInitialScreen}"/>
-            
+                      Content="{x:Static resx:OptionsResx.ShowInitialScreen}" />
+
             <!--FastSplashScreen-->
             <CheckBox x:Name="FastSplashScreen" Margin="{StaticResource SmallUpperMargin}"
-                      Content="{x:Static resx:OptionsResx.FastSplashScreen}"/>
+                      Content="{x:Static resx:OptionsResx.FastSplashScreen}" />
 
             <!--SplashScreenSleepTime-->
             <StackPanel metro:VisibilityHelper.IsCollapsed="{Binding FastSplashScreen}">
-                <Label Content="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="{StaticResource SmallUpperMargin}"/>
-                <metro:NumericUpDown Value="{Binding SplashScreenSleepTime, TargetNullValue=0}" Minimum="0" Maximum="20000"/>
+                <Label Content="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="{StaticResource SmallUpperMargin}" />
+                <metro:NumericUpDown Value="{Binding SplashScreenSleepTime, TargetNullValue=0}" Minimum="0" Maximum="20000" />
             </StackPanel>
         </StackPanel>
-        
+
         <!--NeedsRestart-->
         <StackPanel Grid.Row="1" metro:VisibilityHelper.IsVisible="{Binding NeedsRestart}"
                     Margin="{StaticResource UpperMargin}" Orientation="Horizontal">
             <Image Width="16" Height="16" Margin="{StaticResource LeftMargin}"
-                   Source="pack://application:,,,/Core/Resources/Images/VS2017/StatusWarning_16x.png"/>
+                   Source="pack://application:,,,/Core/Resources/Images/VS2017/StatusWarning_16x.png" />
             <TextBlock Margin="{StaticResource LeftMargin}" Foreground="{DynamicResource DisabledMenuItemForeground}"
-                       Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16"/>
+                       Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16" />
         </StackPanel>
-        
+
         <!--Actions-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            
+
             <!--Reset-->
             <Button x:Name="Reset" Grid.Column="0"
                     Content="{x:Static resx:OptionsResx.Reset}"
-                    Style="{StaticResource ActionButtonStyle}"/>
+                    Style="{StaticResource ActionButtonStyle}" />
 
             <!--Cancel-->
             <Button x:Name="Cancel" Grid.Column="2" IsCancel="True"
                     Content="{x:Static resx:OptionsResx.Cancel}"
-                    Style="{StaticResource ActionButtonStyle}"/>
-            
+                    Style="{StaticResource ActionButtonStyle}" />
+
             <!--Save-->
             <Button x:Name="Save" Grid.Column="3" IsDefault="True"
                     Content="{x:Static resx:OptionsResx.Save}"
                     IsEnabled="{Binding HasChanges}"
-                    Style="{StaticResource ActionButtonStyle}"/>
+                    Style="{StaticResource ActionButtonStyle}" />
         </Grid>
     </Grid>
 </metro:MetroWindow>

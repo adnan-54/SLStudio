@@ -12,44 +12,44 @@
     <Border Background="{DynamicResource HighlightBrush}" CornerRadius="6">
         <Grid Margin="6">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!--Logo-->
             <Grid Grid.Row="0">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Text="SL" Margin="0, -30, 0, 0"
                            Foreground="{StaticResource IdealForegroundColorBrush}"
                            FontSize="200" FontWeight="Black"
-                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                 <TextBlock Grid.Row="1" Margin="0, -44, 0, 20" Text="SLStudio" Foreground="{StaticResource IdealForegroundColorBrush}"
-                           FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                           FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
 
             <!--ProgressBar-->
             <StackPanel Grid.Row="1">
                 <Grid Margin="0, 12, 0, 0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <!--Loading Text-->
                     <TextBlock Grid.Column="0" Text="{x:Static resx:SplashScreen.Loading}"
                                FontSize="18" HorizontalAlignment="Left"
-                               Foreground="{StaticResource IdealForegroundColorBrush}"/>
+                               Foreground="{StaticResource IdealForegroundColorBrush}" />
 
                     <!--Curent Loading Module-->
                     <TextBlock Grid.Column="1" x:Name="statusText" Text="{x:Static resx:SplashScreen.Initializing}"
                                FontSize="14" FontWeight="Thin" FontStyle="Italic"
                                HorizontalAlignment="Right" VerticalAlignment="Center"
-                               Foreground="{StaticResource IdealForegroundColorBrush}"/>
+                               Foreground="{StaticResource IdealForegroundColorBrush}" />
                 </Grid>
 
                 <!--ProgressBar-->

@@ -2,11 +2,10 @@
 
 namespace SLStudio.Core.Modules.Toolbar.ViewModels
 {
-    class ToolbarViewModel : Screen, IToolbar 
+    internal class ToolbarViewModel : Screen, IToolbar
     {
         public ToolbarViewModel()
         {
-
         }
     }
 }

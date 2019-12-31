@@ -2,7 +2,7 @@
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
 {
-    class StartPageViewModel : Screen, IStartPage
+    internal class StartPageViewModel : Screen, IStartPage
     {
         public StartPageViewModel()
         {
@@ -12,6 +12,5 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
 
     public interface IStartPage
     {
-
     }
 }

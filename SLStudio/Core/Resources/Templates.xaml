@@ -6,10 +6,10 @@
         <Grid Margin="6, 0, 0, 0" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="HighQuality">
             <Rectangle Fill="{DynamicResource HighlightBrush}" Height="32" Width="32">
                 <Rectangle.Effect>
-                    <DropShadowEffect ShadowDepth="1" BlurRadius="2"/>
+                    <DropShadowEffect ShadowDepth="1" BlurRadius="2" />
                 </Rectangle.Effect>
                 <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="pack://application:,,,/Core/Modules/MainWindow/Resources/logoWhite.png"/>
+                    <ImageBrush ImageSource="pack://application:,,,/Core/Modules/MainWindow/Resources/logoWhite.png" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Grid>

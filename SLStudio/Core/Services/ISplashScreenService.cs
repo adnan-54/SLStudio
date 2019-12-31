@@ -5,7 +5,7 @@ using SplashScreen = SLStudio.Core.Modules.SplashScreen.Views.SplashScreen;
 
 namespace SLStudio.Core
 {
-    class SplashScreenService : ISplashScreenService
+    internal class SplashScreenService : ISplashScreenService
     {
         private SplashScreen splashScreen;
         private bool canShow;
@@ -16,7 +16,7 @@ namespace SLStudio.Core
             canShow = true;
             canClose = false;
         }
-        
+
         public void Show()
         {
             if (canShow)
@@ -37,8 +37,8 @@ namespace SLStudio.Core
 
         public void Close()
         {
-            if(splashScreen != null && canClose)
-            { 
+            if (splashScreen != null && canClose)
+            {
                 canClose = false;
                 splashScreen.Close();
             }
@@ -56,8 +56,11 @@ namespace SLStudio.Core
     public interface ISplashScreenService
     {
         void Show();
+
         void Hide();
+
         void Close();
+
         void UpdateStatus(string status);
     }
 }

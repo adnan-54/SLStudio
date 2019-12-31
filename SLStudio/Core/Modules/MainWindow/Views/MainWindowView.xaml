@@ -9,7 +9,7 @@
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.MainWindow.Resources"
                    mc:Ignorable="d" Style="{StaticResource DefaultWindowStyle}"
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    
+
     <!--TitleBar Left Template-->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">
@@ -19,9 +19,9 @@
                     <!--File-->
                     <MenuItem Header="{x:Static resx:MainWindow.File}">
                         <!--Close-->
-                        <MenuItem Header="Close" InputGestureText="Alt+F4"/>
+                        <MenuItem Header="Close" InputGestureText="Alt+F4" />
                     </MenuItem>
-                    
+
                     <!--Options-->
                     <MenuItem Header="{x:Static resx:MainWindow.Options}"
                               cal:Message.Attach="ShowOptions()" />
@@ -29,39 +29,39 @@
             </StackPanel>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
-    
+
     <!--BusyIndicator-->
     <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
         <xctk:BusyIndicator.BusyContentTemplate>
             <DataTemplate>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <metro:ProgressRing Margin="6"/>
-                    <TextBlock Margin="6" Text="{x:Static resx:MainWindow.Loading}"/>
+                    <metro:ProgressRing Margin="6" />
+                    <TextBlock Margin="6" Text="{x:Static resx:MainWindow.Loading}" />
                 </StackPanel>
             </DataTemplate>
         </xctk:BusyIndicator.BusyContentTemplate>
         <xctk:BusyIndicator.ProgressBarStyle>
             <Style TargetType="ProgressBar">
-                <Setter Property="Visibility" Value="Collapsed"/>
+                <Setter Property="Visibility" Value="Collapsed" />
             </Style>
         </xctk:BusyIndicator.ProgressBarStyle>
-        
+
         <!--Content-->
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto" MinHeight="22"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" MinHeight="22" />
             </Grid.RowDefinitions>
 
             <!--Toolbar-->
-            <ContentControl Grid.Row="0" cal:View.Model="{Binding Toolbar}"/>
-            
+            <ContentControl Grid.Row="0" cal:View.Model="{Binding Toolbar}" />
+
             <!--Shell-->
-            <ContentControl Grid.Row="1" cal:View.Model="{Binding Shell}"/>
-            
+            <ContentControl Grid.Row="1" cal:View.Model="{Binding Shell}" />
+
             <!--StatusBar-->
-            <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>
+            <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}" />
         </Grid>
     </xctk:BusyIndicator>
 </metro:MetroWindow>

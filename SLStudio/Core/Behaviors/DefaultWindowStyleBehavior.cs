@@ -14,9 +14,9 @@ namespace SLStudio.Core.Behaviors
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            if(AssociatedObject is MetroWindow window)
+            if (AssociatedObject is MetroWindow window)
             {
-                if(Application.Current.TryFindResource("DefaultWindowStyle") is Style style)
+                if (Application.Current.TryFindResource("DefaultWindowStyle") is Style style)
                     window.Style = style;
             }
         }
@@ -26,6 +26,5 @@ namespace SLStudio.Core.Behaviors
             AssociatedObject.Loaded -= OnLoaded;
             base.OnDetaching();
         }
-
     }
 }

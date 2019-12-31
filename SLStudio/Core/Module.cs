@@ -1,13 +1,12 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
-using SLStudio.Core.Modules.Options.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
 using SLStudio.Core.Modules.Toolbar.ViewModels;
 
 namespace SLStudio.Core
 {
-    class Module : ModuleBase
+    internal class Module : ModuleBase
     {
         public override ModulePriority ModulePriority => ModulePriority.Core;
 

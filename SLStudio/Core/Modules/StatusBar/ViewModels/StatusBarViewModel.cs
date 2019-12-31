@@ -2,7 +2,7 @@
 
 namespace SLStudio.Core.Modules.StatusBar.Resources.ViewModels
 {
-    class StatusBarViewModel : Screen, IStatusBar
+    internal class StatusBarViewModel : Screen, IStatusBar
     {
     }
 }

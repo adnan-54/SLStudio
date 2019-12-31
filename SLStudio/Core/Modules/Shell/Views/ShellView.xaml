@@ -5,18 +5,18 @@
              xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <!--AvalonDock-->
-    <xcad:DockingManager x:Name="DockManager" 
+    <xcad:DockingManager x:Name="DockManager"
                          DocumentsSource="{Binding Items}"
-                         AnchorablesSource="{Binding Tools}" 
+                         AnchorablesSource="{Binding Tools}"
                          ActiveContent="{Binding ActiveLayoutItem, Mode=TwoWay}">
-        
+
         <!--LayoutRoot-->
         <xcad:LayoutRoot>
             <xcad:LayoutPanel x:Name="VerticalPanel" Orientation="Vertical">
                 <xcad:LayoutPanel x:Name="HorizontalPanel" Orientation="Horizontal">
-                    <xcad:LayoutDocumentPane/>
+                    <xcad:LayoutDocumentPane />
                 </xcad:LayoutPanel>
             </xcad:LayoutPanel>
         </xcad:LayoutRoot>

@@ -2,14 +2,13 @@
 using MahApps.Metro;
 using SLStudio.Core.Modules.Options.Resources;
 using SLStudio.Properties;
-using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 
 namespace SLStudio.Core.Modules.Options.ViewModels
 {
-    class OptionsViewModel : Screen
+    internal class OptionsViewModel : Screen
     {
         public OptionsViewModel()
         {
@@ -38,6 +37,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableLanguages { get; }
 
         private StudioOptionViewModel selectedLanguage;
+
         public StudioOptionViewModel SelectedLanguage
         {
             get => selectedLanguage;
@@ -51,6 +51,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool previewThemes = true;
+
         public bool PreviewThemes
         {
             get => previewThemes;
@@ -67,6 +68,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableThemes { get; }
 
         private StudioOptionViewModel selectedTheme;
+
         public StudioOptionViewModel SelectedTheme
         {
             get => selectedTheme;
@@ -84,6 +86,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableAccents { get; }
 
         private StudioOptionViewModel selectedAccents;
+
         public StudioOptionViewModel SelectedAccent
         {
             get => selectedAccents;
@@ -99,6 +102,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool showInitialScreen = Settings.Default.ShowInitialScreen;
+
         public bool ShowInitialScreen
         {
             get => showInitialScreen;
@@ -111,6 +115,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool fastSplashScreen = Settings.Default.FastSplashScreen;
+
         public bool FastSplashScreen
         {
             get => fastSplashScreen;
@@ -130,6 +135,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private int splashScreenSleepTime = Settings.Default.SplashScreenSleepTime;
+
         public int SplashScreenSleepTime
         {
             get => splashScreenSleepTime;
@@ -177,12 +183,11 @@ namespace SLStudio.Core.Modules.Options.ViewModels
 
                 TryClose();
             }
-
         }
 
         public void Save()
         {
-            var  shouldRestart = NeedsRestart;
+            var shouldRestart = NeedsRestart;
 
             Settings.Default.LanguageCode = SelectedLanguage.Value;
             Settings.Default.ThemeBase = SelectedTheme.Value;
@@ -192,7 +197,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             Settings.Default.SplashScreenSleepTime = SplashScreenSleepTime;
             Settings.Default.Save();
 
-            if(shouldRestart)
+            if (shouldRestart)
             {
                 var result = MessageBox.Show(OptionsResx.NeedsRestartDialog, OptionsResx.NeedsRestartTitle, MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
@@ -221,13 +226,14 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
     }
 
-    class StudioOptionViewModel
+    internal class StudioOptionViewModel
     {
         public StudioOptionViewModel(string name, string value)
         {
             Name = name;
             Value = value;
         }
+
         public string Name { get; }
         public string Value { get; }
     }

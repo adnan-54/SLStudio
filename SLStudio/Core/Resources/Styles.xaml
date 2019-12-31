@@ -4,51 +4,51 @@
 
     <!--ActionButtonStyle-->
     <Style x:Key="ActionButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroFlatButton}">
-        <Setter Property="Margin" Value="{DynamicResource FullMargin}"/>
-        <Setter Property="MinWidth" Value="100"/>
-        <Setter Property="MinHeight" Value="30"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Margin" Value="{DynamicResource FullMargin}" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="30" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="BorderThickness" Value="1" />
     </Style>
 
     <!--Window10StyleButton-->
     <Style TargetType="{x:Type metro:WindowButtonCommands}" BasedOn="{StaticResource {x:Type metro:WindowButtonCommands}}">
-        <Setter Property="Template" Value="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}"/>
+        <Setter Property="Template" Value="{DynamicResource MahApps.Metro.Templates.WindowButtonCommands.Win10}" />
     </Style>
 
     <!--DefaultWindowStyle-->
     <Style x:Key="DefaultWindowStyle" TargetType="{x:Type metro:MetroWindow}">
-        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png"/>
-        <Setter Property="MinWidth" Value="800"/>
-        <Setter Property="MinHeight" Value="600"/>
-        <Setter Property="TitleForeground" Value="{DynamicResource WhiteBrush}"/>
-        <Setter Property="OverrideDefaultWindowCommandsBrush" Value="{DynamicResource WhiteBrush}"/>
-        <Setter Property="TitleCaps" Value="False"/>
-        <Setter Property="TitleAlignment" Value="Center"/>
-        <Setter Property="Padding" Value="{DynamicResource FullMargin}"/>
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource AccentColorBrush}"/>
-        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource AccentColorBrush2}"/>
-        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}"/>
-        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource AccentColorBrush2}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}"/>
-        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource AccentColorBrush2}"/>
-        <Setter Property="BorderThickness" Value="1.5, 1, 1.5, 1"/>
-        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}"/>
+        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="TitleForeground" Value="{DynamicResource WhiteBrush}" />
+        <Setter Property="OverrideDefaultWindowCommandsBrush" Value="{DynamicResource WhiteBrush}" />
+        <Setter Property="TitleCaps" Value="False" />
+        <Setter Property="TitleAlignment" Value="Center" />
+        <Setter Property="Padding" Value="{DynamicResource FullMargin}" />
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
+        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource AccentColorBrush2}" />
+        <Setter Property="BorderThickness" Value="1.5, 1, 1.5, 1" />
+        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
-    
+
     <!--ActionWindowStyle-->
     <Style x:Key="ActionWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource CleanWindowStyleKey}">
         <!--DefaultSetters-->
-        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png"/>
-        <Setter Property="MinWidth" Value="600"/>
-        <Setter Property="MinHeight" Value="450"/>
-        <Setter Property="ShowMaxRestoreButton" Value="False"/>
-        <Setter Property="ShowMinButton" Value="False"/>
-        <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="TitleCaps" Value="False"/>
-        <Setter Property="ShowInTaskbar" Value="False"/>
-        <Setter Property="EnableDWMDropShadow" Value="True"/>
-        <Setter Property="Padding" Value="{DynamicResource FullMargin}"/>
-        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}"/>
+        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png" />
+        <Setter Property="MinWidth" Value="600" />
+        <Setter Property="MinHeight" Value="450" />
+        <Setter Property="ShowMaxRestoreButton" Value="False" />
+        <Setter Property="ShowMinButton" Value="False" />
+        <Setter Property="ResizeMode" Value="NoResize" />
+        <Setter Property="TitleCaps" Value="False" />
+        <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="EnableDWMDropShadow" Value="True" />
+        <Setter Property="Padding" Value="{DynamicResource FullMargin}" />
+        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
 </ResourceDictionary>
