@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -6,9 +7,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SLStudio")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Street Legal Racing: Redline modding tool")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Adnan54")]
 [assembly: AssemblyProduct("SLStudio")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -49,3 +50,4 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("19.11.115.116")]
 [assembly: AssemblyFileVersion("19.11.114.115")]
+[assembly: NeutralResourcesLanguage("en")]
