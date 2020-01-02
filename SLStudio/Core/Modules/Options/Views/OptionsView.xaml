@@ -60,10 +60,11 @@
         <!--NeedsRestart-->
         <StackPanel Grid.Row="1" metro:VisibilityHelper.IsVisible="{Binding NeedsRestart}"
                     Margin="{StaticResource UpperMargin}" Orientation="Horizontal">
-            <Image Width="16" Height="16" Margin="{StaticResource LeftMargin}"
-                   Source="pack://application:,,,/Core/Resources/Images/VS2017/StatusWarning_16x.png" />
-            <TextBlock Margin="{StaticResource LeftMargin}" Foreground="{DynamicResource DisabledMenuItemForeground}"
-                       Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16" />
+            <Image Width="32" Height="32" Margin="{StaticResource LeftMargin}"
+                   Source="{StaticResource StatusWarning}" />
+            
+            <TextBlock Margin="{StaticResource SmallLeftMargin}" Foreground="{StaticResource DisabledMenuItemForeground}"
+                       Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16" VerticalAlignment="Center"/>
         </StackPanel>
 
         <!--Actions-->

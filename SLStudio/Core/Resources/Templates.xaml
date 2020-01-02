@@ -9,7 +9,7 @@
                     <DropShadowEffect ShadowDepth="1" BlurRadius="2" />
                 </Rectangle.Effect>
                 <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="pack://application:,,,/Core/Resources/Images/SLStudio/logoWhite.png" />
+                    <ImageBrush ImageSource="pack://application:,,,/Core/Resources/Images/logoWhite.png" />
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Grid>

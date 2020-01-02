@@ -295,6 +295,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Core\Resources\Icons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Resources\Resources.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,13 +319,10 @@
     <Folder Include="Core\Converters\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Core\Resources\Images\SLStudio\icon.png" />
-    <Resource Include="Core\Resources\Images\SLStudio\logo.png" />
-    <Resource Include="Core\Resources\Images\SLStudio\logoInverted.png" />
-    <Resource Include="Core\Resources\Images\SLStudio\logoWhite.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core\Resources\Images\VS2017\StatusWarning_16x.png" />
+    <Resource Include="Core\Resources\Images\icon.png" />
+    <Resource Include="Core\Resources\Images\logo.png" />
+    <Resource Include="Core\Resources\Images\logoInverted.png" />
+    <Resource Include="Core\Resources\Images\logoWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -334,10 +335,6 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core\Resources\Images\VS2017\ClearWindowContent_16x.png" />
-    <Resource Include="Core\Resources\Images\VS2017\WordWrap_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

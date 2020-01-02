@@ -20,7 +20,7 @@
             <Button x:Name="Clear" Margin="{StaticResource SmallLeftMargin}"
                     BorderThickness="0" Focusable="False"
                     ToolTip="{x:Static resx:Console.ClearAll}">
-                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/ClearWindowContent_16x.png" />
+                <Image Source="{StaticResource ClearWindowContent}" />
             </Button>
 
             <!--Separator-->
@@ -30,7 +30,7 @@
             <ToggleButton IsChecked="{Binding TextWrapping}" Margin="{StaticResource SmallLeftMargin}"
                           BorderThickness="0" Focusable="False"
                           ToolTip="{x:Static resx:Console.TextWrapping}">
-                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/WordWrap_16x.png" />
+                <Image Source="{StaticResource WordWrap}" />
                 <ToggleButton.Style>
                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MetroToggleButton}">
                         <Style.Triggers>
