@@ -18,7 +18,7 @@
 
     <!--DefaultWindowStyle-->
     <Style x:Key="DefaultWindowStyle" TargetType="{x:Type metro:MetroWindow}">
-        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png" />
+        <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/SLStudio/logo.png" />
         <Setter Property="MinWidth" Value="800" />
         <Setter Property="MinHeight" Value="600" />
         <Setter Property="TitleForeground" Value="{DynamicResource WhiteBrush}" />
@@ -39,7 +39,7 @@
     <!--ActionWindowStyle-->
     <Style x:Key="ActionWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource CleanWindowStyleKey}">
         <!--DefaultSetters-->
-        <Setter Property="Icon" Value="pack://application:,,,/Core/Modules/MainWindow/Resources/logo.png" />
+        <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/SLStudio/logo.png" />
         <Setter Property="MinWidth" Value="600" />
         <Setter Property="MinHeight" Value="450" />
         <Setter Property="ShowMaxRestoreButton" Value="False" />

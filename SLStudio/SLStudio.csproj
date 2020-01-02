@@ -136,7 +136,7 @@
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
-    <Compile Include="Core\Services\IModuleService.cs" />
+    <Compile Include="Core\Framework\Modules.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
     <Compile Include="Core\Modules\Toolbar\IToolbar.cs" />
@@ -184,8 +184,8 @@
     <Compile Include="Core\Modules\Toolbar\Views\ToolbarView.xaml.cs">
       <DependentUpon>ToolbarView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Services\IBootstrapperService.cs" />
-    <Compile Include="Core\Services\ISplashScreenService.cs" />
+    <Compile Include="Core\Services\BootstrapperService.cs" />
+    <Compile Include="Core\Services\SplashScreenService.cs" />
     <Compile Include="Modules\Tests\Module.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -285,16 +285,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Core\Converters\" />
-    <Folder Include="Core\Modules\Shell\Resources\" />
-    <Folder Include="Core\Modules\StartPage\Resources\" />
-    <Folder Include="Core\Modules\StatusBar\Resources\" />
-    <Folder Include="Core\Modules\Toolbar\Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Core\Modules\MainWindow\Resources\icon.png" />
-    <Resource Include="Core\Modules\MainWindow\Resources\logo.png" />
-    <Resource Include="Core\Modules\MainWindow\Resources\logoInverted.png" />
-    <Resource Include="Core\Modules\MainWindow\Resources\logoWhite.png" />
+    <Resource Include="Core\Resources\Images\SLStudio\icon.png" />
+    <Resource Include="Core\Resources\Images\SLStudio\logo.png" />
+    <Resource Include="Core\Resources\Images\SLStudio\logoInverted.png" />
+    <Resource Include="Core\Resources\Images\SLStudio\logoWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Core\Resources\Images\VS2017\StatusWarning_16x.png" />
