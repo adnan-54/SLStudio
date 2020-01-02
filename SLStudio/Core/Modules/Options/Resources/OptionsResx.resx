@@ -175,6 +175,9 @@ Would you like to restart the application now?</value>
   <data name="Save" xml:space="preserve">
     <value>_Save</value>
   </data>
+  <data name="ShowConsoleAtStartup" xml:space="preserve">
+    <value>Show console at startup</value>
+  </data>
   <data name="ShowInitialScreen" xml:space="preserve">
     <value>Show start screen</value>
   </data>

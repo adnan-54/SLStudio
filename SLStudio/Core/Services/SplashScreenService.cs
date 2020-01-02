@@ -7,24 +7,25 @@ namespace SLStudio.Core
 {
     internal class SplashScreenService : ISplashScreenService
     {
-        private SplashScreen splashScreen;
+        private static SplashScreen splashScreen;
         private bool canShow;
         private bool canClose;
 
         public SplashScreenService()
         {
+            splashScreen = new SplashScreen();
+
             canShow = true;
             canClose = false;
         }
 
         public void Show()
         {
-            if (canShow)
+            if (splashScreen != null  && canShow)
             {
                 canShow = false;
                 canClose = true;
 
-                splashScreen = new SplashScreen();
                 splashScreen.Show();
             }
         }

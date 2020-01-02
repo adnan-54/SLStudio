@@ -233,6 +233,15 @@ namespace SLStudio.Core.Modules.Options.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show console at startup.
+        /// </summary>
+        public static string ShowConsoleAtStartup {
+            get {
+                return ResourceManager.GetString("ShowConsoleAtStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show start screen.
         /// </summary>
         public static string ShowInitialScreen {

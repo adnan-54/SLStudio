@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
@@ -20,10 +21,11 @@ namespace SLStudio.Core
             container.Singleton<IEventAggregator, EventAggregator>();
 
             //core
+            container.Singleton<IConsole, ConsoleViewModel>();
             container.Singleton<IMainWindow, MainWindowViewModel>();
-            container.Singleton<IToolbar, ToolbarViewModel>();
             container.Singleton<IShell, ShellViewModel>();
             container.Singleton<IStatusBar, StatusBarViewModel>();
+            container.Singleton<IToolbar, ToolbarViewModel>();
         }
     }
 }

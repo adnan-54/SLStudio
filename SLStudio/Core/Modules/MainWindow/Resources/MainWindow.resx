@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Console" xml:space="preserve">
+    <value>Console</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>_File</value>
   </data>
@@ -125,5 +128,8 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>_Options</value>
+  </data>
+  <data name="Tools" xml:space="preserve">
+    <value>_Tools</value>
   </data>
 </root>

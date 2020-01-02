@@ -18,6 +18,7 @@
 
     <!--DefaultWindowStyle-->
     <Style x:Key="DefaultWindowStyle" TargetType="{x:Type metro:MetroWindow}">
+        <Setter Property="SaveWindowPosition" Value="True"/>
         <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/SLStudio/logo.png" />
         <Setter Property="MinWidth" Value="800" />
         <Setter Property="MinHeight" Value="600" />
@@ -32,13 +33,13 @@
         <Setter Property="NonActiveGlowBrush" Value="{DynamicResource AccentColorBrush2}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="NonActiveBorderBrush" Value="{DynamicResource AccentColorBrush2}" />
-        <Setter Property="BorderThickness" Value="1.5, 1, 1.5, 1" />
+        <Setter Property="BorderThickness" Value="1.5, 1.5, 1.5, 1.5" />
         <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
 
     <!--ActionWindowStyle-->
     <Style x:Key="ActionWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource CleanWindowStyleKey}">
-        <!--DefaultSetters-->
+        <Setter Property="SaveWindowPosition" Value="True"/>
         <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/SLStudio/logo.png" />
         <Setter Property="MinWidth" Value="600" />
         <Setter Property="MinHeight" Value="450" />

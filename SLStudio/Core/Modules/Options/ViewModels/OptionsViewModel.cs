@@ -37,7 +37,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableLanguages { get; }
 
         private StudioOptionViewModel selectedLanguage;
-
         public StudioOptionViewModel SelectedLanguage
         {
             get => selectedLanguage;
@@ -51,7 +50,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool previewThemes = true;
-
         public bool PreviewThemes
         {
             get => previewThemes;
@@ -68,7 +66,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableThemes { get; }
 
         private StudioOptionViewModel selectedTheme;
-
         public StudioOptionViewModel SelectedTheme
         {
             get => selectedTheme;
@@ -86,7 +83,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         public BindableCollection<StudioOptionViewModel> AvaliableAccents { get; }
 
         private StudioOptionViewModel selectedAccents;
-
         public StudioOptionViewModel SelectedAccent
         {
             get => selectedAccents;
@@ -102,7 +98,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool showInitialScreen = Settings.Default.ShowInitialScreen;
-
         public bool ShowInitialScreen
         {
             get => showInitialScreen;
@@ -115,7 +110,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private bool fastSplashScreen = Settings.Default.FastSplashScreen;
-
         public bool FastSplashScreen
         {
             get => fastSplashScreen;
@@ -135,7 +129,6 @@ namespace SLStudio.Core.Modules.Options.ViewModels
         }
 
         private int splashScreenSleepTime = Settings.Default.SplashScreenSleepTime;
-
         public int SplashScreenSleepTime
         {
             get => splashScreenSleepTime;
@@ -147,12 +140,25 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             }
         }
 
+        private bool showConsoleAtStartup = Settings.Default.ShowConsoleAtStartup;
+        public bool ShowConsoleAtStartup
+        {
+            get => showConsoleAtStartup;
+            set
+            {
+                showConsoleAtStartup = value;
+                NotifyOfPropertyChange(() => ShowConsoleAtStartup);
+                NotifyOfPropertyChange(() => HasChanges);
+            }
+        }
+
         public bool HasChanges => SelectedLanguage.Value != Settings.Default.LanguageCode ||
                                   SelectedTheme.Value != Settings.Default.ThemeBase ||
                                   SelectedAccent.Value != Settings.Default.ThemeAccent ||
                                   ShowInitialScreen != Settings.Default.ShowInitialScreen ||
                                   FastSplashScreen != Settings.Default.FastSplashScreen ||
-                                  SplashScreenSleepTime != Settings.Default.SplashScreenSleepTime;
+                                  SplashScreenSleepTime != Settings.Default.SplashScreenSleepTime ||
+                                  ShowConsoleAtStartup != Settings.Default.ShowConsoleAtStartup;
 
         public bool NeedsRestart => SelectedLanguage.Value != Settings.Default.LanguageCode;
 
@@ -180,6 +186,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 ShowInitialScreen = Settings.Default.ShowInitialScreen;
                 FastSplashScreen = Settings.Default.FastSplashScreen;
                 SplashScreenSleepTime = Settings.Default.SplashScreenSleepTime;
+                ShowConsoleAtStartup = Settings.Default.ShowConsoleAtStartup;
 
                 TryClose();
             }
@@ -195,6 +202,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             Settings.Default.ShowInitialScreen = ShowInitialScreen;
             Settings.Default.FastSplashScreen = FastSplashScreen;
             Settings.Default.SplashScreenSleepTime = SplashScreenSleepTime;
+            Settings.Default.ShowConsoleAtStartup = ShowConsoleAtStartup;
             Settings.Default.Save();
 
             if (shouldRestart)

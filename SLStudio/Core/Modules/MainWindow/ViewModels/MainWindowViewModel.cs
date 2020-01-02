@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Modules.Options.ViewModels;
+using SLStudio.Properties;
 
 namespace SLStudio.Core.Modules.MainWindow.ViewModels
 {
@@ -7,22 +8,24 @@ namespace SLStudio.Core.Modules.MainWindow.ViewModels
     {
         private readonly IWindowManager windowManager;
         private readonly IEventAggregator eventAggregator;
+        private readonly IConsole console;
 
-        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator, IToolbar toolbar, IShell shell, IStatusBar statusBar)
+        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator, 
+            IToolbar toolbar, IShell shell, IStatusBar statusBar,
+            IConsole console)
         {
             this.windowManager = windowManager;
             this.eventAggregator = eventAggregator;
             Toolbar = toolbar;
             Shell = shell;
             StatusBar = statusBar;
-
+            this.console = console;
             IsBusy = false;
 
             DisplayName = "SLStudio";
         }
 
         private bool isBusy;
-
         public bool IsBusy
         {
             get => isBusy;
@@ -34,7 +37,6 @@ namespace SLStudio.Core.Modules.MainWindow.ViewModels
         }
 
         private IToolbar toolbar;
-
         public IToolbar Toolbar
         {
             get => toolbar;
@@ -48,7 +50,6 @@ namespace SLStudio.Core.Modules.MainWindow.ViewModels
         public IShell Shell { get; }
 
         private IStatusBar statusBar;
-
         public IStatusBar StatusBar
         {
             get => statusBar;
@@ -62,6 +63,11 @@ namespace SLStudio.Core.Modules.MainWindow.ViewModels
         public void ShowOptions()
         {
             windowManager.ShowDialog(new OptionsViewModel());
+        }
+
+        public void ShowConsole()
+        {
+            windowManager.ShowWindow(console);
         }
     }
 }

@@ -94,5 +94,17 @@ namespace SLStudio.Properties {
                 this["SplashScreenSleepTime"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ShowConsoleAtStartup {
+            get {
+                return ((bool)(this["ShowConsoleAtStartup"]));
+            }
+            set {
+                this["ShowConsoleAtStartup"] = value;
+            }
+        }
     }
 }

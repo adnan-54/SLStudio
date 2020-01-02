@@ -43,7 +43,6 @@ namespace SLStudio.Core
 
             splashScreen.Hide();
             windowManager.ShowWindow(mainWindow);
-            splashScreen.Close();
         }
 
         private async Task LoadModulesAsync()

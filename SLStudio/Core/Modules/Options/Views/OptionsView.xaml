@@ -20,7 +20,7 @@
         <!--Options-->
         <StackPanel Grid.Row="0" Margin="{StaticResource FullMargin}">
             <!--Language-->
-            <Label Content="{x:Static resx:OptionsResx.Language}" />
+            <TextBlock Text="{x:Static resx:OptionsResx.Language}" />
             <ComboBox ItemsSource="{Binding AvaliableLanguages}" SelectedItem="{Binding SelectedLanguage}"
                       DisplayMemberPath="Name" SelectedValuePath="Value" />
 
@@ -29,12 +29,12 @@
                       Content="{x:Static resx:OptionsResx.PreviewThemes}" />
 
             <!--Theme-->
-            <Label Content="{x:Static resx:OptionsResx.Theme}" Margin="{StaticResource SmallUpperMargin}" />
+            <TextBlock Text="{x:Static resx:OptionsResx.Theme}" Margin="{StaticResource SmallUpperMargin}" />
             <ComboBox ItemsSource="{Binding AvaliableThemes}" SelectedItem="{Binding SelectedTheme}"
                       DisplayMemberPath="Name" SelectedValuePath="Value" />
 
             <!--Accent-->
-            <Label Content="{x:Static resx:OptionsResx.Accent}" Margin="{StaticResource SmallUpperMargin}" />
+            <TextBlock Text="{x:Static resx:OptionsResx.Accent}" Margin="{StaticResource SmallUpperMargin}" />
             <ComboBox ItemsSource="{Binding AvaliableAccents}" SelectedItem="{Binding SelectedAccent}"
                       DisplayMemberPath="Name" SelectedValuePath="Value" />
 
@@ -48,9 +48,13 @@
 
             <!--SplashScreenSleepTime-->
             <StackPanel metro:VisibilityHelper.IsCollapsed="{Binding FastSplashScreen}">
-                <Label Content="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="{StaticResource SmallUpperMargin}" />
+                <TextBlock Text="{x:Static resx:OptionsResx.SplashScreenSleepTime}" Margin="{StaticResource SmallUpperMargin}" />
                 <metro:NumericUpDown Value="{Binding SplashScreenSleepTime, TargetNullValue=0}" Minimum="0" Maximum="20000" />
             </StackPanel>
+
+            <!--ShowConsoleAtStartup-->
+            <CheckBox x:Name="ShowConsoleAtStartup" Margin="{StaticResource SmallUpperMargin}"
+                      Content="{x:Static resx:OptionsResx.ShowConsoleAtStartup}" />
         </StackPanel>
 
         <!--NeedsRestart-->

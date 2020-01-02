@@ -175,6 +175,9 @@ Deseja reiniciar o aplicativo agora?</value>
   <data name="Save" xml:space="preserve">
     <value>_Salvar</value>
   </data>
+  <data name="ShowConsoleAtStartup" xml:space="preserve">
+    <value>Abrir o console ao iniciar</value>
+  </data>
   <data name="ShowInitialScreen" xml:space="preserve">
     <value>Mostrar tela inicial</value>
   </data>

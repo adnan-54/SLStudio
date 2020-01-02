@@ -121,6 +121,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Behaviors\DefaultWindowStyleBehavior.cs" />
+    <Compile Include="Core\Behaviors\MainWindowClosingBehavior.cs" />
+    <Compile Include="Core\Modules\Console\IConsole.cs" />
+    <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Console.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Console\Resources\Console.pt-br.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Console.pt-br.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Console\ViewModels\ConsoleViewModel.cs" />
+    <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
+      <DependentUpon>ConsoleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\Options\Resources\OptionsResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -209,6 +225,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Core\Modules\Console\Resources\Console.pt-br.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Console.pt-br.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\Console\Resources\Console.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Console.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\MainWindow\Resources\MainWindow.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainWindow.pt-br.Designer.cs</LastGenOutput>
@@ -235,6 +259,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Core\Modules\Console\Views\ConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -306,6 +334,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core\Resources\Images\VS2017\ClearWindowContent_16x.png" />
+    <Resource Include="Core\Resources\Images\VS2017\WordWrap_16x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
