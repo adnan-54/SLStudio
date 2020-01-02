@@ -6,12 +6,12 @@
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.Console.Resources"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    mc:Ignorable="d" Style="{StaticResource DefaultWindowStyle}"
-                   MinWidth="970" MinHeight="512" Width="970" Height="512" 
+                   MinWidth="970" MinHeight="512" Width="970" Height="512"
                    WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <!--Menu-->
@@ -19,18 +19,18 @@
             <!--Clear-->
             <Button x:Name="Clear" Margin="{StaticResource SmallLeftMargin}"
                     BorderThickness="0" Focusable="False"
-                    ToolTip="{x:Static resx:Console.ClearAll}" >
-                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/ClearWindowContent_16x.png"/>
+                    ToolTip="{x:Static resx:Console.ClearAll}">
+                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/ClearWindowContent_16x.png" />
             </Button>
 
             <!--Separator-->
-            <Separator Margin="{StaticResource SmallLeftMargin}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-            
+            <Separator Margin="{StaticResource SmallLeftMargin}" Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" />
+
             <!--TextWrapping-->
             <ToggleButton IsChecked="{Binding TextWrapping}" Margin="{StaticResource SmallLeftMargin}"
                           BorderThickness="0" Focusable="False"
                           ToolTip="{x:Static resx:Console.TextWrapping}">
-                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/WordWrap_16x.png"/>
+                <Image Source="pack://application:,,,/Core/Resources/Images/VS2017/WordWrap_16x.png" />
                 <ToggleButton.Style>
                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MetroToggleButton}">
                         <Style.Triggers>
@@ -53,10 +53,10 @@
                  BorderThickness="0" TextChanged="ConsoleTextChanged">
             <TextBox.Style>
                 <Style TargetType="{x:Type TextBox}">
-                    <Setter Property="TextWrapping" Value="NoWrap"/>
+                    <Setter Property="TextWrapping" Value="NoWrap" />
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding TextWrapping}" Value="True">
-                            <Setter Property="TextWrapping" Value="Wrap"/>
+                            <Setter Property="TextWrapping" Value="Wrap" />
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>

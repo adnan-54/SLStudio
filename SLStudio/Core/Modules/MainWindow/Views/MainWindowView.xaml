@@ -14,9 +14,9 @@
 
     <!--Behaviors-->
     <i:Interaction.Behaviors>
-        <behaviors:MainWindowClosingBehavior/>
+        <behaviors:MainWindowClosingBehavior />
     </i:Interaction.Behaviors>
-    
+
     <!--TitleBar Left Template-->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">
@@ -29,8 +29,8 @@
 
                     <!--Options-->
                     <MenuItem Header="{x:Static resx:MainWindow.Tools}">
-                        <MenuItem Header="{x:Static resx:MainWindow.Console}" cal:Message.Attach="ShowConsole()"/>
-                        <MenuItem Header="{x:Static resx:MainWindow.Options}" cal:Message.Attach="ShowOptions()"/>
+                        <MenuItem Header="{x:Static resx:MainWindow.Console}" cal:Message.Attach="ShowConsole()" />
+                        <MenuItem Header="{x:Static resx:MainWindow.Options}" cal:Message.Attach="ShowOptions()" />
                     </MenuItem>
                 </Menu>
             </StackPanel>

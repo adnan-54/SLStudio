@@ -21,7 +21,7 @@ namespace SLStudio.Core
 
         public void Show()
         {
-            if (splashScreen != null  && canShow)
+            if (splashScreen != null && canShow)
             {
                 canShow = false;
                 canClose = true;

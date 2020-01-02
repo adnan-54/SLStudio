@@ -1,9 +1,8 @@
 ﻿using Caliburn.Micro;
-using System.Threading.Tasks;
 
 namespace SLStudio.Core.Modules.Console.ViewModels
 {
-    class ConsoleViewModel : Screen, IConsole
+    internal class ConsoleViewModel : Screen, IConsole
     {
         public ConsoleViewModel()
         {
@@ -11,6 +10,7 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         }
 
         private string text = string.Empty;
+
         public string Text
         {
             get => text;
@@ -22,6 +22,7 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         }
 
         private bool textWrapping;
+
         public bool TextWrapping
         {
             get => textWrapping;
