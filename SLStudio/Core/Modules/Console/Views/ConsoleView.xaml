@@ -18,8 +18,7 @@
         <StackPanel Orientation="Horizontal" Margin="{StaticResource SmallUpperMargin}">
             <!--Clear-->
             <Button x:Name="Clear" Margin="{StaticResource SmallLeftMargin}"
-                    BorderThickness="0" Focusable="False"
-                    ToolTip="{x:Static resx:Console.ClearAll}">
+                    Focusable="False" ToolTip="{x:Static resx:Console.ClearAll}">
                 <Image Source="{StaticResource ClearWindowContent}" />
             </Button>
 
@@ -28,15 +27,11 @@
 
             <!--TextWrapping-->
             <ToggleButton IsChecked="{Binding TextWrapping}" Margin="{StaticResource SmallLeftMargin}"
-                          BorderThickness="0" Focusable="False"
-                          ToolTip="{x:Static resx:Console.TextWrapping}">
+                          Focusable="False" ToolTip="{x:Static resx:Console.TextWrapping}">
                 <Image Source="{StaticResource WordWrap}" />
                 <ToggleButton.Style>
                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MetroToggleButton}">
                         <Style.Triggers>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="Background" Value="Transparent" />
-                            </Trigger>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Background" Value="{StaticResource AccentColorBrush}" />
                             </Trigger>
@@ -50,7 +45,7 @@
         <TextBox x:Name="Console" Grid.Row="1" Margin="{StaticResource SmallFullMargin}"
                  Text="{Binding Text}" IsReadOnly="True" IsReadOnlyCaretVisible="True"
                  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"
-                 BorderThickness="0" TextChanged="ConsoleTextChanged">
+                 TextChanged="ConsoleTextChanged">
             <TextBox.Style>
                 <Style TargetType="{x:Type TextBox}">
                     <Setter Property="TextWrapping" Value="NoWrap" />
