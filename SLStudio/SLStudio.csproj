@@ -53,10 +53,10 @@
     <DocumentationFile>bin\Release\SLStudio.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>Core\Resources\Images\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>Core\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SLStudio.App</StartupObject>
@@ -112,16 +112,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Core\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Core\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Behaviors\DefaultWindowStyleBehavior.cs" />
     <Compile Include="Core\Behaviors\MainWindowClosingBehavior.cs" />
+    <Compile Include="Core\Models\Modules\IModule.cs" />
+    <Compile Include="Core\Models\Modules\ModuleBase.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />
     <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -152,7 +154,7 @@
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
-    <Compile Include="Core\Framework\Modules.cs" />
+    <Compile Include="Core\Models\Modules\ModulePriority.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
     <Compile Include="Core\Modules\Toolbar\IToolbar.cs" />
@@ -214,7 +216,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="app.manifest" />
+    <None Include="Core\app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -313,10 +315,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Core\Converters\" />
+    <Folder Include="Core\Models\Loggers\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Core\Resources\Images\icon.png" />
@@ -335,6 +335,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Core\Resources\Images\logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
