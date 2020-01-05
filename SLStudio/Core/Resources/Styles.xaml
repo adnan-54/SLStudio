@@ -17,23 +17,17 @@
     </Style>
 
     <!--DefaultWindowStyle-->
-    <Style x:Key="DefaultWindowStyle" TargetType="{x:Type metro:MetroWindow}">
+    <Style x:Key="DefaultWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource CleanWindowStyleKey}">
         <Setter Property="SaveWindowPosition" Value="True" />
         <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/logo.png" />
         <Setter Property="MinWidth" Value="800" />
         <Setter Property="MinHeight" Value="600" />
-        <Setter Property="TitleForeground" Value="{DynamicResource WhiteBrush}" />
-        <Setter Property="OverrideDefaultWindowCommandsBrush" Value="{DynamicResource WhiteBrush}" />
         <Setter Property="TitleCaps" Value="False" />
-        <Setter Property="TitleAlignment" Value="Center" />
-        <Setter Property="Padding" Value="{DynamicResource FullMargin}" />
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource AccentColorBrush}" />
-        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource AccentColorBrush2}" />
         <Setter Property="GlowBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="NonActiveGlowBrush" Value="{DynamicResource AccentColorBrush2}" />
         <Setter Property="BorderBrush" Value="{DynamicResource AccentColorBrush}" />
         <Setter Property="NonActiveBorderBrush" Value="{DynamicResource AccentColorBrush2}" />
-        <Setter Property="BorderThickness" Value="1.5, 1.5, 1.5, 1.5" />
+        <Setter Property="BorderThickness" Value="1" />
         <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
 
@@ -48,8 +42,7 @@
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="TitleCaps" Value="False" />
         <Setter Property="ShowInTaskbar" Value="False" />
-        <Setter Property="EnableDWMDropShadow" Value="True" />
-        <Setter Property="Padding" Value="{DynamicResource FullMargin}" />
+        <Setter Property="EnableDWMDropShadow" Value="True"/>
         <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
 </ResourceDictionary>
