@@ -33,7 +33,7 @@
                     <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource MetroToggleButton}">
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Background" Value="{StaticResource AccentColorBrush}" />
+                                <Setter Property="Background" Value="{DynamicResource AccentColorBrush}" />
                             </Trigger>
                         </Style.Triggers>
                     </Style>

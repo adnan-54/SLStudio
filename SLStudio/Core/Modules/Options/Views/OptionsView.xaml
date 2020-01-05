@@ -63,7 +63,7 @@
             <Image Width="32" Height="32" Margin="{StaticResource LeftMargin}"
                    Source="{StaticResource StatusWarning}" />
             
-            <TextBlock Margin="{StaticResource SmallLeftMargin}" Foreground="{StaticResource DisabledMenuItemForeground}"
+            <TextBlock Margin="{StaticResource SmallLeftMargin}" Foreground="{DynamicResource DisabledMenuItemForeground}"
                        Text="{x:Static resx:OptionsResx.NeedsRestart}" FontSize="16" VerticalAlignment="Center"/>
         </StackPanel>
 

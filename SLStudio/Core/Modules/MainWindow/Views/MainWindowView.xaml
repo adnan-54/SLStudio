@@ -22,14 +22,18 @@
         <metro:WindowCommands ShowLastSeparator="False">
             <StackPanel Orientation="Horizontal">
                 <!--Menu-->
-                <Menu Margin="6, 0, 6, 0" Style="{DynamicResource MetroMenu}">
+                <Menu Margin="6, 0, 6, 0" Style="{StaticResource MetroMenu}">
                     <!--File-->
                     <MenuItem Header="{x:Static resx:MainWindow.File}">
+                        
                     </MenuItem>
 
-                    <!--Options-->
+                    <!--Tools-->
                     <MenuItem Header="{x:Static resx:MainWindow.Tools}">
+                        <!--Console-->
                         <MenuItem Header="{x:Static resx:MainWindow.Console}" cal:Message.Attach="ShowConsole()" />
+                        
+                        <!--Options-->
                         <MenuItem Header="{x:Static resx:MainWindow.Options}" cal:Message.Attach="ShowOptions()" />
                     </MenuItem>
                 </Menu>

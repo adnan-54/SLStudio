@@ -24,10 +24,10 @@
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Text="SL" Margin="0, -30, 0, 0"
-                           FontSize="200" FontWeight="Black" Foreground="{StaticResource WhiteColorBrush}"
+                           FontSize="200" FontWeight="Black" Foreground="{DynamicResource WhiteColorBrush}"
                            VerticalAlignment="Center" HorizontalAlignment="Center" />
 
-                <TextBlock Grid.Row="1" Margin="0, -44, 0, 20" Text="SLStudio" Foreground="{StaticResource WhiteColorBrush}"
+                <TextBlock Grid.Row="1" Margin="0, -44, 0, 20" Text="SLStudio" Foreground="{DynamicResource WhiteColorBrush}"
                            FontSize="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
             </Grid>
 
@@ -41,16 +41,16 @@
 
                     <!--Loading Text-->
                     <TextBlock Grid.Column="0" Text="{x:Static resx:SplashScreen.Loading}"
-                               FontSize="18" HorizontalAlignment="Left" Foreground="{StaticResource WhiteColorBrush}"/>
+                               FontSize="18" HorizontalAlignment="Left" Foreground="{DynamicResource WhiteColorBrush}"/>
 
                     <!--Curent Loading Module-->
                     <TextBlock Grid.Column="1" x:Name="statusText" Text="{x:Static resx:SplashScreen.Initializing}"
-                               FontSize="14" FontWeight="Thin" FontStyle="Italic" Foreground="{StaticResource WhiteColorBrush}"
+                               FontSize="14" FontWeight="Thin" FontStyle="Italic" Foreground="{DynamicResource WhiteColorBrush}"
                                HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </Grid>
 
                 <!--ProgressBar-->
-                <metro:MetroProgressBar Margin="0, 3, 0, 0" Height="18" IsIndeterminate="True" Foreground="{StaticResource WhiteColorBrush}"/>
+                <metro:MetroProgressBar Margin="0, 3, 0, 0" Height="18" IsIndeterminate="True" Foreground="{DynamicResource WhiteColorBrush}"/>
             </StackPanel>
         </Grid>
     </Border>
