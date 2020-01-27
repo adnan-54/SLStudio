@@ -1,10 +1,4 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro.Controls.Dialogs;
-using SLStudio.Core.Modules.Console.ViewModels;
-using SLStudio.Core.Modules.MainWindow.ViewModels;
-using SLStudio.Core.Modules.Shell.ViewModels;
-using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
-using SLStudio.Core.Modules.Toolbar.ViewModels;
 
 namespace SLStudio.Core
 {
@@ -17,17 +11,6 @@ namespace SLStudio.Core
 
         public override void Register(SimpleContainer container)
         {
-            //default services
-            container.Singleton<IWindowManager, WindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<IDialogCoordinator, DialogCoordinator>();
-
-            //core
-            container.Singleton<IConsole, ConsoleViewModel>();
-            container.Singleton<IMainWindow, MainWindowViewModel>();
-            container.Singleton<IShell, ShellViewModel>();
-            container.Singleton<IStatusBar, StatusBarViewModel>();
-            container.Singleton<IToolbar, ToolbarViewModel>();
         }
     }
 }

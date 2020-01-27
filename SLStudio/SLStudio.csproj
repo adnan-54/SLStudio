@@ -56,7 +56,7 @@
     <ApplicationIcon>Core\Resources\Images\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>Core\app.manifest</ApplicationManifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SLStudio.App</StartupObject>
@@ -112,15 +112,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Core\App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\App.xaml.cs">
+    <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Behaviors\DefaultWindowStyleBehavior.cs" />
     <Compile Include="Core\Behaviors\MainWindowClosingBehavior.cs" />
     <Compile Include="Core\Models\Modules\IModule.cs" />
     <Compile Include="Core\Models\Modules\ModuleBase.cs" />
@@ -190,10 +189,6 @@
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreen.xaml.cs">
       <DependentUpon>SplashScreen.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Modules\StartPage\ViewModels\StartPageViewModel.cs" />
-    <Compile Include="Core\Modules\StartPage\Views\StartPageView.xaml.cs">
-      <DependentUpon>StartPageView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
     <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
@@ -203,7 +198,6 @@
       <DependentUpon>ToolbarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Services\BootstrapperService.cs" />
-    <Compile Include="Core\Services\SplashScreenService.cs" />
     <Compile Include="Modules\Tests\Module.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -216,7 +210,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="Core\app.manifest" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -281,10 +275,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Core\Modules\StartPage\Views\StartPageView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Core\Modules\StatusBar\Views\StatusBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -315,8 +305,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Converters\" />
     <Folder Include="Core\Models\Loggers\" />
+    <Folder Include="Core\Modules\SplashScreen\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Core\Resources\Images\icon.png" />
