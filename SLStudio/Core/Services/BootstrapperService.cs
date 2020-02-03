@@ -10,12 +10,13 @@ namespace SLStudio.Core
     internal class BootstrapperService : IBootstrapperService
     {
         private readonly SimpleContainer container;
+        private readonly ISplashScreen splashScreen;
         private readonly List<IModule> modules;
 
-        public BootstrapperService(SimpleContainer container)
+        public BootstrapperService(SimpleContainer container, ISplashScreen splashScreen)
         {
             this.container = container;
-
+            this.splashScreen = splashScreen;
             modules = new List<IModule>();
         }
 
@@ -23,11 +24,10 @@ namespace SLStudio.Core
 
         public async Task Initialize()
         {
-            await LoadModulesAsync();
-        }
 
-        private async Task LoadModulesAsync()
-        {
+            var windowManager = IoC.Get<IWindowManager>();
+            windowManager.ShowWindow(splashScreen);
+
             await Task.Run(async () =>
             {
                 GetType().Assembly.GetTypes().Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
@@ -50,6 +50,7 @@ namespace SLStudio.Core
                         if (!Settings.Default.FastSplashScreen)
                             await Task.Delay(Settings.Default.SplashScreenSleepTime);
 
+                        splashScreen.Status = module.ModuleName;
                         module.Register(container);
                     }
                 }
@@ -59,6 +60,7 @@ namespace SLStudio.Core
 
     public interface IBootstrapperService
     {
+        IList<IModule> Modules { get; }
         Task Initialize();
     }
 }

@@ -121,15 +121,12 @@
     <value>Console</value>
   </data>
   <data name="File" xml:space="preserve">
-    <value>_Arquivo</value>
-  </data>
-  <data name="Loading" xml:space="preserve">
-    <value>Carregando</value>
+    <value>Arquivo</value>
   </data>
   <data name="Options" xml:space="preserve">
-    <value>_Opções</value>
+    <value>Opções</value>
   </data>
   <data name="Tools" xml:space="preserve">
-    <value>_Ferramentas</value>
+    <value>Ferramentas</value>
   </data>
 </root>

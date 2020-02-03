@@ -1,75 +1,30 @@
 ﻿using Caliburn.Micro;
-using SLStudio.Core.Modules.Options.ViewModels;
 
 namespace SLStudio.Core.Modules.MainWindow.ViewModels
 {
     internal class MainWindowViewModel : Screen, IMainWindow
     {
-        private readonly IWindowManager windowManager;
-        private readonly IEventAggregator eventAggregator;
-        private readonly IConsole console;
+        private readonly IMainMenu mainMenu;
+        private readonly IToolbar toolbar;
+        private readonly IShell shell;
+        private readonly IStatusBar statusBar;
 
-        public MainWindowViewModel(IWindowManager windowManager, IEventAggregator eventAggregator,
-            IToolbar toolbar, IShell shell, IStatusBar statusBar,
-            IConsole console)
+        public MainWindowViewModel(IMainMenu mainMenu, IToolbar toolbar, IShell shell, IStatusBar statusBar)
         {
-            this.windowManager = windowManager;
-            this.eventAggregator = eventAggregator;
-            Toolbar = toolbar;
-            Shell = shell;
-            StatusBar = statusBar;
-            this.console = console;
-            IsBusy = false;
+            this.mainMenu = mainMenu;
+            this.toolbar = toolbar;
+            this.shell = shell;
+            this.statusBar = statusBar;
 
             DisplayName = "SLStudio";
         }
 
-        private bool isBusy;
+        public IMainMenu MainMenu => mainMenu;
 
-        public bool IsBusy
-        {
-            get => isBusy;
-            set
-            {
-                isBusy = value;
-                NotifyOfPropertyChange(() => IsBusy);
-            }
-        }
+        public IToolbar Toolbar => toolbar;
 
-        private IToolbar toolbar;
+        public IShell Shell => shell;
 
-        public IToolbar Toolbar
-        {
-            get => toolbar;
-            set
-            {
-                toolbar = value;
-                NotifyOfPropertyChange(() => Toolbar);
-            }
-        }
-
-        public IShell Shell { get; }
-
-        private IStatusBar statusBar;
-
-        public IStatusBar StatusBar
-        {
-            get => statusBar;
-            set
-            {
-                statusBar = value;
-                NotifyOfPropertyChange(() => StatusBar);
-            }
-        }
-
-        public void ShowOptions()
-        {
-            windowManager.ShowDialog(new OptionsViewModel());
-        }
-
-        public void ShowConsole()
-        {
-            windowManager.ShowWindow(console);
-        }
+        public IStatusBar StatusBar => statusBar;
     }
 }

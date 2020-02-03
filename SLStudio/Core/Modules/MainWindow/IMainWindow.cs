@@ -2,8 +2,9 @@
 {
     public interface IMainWindow
     {
-        bool IsBusy { get; set; }
-
+        IMainMenu MainMenu { get; }
+        IToolbar Toolbar { get; }
         IShell Shell { get; }
+        IStatusBar StatusBar { get; }
     }
 }

@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="SLStudio.Core.Modules.MainMenu.Views.MainMenuView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:cal="http://www.caliburnproject.org"
+             xmlns:resx="clr-namespace:SLStudio.Core.Modules.MainMenu.Resoruces"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <StackPanel Orientation="Horizontal">
+        <!--MainMenu-->
+        <Menu Margin="6, 0, 6, 0">
+            <!--File-->
+            <MenuItem Header="{x:Static resx:MainMenu.File}"/>
+
+            <!--Tools-->
+            <MenuItem Header="{x:Static resx:MainMenu.Tools}">
+                <!--Console-->
+                <MenuItem Header="{x:Static resx:MainMenu.Console}" 
+                          cal:Message.Attach="OpenConsole()"/>
+
+                <!--Options-->
+                <MenuItem Header="{x:Static resx:MainMenu.Options}"
+                          cal:Message.Attach="OpenOptions()"/>
+            </MenuItem>
+        </Menu>
+    </StackPanel>
+</UserControl>
