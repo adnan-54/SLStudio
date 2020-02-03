@@ -1,4 +1,4 @@
-﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.SplashScreen.Views.SplashScreen"
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.SplashScreen.Views.SplashScreenView"
                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
@@ -44,7 +44,7 @@
                                FontSize="18" HorizontalAlignment="Left" Foreground="{DynamicResource WhiteColorBrush}"/>
 
                     <!--Curent Loading Module-->
-                    <TextBlock Grid.Column="1" x:Name="statusText" Text="{x:Static resx:SplashScreen.Initializing}"
+                    <TextBlock Grid.Column="1" x:Name="Status" Text="{x:Static resx:SplashScreen.Initializing}"
                                FontSize="14" FontWeight="Thin" FontStyle="Italic" Foreground="{DynamicResource WhiteColorBrush}"
                                HorizontalAlignment="Right" VerticalAlignment="Center"/>
                 </Grid>
@@ -54,4 +54,4 @@
             </StackPanel>
         </Grid>
     </Border>
-</metro:MetroWindow>
+    </metro:MetroWindow>

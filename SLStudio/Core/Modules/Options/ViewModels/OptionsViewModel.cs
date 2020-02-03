@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace SLStudio.Core.Modules.Options.ViewModels
 {
-    internal class OptionsViewModel : Screen
+    internal class OptionsViewModel : Screen, IOptions
     {
         public OptionsViewModel()
         {

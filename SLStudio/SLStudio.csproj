@@ -56,7 +56,7 @@
     <ApplicationIcon>Core\Resources\Images\logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>Core\app.manifest</ApplicationManifest>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>SLStudio.App</StartupObject>
@@ -112,18 +112,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="Core\App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\App.xaml.cs">
+    <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Behaviors\DefaultWindowStyleBehavior.cs" />
-    <Compile Include="Core\Behaviors\MainWindowClosingBehavior.cs" />
-    <Compile Include="Core\Models\Modules\IModule.cs" />
-    <Compile Include="Core\Models\Modules\ModuleBase.cs" />
+    <Compile Include="Core\Modules\Modules\IModule.cs" />
+    <Compile Include="Core\Modules\Modules\ModuleBase.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />
     <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -139,6 +137,22 @@
     <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
       <DependentUpon>ConsoleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\Modules\MainMenu\IMainMenu.cs" />
+    <Compile Include="Core\Modules\MainMenu\Resoruces\MainMenu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainMenu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\MainMenu\Resoruces\MainMenu.pt-br.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainMenu.pt-br.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\MainMenu\ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Core\Modules\MainMenu\Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Options\IOptions.cs" />
     <Compile Include="Core\Modules\Options\Resources\OptionsResx.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -154,21 +168,16 @@
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
-    <Compile Include="Core\Models\Modules\ModulePriority.cs" />
+    <Compile Include="Core\Modules\Modules\ModulePriority.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
+    <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
+    <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
+    <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
     <Compile Include="Core\Modules\Toolbar\IToolbar.cs" />
     <Compile Include="Core\Module.cs" />
-    <Compile Include="Core\Modules\MainWindow\Resources\MainWindow.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainWindow.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\MainWindow\Resources\MainWindow.pt-br.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainWindow.pt-br.resx</DependentUpon>
-    </Compile>
     <Compile Include="Core\Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Core\Modules\MainWindow\Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
@@ -187,13 +196,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SplashScreen.pt-br.resx</DependentUpon>
     </Compile>
-    <Compile Include="Core\Modules\SplashScreen\Views\SplashScreen.xaml.cs">
-      <DependentUpon>SplashScreen.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\StartPage\ViewModels\StartPageViewModel.cs" />
-    <Compile Include="Core\Modules\StartPage\Views\StartPageView.xaml.cs">
-      <DependentUpon>StartPageView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
     <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
@@ -203,7 +205,6 @@
       <DependentUpon>ToolbarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Services\BootstrapperService.cs" />
-    <Compile Include="Core\Services\SplashScreenService.cs" />
     <Compile Include="Modules\Tests\Module.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -216,7 +217,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="Core\app.manifest" />
+    <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
@@ -235,13 +236,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Console.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\MainWindow\Resources\MainWindow.pt-br.resx">
+    <EmbeddedResource Include="Core\Modules\MainMenu\Resoruces\MainMenu.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainWindow.pt-br.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainMenu.pt-br.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\MainWindow\Resources\MainWindow.resx">
+    <EmbeddedResource Include="Core\Modules\MainMenu\Resoruces\MainMenu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainWindow.Designer.cs</LastGenOutput>
+      <LastGenOutput>MainMenu.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\Options\Resources\OptionsResx.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -265,6 +266,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Core\Modules\MainMenu\Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -277,11 +282,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Core\Modules\SplashScreen\Views\SplashScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\StartPage\Views\StartPageView.xaml">
+    <Page Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,10 +315,7 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Converters\" />
-    <Folder Include="Core\Models\Loggers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Core\Resources\Images\icon.png" />
     <Resource Include="Core\Resources\Images\logo.png" />

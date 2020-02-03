@@ -3,7 +3,6 @@ using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace SLStudio.Core
@@ -11,43 +10,25 @@ namespace SLStudio.Core
     internal class BootstrapperService : IBootstrapperService
     {
         private readonly SimpleContainer container;
-        private readonly ISplashScreenService splashScreen;
+        private readonly ISplashScreen splashScreen;
         private readonly List<IModule> modules;
 
-        private bool isInitialized;
-
-        public BootstrapperService(SimpleContainer container, ISplashScreenService splashScreen)
+        public BootstrapperService(SimpleContainer container, ISplashScreen splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
-
             modules = new List<IModule>();
-            isInitialized = false;
         }
 
         public IList<IModule> Modules => modules;
 
         public async Task Initialize()
         {
-            if (isInitialized)
-                return;
-
-            splashScreen.Show();
-
-            await LoadModulesAsync();
-
-            isInitialized = true;
 
             var windowManager = IoC.Get<IWindowManager>();
-            var mainWindow = IoC.Get<IMainWindow>();
+            windowManager.ShowWindow(splashScreen);
 
-            splashScreen.Hide();
-            windowManager.ShowWindow(mainWindow);
-        }
-
-        private async Task LoadModulesAsync()
-        {
-            await Task.Run(() =>
+            await Task.Run(async () =>
             {
                 GetType().Assembly.GetTypes().Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
                 .ToList()
@@ -67,9 +48,9 @@ namespace SLStudio.Core
                     if (module != null && module.ShouldBeLoaded)
                     {
                         if (!Settings.Default.FastSplashScreen)
-                            Thread.Sleep(Settings.Default.SplashScreenSleepTime);
+                            await Task.Delay(Settings.Default.SplashScreenSleepTime);
 
-                        splashScreen.UpdateStatus(module.ModuleName);
+                        splashScreen.Status = module.ModuleName;
                         module.Register(container);
                     }
                 }
@@ -80,7 +61,6 @@ namespace SLStudio.Core
     public interface IBootstrapperService
     {
         IList<IModule> Modules { get; }
-
         Task Initialize();
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Modules.MainWindow.Resources {
+namespace SLStudio.Core.Modules.MainMenu.Resoruces {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Modules.MainWindow.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MainWindow {
+    public class MainMenu {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MainWindow() {
+        internal MainMenu() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Modules.MainWindow.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.MainWindow.Resources.MainWindow", typeof(MainWindow).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.MainMenu.Resoruces.MainMenu", typeof(MainMenu).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,7 +70,7 @@ namespace SLStudio.Core.Modules.MainWindow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _File.
+        ///   Looks up a localized string similar to File.
         /// </summary>
         public static string File {
             get {
@@ -79,16 +79,7 @@ namespace SLStudio.Core.Modules.MainWindow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading.
-        /// </summary>
-        public static string Loading {
-            get {
-                return ResourceManager.GetString("Loading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Options.
+        ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string Options {
             get {
@@ -97,7 +88,7 @@ namespace SLStudio.Core.Modules.MainWindow.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Tools.
+        ///   Looks up a localized string similar to Tools.
         /// </summary>
         public static string Tools {
             get {
