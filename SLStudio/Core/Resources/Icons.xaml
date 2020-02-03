@@ -6,15 +6,15 @@
         <DrawingImage.Drawing>
             <GeometryDrawing>
                 <GeometryDrawing.Geometry>
-                    <RectangleGeometry Rect="0, 0, 32, 32"/>
+                    <RectangleGeometry Rect="0, 0, 32, 32" />
                 </GeometryDrawing.Geometry>
                 <GeometryDrawing.Brush>
                     <VisualBrush>
                         <VisualBrush.Visual>
                             <Border Width="32" Height="32" BorderThickness="1" BorderBrush="Transparent">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Text="S" FontSize="26" FontFamily="Arial" FontWeight="ExtraBold"/>
-                                    <TextBlock Text="L" FontSize="26" Margin="-3, 0, 0, 0" FontFamily="Arial" FontWeight="ExtraBold"/>
+                                    <TextBlock Text="S" FontSize="26" FontFamily="Arial" FontWeight="ExtraBold" />
+                                    <TextBlock Text="L" FontSize="26" Margin="-3, 0, 0, 0" FontFamily="Arial" FontWeight="ExtraBold" />
                                 </StackPanel>
                             </Border>
                         </VisualBrush.Visual>

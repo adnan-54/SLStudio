@@ -11,7 +11,7 @@
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">
             <!--MainMenu-->
-            <ContentControl cal:View.Model="{Binding MainMenu}"/>
+            <ContentControl cal:View.Model="{Binding MainMenu}" />
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
 

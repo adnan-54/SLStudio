@@ -41,17 +41,17 @@
 
                     <!--Loading Text-->
                     <TextBlock Grid.Column="0" Text="{x:Static resx:SplashScreen.Loading}"
-                               FontSize="18" HorizontalAlignment="Left" Foreground="{DynamicResource WhiteColorBrush}"/>
+                               FontSize="18" HorizontalAlignment="Left" Foreground="{DynamicResource WhiteColorBrush}" />
 
                     <!--Curent Loading Module-->
                     <TextBlock Grid.Column="1" x:Name="Status" Text="{x:Static resx:SplashScreen.Initializing}"
                                FontSize="14" FontWeight="Thin" FontStyle="Italic" Foreground="{DynamicResource WhiteColorBrush}"
-                               HorizontalAlignment="Right" VerticalAlignment="Center"/>
+                               HorizontalAlignment="Right" VerticalAlignment="Center" />
                 </Grid>
 
                 <!--ProgressBar-->
-                <metro:MetroProgressBar Margin="0, 3, 0, 0" Height="18" IsIndeterminate="True" Foreground="{DynamicResource WhiteColorBrush}"/>
+                <metro:MetroProgressBar Margin="0, 3, 0, 0" Height="18" IsIndeterminate="True" Foreground="{DynamicResource WhiteColorBrush}" />
             </StackPanel>
         </Grid>
     </Border>
-    </metro:MetroWindow>
+</metro:MetroWindow>

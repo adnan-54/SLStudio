@@ -24,7 +24,6 @@ namespace SLStudio.Core
 
         public async Task Initialize()
         {
-
             var windowManager = IoC.Get<IWindowManager>();
             windowManager.ShowWindow(splashScreen);
 
@@ -61,6 +60,7 @@ namespace SLStudio.Core
     public interface IBootstrapperService
     {
         IList<IModule> Modules { get; }
+
         Task Initialize();
     }
 }

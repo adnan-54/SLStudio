@@ -10,17 +10,17 @@
         <!--MainMenu-->
         <Menu Margin="6, 0, 6, 0">
             <!--File-->
-            <MenuItem Header="{x:Static resx:MainMenu.File}"/>
+            <MenuItem Header="{x:Static resx:MainMenu.File}" />
 
             <!--Tools-->
             <MenuItem Header="{x:Static resx:MainMenu.Tools}">
                 <!--Console-->
-                <MenuItem Header="{x:Static resx:MainMenu.Console}" 
-                          cal:Message.Attach="OpenConsole()"/>
+                <MenuItem Header="{x:Static resx:MainMenu.Console}"
+                          cal:Message.Attach="OpenConsole()" />
 
                 <!--Options-->
                 <MenuItem Header="{x:Static resx:MainMenu.Options}"
-                          cal:Message.Attach="OpenOptions()"/>
+                          cal:Message.Attach="OpenOptions()" />
             </MenuItem>
         </Menu>
     </StackPanel>

@@ -42,7 +42,7 @@
         <Setter Property="ResizeMode" Value="NoResize" />
         <Setter Property="TitleCaps" Value="False" />
         <Setter Property="ShowInTaskbar" Value="False" />
-        <Setter Property="EnableDWMDropShadow" Value="True"/>
+        <Setter Property="EnableDWMDropShadow" Value="True" />
         <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
     </Style>
 </ResourceDictionary>

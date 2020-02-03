@@ -10,6 +10,7 @@ namespace SLStudio.Core.Modules.SplashScreen.ViewModels
         }
 
         private string status = Resources.SplashScreen.Loading;
+
         public string Status
         {
             get => status;
