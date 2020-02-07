@@ -12,9 +12,9 @@ namespace SLStudio.Core.CoreModules.ObjectFactory
             this.container = container;
         }
 
-        TService IObjectFactory.Create<TService>()
+        Type IObjectFactory.Create<Type>()
         {
-            return container.GetInstance<TService>();
+            return container.GetInstance<Type>();
         }
 
         object IObjectFactory.Create(Type type)

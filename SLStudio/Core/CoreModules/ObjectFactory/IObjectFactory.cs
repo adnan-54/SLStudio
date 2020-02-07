@@ -4,7 +4,7 @@ namespace SLStudio.Core
 {
     public interface IObjectFactory
     {
-        TService Create<TService>() where TService : class;
+        Type Create<Type>() where Type : class;
 
         object Create(Type type);
     }

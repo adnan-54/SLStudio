@@ -120,11 +120,16 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
+    <Compile Include="Core\CoreModules\CommandHandler\CommandHandler.cs" />
+    <Compile Include="Core\CoreModules\ErrorHandler\DefaultErrorHandler.cs" />
+    <Compile Include="Core\CoreModules\ErrorHandler\IErrorHandler.cs" />
     <Compile Include="Core\CoreModules\ModuleBase\IModule.cs" />
     <Compile Include="Core\CoreModules\ModuleBase\ModuleBase.cs" />
     <Compile Include="Core\CoreModules\ObjectFactory\DefaultObjectFactory.cs" />
     <Compile Include="Core\CoreModules\ObjectFactory\IObjectFactory.cs" />
     <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
+    <Compile Include="Core\Extensions\TaskExtensions.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />
     <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -319,9 +324,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Behaviors\" />
     <Folder Include="Core\Converters\" />
-    <Folder Include="Core\Extensions\" />
     <Folder Include="Core\Helpers\" />
   </ItemGroup>
   <ItemGroup>

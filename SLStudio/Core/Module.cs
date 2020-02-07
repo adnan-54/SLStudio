@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.CoreModules.ErrorHandler;
 using SLStudio.Core.CoreModules.ObjectFactory;
 using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
@@ -21,6 +22,7 @@ namespace SLStudio.Core
         {
             //CoreModules
             container.Singleton<IObjectFactory, DefaultObjectFactory>();
+            container.Singleton<IErrorHandler, DefaultErrorHandler>();
 
             //Services
 
