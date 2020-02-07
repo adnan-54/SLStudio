@@ -120,8 +120,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Modules\Modules\IModule.cs" />
-    <Compile Include="Core\Modules\Modules\ModuleBase.cs" />
+    <Compile Include="Core\CoreModules\ModuleBase\IModule.cs" />
+    <Compile Include="Core\CoreModules\ModuleBase\ModuleBase.cs" />
+    <Compile Include="Core\CoreModules\ObjectFactory\DefaultObjectFactory.cs" />
+    <Compile Include="Core\CoreModules\ObjectFactory\IObjectFactory.cs" />
+    <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />
     <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -168,7 +171,7 @@
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
-    <Compile Include="Core\Modules\Modules\ModulePriority.cs" />
+    <Compile Include="Core\CoreModules\ModuleBase\ModulePriority.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
@@ -315,7 +318,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\Behaviors\" />
+    <Folder Include="Core\Converters\" />
+    <Folder Include="Core\Extensions\" />
+    <Folder Include="Core\Helpers\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Core\Resources\Images\icon.png" />
     <Resource Include="Core\Resources\Images\logo.png" />

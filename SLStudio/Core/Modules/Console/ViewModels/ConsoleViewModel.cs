@@ -1,16 +1,21 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Events;
 
 namespace SLStudio.Core.Modules.Console.ViewModels
 {
-    internal class ConsoleViewModel : Screen, IConsole
+    internal class ConsoleViewModel : Screen, IConsole, IHandle<NewLogRequestedEvent>
     {
-        public ConsoleViewModel()
+        private string text = string.Empty;
+        private bool textWrapping;
+
+        public ConsoleViewModel(IEventAggregator eventAggregator)
         {
+            eventAggregator.Subscribe(this);
+
             DisplayName = "SLStudio - Console";
         }
 
-        private string text = string.Empty;
-
+        //properties
         public string Text
         {
             get => text;
@@ -20,8 +25,6 @@ namespace SLStudio.Core.Modules.Console.ViewModels
                 NotifyOfPropertyChange(() => Text);
             }
         }
-
-        private bool textWrapping;
 
         public bool TextWrapping
         {
@@ -33,22 +36,19 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             }
         }
 
-        public void AppendLine(string sender, string message)
-        {
-            if (string.IsNullOrEmpty(Text.Trim()))
-                Text = $">{sender}: {message}";
-            else
-                Text = $"{text}\n>{sender}: {message}";
-        }
+        //methods
+        public string GetText() => Text;
 
-        public void Clear()
-        {
-            Text = string.Empty;
-        }
+        public void AppendLine(string sender, string message) => Text = $"{text}>{sender}: {message}\n";
 
-        public void ToggleTextWrapping()
+        public void Clear() => Text = string.Empty;
+
+        public void ToggleTextWrapping() => TextWrapping = !TextWrapping;
+
+        //events
+        public void Handle(NewLogRequestedEvent message)
         {
-            TextWrapping = !TextWrapping;
+            AppendLine(message.Sender, message.Description);
         }
     }
 }

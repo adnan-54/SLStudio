@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.CoreModules.ObjectFactory;
 using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
@@ -18,6 +19,12 @@ namespace SLStudio.Core
 
         public override void Register(SimpleContainer container)
         {
+            //CoreModules
+            container.Singleton<IObjectFactory, DefaultObjectFactory>();
+
+            //Services
+
+            //Modules
             container.Singleton<IMainWindow, MainWindowViewModel>();
             container.Singleton<IMainMenu, MainMenuViewModel>();
             container.Singleton<IToolbar, ToolbarViewModel>();
