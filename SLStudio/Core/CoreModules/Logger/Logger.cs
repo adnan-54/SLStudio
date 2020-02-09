@@ -7,12 +7,12 @@ namespace SLStudio.Core.CoreModules.Logging
     internal class Logger : ILogger
     {
         private readonly Type sender;
-        private readonly IEventAggregator eventAggregator;
+        private readonly ILoggingService loggingService;
 
-        public Logger(Type sender, IEventAggregator eventAggregator)
+        public Logger(Type sender)
         {
             this.sender = sender;
-            this.eventAggregator = eventAggregator;
+            loggingService = IoC.Get<ILoggingService>();
         }
 
         private enum LogLevel
@@ -50,7 +50,7 @@ namespace SLStudio.Core.CoreModules.Logging
 
         private void Log(string level, string title, string description)
         {
-            eventAggregator.PublishOnUIThread(new NewLogRequestedEvent(sender.Name, level, title, description, DateTime.Now));
+            loggingService.Log(new NewLogRequestedEvent(sender.Name, level, title, description, DateTime.Now));
         }
     }
 }

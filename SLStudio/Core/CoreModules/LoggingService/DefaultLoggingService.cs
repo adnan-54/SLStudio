@@ -7,14 +7,15 @@ using System.Data.SQLite;
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core.CoreModules.LoggingService
 {
-    internal class DefaultLoggingService : ILoggingService, IHandle<NewLogRequestedEvent>
+    internal class DefaultLoggingService : ILoggingService
     {
         private static readonly object @lock = new object();
         private readonly SQLiteConnection dbConnection;
-
+        private readonly IEventAggregator eventAggregator;
         private readonly string applicationPath;
         private readonly string logFileName;
         private readonly string logFilePath;
@@ -22,13 +23,34 @@ namespace SLStudio.Core.CoreModules.LoggingService
 
         public DefaultLoggingService(IEventAggregator eventAggregator)
         {
-            eventAggregator.Subscribe(this);
+            this.eventAggregator = eventAggregator;
 
             applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             logFileName = "logs.db";
             logFilePath = Path.Combine(applicationPath, "logs", logFileName);
             connectionString = $"Data Source={logFilePath}; Version=3; datetimeformat=CurrentCulture";
+
             dbConnection = new SQLiteConnection(connectionString);
+        }
+
+        public async void Log(NewLogRequestedEvent log)
+        {
+            await Task.Run(() =>
+            {
+                lock (@lock)
+                {
+                    try
+                    {
+                        LogToDb(log);
+                        eventAggregator.PublishOnUIThread(log);
+                    }
+                    catch (Exception ex)
+                    {
+                        LogToSimleFile(ex);
+                    }
+
+                }
+            });
         }
 
         public DataTable GetLogs()
@@ -137,18 +159,10 @@ namespace SLStudio.Core.CoreModules.LoggingService
             }
         }
 
-        public void Handle(NewLogRequestedEvent message)
-        {
-            LogToDb(message);
-        }
-
         private void LogToDb(NewLogRequestedEvent log)
         {
-            lock (@lock)
-            {
-                EnsureDbIsValid();
-                InsertLog(log.Sender, log.Level, log.Title, log.Message, log.Date);
-            }
+            EnsureDbIsValid();
+            InsertLog(log.Sender, log.Level, log.Title, log.Message, log.Date);
         }
 
         private void EnsureDbIsValid()

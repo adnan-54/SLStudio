@@ -2,7 +2,7 @@
 
 namespace SLStudio.Core.Events
 {
-    internal class NewLogRequestedEvent
+    public class NewLogRequestedEvent
     {
         public NewLogRequestedEvent(string sender, string level, string title, string description, DateTime date)
         {
