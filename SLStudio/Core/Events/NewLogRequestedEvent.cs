@@ -9,14 +9,19 @@ namespace SLStudio.Core.Events
             Sender = sender;
             Level = level;
             Title = title;
-            Description = description;
+            Message = description;
             Date = date;
         }
 
         public string Sender { get; }
         public string Level { get; }
         public string Title { get; }
-        public string Description { get; }
+        public string Message { get; }
         public DateTime Date { get; }
+
+        public override string ToString()
+        {
+            return $"{Sender} ({Date}): [{Level.ToUpper()}] \"{Title}\", {Message}";
+        }
     }
 }

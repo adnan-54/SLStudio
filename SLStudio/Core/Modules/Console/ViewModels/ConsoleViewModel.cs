@@ -11,11 +11,9 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         public ConsoleViewModel(IEventAggregator eventAggregator)
         {
             eventAggregator.Subscribe(this);
-
             DisplayName = "SLStudio - Console";
         }
 
-        //properties
         public string Text
         {
             get => text;
@@ -36,7 +34,6 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             }
         }
 
-        //methods
         public string GetText() => Text;
 
         public void AppendLine(string sender, string message) => Text = $"{text}>{sender}: {message}\n";
@@ -45,10 +42,9 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
         public void ToggleTextWrapping() => TextWrapping = !TextWrapping;
 
-        //events
         public void Handle(NewLogRequestedEvent message)
         {
-            AppendLine(message.Sender, message.Description);
+            AppendLine(message.Sender, message.Message);
         }
     }
 }

@@ -1,17 +1,20 @@
 ﻿using System;
-using System.Diagnostics;
 
 namespace SLStudio.Core.CoreModules.ErrorHandler
 {
     internal class DefaultErrorHandler : IErrorHandler
     {
+        private readonly ILogger logger;
+
+        public DefaultErrorHandler(ILoggingFactory loggingService)
+        {
+            logger = loggingService.GetLoggerFor<DefaultErrorHandler>();
+        }
+
         public void HandleError(Exception exception)
         {
-            Debug.WriteLine(exception);
             Console.WriteLine(exception);
-
-            //Todo: Log the exception
-            throw new NotImplementedException();
+            logger.Error(exception);
         }
     }
 }

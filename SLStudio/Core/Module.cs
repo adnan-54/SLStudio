@@ -1,9 +1,10 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.CoreModules.ErrorHandler;
+using SLStudio.Core.CoreModules.LoggingFactory;
+using SLStudio.Core.CoreModules.LoggingService;
 using SLStudio.Core.CoreModules.ObjectFactory;
 using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
-using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.Options.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
@@ -22,13 +23,14 @@ namespace SLStudio.Core
         public override void Register(SimpleContainer container)
         {
             //CoreModules
+            container.Singleton<ILoggingFactory, DefaultLoggingFactory>();
             container.Singleton<IObjectFactory, DefaultObjectFactory>();
             container.Singleton<IErrorHandler, DefaultErrorHandler>();
 
             //Services
+            container.Singleton<ILoggingService, DefaultLoggingService>();
 
             //Modules
-            container.Singleton<IMainWindow, MainWindowViewModel>();
             container.Singleton<IMainMenu, MainMenuViewModel>();
             container.Singleton<IToolbar, ToolbarViewModel>();
             container.Singleton<IShell, ShellViewModel>();

@@ -1,6 +1,8 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
+using SLStudio.Core.CoreModules.Bootstrapper;
+using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Properties;
 using System;
@@ -33,10 +35,10 @@ namespace SLStudio.Core
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
+            ApplyUserTheme();
+
             var bootstrapperService = IoC.Get<IBootstrapperService>();
             await bootstrapperService.Initialize();
-
-            ApplyUserTheme();
 
             DisplayRootViewFor<IMainWindow>();
 
@@ -57,7 +59,8 @@ namespace SLStudio.Core
             container.Singleton<IWindowManager, WindowManager>();
             container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IDialogCoordinator, DialogCoordinator>();
-            container.Singleton<IBootstrapperService, BootstrapperService>();
+            container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
+            container.Singleton<IMainWindow, MainWindowViewModel>();
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
         }
 

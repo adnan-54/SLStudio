@@ -5,15 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core
+namespace SLStudio.Core.CoreModules.Bootstrapper
 {
-    internal class BootstrapperService : IBootstrapperService
+    internal class DefaultBootstrapperService : IBootstrapperService
     {
         private readonly SimpleContainer container;
         private readonly ISplashScreen splashScreen;
         private readonly List<IModule> modules;
 
-        public BootstrapperService(SimpleContainer container, ISplashScreen splashScreen)
+        public DefaultBootstrapperService(SimpleContainer container, ISplashScreen splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
@@ -55,12 +55,5 @@ namespace SLStudio.Core
                 }
             });
         }
-    }
-
-    public interface IBootstrapperService
-    {
-        IList<IModule> Modules { get; }
-
-        Task Initialize();
     }
 }
