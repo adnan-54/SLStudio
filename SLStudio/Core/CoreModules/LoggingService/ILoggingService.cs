@@ -1,11 +1,12 @@
 ﻿using SLStudio.Core.Events;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
     public interface ILoggingService
     {
-        void Log(NewLogRequestedEvent log);
+        Task Log(NewLogRequestedEvent log);
         DataTable GetLogs();
         void ExportLogsToHtml(string directory);
         void ClearAllLogs();

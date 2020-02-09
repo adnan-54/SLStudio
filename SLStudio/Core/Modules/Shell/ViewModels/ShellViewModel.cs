@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using System.Threading.Tasks;
 
 namespace SLStudio.Core.Modules.Shell.ViewModels
 {
@@ -14,13 +13,10 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             logger = loggingFactory.GetLoggerFor<ShellViewModel>();
         }
 
-        public async void LogSomething()
+        public void LogSomething()
         {
-            await Task.Run(async () =>
-            {
-                for (int i = 0; i < 100; i++)
-                    logger.Debug($"debug {i}");
-            });
+            for (int i = 0; i < 100; i++)
+                logger.Debug($"debug {i}");
         }
     }
 }

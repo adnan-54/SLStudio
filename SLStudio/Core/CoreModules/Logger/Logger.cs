@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Events;
 using System;
+using System.Windows;
 
 namespace SLStudio.Core.CoreModules.Logging
 {
@@ -20,7 +21,8 @@ namespace SLStudio.Core.CoreModules.Logging
             Debug,
             Info,
             Warning,
-            Error
+            Error,
+            Fatal
         }
 
         public void Debug(string message, string title = null)
@@ -48,9 +50,15 @@ namespace SLStudio.Core.CoreModules.Logging
             Error(exception.Message, exception.ToString());
         }
 
-        private void Log(string level, string title, string description)
+        public void Fatal(Exception exception)
         {
-            loggingService.Log(new NewLogRequestedEvent(sender.Name, level, title, description, DateTime.Now));
+            Log(LogLevel.Fatal.ToString(), exception.Message, exception.ToString());
+            MessageBox.Show(exception.ToString(), "Fatal", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        private async void Log(string level, string title, string description)
+        {
+            await loggingService.Log(new NewLogRequestedEvent(sender.Name, level, title, description, DateTime.Now));
         }
     }
 }

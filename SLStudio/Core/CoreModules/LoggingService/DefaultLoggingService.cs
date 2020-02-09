@@ -33,9 +33,9 @@ namespace SLStudio.Core.CoreModules.LoggingService
             dbConnection = new SQLiteConnection(connectionString);
         }
 
-        public async void Log(NewLogRequestedEvent log)
+        public Task Log(NewLogRequestedEvent log)
         {
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 lock (@lock)
                 {

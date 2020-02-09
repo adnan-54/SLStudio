@@ -9,5 +9,6 @@ namespace SLStudio.Core
         void Warning(string message, string title = null);
         void Error(string message, string title = null);
         void Error(Exception exception);
+        void Fatal(Exception exception);
     }
 }

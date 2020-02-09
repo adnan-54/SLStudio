@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
+using System.Windows.Threading;
 
 namespace SLStudio.Core
 {
@@ -77,6 +78,14 @@ namespace SLStudio.Core
         protected override void BuildUp(object instance)
         {
             container.BuildUp(instance);
+        }
+
+        protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
+        {
+            base.OnUnhandledException(sender, e);
+
+            var logger = IoC.Get<ILoggingFactory>()?.GetLoggerFor<Bootstrapper>();
+            logger?.Fatal(e.Exception);
         }
     }
 }
