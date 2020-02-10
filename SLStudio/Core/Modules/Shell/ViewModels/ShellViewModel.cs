@@ -1,15 +1,18 @@
 ﻿using Caliburn.Micro;
+using MahApps.Metro.Controls.Dialogs;
 
 namespace SLStudio.Core.Modules.Shell.ViewModels
 {
     internal class ShellViewModel : Screen, IShell
     {
         private readonly IEventAggregator eventAggregator;
+        private readonly IDialogCoordinator dialogCoordinator;
         private readonly ILogger logger;
 
-        public ShellViewModel(IEventAggregator eventAggregator, ILoggingFactory loggingFactory)
+        public ShellViewModel(IEventAggregator eventAggregator, ILoggingFactory loggingFactory, IDialogCoordinator dialogCoordinator)
         {
             this.eventAggregator = eventAggregator;
+            this.dialogCoordinator = dialogCoordinator;
             logger = loggingFactory.GetLoggerFor<ShellViewModel>();
         }
 

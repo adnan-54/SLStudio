@@ -4,6 +4,7 @@ using SLStudio.Core.CoreModules.LoggingFactory;
 using SLStudio.Core.CoreModules.LoggingService;
 using SLStudio.Core.CoreModules.ObjectFactory;
 using SLStudio.Core.Modules.Console.ViewModels;
+using SLStudio.Core.Modules.Logs.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.Options.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
@@ -38,6 +39,8 @@ namespace SLStudio.Core
 
             container.PerRequest<IConsole, ConsoleViewModel>();
             container.PerRequest<IOptions, OptionsViewModel>();
+
+            container.PerRequest<LogsViewModel>();
         }
     }
 }

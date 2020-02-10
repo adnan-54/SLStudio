@@ -117,22 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Console" xml:space="preserve">
-    <value>Console</value>
+  <data name="ClearAllLogs" xml:space="preserve">
+    <value>Clear all logs</value>
   </data>
-  <data name="File" xml:space="preserve">
-    <value>Arquivo</value>
+  <data name="ClearConfirmationMessage" xml:space="preserve">
+    <value>Are you sure?</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ajuda</value>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
   </data>
-  <data name="Logs" xml:space="preserve">
-    <value>Logs</value>
+  <data name="ExportToHtml" xml:space="preserve">
+    <value>Export to HTML</value>
   </data>
-  <data name="Options" xml:space="preserve">
-    <value>Opções</value>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
   </data>
-  <data name="Tools" xml:space="preserve">
-    <value>Ferramentas</value>
+  <data name="Level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="ViewSimpleLog" xml:space="preserve">
+    <value>View simple log file</value>
+  </data>
+  <data name="ExportToTextFile" xml:space="preserve">
+    <value>Export to text file</value>
   </data>
 </root>

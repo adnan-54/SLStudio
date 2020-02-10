@@ -1,0 +1,100 @@
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Logs.Views.LogsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:resx="clr-namespace:SLStudio.Core.Modules.Logs.Resources"
+                   xmlns:xcd="http://schemas.xceed.com/wpf/xaml/toolkit"
+                   mc:Ignorable="d" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen"
+                   Style="{StaticResource DefaultWindowStyle}" ShowInTaskbar="False"
+                   IsMinButtonEnabled="False" WindowState="Maximized">
+
+    <xcd:BusyIndicator IsBusy="{Binding IsBusy}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--DataGrid-->
+            <DataGrid Grid.Row="0" Margin="{StaticResource FullMargin}"
+                      ItemsSource="{Binding Logs.DefaultView}"
+                      RowHeight="35" CanUserAddRows="False" CanUserDeleteRows="False"
+                      SelectionUnit="FullRow" AutoGenerateColumns="False">
+                <!--Resources-->
+                <DataGrid.Resources>
+                    <!--TextBlockStyle-->
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        <Setter Property="Margin" Value="{StaticResource FullMargin}" />
+                    </Style>
+
+                    <!--ColumnHeaderStyle-->
+                    <Style TargetType="{x:Type DataGridColumnHeader}"
+                           BasedOn="{StaticResource MetroDataGridColumnHeader}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="{StaticResource SmallRightMargin}" />
+                    </Style>
+                </DataGrid.Resources>
+
+                <!--Columns-->
+                <DataGrid.Columns>
+                    <!--Id-->
+                    <DataGridTextColumn Binding="{Binding ID}" Header="{x:Static resx:Logs.ID}" IsReadOnly="True"
+                                        Width="SizeToHeader" SortDirection="Ascending" MinWidth="50" />
+
+                    <!--Sender-->
+                    <DataGridTextColumn Binding="{Binding Sender}" Header="{x:Static resx:Logs.Sender}"
+                                        IsReadOnly="True" Width="125" MinWidth="50" />
+
+                    <!--Level-->
+                    <DataGridTextColumn Binding="{Binding Level}" Header="{x:Static resx:Logs.Level}"
+                                        IsReadOnly="True" Width="SizeToHeader" MinWidth="50" />
+
+                    <!--Title-->
+                    <DataGridTextColumn Binding="{Binding Title}" Header="{x:Static resx:Logs.Title}"
+                                        IsReadOnly="True" Width="*" MinWidth="50" />
+
+                    <!--Message-->
+                    <DataGridTextColumn Binding="{Binding Message}" Header="{x:Static resx:Logs.Message}"
+                                        IsReadOnly="True" Width="*" MinWidth="50" />
+
+                    <!--Date-->
+                    <DataGridTextColumn Binding="{Binding Date}" Header="{x:Static resx:Logs.Date}"
+                                        IsReadOnly="True" Width="135" MinWidth="50" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <!--Actions-->
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--Clear-->
+                <Button x:Name="ClearLogs" Grid.Column="0"
+                        Style="{StaticResource ActionButtonStyle}"
+                        HorizontalAlignment="Left" Content="{x:Static resx:Logs.ClearAllLogs}" />
+
+                <!--ViewSimpleLog-->
+                <Button x:Name="ViewSimpleLog" Grid.Column="1"
+                        Style="{StaticResource ActionButtonStyle}"
+                        Content="{x:Static resx:Logs.ViewSimpleLog}" />
+
+                <!--Export-->
+                <Button x:Name="ExportAllLogs" Grid.Column="2"
+                        Style="{StaticResource ActionButtonStyle}"
+                        Content="{x:Static resx:Logs.ExportToHtml}" />
+
+                <!--Ok-->
+                <Button Content="Ok" Grid.Column="3"
+                        Style="{StaticResource ActionButtonStyle}"
+                        IsDefault="True" IsCancel="True" />
+            </Grid>
+        </Grid>
+    </xcd:BusyIndicator>
+</metro:MetroWindow>

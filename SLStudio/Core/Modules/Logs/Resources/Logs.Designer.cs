@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Modules.MainMenu.Resoruces {
+namespace SLStudio.Core.Modules.Logs.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Modules.MainMenu.Resoruces {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MainMenu {
+    public class Logs {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MainMenu() {
+        internal Logs() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Modules.MainMenu.Resoruces {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.MainMenu.Resoruces.MainMenu", typeof(MainMenu).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.Logs.Resources.Logs", typeof(Logs).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,101 @@ namespace SLStudio.Core.Modules.MainMenu.Resoruces {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Console.
+        ///   Looks up a localized string similar to Clear all logs.
         /// </summary>
-        public static string Console {
+        public static string ClearAllLogs {
             get {
-                return ResourceManager.GetString("Console", resourceCulture);
+                return ResourceManager.GetString("ClearAllLogs", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File.
+        ///   Looks up a localized string similar to Are you sure?.
         /// </summary>
-        public static string File {
+        public static string ClearConfirmationMessage {
             get {
-                return ResourceManager.GetString("File", resourceCulture);
+                return ResourceManager.GetString("ClearConfirmationMessage", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to Date.
         /// </summary>
-        public static string Help {
+        public static string Date {
             get {
-                return ResourceManager.GetString("Help", resourceCulture);
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logs.
+        ///   Looks up a localized string similar to Export to HTML.
         /// </summary>
-        public static string Logs {
+        public static string ExportToHtml {
             get {
-                return ResourceManager.GetString("Logs", resourceCulture);
+                return ResourceManager.GetString("ExportToHtml", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options.
+        ///   Looks up a localized string similar to Export to text file.
         /// </summary>
-        public static string Options {
+        public static string ExportToTextFile {
             get {
-                return ResourceManager.GetString("Options", resourceCulture);
+                return ResourceManager.GetString("ExportToTextFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tools.
+        ///   Looks up a localized string similar to ID.
         /// </summary>
-        public static string Tools {
+        public static string ID {
             get {
-                return ResourceManager.GetString("Tools", resourceCulture);
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        public static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sender.
+        /// </summary>
+        public static string Sender {
+            get {
+                return ResourceManager.GetString("Sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View simple log file.
+        /// </summary>
+        public static string ViewSimpleLog {
+            get {
+                return ResourceManager.GetString("ViewSimpleLog", resourceCulture);
             }
         }
     }

@@ -13,7 +13,6 @@ namespace SLStudio.Core.CoreModules.ErrorHandler
 
         public void HandleError(Exception exception)
         {
-            Console.WriteLine(exception);
             logger.Error(exception);
         }
     }

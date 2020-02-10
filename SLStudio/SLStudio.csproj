@@ -85,6 +85,7 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.3.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -155,6 +156,24 @@
     <Compile Include="Core\Modules\Console\ViewModels\ConsoleViewModel.cs" />
     <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
       <DependentUpon>ConsoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Logs\Resources\Logs.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logs.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Logs\Resources\Logs.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Logs.pt-BR.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Logs\ViewModels\LogsViewModel.cs" />
+    <Compile Include="Core\Modules\Logs\ViewModels\SimpleLogViewModel.cs" />
+    <Compile Include="Core\Modules\Logs\Views\LogsView.xaml.cs">
+      <DependentUpon>LogsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Logs\Views\SimpleLogView.xaml.cs">
+      <DependentUpon>SimpleLogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainMenu\IMainMenu.cs" />
     <Compile Include="Core\Modules\MainMenu\Resoruces\MainMenu.Designer.cs">
@@ -256,6 +275,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Console.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\Logs\Resources\Logs.pt-BR.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logs.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\Logs\Resources\Logs.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Logs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\MainMenu\Resoruces\MainMenu.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainMenu.pt-br.Designer.cs</LastGenOutput>
@@ -283,6 +310,14 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Core\Modules\Console\Views\ConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\Logs\Views\LogsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\Logs\Views\SimpleLogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

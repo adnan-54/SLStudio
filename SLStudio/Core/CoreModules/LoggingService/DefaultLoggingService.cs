@@ -33,6 +33,18 @@ namespace SLStudio.Core.CoreModules.LoggingService
             dbConnection = new SQLiteConnection(connectionString);
         }
 
+        public bool LogFileExists => File.Exists(logFilePath);
+
+        public bool SimpleLogFileExists
+        {
+            get
+            {
+                var path = Path.GetDirectoryName(logFilePath);
+                var simpleLogPath = Path.Combine(path, "log.txt");
+                return File.Exists(simpleLogPath);
+            }
+        }
+
         public Task Log(NewLogRequestedEvent log)
         {
             return Task.Run(() =>
@@ -159,10 +171,22 @@ namespace SLStudio.Core.CoreModules.LoggingService
             }
         }
 
+        public string GetSimpleLogs()
+        {
+            var path = Path.GetDirectoryName(logFilePath);
+            var simpleLogPath = Path.Combine(path, "log.txt");
+
+            if (!File.Exists(simpleLogPath))
+                return string.Empty;
+
+            return File.ReadAllText(simpleLogPath);
+        }
+
         private void LogToDb(NewLogRequestedEvent log)
         {
             EnsureDbIsValid();
             InsertLog(log.Sender, log.Level, log.Title, log.Message, log.Date);
+            Console.WriteLine(log.ToString());
         }
 
         private void EnsureDbIsValid()
@@ -272,6 +296,9 @@ namespace SLStudio.Core.CoreModules.LoggingService
         {
             var path = Path.GetDirectoryName(logFilePath);
             var simpleLogPath = Path.Combine(path, "log.txt");
+
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
 
             File.AppendAllLines(simpleLogPath, GetExceptionDetails(exception));
         }

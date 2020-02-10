@@ -83,9 +83,15 @@ namespace SLStudio.Core
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             base.OnUnhandledException(sender, e);
-
             var logger = IoC.Get<ILoggingFactory>()?.GetLoggerFor<Bootstrapper>();
+
+#if DEBUG
+            logger?.Error(e.Exception);
+            e.Handled = true;
+#else
             logger?.Fatal(e.Exception);
+            Application.Current.Shutdown();
+#endif
         }
     }
 }

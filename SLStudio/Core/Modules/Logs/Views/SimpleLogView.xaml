@@ -1,0 +1,33 @@
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Logs.Views.SimpleLogView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:resx="clr-namespace:SLStudio.Core.Modules.Logs.Resources"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d" MinHeight="600" MinWidth="800"
+                   Style="{StaticResource DefaultWindowStyle}" ShowInTaskbar="False"
+                   ResizeMode="NoResize" WindowState="Normal">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Logs-->
+        <TextBox x:Name="Log" Grid.Row="0" Margin="{StaticResource FullMargin}" 
+                 IsReadOnlyCaretVisible="True" IsReadOnly="True"/>
+        
+        <!--Actions-->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
+            <!--Export-->
+            <Button x:Name="ExportToTextFile"
+                    Style="{StaticResource ActionButtonStyle}"
+                    Content="{x:Static resx:Logs.ExportToTextFile}" />
+
+            <!--Ok-->
+            <Button Style="{StaticResource ActionButtonStyle}"
+                    IsDefault="True" IsCancel="True" Content="Ok" />
+        </StackPanel>
+    </Grid>
+</metro:MetroWindow>

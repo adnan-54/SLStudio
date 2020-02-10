@@ -6,9 +6,17 @@ namespace SLStudio.Core
 {
     public interface ILoggingService
     {
+        bool LogFileExists { get; }
+        bool SimpleLogFileExists { get; }
+
         Task Log(NewLogRequestedEvent log);
+
         DataTable GetLogs();
+
         void ExportLogsToHtml(string directory);
+
         void ClearAllLogs();
+
+        string GetSimpleLogs();
     }
 }
