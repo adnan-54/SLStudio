@@ -11,9 +11,9 @@
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <!--Behaviors-->
     <i:Interaction.Behaviors>
-        <behaviors:DefaultMainWindowBehavior/>
+        <behaviors:DefaultMainWindowBehavior />
     </i:Interaction.Behaviors>
-    
+
     <!--TitleBar Left Template-->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">

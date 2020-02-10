@@ -60,7 +60,6 @@ namespace SLStudio.Core.CoreModules.LoggingService
                     {
                         LogToSimleFile(ex);
                     }
-
                 }
             });
         }
@@ -74,7 +73,6 @@ namespace SLStudio.Core.CoreModules.LoggingService
                 dbConnection.Open();
                 using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM TB_LOGS ORDER BY Date DESC", dbConnection))
                 {
-
                     lock (@lock)
                         dataAdapter.Fill(dataTable);
                 }
@@ -255,7 +253,6 @@ namespace SLStudio.Core.CoreModules.LoggingService
                 {
                     LogToSimleFile(ex);
                 }
-
             }
             finally
             {

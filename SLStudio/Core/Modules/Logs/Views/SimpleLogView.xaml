@@ -10,14 +10,14 @@
                    ResizeMode="NoResize" WindowState="Normal">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <!--Logs-->
-        <TextBox x:Name="Log" Grid.Row="0" Margin="{StaticResource FullMargin}" 
-                 IsReadOnlyCaretVisible="True" IsReadOnly="True"/>
-        
+        <TextBox x:Name="Log" Grid.Row="0" Margin="{StaticResource FullMargin}"
+                 IsReadOnlyCaretVisible="True" IsReadOnly="True" />
+
         <!--Actions-->
         <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Right">
             <!--Export-->

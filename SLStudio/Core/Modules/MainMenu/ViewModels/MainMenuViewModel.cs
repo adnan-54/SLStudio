@@ -33,6 +33,7 @@ namespace SLStudio.Core.Modules.MainMenu.ViewModels
 
         //Help
         public bool CanOpenLogs => loggingService.LogFileExists;
+
         public void OpenLogs()
         {
             var model = objectFactory.Create<LogsViewModel>();

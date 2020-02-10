@@ -60,6 +60,7 @@ namespace SLStudio.Core.Modules.Logs.ViewModels
         }
 
         public bool CanViewSimpleLog => loggingService.SimpleLogFileExists;
+
         public void ViewSimpleLog()
         {
             var model = new SimpleLogViewModel(loggingService);

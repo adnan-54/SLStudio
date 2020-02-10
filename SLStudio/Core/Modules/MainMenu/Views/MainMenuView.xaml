@@ -23,11 +23,11 @@
                 <MenuItem Header="{x:Static resx:MainMenu.Options}"
                           cal:Message.Attach="OpenOptions()" />
             </MenuItem>
-            
+
             <!--Help-->
             <MenuItem Header="{x:Static resx:MainMenu.Help}">
                 <MenuItem Header="{x:Static resx:MainMenu.Logs}"
-                          cal:Message.Attach="OpenLogs()"/>
+                          cal:Message.Attach="OpenLogs()" />
             </MenuItem>
         </Menu>
     </StackPanel>
