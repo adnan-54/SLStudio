@@ -92,10 +92,7 @@ namespace SLStudio.Core.Modules.Logs.ViewModels
             IsBusy = true;
             await Task.Run(() =>
             {
-                var defaultView = loggingService.GetLogs().DefaultView;
-                if (defaultView.Table.Columns.Contains("ID"))
-                    defaultView.Sort = "ID desc";
-                Logs = defaultView?.ToTable();
+                Logs = loggingService.GetLogs();
             });
             IsBusy = false;
         }

@@ -86,7 +86,11 @@ namespace SLStudio.Core.CoreModules.LoggingService
                 dbConnection.Close();
             }
 
-            return dataTable;
+            var defaultView = dataTable.DefaultView;
+            if (defaultView.Table.Columns.Contains("DATE"))
+                defaultView.Sort = "DATE desc";
+
+            return defaultView?.ToTable();
         }
 
         public void ExportLogsToHtml(string path)
