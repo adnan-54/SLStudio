@@ -127,19 +127,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
-    <Compile Include="Core\CoreModules\BootstrapperService\DefaultBootstrapperService.cs" />
-    <Compile Include="Core\CoreModules\BootstrapperService\IBootstrapperService.cs" />
-    <Compile Include="Core\CoreModules\CommandHandler\CommandHandler.cs" />
-    <Compile Include="Core\CoreModules\ErrorHandler\DefaultErrorHandler.cs" />
-    <Compile Include="Core\CoreModules\ErrorHandler\IErrorHandler.cs" />
-    <Compile Include="Core\CoreModules\Logger\ILogger.cs" />
-    <Compile Include="Core\CoreModules\Logger\Logger.cs" />
-    <Compile Include="Core\CoreModules\LoggingFactory\DefaultLoggingFactory.cs" />
-    <Compile Include="Core\CoreModules\LoggingService\DefaultLoggingService.cs" />
-    <Compile Include="Core\CoreModules\ModuleBase\IModule.cs" />
-    <Compile Include="Core\CoreModules\ModuleBase\ModuleBase.cs" />
-    <Compile Include="Core\CoreModules\ObjectFactory\DefaultObjectFactory.cs" />
-    <Compile Include="Core\CoreModules\ObjectFactory\IObjectFactory.cs" />
+    <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
+    <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
+    <Compile Include="Core\Utilities\CommandHandler\CommandHandler.cs" />
+    <Compile Include="Core\Utilities\ErrorHandler\DefaultErrorHandler.cs" />
+    <Compile Include="Core\Utilities\ErrorHandler\IErrorHandler.cs" />
+    <Compile Include="Core\Utilities\Logger\ILogger.cs" />
+    <Compile Include="Core\Utilities\Logger\DefaultLogger.cs" />
+    <Compile Include="Core\Utilities\LoggingFactory\DefaultLoggingFactory.cs" />
+    <Compile Include="Core\Services\LoggingService\DefaultLoggingService.cs" />
+    <Compile Include="Core\Utilities\ModuleBase\IModule.cs" />
+    <Compile Include="Core\Utilities\ModuleBase\ModuleBase.cs" />
+    <Compile Include="Core\Utilities\ObjectFactory\DefaultObjectFactory.cs" />
+    <Compile Include="Core\Utilities\ObjectFactory\IObjectFactory.cs" />
     <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
     <Compile Include="Core\Extensions\TaskExtensions.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />
@@ -206,7 +206,7 @@
       <DependentUpon>OptionsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
-    <Compile Include="Core\CoreModules\ModuleBase\ModulePriority.cs" />
+    <Compile Include="Core\Utilities\ModuleBase\ModulePriority.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
@@ -242,8 +242,8 @@
     <Compile Include="Core\Modules\Toolbar\Views\ToolbarView.xaml.cs">
       <DependentUpon>ToolbarView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\CoreModules\LoggingFactory\ILoggingFactory.cs" />
-    <Compile Include="Core\CoreModules\LoggingService\ILoggingService.cs" />
+    <Compile Include="Core\Utilities\LoggingFactory\ILoggingFactory.cs" />
+    <Compile Include="Core\Services\LoggingService\ILoggingService.cs" />
     <Compile Include="Modules\Tests\Module.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

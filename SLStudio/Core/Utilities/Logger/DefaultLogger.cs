@@ -1,16 +1,15 @@
 ﻿using Caliburn.Micro;
-using SLStudio.Core.Events;
 using System;
 using System.Windows;
 
-namespace SLStudio.Core.CoreModules.Logging
+namespace SLStudio.Core.Utilities.Logger
 {
-    internal class Logger : ILogger
+    internal class DefaultLogger : ILogger
     {
         private readonly Type sender;
         private readonly ILoggingService loggingService;
 
-        public Logger(Type sender)
+        public DefaultLogger(Type sender)
         {
             this.sender = sender;
             loggingService = IoC.Get<ILoggingService>();
@@ -56,9 +55,9 @@ namespace SLStudio.Core.CoreModules.Logging
             MessageBox.Show(exception.ToString(), "Fatal", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
-        private async void Log(string level, string title, string description)
+        private async void Log(string level, string title, string message)
         {
-            await loggingService.Log(new NewLogRequestedEvent(sender.Name, level, title, description, DateTime.Now));
+            await loggingService.Log(sender.Name, level, title, message, DateTime.Now);
         }
     }
 }

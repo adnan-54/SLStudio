@@ -1,11 +1,12 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Utilities.ModuleBase;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core.CoreModules.Bootstrapper
+namespace SLStudio.Core.Services.BootstrapperService
 {
     internal class DefaultBootstrapperService : IBootstrapperService
     {

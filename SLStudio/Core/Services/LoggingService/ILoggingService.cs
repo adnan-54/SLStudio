@@ -1,4 +1,4 @@
-﻿using SLStudio.Core.Events;
+﻿using System;
 using System.Data;
 using System.Threading.Tasks;
 
@@ -9,7 +9,7 @@ namespace SLStudio.Core
         bool LogFileExists { get; }
         bool SimpleLogFileExists { get; }
 
-        Task Log(NewLogRequestedEvent log);
+        Task Log(string sender, string level, string title, string message, DateTime date);
 
         DataTable GetLogs();
 

@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro;
 
-namespace SLStudio.Core
+namespace SLStudio.Core.Utilities.ModuleBase
 {
     public interface IModule
     {

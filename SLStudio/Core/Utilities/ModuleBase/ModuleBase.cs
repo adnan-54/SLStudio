@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Utilities.ModuleBase;
 
 namespace SLStudio.Core
 {

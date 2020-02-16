@@ -9,7 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core.CoreModules.LoggingService
+namespace SLStudio.Core.Services.LoggingService
 {
     internal class DefaultLoggingService : ILoggingService
     {
@@ -45,7 +45,7 @@ namespace SLStudio.Core.CoreModules.LoggingService
             }
         }
 
-        public Task Log(NewLogRequestedEvent log)
+        public Task Log(string sender, string level, string title, string message, DateTime date)
         {
             return Task.Run(() =>
             {
@@ -53,8 +53,10 @@ namespace SLStudio.Core.CoreModules.LoggingService
                 {
                     try
                     {
-                        LogToDb(log);
-                        eventAggregator.PublishOnUIThread(log);
+                        LogToDb(sender, level, title, message, date);
+                        var logEvent = new NewLogRequestedEvent(sender, level, title, message, date);
+                        eventAggregator.PublishOnUIThread(logEvent);
+                        Console.WriteLine(logEvent.ToString());
                     }
                     catch (Exception ex)
                     {
@@ -71,7 +73,7 @@ namespace SLStudio.Core.CoreModules.LoggingService
             try
             {
                 dbConnection.Open();
-                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM TB_LOGS ORDER BY Date DESC", dbConnection))
+                using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM TB_LOGS ORDER BY ID DESC", dbConnection))
                 {
                     lock (@lock)
                         dataAdapter.Fill(dataTable);
@@ -86,11 +88,7 @@ namespace SLStudio.Core.CoreModules.LoggingService
                 dbConnection.Close();
             }
 
-            var defaultView = dataTable.DefaultView;
-            if (defaultView.Table.Columns.Contains("DATE"))
-                defaultView.Sort = "DATE desc";
-
-            return defaultView?.ToTable();
+            return dataTable;
         }
 
         public void ExportLogsToHtml(string path)
@@ -184,11 +182,10 @@ namespace SLStudio.Core.CoreModules.LoggingService
             return File.ReadAllText(simpleLogPath);
         }
 
-        private void LogToDb(NewLogRequestedEvent log)
+        private void LogToDb(string sender, string level, string title, string message, DateTime date)
         {
             EnsureDbIsValid();
-            InsertLog(log.Sender, log.Level, log.Title, log.Message, log.Date);
-            Console.WriteLine(log.ToString());
+            InsertLog(sender, level, title, message, date);
         }
 
         private void EnsureDbIsValid()

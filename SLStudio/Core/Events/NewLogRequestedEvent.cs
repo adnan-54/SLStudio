@@ -4,12 +4,12 @@ namespace SLStudio.Core.Events
 {
     public class NewLogRequestedEvent
     {
-        public NewLogRequestedEvent(string sender, string level, string title, string description, DateTime date)
+        public NewLogRequestedEvent(string sender, string level, string title, string message, DateTime date)
         {
             Sender = sender;
             Level = level;
             Title = title;
-            Message = description;
+            Message = message;
             Date = date;
         }
 
@@ -21,7 +21,7 @@ namespace SLStudio.Core.Events
 
         public override string ToString()
         {
-            return $"{Sender} ({Date}): [{Level.ToUpper()}] \"{Title}\", {Message}";
+            return $"({Date}) {Sender}: [{Level.ToUpper()}] \"{Title}\", {Message}";
         }
     }
 }

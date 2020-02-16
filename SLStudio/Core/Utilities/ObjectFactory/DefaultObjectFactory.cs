@@ -1,7 +1,7 @@
 ﻿using Caliburn.Micro;
 using System;
 
-namespace SLStudio.Core.CoreModules.ObjectFactory
+namespace SLStudio.Core.Utilities.ObjectFactory
 {
     internal class DefaultObjectFactory : IObjectFactory
     {

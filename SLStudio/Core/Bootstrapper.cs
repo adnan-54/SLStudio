@@ -1,9 +1,9 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
-using SLStudio.Core.CoreModules.Bootstrapper;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
+using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;

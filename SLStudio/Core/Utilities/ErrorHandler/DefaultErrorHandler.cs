@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SLStudio.Core.CoreModules.ErrorHandler
+namespace SLStudio.Core.Utilities.ErrorHandler
 {
     internal class DefaultErrorHandler : IErrorHandler
     {

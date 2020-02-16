@@ -1,8 +1,4 @@
 ﻿using Caliburn.Micro;
-using SLStudio.Core.CoreModules.ErrorHandler;
-using SLStudio.Core.CoreModules.LoggingFactory;
-using SLStudio.Core.CoreModules.LoggingService;
-using SLStudio.Core.CoreModules.ObjectFactory;
 using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.Logs.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
@@ -10,6 +6,9 @@ using SLStudio.Core.Modules.Options.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StatusBar.Resources.ViewModels;
 using SLStudio.Core.Modules.Toolbar.ViewModels;
+using SLStudio.Core.Services.LoggingService;
+using SLStudio.Core.Utilities.ErrorHandler;
+using SLStudio.Core.Utilities.ObjectFactory;
 
 namespace SLStudio.Core
 {
@@ -36,10 +35,8 @@ namespace SLStudio.Core
             container.Singleton<IToolbar, ToolbarViewModel>();
             container.Singleton<IShell, ShellViewModel>();
             container.Singleton<IStatusBar, StatusBarViewModel>();
-
             container.PerRequest<IConsole, ConsoleViewModel>();
             container.PerRequest<IOptions, OptionsViewModel>();
-
             container.PerRequest<LogsViewModel>();
         }
     }
