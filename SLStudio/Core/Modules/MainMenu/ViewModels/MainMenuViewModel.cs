@@ -22,13 +22,13 @@ namespace SLStudio.Core.Modules.MainMenu.ViewModels
         public void OpenConsole()
         {
             var console = objectFactory.Create<IConsole>();
-            windowManager.ShowWindow(console);
+            windowManager.ShowWindowAsync(console);
         }
 
         public void OpenOptions()
         {
             var options = objectFactory.Create<IOptions>();
-            windowManager.ShowDialog(options);
+            windowManager.ShowDialogAsync(options);
         }
 
         //Help
@@ -37,7 +37,7 @@ namespace SLStudio.Core.Modules.MainMenu.ViewModels
         public void OpenLogs()
         {
             var model = objectFactory.Create<LogsViewModel>();
-            windowManager.ShowDialog(model);
+            windowManager.ShowDialogAsync(model);
         }
 
         public void UpdateCanExecute()

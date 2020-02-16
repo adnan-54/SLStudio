@@ -4,27 +4,22 @@ namespace SLStudio.Core.Modules.MainWindow.ViewModels
 {
     internal class MainWindowViewModel : Screen, IMainWindow
     {
-        private readonly IMainMenu mainMenu;
-        private readonly IToolbar toolbar;
-        private readonly IShell shell;
-        private readonly IStatusBar statusBar;
-
         public MainWindowViewModel(IMainMenu mainMenu, IToolbar toolbar, IShell shell, IStatusBar statusBar)
         {
-            this.mainMenu = mainMenu;
-            this.toolbar = toolbar;
-            this.shell = shell;
-            this.statusBar = statusBar;
+            MainMenu = mainMenu;
+            Toolbar = toolbar;
+            Shell = shell;
+            StatusBar = statusBar;
 
             DisplayName = "SLStudio";
         }
 
-        public IMainMenu MainMenu => mainMenu;
+        public IMainMenu MainMenu { get; }
 
-        public IToolbar Toolbar => toolbar;
+        public IToolbar Toolbar { get; }
 
-        public IShell Shell => shell;
+        public IShell Shell { get; }
 
-        public IStatusBar StatusBar => statusBar;
+        public IStatusBar StatusBar { get; }
     }
 }

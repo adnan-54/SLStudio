@@ -196,7 +196,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 SplashScreenSleepTime = Settings.Default.SplashScreenSleepTime;
                 ShowConsoleAtStartup = Settings.Default.ShowConsoleAtStartup;
 
-                TryClose();
+                TryCloseAsync();
             }
         }
 
@@ -223,7 +223,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
                 }
             }
 
-            TryClose();
+            TryCloseAsync();
         }
 
         public void OnClose(CancelEventArgs e)

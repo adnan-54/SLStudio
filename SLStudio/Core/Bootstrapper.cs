@@ -41,7 +41,7 @@ namespace SLStudio.Core
             var bootstrapperService = IoC.Get<IBootstrapperService>();
             await bootstrapperService.Initialize();
 
-            DisplayRootViewFor<IMainWindow>();
+            await DisplayRootViewFor<IMainWindow>();
 
             var splashScreen = IoC.Get<ISplashScreen>();
             splashScreen.Close();

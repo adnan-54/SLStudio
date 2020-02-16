@@ -55,7 +55,7 @@ namespace SLStudio.Core.Services.LoggingService
                     {
                         LogToDb(sender, level, title, message, date);
                         var logEvent = new NewLogRequestedEvent(sender, level, title, message, date);
-                        eventAggregator.PublishOnUIThread(logEvent);
+                        eventAggregator.PublishOnUIThreadAsync(logEvent);
                         Console.WriteLine(logEvent.ToString());
                     }
                     catch (Exception ex)

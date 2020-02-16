@@ -1,9 +1,9 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro.Controls;
+using Microsoft.Xaml.Behaviors;
 using SLStudio.Properties;
 using System;
 using System.Windows;
-using System.Windows.Interactivity;
 
 namespace SLStudio.Core.Behaviors
 {
@@ -23,7 +23,7 @@ namespace SLStudio.Core.Behaviors
                 var objectFactory = IoC.Get<IObjectFactory>();
                 var windowManager = IoC.Get<IWindowManager>();
                 var console = objectFactory.Create<IConsole>();
-                windowManager.ShowWindow(console);
+                windowManager.ShowWindowAsync(console);
             }
         }
 

@@ -21,6 +21,6 @@ namespace SLStudio.Core.Modules.SplashScreen.ViewModels
             }
         }
 
-        public void Close() => TryClose();
+        public void Close() => TryCloseAsync();
     }
 }

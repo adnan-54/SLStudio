@@ -26,7 +26,7 @@ namespace SLStudio.Core.Services.BootstrapperService
         public async Task Initialize()
         {
             var windowManager = IoC.Get<IWindowManager>();
-            windowManager.ShowWindow(splashScreen);
+            await windowManager.ShowWindowAsync(splashScreen);
 
             await Task.Run(async () =>
             {
