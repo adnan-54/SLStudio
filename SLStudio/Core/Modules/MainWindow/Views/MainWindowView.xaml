@@ -3,7 +3,7 @@
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                   xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                    xmlns:cal="http://www.caliburnproject.org"
@@ -11,7 +11,7 @@
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <!--Behaviors-->
     <i:Interaction.Behaviors>
-        <behaviors:DefaultMainWindowBehavior />
+        <behaviors:DefaultMainWindowBehavior/>
     </i:Interaction.Behaviors>
 
     <!--TitleBar Left Template-->

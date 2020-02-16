@@ -64,7 +64,7 @@ namespace SLStudio.Core.Modules.Logs.ViewModels
         public void ViewSimpleLog()
         {
             var model = new SimpleLogViewModel(loggingService);
-            windowManager.ShowDialog(model);
+            windowManager.ShowDialogAsync(model);
         }
 
         public async void ExportAllLogs()

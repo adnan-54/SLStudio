@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Events;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core.Modules.Console.ViewModels
 {
@@ -10,7 +12,7 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
         public ConsoleViewModel(IEventAggregator eventAggregator)
         {
-            eventAggregator.Subscribe(this);
+            eventAggregator.SubscribeOnPublishedThread(this);
             DisplayName = "SLStudio - Console";
         }
 
@@ -42,9 +44,10 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
         public void ToggleTextWrapping() => TextWrapping = !TextWrapping;
 
-        public void Handle(NewLogRequestedEvent message)
+        public Task HandleAsync(NewLogRequestedEvent message, CancellationToken cancellationToken)
         {
             AppendLine(message.Sender, message.Message);
+            return Task.FromResult(true);
         }
     }
 }

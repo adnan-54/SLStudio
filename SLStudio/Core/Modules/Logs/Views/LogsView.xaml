@@ -21,7 +21,9 @@
             <DataGrid Grid.Row="0" Margin="{StaticResource FullMargin}"
                       ItemsSource="{Binding Logs.DefaultView}"
                       RowHeight="35" CanUserAddRows="False" CanUserDeleteRows="False"
-                      SelectionUnit="FullRow" AutoGenerateColumns="False">
+                      SelectionUnit="FullRow" AutoGenerateColumns="False"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling">
                 <!--Resources-->
                 <DataGrid.Resources>
                     <!--TextBlockStyle-->
