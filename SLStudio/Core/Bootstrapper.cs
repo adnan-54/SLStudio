@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
 using SLStudio.Core.Modules.MainWindow.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
@@ -36,7 +35,6 @@ namespace SLStudio.Core
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
-            ApplyUserTheme();
 
             var bootstrapperService = IoC.Get<IBootstrapperService>();
             await bootstrapperService.Initialize();
@@ -45,13 +43,6 @@ namespace SLStudio.Core
 
             var splashScreen = IoC.Get<ISplashScreen>();
             splashScreen.Close();
-        }
-
-        private void ApplyUserTheme()
-        {
-            string themeAccent = Settings.Default.ThemeAccent;
-            string themeBase = Settings.Default.ThemeBase;
-            ThemeManager.ChangeAppStyle(Application.Current, ThemeManager.GetAccent(themeAccent), ThemeManager.GetAppTheme(themeBase));
         }
 
         protected override void Configure()

@@ -70,16 +70,18 @@
     <Reference Include="Caliburn.Micro.Platform, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.4.0.105-alpha\lib\net45\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.4.2.2\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.6.5.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.6.5\lib\net46\MahApps.Metro.dll</HintPath>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.0.0-alpha0660\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.19\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.112.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.112.0\lib\net46\System.Data.SQLite.dll</HintPath>
@@ -98,20 +100,20 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
     </Reference>
-    <Reference Include="Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
-      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.8.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.8.1\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -139,87 +141,17 @@
     <Compile Include="Core\Utilities\ObjectFactory\IObjectFactory.cs" />
     <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
     <Compile Include="Core\Extensions\TaskExtensions.cs" />
-    <Compile Include="Core\Modules\Console\IConsole.cs" />
-    <Compile Include="Core\Modules\Console\Resources\Console.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Console.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Console\Resources\Console.pt-br.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Console.pt-br.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Console\ViewModels\ConsoleViewModel.cs" />
-    <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
-      <DependentUpon>ConsoleView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Logs\Resources\Logs.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Logs.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Logs\Resources\Logs.pt-BR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Logs.pt-BR.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Logs\ViewModels\LogsViewModel.cs" />
-    <Compile Include="Core\Modules\Logs\ViewModels\SimpleLogViewModel.cs" />
-    <Compile Include="Core\Modules\Logs\Views\LogsView.xaml.cs">
-      <DependentUpon>LogsView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Logs\Views\SimpleLogView.xaml.cs">
-      <DependentUpon>SimpleLogView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\MainMenu\IMainMenu.cs" />
-    <Compile Include="Core\Modules\MainMenu\Resoruces\MainMenu.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainMenu.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\MainMenu\Resoruces\MainMenu.pt-br.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MainMenu.pt-br.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\MainMenu\ViewModels\MainMenuViewModel.cs" />
-    <Compile Include="Core\Modules\MainMenu\Views\MainMenuView.xaml.cs">
-      <DependentUpon>MainMenuView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Options\IOptions.cs" />
-    <Compile Include="Core\Modules\Options\Resources\OptionsResx.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OptionsResx.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Options\Resources\OptionsResx.pt-br.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OptionsResx.pt-br.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Options\ViewModels\OptionsViewModel.cs" />
-    <Compile Include="Core\Modules\Options\Views\OptionsView.xaml.cs">
-      <DependentUpon>OptionsView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
     <Compile Include="Core\Utilities\ModuleBase\ModulePriority.cs" />
-    <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
-    <Compile Include="Core\Modules\Toolbar\IToolbar.cs" />
     <Compile Include="Core\Module.cs" />
     <Compile Include="Core\Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Core\Modules\MainWindow\Views\MainWindowView.xaml.cs">
       <DependentUpon>MainWindowView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
-    <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
-      <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreen.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -230,14 +162,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SplashScreen.pt-br.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
-    <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
-      <DependentUpon>StatusBarView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\Toolbar\ViewModels\ToolbarViewModel.cs" />
-    <Compile Include="Core\Modules\Toolbar\Views\ToolbarView.xaml.cs">
-      <DependentUpon>ToolbarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Utilities\LoggingFactory\ILoggingFactory.cs" />
     <Compile Include="Core\Services\LoggingService\ILoggingService.cs" />
@@ -264,38 +188,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Core\Modules\Console\Resources\Console.pt-br.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Console.pt-br.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\Console\Resources\Console.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Console.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\Logs\Resources\Logs.pt-BR.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Logs.pt-BR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\Logs\Resources\Logs.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Logs.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\MainMenu\Resoruces\MainMenu.pt-br.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainMenu.pt-br.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\MainMenu\Resoruces\MainMenu.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>MainMenu.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\Options\Resources\OptionsResx.pt-br.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OptionsResx.pt-br.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\Options\Resources\OptionsResx.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>OptionsResx.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreen.pt-br.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreen.pt-br.Designer.cs</LastGenOutput>
@@ -306,43 +198,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Core\Modules\Console\Views\ConsoleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\Logs\Views\LogsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\Logs\Views\SimpleLogView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\MainMenu\Views\MainMenuView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Core\Modules\Options\Views\OptionsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\Shell\Views\ShellView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\StatusBar\Views\StatusBarView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\Toolbar\Views\ToolbarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
