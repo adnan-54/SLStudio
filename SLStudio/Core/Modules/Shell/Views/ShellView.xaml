@@ -6,6 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-
+        <Button x:Name="test" Content="Test"/>
     </Grid>
 </UserControl>

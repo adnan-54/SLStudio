@@ -10,5 +10,10 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
         {
             logger = loggingFactory.GetLoggerFor<ShellViewModel>();
         }
+
+        public void Test()
+        {
+            throw new System.Exception();
+        }
     }
 }

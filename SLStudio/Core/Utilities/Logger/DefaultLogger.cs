@@ -49,10 +49,15 @@ namespace SLStudio.Core.Utilities.Logger
             Error(exception.Message, exception.ToString());
         }
 
+        public void Fatal(string message, string title = null)
+        {
+            Log(LogLevel.Fatal.ToString(), title, message);
+            MessageBox.Show(message, $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
         public void Fatal(Exception exception)
         {
-            Log(LogLevel.Fatal.ToString(), exception.Message, exception.ToString());
-            MessageBox.Show(exception.ToString(), "Fatal", MessageBoxButton.OK, MessageBoxImage.Error);
+            Fatal(exception.Message, exception.ToString());
         }
 
         private async void Log(string level, string title, string message)

@@ -14,6 +14,8 @@ namespace SLStudio.Core
 
         void Error(Exception exception);
 
+        void Fatal(string message, string title = null);
+
         void Fatal(Exception exception);
     }
 }
