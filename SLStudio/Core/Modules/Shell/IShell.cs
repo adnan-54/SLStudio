@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IMainWindow
+    public interface IShell
     {
     }
 }

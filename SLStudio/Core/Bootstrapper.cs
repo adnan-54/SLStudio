@@ -1,12 +1,15 @@
 ﻿using Caliburn.Micro;
+using MahApps.Metro;
 using MahApps.Metro.Controls.Dialogs;
-using SLStudio.Core.Modules.MainWindow.ViewModels;
+using SLStudio.Core.Modules.Shell.ViewModels;
+using SLStudio.Core.Modules.SplashScreen;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Threading;
@@ -21,11 +24,20 @@ namespace SLStudio.Core
         {
             container = new SimpleContainer();
 
-            ApplyUserLanguage();
+            LoadUserLanguage();
             Initialize();
         }
 
-        private static void ApplyUserLanguage()
+        protected override async void OnStartup(object sender, StartupEventArgs e)
+        {
+            LoadUserTheme();
+
+            await IoC.Get<IBootstrapperService>().Initialize();
+            await DisplayRootViewFor<IShell>();
+            IoC.Get<ISplashScreen>().Close();
+        }
+
+        private void LoadUserLanguage()
         {
             CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
             culture.NumberFormat.NumberDecimalSeparator = ".";
@@ -33,16 +45,14 @@ namespace SLStudio.Core
             Thread.CurrentThread.CurrentUICulture = culture;
         }
 
-        protected override async void OnStartup(object sender, StartupEventArgs e)
+        private void LoadUserTheme()
         {
+            var baseColorScheme = Settings.Default.BaseColorScheme;
+            var colorScheme = Settings.Default.ColorScheme;
+            var themeResource = ThemeManager.Themes.FirstOrDefault(theme => theme.BaseColorScheme == baseColorScheme && theme.ColorScheme == colorScheme);
 
-            var bootstrapperService = IoC.Get<IBootstrapperService>();
-            await bootstrapperService.Initialize();
-
-            await DisplayRootViewFor<IMainWindow>();
-
-            var splashScreen = IoC.Get<ISplashScreen>();
-            splashScreen.Close();
+            if (themeResource != null)
+                ThemeManager.ChangeTheme(Application.Current, themeResource);
         }
 
         protected override void Configure()
@@ -52,8 +62,8 @@ namespace SLStudio.Core
             container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IDialogCoordinator, DialogCoordinator>();
             container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
-            container.Singleton<IMainWindow, MainWindowViewModel>();
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
+            container.Singleton<IShell, ShellViewModel>();
         }
 
         protected override object GetInstance(Type service, string key)
@@ -77,7 +87,7 @@ namespace SLStudio.Core
             var title = $"({originalSender}) | {e.Exception.Message}";
             var logger = IoC.Get<ILoggingFactory>()?.GetLoggerFor<Bootstrapper>();
             logger?.Fatal(e.Exception.ToString(), title);
-            e.Handled = true;
+            e.Handled = logger != null;
 
             base.OnUnhandledException(sender, e);
         }

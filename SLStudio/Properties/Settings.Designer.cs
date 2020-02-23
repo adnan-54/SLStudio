@@ -38,24 +38,24 @@ namespace SLStudio.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
-        public string ThemeAccent {
+        public string ColorScheme {
             get {
-                return ((string)(this["ThemeAccent"]));
+                return ((string)(this["ColorScheme"]));
             }
             set {
-                this["ThemeAccent"] = value;
+                this["ColorScheme"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("BaseLight")]
-        public string ThemeBase {
+        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
+        public string BaseColorScheme {
             get {
-                return ((string)(this["ThemeBase"]));
+                return ((string)(this["BaseColorScheme"]));
             }
             set {
-                this["ThemeBase"] = value;
+                this["BaseColorScheme"] = value;
             }
         }
         

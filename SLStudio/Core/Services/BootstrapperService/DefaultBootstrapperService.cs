@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Modules.SplashScreen;
 using SLStudio.Core.Utilities.ModuleBase;
 using SLStudio.Properties;
 using System;
@@ -30,7 +31,8 @@ namespace SLStudio.Core.Services.BootstrapperService
 
             await Task.Run(async () =>
             {
-                GetType().Assembly.GetTypes().Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
+                GetType().Assembly.GetTypes()
+                .Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
                 .ToList()
                 .ForEach(type =>
                 {
@@ -50,7 +52,7 @@ namespace SLStudio.Core.Services.BootstrapperService
                         if (!Settings.Default.FastSplashScreen)
                             await Task.Delay(Settings.Default.SplashScreenSleepTime);
 
-                        splashScreen.Status = module.ModuleName;
+                        splashScreen.UpdateStatus(module.ModuleName);
                         module.Register(container);
                     }
                 }

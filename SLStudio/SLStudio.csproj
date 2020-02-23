@@ -126,6 +126,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
+    <Compile Include="Core\Modules\Shell\IShell.cs" />
+    <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
+    <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
+    <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
+    <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
+      <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
     <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
     <Compile Include="Core\Utilities\CommandHandler\CommandHandler.cs" />
@@ -141,28 +151,8 @@
     <Compile Include="Core\Utilities\ObjectFactory\IObjectFactory.cs" />
     <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
     <Compile Include="Core\Extensions\TaskExtensions.cs" />
-    <Compile Include="Core\Modules\MainWindow\IMainWindow.cs" />
     <Compile Include="Core\Utilities\ModuleBase\ModulePriority.cs" />
-    <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
-    <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
-    <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
-      <DependentUpon>SplashScreenView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Core\Module.cs" />
-    <Compile Include="Core\Modules\MainWindow\ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="Core\Modules\MainWindow\Views\MainWindowView.xaml.cs">
-      <DependentUpon>MainWindowView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreen.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SplashScreen.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreen.pt-br.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SplashScreen.pt-br.resx</DependentUpon>
-    </Compile>
     <Compile Include="Core\Utilities\LoggingFactory\ILoggingFactory.cs" />
     <Compile Include="Core\Services\LoggingService\ILoggingService.cs" />
     <Compile Include="Modules\Tests\Module.cs" />
@@ -188,17 +178,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreen.pt-br.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SplashScreen.pt-br.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreen.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SplashScreen.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Core\Modules\MainWindow\Views\MainWindowView.xaml">
+    <Page Include="Core\Modules\Shell\Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace SLStudio.Core.Modules.SplashScreen.Views
+namespace SLStudio.Core.Modules.Shell.Views
 {
     /// <summary>
-    /// Interaction logic for SplashScreenView.xaml
+    /// Interaction logic for ShellView.xaml
     /// </summary>
-    public partial class SplashScreenView : Window
+    public partial class ShellView : Window
     {
-        public SplashScreenView()
+        public ShellView()
         {
             InitializeComponent();
         }
