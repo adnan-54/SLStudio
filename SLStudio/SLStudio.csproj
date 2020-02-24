@@ -126,12 +126,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
+    <Compile Include="Core\Behaviors\FadeInFadeOutWindowBehavior.cs" />
+    <Compile Include="Core\Converters\IsNullConverter.cs" />
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
+    <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashScreenResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
@@ -208,7 +215,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Core\Converters\" />
     <Folder Include="Core\Helpers\" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +237,13 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Core\Resources\Images\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
+    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />

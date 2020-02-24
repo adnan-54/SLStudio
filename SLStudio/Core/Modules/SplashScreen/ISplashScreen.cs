@@ -2,7 +2,7 @@
 {
     internal interface ISplashScreen
     {
-        void UpdateStatus(string status);
+        string CurrentModule { get; set; }
         void Close();
     }
 }

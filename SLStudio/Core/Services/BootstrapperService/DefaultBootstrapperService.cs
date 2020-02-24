@@ -40,22 +40,24 @@ namespace SLStudio.Core.Services.BootstrapperService
                     modules.Add(instance);
                 });
 
-                var orderedModules = modules.OrderByDescending(p => p.ModulePriority).ToList();
-                modules.Clear();
-                modules.AddRange(orderedModules);
-                orderedModules.Clear();
+                var orderedModules = modules.OrderByDescending(p => p.ModulePriority);
 
-                foreach (var module in modules)
+                await Task.Delay(500);
+                foreach (var module in orderedModules)
                 {
                     if (module != null && module.ShouldBeLoaded)
                     {
                         if (!Settings.Default.FastSplashScreen)
                             await Task.Delay(Settings.Default.SplashScreenSleepTime);
 
-                        splashScreen.UpdateStatus(module.ModuleName);
+                        splashScreen.CurrentModule = module.ModuleName;
                         module.Register(container);
+                        await Task.Delay(100);
                     }
+
                 }
+                splashScreen.CurrentModule = null;
+                await Task.Delay(500);
             });
         }
     }
