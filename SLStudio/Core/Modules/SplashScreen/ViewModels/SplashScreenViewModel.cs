@@ -1,26 +1,37 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
 
 namespace SLStudio.Core.Modules.SplashScreen.ViewModels
 {
     internal class SplashScreenViewModel : Screen, ISplashScreen
     {
+        private string currentModule;
+
         public SplashScreenViewModel()
         {
             DisplayName = "SLStudio";
         }
 
-        private string status = Resources.SplashScreen.Loading;
-
-        public string Status
+        public string CurrentModule
         {
-            get => status;
+            get => currentModule;
             set
             {
-                status = value;
-                NotifyOfPropertyChange(() => Status);
+                currentModule = value;
+                NotifyOfPropertyChange(() => CurrentModule);
             }
         }
 
-        public void Close() => TryCloseAsync();
+        public string Version => GetType().Assembly.GetName().Version.ToString();
+
+        public async void Close()
+        {
+            await TryCloseAsync();
+        }
+
+        public void CloseButton()
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

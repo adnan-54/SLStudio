@@ -1,11 +1,44 @@
-﻿<UserControl x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cal="http://caliburnmicro.com"
+                   xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+                   xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
+                   mc:Ignorable="d" Style="{StaticResource CleanWindowStyle}"
+                   WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    
+    <!--Behaviors-->
+    <behavior:Interaction.Behaviors>
+        <behaviors:DefaultMainWindowBehavior/>
+    </behavior:Interaction.Behaviors>
+
+    <!--LeftWindowCommands-->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <ContentControl cal:View.Model="{Binding MainMenu}"/>
+            </StackPanel>
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <!--Content-->
     <Grid>
-        <Button x:Name="test" Content="Test"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--ToolBar-->
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}"/>
+        
+        <!--AvalonDock-->
+        
+        <!--StatusBar-->
+        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>
     </Grid>
-</UserControl>
+</metro:MetroWindow>

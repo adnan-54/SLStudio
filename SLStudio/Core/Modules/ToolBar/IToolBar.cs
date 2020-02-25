@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IShell
+    public interface IToolBar
     {
     }
 }

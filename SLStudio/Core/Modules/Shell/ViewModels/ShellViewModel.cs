@@ -2,18 +2,49 @@
 
 namespace SLStudio.Core.Modules.Shell.ViewModels
 {
-    internal class ShellViewModel : Screen, IShell
+    internal class ShellViewModel : Conductor<object>, IShell
     {
-        private readonly ILogger logger;
+        private IStatusBar statusBar;
+        private IToolBar toolBar;
+        private IMainMenu mainMenu;
 
-        public ShellViewModel(ILoggingFactory loggingFactory)
+        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar)
         {
-            logger = loggingFactory.GetLoggerFor<ShellViewModel>();
+            MainMenu = mainMenu;
+            ToolBar = toolBar;
+            StatusBar = statusBar;
+
+            DisplayName = "SLStudio";
         }
 
-        public void Test()
+        public IMainMenu MainMenu
         {
-            throw new System.Exception();
+            get => mainMenu;
+            set
+            {
+                mainMenu = value;
+                NotifyOfPropertyChange(() => MainMenu);
+            }
+        }
+
+        public IToolBar ToolBar
+        {
+            get => toolBar;
+            set
+            {
+                toolBar = value;
+                NotifyOfPropertyChange(() => ToolBar);
+            }
+        }
+
+        public IStatusBar StatusBar
+        {
+            get => statusBar;
+            set
+            {
+                statusBar = value;
+                NotifyOfPropertyChange(() => StatusBar);
+            }
         }
     }
 }
