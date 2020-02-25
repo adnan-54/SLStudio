@@ -6,7 +6,7 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
     {
         public ShellViewModel()
         {
-            DisplayName = "Slstudio";
+            DisplayName = "SLStudio";
         }
     }
 }

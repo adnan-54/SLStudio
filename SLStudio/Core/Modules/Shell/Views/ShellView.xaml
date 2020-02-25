@@ -1,10 +1,44 @@
-﻿<Window x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Height="450" Width="800">
-    <Grid Background="Red">
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cal="http://caliburnmicro.com"
+                   xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
+                   mc:Ignorable="d" Style="{StaticResource CleanWindowStyle}"
+                   WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    
+    <!--Behaviors-->
+    <behavior:Interaction.Behaviors>
+        <behaviors:DefaultMainWindowBehavior/>
+    </behavior:Interaction.Behaviors>
+
+    <!--LeftWindowCommands-->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <ContentControl cal:View.Model="{Binding MainMenu}"/>
+            </StackPanel>
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <!--Content-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         
+        <!--Toolbar-->
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding Toolbar}"/>
+        
+        <!--DockControl-->
+        <Grid Grid.Row="1" Background="Red"/>
+        
+        <!--StatusBar-->
+        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>
     </Grid>
-</Window>
+</metro:MetroWindow>

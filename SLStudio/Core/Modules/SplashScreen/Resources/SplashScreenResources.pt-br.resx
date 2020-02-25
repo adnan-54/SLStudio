@@ -106,4 +106,7 @@
   <data name="Version" xml:space="preserve">
     <value>Versão</value>
   </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
 </root>

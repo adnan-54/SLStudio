@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using System.Windows;
 
 namespace SLStudio.Core.Modules.SplashScreen.ViewModels
 {
@@ -26,6 +27,11 @@ namespace SLStudio.Core.Modules.SplashScreen.ViewModels
         public async void Close()
         {
             await TryCloseAsync();
+        }
+
+        public void CloseButton()
+        {
+            Application.Current.Shutdown();
         }
     }
 }
