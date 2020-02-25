@@ -73,6 +73,9 @@
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.2.2\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="LoadingIndicators.WPF">
+      <HintPath>LoadingIndicators\LoadingIndicators.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.0.0-alpha0660\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -154,6 +157,11 @@
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
+    <Compile Include="Core\Modules\StatusBar\Resources\StatusBarResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusBarResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
     <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
@@ -280,6 +288,11 @@
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Modules\StatusBar\Resources\StatusBarResources.pt-BR.resx" />
+    <EmbeddedResource Include="Core\Modules\StatusBar\Resources\StatusBarResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -53,6 +53,6 @@
     <!--StatusBarStyle-->
     <Style TargetType="{x:Type StatusBar}" BasedOn="{StaticResource MahApps.Styles.StatusBar}">
         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.AccentBase}"/>
-        <Setter Property="MinHeight" Value="22"/>
+        <Setter Property="Height" Value="22"/>
     </Style>
 </ResourceDictionary>
