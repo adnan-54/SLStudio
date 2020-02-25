@@ -1,4 +1,7 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Modules.MainMenu.ViewModels;
+using SLStudio.Core.Modules.StatusBar.ViewModels;
+using SLStudio.Core.Modules.ToolBar.ViewModels;
 using SLStudio.Core.Services.LoggingService;
 using SLStudio.Core.Utilities.ErrorHandler;
 using SLStudio.Core.Utilities.ObjectFactory;
@@ -24,6 +27,9 @@ namespace SLStudio.Core
             container.Singleton<ILoggingService, DefaultLoggingService>();
 
             //Modules
+            container.Singleton<IMainMenu, MainMenuViewModel>();
+            container.Singleton<IToolBar, ToolBarViewModel>();
+            container.Singleton<IStatusBar, StatusBarViewModel>();
         }
     }
 }

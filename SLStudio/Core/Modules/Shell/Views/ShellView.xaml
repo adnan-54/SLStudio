@@ -5,6 +5,7 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:cal="http://caliburnmicro.com"
                    xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+                   xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                    mc:Ignorable="d" Style="{StaticResource CleanWindowStyle}"
@@ -31,12 +32,11 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+
+        <!--ToolBar-->
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}"/>
         
-        <!--Toolbar-->
-        <ContentControl Grid.Row="0" cal:View.Model="{Binding Toolbar}"/>
-        
-        <!--DockControl-->
-        <Grid Grid.Row="1" Background="Red"/>
+        <!--AvalonDock-->
         
         <!--StatusBar-->
         <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>

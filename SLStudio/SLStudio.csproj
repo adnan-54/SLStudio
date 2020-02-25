@@ -128,6 +128,16 @@
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
     <Compile Include="Core\Behaviors\FadeInFadeOutWindowBehavior.cs" />
     <Compile Include="Core\Converters\IsNullConverter.cs" />
+    <Compile Include="Core\Modules\MainMenu\IMainMenu.cs" />
+    <Compile Include="Core\Modules\MainMenu\Resources\MainMenuResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainMenuResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\MainMenu\ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Core\Modules\MainMenu\Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\Shell\IShell.cs" />
     <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
@@ -142,6 +152,16 @@
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\StatusBar\IStatusBar.cs" />
+    <Compile Include="Core\Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
+    <Compile Include="Core\Modules\StatusBar\Views\StatusBarView.xaml.cs">
+      <DependentUpon>StatusBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\ToolBar\IToolBar.cs" />
+    <Compile Include="Core\Modules\ToolBar\ViewModels\ToolBarViewModel.cs" />
+    <Compile Include="Core\Modules\ToolBar\Views\ToolBarView.xaml.cs">
+      <DependentUpon>ToolBarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
     <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
@@ -185,11 +205,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Core\Modules\MainMenu\Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Modules\Shell\Views\ShellView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\StatusBar\Views\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Core\Modules\ToolBar\Views\ToolBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -239,6 +271,11 @@
     <Resource Include="Core\Resources\Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Core\Modules\MainMenu\Resources\MainMenuResources.pt-br.resx" />
+    <EmbeddedResource Include="Core\Modules\MainMenu\Resources\MainMenuResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainMenuResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
