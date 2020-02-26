@@ -5,6 +5,7 @@ using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.SplashScreen;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
+using SLStudio.Core.Utilities.CommandLinesArguments;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,8 @@ namespace SLStudio.Core
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
+            IoC.Get<ICommandLineArguments>()?.ParseArguments(e.Args);
+
             LoadUserTheme();
 
             await IoC.Get<IBootstrapperService>().Initialize();
@@ -64,6 +67,7 @@ namespace SLStudio.Core
             container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
             container.Singleton<IShell, ShellViewModel>();
+            container.Singleton<ICommandLineArguments, CommandLineArguments>();
         }
 
         protected override object GetInstance(Type service, string key)

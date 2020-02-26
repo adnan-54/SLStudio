@@ -192,6 +192,8 @@
     <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
     <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
     <Compile Include="Core\Utilities\CommandHandler\CommandHandler.cs" />
+    <Compile Include="Core\Utilities\CommandLinesArguments\CommandLineArguments.cs" />
+    <Compile Include="Core\Utilities\CommandLinesArguments\ICommandLineArguments.cs" />
     <Compile Include="Core\Utilities\ErrorHandler\DefaultErrorHandler.cs" />
     <Compile Include="Core\Utilities\ErrorHandler\IErrorHandler.cs" />
     <Compile Include="Core\Utilities\Logger\ILogger.cs" />

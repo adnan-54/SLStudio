@@ -8,13 +8,16 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
         private IToolBar toolBar;
         private IMainMenu mainMenu;
 
-        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar)
+        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar, ICommandLineArguments commandLineArguments)
         {
             MainMenu = mainMenu;
             ToolBar = toolBar;
             StatusBar = statusBar;
 
-            DisplayName = "SLStudio";
+            if (commandLineArguments.DebuggingMode)
+                DisplayName = "SLStudio - Debugging Mode";
+            else
+                DisplayName = "SLStudio";
         }
 
         public IMainMenu MainMenu
