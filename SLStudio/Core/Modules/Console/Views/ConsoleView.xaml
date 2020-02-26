@@ -4,6 +4,7 @@
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cal="http://caliburnmicro.com"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.Console.Resources"
                    mc:Ignorable="d" MinHeight="450" MinWidth="800"
@@ -12,10 +13,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!--ToolBar-->
-        <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True">
+        <!--ToolBars-->
+        <ToolBar ToolBarTray.IsLocked="True">
             <!--Search-->
             <Button Margin="{StaticResource SmallLeftMargin}"
                     ToolTip="{x:Static resx:ConsoleResources.Search}"
@@ -32,12 +34,27 @@
             </Button>
 
             <Separator Margin="{StaticResource SmallLeftMargin}"/>
-            
+
             <!--ToggleWordWrap-->
             <ToggleButton Margin="{StaticResource SmallLeftMargin}"
                           ToolTip="{x:Static resx:ConsoleResources.ToggleWordWrap}" IsChecked="{Binding WordWrap}">
                 <Image Source="{StaticResource WordWrap}"/>
             </ToggleButton>
+
+            <Separator Margin="{StaticResource LeftMargin}" 
+                       metro:VisibilityHelper.IsVisible="{Binding ShowDebuggingModeOptions}"/>
+            
+            <!--DebuggingOptions-->
+            <StackPanel Orientation="Horizontal"
+                        metro:VisibilityHelper.IsVisible="{Binding ShowDebuggingModeOptions}">
+                <TextBlock Margin="{StaticResource SmallLeftMargin}" Text="Debugging Options: "
+                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                
+                <!--InsertRandonText-->
+                <Button x:Name="DebugInserRandomString" 
+                        Margin="{StaticResource SmallLeftMargin}"
+                        Content="Insert Random Data"/>
+            </StackPanel>
         </ToolBar>
         
         <!--TextEditor-->
@@ -48,6 +65,38 @@
                        LineNumbersForeground="{DynamicResource MahApps.Brushes.AccentBase}"
                        Background="{DynamicResource MahApps.Brushes.Window.Background}"
                        Foreground="{DynamicResource MahApps.Brushes.Black}"
-                       TextChanged="OnTextChanged" Loaded="OnLoaded"/>
+                       TextChanged="OnTextChanged" Loaded="OnLoaded"
+                       cal:Message.Attach="[Event Loaded] = [Action OnEditorLoaded($source)]"/>
+
+        <!--StatusBar-->
+        <Grid Grid.Row="2" Height="23"
+              Background="{DynamicResource MahApps.Brushes.AccentBase}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <!--Status-->
+            <TextBlock Grid.Column="0"
+                       Margin="{StaticResource LeftMargin}" Text="{Binding Status}"
+                       Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+            
+            <!--LineAndColumn-->
+            <StackPanel Margin="210, 0, 210, 0" Grid.Column="1"
+                        Orientation="Horizontal" VerticalAlignment="Center">
+                <!--Line-->
+                <TextBlock Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+                    <Run Text="Ln:"/>
+                    <Run Text="{Binding CurrentLine, TargetNullValue='1', Mode=OneWay}"/>
+                </TextBlock>
+                
+                <!--Column-->
+                <TextBlock Margin="{StaticResource LeftMargin}"
+                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+                    <Run Text="Col:"/>
+                    <Run Text="{Binding CurrentColumn, TargetNullValue='1', Mode=OneWay}"/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
     </Grid>
 </metro:MetroWindow>
