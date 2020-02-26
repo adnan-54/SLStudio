@@ -97,34 +97,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
+  <data name="Search" xml:space="preserve">
+    <value>Pesquisar (Ctrl +F)</value>
   </data>
-  <data name="Logs" xml:space="preserve">
-    <value>Logs</value>
+  <data name="FindPrevious" xml:space="preserve">
+    <value>Localizar anterior</value>
   </data>
-  <data name="About" xml:space="preserve">
-    <value>About</value>
+  <data name="FindNext" xml:space="preserve">
+    <value>Localizar próximo</value>
   </data>
-  <data name="SendFeedback" xml:space="preserve">
-    <value>Send Feedback</value>
+  <data name="MatchWholeWord" xml:space="preserve">
+    <value>Coincidir palavra inteira</value>
   </data>
-  <data name="ViewHelp" xml:space="preserve">
-    <value>View Help</value>
+  <data name="UseRegularExpressions" xml:space="preserve">
+    <value>Usar Expressões Regulares</value>
   </data>
-  <data name="ReportAProblem" xml:space="preserve">
-    <value>Report a Problem</value>
+  <data name="MatchCase" xml:space="preserve">
+    <value>Diferenciar maiúsculas de minúsculas</value>
   </data>
-  <data name="SuggestAFeature" xml:space="preserve">
-    <value>Suggest a Feature</value>
-  </data>
-  <data name="View" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="Console" xml:space="preserve">
-    <value>Console</value>
-  </data>
-  <data name="Options" xml:space="preserve">
-    <value>Options</value>
+  <data name="Close" xml:space="preserve">
+    <value>Fechar</value>
   </data>
 </root>

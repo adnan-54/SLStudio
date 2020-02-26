@@ -73,6 +73,9 @@
     <Reference Include="ControlzEx, Version=4.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
       <HintPath>..\packages\ControlzEx.4.2.2\lib\net462\ControlzEx.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=6.0.1.278, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.6.0.1\lib\net45\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="LoadingIndicators.WPF">
       <HintPath>LoadingIndicators\LoadingIndicators.WPF.dll</HintPath>
     </Reference>
@@ -131,6 +134,16 @@
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
     <Compile Include="Core\Behaviors\FadeInFadeOutWindowBehavior.cs" />
     <Compile Include="Core\Converters\IsNullConverter.cs" />
+    <Compile Include="Core\Modules\Console\IConsole.cs" />
+    <Compile Include="Core\Modules\Console\Resources\ConsoleResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsoleResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Modules\Console\ViewModels\ConsoleViewModel.cs" />
+    <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
+      <DependentUpon>ConsoleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\MainMenu\IMainMenu.cs" />
     <Compile Include="Core\Modules\MainMenu\Resources\MainMenuResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -170,6 +183,11 @@
     <Compile Include="Core\Modules\ToolBar\ViewModels\ToolBarViewModel.cs" />
     <Compile Include="Core\Modules\ToolBar\Views\ToolBarView.xaml.cs">
       <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Core\Resources\Strings\StudioResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StudioResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
     <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
@@ -213,6 +231,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Core\Modules\Console\Views\ConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Core\Modules\MainMenu\Views\MainMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,9 +301,14 @@
     <Resource Include="Core\Resources\Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Core\Modules\Console\Resources\ConsoleResources.pt-br.resx" />
+    <EmbeddedResource Include="Core\Modules\Console\Resources\ConsoleResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConsoleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\MainMenu\Resources\MainMenuResources.pt-br.resx" />
     <EmbeddedResource Include="Core\Modules\MainMenu\Resources\MainMenuResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>MainMenuResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
@@ -293,6 +320,11 @@
     <EmbeddedResource Include="Core\Modules\StatusBar\Resources\StatusBarResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\Resources\Strings\StudioResources.pt-br.resx" />
+    <EmbeddedResource Include="Core\Resources\Strings\StudioResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

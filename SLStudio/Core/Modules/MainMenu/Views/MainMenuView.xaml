@@ -3,7 +3,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resx="clr-namespace:SLStudio.Core.Modules.MainMenu.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    <Menu IsMainMenu="True">
+    <Menu>
+        <!--View-->
+        <MenuItem Header="{x:Static resx:MainMenuResources.View}">
+            <!--Console-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.Console}"
+                      Command="{Binding ViewConsoleCommand}"/>
+            
+            <Separator/>
+            
+            <!--Options-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.Options}"/>
+        </MenuItem>
+        
+        <!--Help-->
+        <MenuItem Header="{x:Static resx:MainMenuResources.Help}">
+            <!--ViewHelp-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.ViewHelp}"
+                      IsEnabled="False"/>
+
+            <!--SendFeedback-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.SendFeedback}"
+                      IsEnabled="False">
+                <!--ReportAProblem-->
+                <MenuItem Header="{x:Static resx:MainMenuResources.ReportAProblem}"/>
+                
+                <!--SuggestAFeature-->
+                <MenuItem Header="{x:Static resx:MainMenuResources.SuggestAFeature}"/>
+            </MenuItem>
+            
+            <Separator/>
+            
+            <!--About-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.About}"/>
+
+            <Separator/>
+
+            <!--Logs-->
+            <MenuItem Header="{x:Static resx:MainMenuResources.Logs}"/>
+        </MenuItem>
     </Menu>
 </UserControl>

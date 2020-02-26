@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Modules.Console.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.StatusBar.ViewModels;
 using SLStudio.Core.Modules.ToolBar.ViewModels;
@@ -26,10 +27,13 @@ namespace SLStudio.Core
             //Services
             container.Singleton<ILoggingService, DefaultLoggingService>();
 
-            //Modules
+            //ShellModules
             container.Singleton<IMainMenu, MainMenuViewModel>();
             container.Singleton<IToolBar, ToolBarViewModel>();
             container.Singleton<IStatusBar, StatusBarViewModel>();
+
+            //Modules
+            container.PerRequest<IConsole, ConsoleViewModel>();
         }
     }
 }

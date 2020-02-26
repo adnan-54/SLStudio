@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Modules.MainMenu.Resources {
+namespace SLStudio.Core.Resources.Strings {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MainMenuResources {
+    public class StudioResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MainMenuResources() {
+        internal StudioResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.MainMenu.Resources.MainMenuResources", typeof(MainMenuResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Resources.Strings.StudioResources", typeof(StudioResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,65 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Close.
         /// </summary>
-        public static string About {
+        public static string Close {
             get {
-                return ResourceManager.GetString("About", resourceCulture);
+                return ResourceManager.GetString("Close", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Console.
+        ///   Looks up a localized string similar to Find next.
         /// </summary>
-        public static string Console {
+        public static string FindNext {
             get {
-                return ResourceManager.GetString("Console", resourceCulture);
+                return ResourceManager.GetString("FindNext", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to Find previous.
         /// </summary>
-        public static string Help {
+        public static string FindPrevious {
             get {
-                return ResourceManager.GetString("Help", resourceCulture);
+                return ResourceManager.GetString("FindPrevious", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logs.
+        ///   Looks up a localized string similar to Match case.
         /// </summary>
-        public static string Logs {
+        public static string MatchCase {
             get {
-                return ResourceManager.GetString("Logs", resourceCulture);
+                return ResourceManager.GetString("MatchCase", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options.
+        ///   Looks up a localized string similar to Match whole word.
         /// </summary>
-        public static string Options {
+        public static string MatchWholeWord {
             get {
-                return ResourceManager.GetString("Options", resourceCulture);
+                return ResourceManager.GetString("MatchWholeWord", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Report a Problem.
+        ///   Looks up a localized string similar to Search (Ctrl+F).
         /// </summary>
-        public static string ReportAProblem {
+        public static string Search {
             get {
-                return ResourceManager.GetString("ReportAProblem", resourceCulture);
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Send Feedback.
+        ///   Looks up a localized string similar to Use Regular Expressions.
         /// </summary>
-        public static string SendFeedback {
+        public static string UseRegularExpressions {
             get {
-                return ResourceManager.GetString("SendFeedback", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suggest a Feature.
-        /// </summary>
-        public static string SuggestAFeature {
-            get {
-                return ResourceManager.GetString("SuggestAFeature", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View.
-        /// </summary>
-        public static string View {
-            get {
-                return ResourceManager.GetString("View", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View Help.
-        /// </summary>
-        public static string ViewHelp {
-            get {
-                return ResourceManager.GetString("ViewHelp", resourceCulture);
+                return ResourceManager.GetString("UseRegularExpressions", resourceCulture);
             }
         }
     }

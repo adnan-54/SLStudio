@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Modules.MainMenu.Resources {
+namespace SLStudio.Core.Modules.Console.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class MainMenuResources {
+    public class ConsoleResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal MainMenuResources() {
+        internal ConsoleResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.MainMenu.Resources.MainMenuResources", typeof(MainMenuResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.Console.Resources.ConsoleResources", typeof(ConsoleResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,47 @@ namespace SLStudio.Core.Modules.MainMenu.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to Clear All.
         /// </summary>
-        public static string About {
+        public static string ClearAll {
             get {
-                return ResourceManager.GetString("About", resourceCulture);
+                return ResourceManager.GetString("ClearAll", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Console.
+        ///   Looks up a localized string similar to Find Next.
         /// </summary>
-        public static string Console {
+        public static string FindNext {
             get {
-                return ResourceManager.GetString("Console", resourceCulture);
+                return ResourceManager.GetString("FindNext", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to Find Previous.
         /// </summary>
-        public static string Help {
+        public static string FindPrevious {
             get {
-                return ResourceManager.GetString("Help", resourceCulture);
+                return ResourceManager.GetString("FindPrevious", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logs.
+        ///   Looks up a localized string similar to Search (Ctrl + F).
         /// </summary>
-        public static string Logs {
+        public static string Search {
             get {
-                return ResourceManager.GetString("Logs", resourceCulture);
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Options.
+        ///   Looks up a localized string similar to Toggle Word Wrap.
         /// </summary>
-        public static string Options {
+        public static string ToggleWordWrap {
             get {
-                return ResourceManager.GetString("Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report a Problem.
-        /// </summary>
-        public static string ReportAProblem {
-            get {
-                return ResourceManager.GetString("ReportAProblem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Send Feedback.
-        /// </summary>
-        public static string SendFeedback {
-            get {
-                return ResourceManager.GetString("SendFeedback", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Suggest a Feature.
-        /// </summary>
-        public static string SuggestAFeature {
-            get {
-                return ResourceManager.GetString("SuggestAFeature", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View.
-        /// </summary>
-        public static string View {
-            get {
-                return ResourceManager.GetString("View", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View Help.
-        /// </summary>
-        public static string ViewHelp {
-            get {
-                return ResourceManager.GetString("ViewHelp", resourceCulture);
+                return ResourceManager.GetString("ToggleWordWrap", resourceCulture);
             }
         }
     }

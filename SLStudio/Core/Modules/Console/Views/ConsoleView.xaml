@@ -1,0 +1,53 @@
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Console.Views.ConsoleView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:resx="clr-namespace:SLStudio.Core.Modules.Console.Resources"
+                   mc:Ignorable="d" MinHeight="450" MinWidth="800"
+                   Style="{StaticResource CleanWindowStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--ToolBar-->
+        <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True">
+            <!--Search-->
+            <Button Margin="{StaticResource SmallLeftMargin}"
+                    ToolTip="{x:Static resx:ConsoleResources.Search}"
+                    Click="OnButtonClick">
+                <Image Source="{StaticResource Search}"/>
+            </Button>
+
+            <Separator Margin="{StaticResource SmallLeftMargin}"/>
+
+            <!--ClearText-->
+            <Button x:Name="ClearText" Margin="{StaticResource SmallLeftMargin}"
+                    ToolTip="{x:Static resx:ConsoleResources.ClearAll}">
+                <Image Source="{StaticResource ClearWindowContent}"/>
+            </Button>
+
+            <Separator Margin="{StaticResource SmallLeftMargin}"/>
+            
+            <!--ToggleWordWrap-->
+            <ToggleButton Margin="{StaticResource SmallLeftMargin}"
+                          ToolTip="{x:Static resx:ConsoleResources.ToggleWordWrap}" IsChecked="{Binding WordWrap}">
+                <Image Source="{StaticResource WordWrap}"/>
+            </ToggleButton>
+        </ToolBar>
+        
+        <!--TextEditor-->
+        <ae:TextEditor Grid.Row="1" x:Name="TextEditor" SyntaxHighlighting="XML"
+                       Margin="{StaticResource FullMargin}" Document="{Binding TextDocument}"
+                       FontSize="16" FontFamily="Consola" ShowLineNumbers="True"
+                       IsReadOnly="True" WordWrap="{Binding WordWrap}"
+                       LineNumbersForeground="{DynamicResource MahApps.Brushes.AccentBase}"
+                       Background="{DynamicResource MahApps.Brushes.Window.Background}"
+                       Foreground="{DynamicResource MahApps.Brushes.Black}"
+                       TextChanged="OnTextChanged" Loaded="OnLoaded"/>
+    </Grid>
+</metro:MetroWindow>

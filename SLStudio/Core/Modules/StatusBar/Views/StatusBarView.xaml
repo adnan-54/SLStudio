@@ -9,7 +9,7 @@
              Background="{DynamicResource MahApps.Brushes.AccentBase}"
              Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
 
-    <Grid Height="22">
+    <Grid Height="23">
         <!--BackgroundTasks & Status-->
         <Grid HorizontalAlignment="Left">
             <Grid.ColumnDefinitions>
