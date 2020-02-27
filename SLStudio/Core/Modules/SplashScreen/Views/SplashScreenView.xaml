@@ -19,7 +19,7 @@
     
     <!--Content-->
     <Grid>
-        <Border CornerRadius="12, 0, 12, 12" Margin="20"
+        <Border CornerRadius="24, 3, 24, 3" Margin="20"
                 Background="{DynamicResource MahApps.Brushes.AccentBase}">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="-90" ShadowDepth="3"/>

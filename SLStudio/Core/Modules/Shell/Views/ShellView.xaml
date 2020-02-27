@@ -8,8 +8,8 @@
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                    mc:Ignorable="d" Style="{StaticResource CleanWindowStyle}"
-                   WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    
+                   WindowStartupLocation="CenterScreen" WindowState="Maximized"
+                   KeyDown="OnKeyDown">
     <!--Behaviors-->
     <behavior:Interaction.Behaviors>
         <behaviors:DefaultMainWindowBehavior/>
@@ -23,6 +23,63 @@
             </StackPanel>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
+    
+    <!--RightWindowCommands-->
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button Padding="0" Margin="0, 0, 120, 0" Width="32" Height="32"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                    ToolTip="Fine tune specific parts" ClickMode="Press"
+                    MouseEnter="OnMouseEnter" Click="OnClick">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.Chromeless}">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="Transparent"/>
+                        <Setter Property="Opacity" Value="0.3"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#F47616"/>
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Grid>
+                    <Rectangle Height="32" Width="32" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush ImageSource="pack://application:,,,/Core/Resources/Images/hl.png"/>
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <Rectangle HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Fill="{DynamicResource MahApps.Brushes.IdealForeground}">
+                        <Rectangle.OpacityMask>
+                            <ImageBrush ImageSource="pack://application:,,,/Core/Resources/Images/tune_icon.png"/>
+                        </Rectangle.OpacityMask>
+                        <Rectangle.Style>
+                            <Style TargetType="{x:Type Rectangle}">
+                                <Setter Property="Width" Value="28"/>
+                                <Setter Property="Height" Value="28"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Width" Value="32"/>
+                                        <Setter Property="Height" Value="32"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Rectangle.Style>
+                        <Rectangle.Effect>
+                            <DropShadowEffect ShadowDepth="0" BlurRadius="2" Color="{DynamicResource MahApps.Colors.Accent4}"/>
+                        </Rectangle.Effect>
+                    </Rectangle>
+                </Grid>
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
 
     <!--Content-->
     <Grid>
