@@ -31,7 +31,6 @@ namespace SLStudio.Core
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
-            MessageBox.Show("Todo: update status do console\narrumar a para das linahs pra terem sempre o mesmo tamanho");
             IoC.Get<ICommandLineArguments>()?.ParseArguments(e.Args);
 
             LoadUserTheme();

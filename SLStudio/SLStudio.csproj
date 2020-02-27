@@ -153,6 +153,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsoleResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Core\Modules\Console\Resources\ConsoleSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ConsoleSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\Console\ViewModels\ConsoleViewModel.cs" />
     <Compile Include="Core\Modules\Console\Views\ConsoleView.xaml.cs">
       <DependentUpon>ConsoleView.xaml</DependentUpon>
@@ -236,6 +241,10 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="app.manifest" />
+    <None Include="Core\Modules\Console\Resources\ConsoleSettings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ConsoleSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

@@ -112,4 +112,55 @@
   <data name="FindNext" xml:space="preserve">
     <value>Localizar Próximo</value>
   </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Pronto</value>
+  </data>
+  <data name="RandomStringInsertedSuccessfully" xml:space="preserve">
+    <value>Sequência aleatória inserida com sucesso</value>
+  </data>
+  <data name="TextClearedSuccessfully" xml:space="preserve">
+    <value>Texto limpo com sucesso</value>
+  </data>
+  <data name="NewLineAppendedSuccessfully" xml:space="preserve">
+    <value>Nova linha anexada com sucesso</value>
+  </data>
+  <data name="WordWrapActivated" xml:space="preserve">
+    <value>Quebra de linha ativada</value>
+  </data>
+  <data name="WordWrapDeactivated" xml:space="preserve">
+    <value>Quebra de linha desativada</value>
+  </data>
+  <data name="SaveContentCtrlS" xml:space="preserve">
+    <value>Salvar Alterações (Ctrl + S)</value>
+  </data>
+  <data name="SaveContent" xml:space="preserve">
+    <value>Salvar Alterações</value>
+  </data>
+  <data name="FileSavedSuccessfully" xml:space="preserve">
+    <value>Arquivo gravado com sucesso</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Tamanho da Fonte:</value>
+  </data>
+  <data name="FontSizeSetToXPx" xml:space="preserve">
+    <value>Tamanho da fonte definido para {0} px</value>
+  </data>
+  <data name="ChangeFontSizeCtrlScroll" xml:space="preserve">
+    <value>Alterar o Tamanho da Fonte (Ctrl + Scroll)</value>
+  </data>
+  <data name="ResetToDefault" xml:space="preserve">
+    <value>Voltar para o Padrão</value>
+  </data>
+  <data name="FontSizeReset" xml:space="preserve">
+    <value>Tamanho da fonte redefinido com sucesso</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>Linhas:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Tamano:</value>
+  </data>
 </root>

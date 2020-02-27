@@ -112,4 +112,55 @@
   <data name="FindNext" xml:space="preserve">
     <value>Find Next</value>
   </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="RandomStringInsertedSuccessfully" xml:space="preserve">
+    <value>Random string inserted successfully</value>
+  </data>
+  <data name="TextClearedSuccessfully" xml:space="preserve">
+    <value>Text cleared successfully</value>
+  </data>
+  <data name="NewLineAppendedSuccessfully" xml:space="preserve">
+    <value>New line appended successfully</value>
+  </data>
+  <data name="WordWrapActivated" xml:space="preserve">
+    <value>Word wrap activated</value>
+  </data>
+  <data name="WordWrapDeactivated" xml:space="preserve">
+    <value>Word wrap deactivated</value>
+  </data>
+  <data name="SaveContentCtrlS" xml:space="preserve">
+    <value>Save Content (Ctrl + S)</value>
+  </data>
+  <data name="SaveContent" xml:space="preserve">
+    <value>Save Content</value>
+  </data>
+  <data name="FileSavedSuccessfully" xml:space="preserve">
+    <value>File saved successfully</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="FontSize" xml:space="preserve">
+    <value>Font Size:</value>
+  </data>
+  <data name="FontSizeSetToXPx" xml:space="preserve">
+    <value>Font size set to {0} px</value>
+  </data>
+  <data name="ChangeFontSizeCtrlScroll" xml:space="preserve">
+    <value>Change font size (Ctrl + Scroll)</value>
+  </data>
+  <data name="ResetToDefault" xml:space="preserve">
+    <value>Reset to Default</value>
+  </data>
+  <data name="FontSizeReset" xml:space="preserve">
+    <value>Font size reset successfully</value>
+  </data>
+  <data name="Lines" xml:space="preserve">
+    <value>Lines:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Length:</value>
+  </data>
 </root>

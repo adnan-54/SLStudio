@@ -1,6 +1,8 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Search;
+using System;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace SLStudio.Core.Modules.Console.Views
@@ -10,6 +12,9 @@ namespace SLStudio.Core.Modules.Console.Views
     /// </summary>
     public partial class ConsoleView
     {
+        private const double FONT_MAX_SIZE = 64;
+        private const double FONT_MIN_SIZE = 5;
+
         private SearchPanel searchPanel;
 
         public ConsoleView()
@@ -46,5 +51,37 @@ namespace SLStudio.Core.Modules.Console.Views
             else
                 searchPanel.Close();
         }
+
+        private void OnPreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.Modifiers == ModifierKeys.Control)
+            {
+                UpdateFontSize(e.Delta > 0);
+                e.Handled = true;
+            }
+        }
+
+        public void UpdateFontSize(bool increase)
+        {
+            double currentSize = TextEditor.FontSize;
+
+            if (increase)
+            {
+                if (currentSize < FONT_MAX_SIZE)
+                {
+                    double newSize = Math.Min(FONT_MAX_SIZE, currentSize + 1);
+                    TextEditor.FontSize = newSize;
+                }
+            }
+            else
+            {
+                if (currentSize > FONT_MIN_SIZE)
+                {
+                    double newSize = Math.Max(FONT_MIN_SIZE, currentSize - 1);
+                    TextEditor.FontSize = newSize;
+                }
+            }
+        }
+
     }
 }

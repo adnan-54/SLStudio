@@ -61,11 +61,29 @@ namespace SLStudio.Core.Modules.Console.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Change font size (Ctrl + Scroll).
+        /// </summary>
+        public static string ChangeFontSizeCtrlScroll {
+            get {
+                return ResourceManager.GetString("ChangeFontSizeCtrlScroll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear All.
         /// </summary>
         public static string ClearAll {
             get {
                 return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File saved successfully.
+        /// </summary>
+        public static string FileSavedSuccessfully {
+            get {
+                return ResourceManager.GetString("FileSavedSuccessfully", resourceCulture);
             }
         }
         
@@ -88,6 +106,114 @@ namespace SLStudio.Core.Modules.Console.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Font Size:.
+        /// </summary>
+        public static string FontSize {
+            get {
+                return ResourceManager.GetString("FontSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font size reset successfully.
+        /// </summary>
+        public static string FontSizeReset {
+            get {
+                return ResourceManager.GetString("FontSizeReset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Font size set to {0} px.
+        /// </summary>
+        public static string FontSizeSetToXPx {
+            get {
+                return ResourceManager.GetString("FontSizeSetToXPx", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length:.
+        /// </summary>
+        public static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lines:.
+        /// </summary>
+        public static string Lines {
+            get {
+                return ResourceManager.GetString("Lines", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New line appended successfully.
+        /// </summary>
+        public static string NewLineAppendedSuccessfully {
+            get {
+                return ResourceManager.GetString("NewLineAppendedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Random string inserted successfully.
+        /// </summary>
+        public static string RandomStringInsertedSuccessfully {
+            get {
+                return ResourceManager.GetString("RandomStringInsertedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ready.
+        /// </summary>
+        public static string Ready {
+            get {
+                return ResourceManager.GetString("Ready", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset to Default.
+        /// </summary>
+        public static string ResetToDefault {
+            get {
+                return ResourceManager.GetString("ResetToDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Content.
+        /// </summary>
+        public static string SaveContent {
+            get {
+                return ResourceManager.GetString("SaveContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Content (Ctrl + S).
+        /// </summary>
+        public static string SaveContentCtrlS {
+            get {
+                return ResourceManager.GetString("SaveContentCtrlS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search (Ctrl + F).
         /// </summary>
         public static string Search {
@@ -97,11 +223,38 @@ namespace SLStudio.Core.Modules.Console.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text cleared successfully.
+        /// </summary>
+        public static string TextClearedSuccessfully {
+            get {
+                return ResourceManager.GetString("TextClearedSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Toggle Word Wrap.
         /// </summary>
         public static string ToggleWordWrap {
             get {
                 return ResourceManager.GetString("ToggleWordWrap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Word wrap activated.
+        /// </summary>
+        public static string WordWrapActivated {
+            get {
+                return ResourceManager.GetString("WordWrapActivated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Word wrap deactivated.
+        /// </summary>
+        public static string WordWrapDeactivated {
+            get {
+                return ResourceManager.GetString("WordWrapDeactivated", resourceCulture);
             }
         }
     }
