@@ -5,146 +5,170 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:cal="http://caliburnmicro.com"
+                   xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors"
+                   xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:resx="clr-namespace:SLStudio.Core.Modules.Console.Resources"
                    mc:Ignorable="d" MinHeight="600" MinWidth="800"
                    Style="{StaticResource CleanWindowStyle}">
 
+    <!--InputBindings-->
     <metro:MetroWindow.InputBindings>
-        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveContentCommand}"/>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="{Binding SaveContentCommand}" />
     </metro:MetroWindow.InputBindings>
-        
+
+    <!--Content-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--ToolBars-->
         <ToolBar ToolBarTray.IsLocked="True">
             <!--SaveContent-->
-            <Button x:Name="SaveContent" Margin="{StaticResource SmallLeftMargin}"
+            <Button Margin="{StaticResource SmallLeftMargin}" 
+                    Command="{Binding SaveContentCommand}"
                     ToolTip="{x:Static resx:ConsoleResources.SaveContentCtrlS}">
-                <Image Source="{StaticResource SaveAs}"/>
+                <Image Source="{StaticResource SaveAs}" />
             </Button>
 
-            <Separator Margin="{StaticResource SmallLeftMargin}"/>
+            <!--Separator-->
+            <Separator Margin="{StaticResource SmallLeftMargin}" />
 
             <!--Search-->
             <Button Margin="{StaticResource SmallLeftMargin}"
-                    ToolTip="{x:Static resx:ConsoleResources.Search}"
-                    Click="OnButtonClick">
-                <Image Source="{StaticResource Search}"/>
+                    Command="{Binding SearchCommand}"
+                    ToolTip="{x:Static resx:ConsoleResources.Search}">
+                <Image Source="{StaticResource Search}" />
             </Button>
 
-            <Separator Margin="{StaticResource SmallLeftMargin}"/>
+            <!--Separator-->
+            <Separator Margin="{StaticResource SmallLeftMargin}" />
 
             <!--ClearText-->
-            <Button x:Name="ClearText" Margin="{StaticResource SmallLeftMargin}"
+            <Button Margin="{StaticResource SmallLeftMargin}"
+                    Command="{Binding ClearTextCommand}"
                     ToolTip="{x:Static resx:ConsoleResources.ClearAll}">
-                <Image Source="{StaticResource ClearWindowContent}"/>
+                <Image Source="{StaticResource ClearWindowContent}" />
             </Button>
 
             <!--ToggleWordWrap-->
-            <ToggleButton Margin="{StaticResource SmallLeftMargin}"
-                          ToolTip="{x:Static resx:ConsoleResources.ToggleWordWrap}" IsChecked="{Binding WordWrap}">
-                <Image Source="{StaticResource WordWrap}"/>
+            <ToggleButton Margin="{StaticResource SmallLeftMargin}" IsChecked="{Binding WordWrap}"
+                          ToolTip="{x:Static resx:ConsoleResources.ToggleWordWrap}">
+                <Image Source="{StaticResource WordWrap}" />
             </ToggleButton>
 
-            <Separator Margin="{StaticResource LeftMargin}" 
-                       metro:VisibilityHelper.IsVisible="{Binding ShowDebuggingModeOptions}"/>
-            
             <!--DebuggingOptions-->
             <StackPanel Orientation="Horizontal"
                         metro:VisibilityHelper.IsVisible="{Binding ShowDebuggingModeOptions}">
+                <!--Separator-->
+                <Separator Margin="{StaticResource SmallLeftMargin}"/>
+
+                <!--DebuggingOptions-->
                 <TextBlock Margin="{StaticResource SmallLeftMargin}" Text="Debugging Options: "
-                           VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                
+                           VerticalAlignment="Center" HorizontalAlignment="Center" />
+
                 <!--InsertRandonText-->
-                <Button x:Name="DebugInserRandomString" 
-                        Margin="{StaticResource SmallLeftMargin}"
-                        Content="Insert Random Data"/>
+                <Button x:Name="DebugInserRandomString" Margin="{StaticResource SmallLeftMargin}"
+                        Content="Insert Random Data" />
             </StackPanel>
         </ToolBar>
-        
+
         <!--TextEditor-->
-        <ae:TextEditor Grid.Row="1" x:Name="TextEditor"
-                       Margin="{StaticResource FullMargin}" Document="{Binding TextDocument}"
+        <ae:TextEditor Grid.Row="1" Margin="{StaticResource FullMargin}" 
+                       Document="{Binding TextDocument}"
                        IsReadOnly="True" WordWrap="{Binding WordWrap}"
-                       FontSize="{Binding FontSize, Mode=TwoWay}"
-                       TextChanged="OnTextChanged" Loaded="OnLoaded"
-                       PreviewMouseWheel="OnPreviewMouseWheel"
-                       cal:Message.Attach="[Event Loaded] = [Action OnEditorLoaded($source)]"/>
+                       FontSize="{Binding FontSize, Mode=TwoWay}" 
+                       cal:Message.Attach="[Event Loaded] = [Action OnEditorLoaded($source)]" >
+            <!--Behaviors-->
+            <behavior:Interaction.Behaviors>
+                <behaviors:TextBoxScrollToEndBehavior/>
+                <behaviors:TextBoxZoomBehavior/>
+            </behavior:Interaction.Behaviors>
+        </ae:TextEditor>
 
         <!--StatusBar-->
-        <Grid Grid.Row="2" Height="23"
+        <Grid Grid.Row="2" Height="24"
               Background="{DynamicResource MahApps.Brushes.AccentBase}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            
+
             <!--Status-->
-            <TextBlock Grid.Column="0"
-                       VerticalAlignment="Center"
-                       Margin="{StaticResource LeftMargin}" Text="{Binding Status}"
-                       Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-            
-            <!--LineAndColumn-->
-            <StackPanel Margin="0, 0, 24, 0" Grid.Column="1"
-                        Orientation="Horizontal" VerticalAlignment="Center">
-                <Separator Margin="0, 0, 12, 0" Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
+            <TextBlock Grid.Column="0" Margin="{StaticResource LeftMargin}" 
+                       Text="{Binding Status}" VerticalAlignment="Center"
+                       Foreground="{DynamicResource MahApps.Brushes.IdealForeground}" />
+
+            <!--Infos-->
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <!--Separator-->
+                <Separator Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
 
                 <!--TotalLenght-->
-                <TextBlock Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
-                    <Run Text="{x:Static resx:ConsoleResources.Length}"/>
-                    <Run Text="{Binding TotalLength, TargetNullValue='0', Mode=OneWay}"/>
+                <TextBlock Margin="{StaticResource LeftMargin}" 
+                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+                    <Run Text="{x:Static resx:ConsoleResources.Length}" />
+                    <Run Text="{Binding TotalLength, TargetNullValue='0', Mode=OneWay}" />
                 </TextBlock>
 
                 <!--TotalLines-->
-                <TextBlock Margin="{StaticResource LargeLeftMargin}"
+                <TextBlock Margin="{StaticResource LeftMargin}"
                            Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
-                    <Run Text="{x:Static resx:ConsoleResources.Lines}"/>
-                    <Run Text="{Binding TotalLines, TargetNullValue='1', Mode=OneWay}"/>
+                    <Run Text="{x:Static resx:ConsoleResources.Lines}" />
+                    <Run Text="{Binding TotalLines, TargetNullValue='1', Mode=OneWay}" />
                 </TextBlock>
 
+                <!--Separator-->
+                <Separator Margin="{StaticResource LeftMargin}" 
+                           Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
 
-
-                <Separator Margin="12, 0, 12, 0" Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
-                
                 <!--Line-->
-                <TextBlock Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
-                    <Run Text="Ln:"/>
-                    <Run Text="{Binding CurrentLine, TargetNullValue='1', Mode=OneWay}"/>
+                <TextBlock Margin="{StaticResource LeftMargin}"
+                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+                    <Run Text="Ln:" />
+                    <Run Text="{Binding CurrentLine, TargetNullValue='1', Mode=OneWay}" />
                 </TextBlock>
-                
+
                 <!--Column-->
                 <TextBlock Margin="{StaticResource LeftMargin}"
                            Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
-                    <Run Text="Col:"/>
-                    <Run Text="{Binding CurrentColumn, TargetNullValue='1', Mode=OneWay}"/>
+                    <Run Text="Col:" />
+                    <Run Text="{Binding CurrentColumn, TargetNullValue='1', Mode=OneWay}" />
                 </TextBlock>
 
-                <Separator Margin="24, 0, 0, 0" Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
+                <!--Separator-->
+                <Separator Margin="{StaticResource LeftMargin}" 
+                           Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
+
+                <!--Kbs-->
+                <TextBlock Margin="{StaticResource LeftMargin}" 
+                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+                    <Run Text="{Binding FileSize, Mode=OneWay}" />
+                </TextBlock>
             </StackPanel>
-            
+
             <!--FontSize-->
-            <StackPanel Margin="0, 0, 20, 0" Grid.Column="2"
+            <StackPanel Grid.Column="2" Margin="{StaticResource LargeRightMargin}" 
                         Orientation="Horizontal" VerticalAlignment="Center"
                         ToolTip="{x:Static resx:ConsoleResources.ChangeFontSizeCtrlScroll}">
+                <!--Separator-->
+                <Separator Margin="{StaticResource LeftMargin}" 
+                           Style="{StaticResource MahApps.Styles.Separator.StatusBar}" />
+
                 <!--FontSize-->
-                <TextBlock Text="{x:Static resx:ConsoleResources.FontSize}" 
-                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
-                           VerticalAlignment="Center"/>
+                <TextBlock Margin="{StaticResource LeftMargin}" VerticalAlignment="Center"
+                           Text="{x:Static resx:ConsoleResources.FontSize}"
+                           Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
 
                 <!--FontSizeSlider-->
-                <Slider Margin="{StaticResource LeftMargin}"
-                        Value="{Binding FontSize, Mode=TwoWay}" Minimum="5" Maximum="64"
+                <Slider Margin="{StaticResource LargeLeftMargin}"
+                        Minimum="5" Value="{Binding FontSize, Mode=TwoWay}" Maximum="64"
                         Focusable="False" Width="140" Style="{StaticResource SimpleSliderStyle}"
-                        IsSnapToTickEnabled="True" TickFrequency="4"
-                        TickPlacement="BottomRight"
+                        IsSnapToTickEnabled="True" TickFrequency="4" TickPlacement="BottomRight"
                         metro:SliderHelper.EnableMouseWheel="MouseHover"
                         metro:SliderHelper.ChangeValueBy="LargeChange">
                     <Slider.ContextMenu>
@@ -152,7 +176,7 @@
                             <MenuItem Header="{x:Static resx:ConsoleResources.ResetToDefault}"
                                       Command="{Binding ResetFontSizeCommand}">
                                 <MenuItem.Icon>
-                                    <Image Source="{StaticResource Restart}"/>
+                                    <Image Source="{StaticResource Restart}" />
                                 </MenuItem.Icon>
                             </MenuItem>
                         </ContextMenu>
@@ -160,18 +184,10 @@
                 </Slider>
 
                 <!--FontSize-->
-                <TextBlock Margin="{StaticResource SmallLeftMargin}" 
+                <TextBlock Margin="{StaticResource SmallLeftMargin}"
                            Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
-                    <Run Text="{Binding FontSize}"/>
-                    <Run Text="px"/>
-                </TextBlock>
-
-                <Separator Margin="24, 0, 12, 0" Style="{StaticResource MahApps.Styles.Separator.StatusBar}"/>
-
-                <!--Kbs-->
-                <TextBlock Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
-                           VerticalAlignment="Center">
-                    <Run Text="{Binding FileSize, Mode=OneWay}"/>
+                    <Run Text="{Binding FontSize}" />
+                    <Run Text="px" />
                 </TextBlock>
             </StackPanel>
         </Grid>

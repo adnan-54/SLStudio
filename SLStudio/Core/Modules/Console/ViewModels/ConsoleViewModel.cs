@@ -18,19 +18,18 @@ namespace SLStudio.Core.Modules.Console.ViewModels
     {
         private readonly DispatcherTimer timer;
 
-        private TextEditor editor;
         private bool wordWrap;
+
         private string status;
         private double fontSize;
+        private TextEditor editor;
 
         public ConsoleViewModel(IEventAggregator eventAggregator, ICommandLineArguments commandLineArguments)
         {
             eventAggregator.SubscribeOnPublishedThread(this);
 
-            timer = new DispatcherTimer
-            {
-                Interval = TimeSpan.FromSeconds(5)
-            };
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
+            timer.Tick += OnTimerTick;
 
             SaveContentCommand = new CommandHandler(SaveContent, () => true);
             ResetFontSizeCommand = new CommandHandler(ResetFontSize, () => true);
@@ -40,20 +39,15 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             WordWrap = Resources.ConsoleSettings.Default.WordWrap;
 
             PropertyChanged += OnPropertyChanged;
-            timer.Tick += OnTimerTick;
 
             DisplayName = "Console";
         }
 
         public ICommand SaveContentCommand { get; }
 
-        public ICommand ResetFontSizeCommand { get; }
+        public ICommand SearchCommand { get; }
 
-        public bool ShowDebuggingModeOptions { get; }
-
-        public TextDocument TextDocument { get; }
-
-        public string Text => TextDocument.Text;
+        public ICommand ClearTextCommand { get; }
 
         public bool WordWrap
         {
@@ -61,17 +55,28 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             set
             {
                 wordWrap = value;
+                Resources.ConsoleSettings.Default.WordWrap = wordWrap;
                 NotifyOfPropertyChange(() => WordWrap);
 
                 if (WordWrap)
                     Status = Resources.ConsoleResources.WordWrapActivated;
                 else
                     Status = Resources.ConsoleResources.WordWrapDeactivated;
-
-                Resources.ConsoleSettings.Default.WordWrap = WordWrap;
-                Resources.ConsoleSettings.Default.Save();
             }
         }
+
+        public bool ShowDebuggingModeOptions { get; }
+
+
+
+        public ICommand ResetFontSizeCommand { get; }
+
+
+        public TextDocument TextDocument { get; }
+
+        public string Text => TextDocument.Text;
+
+
 
         public string Status
         {
@@ -83,50 +88,6 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
                 status = value;
                 NotifyOfPropertyChange(() => Status);
-            }
-        }
-
-        public int? CurrentLine
-        {
-            get
-            {
-                if (editor == null)
-                    return null;
-
-                return editor.Document.GetLineByOffset(editor.CaretOffset).LineNumber;
-            }
-        }
-
-        public int? CurrentColumn
-        {
-            get
-            {
-                if (editor == null)
-                    return null;
-
-                return editor.TextArea.Caret.VisualColumn + 1;
-            }
-        }
-
-        public int? TotalLines
-        {
-            get
-            {
-                if (editor == null)
-                    return null;
-
-                return editor.Document.LineCount;
-            }
-        }
-
-        public int? TotalLength
-        {
-            get
-            {
-                if (editor == null)
-                    return null;
-
-                return editor.Document.TextLength;
             }
         }
 
@@ -149,11 +110,21 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             get
             {
                 if (editor == null || Text == null)
+                {
                     return (0).Bytes().Humanize("KB");
+                }
 
                 return (Text.Length * sizeof(char) + sizeof(int)).Bytes().Humanize("KB");
             }
         }
+
+        public int? CurrentLine => editor?.Document?.GetLineByOffset(editor.CaretOffset)?.LineNumber;
+
+        public int? CurrentColumn => editor?.TextArea?.Caret.VisualColumn + 1;
+
+        public int? TotalLines => editor?.Document?.LineCount;
+
+        public int? TotalLength => editor?.Document?.TextLength;
 
         public void AppendLine(string sender, string message)
         {
@@ -170,7 +141,9 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         public void SaveContent()
         {
             if (string.IsNullOrEmpty(Text))
+            {
                 return;
+            }
 
             using (System.Windows.Forms.SaveFileDialog saveFile = new System.Windows.Forms.SaveFileDialog())
             {
@@ -180,7 +153,7 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
                 if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var text = Text;
+                    string text = Text;
                     Task.Run(() =>
                     {
                         File.WriteAllText(saveFile.FileName, text);
@@ -218,8 +191,8 @@ namespace SLStudio.Core.Modules.Console.ViewModels
 
         public void DebugInserRandomString()
         {
-            var randomSender = StringHelpers.RandomClass();
-            var randomMessage = StringHelpers.LoremIpsum();
+            string randomSender = StringHelpers.RandomClass();
+            string randomMessage = StringHelpers.LoremIpsum();
             AppendLine(randomSender, randomMessage);
 
             Status = Resources.ConsoleResources.RandomStringInsertedSuccessfully;

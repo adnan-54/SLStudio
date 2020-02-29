@@ -8,17 +8,14 @@ namespace SLStudio.Core.Behaviors
 {
     public class FadeInFadeOutWindowBehavior : Behavior<Window>
     {
-        public static readonly DependencyProperty FadeInTimeProperty =
-            DependencyProperty.Register("FadeInTime", typeof(double), typeof(FadeInFadeOutWindowBehavior), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty FadeInTimeProperty = DependencyProperty.Register("FadeInTime", typeof(double), typeof(FadeInFadeOutWindowBehavior), new PropertyMetadata(default(double)));
+        public static readonly DependencyProperty FadeOutTimeProperty = DependencyProperty.Register("FadeOutTime", typeof(double), typeof(FadeInFadeOutWindowBehavior), new PropertyMetadata(default(double)));
 
         public double FadeInTime
         {
             get => (double)GetValue(FadeInTimeProperty);
             set => SetValue(FadeInTimeProperty, value);
         }
-
-        public static readonly DependencyProperty FadeOutTimeProperty =
-            DependencyProperty.Register("FadeOutTime", typeof(double), typeof(FadeInFadeOutWindowBehavior), new PropertyMetadata(default(double)));
 
         public double FadeOutTime
         {
@@ -34,12 +31,6 @@ namespace SLStudio.Core.Behaviors
             AssociatedObject.Closing += OnClosing;
         }
 
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            AssociatedObject.Loaded -= OnLoaded;
-            AssociatedObject.BeginAnimation(UIElement.OpacityProperty, new DoubleAnimation(1, TimeSpan.FromSeconds(FadeInTime)));
-        }
-
         private void OnClosing(object sender, CancelEventArgs e)
         {
             AssociatedObject.Closing -= OnClosing;
@@ -47,6 +38,12 @@ namespace SLStudio.Core.Behaviors
             var anim = new DoubleAnimation(0, TimeSpan.FromSeconds(FadeOutTime));
             anim.Completed += (s, _) => AssociatedObject.Close();
             AssociatedObject.BeginAnimation(UIElement.OpacityProperty, anim);
+        }
+
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            AssociatedObject.Loaded -= OnLoaded;
+            AssociatedObject.BeginAnimation(UIElement.OpacityProperty, new DoubleAnimation(1, TimeSpan.FromSeconds(FadeInTime)));
         }
     }
 }

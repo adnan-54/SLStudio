@@ -143,8 +143,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Core\Behaviors\TextBoxZoomBehavior.cs" />
     <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
     <Compile Include="Core\Behaviors\FadeInFadeOutWindowBehavior.cs" />
+    <Compile Include="Core\Behaviors\TextBoxScrollToEndBehavior.cs" />
     <Compile Include="Core\Converters\IsNullConverter.cs" />
     <Compile Include="Core\Helpers\StringHelpers.cs" />
     <Compile Include="Core\Modules\Console\IConsole.cs" />

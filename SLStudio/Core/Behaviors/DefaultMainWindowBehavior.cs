@@ -16,6 +16,13 @@ namespace SLStudio.Core.Behaviors
             AssociatedObject.Closing += OnClosing;
         }
 
+        protected override void OnDetaching()
+        {
+            AssociatedObject.Loaded -= OnLoaded;
+            AssociatedObject.Closing -= OnClosing;
+            base.OnDetaching();
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             if (Settings.Default.ShowConsoleAtStartup)
@@ -25,13 +32,6 @@ namespace SLStudio.Core.Behaviors
         private void OnClosing(object sender, EventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        protected override void OnDetaching()
-        {
-            AssociatedObject.Loaded -= OnLoaded;
-            AssociatedObject.Closing -= OnClosing;
-            base.OnDetaching();
         }
     }
 }
