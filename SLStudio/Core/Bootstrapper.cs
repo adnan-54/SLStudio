@@ -1,11 +1,7 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
-using SLStudio.Core.Modules.Shell.ViewModels;
-using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
-using SLStudio.Core.Utilities.CommandLinesArguments;
 using SLStudio.Core.Utilities.DependenciesContainer;
-using SLStudio.Core.Utilities.WindowManager;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
@@ -58,13 +54,8 @@ namespace SLStudio.Core
 
         protected override void Configure()
         {
-            container.Instance(container);
-            container.Singleton<ICommandLineArguments, CommandLineArguments>();
-            container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
-            container.Singleton<IWindowManager, DefaultWindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<ISplashScreen, SplashScreenViewModel>();
-            container.Singleton<IShell, ShellViewModel>();
+            var coreModule = new Module();
+            coreModule.Register(container);
         }
 
         protected override object GetInstance(Type service, string key)

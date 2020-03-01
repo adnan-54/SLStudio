@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace SLStudio.Core.Utilities.CommandLinesArguments
 {
-    internal class CommandLineArguments : ICommandLineArguments
+    internal class DefaultCommandLineArguments : ICommandLineArguments
     {
         private bool alreadyParsed = false;
 
-        public CommandLineArguments()
+        public DefaultCommandLineArguments()
         {
             DebuggingMode = false;
         }

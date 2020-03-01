@@ -8,126 +8,101 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Properties
-{
-
-
+namespace SLStudio.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
-    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
-    {
-
+    public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-        public static Settings Default
-        {
-            get
-            {
+        
+        public static Settings Default {
+            get {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowInitialScreen
-        {
-            get
-            {
+        public bool ShowInitialScreen {
+            get {
                 return ((bool)(this["ShowInitialScreen"]));
             }
-            set
-            {
+            set {
                 this["ShowInitialScreen"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
-        public string ColorScheme
-        {
-            get
-            {
+        public string ColorScheme {
+            get {
                 return ((string)(this["ColorScheme"]));
             }
-            set
-            {
+            set {
                 this["ColorScheme"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Light")]
-        public string BaseColorScheme
-        {
-            get
-            {
+        public string BaseColorScheme {
+            get {
                 return ((string)(this["BaseColorScheme"]));
             }
-            set
-            {
+            set {
                 this["BaseColorScheme"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("pt-br")]
-        public string LanguageCode
-        {
-            get
-            {
+        public string LanguageCode {
+            get {
                 return ((string)(this["LanguageCode"]));
             }
-            set
-            {
+            set {
                 this["LanguageCode"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FastSplashScreen
-        {
-            get
-            {
+        public bool FastSplashScreen {
+            get {
                 return ((bool)(this["FastSplashScreen"]));
             }
-            set
-            {
+            set {
                 this["FastSplashScreen"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("500")]
-        public int SplashScreenSleepTime
-        {
-            get
-            {
+        public int SplashScreenSleepTime {
+            get {
                 return ((int)(this["SplashScreenSleepTime"]));
             }
-            set
-            {
+            set {
                 this["SplashScreenSleepTime"] = value;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShowConsoleAtStartup
-        {
-            get
-            {
+        public bool ShowConsoleAtStartup {
+            get {
                 return ((bool)(this["ShowConsoleAtStartup"]));
             }
-            set
-            {
+            set {
                 this["ShowConsoleAtStartup"] = value;
             }
         }

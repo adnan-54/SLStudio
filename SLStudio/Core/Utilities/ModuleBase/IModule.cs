@@ -2,10 +2,10 @@
 {
     public interface IModule
     {
-        bool ShouldBeLoaded { get; }
         ModulePriority ModulePriority { get; }
         string ModuleName { get; }
         string ModuleDescrition { get; }
+        bool ShouldBeLoaded { get; }
 
         void Register(IContainer container);
     }

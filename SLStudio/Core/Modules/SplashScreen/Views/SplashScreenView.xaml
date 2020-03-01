@@ -2,9 +2,93 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+        xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Height="450" Width="800">
+        xmlns:resx="clr-namespace:SLStudio.Core.Modules.SplashScreen.Resources"
+        mc:Ignorable="d" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True" WindowStyle="None" Background="Transparent" Opacity="0"
+        ResizeMode="NoResize" Width="600" SizeToContent="Height"
+        Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+
+    <!--behaviors-->
+    <dxmvvm:Interaction.Behaviors>
+        <behaviors:FadeInFadeOutWindowBehavior FadeInTime="1.0" FadeOutTime="0.5"/>
+    </dxmvvm:Interaction.Behaviors>
+
     <Grid>
-        <TextBlock Text="{Binding CurrentModule}" FontSize="44" />
+        <Border CornerRadius="12" Margin="20"
+                Background="{DynamicResource MahApps.Brushes.AccentBase}">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="15" Direction="-90" ShadowDepth="3"/>
+            </Border.Effect>
+
+            <Grid Margin="{StaticResource FullMargin}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!--CloseButton-->
+                <Button Content="r" Margin="0, -8, -14, 0"
+                        Command="{DXCommand 'TryCloseAsync()'}"
+                        Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
+                        Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+                        Height="32" Width="42" FontSize="18" FontFamily="Marlett" 
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        ToolTip="{x:Static resx:SplashScreenResources.Close}"/>
+
+                <!--Logo-->
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="SL" Margin="0, -20, 0, 0"
+                               FontSize="200" FontFamily="Arial" FontWeight="Black" 
+                               HorizontalAlignment="Center"
+                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+
+                    <TextBlock Grid.Row="1" Text="SLStudio" Margin="0, -50, 0, -10"
+                               FontSize="70" HorizontalAlignment="Center"
+                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+                </Grid>
+
+                <!--Infos-->
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!--LoadingModule-->
+                    <TextBlock Grid.Column="0" Text="{x:Static resx:SplashScreenResources.Loading}" FontSize="14" FontWeight="Thin"
+                               metro:VisibilityHelper.IsCollapsed="{Binding CurrentModule, Converter={StaticResource IsNullConverter}}"/>
+
+                    <TextBlock Grid.Column="1" FontSize="14">
+                        <Run/>
+                        <Run Text="{Binding CurrentModule, TargetNullValue={x:Static resx:SplashScreenResources.Initializing}}"
+                             FontStyle="Italic" FontWeight="Thin"/><Run Text="..."/>
+                    </TextBlock>
+
+                    <!--Version-->
+                    <TextBlock Grid.Column="2"
+                               FontSize="14" FontWeight="Thin" 
+                               FontStyle="Italic">
+                            <Run Text="{x:Static resx:SplashScreenResources.Version}"/>
+                            <Run Text="{Binding Version, Mode=OneWay}"/>
+                    </TextBlock>
+                </Grid>
+
+                <!--ProgressBar-->
+                <metro:MetroProgressBar Grid.Row="2" Margin="{StaticResource SmallUpMargin}"
+                                            Height="14" IsIndeterminate="True"
+                                            Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

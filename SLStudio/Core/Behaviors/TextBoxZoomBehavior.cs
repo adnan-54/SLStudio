@@ -1,5 +1,5 @@
-﻿using ICSharpCode.AvalonEdit;
-using Microsoft.Xaml.Behaviors;
+﻿using DevExpress.Mvvm.UI.Interactivity;
+using ICSharpCode.AvalonEdit;
 using System;
 using System.Windows;
 using System.Windows.Controls;

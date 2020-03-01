@@ -1,4 +1,4 @@
-﻿using Microsoft.Xaml.Behaviors;
+﻿using DevExpress.Mvvm.UI.Interactivity;
 using System;
 using System.ComponentModel;
 using System.Windows;

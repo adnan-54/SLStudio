@@ -34,37 +34,35 @@ namespace SLStudio.Core.Services.BootstrapperService
             if (isInitialized)
                 return;
 
+            isInitialized = true;
+
             await Task.Run(async () =>
             {
-                GetType().Assembly.GetTypes()
-                .Where(type => type.IsClass && type.Name.Equals("Module") && type.GetInterface(nameof(IModule)) != null)
-                .ToList()
-                .ForEach(type =>
-                {
-                    var instance = Activator.CreateInstance(type) as IModule;
-                    modules.Add(instance);
-                });
+                var types = AppDomain.CurrentDomain.GetAssemblies()
+                      .SelectMany(assembly => assembly.GetTypes())
+                      .Where(type => type.IsClass && type.Name == "Module" && type.IsSubclassOf(typeof(ModuleBase)));
+
+                foreach (var type in types)
+                    modules.Add(Activator.CreateInstance(type) as IModule);
 
                 modules = modules.OrderByDescending(p => p.ModulePriority).ToList();
 
                 await Task.Delay(500);
                 foreach (var module in modules)
                 {
-                    if (module.ShouldBeLoaded)
-                    {
-                        if (!Settings.Default.FastSplashScreen)
-                            await Task.Delay(Settings.Default.SplashScreenSleepTime);
+                    splashScreen.CurrentModule = module.ModuleName;
 
-                        splashScreen.CurrentModule = module.ModuleName;
+                    if (module.ShouldBeLoaded)
                         module.Register(container);
-                        await Task.Delay(100);
-                    }
+
+                    if (!Settings.Default.FastSplashScreen)
+                        await Task.Delay(Settings.Default.SplashScreenSleepTime);
+
+                    await Task.Delay(100);
                 }
                 splashScreen.CurrentModule = null;
                 await Task.Delay(500);
             });
-
-            isInitialized = true;
         }
     }
 }

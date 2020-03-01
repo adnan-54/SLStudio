@@ -4,7 +4,7 @@
     {
         public SplashScreenViewModel()
         {
-            DisplayName = "Teste";
+            DisplayName = "SLStudio";
         }
 
         public string CurrentModule
@@ -13,9 +13,6 @@
             set => SetProperty(() => CurrentModule, value);
         }
 
-        public void Close()
-        {
-            TryCloseAsync().FireAndForget();
-        }
+        public string Version => GetType().Assembly.GetName().Version.ToString();
     }
 }

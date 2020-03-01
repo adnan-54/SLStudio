@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SLStudio</RootNamespace>
     <AssemblyName>SLStudio</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -161,6 +161,11 @@
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
+    <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SplashScreenResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
@@ -281,6 +286,11 @@
     <Resource Include="Core\Resources\Images\logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
+    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\Resources\Sounds\SoundResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SoundResources.Designer.cs</LastGenOutput>
@@ -298,7 +308,11 @@
     <Resource Include="Core\Resources\Sounds\mnumove.wav" />
     <Resource Include="Core\Resources\Sounds\mnuselect.wav" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Core\Modules\MainMenu\" />
+    <Folder Include="Core\Modules\StatusBar\" />
+    <Folder Include="Core\Modules\ToolBar\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
