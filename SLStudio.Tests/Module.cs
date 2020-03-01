@@ -1,14 +1,16 @@
 ﻿using SLStudio.Core;
 
-namespace SLStudio.Modules.Tests
+namespace SLStudio.Tests
 {
-    internal class Module : ModuleBase
+    public class Module : ModuleBase
     {
         public override string ModuleName => "Tests";
-        public override string ModuleDescrition => "Tests module.";
+
+        public override string ModuleDescrition => "Module used for tests";
 
         public override void Register(IContainer container)
         {
+
         }
     }
 }

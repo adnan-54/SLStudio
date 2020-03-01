@@ -55,7 +55,7 @@
     <DocumentationFile>bin\Release\SLStudio.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Core\Resources\Images\logo.ico</ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
@@ -149,126 +149,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Core\Behaviors\TextBoxZoomBehavior.cs" />
-    <Compile Include="Core\Behaviors\DefaultMainWindowBehavior.cs" />
-    <Compile Include="Core\Behaviors\FadeInFadeOutWindowBehavior.cs" />
-    <Compile Include="Core\Behaviors\TextBoxScrollToEndBehavior.cs" />
-    <Compile Include="Core\Converters\IsNullConverter.cs" />
-    <Compile Include="Core\Helpers\StringHelpers.cs" />
-    <Compile Include="Core\Modules\Shell\IShell.cs" />
-    <Compile Include="Core\Modules\Shell\ViewModels\ShellViewModel.cs" />
-    <Compile Include="Core\Modules\Shell\Views\ShellView.xaml.cs">
-      <DependentUpon>ShellView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\SplashScreen\ISplashScreen.cs" />
-    <Compile Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SplashScreenResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
-    <Compile Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
-      <DependentUpon>SplashScreenView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Resources\Sounds\SoundResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SoundResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Resources\Strings\StudioResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudioResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Services\BootstrapperService\DefaultBootstrapperService.cs" />
-    <Compile Include="Core\Services\BootstrapperService\IBootstrapperService.cs" />
-    <Compile Include="Core\Utilities\CommandHandler\CommandHandler.cs" />
-    <Compile Include="Core\Utilities\CommandLinesArguments\CommandLineArguments.cs" />
-    <Compile Include="Core\Utilities\CommandLinesArguments\ICommandLineArguments.cs" />
-    <Compile Include="Core\Utilities\DependenciesContainer\Container.cs" />
-    <Compile Include="Core\Utilities\DependenciesContainer\IContainer.cs" />
-    <Compile Include="Core\Utilities\ErrorHandler\DefaultErrorHandler.cs" />
-    <Compile Include="Core\Utilities\ErrorHandler\IErrorHandler.cs" />
-    <Compile Include="Core\Utilities\Logger\ILogger.cs" />
-    <Compile Include="Core\Utilities\Logger\DefaultLogger.cs" />
-    <Compile Include="Core\Utilities\LoggingFactory\DefaultLoggingFactory.cs" />
-    <Compile Include="Core\Services\LoggingService\DefaultLoggingService.cs" />
-    <Compile Include="Core\Utilities\ModuleBase\IModule.cs" />
-    <Compile Include="Core\Utilities\ModuleBase\ModuleBase.cs" />
-    <Compile Include="Core\Utilities\ObjectFactory\DefaultObjectFactory.cs" />
-    <Compile Include="Core\Utilities\ObjectFactory\IObjectFactory.cs" />
-    <Compile Include="Core\Events\NewLogRequestedEvent.cs" />
-    <Compile Include="Core\Extensions\TaskExtensions.cs" />
-    <Compile Include="Core\Utilities\ModuleBase\ModulePriority.cs" />
-    <Compile Include="Core\Module.cs" />
-    <Compile Include="Core\Utilities\LoggingFactory\ILoggingFactory.cs" />
-    <Compile Include="Core\Services\LoggingService\ILoggingService.cs" />
-    <Compile Include="Core\Utilities\ViewModelBase\IViewModel.cs" />
-    <Compile Include="Core\Utilities\ViewModelBase\ViewModel.cs" />
-    <Compile Include="Core\Utilities\ViewModelBase\WeakValueDictionary.cs" />
-    <Compile Include="Core\Utilities\WindowManager\IWindowManager.cs" />
-    <Compile Include="Core\Utilities\WindowManager\DefaultWindowManager.cs" />
-    <Compile Include="Modules\Tests\Module.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Bootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
     <None Include="app.manifest" />
     <None Include="packages.config" />
-    <None Include="Properties\Settings.settings">
-      <Generator>PublicSettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Core\Modules\Shell\Views\ShellView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Modules\SplashScreen\Views\SplashScreenView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Resources\Converters.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Resources\Icons.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Resources\Resources.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Resources\Styles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Core\Resources\Templates.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core\Resources\Images\hl.png" />
-    <Resource Include="Core\Resources\Images\tune_icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core\Resources\Images\icon.png" />
-    <Resource Include="Core\Resources\Images\logo.png" />
-    <Resource Include="Core\Resources\Images\logoInverted.png" />
-    <Resource Include="Core\Resources\Images\logoWhite.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
@@ -283,35 +170,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Core\Resources\Images\logo.ico" />
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
-    <EmbeddedResource Include="Core\Modules\SplashScreen\Resources\SplashScreenResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Resources\Sounds\SoundResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>SoundResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\Resources\Strings\StudioResources.pt-br.resx" />
-    <EmbeddedResource Include="Core\Resources\Strings\StudioResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Core\Resources\Sounds\dayrace_loose.wav" />
-    <Resource Include="Core\Resources\Sounds\entergarage.wav" />
-    <Resource Include="Core\Resources\Sounds\leavegarage.wav" />
-    <Resource Include="Core\Resources\Sounds\mnumove.wav" />
-    <Resource Include="Core\Resources\Sounds\mnuselect.wav" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Core\Modules\MainMenu\" />
-    <Folder Include="Core\Modules\StatusBar\" />
-    <Folder Include="Core\Modules\ToolBar\" />
+    <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj">
+      <Project>{95ce7144-c2d0-4a2b-a672-05c9cbd8ead2}</Project>
+      <Name>SLStudio.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SLStudio.Tests\SLStudio.Tests.csproj">
+      <Project>{51be2715-67bf-42c6-b3f7-76aed407957d}</Project>
+      <Name>SLStudio.Tests</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.112.0\build\net46\System.Data.SQLite.Core.targets')" />
