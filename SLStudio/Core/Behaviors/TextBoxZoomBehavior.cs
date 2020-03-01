@@ -108,6 +108,5 @@ namespace SLStudio.Core.Behaviors
                 e.Handled = true;
             }
         }
-
     }
 }

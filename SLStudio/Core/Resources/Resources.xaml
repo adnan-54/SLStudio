@@ -28,5 +28,5 @@
     <Thickness x:Key="LargeFullMargin">12</Thickness>
 
     <!--DefaultWindowButtons-->
-    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{DynamicResource WindowButtonsStyle}"  x:Shared="False"/>
+    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{DynamicResource WindowButtonsStyle}"  x:Shared="False" />
 </ResourceDictionary>

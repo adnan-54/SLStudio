@@ -1,11 +1,11 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
-using MahApps.Metro.Controls.Dialogs;
 using SLStudio.Core.Modules.Shell.ViewModels;
-using SLStudio.Core.Modules.SplashScreen;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Utilities.CommandLinesArguments;
+using SLStudio.Core.Utilities.DependenciesContainer;
+using SLStudio.Core.Utilities.WindowManager;
 using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
@@ -19,55 +19,52 @@ namespace SLStudio.Core
 {
     public class Bootstrapper : BootstrapperBase
     {
-        private readonly SimpleContainer container;
+        private readonly Container container;
 
         public Bootstrapper()
         {
-            container = new SimpleContainer();
+            container = new Container();
 
-            LoadUserLanguage();
+            ApplyLanguage();
             Initialize();
         }
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
-            IoC.Get<ICommandLineArguments>()?.ParseArguments(e.Args);
+            var commandLineParser = IoC.Get<ICommandLineArguments>();
+            commandLineParser.ParseArguments(e.Args);
 
-            LoadUserTheme();
+            var windowManager = IoC.Get<IWindowManager>();
 
-            await IoC.Get<IBootstrapperService>().Initialize();
-            await DisplayRootViewFor<IShell>();
-            IoC.Get<ISplashScreen>().Close();
-        }
+            ApplyTheme();
 
-        private void LoadUserLanguage()
-        {
-            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
-            culture.NumberFormat.NumberDecimalSeparator = ".";
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
-        }
+            try
+            {
+                await windowManager.ShowWindow<ISplashScreen>();
 
-        private void LoadUserTheme()
-        {
-            var baseColorScheme = Settings.Default.BaseColorScheme;
-            var colorScheme = Settings.Default.ColorScheme;
-            var themeResource = ThemeManager.Themes.FirstOrDefault(theme => theme.BaseColorScheme == baseColorScheme && theme.ColorScheme == colorScheme);
-
-            if (themeResource != null)
-                ThemeManager.ChangeTheme(Application.Current, themeResource);
+                var bootstrapper = IoC.Get<IBootstrapperService>();
+                await bootstrapper.Initialize();
+                await windowManager.ShowWindow<IShell>();
+            }
+            catch (Exception ex)
+            {
+                throw (ex);
+            }
+            finally
+            {
+                await windowManager.CloseWindow<ISplashScreen>();
+            }
         }
 
         protected override void Configure()
         {
             container.Instance(container);
-            container.Singleton<IWindowManager, WindowManager>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<IDialogCoordinator, DialogCoordinator>();
+            container.Singleton<ICommandLineArguments, CommandLineArguments>();
             container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
+            container.Singleton<IWindowManager, DefaultWindowManager>();
+            container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
             container.Singleton<IShell, ShellViewModel>();
-            container.Singleton<ICommandLineArguments, CommandLineArguments>();
         }
 
         protected override object GetInstance(Type service, string key)
@@ -90,10 +87,32 @@ namespace SLStudio.Core
             var originalSender = e.Exception.InnerException?.TargetSite.ReflectedType.Name;
             var title = $"({originalSender}) | {e.Exception.Message}";
             var logger = IoC.Get<ILoggingFactory>()?.GetLoggerFor<Bootstrapper>();
-            logger?.Fatal(e.Exception.ToString(), title);
-            e.Handled = logger != null;
 
+            if (logger != null)
+                logger?.Fatal(e.Exception.ToString(), title);
+            else
+                MessageBox.Show(e.Exception.ToString(), $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            e.Handled = true;
             base.OnUnhandledException(sender, e);
+        }
+
+        private void ApplyTheme()
+        {
+            var baseColorScheme = Settings.Default.BaseColorScheme;
+            var colorScheme = Settings.Default.ColorScheme;
+            var themeResource = ThemeManager.Themes.FirstOrDefault(theme => theme.BaseColorScheme == baseColorScheme && theme.ColorScheme == colorScheme);
+
+            if (themeResource != null)
+                ThemeManager.ChangeTheme(Application.Current, themeResource);
+        }
+
+        private void ApplyLanguage()
+        {
+            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
+            culture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
         }
     }
 }

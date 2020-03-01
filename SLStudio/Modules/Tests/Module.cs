@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using SLStudio.Core;
+﻿using SLStudio.Core;
 
 namespace SLStudio.Modules.Tests
 {
@@ -8,7 +7,7 @@ namespace SLStudio.Modules.Tests
         public override string ModuleName => "Tests";
         public override string ModuleDescrition => "Tests module.";
 
-        public override void Register(SimpleContainer container)
+        public override void Register(IContainer container)
         {
         }
     }

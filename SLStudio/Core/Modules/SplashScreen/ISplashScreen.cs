@@ -1,8 +1,9 @@
-﻿namespace SLStudio.Core.Modules.SplashScreen
+﻿namespace SLStudio.Core
 {
     internal interface ISplashScreen
     {
         string CurrentModule { get; set; }
+
         void Close();
     }
 }

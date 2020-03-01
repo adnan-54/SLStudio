@@ -71,15 +71,15 @@
 
     <!--AvalonEditStyle-->
     <Style TargetType="{x:Type ae:TextEditor}">
-        <Setter Property="SyntaxHighlighting" Value="XML"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontFamily" Value="Consolas"/>
-        <Setter Property="ShowLineNumbers" Value="True"/>
-        <Setter Property="LineNumbersForeground" Value="{DynamicResource MahApps.Brushes.AccentBase}"/>
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background}"/>
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}"/>
+        <Setter Property="SyntaxHighlighting" Value="XML" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Consolas" />
+        <Setter Property="ShowLineNumbers" Value="True" />
+        <Setter Property="LineNumbersForeground" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}" />
     </Style>
-    
+
     <!--AvalonEditSearchBoxStyle-->
     <Style TargetType="{x:Type editor:SearchPanel}">
         <Setter Property="Template">
@@ -193,20 +193,20 @@
     <Style x:Key="SimpleSliderStyle" TargetType="{x:Type Slider}" BasedOn="{StaticResource MahApps.Styles.Slider}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" Value="1"/>
+                <Setter Property="Opacity" Value="1" />
             </Trigger>
         </Style.Triggers>
-        <Setter Property="Opacity" Value="0.8"/>
-        <Setter Property="metro:SliderHelper.ThumbFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.ThumbFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.ThumbFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackValueFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackValueFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="metro:SliderHelper.TrackValueFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="metro:SliderHelper.ThumbFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.ThumbFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.ThumbFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+        <Setter Property="Background" Value="Transparent" />
     </Style>
 </ResourceDictionary>

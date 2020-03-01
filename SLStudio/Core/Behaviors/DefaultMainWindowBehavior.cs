@@ -1,7 +1,5 @@
-﻿using Caliburn.Micro;
+﻿using DevExpress.Mvvm.UI.Interactivity;
 using MahApps.Metro.Controls;
-using Microsoft.Xaml.Behaviors;
-using SLStudio.Properties;
 using System;
 using System.Windows;
 
@@ -25,8 +23,8 @@ namespace SLStudio.Core.Behaviors
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            if (Settings.Default.ShowConsoleAtStartup)
-                IoC.Get<IWindowManager>().ShowWindowAsync(IoC.Get<IConsole>());
+            //if (Settings.Default.ShowConsoleAtStartup)
+            //IoC.Get<IWindowManager>().ShowWindowAsync(IoC.Get<IConsole>());
         }
 
         private void OnClosing(object sender, EventArgs e)

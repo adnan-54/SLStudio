@@ -1,6 +1,4 @@
-﻿using Caliburn.Micro;
-
-namespace SLStudio.Core.Utilities.ModuleBase
+﻿namespace SLStudio.Core.Utilities.ModuleBase
 {
     public interface IModule
     {
@@ -9,6 +7,6 @@ namespace SLStudio.Core.Utilities.ModuleBase
         string ModuleName { get; }
         string ModuleDescrition { get; }
 
-        void Register(SimpleContainer container);
+        void Register(IContainer container);
     }
 }

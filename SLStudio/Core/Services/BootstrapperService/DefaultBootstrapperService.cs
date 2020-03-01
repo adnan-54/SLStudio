@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using SLStudio.Core.Modules.SplashScreen;
+﻿using SLStudio.Core.Utilities.DependenciesContainer;
 using SLStudio.Core.Utilities.ModuleBase;
 using SLStudio.Properties;
 using System;
@@ -11,23 +10,29 @@ namespace SLStudio.Core.Services.BootstrapperService
 {
     internal class DefaultBootstrapperService : IBootstrapperService
     {
-        private readonly SimpleContainer container;
+        private readonly IContainer container;
         private readonly ISplashScreen splashScreen;
-        private readonly List<IModule> modules;
+        private List<IModule> modules;
+        private bool isInitialized;
 
-        public DefaultBootstrapperService(SimpleContainer container, ISplashScreen splashScreen)
+        public DefaultBootstrapperService(Container container, ISplashScreen splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
             modules = new List<IModule>();
+            isInitialized = false;
         }
 
-        public IList<IModule> Modules => modules;
+        public IEnumerable<IModule> GetModules()
+        {
+            foreach (var module in modules)
+                yield return module;
+        }
 
         public async Task Initialize()
         {
-            var windowManager = IoC.Get<IWindowManager>();
-            await windowManager.ShowWindowAsync(splashScreen);
+            if (isInitialized)
+                return;
 
             await Task.Run(async () =>
             {
@@ -40,12 +45,12 @@ namespace SLStudio.Core.Services.BootstrapperService
                     modules.Add(instance);
                 });
 
-                var orderedModules = modules.OrderByDescending(p => p.ModulePriority);
+                modules = modules.OrderByDescending(p => p.ModulePriority).ToList();
 
                 await Task.Delay(500);
-                foreach (var module in orderedModules)
+                foreach (var module in modules)
                 {
-                    if (module != null && module.ShouldBeLoaded)
+                    if (module.ShouldBeLoaded)
                     {
                         if (!Settings.Default.FastSplashScreen)
                             await Task.Delay(Settings.Default.SplashScreenSleepTime);
@@ -54,11 +59,12 @@ namespace SLStudio.Core.Services.BootstrapperService
                         module.Register(container);
                         await Task.Delay(100);
                     }
-
                 }
                 splashScreen.CurrentModule = null;
                 await Task.Delay(500);
             });
+
+            isInitialized = true;
         }
     }
 }

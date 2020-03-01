@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using SLStudio.Core.Utilities.ModuleBase;
+﻿using SLStudio.Core.Utilities.ModuleBase;
 
 namespace SLStudio.Core
 {
@@ -13,6 +12,6 @@ namespace SLStudio.Core
 
         public abstract string ModuleDescrition { get; }
 
-        public abstract void Register(SimpleContainer container);
+        public abstract void Register(IContainer container);
     }
 }
