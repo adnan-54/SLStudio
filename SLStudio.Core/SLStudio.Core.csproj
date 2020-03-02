@@ -120,6 +120,11 @@
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Modules\Shell\IShell.cs" />
+    <Compile Include="Modules\Shell\Resources\ShellSettings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>ShellSettings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="Modules\Shell\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -154,6 +159,8 @@
     <Compile Include="Services\BootstrapperService\IBootstrapperService.cs" />
     <Compile Include="Services\LoggingService\DefaultLoggingService.cs" />
     <Compile Include="Services\LoggingService\ILoggingService.cs" />
+    <Compile Include="Services\SettingsService\DefaultSettingsService.cs" />
+    <Compile Include="Services\SettingsService\ISettingsService.cs" />
     <Compile Include="Utilities\CommandHandler\CommandHandler.cs" />
     <Compile Include="Utilities\CommandLinesArguments\CommandLineArguments.cs" />
     <Compile Include="Utilities\CommandLinesArguments\ICommandLineArguments.cs" />
@@ -265,6 +272,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Modules\Shell\Resources\ShellSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ShellSettings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>

@@ -7,7 +7,7 @@
         <Grid Margin="6, 0, 3, 0" RenderOptions.BitmapScalingMode="HighQuality">
             <Rectangle Height="32" Width="32">
                 <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="{StaticResource AppIcon}" />
+                    <ImageBrush ImageSource="{DynamicResource AppIcon}" />
                 </Rectangle.OpacityMask>
 
                 <Rectangle.Style>

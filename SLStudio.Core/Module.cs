@@ -3,6 +3,7 @@ using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Services.LoggingService;
+using SLStudio.Core.Services.SettingsService;
 using SLStudio.Core.Utilities.CommandLinesArguments;
 using SLStudio.Core.Utilities.ErrorHandler;
 using SLStudio.Core.Utilities.ObjectFactory;
@@ -26,19 +27,15 @@ namespace SLStudio.Core
 
             isRegistred = true;
 
-            //Factories
             container.Singleton<IObjectFactory, DefaultObjectFactory>();
             container.Singleton<ILoggingFactory, DefaultLoggingFactory>();
-
-            //Services
             container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
-            container.Singleton<IWindowManager, DefaultWindowManager>();
             container.Singleton<ILoggingService, DefaultLoggingService>();
-
-            //Utilities
             container.Singleton<ICommandLineArguments, DefaultCommandLineArguments>();
             container.Singleton<IErrorHandler, DefaultErrorHandler>();
+            container.Singleton<IWindowManager, DefaultWindowManager>();
+            container.Singleton<ISettingsService, DefaultSettingsService>();
 
             //Modules
             container.Instance(container);

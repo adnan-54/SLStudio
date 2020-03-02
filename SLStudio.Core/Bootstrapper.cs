@@ -1,8 +1,8 @@
 ﻿using Caliburn.Micro;
 using MahApps.Metro;
+using SLStudio.Core.Properties;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Utilities.DependenciesContainer;
-using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

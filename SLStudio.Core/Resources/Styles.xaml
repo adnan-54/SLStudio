@@ -7,7 +7,7 @@
 
     <!--CleanWindowStyle-->
     <Style x:Key="CleanWindowStyle" TargetType="{x:Type metro:MetroWindow}">
-        <Setter Property="Icon" Value="pack://application:,,,/Core/Resources/Images/logo.png" />
+        <!--<Setter Property="Icon" Value="/resources/images/hl.png" />-->
         <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
         <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
         <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.SemiTransparentWhite}" />
@@ -123,7 +123,7 @@
 
                             <StackPanel Grid.Row="1" HorizontalAlignment="Center"
                                         Orientation="Horizontal"
-                                        Margin="{StaticResource SmallUpMargin}">
+                                        Margin="{DynamicResource SmallUpMargin}">
 
                                 <!-- FindPrevious-->
                                 <Button Margin="{DynamicResource SmallLeftMargin}"

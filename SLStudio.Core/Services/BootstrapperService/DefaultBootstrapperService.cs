@@ -1,6 +1,6 @@
-﻿using SLStudio.Core.Utilities.DependenciesContainer;
+﻿using SLStudio.Core.Properties;
+using SLStudio.Core.Utilities.DependenciesContainer;
 using SLStudio.Core.Utilities.ModuleBase;
-using SLStudio.Properties;
 using System;
 using System.Collections.Generic;
 using System.IO;
