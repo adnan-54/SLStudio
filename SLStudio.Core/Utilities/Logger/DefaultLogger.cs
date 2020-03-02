@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using System;
+﻿using System;
 using System.Windows;
 
 namespace SLStudio.Core.Utilities.Logger
@@ -8,40 +7,35 @@ namespace SLStudio.Core.Utilities.Logger
     {
         private readonly Type sender;
         private readonly ILoggingService loggingService;
+        private readonly ICommandLineArguments commandLineArguments;
 
-        public DefaultLogger(Type sender)
+        public DefaultLogger(Type sender, ILoggingService loggingService, ICommandLineArguments commandLineArguments)
         {
             this.sender = sender;
-            loggingService = IoC.Get<ILoggingService>();
+            this.loggingService = loggingService;
+            this.commandLineArguments = commandLineArguments;
         }
 
-        private enum LogLevel
-        {
-            Debug,
-            Info,
-            Warning,
-            Error,
-            Fatal
-        }
 
         public void Debug(string message, string title = null)
         {
-            Log(LogLevel.Debug.ToString(), title, message);
+            if (commandLineArguments.DebuggingMode)
+                Log("Debug", title, message);
         }
 
         public void Info(string message, string title = null)
         {
-            Log(LogLevel.Info.ToString(), title, message);
+            Log("Info", title, message);
         }
 
         public void Warning(string message, string title = null)
         {
-            Log(LogLevel.Warning.ToString(), title, message);
+            Log("Warning", title, message);
         }
 
         public void Error(string message, string title = null)
         {
-            Log(LogLevel.Error.ToString(), title, message);
+            Log("Error", title, message);
         }
 
         public void Error(Exception exception)
@@ -51,7 +45,7 @@ namespace SLStudio.Core.Utilities.Logger
 
         public void Fatal(string message, string title = null)
         {
-            Log(LogLevel.Fatal.ToString(), title, message);
+            Log("Fatal", title, message);
             MessageBox.Show(message, $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 

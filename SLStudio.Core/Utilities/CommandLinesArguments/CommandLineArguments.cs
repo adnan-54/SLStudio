@@ -19,17 +19,14 @@ namespace SLStudio.Core.Utilities.CommandLinesArguments
 
         public void ParseArguments(IEnumerable<string> args)
         {
-            if (alreadyParsed)
-                throw new InvalidOperationException();
-
-            if (!args.Any())
+            if (alreadyParsed || !args.Any())
                 return;
+
+            alreadyParsed = true;
+            Args = args;
 
             if (args.FirstOrDefault(arg => arg.Equals("--debugging", StringComparison.InvariantCultureIgnoreCase)).Any())
                 DebuggingMode = true;
-
-            Args = args;
-            alreadyParsed = true;
         }
     }
 }

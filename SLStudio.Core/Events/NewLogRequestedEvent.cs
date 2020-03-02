@@ -21,7 +21,10 @@ namespace SLStudio.Core.Events
 
         public override string ToString()
         {
-            return $"({Date}) {Sender}: [{Level.ToUpper()}] \"{Title}\", {Message}";
+            var title = string.Empty;
+            if (!string.IsNullOrEmpty(Title))
+                title = $"\"{Title}\", ";
+            return $"({Date}) <{Sender}>: [{Level.ToUpper()}] - {title}{Message}";
         }
     }
 }

@@ -16,31 +16,28 @@ namespace SLStudio.Core
     public class Bootstrapper : BootstrapperBase
     {
         private readonly Container container;
+        private ILogger logger;
 
         public Bootstrapper()
         {
             container = new Container();
-
             ApplyLanguage();
             Initialize();
         }
 
         protected override async void OnStartup(object sender, StartupEventArgs e)
         {
-            var commandLineParser = IoC.Get<ICommandLineArguments>();
-            commandLineParser.ParseArguments(e.Args);
-
-            var windowManager = IoC.Get<IWindowManager>();
-
-            ApplyTheme();
-
             try
             {
-                await windowManager.ShowWindow<ISplashScreen>();
+                container.GetInstance<ICommandLineArguments>().ParseArguments(e.Args);
+                logger = container.GetInstance<ILoggingFactory>().GetLoggerFor<Bootstrapper>();
+                logger.Debug("Initializing application");
 
-                var bootstrapper = IoC.Get<IBootstrapperService>();
-                await bootstrapper.Initialize();
-                await windowManager.ShowWindow<IShell>();
+                ApplyTheme();
+
+                await container.GetInstance<IWindowManager>().ShowWindow<ISplashScreen>();
+                await container.GetInstance<IBootstrapperService>().Initialize();
+                await container.GetInstance<IWindowManager>().ShowWindow<IShell>();
             }
             catch (Exception ex)
             {
@@ -48,7 +45,11 @@ namespace SLStudio.Core
             }
             finally
             {
-                await windowManager.CloseWindow<ISplashScreen>();
+                var windowManager = container.GetInstance<IWindowManager>();
+                if (windowManager != null)
+                    await windowManager.CloseWindow<ISplashScreen>();
+                else
+                    Application.Current.Shutdown();
             }
         }
 
@@ -73,11 +74,16 @@ namespace SLStudio.Core
             container.BuildUp(instance);
         }
 
+        protected override void OnExit(object sender, EventArgs e)
+        {
+            if (logger != null)
+                logger.Debug("Exiting application");
+        }
+
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
             var originalSender = e.Exception.InnerException?.TargetSite.ReflectedType.Name;
             var title = $"({originalSender}) | {e.Exception.Message}";
-            var logger = IoC.Get<ILoggingFactory>()?.GetLoggerFor<Bootstrapper>();
 
             if (logger != null)
                 logger?.Fatal(e.Exception.ToString(), title);
