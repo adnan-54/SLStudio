@@ -4,67 +4,322 @@
                     xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:resx="clr-namespace:SLStudio.Core.Resources.Strings">
-    <!--CleanWindowStyle-->
-    <Style x:Key="CleanWindowStyle" TargetType="{x:Type metro:MetroWindow}">
-        <!--<Setter Property="Icon" Value="Resources/Images/logo.ico" />-->
-        <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
-        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
-        <Setter Property="WindowTitleBrush" Value="{DynamicResource MahApps.Brushes.SemiTransparentWhite}" />
-        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource MahApps.Brushes.TransparentWhite}" />
-        <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Black}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
-        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource MahApps.Brushes.Accent2}" />
-        <Setter Property="GlowBrush" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
-        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource MahApps.Brushes.Accent2}" />
-        <Setter Property="SaveWindowPosition" Value="True" />
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <Setter Property="MinWidth" Value="800" />
-        <Setter Property="MinHeight" Value="600" />
-        <Setter Property="TitleAlignment" Value="Center" />
-        <Setter Property="TitleCharacterCasing" Value="Normal" />
-        <Setter Property="BorderThickness" Value="1" />
+    <!--DefaultStyles-->
+    <!--DefaultScrollBarStyle-->
+    <Style TargetType="{x:Type ScrollBar}">
+        <Setter Property="Background" Value="{DynamicResource Button.Background}"/>
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ScrollBar}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource Border}" BorderThickness="1, 0, 0, 0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition x:Name="Row1" MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                                <RowDefinition x:Name="Row2" Height="0.00001*" />
+                                <RowDefinition x:Name="Row3" MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                            </Grid.RowDefinitions>
+                            <RepeatButton x:Name="PART_LineUpButton" Command="{x:Static ScrollBar.LineUpCommand}" Grid.Row="0" Style="{DynamicResource ScrollBarButtonStyle}">
+                                <Rectangle Fill="{DXBinding '@a($RepeatButton).Foreground'}" Margin="4">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{DynamicResource ArrowUp}" Stretch="Uniform"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </RepeatButton>
+                            <Track x:Name="PART_Track" Grid.Row="1" IsDirectionReversed="True">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{DynamicResource VerticalScrollBarPageButtonStyle}" />
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{DynamicResource VerticalScrollBarPageButtonStyle}" />
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb Margin="3, 0, 3, 0" Style="{DynamicResource ScrollBarThumb}" />
+                                </Track.Thumb>
+                            </Track>
+                            <RepeatButton x:Name="PART_LineDownButton" Command="{x:Static ScrollBar.LineDownCommand}" Grid.Row="2" Style="{DynamicResource ScrollBarButtonStyle}">
+                                <Rectangle Fill="{DXBinding '@a($RepeatButton).Foreground'}" Margin="4">
+                                    <Rectangle.OpacityMask>
+                                        <ImageBrush ImageSource="{DynamicResource ArrowDown}" Stretch="Uniform"/>
+                                    </Rectangle.OpacityMask>
+                                </Rectangle>
+                            </RepeatButton>
+                        </Grid>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Width" Value="17" />
         <Style.Triggers>
-            <DataTrigger Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource Mode=Self}}" Value="False">
-                <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.Badged.DisabledBackground}" />
-            </DataTrigger>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+                <Setter Property="Width" Value="Auto" />
+                <Setter Property="Height" Value="17" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ScrollBar}">
+                            <Border Background="{TemplateBinding Background}" BorderBrush="{DynamicResource Border}" BorderThickness="0, 1, 0, 0">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition x:Name="Column1" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+                                        <ColumnDefinition x:Name="Column2" Width="0.00001*" />
+                                        <ColumnDefinition x:Name="Column3" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+                                    </Grid.ColumnDefinitions>
+                                    <RepeatButton x:Name="PART_LineLeftButton" Command="{x:Static ScrollBar.LineLeftCommand}" Grid.Column="0" Style="{DynamicResource ScrollBarButtonStyle}">
+                                        <Rectangle Fill="{DXBinding '@a($RepeatButton).Foreground'}" Margin="4">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="{DynamicResource ArrowLeft}" Stretch="Uniform"/>
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </RepeatButton>
+                                    <Track x:Name="PART_Track" Grid.Column="1">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{DynamicResource HorizontalScrollBarPageButtonStyle}" />
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{DynamicResource HorizontalScrollBarPageButtonStyle}" />
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Margin="0, 3, 0, 3" Style="{DynamicResource ScrollBarThumb}" />
+                                        </Track.Thumb>
+                                    </Track>
+                                    <RepeatButton x:Name="PART_LineRightButton" Command="{x:Static ScrollBar.LineRightCommand}" Grid.Column="2" Style="{DynamicResource ScrollBarButtonStyle}">
+                                        <Rectangle Fill="{DXBinding '@a($RepeatButton).Foreground'}" Margin="4">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="{DynamicResource ArrowRight}" Stretch="Uniform"/>
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </RepeatButton>
+                                </Grid>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
         </Style.Triggers>
     </Style>
 
-    <!--WindowButtonsStyle-->
-    <Style x:Key="WindowButtonsStyle" TargetType="{x:Type metro:WindowButtonCommands}"
-           BasedOn="{StaticResource MahApps.Styles.WindowButtonCommands.Win10}">
-        <Setter Property="Template" Value="{DynamicResource MahApps.Templates.WindowButtonCommands.Win10}" />
-        <Setter Property="LightMinButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
-        <Setter Property="LightMaxButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
-        <Setter Property="LightCloseButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
-        <Setter Property="DarkMinButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
-        <Setter Property="DarkMaxButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
-        <Setter Property="DarkCloseButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
+    <!--DefaultButtonStyle-->
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Padding" Value="11, 2, 11, 2" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="ToggleButton.IsChecked" Value="False" />
+                    <Condition Property="IsPressed" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+            </MultiTrigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <!--WindowButtonsLigthStyle-->
-    <Style x:Key="WindowButtonsLigthStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Light}">
-        <Setter Property="Foreground" Value="{Binding TitleForeground, RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}" />
+    <!--DefaultToggleButtonStyle-->
+    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Padding" Value="11, 2, 11, 2" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="ToggleButton.IsChecked" Value="False" />
+                    <Condition Property="IsPressed" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+            </MultiTrigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <!--WindowButtonsDarkStyle-->
-    <Style x:Key="WindowButtonsDarkStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Dark}">
-        <Setter Property="Foreground" Value="{Binding TitleForeground, RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}" />
+    <!--DefaultRepeatButtonStyle-->
+    <Style BasedOn="{StaticResource {x:Type RepeatButton}}" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Padding" Value="11, 2, 11, 2" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
+        <Style.Triggers>
+            <MultiTrigger>
+                <MultiTrigger.Conditions>
+                    <Condition Property="IsMouseOver" Value="True" />
+                    <Condition Property="ToggleButton.IsChecked" Value="False" />
+                    <Condition Property="IsPressed" Value="False" />
+                </MultiTrigger.Conditions>
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+            </MultiTrigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
-    <!--AvalonEditStyle-->
+    <!--DefaultCheckBoxStyle-->
+    <Style TargetType="{x:Type CheckBox}">
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Padding" Value="0, 3, 0, 3" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type CheckBox}">
+                    <Grid x:Name="Root" Background="Transparent" Margin="{TemplateBinding Padding}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid x:Name="Field" Grid.Column="0" Grid.ColumnSpan="1" Height="14" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0, 1, 0, 1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="14">
+                            <Border x:Name="IsDefault" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                            <Border x:Name="IsFocused" BorderBrush="{DynamicResource Focused}" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0" />
+                            <Path x:Name="Indeterminate" Style="{DynamicResource CheckBoxIndeterminate}" Visibility="Collapsed" />
+                            <Path x:Name="Checked" Style="{DynamicResource CheckBoxChecked}" Visibility="Collapsed" />
+                        </Grid>
+                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="4, 0, 0, 0" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="FocusStates">
+                                <VisualState x:Name="Focused">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" Storyboard.TargetName="IsFocused" Storyboard.TargetProperty="Opacity" To="1" />
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unfocused" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="Checked" Value="{DynamicResource HoverForeground}" />
+                            <Setter Property="Fill" TargetName="Indeterminate" Value="{DynamicResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="Checked" Value="{DynamicResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Indeterminate" Value="{DynamicResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
+                        </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsMouseOver" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsPressed" Value="True" />
+                                <Condition Property="IsFocused" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
+                        </MultiTrigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Root" Value="0.38" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="true">
+                            <Setter Property="Visibility" TargetName="Checked" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="{x:Null}">
+                            <Setter Property="Visibility" TargetName="Indeterminate" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="FlowDirection" Value="RightToLeft">
+                            <Setter Property="LayoutTransform" TargetName="Field">
+                                <Setter.Value>
+                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="-1" ScaleY="1" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--DefaultSliderStyle-->
+    <Style TargetType="{x:Type Slider}" BasedOn="{StaticResource MahApps.Styles.Slider}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Opacity" Value="1" />
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource HoverBorder}" />
+            </Trigger>
+        </Style.Triggers>
+        <Setter Property="Opacity" Value="0.8" />
+        <Setter Property="metro:SliderHelper.ThumbFillBrush" Value="{DynamicResource Backstage.Button.Background}" />
+        <Setter Property="metro:SliderHelper.ThumbFillHoverBrush" Value="{DynamicResource Backstage.HoverBackground}" />
+        <Setter Property="metro:SliderHelper.ThumbFillPressedBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="metro:SliderHelper.TrackFillBrush" Value="{DynamicResource Border}" />
+        <Setter Property="metro:SliderHelper.TrackFillHoverBrush" Value="{DynamicResource HoverBorder}" />
+        <Setter Property="metro:SliderHelper.TrackFillPressedBrush" Value="{DynamicResource HoverBorder}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillBrush" Value="{DynamicResource Backstage.Button.Background}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillHoverBrush" Value="{DynamicResource Backstage.HoverBackground}" />
+        <Setter Property="metro:SliderHelper.TrackValueFillPressedBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="Foreground" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="Transparent" />
+    </Style>
+
+    <!--DefaultAvalonEditStyle-->
     <Style TargetType="{x:Type ae:TextEditor}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
         <Setter Property="SyntaxHighlighting" Value="XML" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="FontFamily" Value="Consolas" />
         <Setter Property="ShowLineNumbers" Value="True" />
-        <Setter Property="LineNumbersForeground" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
-        <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Window.Background}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.Black}" />
+        <Setter Property="LineNumbersForeground" Value="{DynamicResource Focused}" />
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="HorizontalScrollBarVisibility" Value="Auto" />
+        <Style.Triggers>
+            <DataTrigger Binding="{DXBinding '@s.IsKeyboardFocusWithin'}" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource Focused}" />
+            </DataTrigger>
+        </Style.Triggers>
     </Style>
 
-    <!--AvalonEditSearchBoxStyle-->
+    <!--DefaultAvalonEditSearchBoxStyle-->
     <Style TargetType="{x:Type editor:SearchPanel}">
         <Setter Property="Template">
             <Setter.Value>
@@ -173,196 +428,177 @@
         </Setter>
     </Style>
 
-    <!--SimpleSliderStyle-->
-    <Style x:Key="SimpleSliderStyle" TargetType="{x:Type Slider}" BasedOn="{StaticResource MahApps.Styles.Slider}">
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Opacity" Value="1" />
-            </Trigger>
-        </Style.Triggers>
-        <Setter Property="Opacity" Value="0.8" />
-        <Setter Property="metro:SliderHelper.ThumbFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.ThumbFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.ThumbFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackValueFillBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackValueFillHoverBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="metro:SliderHelper.TrackValueFillPressedBrush" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-        <Setter Property="Background" Value="Transparent" />
-    </Style>
-
-    <!--DefaultButtonStyle-->
-    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <!--WindowStyles-->
+    <!--CleanWindowStyle-->
+    <Style x:Key="CleanWindowStyle" TargetType="{x:Type metro:MetroWindow}">
+        <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
+        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplate}" />
+        <Setter Property="WindowTitleBrush" Value="Transparent" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
+        <Setter Property="TitleForeground" Value="{DynamicResource Foreground}" />
         <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Padding" Value="11, 2, 11, 2" />
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource Border}" />
+        <Setter Property="SaveWindowPosition" Value="True" />
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="TitleAlignment" Value="Center" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="ToggleButton.IsChecked" Value="False" />
-                    <Condition Property="IsPressed" Value="False" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-            </MultiTrigger>
-            <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
-            </Trigger>
+            <DataTrigger Binding="{DXBinding '@s.IsKeyboardFocusWithin'}" Value="False">
+                <Setter Property="TitleForeground" Value="{DynamicResource Border}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <!--DefaultToggleButtonStyle-->
-    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+    <!--DialogWindowStyle-->
+    <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}">
+        <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
+        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplateLight}" />
+        <Setter Property="WindowTitleBrush" Value="{DynamicResource Backstage.Window.Background}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource Backstage.Window.Background}" />
+        <Setter Property="TitleForeground" Value="{DynamicResource Backstage.Foreground}" />
         <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Padding" Value="11, 2, 11, 2" />
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="GlowBrush" Value="{DynamicResource Focused}" />
+        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource Border}" />
+        <Setter Property="SaveWindowPosition" Value="False" />
+        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="MinWidth" Value="300" />
+        <Setter Property="MinHeight" Value="300" />
+        <Setter Property="TitleAlignment" Value="Left" />
+        <Setter Property="TitleCharacterCasing" Value="Normal" />
+        <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="ToggleButton.IsChecked" Value="False" />
-                    <Condition Property="IsPressed" Value="False" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-            </MultiTrigger>
-            <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
-            </Trigger>
+            <DataTrigger Binding="{DXBinding '@s.IsKeyboardFocusWithin'}" Value="False">
+                <Setter Property="TitleForeground" Value="{DynamicResource Backstage.Foreground}" />
+            </DataTrigger>
         </Style.Triggers>
     </Style>
 
-    <!--DefaultRepeatButtonStyle-->
-    <Style BasedOn="{StaticResource {x:Type RepeatButton}}" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Padding" Value="11, 2, 11, 2" />
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Template" Value="{DynamicResource ButtonLightweightTemplate}" />
-        <Style.Triggers>
-            <MultiTrigger>
-                <MultiTrigger.Conditions>
-                    <Condition Property="IsMouseOver" Value="True" />
-                    <Condition Property="ToggleButton.IsChecked" Value="False" />
-                    <Condition Property="IsPressed" Value="False" />
-                </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-            </MultiTrigger>
-            <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
-            </Trigger>
-            <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
-            </Trigger>
-        </Style.Triggers>
+    <!--WindowButtonsStyle-->
+    <Style x:Key="WindowButtonsStyle" TargetType="{x:Type metro:WindowButtonCommands}"
+           BasedOn="{StaticResource MahApps.Styles.WindowButtonCommands.Win10}">
+        <Setter Property="Template" Value="{DynamicResource MahApps.Templates.WindowButtonCommands.Win10}" />
+        <Setter Property="LightMinButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
+        <Setter Property="LightMaxButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
+        <Setter Property="LightCloseButtonStyle" Value="{DynamicResource WindowButtonsLigthStyle}" />
+        <Setter Property="DarkMinButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
+        <Setter Property="DarkMaxButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
+        <Setter Property="DarkCloseButtonStyle" Value="{DynamicResource WindowButtonsDarkStyle}" />
     </Style>
 
-    <!--DefaultCheckBoxStyle-->
-    <Style TargetType="{x:Type CheckBox}">
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-        <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="HorizontalContentAlignment" Value="Left" />
-        <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Padding" Value="0, 3, 0, 3" />
-        <Setter Property="FontWeight" Value="Normal" />
-        <Setter Property="FontSize" Value="12"/>
+    <!--WindowButtonsLigthStyle-->
+    <Style x:Key="WindowButtonsLigthStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Light}">
+        <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
+    </Style>
+
+    <!--WindowButtonsDarkStyle-->
+    <Style x:Key="WindowButtonsDarkStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Dark}">
+        <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
+    </Style>
+
+    <!--ButtonStyles-->
+    <!--HorizontalScrollBarPageButtonStyle-->
+    <Style x:Key="HorizontalScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <Grid x:Name="Root" Background="Transparent" Margin="{TemplateBinding Padding}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Grid x:Name="Field" Grid.Column="0" Grid.ColumnSpan="1" Height="14" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="0, 1, 0, 1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="14">
-                            <Border x:Name="IsDefault" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
-                            <Border x:Name="IsFocused" BorderBrush="{DynamicResource Focused}" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0" />
-                            <Path x:Name="Indeterminate" Style="{DynamicResource CheckBoxIndeterminate}" Visibility="Collapsed" />
-                            <Path x:Name="Checked" Style="{DynamicResource CheckBoxChecked}" Visibility="Collapsed" />
-                        </Grid>
-                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Grid.ColumnSpan="1" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="4, 0, 0, 0" RecognizesAccessKey="True" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="FocusStates">
-                                <VisualState x:Name="Focused">
-                                    <Storyboard>
-                                        <DoubleAnimation Duration="0" Storyboard.TargetName="IsFocused" Storyboard.TargetProperty="Opacity" To="1" />
-                                    </Storyboard>
-                                </VisualState>
-                                <VisualState x:Name="Unfocused" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </Grid>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle x:Name="IsDefault" Fill="Transparent" />
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource HoverBackground}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--VerticalScrollBarPageButtonStyle-->
+    <Style x:Key="VerticalScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Rectangle x:Name="IsDefault" Fill="Transparent" />
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--ScrollBarButtonStyle-->
+    <Style x:Key="ScrollBarButtonStyle" TargetType="{x:Type RepeatButton}">
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type RepeatButton}">
+                    <Border x:Name="IsDefault" Background="Transparent" x:Uid="@Background=Button.Background">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.5"/>
+                        </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Checked" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Fill" TargetName="Indeterminate" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="1.0"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Checked" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Indeterminate" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="1.0"/>
                         </Trigger>
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
-                        </Trigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsMouseOver" Value="True" />
-                                <Condition Property="IsFocused" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
-                        </MultiTrigger>
-                        <MultiTrigger>
-                            <MultiTrigger.Conditions>
-                                <Condition Property="IsPressed" Value="True" />
-                                <Condition Property="IsFocused" Value="True" />
-                            </MultiTrigger.Conditions>
-                            <Setter Property="Opacity" TargetName="IsFocused" Value="1" />
-                        </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Root" Value="0.38" />
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.38" />
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="true">
-                            <Setter Property="Visibility" TargetName="Checked" Value="Visible" />
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource Focused}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--ScrollBarThumb-->
+    <Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+        <Setter Property="MinHeight" Value="6" />
+        <Setter Property="MinWidth" Value="6" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Rectangle x:Name="IsDefault" Fill="{DynamicResource Foreground}"
+                               MinHeight="{TemplateBinding MinHeight}" MinWidth="{TemplateBinding MinWidth}"/>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="False">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.4"/>
                         </Trigger>
-                        <Trigger Property="IsChecked" Value="{x:Null}">
-                            <Setter Property="Visibility" TargetName="Indeterminate" Value="Visible" />
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.6"/>
                         </Trigger>
-                        <Trigger Property="FlowDirection" Value="RightToLeft">
-                            <Setter Property="LayoutTransform" TargetName="Field">
-                                <Setter.Value>
-                                    <ScaleTransform CenterX="0.5" CenterY="0.5" ScaleX="-1" ScaleY="1" />
-                                </Setter.Value>
-                            </Setter>
+                        <Trigger Property="IsDragging" Value="True">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.7"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="0.38" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

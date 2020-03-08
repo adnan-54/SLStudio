@@ -250,4 +250,59 @@
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Width" Value="8" />
     </Style>
+
+    <!--ArrowUp-->
+    <DrawingImage x:Key="ArrowUp">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{DynamicResource Foreground}" Geometry="F1 M 4,0 8,4 0,4 4,0 Z " />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ArrowRight-->
+    <DrawingImage x:Key="ArrowRight">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{DynamicResource Foreground}" Geometry="F1 M 0,0 0,8 4,4 0,0 Z " />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ArrowDown-->
+    <DrawingImage x:Key="ArrowDown">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{DynamicResource Foreground}" Geometry="F1 M 0,0 8,0 4,4 0,0 Z " />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ArrowLeft-->
+    <DrawingImage x:Key="ArrowLeft">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{DynamicResource Foreground}" Geometry="F1 M 0,4 4,0 4,8 0,4 Z " />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ArrowRightDown-->
+    <DrawingImage x:Key="ArrowRightDown">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{DynamicResource Foreground}" Geometry="F1 M 6,0 6,6 0,6 6,0 Z " />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>

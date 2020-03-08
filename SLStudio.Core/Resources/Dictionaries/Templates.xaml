@@ -12,14 +12,25 @@
 
                 <Rectangle.Style>
                     <Style TargetType="{x:Type Rectangle}">
-                        <Setter Property="Fill" Value="{DynamicResource MahApps.Brushes.AccentBase}" />
+                        <Setter Property="Fill" Value="{DynamicResource Focused}" />
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsKeyboardFocusWithin, RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}" Value="False">
-                                <Setter Property="Fill" Value="{DynamicResource MahApps.Brushes.Accent2}" />
+                            <DataTrigger Binding="{DXBinding '@a($metro:MetroWindow).IsKeyboardFocusWithin'}" Value="False">
+                                <Setter Property="Fill" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
                 </Rectangle.Style>
+            </Rectangle>
+        </Grid>
+    </DataTemplate>
+
+    <!--WindowIconTemplateLight-->
+    <DataTemplate x:Key="WindowIconTemplateLight">
+        <Grid Margin="6, 0, 3, 0" RenderOptions.BitmapScalingMode="HighQuality">
+            <Rectangle Height="32" Width="32" Fill="{DynamicResource Backstage.Foreground}">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="{DynamicResource AppIcon}" />
+                </Rectangle.OpacityMask>
             </Rectangle>
         </Grid>
     </DataTemplate>
