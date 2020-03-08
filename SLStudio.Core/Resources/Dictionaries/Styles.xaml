@@ -276,6 +276,117 @@
         </Setter>
     </Style>
 
+    <!--DefaultSeparatorStyle-->
+    <Style TargetType="{x:Type Separator}">
+        <Setter Property="BorderBrush" Value="{DynamicResource Delimiter}"/>
+        <Setter Property="BorderThickness" Value="0, 1, 0, 0" />
+        <Setter Property="Focusable" Value="False" />
+        <Setter Property="Margin" Value="0, 2, 0, 2" />
+        <Setter Property="MinHeight" Value="1" />
+        <Setter Property="MinWidth" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Separator}">
+                    <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" MinHeight="{TemplateBinding MinHeight}" MinWidth="{TemplateBinding MinWidth}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--DefaultToolTipStyle-->
+    <Style TargetType="{x:Type ToolTip}">
+        <Setter Property="Background" Value="{DynamicResource Control.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <Setter Property="Padding" Value="6, 4, 6, 4" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontFamily" Value="Sergoe UI" />
+        <Setter Property="FontStyle" Value="Normal" />
+        <Setter Property="FontWeight" Value="Normal" />
+        <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToolTip}">
+                    <Grid>
+                        <Border Background="{TemplateBinding Background}" Margin="0, 0, 5, 5">
+                            <Border.Effect>
+                                <DropShadowEffect x:Name="Shadow" BlurRadius="4" Color="#00FFFFFF" Direction="315" Opacity="0.14" ShadowDepth="3"/>
+                            </Border.Effect>
+                        </Border>
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,0,5,5" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextElement.FontFamily="{TemplateBinding FontFamily}" TextElement.FontSize="{TemplateBinding FontSize}" TextElement.FontStyle="{TemplateBinding FontStyle}" TextElement.FontWeight="{TemplateBinding FontWeight}" TextElement.Foreground="{TemplateBinding Foreground}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasDropShadow" Value="True" />
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+    <!--DefaultProgressBarStyle-->
+    <Style TargetType="{x:Type ProgressBar}">
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Foreground" Value="{DynamicResource Focused}"/>
+        <Setter Property="MinHeight" Value="5"/>
+        <Setter Property="MinWidth" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                    <Grid x:Name="Root">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid x:Name="PART_Track" Margin="1">
+                                <Grid x:Name="PART_Indicator" ClipToBounds="True" HorizontalAlignment="Left">
+                                    <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" />
+                                    <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="-0.5, 0.5" Visibility="Collapsed">
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform ScaleX="0.25" />
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame KeyTime="0" Value="-0.5, 0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5, 0.5" />
+                                            <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5, 0.5" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter Property="LayoutTransform" TargetName="Root">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="Animation" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+        
     <!--DefaultSliderStyle-->
     <Style TargetType="{x:Type Slider}" BasedOn="{StaticResource MahApps.Styles.Slider}">
         <Style.Triggers>
