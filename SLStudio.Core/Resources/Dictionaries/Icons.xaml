@@ -224,4 +224,30 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+
+    <!--CheckBoxChecked-->
+    <Style x:Key="CheckBoxChecked" TargetType="{x:Type Path}">
+        <Setter Property="Data" Value="F1 M 0,3 0,5 3,8 8,3 8,1 3,6 0,3 Z " />
+        <Setter Property="Fill" Value="{DynamicResource Foreground}" />
+        <Setter Property="Height" Value="8" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="8" />
+    </Style>
+
+    <!--CheckBoxIndeterminate-->
+    <Style x:Key="CheckBoxIndeterminate" TargetType="{x:Type Path}">
+        <Setter Property="Data" Value="F1 M 0,0 8,0 8,8 0,8 0,0 Z " />
+        <Setter Property="Fill" Value="{DynamicResource Foreground}" />
+        <Setter Property="Height" Value="8" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="2" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="8" />
+    </Style>
 </ResourceDictionary>

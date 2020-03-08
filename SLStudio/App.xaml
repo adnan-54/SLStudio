@@ -5,17 +5,13 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--MahApps-->
+                <!--MahAppsResources-->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
 
                 <!--LocalResources-->
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Converters.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Resources.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Styles.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Templates.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/MergedDictionaries.xaml" />
 
                 <!--Bootstrapper-->
                 <ResourceDictionary>

@@ -9,7 +9,7 @@
         xmlns:resx="clr-namespace:SLStudio.Core.Modules.SplashScreen.Resources"
         mc:Ignorable="d" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent" Opacity="0"
-        ResizeMode="NoResize" Width="600" SizeToContent="Height"
+        ResizeMode="NoResize" Width="600" SizeToContent="Height" Topmost="True"
         Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
 
     <!--behaviors-->
@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
 
                 <!--CloseButton-->
-                <Button Content="r" Margin="0, -8, -14, 0"
+                <Button Content="r" Margin="0, -8, -14, 0" Opacity="0.3"
                         Command="{DXCommand 'TryCloseAsync()'}"
                         Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
                         Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"

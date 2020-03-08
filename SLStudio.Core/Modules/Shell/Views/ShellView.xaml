@@ -4,10 +4,9 @@
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                   mc:Ignorable="d" Style="{StaticResource CleanWindowStyle}"
+                   mc:Ignorable="d" Style="{DynamicResource CleanWindowStyle}"
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <StackPanel>
-        <TextBox Text="{Binding Test, UpdateSourceTrigger=PropertyChanged}" MinWidth="120"/>
-        <Button Content="Test" Command="{DXCommand 'Test2()'}"/>
-    </StackPanel>
+    <Grid>
+
+    </Grid>
 </metro:MetroWindow>

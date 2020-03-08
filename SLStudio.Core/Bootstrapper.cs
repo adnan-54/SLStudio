@@ -21,7 +21,7 @@ namespace SLStudio.Core
         public Bootstrapper()
         {
             container = new Container();
-            ApplyLanguage();
+            ApplyCulture();
             Initialize();
         }
 
@@ -41,7 +41,8 @@ namespace SLStudio.Core
             }
             catch (Exception ex)
             {
-                throw (ex);
+                logger.Error(ex);
+                Application.Current.Shutdown();
             }
             finally
             {
@@ -49,7 +50,12 @@ namespace SLStudio.Core
                 if (windowManager != null)
                     await windowManager.CloseWindow<ISplashScreen>();
                 else
+                {
+                    if (logger != null)
+                        logger.Fatal("Could not find DefaultWindowManger");
+
                     Application.Current.Shutdown();
+                }
             }
         }
 
@@ -82,11 +88,11 @@ namespace SLStudio.Core
 
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var originalSender = e.Exception.InnerException?.TargetSite.ReflectedType.Name;
+            var originalSender = e.Exception.FindOriginalSource();
             var title = $"({originalSender}) | {e.Exception.Message}";
 
             if (logger != null)
-                logger?.Fatal(e.Exception.ToString(), title);
+                logger.Fatal(e.Exception.ToString(), title);
             else
                 MessageBox.Show(e.Exception.ToString(), $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
 
@@ -104,10 +110,13 @@ namespace SLStudio.Core
                 ThemeManager.ChangeTheme(Application.Current, themeResource);
         }
 
-        private void ApplyLanguage()
+        private void ApplyCulture()
         {
-            CultureInfo culture = new CultureInfo(Settings.Default.LanguageCode);
-            culture.NumberFormat.NumberDecimalSeparator = ".";
+            if (string.IsNullOrEmpty(Settings.Default.LanguageCode))
+                return;
+
+            var culture = new CultureInfo(Settings.Default.LanguageCode);
+            //culture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
         }

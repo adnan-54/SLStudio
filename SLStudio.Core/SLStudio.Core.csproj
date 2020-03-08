@@ -116,7 +116,9 @@
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Events\NewLogRequestedEvent.cs" />
+    <Compile Include="Extensions\ExceptionExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
+    <Compile Include="Helpers\ExceptionHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Module.cs" />
     <Compile Include="Modules\Shell\IShell.cs" />
@@ -192,23 +194,27 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Converters.xaml">
+    <Page Include="Resources\MergedDictionaries.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Dictionaries\Converters.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Icons.xaml">
+    <Page Include="Resources\Dictionaries\Icons.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Resources.xaml">
+    <Page Include="Resources\Dictionaries\Resources.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Styles.xaml">
+    <Page Include="Resources\Dictionaries\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Templates.xaml">
+    <Page Include="Resources\Dictionaries\Templates.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
