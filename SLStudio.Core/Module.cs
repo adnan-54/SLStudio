@@ -7,6 +7,7 @@ using SLStudio.Core.Services.SettingsService;
 using SLStudio.Core.Utilities.CommandLinesArguments;
 using SLStudio.Core.Utilities.ErrorHandler;
 using SLStudio.Core.Utilities.ObjectFactory;
+using SLStudio.Core.Utilities.ThemeManager;
 using SLStudio.Core.Utilities.WindowManager;
 
 namespace SLStudio.Core
@@ -36,6 +37,7 @@ namespace SLStudio.Core
             container.Singleton<IErrorHandler, DefaultErrorHandler>();
             container.Singleton<IWindowManager, DefaultWindowManager>();
             container.Singleton<ISettingsService, DefaultSettingsService>();
+            container.Singleton<IThemeManager, DefaultThemeManager>();
 
             //Modules
             container.Instance(container);

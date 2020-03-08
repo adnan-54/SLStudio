@@ -7,7 +7,6 @@
                    mc:Ignorable="d" Style="{DynamicResource CleanWindowStyle}"
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <StackPanel>
-        <Slider Value="50"/>
-        <Slider Value="50" Minimum="0" Maximum="100"/>
+
     </StackPanel>
 </metro:MetroWindow>

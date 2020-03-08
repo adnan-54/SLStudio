@@ -179,6 +179,10 @@
     <Compile Include="Utilities\ModuleBase\ModulePriority.cs" />
     <Compile Include="Utilities\ObjectFactory\DefaultObjectFactory.cs" />
     <Compile Include="Utilities\ObjectFactory\IObjectFactory.cs" />
+    <Compile Include="Utilities\ThemeManager\DefaultThemeManager.cs" />
+    <Compile Include="Utilities\ThemeManager\IThemeManager.cs" />
+    <Compile Include="Utilities\ThemeManager\Theme.cs" />
+    <Compile Include="Utilities\ThemeManager\ThemesHelper.cs" />
     <Compile Include="Utilities\ViewModelBase\IViewModel.cs" />
     <Compile Include="Utilities\ViewModelBase\ViewModel.cs" />
     <Compile Include="Utilities\ViewModelBase\WeakValueDictionary.cs" />

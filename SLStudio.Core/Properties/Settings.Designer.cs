@@ -37,30 +37,6 @@ namespace SLStudio.Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Blue")]
-        public string ColorScheme {
-            get {
-                return ((string)(this["ColorScheme"]));
-            }
-            set {
-                this["ColorScheme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Light")]
-        public string BaseColorScheme {
-            get {
-                return ((string)(this["BaseColorScheme"]));
-            }
-            set {
-                this["BaseColorScheme"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("pt-br")]
         public string LanguageCode {
             get {

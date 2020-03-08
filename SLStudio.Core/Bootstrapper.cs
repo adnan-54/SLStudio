@@ -1,5 +1,4 @@
 ﻿using Caliburn.Micro;
-using MahApps.Metro;
 using SLStudio.Core.Properties;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Utilities.DependenciesContainer;
@@ -41,7 +40,7 @@ namespace SLStudio.Core
             }
             catch (Exception ex)
             {
-                logger.Error(ex);
+                logger.Fatal(ex);
                 Application.Current.Shutdown();
             }
             finally
@@ -102,12 +101,9 @@ namespace SLStudio.Core
 
         private void ApplyTheme()
         {
-            var baseColorScheme = Settings.Default.BaseColorScheme;
-            var colorScheme = Settings.Default.ColorScheme;
-            var themeResource = ThemeManager.Themes.FirstOrDefault(theme => theme.BaseColorScheme == baseColorScheme && theme.ColorScheme == colorScheme);
-
-            if (themeResource != null)
-                ThemeManager.ChangeTheme(Application.Current, themeResource);
+            var themeManager = container.GetInstance<IThemeManager>();
+            var theme = themeManager.AvaliableThemes.First();
+            themeManager.SetTheme(theme);
         }
 
         private void ApplyCulture()
