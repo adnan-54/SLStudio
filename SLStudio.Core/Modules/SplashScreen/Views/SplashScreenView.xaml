@@ -10,7 +10,7 @@
         mc:Ignorable="d" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent" Opacity="0"
         ResizeMode="NoResize" Width="600" SizeToContent="Height" Topmost="True"
-        Foreground="{DynamicResource MahApps.Brushes.IdealForeground}">
+        Foreground="{DynamicResource Foreground}">
 
     <!--behaviors-->
     <dxmvvm:Interaction.Behaviors>
@@ -19,7 +19,7 @@
 
     <Grid>
         <Border CornerRadius="12" Margin="20"
-                Background="{DynamicResource MahApps.Brushes.AccentBase}">
+                Background="{DynamicResource Control.Background}">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="15" Direction="-90" ShadowDepth="3"/>
             </Border.Effect>
@@ -35,7 +35,7 @@
                 <Button Content="r" Margin="0, -8, -14, 0" Opacity="0.3"
                         Command="{DXCommand 'TryCloseAsync()'}"
                         Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
-                        Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"
+                        Foreground="{DynamicResource Foreground}"
                         Height="32" Width="42" FontSize="18" FontFamily="Marlett" 
                         HorizontalAlignment="Right" VerticalAlignment="Top"
                         ToolTip="{x:Static resx:SplashScreenResources.Close}"/>
@@ -50,11 +50,11 @@
                     <TextBlock Grid.Row="0" Text="SL" Margin="0, -20, 0, 0"
                                FontSize="200" FontFamily="Arial" FontWeight="Black" 
                                HorizontalAlignment="Center"
-                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+                               Foreground="{DynamicResource Backstage.Editor.Background}"/>
 
                     <TextBlock Grid.Row="1" Text="SLStudio" Margin="0, -50, 0, -10"
                                FontSize="70" HorizontalAlignment="Center"
-                               Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+                               Foreground="{DynamicResource Backstage.Editor.Background}"/>
                 </Grid>
 
                 <!--Infos-->
@@ -85,9 +85,8 @@
                 </Grid>
 
                 <!--ProgressBar-->
-                <metro:MetroProgressBar Grid.Row="2" Margin="{StaticResource SmallUpMargin}"
-                                            Height="14" IsIndeterminate="True"
-                                            Foreground="{DynamicResource MahApps.Brushes.IdealForeground}"/>
+                <ProgressBar Grid.Row="2" Margin="0, 6, 0, 6"
+                             Height="24" IsIndeterminate="True"/>
             </Grid>
         </Border>
     </Grid>
