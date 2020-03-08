@@ -1,25 +1,21 @@
 ﻿<Application x:Class="SLStudio.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:SLStudio.Core">
+             xmlns:core="clr-namespace:SLStudio.Core;assembly=SLStudio.Core">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!--MahApps-->
+                <!--MahAppsResources-->
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
-                
+
                 <!--LocalResources-->
-                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Converters.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Icons.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Resources.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Styles.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/Core/Resources/Templates.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/MergedDictionaries.xaml" />
 
                 <!--Bootstrapper-->
                 <ResourceDictionary>
-                    <local:Bootstrapper x:Key="Bootstrapper" />
+                    <core:Bootstrapper x:Key="Bootstrapper" />
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

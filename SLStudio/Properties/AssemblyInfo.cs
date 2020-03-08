@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Adnan54")]
 [assembly: AssemblyProduct("SLStudio")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
+[assembly: AssemblyCopyright("Copyright © 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -48,6 +48,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.2.379.496")]
-[assembly: AssemblyFileVersion("20.2.379.495")]
+[assembly: AssemblyVersion("20.3.231.729")]
+[assembly: AssemblyFileVersion("20.3.231.729")]
 [assembly: NeutralResourcesLanguage("en")]
