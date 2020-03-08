@@ -42,22 +42,62 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource HoverBackground}" x:Uid="@Value=HoverBackground" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" x:Uid="@Value=Border" />
+                <Setter Property="Background" TargetName="border" Value="{DynamicResource HoverBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" />
             </Trigger>
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" x:Uid="@Value=SelectionBackground" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" x:Uid="@Value=Border" />
+                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}"  />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" x:Uid="@Value=SelectionBackground" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" x:Uid="@Value=Border" />
+                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" />
             </Trigger>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Focused}" x:Uid="@Value=Focused" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Focused}" />
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" TargetName="border" Value="1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <!--ComboxBoxReadOnlyModeTemplate-->
+    <ControlTemplate x:Key="ComboxBoxReadOnlyModeTemplate" TargetType="{x:Type ComboBox}">
+        <Grid x:Name="Root">
+            <Grid x:Name="PART_Editor">
+                <Border x:Name="IsDefault" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition x:Name="ColumnField" Width="*" />
+                        <ColumnDefinition x:Name="ColumnButton" Width="16" />
+                    </Grid.ColumnDefinitions>
+                    <ContentPresenter x:Name="Content" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Grid.Column="0" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsHitTestVisible="False" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Grid>
+                <ToggleButton x:Name="DropDownButton" Focusable="False" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Style="{DynamicResource ComboBoxDropDownButtonStyle}" />
+                <Border x:Name="IsFocus" BorderBrush="{DynamicResource Focused}" BorderThickness="{TemplateBinding BorderThickness}" Opacity="0"/>
+            </Grid>
+            <Popup x:Name="PART_Popup" AllowsTransparency="True" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" MaxHeight="{TemplateBinding MaxDropDownHeight}" Placement="Bottom">
+                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}" MinWidth="{Binding ActualWidth, ElementName=Root}">
+                    <Border x:Name="DropDownBorder" Background="{DynamicResource Editor.Background}" BorderBrush="{DynamicResource Border}" BorderThickness="1">
+                        <ScrollViewer x:Name="DropDownScrollViewer">
+                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Rectangle x:Name="OpaqueRect" Fill="{Binding Background, ElementName=DropDownBorder}" Height="{Binding ActualHeight, ElementName=DropDownBorder}" Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                </Canvas>
+                                <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" Margin="1" />
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </Popup>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Opacity" TargetName="IsDefault" Value="1" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" TargetName="Root" Value="0.38" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
