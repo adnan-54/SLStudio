@@ -34,6 +34,12 @@ namespace SLStudio.Core.Utilities.ThemeManager
             "Window.Background"
         };
 
+        public static Dictionary<string, string> MahappsToDefaultKeys = new Dictionary<string, string>
+        {
+            //todo: map this
+            {"", ""}
+        };
+
         public static Theme DefaultLightTheme()
         {
             return new Theme()

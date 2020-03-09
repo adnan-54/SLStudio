@@ -40,8 +40,10 @@ namespace SLStudio.Core.Utilities.ThemeManager
 
                     Application.Current.Resources[palette.Key + ".Color"] = color;
                     Application.Current.Resources[palette.Key] = brush;
+
                 }
 
+                RefreshMahappsBrushes(theme);
                 CurrentTheme = theme;
             }
             catch (Exception ex)
@@ -63,6 +65,18 @@ namespace SLStudio.Core.Utilities.ThemeManager
             yield return ThemesHelper.DefaultLightTheme();
             yield return ThemesHelper.DefaultDarkTheme();
             yield return ThemesHelper.DefaultBlueTheme();
+        }
+
+        private void RefreshMahappsBrushes(Theme theme)
+        {
+            //todo: map this
+            try
+            {
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex);
+            }
         }
     }
 }
