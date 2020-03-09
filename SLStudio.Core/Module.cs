@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
@@ -25,9 +26,9 @@ namespace SLStudio.Core
         {
             if (isRegistred)
                 return;
-
             isRegistred = true;
 
+            container.Instance(container);
             container.Singleton<IObjectFactory, DefaultObjectFactory>();
             container.Singleton<ILoggingFactory, DefaultLoggingFactory>();
             container.Singleton<IEventAggregator, EventAggregator>();
@@ -39,10 +40,9 @@ namespace SLStudio.Core
             container.Singleton<ISettingsService, DefaultSettingsService>();
             container.Singleton<IThemeManager, DefaultThemeManager>();
 
-            //Modules
-            container.Instance(container);
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
             container.Singleton<IShell, ShellViewModel>();
+            container.PerRequest<IMainMenu, MainMenuViewModel>();
         }
     }
 }

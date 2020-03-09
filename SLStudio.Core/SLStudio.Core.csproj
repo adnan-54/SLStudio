@@ -121,6 +121,16 @@
     <Compile Include="Helpers\ExceptionHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Module.cs" />
+    <Compile Include="Modules\MainMenu\IMainMenu.cs" />
+    <Compile Include="Modules\MainMenu\Resources\MainMenuResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MainMenuResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\MainMenu\ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Modules\MainMenu\Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Shell\IShell.cs" />
     <Compile Include="Modules\Shell\Resources\ShellSettings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -190,6 +200,10 @@
     <Compile Include="Utilities\WindowManager\IWindowManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modules\MainMenu\Views\MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\Shell\Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -224,6 +238,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modules\MainMenu\Resources\MainMenuResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\MainMenu\Resources\MainMenuResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>MainMenuResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreenResources.pt-br.resx" />
     <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreenResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -275,11 +294,7 @@
   <ItemGroup>
     <Resource Include="Resources\Sounds\mnuselect.wav" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\MainMenu\" />
-    <Folder Include="Modules\StatusBar\" />
-    <Folder Include="Modules\ToolBar\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Modules\Shell\Resources\ShellSettings.settings">

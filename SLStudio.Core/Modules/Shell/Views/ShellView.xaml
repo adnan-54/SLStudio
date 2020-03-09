@@ -3,10 +3,42 @@
                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:cal="http://caliburnmicro.com"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                   xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                    mc:Ignorable="d" Style="{DynamicResource CleanWindowStyle}"
                    WindowStartupLocation="CenterScreen" WindowState="Maximized">
-    <StackPanel>
 
-    </StackPanel>
+    <!--Behaviors-->
+    <dxmvvm:Interaction.Behaviors>
+        <behaviors:DefaultMainWindowBehavior/>
+    </dxmvvm:Interaction.Behaviors>
+
+    <!--LeftWindowCommands-->
+    <metro:MetroWindow.LeftWindowCommands>
+        <metro:WindowCommands>
+            <StackPanel Orientation="Horizontal">
+                <ContentControl cal:View.Model="{Binding MainMenu}"/>
+            </StackPanel>
+        </metro:WindowCommands>
+    </metro:MetroWindow.LeftWindowCommands>
+
+    <!--Content-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--ToolBar-->
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}"/>
+
+        <!--Content-->
+        <ContentControl Grid.Row="1" cal:View.Model="{Binding Content}"/>
+
+        <!--StatusBar-->
+        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>
+    </Grid>
 </metro:MetroWindow>

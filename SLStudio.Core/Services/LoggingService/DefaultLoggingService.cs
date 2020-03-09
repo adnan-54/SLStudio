@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,7 +24,11 @@ namespace SLStudio.Core.Services.LoggingService
         {
             this.eventAggregator = eventAggregator;
 
+#if DEBUG
+            applicationPath = Path.GetDirectoryName(@"D:\Adnan\Sources\SLStudio\SLStudio\Logs");
+#else
             applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+#endif
             logFileName = "logs.db";
             logFilePath = Path.Combine(applicationPath, "logs", logFileName);
             connectionString = $"Data Source={logFilePath}; Version=3; datetimeformat=CurrentCulture";
