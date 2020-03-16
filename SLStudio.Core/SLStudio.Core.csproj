@@ -31,6 +31,46 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caliburn.Micro.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>..\packages\Caliburn.Micro.Core.4.0.105-alpha\lib\net45\Caliburn.Micro.Core.dll</HintPath>
@@ -132,11 +172,6 @@
       <DependentUpon>MainMenuView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modules\Shell\IShell.cs" />
-    <Compile Include="Modules\Shell\Resources\ShellSettings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>ShellSettings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Shell\ViewModels\ShellViewModel.cs" />
     <Compile Include="Modules\Shell\Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
@@ -150,6 +185,16 @@
     <Compile Include="Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\StatusBar\IStatusBar.cs" />
+    <Compile Include="Modules\StatusBar\Resources\StatusBarResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatusBarResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\StatusBar\ViewModels\StatusBarViewModel.cs" />
+    <Compile Include="Modules\StatusBar\Views\StatusBarView.xaml.cs">
+      <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -212,6 +257,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Modules\StatusBar\Views\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\MergedDictionaries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -247,6 +296,11 @@
     <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreenResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Sounds\SoundResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -294,18 +348,19 @@
   <ItemGroup>
     <Resource Include="Resources\Sounds\mnuselect.wav" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="todo.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Modules\Shell\Resources\ShellSettings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ShellSettings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Shell\Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

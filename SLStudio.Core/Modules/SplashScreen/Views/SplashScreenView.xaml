@@ -86,7 +86,7 @@
 
                 <!--ProgressBar-->
                 <ProgressBar Grid.Row="2" Margin="0, 6, 0, 6"
-                             Height="24" IsIndeterminate="True"/>
+                             Height="14" IsIndeterminate="True"/>
             </Grid>
         </Border>
     </Grid>

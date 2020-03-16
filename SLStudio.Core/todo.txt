@@ -1,0 +1,20 @@
+status bar n ta funfando
+console
+modules default
+terminar o bagui que salva as property no settings file
+view help e send feedback
+separar viewmodel simples de bindable base de windowviewmodel
+message box service
+todo list
+lista de creditos e agradecimentos e colaboradores
+change log
+about
+banco de dados para guardar assets
+banco de dados para guardar coisas internas
+projeto para acessar bancos de dados
+projeto para dar parse em cada aqruivo separado
+projeto para gerar cada arquivo separado
+serializar temas
+salvar tema atual
+mapear cores do tema do mahapps pro tema local
+perguntar pro amilmand se o rdb2 é xml based

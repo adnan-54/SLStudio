@@ -2,6 +2,7 @@
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.SplashScreen.ViewModels;
+using SLStudio.Core.Modules.StatusBar.ViewModels;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Services.LoggingService;
 using SLStudio.Core.Services.SettingsService;
@@ -42,7 +43,8 @@ namespace SLStudio.Core
 
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
             container.Singleton<IShell, ShellViewModel>();
-            container.PerRequest<IMainMenu, MainMenuViewModel>();
+            container.Singleton<IMainMenu, MainMenuViewModel>();
+            container.Singleton<IStatusBar, StatusBarViewModel>();
         }
     }
 }
