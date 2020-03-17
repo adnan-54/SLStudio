@@ -61,6 +61,24 @@ namespace SLStudio.Core.Modules.StatusBar.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Background tasks running..
+        /// </summary>
+        public static string BackgroundTasksRunning {
+            get {
+                return ResourceManager.GetString("BackgroundTasksRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No background tasks running..
+        /// </summary>
+        public static string NoBackgroundTasksRunning {
+            get {
+                return ResourceManager.GetString("NoBackgroundTasksRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ready.
         /// </summary>
         public static string Ready {

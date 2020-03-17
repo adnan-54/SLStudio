@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace SLStudio.Core.Modules.StatusBar.Views
 {
     /// <summary>
-    /// Interaction logic for StautsBarView.xaml
+    /// Interaction logic for StatusBarView.xaml
     /// </summary>
-    public partial class StautsBarView : UserControl
+    public partial class StatusBarView : UserControl
     {
-        public StautsBarView()
+        public StatusBarView()
         {
             InitializeComponent();
         }

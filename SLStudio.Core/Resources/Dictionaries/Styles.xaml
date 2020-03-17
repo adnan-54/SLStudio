@@ -4,7 +4,6 @@
                     xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:resx="clr-namespace:SLStudio.Core.Resources.Strings">
-    <!--DefaultStyles-->
     <!--DefaultComboBoxStyle-->
     <Style TargetType="{x:Type ComboBox}">
         <Setter Property="Background" Value="{DynamicResource Editor.Background}"/>
@@ -906,7 +905,13 @@
         </Setter>
     </Style>
 
-    <!--WindowStyles-->
+    <!--DefaultStatusBarStyle-->
+    <Style TargetType="{x:Type StatusBar}">
+        <Setter Property="Background" Value="{DXBinding '@a($metro:MetroWindow).BorderBrush'}"/>
+        <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}"/>
+        <Setter Property="MinHeight" Value="23"/>
+    </Style>
+    
     <!--CleanWindowStyle-->
     <Style x:Key="CleanWindowStyle" TargetType="{x:Type metro:MetroWindow}">
         <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
@@ -981,7 +986,6 @@
         <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
     </Style>
 
-    <!--ButtonStyles-->
     <!--HorizontalScrollBarPageButtonStyle-->
     <Style x:Key="HorizontalScrollBarPageButtonStyle" TargetType="{x:Type RepeatButton}">
         <Setter Property="Focusable" Value="False" />

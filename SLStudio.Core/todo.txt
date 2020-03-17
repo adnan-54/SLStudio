@@ -1,4 +1,6 @@
-status bar n ta funfando
+menu bonitinho
+splash screen arrastavel
+template isbusy
 console
 modules default
 terminar o bagui que salva as property no settings file

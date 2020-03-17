@@ -1,10 +1,47 @@
-﻿<UserControl x:Class="SLStudio.Core.Modules.StatusBar.Views.StautsBarView"
+﻿<UserControl x:Class="SLStudio.Core.Modules.StatusBar.Views.StatusBarView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:resx="clr-namespace:SLStudio.Core.Modules.StatusBar.Resources"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+
+    <!--Content-->
     <StatusBar>
+        <!--StatusDecorator-->
+        <Border Margin="1, 0, 1, 0" Background="Transparent">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Style.Triggers>
+                        <!--WorkingToolTip-->
+                        <DataTrigger Binding="{Binding IsBusy}" Value="True">
+                            <Setter Property="ToolTip" Value="{x:Static resx:StatusBarResources.BackgroundTasksRunning}"/>
+                        </DataTrigger>
+
+                        <!--IdleToolTip-->
+                        <DataTrigger Binding="{Binding IsBusy}" Value="False">
+                            <Setter Property="ToolTip" Value="{x:Static resx:StatusBarResources.NoBackgroundTasksRunning}"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <!--Content-->
+            <Grid>
+                <!--Working-->
+                <hc:LoadingCircle Height="17" Width="17" DotDiameter="3.5" DotInterval="30"
+                                  Foreground="{DynamicResource Backstage.Foreground}"
+                                  metro:VisibilityHelper.IsVisible="{Binding IsBusy}"/>
+
+                <!--Idle-->
+                <Image Height="17" Width="17" Source="{DynamicResource StatusOk}"
+                       metro:VisibilityHelper.IsCollapsed="{Binding IsBusy}"/>
+            </Grid>
+        </Border>
+
+        <!--Status-->
         <StatusBarItem Content="{Binding Status}"/>
     </StatusBar>
 </UserControl>

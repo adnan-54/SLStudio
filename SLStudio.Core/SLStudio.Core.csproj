@@ -87,6 +87,9 @@
     <Reference Include="DevExpress.Mvvm.UI, Version=19.2.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.19.2.3\lib\net452\DevExpress.Mvvm.UI.dll</HintPath>
     </Reference>
+    <Reference Include="HandyControl, Version=2.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HandyControls.2.4.9.2\lib\net48\HandyControl.dll</HintPath>
+    </Reference>
     <Reference Include="Humanizer, Version=2.7.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
       <HintPath>..\packages\Humanizer.Core.2.7.9\lib\netstandard2.0\Humanizer.dll</HintPath>
     </Reference>
@@ -297,7 +300,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.pt-BR.resx" />
     <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
@@ -359,8 +362,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Modules\Shell\Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
