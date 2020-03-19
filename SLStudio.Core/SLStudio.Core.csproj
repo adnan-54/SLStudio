@@ -152,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\DraggableWindowBehavior.cs" />
     <Compile Include="Behaviors\DefaultMainWindowBehavior.cs" />
     <Compile Include="Behaviors\FadeInFadeOutWindowBehavior.cs" />
     <Compile Include="Behaviors\TextBoxScrollToEndBehavior.cs" />

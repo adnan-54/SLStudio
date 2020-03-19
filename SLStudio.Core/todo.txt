@@ -1,8 +1,9 @@
 menu bonitinho
-splash screen arrastavel
 template isbusy
-console
-modules default
+console (agora vai virar LiveLog)
+carregar resource dictionaries pelo module.cs
+não crirar um logger novo se ja tiver um pra mesma classe
+modules default (console, shell content, mainmenu etc)
 terminar o bagui que salva as property no settings file
 view help e send feedback
 separar viewmodel simples de bindable base de windowviewmodel
@@ -20,3 +21,4 @@ serializar temas
 salvar tema atual
 mapear cores do tema do mahapps pro tema local
 perguntar pro amilmand se o rdb2 é xml based
+mod updater
