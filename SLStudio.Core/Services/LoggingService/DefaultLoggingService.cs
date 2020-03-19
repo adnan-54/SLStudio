@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -24,10 +25,17 @@ namespace SLStudio.Core.Services.LoggingService
         {
             this.eventAggregator = eventAggregator;
 
-#if DEBUG
-            applicationPath = Path.GetDirectoryName(@"D:\Adnan\Sources\SLStudio\SLStudio\Logs");
-#else
             applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+#if DEBUG
+            var count = 0;
+            while (!File.Exists(Path.Combine(applicationPath, "SLStudio.csproj")))
+            {
+                count++;
+                applicationPath = Directory.GetParent(applicationPath).FullName;
+
+                if (count >= 5)
+                    throw new DirectoryNotFoundException();
+            }
 #endif
             logFileName = "logs.db";
             logFilePath = Path.Combine(applicationPath, "logs", logFileName);
