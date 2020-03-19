@@ -106,6 +106,15 @@ namespace SLStudio.Core.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait....
+        /// </summary>
+        public static string PleaseWait {
+            get {
+                return ResourceManager.GetString("PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search (Ctrl+F).
         /// </summary>
         public static string Search {

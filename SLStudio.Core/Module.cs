@@ -16,7 +16,7 @@ namespace SLStudio.Core
 {
     internal class Module : ModuleBase
     {
-        private bool isRegistred = false;
+        private static bool isRegistred = false;
 
         public override ModulePriority ModulePriority => ModulePriority.Core;
         public override string ModuleName => "SLStudio Core";

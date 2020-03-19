@@ -1,10 +1,8 @@
 menu bonitinho
-template isbusy
 console (agora vai virar LiveLog)
 modules default (console, shell content, mainmenu etc)
 terminar o bagui que salva as property no settings file
 view help e send feedback
-separar viewmodel simples de bindable base de windowviewmodel
 message box service
 todo list
 lista de creditos e agradecimentos e colaboradores

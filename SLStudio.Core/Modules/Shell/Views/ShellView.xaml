@@ -4,6 +4,7 @@
                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                    xmlns:cal="http://caliburnmicro.com"
+                   xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                    xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
@@ -36,7 +37,7 @@
         <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}"/>
 
         <!--Content-->
-        <ContentControl Grid.Row="1" cal:View.Model="{Binding Content}"/>
+        <ContentControl cal:View.Model="{Binding Content}"/>
 
         <!--StatusBar-->
         <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>

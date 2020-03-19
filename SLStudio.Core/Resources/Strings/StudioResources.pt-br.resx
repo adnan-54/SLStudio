@@ -147,4 +147,7 @@
   <data name="ThemeLight" xml:space="preserve">
     <value>Claro</value>
   </data>
+  <data name="PleaseWait" xml:space="preserve">
+    <value>Aguarde...</value>
+  </data>
 </root>

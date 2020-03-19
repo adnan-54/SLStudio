@@ -3,6 +3,9 @@
                     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                    xmlns:hc="https://handyorg.github.io/handycontrol"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
                     xmlns:resx="clr-namespace:SLStudio.Core.Resources.Strings">
     <!--DefaultComboBoxStyle-->
     <Style TargetType="{x:Type ComboBox}">
@@ -458,7 +461,7 @@
                     <Grid>
                         <Border Background="{TemplateBinding Background}" Margin="0, 0, 5, 5">
                             <Border.Effect>
-                                <DropShadowEffect x:Name="Shadow" BlurRadius="4" Color="#00FFFFFF" Direction="315" Opacity="0.14" ShadowDepth="3"/>
+                                <DropShadowEffect x:Name="Shadow" BlurRadius="4" Color="{DynamicResource Foreground.Color}" Direction="315" Opacity="0.14" ShadowDepth="3"/>
                             </Border.Effect>
                         </Border>
                         <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Margin="0,0,5,5" Padding="{TemplateBinding Padding}">
@@ -911,7 +914,136 @@
         <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}"/>
         <Setter Property="MinHeight" Value="23"/>
     </Style>
-    
+
+    <!--DefaultBusyIndicatorStyle-->
+    <Style TargetType="{x:Type xctk:BusyIndicator}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type xctk:BusyIndicator}">
+                    <Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="VisibilityStates">
+                                <VisualState x:Name="Hidden">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="busycontent" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="overlay" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Collapsed</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Visible">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="busycontent" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="overlay" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <Visibility>Visible</Visibility>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                            <VisualStateGroup x:Name="BusyStatusStates">
+                                <VisualState x:Name="Idle">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="content" Storyboard.TargetProperty="(Control.IsEnabled)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>True</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Busy">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Duration="00:00:00.001" Storyboard.TargetName="content" Storyboard.TargetProperty="(Control.IsEnabled)">
+                                            <DiscreteObjectKeyFrame KeyTime="00:00:00">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <sys:Boolean>False</sys:Boolean>
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <!--Content-->
+                        <ContentControl x:Name="content" IsTabStop="False" Focusable="False"
+                                        Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                        HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+
+                            <ContentControl.Style>
+                                <Style TargetType="{x:Type ContentControl}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsBusy, RelativeSource={RelativeSource AncestorType=xctk:BusyIndicator}}" Value="True">
+                                            <Setter Property="Effect">
+                                                <Setter.Value>
+                                                    <BlurEffect Radius="10"/>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ContentControl.Style>
+                        </ContentControl>
+
+                        <!--Overlay-->
+                        <Rectangle x:Name="overlay" Style="{TemplateBinding OverlayStyle}" Fill="{DynamicResource Backstage.Foreground}" Opacity="0.5"/>
+
+                        <!--BusyContent-->
+                        <ContentPresenter x:Name="busycontent">
+                            <ContentPresenter.Content>
+                                <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Grid MinWidth="150" TextBlock.TextAlignment="Center">
+                                        <ContentPresenter Content="{TemplateBinding BusyContent}" ContentTemplate="{TemplateBinding BusyContentTemplate}"/>
+                                    </Grid>
+                                </Grid>
+                            </ContentPresenter.Content>
+                        </ContentPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BusyContentTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <Border Padding="{DynamicResource FullMargin}" BorderThickness="1" 
+                            BorderBrush="{DynamicResource Focused}"
+                            Background="{DynamicResource Control.Background}">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="4" Color="{DynamicResource Foreground.Color}" Direction="315" Opacity="0.14" ShadowDepth="3"/>
+                        </Border.Effect>
+
+                        <StackPanel>
+                            <metro:ProgressRing Foreground="{DynamicResource Focused}" Height="40" Width="40"/>
+                            <TextBlock Margin="{DynamicResource SmallUpMargin}" Text="{x:Static resx:StudioResources.PleaseWait}" FontStyle="Italic" FontSize="12.5"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--CleanWindowStyle-->
     <Style x:Key="CleanWindowStyle" TargetType="{x:Type metro:MetroWindow}">
         <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
