@@ -1,7 +1,6 @@
 menu bonitinho
 template isbusy
 console (agora vai virar LiveLog)
-carregar resource dictionaries pelo module.cs
 modules default (console, shell content, mainmenu etc)
 terminar o bagui que salva as property no settings file
 view help e send feedback

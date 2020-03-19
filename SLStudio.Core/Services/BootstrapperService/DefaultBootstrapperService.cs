@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SLStudio.Core.Services.BootstrapperService
 {
@@ -42,7 +43,6 @@ namespace SLStudio.Core.Services.BootstrapperService
 
             await Task.Run(async () =>
             {
-                await Task.Delay(500);
                 var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "SLStudio.*.dll");
                 foreach (var file in files)
                 {
@@ -50,7 +50,6 @@ namespace SLStudio.Core.Services.BootstrapperService
                     splashScreen.CurrentModule = assemblyName;
                     logger.Debug($"Loading assembly {assemblyName}");
                     Assembly.LoadFrom(file);
-                    await Task.Delay(100);
                 }
 
                 var types = AppDomain.CurrentDomain.GetAssemblies()
@@ -62,22 +61,24 @@ namespace SLStudio.Core.Services.BootstrapperService
 
                 modules = modules.OrderByDescending(p => p.ModulePriority).ToList();
 
-                await Task.Delay(500);
                 foreach (var module in modules)
                 {
                     splashScreen.CurrentModule = module.ModuleName;
                     logger.Debug($"Loading module {module.ModuleName}");
 
-                    if (module.ShouldBeLoaded)
+                    foreach (var resourceUri in module.GetResources())
+                    {
+                        if (resourceUri != null)
+                            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = resourceUri });
+                    }
+
+                    if (module.ShouldRegister)
                         module.Register(container);
 
                     if (!Settings.Default.FastSplashScreen)
                         await Task.Delay(Settings.Default.SplashScreenSleepTime);
-
-                    await Task.Delay(100);
                 }
                 splashScreen.CurrentModule = null;
-                await Task.Delay(500);
             });
         }
     }

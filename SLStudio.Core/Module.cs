@@ -21,7 +21,7 @@ namespace SLStudio.Core
         public override ModulePriority ModulePriority => ModulePriority.Core;
         public override string ModuleName => "SLStudio Core";
         public override string ModuleDescrition => "Core module.";
-        public override bool ShouldBeLoaded => isRegistred;
+        public override bool ShouldRegister => !isRegistred;
 
         public override void Register(IContainer container)
         {
