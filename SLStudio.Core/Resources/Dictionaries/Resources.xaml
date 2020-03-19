@@ -56,6 +56,9 @@
     <Color x:Key="SelectionBorder.Color">#FF007ACC</Color>
     <Color x:Key="SelectionForeground.Color">#FFFFFFFF</Color>
     <Color x:Key="Window.Background.Color">#FFEEEEF2</Color>
+    <Color x:Key="StatusIdle.Color">#FF68217A</Color>
+    <Color x:Key="StatusWorking.Color">#FF007ACC</Color>
+    <Color x:Key="StatusRunning.Color">#FFCA5100</Color>
 
     <!--Brushes-->
     <SolidColorBrush x:Key="Backstage.Button.Background" Color="{DynamicResource Backstage.Button.Background.Color}"/>
@@ -83,4 +86,7 @@
     <SolidColorBrush x:Key="SelectionBorder" Color="{DynamicResource SelectionBorder.Color}"/>
     <SolidColorBrush x:Key="SelectionForeground" Color="{DynamicResource SelectionForeground.Color}"/>
     <SolidColorBrush x:Key="Window.Background" Color="{DynamicResource Window.Background.Color}"/>
+    <SolidColorBrush x:Key="StatusIdle" Color="{DynamicResource StatusIdle.Color}"/>
+    <SolidColorBrush x:Key="StatusWorking" Color="{DynamicResource StatusWorking.Color}"/>
+    <SolidColorBrush x:Key="StatusRunning" Color="{DynamicResource StatusRunning.Color}"/>
 </ResourceDictionary>
