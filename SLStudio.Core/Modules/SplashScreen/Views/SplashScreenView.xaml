@@ -10,7 +10,20 @@
         mc:Ignorable="d" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent" Opacity="0"
         ResizeMode="NoResize" Width="600" SizeToContent="Height" Topmost="True"
-        Foreground="{DynamicResource Foreground}">
+        Foreground="{DynamicResource Foreground}"
+        MouseDown="{DXEvent 'OnMouseDown(@args)'}" MouseUp="{DXEvent 'OnMouseUp()'}">
+
+    <!--Style-->
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="Cursor" Value="Arrow"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseDown}" Value="True">
+                    <Setter Property="Cursor" Value="pack://application:,,,/SLStudio.Core;component/Resources/Cursors/hand_drag.cur"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Style>
 
     <!--behaviors-->
     <dxmvvm:Interaction.Behaviors>
