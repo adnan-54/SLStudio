@@ -2,9 +2,10 @@
 {
     internal class ShellViewModel : ViewModel, IShell
     {
-        public ShellViewModel(IMainMenu mainMenu, IStatusBar statusBar)
+        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar)
         {
             MainMenu = mainMenu;
+            ToolBar = toolBar;
             StatusBar = statusBar;
 
             DisplayName = "SLStudio";
@@ -14,6 +15,11 @@
         {
             get => GetProperty(() => MainMenu);
             set => SetProperty(() => MainMenu, value);
+        }
+        public IToolBar ToolBar
+        {
+            get => GetProperty(() => ToolBar);
+            set => SetProperty(() => ToolBar, value);
         }
 
         public IStatusBar StatusBar

@@ -1052,6 +1052,7 @@
         <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
         <Setter Property="TitleForeground" Value="{DynamicResource Foreground}" />
         <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
         <Setter Property="BorderBrush" Value="{DynamicResource Focused}" />
         <Setter Property="NonActiveBorderBrush" Value="{DynamicResource Border}" />
         <Setter Property="GlowBrush" Value="{DynamicResource Focused}" />

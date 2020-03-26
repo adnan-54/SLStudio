@@ -197,6 +197,11 @@
     <Compile Include="Modules\StatusBar\Views\StatusBarView.xaml.cs">
       <DependentUpon>StatusBarView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ToolBar\ViewModels\ToolBarViewModel.cs" />
+    <Compile Include="Modules\ToolBar\IToolBar.cs" />
+    <Compile Include="Modules\ToolBar\Views\ToolBarView.xaml.cs">
+      <DependentUpon>ToolBarView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <DependentUpon>Settings.settings</DependentUpon>
@@ -259,6 +264,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Modules\StatusBar\Views\StatusBarView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\ToolBar\Views\ToolBarView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -360,5 +369,6 @@
   <ItemGroup>
     <Resource Include="Resources\Cursors\hand_drag.cur" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
