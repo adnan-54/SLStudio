@@ -97,7 +97,58 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="View" xml:space="preserve">
-    <value>View</value>
+  <data name="Ready" xml:space="preserve">
+    <value>Pronto</value>
+  </data>
+  <data name="RefreshF5" xml:space="preserve">
+    <value>Atualizar (F5)</value>
+  </data>
+  <data name="ExportToHtmlCtrlE" xml:space="preserve">
+    <value>Exportar para HTML (Ctrl + E)</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Limpar Tudo</value>
+  </data>
+  <data name="ViewSimpleLogFile" xml:space="preserve">
+    <value>Ver arquivo de log simples</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Sender" xml:space="preserve">
+    <value>Remetente</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Nível</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Título</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Mensagem</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Working" xml:space="preserve">
+    <value>Trabalhando...</value>
+  </data>
+  <data name="LogsUpdatedSuccessfully" xml:space="preserve">
+    <value>Logs atualizados com sucesso</value>
+  </data>
+  <data name="LogsExportedSuccessfully" xml:space="preserve">
+    <value>Logs exportados com sucesso</value>
+  </data>
+  <data name="AllLogsClearedSuccessfully" xml:space="preserve">
+    <value>Todos os logs foram limpos com sucesso</value>
+  </data>
+  <data name="AreYouSure" xml:space="preserve">
+    <value>Tem certeza?</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fechar</value>
+  </data>
+  <data name="ExportToTextFile" xml:space="preserve">
+    <value>Exportar para arquivo de texto</value>
   </data>
 </root>

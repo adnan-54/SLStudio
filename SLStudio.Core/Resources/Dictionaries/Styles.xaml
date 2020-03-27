@@ -910,7 +910,7 @@
 
     <!--DefaultStatusBarStyle-->
     <Style TargetType="{x:Type StatusBar}">
-        <Setter Property="Background" Value="{DXBinding '@a($metro:MetroWindow).BorderBrush'}"/>
+        <Setter Property="Background" Value="{Binding BorderBrush, RelativeSource={RelativeSource AncestorType=metro:MetroWindow}}"/>
         <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}"/>
         <Setter Property="MinHeight" Value="23"/>
     </Style>
@@ -1074,7 +1074,6 @@
     <!--DialogWindowStyle-->
     <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}">
         <Setter Property="WindowButtonCommands" Value="{DynamicResource DefaultWindowButtons}" />
-        <Setter Property="IconTemplate" Value="{DynamicResource WindowIconTemplateLight}" />
         <Setter Property="WindowTitleBrush" Value="{DynamicResource Backstage.Window.Background}" />
         <Setter Property="NonActiveWindowTitleBrush" Value="{DynamicResource Backstage.Window.Background}" />
         <Setter Property="TitleForeground" Value="{DynamicResource Backstage.Foreground}" />
@@ -1083,11 +1082,13 @@
         <Setter Property="NonActiveBorderBrush" Value="{DynamicResource Border}" />
         <Setter Property="GlowBrush" Value="{DynamicResource Focused}" />
         <Setter Property="NonActiveGlowBrush" Value="{DynamicResource Border}" />
+        <Setter Property="IsMinButtonEnabled" Value="False"/>
         <Setter Property="SaveWindowPosition" Value="False" />
-        <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="ShowIconOnTitleBar" Value="False"/>
+        <Setter Property="ResizeMode" Value="CanResize" />
         <Setter Property="MinWidth" Value="300" />
         <Setter Property="MinHeight" Value="300" />
-        <Setter Property="TitleAlignment" Value="Left" />
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
         <Style.Triggers>
@@ -1112,11 +1113,23 @@
     <!--WindowButtonsLigthStyle-->
     <Style x:Key="WindowButtonsLigthStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Light}">
         <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Opacity" Value="0.2"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <!--WindowButtonsDarkStyle-->
     <Style x:Key="WindowButtonsDarkStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.MetroWindow.Dark}">
         <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Opacity" Value="0.2"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <!--HorizontalScrollBarPageButtonStyle-->

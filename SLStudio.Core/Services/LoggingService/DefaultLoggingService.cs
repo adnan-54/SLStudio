@@ -137,7 +137,7 @@ namespace SLStudio.Core.Services.LoggingService
                     stringBuilder.AppendLine("<tr>");
                     foreach (DataColumn column in logs.Columns)
                     {
-                        stringBuilder.AppendLine($"<td>{row[column.ColumnName].ToString()}</td>");
+                        stringBuilder.AppendLine($"<td>{row[column.ColumnName]}</td>");
                     }
                     stringBuilder.AppendLine("</tr>");
                 }

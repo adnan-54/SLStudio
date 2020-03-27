@@ -1,0 +1,106 @@
+﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Logger.Views.LogDetailsView"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:resx="clr-namespace:SLStudio.Core.Modules.Logger.Resources"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   mc:Ignorable="d" Style="{DynamicResource DialogWindowStyle}"
+                   MinWidth="800" MinHeight="600"  Width="800" Height="600" 
+                   WindowStartupLocation="CenterOwner">
+    <Grid Margin="{StaticResource FullMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <!--Infos-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Id-->
+            <TextBlock Grid.Column="0"
+                       ToolTip="{Binding Log.Id, Mode=OneWay}">
+                <Run Text="{x:Static resx:LogsResources.ID}" FontWeight="Black"/><Run Text=":" FontWeight="Black"/> 
+                <Run Text="{Binding Log.Id, Mode=OneWay}"/>
+            </TextBlock>
+            
+            <!--Sender-->
+            <TextBlock Grid.Column="1" TextTrimming="CharacterEllipsis"
+                       ToolTip="{Binding Log.Sender, Mode=OneWay}">
+                <Run Text="{x:Static resx:LogsResources.Sender}" FontWeight="Black"/><Run Text=":" FontWeight="Black"/> 
+                <Run Text="{Binding Log.Sender, Mode=OneWay}"/>
+            </TextBlock>
+            
+             <!--Level-->
+            <TextBlock Grid.Column="2"
+                       ToolTip="{Binding Log.Level, Mode=OneWay}">
+                <Run Text="{x:Static resx:LogsResources.Level}" FontWeight="Black"/><Run Text=":" FontWeight="Black"/> 
+                <Run Text="{Binding Log.Level, Mode=OneWay}"/>
+            </TextBlock>
+            
+             <!--Date-->
+            <TextBlock Grid.Column="3"
+                       ToolTip="{Binding Log.Date, Mode=OneWay}">
+                <Run Text="{x:Static resx:LogsResources.Date}" FontWeight="Black"/><Run Text=":" FontWeight="Black"/> 
+                <Run Text="{Binding Log.Date, Mode=OneWay}"/>
+            </TextBlock>
+            
+        </Grid>
+        
+        <!--Separator-->
+        <Rectangle Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                   Fill="{DynamicResource Border}" Height="1"/>
+        
+        <!--Title-->
+        <Grid Grid.Row="2" metro:VisibilityHelper.IsVisible="{Binding Log.Title, Converter={StaticResource IsNotNullConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Margin="{StaticResource SmallUpMargin}" FontWeight="Bold">
+                <Run Text="{x:Static resx:LogsResources.Title}"/><Run Text=":"/>
+            </TextBlock>
+            
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding Log.Title, Mode=OneWay}" 
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     IsReadOnly="True" IsReadOnlyCaretVisible="False"/>
+        </Grid>
+        
+        <!--Message-->
+        <Grid Grid.Row="3">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <TextBlock Grid.Row="0" Margin="{StaticResource SmallUpMargin}" FontWeight="Bold">
+                <Run Text="{x:Static resx:LogsResources.Message}"/><Run Text=":"/>
+            </TextBlock>
+            
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}" 
+                     Text="{Binding Log.Message, Mode=OneWay}" 
+                     TextWrapping="Wrap"
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollBarVisibility="Auto"
+                     IsReadOnly="True" IsReadOnlyCaretVisible="False"/>
+        </Grid>
+        
+        <!--Close-->
+        <Button Grid.Row="4" Margin="{StaticResource SmallUpMargin}"
+                Content="{x:Static resx:LogsResources.Close}" MinWidth="80"
+                HorizontalAlignment="Right" IsDefault="True" IsCancel="True"/>
+    </Grid>
+</metro:MetroWindow>

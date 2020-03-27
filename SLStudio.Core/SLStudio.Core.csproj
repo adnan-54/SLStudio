@@ -162,6 +162,24 @@
     <Compile Include="Helpers\ExceptionHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Module.cs" />
+    <Compile Include="Modules\Logger\Models\LogModel.cs" />
+    <Compile Include="Modules\Logger\Resources\LogsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LogsResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logger\ViewModels\LogDetailsViewModel.cs" />
+    <Compile Include="Modules\Logger\ViewModels\LogsViewModel.cs" />
+    <Compile Include="Modules\Logger\ViewModels\SimpleLogViewModel.cs" />
+    <Compile Include="Modules\Logger\Views\LogDetailsView.xaml.cs">
+      <DependentUpon>LogDetailsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logger\Views\LogsView.xaml.cs">
+      <DependentUpon>LogsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Logger\Views\SimpleLogView.xaml.cs">
+      <DependentUpon>SimpleLogView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\MainMenu\IMainMenu.cs" />
     <Compile Include="Modules\MainMenu\Resources\MainMenuResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -251,6 +269,18 @@
     <Compile Include="Utilities\WindowManager\IWindowManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modules\Logger\Views\LogDetailsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Logger\Views\LogsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Modules\Logger\Views\SimpleLogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\MainMenu\Views\MainMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -297,6 +327,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modules\Logger\Resources\LogsResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\Logger\Resources\LogsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>LogsResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\MainMenu\Resources\MainMenuResources.pt-br.resx" />
     <EmbeddedResource Include="Modules\MainMenu\Resources\MainMenuResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
