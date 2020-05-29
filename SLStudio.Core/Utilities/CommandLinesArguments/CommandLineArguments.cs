@@ -10,12 +10,12 @@ namespace SLStudio.Core.Utilities.CommandLinesArguments
 
         public DefaultCommandLineArguments()
         {
-            DebuggingMode = false;
+            DebugMode = false;
         }
 
         public IEnumerable<string> Args { get; private set; }
 
-        public bool DebuggingMode { get; private set; }
+        public bool DebugMode { get; private set; }
 
         public void ParseArguments(IEnumerable<string> args)
         {
@@ -25,8 +25,8 @@ namespace SLStudio.Core.Utilities.CommandLinesArguments
             alreadyParsed = true;
             Args = args;
 
-            if (args.FirstOrDefault(arg => arg.Equals("--debugging", StringComparison.InvariantCultureIgnoreCase)).Any())
-                DebuggingMode = true;
+            if (args.Any(arg => arg.Equals("--debug", StringComparison.InvariantCultureIgnoreCase)))
+                DebugMode = true;
         }
     }
 }

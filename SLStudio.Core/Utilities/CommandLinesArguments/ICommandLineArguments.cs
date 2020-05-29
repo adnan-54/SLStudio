@@ -6,7 +6,7 @@ namespace SLStudio.Core
     {
         IEnumerable<string> Args { get; }
 
-        bool DebuggingMode { get; }
+        bool DebugMode { get; }
 
         void ParseArguments(IEnumerable<string> args);
     }

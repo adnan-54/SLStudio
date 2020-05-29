@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -51,7 +52,7 @@ namespace SLStudio.Core
                 else
                 {
                     if (logger != null)
-                        logger.Fatal("Could not find DefaultWindowManger");
+                        logger.Fatal("DefaultWindowManger not found");
 
                     Application.Current.Shutdown();
                 }

@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using DevExpress.Mvvm;
 using SLStudio.Core.Modules.Logger.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
@@ -32,15 +33,17 @@ namespace SLStudio.Core
             isRegistred = true;
 
             container.Instance(container);
+
             container.Singleton<IObjectFactory, DefaultObjectFactory>();
             container.Singleton<ILoggingFactory, DefaultLoggingFactory>();
-            container.Singleton<IEventAggregator, EventAggregator>();
             container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
+            container.Singleton<ISettingsService, DefaultSettingsService>();
             container.Singleton<ILoggingService, DefaultLoggingService>();
+            container.Singleton<IEventAggregator, EventAggregator>();
+            container.Singleton<IMessenger, Messenger>();
             container.Singleton<ICommandLineArguments, DefaultCommandLineArguments>();
             container.Singleton<IErrorHandler, DefaultErrorHandler>();
             container.Singleton<IWindowManager, DefaultWindowManager>();
-            container.Singleton<ISettingsService, DefaultSettingsService>();
             container.Singleton<IThemeManager, DefaultThemeManager>();
 
             container.Singleton<ISplashScreen, SplashScreenViewModel>();

@@ -16,6 +16,7 @@
             get => GetProperty(() => MainMenu);
             set => SetProperty(() => MainMenu, value);
         }
+
         public IToolBar ToolBar
         {
             get => GetProperty(() => ToolBar);

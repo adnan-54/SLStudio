@@ -40,7 +40,6 @@ namespace SLStudio.Core.Utilities.ThemeManager
 
                     Application.Current.Resources[palette.Key + ".Color"] = color;
                     Application.Current.Resources[palette.Key] = brush;
-
                 }
 
                 RefreshMahappsBrushes(theme);

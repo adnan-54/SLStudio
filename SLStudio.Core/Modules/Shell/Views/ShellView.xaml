@@ -13,14 +13,14 @@
 
     <!--Behaviors-->
     <dxmvvm:Interaction.Behaviors>
-        <behaviors:DefaultMainWindowBehavior/>
+        <behaviors:DefaultMainWindowBehavior />
     </dxmvvm:Interaction.Behaviors>
 
     <!--LeftWindowCommands-->
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands>
             <StackPanel Orientation="Horizontal">
-                <ContentControl cal:View.Model="{Binding MainMenu}"/>
+                <ContentControl cal:View.Model="{Binding MainMenu}" />
             </StackPanel>
         </metro:WindowCommands>
     </metro:MetroWindow.LeftWindowCommands>
@@ -28,13 +28,13 @@
     <!--Content-->
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--ToolBar-->
-        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}"/>
+        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}" />
 
         <!--Content-->
         <xcad:DockingManager Grid.Row="1">
@@ -48,6 +48,6 @@
         </xcad:DockingManager>
 
         <!--StatusBar-->
-        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}"/>
+        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}" />
     </Grid>
 </metro:MetroWindow>

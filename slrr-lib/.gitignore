@@ -1,0 +1,4 @@
+obj/
+bin/
+*.Style*
+*.Cache

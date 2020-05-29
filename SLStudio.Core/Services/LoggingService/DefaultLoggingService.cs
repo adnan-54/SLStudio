@@ -1,5 +1,6 @@
-﻿using Caliburn.Micro;
+﻿using DevExpress.Mvvm;
 using SLStudio.Core.Events;
+using SLStudio.Core.Utilities.Logger;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -14,26 +15,26 @@ namespace SLStudio.Core.Services.LoggingService
     internal class DefaultLoggingService : ILoggingService
     {
         private static readonly object @lock = new object();
+
         private readonly SQLiteConnection dbConnection;
-        private readonly IEventAggregator eventAggregator;
+        private readonly IMessenger messenger;
         private readonly string applicationPath;
         private readonly string logFileName;
         private readonly string logFilePath;
         private readonly string connectionString;
 
-        public DefaultLoggingService(IEventAggregator eventAggregator)
+        public DefaultLoggingService(IMessenger messenger)
         {
-            this.eventAggregator = eventAggregator;
+            this.messenger = messenger;
 
             applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 #if DEBUG
             var count = 0;
             while (!File.Exists(Path.Combine(applicationPath, "SLStudio.csproj")))
             {
-                count++;
                 applicationPath = Directory.GetParent(applicationPath).FullName;
 
-                if (count >= 5)
+                if (count++ > 5)
                     throw new DirectoryNotFoundException();
             }
 #endif
@@ -56,7 +57,7 @@ namespace SLStudio.Core.Services.LoggingService
             }
         }
 
-        public Task Log(string sender, string level, string title, string message, DateTime date)
+        public Task Log(Log log)
         {
             return Task.Run(() =>
             {
@@ -64,10 +65,9 @@ namespace SLStudio.Core.Services.LoggingService
                 {
                     try
                     {
-                        LogToDb(sender, level, title, message, date);
-                        var logEvent = new NewLogRequestedEvent(sender, level, title, message, date);
-                        eventAggregator.PublishOnUIThreadAsync(logEvent);
-                        Console.WriteLine(logEvent.ToString());
+                        LogToDb(log.Sender, log.Level, log.Title, log.Message, log.Date);
+                        messenger.Send(new LogCompletedEvent(log));
+                        Console.WriteLine(log.ToString());
                     }
                     catch (Exception ex)
                     {

@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace SLStudio.Core.Modules.Logger.ViewModels
 {
-    class LogsViewModel : ViewModel, ILogsView
+    internal class LogsViewModel : ViewModel, ILogsView
     {
         private readonly ILoggingService loggingService;
         private readonly IWindowManager windowManager;
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
         public bool IsBusy
         {
             get => GetProperty(() => IsBusy);
-            set 
-            { 
+            set
+            {
                 SetProperty(() => IsBusy, value);
-                if(IsBusy)
+                if (IsBusy)
                     StatusText = Resources.LogsResources.Working;
                 else
                     StatusText = Resources.LogsResources.Ready;
-            } 
+            }
         }
 
         public string StatusText
@@ -41,9 +41,9 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
         public DataTable Logs
         {
             get => GetProperty(() => Logs);
-            set 
+            set
             {
-                SetProperty(() => Logs, value); 
+                SetProperty(() => Logs, value);
                 RaisePropertyChanged(() => CanExport);
                 RaisePropertyChanged(() => CanClear);
                 RaisePropertyChanged(() => CanViewSimpleLog);
@@ -56,9 +56,9 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
             set => SetProperty(() => SelectedItem, value);
         }
 
-        public bool CanExport => Logs.Rows.Count > 0;
+        public bool CanExport => Logs?.Rows.Count > 0;
 
-        public bool CanClear => Logs.Rows.Count > 0;
+        public bool CanClear => Logs?.Rows.Count > 0;
 
         public bool CanViewSimpleLog => loggingService.SimpleLogFileExists;
 
@@ -68,7 +68,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
             {
                 IsBusy = true;
                 Logs = loggingService.GetLogs();
-                if(Logs.Rows.Count > 0)
+                if (Logs.Rows.Count > 0)
                     SelectedItem = Logs.Rows[0];
                 else
                     SelectedItem = null;
@@ -85,7 +85,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
 
         public async void ExportToHtml()
         {
-            if(!CanExport)
+            if (!CanExport)
                 return;
 
             using (System.Windows.Forms.SaveFileDialog saveFile = new System.Windows.Forms.SaveFileDialog())
@@ -102,7 +102,6 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
                     StatusText = Resources.LogsResources.LogsExportedSuccessfully;
                 }
             }
-
         }
 
         public async void ClearAll()
@@ -111,7 +110,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 IsBusy = true;
-                await Task.Run(() => {  loggingService.ClearAllLogs(); });
+                await Task.Run(() => { loggingService.ClearAllLogs(); });
                 FetchLogs();
                 IsBusy = false;
                 StatusText = Resources.LogsResources.AllLogsClearedSuccessfully;
@@ -134,8 +133,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
         }
     }
 
-    interface ILogsView
+    internal interface ILogsView
     {
-
     }
 }

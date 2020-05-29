@@ -16,10 +16,9 @@ namespace SLStudio.Core.Utilities.Logger
             this.commandLineArguments = commandLineArguments;
         }
 
-
         public void Debug(string message, string title = null)
         {
-            if (commandLineArguments.DebuggingMode)
+            if (commandLineArguments.DebugMode)
                 Log("Debug", title, message);
         }
 
@@ -56,7 +55,7 @@ namespace SLStudio.Core.Utilities.Logger
 
         private async void Log(string level, string title, string message)
         {
-            await loggingService.Log(sender.Name, level, title, message, DateTime.Now);
+            await loggingService.Log(new Log(null, sender.Name, level, title, message, DateTime.Now));
         }
     }
 }

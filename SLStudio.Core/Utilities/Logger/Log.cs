@@ -1,11 +1,12 @@
 ﻿using System;
 
-namespace SLStudio.Core.Events
+namespace SLStudio.Core.Utilities.Logger
 {
-    public class NewLogRequestedEvent
+    public class Log
     {
-        public NewLogRequestedEvent(string sender, string level, string title, string message, DateTime date)
+        public Log(string id, string sender, string level, string title, string message, DateTime date)
         {
+            Id = id;
             Sender = sender;
             Level = level;
             Title = title;
@@ -13,6 +14,7 @@ namespace SLStudio.Core.Events
             Date = date;
         }
 
+        public string Id { get; }
         public string Sender { get; }
         public string Level { get; }
         public string Title { get; }
