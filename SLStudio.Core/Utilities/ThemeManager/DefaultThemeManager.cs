@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
 
@@ -10,13 +9,18 @@ namespace SLStudio.Core.Utilities.ThemeManager
     internal class DefaultThemeManager : IThemeManager
     {
         private readonly ILogger logger;
+
         private readonly List<Theme> avaliableThemes;
 
         public DefaultThemeManager(ILoggingFactory loggingFactory)
         {
             logger = loggingFactory.GetLoggerFor<DefaultThemeManager>();
-            avaliableThemes = new List<Theme>();
-            FetchThemes().FireAndForget();
+            avaliableThemes = new List<Theme>()
+            {
+                ThemesHelper.LightTheme,
+                ThemesHelper.DarkTheme,
+                ThemesHelper.BlueTheme
+            };
         }
 
         public IEnumerable<Theme> AvaliableThemes => avaliableThemes;
@@ -27,11 +31,11 @@ namespace SLStudio.Core.Utilities.ThemeManager
         {
             try
             {
-                var themeResource = MahApps.Metro.ThemeManager.Themes.FirstOrDefault(t => t.BaseColorScheme == theme.BaseColor && t.ColorScheme == theme.ColorScheme);
-                MahApps.Metro.ThemeManager.ChangeTheme(Application.Current, themeResource);
-
                 if (theme == null)
                     theme = AvaliableThemes.FirstOrDefault(t => t.IsDefault);
+
+                var themeResource = ControlzEx.Theming.ThemeManager.Current.Themes.FirstOrDefault(t => t.BaseColorScheme == theme.BaseColor && t.ColorScheme == theme.ColorScheme);
+                ControlzEx.Theming.ThemeManager.Current.ChangeTheme(Application.Current, themeResource);
 
                 foreach (var palette in theme.Palette)
                 {
@@ -42,35 +46,7 @@ namespace SLStudio.Core.Utilities.ThemeManager
                     Application.Current.Resources[palette.Key] = brush;
                 }
 
-                RefreshMahappsBrushes(theme);
                 CurrentTheme = theme;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(ex);
-            }
-        }
-
-        private Task FetchThemes()
-        {
-            avaliableThemes.Clear();
-            avaliableThemes.AddRange(GetDefaultThemes());
-
-            return Task.FromResult(true);
-        }
-
-        private IEnumerable<Theme> GetDefaultThemes()
-        {
-            yield return ThemesHelper.DefaultLightTheme();
-            yield return ThemesHelper.DefaultDarkTheme();
-            yield return ThemesHelper.DefaultBlueTheme();
-        }
-
-        private void RefreshMahappsBrushes(Theme theme)
-        {
-            //todo: map this
-            try
-            {
             }
             catch (Exception ex)
             {
