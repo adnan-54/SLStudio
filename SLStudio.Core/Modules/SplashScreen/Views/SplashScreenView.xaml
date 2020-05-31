@@ -16,10 +16,10 @@
     <!--Style-->
     <Window.Style>
         <Style TargetType="{x:Type Window}">
-            <Setter Property="Cursor" Value="Arrow"/>
+            <Setter Property="Cursor" Value="Arrow" />
             <Style.Triggers>
                 <DataTrigger Binding="{Binding IsMouseDown}" Value="True">
-                    <Setter Property="Cursor" Value="pack://application:,,,/SLStudio.Core;component/Resources/Cursors/hand_drag.cur"/>
+                    <Setter Property="Cursor" Value="pack://application:,,,/SLStudio.Core;component/Resources/Cursors/hand_drag.cur" />
                 </DataTrigger>
             </Style.Triggers>
         </Style>
@@ -27,22 +27,23 @@
 
     <!--behaviors-->
     <dxmvvm:Interaction.Behaviors>
-        <behaviors:DraggableWindowBehavior/>
-        <behaviors:FadeInFadeOutWindowBehavior FadeInTime="1.0" FadeOutTime="0.5"/>
+        <behaviors:DraggableWindowBehavior />
+        <behaviors:FadeInFadeOutWindowBehavior FadeInTime="1.0" FadeOutTime="0.5" />
     </dxmvvm:Interaction.Behaviors>
 
     <Grid>
-        <Border CornerRadius="12" Margin="20"
+        <Border CornerRadius="12" Margin="20" BorderThickness="1"
+                BorderBrush="{DynamicResource Border}"
                 Background="{DynamicResource Control.Background}">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="15" Direction="-90" ShadowDepth="3"/>
+                <DropShadowEffect BlurRadius="15" Direction="-90" ShadowDepth="3" />
             </Border.Effect>
 
             <Grid Margin="{StaticResource FullMargin}">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <!--CloseButton-->
@@ -50,57 +51,57 @@
                         Command="{DXCommand 'TryCloseAsync()'}"
                         Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
                         Foreground="{DynamicResource Foreground}"
-                        Height="32" Width="42" FontSize="18" FontFamily="Marlett" 
+                        Height="32" Width="42" FontSize="18" FontFamily="Marlett"
                         HorizontalAlignment="Right" VerticalAlignment="Top"
-                        ToolTip="{x:Static resx:SplashScreenResources.Close}"/>
+                        ToolTip="{x:Static resx:SplashScreenResources.Close}" />
 
                 <!--Logo-->
                 <Grid Grid.Row="0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <TextBlock Grid.Row="0" Text="SL" Margin="0, -20, 0, 0"
-                               FontSize="200" FontFamily="Arial" FontWeight="Black" 
+                               FontSize="200" FontFamily="Arial" FontWeight="Black"
                                HorizontalAlignment="Center"
-                               Foreground="{DynamicResource Backstage.Editor.Background}"/>
+                               Foreground="{DynamicResource Backstage.Editor.Background}" />
 
                     <TextBlock Grid.Row="1" Text="SLStudio" Margin="0, -50, 0, -10"
                                FontSize="70" HorizontalAlignment="Center"
-                               Foreground="{DynamicResource Backstage.Editor.Background}"/>
+                               Foreground="{DynamicResource Backstage.Editor.Background}" />
                 </Grid>
 
                 <!--Infos-->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
                     <!--LoadingModule-->
                     <TextBlock Grid.Column="0" Text="{x:Static resx:SplashScreenResources.Loading}" FontSize="14" FontWeight="Thin"
-                               metro:VisibilityHelper.IsCollapsed="{Binding CurrentModule, Converter={StaticResource IsNullConverter}}"/>
+                               metro:VisibilityHelper.IsCollapsed="{Binding CurrentModule, Converter={StaticResource IsNullConverter}}" />
 
                     <TextBlock Grid.Column="1" FontSize="14">
-                        <Run/>
+                        <Run />
                         <Run Text="{Binding CurrentModule, TargetNullValue={x:Static resx:SplashScreenResources.Initializing}}"
-                             FontStyle="Italic" FontWeight="Thin"/><Run Text="..."/>
+                             FontStyle="Italic" FontWeight="Thin" /><Run Text="..." />
                     </TextBlock>
 
                     <!--Version-->
                     <TextBlock Grid.Column="2"
-                               FontSize="14" FontWeight="Thin" 
+                               FontSize="14" FontWeight="Thin"
                                FontStyle="Italic">
-                            <Run Text="{x:Static resx:SplashScreenResources.Version}"/>
-                            <Run Text="{Binding Version, Mode=OneWay}"/>
+                            <Run Text="{x:Static resx:SplashScreenResources.Version}" />
+                            <Run Text="{Binding Version, Mode=OneWay}" />
                     </TextBlock>
                 </Grid>
 
                 <!--ProgressBar-->
                 <ProgressBar Grid.Row="2" Margin="0, 6, 0, 6"
-                             Height="14" IsIndeterminate="True"/>
+                             Height="14" IsIndeterminate="True" />
             </Grid>
         </Border>
     </Grid>
