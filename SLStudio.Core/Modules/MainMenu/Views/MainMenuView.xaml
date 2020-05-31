@@ -7,7 +7,8 @@
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Menu>
         <MenuItem Header="{x:Static resx:MainMenuResources.View}">
-            <MenuItem Header="Logs" Command="{DXCommand ViewLogs()}"/>
+            <MenuItem Header="Logs" Command="{DXCommand ViewLogs()}" />
+            <MenuItem Header="Console" Command="{DXCommand ViewConsole()}" />
         </MenuItem>
     </Menu>
 </UserControl>

@@ -73,7 +73,7 @@
                       IsSynchronizedWithCurrentItem="True"
                       Style="{DynamicResource MahApps.Styles.DataGrid.Azure}"
                       RowHeight="20" CanUserAddRows="False" CanUserDeleteRows="False"
-                      SelectionUnit="FullRow" AutoGenerateColumns="False"
+                      SelectionUnit="FullRow" AutoGenerateColumns="False" SelectionMode="Single"
                       VirtualizingPanel.IsVirtualizing="True"
                       VirtualizingPanel.VirtualizationMode="Recycling"
                       EnableRowVirtualization="True" SelectionChanged="OnDataGridSelectionChanged">

@@ -2,13 +2,15 @@
 {
     internal class ShellViewModel : ViewModel, IShell
     {
-        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar)
+        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar, ICommandLineArguments commandLineArguments)
         {
             MainMenu = mainMenu;
             ToolBar = toolBar;
             StatusBar = statusBar;
 
             DisplayName = "SLStudio";
+            if (commandLineArguments.DebugMode)
+                DisplayName += " (debug)";
         }
 
         public IMainMenu MainMenu

@@ -1,4 +1,5 @@
-﻿using SLStudio.Core.Modules.Logger.ViewModels;
+﻿using SLStudio.Core.Modules.Console.ViewModels;
+using SLStudio.Core.Modules.Logger.ViewModels;
 
 namespace SLStudio.Core.Modules.MainMenu.ViewModels
 {
@@ -14,6 +15,11 @@ namespace SLStudio.Core.Modules.MainMenu.ViewModels
         public void ViewLogs()
         {
             windowManager.ShowDialog<ILogsView>();
+        }
+
+        public void ViewConsole()
+        {
+            windowManager.ShowWindow<IConsole>();
         }
     }
 }

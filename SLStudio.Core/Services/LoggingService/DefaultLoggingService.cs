@@ -16,8 +16,8 @@ namespace SLStudio.Core.Services.LoggingService
     {
         private static readonly object @lock = new object();
 
-        private readonly SQLiteConnection dbConnection;
         private readonly IMessenger messenger;
+        private readonly SQLiteConnection dbConnection;
         private readonly string applicationPath;
         private readonly string logFileName;
         private readonly string logFilePath;
@@ -26,7 +26,6 @@ namespace SLStudio.Core.Services.LoggingService
         public DefaultLoggingService(IMessenger messenger)
         {
             this.messenger = messenger;
-
             applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 #if DEBUG
             var count = 0;
@@ -66,8 +65,16 @@ namespace SLStudio.Core.Services.LoggingService
                     try
                     {
                         LogToDb(log.Sender, log.Level, log.Title, log.Message, log.Date);
-                        messenger.Send(new LogCompletedEvent(log));
                         Console.WriteLine(log.ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                        LogToSimleFile(ex);
+                    }
+
+                    try
+                    {
+                        messenger.Send(new LogCompletedEvent(log));
                     }
                     catch (Exception ex)
                     {

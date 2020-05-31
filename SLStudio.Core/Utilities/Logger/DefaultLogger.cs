@@ -18,8 +18,12 @@ namespace SLStudio.Core.Utilities.Logger
 
         public void Debug(string message, string title = null)
         {
+#if DEBUG
+            Log("Debug", title, message);
+#else
             if (commandLineArguments.DebugMode)
                 Log("Debug", title, message);
+#endif
         }
 
         public void Info(string message, string title = null)

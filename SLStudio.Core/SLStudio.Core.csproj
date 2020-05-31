@@ -166,6 +166,15 @@
     <Compile Include="Helpers\ExceptionHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
     <Compile Include="Module.cs" />
+    <Compile Include="Modules\Console\Resources\ConsoleResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ConsoleResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Console\ViewModels\ConsoleViewModel.cs" />
+    <Compile Include="Modules\Console\Views\ConsoleView.xaml.cs">
+      <DependentUpon>ConsoleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Logger\Resources\LogsResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -273,6 +282,10 @@
     <Compile Include="Utilities\WindowManager\IWindowManager.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Modules\Console\Views\ConsoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Modules\Logger\Views\LogDetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -331,6 +344,11 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Modules\Console\Resources\ConsoleResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\Console\Resources\ConsoleResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ConsoleResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Modules\Logger\Resources\LogsResources.pt-br.resx" />
     <EmbeddedResource Include="Modules\Logger\Resources\LogsResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

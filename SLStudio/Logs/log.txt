@@ -1,0 +1,81 @@
+---------------------------------------
+31/05/2020 01:32:20 AM
+System.Reflection.TargetInvocationException: Uma exceção foi acionada pelo destino de uma chamada. ---> System.InvalidOperationException: TextDocument can be accessed only from the thread that owns it.
+   em ICSharpCode.AvalonEdit.Document.TextDocument.VerifyAccess()
+   em ICSharpCode.AvalonEdit.Document.TextDocument.get_Text()
+   em SLStudio.Core.Modules.Console.ViewModels.ConsoleViewModel.OnLogCompleted(LogCompletedEvent log) na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Modules\Console\ViewModels\ConsoleViewModel.cs:linha 21
+   --- Fim do rastreamento de pilha de exceções internas ---
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 69
+Uma exceção foi acionada pelo destino de uma chamada.
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 69
+InvokeMethod
+---------------------------------------
+31/05/2020 01:34:37 AM
+System.Reflection.TargetInvocationException: Uma exceção foi acionada pelo destino de uma chamada. ---> System.InvalidOperationException: TextDocument can be accessed only from the thread that owns it.
+   em ICSharpCode.AvalonEdit.Document.TextDocument.VerifyAccess()
+   em ICSharpCode.AvalonEdit.Document.TextDocument.get_Text()
+   em SLStudio.Core.Modules.Console.ViewModels.ConsoleViewModel.OnLogCompleted(LogCompletedEvent log) na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Modules\Console\ViewModels\ConsoleViewModel.cs:linha 21
+   --- Fim do rastreamento de pilha de exceções internas ---
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 69
+Uma exceção foi acionada pelo destino de uma chamada.
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 69
+InvokeMethod
+---------------------------------------
+31/05/2020 08:09:11 AM
+System.Reflection.TargetInvocationException: Uma exceção foi acionada pelo destino de uma chamada. ---> System.InvalidOperationException: TextDocument can be accessed only from the thread that owns it.
+   em ICSharpCode.AvalonEdit.Document.TextDocument.VerifyAccess()
+   em ICSharpCode.AvalonEdit.Document.TextDocument.get_Text()
+   em SLStudio.Core.Modules.Console.ViewModels.ConsoleViewModel.OnLogCompleted(LogCompletedEvent e) na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Modules\Console\ViewModels\ConsoleViewModel.cs:linha 26
+   --- Fim do rastreamento de pilha de exceções internas ---
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 77
+Uma exceção foi acionada pelo destino de uma chamada.
+   em System.RuntimeMethodHandle.InvokeMethod(Object target, Object[] arguments, Signature sig, Boolean constructor)
+   em System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal(Object obj, Object[] parameters, Object[] arguments)
+   em System.Reflection.RuntimeMethodInfo.Invoke(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+   em DevExpress.Mvvm.Native.WeakReferenceActionInvoker`1.Execute(Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\WeakActionInvoker.cs:linha 29
+   em DevExpress.Mvvm.Native.ActionInvokerBase.DevExpress.Mvvm.Native.IActionInvoker.ExecuteIfMatched(Type messageTargetType, Object parameter) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Native\ActionInvoker\ActionInvokerBase.cs:linha 20
+   em DevExpress.Mvvm.Messenger.ActionInvokerCollection.Send(Object message, Type messageTargetType, Object token, Type messageType) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 65
+   em DevExpress.Mvvm.Messenger.Send[TMessage](TMessage message, Type messageTargetType, Object token) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\Messenger.cs:linha 122
+   em DevExpress.Mvvm.MessengerExtensions.Send[TMessage](IMessenger messenger, TMessage message) na D:\Work\FreeMVVM\DevExpress.Mvvm.Free\DevExpress.Mvvm\Services\MessengerService\MessengerExtensions.cs:linha 20
+   em SLStudio.Core.Services.LoggingService.DefaultLoggingService.<>c__DisplayClass12_0.<Log>b__0() na C:\Users\adnan\source\repos\SLStudio\SLStudio.Core\Services\LoggingService\DefaultLoggingService.cs:linha 77
+InvokeMethod

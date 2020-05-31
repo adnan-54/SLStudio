@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using DevExpress.Mvvm;
+using SLStudio.Core.Modules.Console.ViewModels;
+using SLStudio.Core.Modules.Console.Views;
 using SLStudio.Core.Modules.Logger.ViewModels;
 using SLStudio.Core.Modules.MainMenu.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
@@ -45,7 +47,6 @@ namespace SLStudio.Core
             container.Singleton<IErrorHandler, DefaultErrorHandler>();
             container.Singleton<IWindowManager, DefaultWindowManager>();
             container.Singleton<IThemeManager, DefaultThemeManager>();
-
             container.Singleton<ISplashScreen, SplashScreenViewModel>();
             container.Singleton<IShell, ShellViewModel>();
             container.Singleton<IMainMenu, MainMenuViewModel>();
@@ -53,6 +54,7 @@ namespace SLStudio.Core
             container.Singleton<IStatusBar, StatusBarViewModel>();
 
             container.PerRequest<ILogsView, LogsViewModel>();
+            container.PerRequest<IConsole, ConsoleViewModel>();
         }
     }
 }
