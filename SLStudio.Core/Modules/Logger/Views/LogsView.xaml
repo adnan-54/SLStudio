@@ -12,122 +12,148 @@
     <!--KeyBindings-->
     <metro:MetroWindow.InputBindings>
         <!--Refresh-->
-        <KeyBinding Gesture="F5" Command="{DXCommand 'FetchLogs()'}"/>
-        
+        <KeyBinding Gesture="F5" Command="{DXCommand 'FetchLogs()'}" />
+
         <!--ExportToHtml-->
-        <KeyBinding Gesture="Ctrl+E" Command="{DXCommand 'ExportToHtml()'}"/>
-        
+        <KeyBinding Gesture="Ctrl+E" Command="{DXCommand 'ExportToHtml()'}" />
+
         <!--Close-->
-        <KeyBinding Key="Esc" Command="{DXCommand 'TryCloseAsync()'}"/>
+        <KeyBinding Key="Esc" Command="{DXCommand 'TryCloseAsync()'}" />
     </metro:MetroWindow.InputBindings>
-    
+
     <!--Content-->
     <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-        
+
             <!--MainMenu-->
             <ToolBar Grid.Row="0">
                 <!--Refresh-->
                 <Button Command="{DXCommand 'FetchLogs()'}"
                         ToolTip="{x:Static resx:LogsResources.RefreshF5}">
-                    <Image Source="{DynamicResource Refresh}"/>
+                    <Image Source="{DynamicResource Refresh}" />
                 </Button>
-            
+
                 <!--Separator-->
-                <Separator/>
-            
+                <Separator />
+
                 <!--ExportToHtml-->
                 <Button Command="{DXCommand 'ExportToHtml()', CanExecute='CanExport'}"
                         ToolTip="{x:Static resx:LogsResources.ExportToHtmlCtrlE}">
-                    <Image Source="{DynamicResource ExportTableToFile}"/>
+                    <Image Source="{DynamicResource ExportTableToFile}" />
                 </Button>
-            
+
                 <!--Separator-->
-                <Separator/>
-            
+                <Separator />
+
                 <!--ClearAll-->
                 <Button Command="{DXCommand 'ClearAll()', CanExecute='CanClear'}"
                         ToolTip="{x:Static resx:LogsResources.ClearAll}">
-                    <Image Source="{DynamicResource ClearWindowContent}"/>
+                    <Image Source="{DynamicResource ClearWindowContent}" />
                 </Button>
-            
+
                 <!--Separator-->
-                <Separator/>
-            
+                <Separator />
+
                 <!--ViewSimpleLog-->
                 <Button Command="{DXCommand 'ViewSimpleLog()', CanExecute='CanViewSimpleLog'}"
                         ToolTip="{x:Static resx:LogsResources.ViewSimpleLogFile}">
-                    <Image Source="{DynamicResource Log}"/>
+                    <Image Source="{DynamicResource Log}" />
                 </Button>
             </ToolBar>
-        
+
             <!--Logs-->
             <DataGrid Grid.Row="1" Margin="{StaticResource FullMargin}"
-                      ItemsSource="{Binding Logs.DefaultView}" 
+                      ItemsSource="{Binding Logs.DefaultView}"
                       SelectedItem="{Binding SelectedItem}"
                       IsSynchronizedWithCurrentItem="True"
                       Style="{DynamicResource MahApps.Styles.DataGrid.Azure}"
-                      RowHeight="35" CanUserAddRows="False" CanUserDeleteRows="False"
+                      RowHeight="20" CanUserAddRows="False" CanUserDeleteRows="False"
                       SelectionUnit="FullRow" AutoGenerateColumns="False"
                       VirtualizingPanel.IsVirtualizing="True"
                       VirtualizingPanel.VirtualizationMode="Recycling"
-                      EnableRowVirtualization="True" SelectionChanged="OnDataGridSelectionChanged">  
+                      EnableRowVirtualization="True" SelectionChanged="OnDataGridSelectionChanged">
+                <DataGrid.Resources>
+                    <Style x:Key="ColumnStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                        <Setter Property="Margin" Value="3" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+
+                    <Style x:Key="HeaderStyle" TargetType="{x:Type DataGridColumnHeader}"
+                           BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader.Azure}">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0, 0, 0, 3" />
+                    </Style>
+                </DataGrid.Resources>
+
                 <!--Behaviors-->
                 <dxmvvm:Interaction.Behaviors>
-                    <dxmvvm:FocusBehavior/>
+                    <dxmvvm:FocusBehavior />
                 </dxmvvm:Interaction.Behaviors>
-                
+
                 <!--CellStyle-->
                 <DataGrid.CellStyle>
                     <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MahApps.Styles.DataGridCell.Azure}">
-                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Content.Text, RelativeSource={RelativeSource Self}, Converter={StaticResource IsNotNullConverter}}" Value="True">
+                                <Setter Property="ToolTip" Value="{Binding Content.Text, RelativeSource={RelativeSource Self}}" />
+                            </DataTrigger>
+                        </Style.Triggers>
                     </Style>
                 </DataGrid.CellStyle>
-                
+
                 <!--RowStyle-->
                 <DataGrid.RowStyle>
                     <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MahApps.Styles.DataGridRow.Azure}">
-                        <EventSetter Event="PreviewMouseDoubleClick" Handler="OnRowPreviewMouseDoubleClick"/>
-                        <EventSetter Event="PreviewKeyDown" Handler="OnRowPreviewKeyDown"/>
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="OnRowPreviewMouseDoubleClick" />
+                        <EventSetter Event="PreviewKeyDown" Handler="OnRowPreviewKeyDown" />
                     </Style>
                 </DataGrid.RowStyle>
-                
+
                 <!--Columns-->
                 <DataGrid.Columns>
                     <!--Id-->
                     <DataGridTextColumn Binding="{Binding ID}" Header="{x:Static resx:LogsResources.ID}" IsReadOnly="True"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         Width="SizeToHeader" SortDirection="Ascending" MinWidth="50" />
 
                     <!--Sender-->
                     <DataGridTextColumn Binding="{Binding Sender}" Header="{x:Static resx:LogsResources.Sender}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         IsReadOnly="True" MaxWidth="200" MinWidth="50" />
 
                     <!--Level-->
                     <DataGridTextColumn Binding="{Binding Level}" Header="{x:Static resx:LogsResources.Level}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         IsReadOnly="True" Width="SizeToHeader" MinWidth="50" />
 
                     <!--Title-->
                     <DataGridTextColumn Binding="{Binding Title}" Header="{x:Static resx:LogsResources.Title}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         IsReadOnly="True" Width="*" MinWidth="50" />
 
                     <!--Message-->
                     <DataGridTextColumn Binding="{Binding Message}" Header="{x:Static resx:LogsResources.Message}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         IsReadOnly="True" Width="*" MinWidth="50" />
 
                     <!--Date-->
                     <DataGridTextColumn Binding="{Binding Date}" Header="{x:Static resx:LogsResources.Date}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         IsReadOnly="True" Width="135" MinWidth="50" />
                 </DataGrid.Columns>
             </DataGrid>
-        
+
             <!--StatusBar-->
             <StatusBar Grid.Row="2">
-                <StatusBarItem Content="{Binding StatusText}"/>
+                <StatusBarItem Content="{Binding StatusText}" />
             </StatusBar>
         </Grid>
     </xctk:BusyIndicator>
