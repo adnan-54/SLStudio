@@ -9,6 +9,8 @@
         <MenuItem Header="{x:Static resx:MainMenuResources.View}">
             <MenuItem Header="Logs" Command="{DXCommand ViewLogs()}" />
             <MenuItem Header="Console" Command="{DXCommand ViewConsole()}" />
+            <Separator />
+            <MenuItem Header="Output" Command="{DXCommand ViewOutput()}" />
         </MenuItem>
     </Menu>
 </UserControl>

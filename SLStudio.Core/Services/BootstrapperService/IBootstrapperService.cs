@@ -6,7 +6,7 @@ namespace SLStudio.Core.Services.BootstrapperService
 {
     public interface IBootstrapperService
     {
-        IEnumerable<IModule> GetModules();
+        IEnumerable<IModule> Modules { get; }
 
         Task Initialize();
     }

@@ -47,15 +47,13 @@ namespace SLStudio.Core
             finally
             {
                 var windowManager = container.GetInstance<IWindowManager>();
-                if (windowManager != null)
-                    await windowManager.CloseWindow<ISplashScreen>();
-                else
+                if (windowManager == null)
                 {
-                    if (logger != null)
-                        logger.Fatal("DefaultWindowManger not found");
-
+                    logger?.Fatal("DefaultWindowManger not found");
                     Application.Current.Shutdown();
                 }
+                else
+                    await windowManager.CloseWindow<ISplashScreen>();
             }
         }
 
@@ -82,21 +80,20 @@ namespace SLStudio.Core
 
         protected override void OnExit(object sender, EventArgs e)
         {
-            if (logger != null)
-                logger.Debug("Exiting application");
+            logger?.Debug("Exiting application");
         }
 
         protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
-            var originalSender = e.Exception.FindOriginalSource();
-            var title = $"({originalSender}) | {e.Exception.Message}";
-
-            if (logger != null)
-                logger.Fatal(e.Exception.ToString(), title);
-            else
+            if (logger == null)
+            {
+                var originalSender = e.Exception.FindOriginalSource();
+                var title = $"({originalSender}) | {e.Exception.Message}";
                 MessageBox.Show(e.Exception.ToString(), $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+                logger.Fatal(e.Exception);
 
-            e.Handled = true;
             base.OnUnhandledException(sender, e);
         }
 

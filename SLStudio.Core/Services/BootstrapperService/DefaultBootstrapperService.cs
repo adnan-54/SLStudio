@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -28,27 +29,22 @@ namespace SLStudio.Core.Services.BootstrapperService
             isInitialized = false;
         }
 
-        public IEnumerable<IModule> GetModules()
-        {
-            foreach (var module in modules)
-                yield return module;
-        }
+        public IEnumerable<IModule> Modules => modules;
 
         public async Task Initialize()
         {
             if (isInitialized)
                 return;
-
             isInitialized = true;
 
-            await Task.Run(async () =>
+            await Task.Run(() =>
             {
                 var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, "SLStudio.*.dll");
                 foreach (var file in files)
                 {
                     var assemblyName = Path.GetFileName(file);
-                    splashScreen.CurrentModule = assemblyName;
                     logger.Debug($"Loading assembly {assemblyName}");
+                    splashScreen.CurrentModule = assemblyName;
                     Assembly.LoadFrom(file);
                 }
 
@@ -66,17 +62,12 @@ namespace SLStudio.Core.Services.BootstrapperService
                     splashScreen.CurrentModule = module.ModuleName;
                     logger.Debug($"Loading module {module.ModuleName}");
 
-                    foreach (var resourceUri in module.GetResources())
-                    {
-                        if (resourceUri != null)
-                            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = resourceUri });
-                    }
+                    foreach (var uri in module.GetResources())
+                        if (uri != null)
+                            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
 
                     if (module.ShouldRegister)
                         module.Register(container);
-
-                    if (!Settings.Default.FastSplashScreen)
-                        await Task.Delay(Settings.Default.SplashScreenSleepTime);
                 }
                 splashScreen.CurrentModule = null;
             });

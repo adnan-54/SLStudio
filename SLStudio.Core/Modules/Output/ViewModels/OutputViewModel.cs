@@ -2,23 +2,26 @@
 using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Search;
+using SLStudio.Core.Docking;
 using SLStudio.Core.Events;
 using System;
 using System.Windows;
 
-namespace SLStudio.Core.Modules.Console.ViewModels
+namespace SLStudio.Core.Modules.Output.ViewModels
 {
-    internal class ConsoleViewModel : ViewModel, IConsole
+    internal class OutputViewModel : ToolBase, IOutput
     {
         private bool editorLoaded;
 
-        public ConsoleViewModel(IMessenger messenger)
+        public OutputViewModel(IMessenger messenger)
         {
             TextDocument = new TextDocument();
             editorLoaded = false;
             messenger.Register<LogCompletedEvent>(this, OnLogCompleted);
-            DisplayName = "Console";
+            DisplayName = "Output";
         }
+
+        public override PaneLocation PreferredLocation => PaneLocation.Bottom;
 
         public TextDocument TextDocument { get; }
 
@@ -26,14 +29,6 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         {
             get => GetProperty(() => WordWrap);
             set => SetProperty(() => WordWrap, value);
-        }
-
-        public void OnLogCompleted(LogCompletedEvent e)
-        {
-            Application.Current?.Dispatcher.Invoke(() =>
-            {
-                TextDocument.Text += $"{e.Log}{Environment.NewLine}";
-            });
         }
 
         public void EditorOnLoad(TextEditor editor)
@@ -45,13 +40,25 @@ namespace SLStudio.Core.Modules.Console.ViewModels
             SearchPanel.Install(editor.TextArea);
         }
 
-        public void ClearAll()
+        public void AppendLine(string content)
         {
-            TextDocument.Text = string.Empty;
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                TextDocument.Text = $"{TextDocument.Text}{content}{Environment.NewLine}";
+            });
         }
-    }
 
-    internal interface IConsole
-    {
+        public void Clear()
+        {
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                TextDocument.Text = string.Empty;
+            });
+        }
+
+        private void OnLogCompleted(LogCompletedEvent e)
+        {
+            AppendLine(e.Log.ToString());
+        }
     }
 }
