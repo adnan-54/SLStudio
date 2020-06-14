@@ -48,6 +48,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("20.6.28.1012")]
-[assembly: AssemblyFileVersion("20.6.28.1012")]
+[assembly: AssemblyVersion("20.6.83.1067")]
+[assembly: AssemblyFileVersion("20.6.83.1067")]
 [assembly: NeutralResourcesLanguage("en")]

@@ -24,7 +24,7 @@ namespace SLStudio.Core.Services.BootstrapperService
         {
             this.container = container;
             this.splashScreen = splashScreen;
-            logger = loggingFactory.GetLoggerFor<DefaultBootstrapperService>();
+            logger = loggingFactory.GetLogger<DefaultBootstrapperService>();
             modules = new List<IModule>();
             isInitialized = false;
         }

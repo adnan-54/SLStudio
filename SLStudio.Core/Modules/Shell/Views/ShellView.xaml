@@ -44,7 +44,7 @@
                              DocumentsSource="{Binding Documents}">
             <!--Theme-->
             <xcad:DockingManager.Theme>
-                <xcad:MetroTheme />
+                <xcad:VS2010Theme />
             </xcad:DockingManager.Theme>
 
             <!--LayoutInitializer-->

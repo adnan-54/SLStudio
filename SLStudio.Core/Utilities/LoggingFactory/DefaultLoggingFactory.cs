@@ -1,4 +1,5 @@
-﻿using SLStudio.Core.Utilities.Logger;
+﻿using Caliburn.Micro;
+using SLStudio.Core.Utilities.Logger;
 using System;
 using System.Collections.Generic;
 
@@ -17,7 +18,7 @@ namespace SLStudio.Core
             logs = new Dictionary<Type, ILogger>();
         }
 
-        public ILogger GetLoggerFor<Type>() where Type : class
+        public ILogger GetLogger<Type>() where Type : class
         {
             if (!logs.TryGetValue(typeof(Type), out ILogger logger))
             {
@@ -25,6 +26,15 @@ namespace SLStudio.Core
                 logs.Add(typeof(Type), logger);
             }
 
+            return logger;
+        }
+    }
+
+    public static class LogManager
+    {
+        public static ILogger GetLogger<Type>() where Type : class
+        {
+            var logger = IoC.Get<ILoggingFactory>()?.GetLogger<Type>();
             return logger;
         }
     }

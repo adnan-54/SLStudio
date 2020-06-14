@@ -11,19 +11,19 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 {
     internal class OutputViewModel : ToolBase, IOutput
     {
-        private bool editorLoaded;
-
         public OutputViewModel(IMessenger messenger)
         {
-            TextDocument = new TextDocument();
-            editorLoaded = false;
             messenger.Register<LogCompletedEvent>(this, OnLogCompleted);
             DisplayName = "Output";
         }
 
         public override PaneLocation PreferredLocation => PaneLocation.Bottom;
 
-        public TextDocument TextDocument { get; }
+        public string Text
+        {
+            get => GetProperty(() => Text);
+            set => SetProperty(() => Text, value);
+        }
 
         public bool WordWrap
         {
@@ -31,34 +31,22 @@ namespace SLStudio.Core.Modules.Output.ViewModels
             set => SetProperty(() => WordWrap, value);
         }
 
-        public void EditorOnLoad(TextEditor editor)
-        {
-            if (editorLoaded)
-                return;
-            editorLoaded = true;
-
-            SearchPanel.Install(editor.TextArea);
-        }
-
         public void AppendLine(string content)
         {
-            Application.Current?.Dispatcher.Invoke(() =>
-            {
-                TextDocument.Text = $"{TextDocument.Text}{content}{Environment.NewLine}";
-            });
+            Text = $"{Text}{content}{Environment.NewLine}";
         }
 
         public void Clear()
         {
-            Application.Current?.Dispatcher.Invoke(() =>
-            {
-                TextDocument.Text = string.Empty;
-            });
+            Text = string.Empty;
         }
 
         private void OnLogCompleted(LogCompletedEvent e)
         {
-            AppendLine(e.Log.ToString());
+            Application.Current?.Dispatcher.Invoke(() =>
+            {
+                AppendLine(e.Log.ToString());
+            });
         }
     }
 }

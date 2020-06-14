@@ -159,10 +159,13 @@
     <Compile Include="Behaviors\TextBoxScrollToEndBehavior.cs" />
     <Compile Include="Behaviors\TextBoxZoomBehavior.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Converters\DateTimeConverter.cs" />
+    <Compile Include="Converters\HumanizeDateTimeConverter.cs" />
     <Compile Include="Converters\NullableValueConverter.cs" />
     <Compile Include="Converters\IsNullConverter.cs" />
     <Compile Include="Events\LogCompletedEvent.cs" />
     <Compile Include="Extensions\ExceptionExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\TaskExtensions.cs" />
     <Compile Include="Helpers\ExceptionHelpers.cs" />
     <Compile Include="Helpers\StringHelpers.cs" />
@@ -222,6 +225,12 @@
     <Compile Include="Modules\SplashScreen\ViewModels\SplashScreenViewModel.cs" />
     <Compile Include="Modules\SplashScreen\Views\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\StartPage\Models\RecentFileModel.cs" />
+    <Compile Include="Modules\StartPage\Resources\StartPageResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StartPageResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Modules\StartPage\ViewModels\StartPageViewModel.cs" />
     <Compile Include="Modules\StartPage\Views\StartPageView.xaml.cs">
@@ -393,6 +402,11 @@
     <EmbeddedResource Include="Modules\SplashScreen\Resources\SplashScreenResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modules\StartPage\Resources\StartPageResources.pt-br.resx" />
+    <EmbeddedResource Include="Modules\StartPage\Resources\StartPageResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StartPageResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.pt-BR.resx" />
     <EmbeddedResource Include="Modules\StatusBar\Resources\StatusBarResources.resx">

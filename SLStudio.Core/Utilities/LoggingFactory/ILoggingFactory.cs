@@ -2,6 +2,6 @@
 {
     public interface ILoggingFactory
     {
-        ILogger GetLoggerFor<TType>() where TType : class;
+        ILogger GetLogger<TType>() where TType : class;
     }
 }

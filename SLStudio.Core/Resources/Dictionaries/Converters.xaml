@@ -6,6 +6,8 @@
     <converters:IsNullConverter x:Key="IsNullConverter" />
     <converters:IsNullConverter x:Key="IsNotNullConverter" Negate="True" />
     <converters:NullableValueConverter x:Key="NullableValueConverter" />
+    <converters:DateTimeConverter x:Key="DateTimeConverter" />
+    <converters:HumanizeDateTimeConverter x:Key="HumanizeDateTimeConverter" />
 
     <xcad:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 </ResourceDictionary>

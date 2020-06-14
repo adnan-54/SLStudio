@@ -30,7 +30,7 @@ namespace SLStudio.Core
             try
             {
                 container.GetInstance<ICommandLineArguments>().ParseArguments(e.Args);
-                logger = container.GetInstance<ILoggingFactory>().GetLoggerFor<Bootstrapper>();
+                logger = container.GetInstance<ILoggingFactory>().GetLogger<Bootstrapper>();
                 logger.Debug("Initializing application");
 
                 ApplyTheme();

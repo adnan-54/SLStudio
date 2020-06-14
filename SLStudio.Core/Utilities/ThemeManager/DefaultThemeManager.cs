@@ -14,7 +14,7 @@ namespace SLStudio.Core.Utilities.ThemeManager
 
         public DefaultThemeManager(ILoggingFactory loggingFactory)
         {
-            logger = loggingFactory.GetLoggerFor<DefaultThemeManager>();
+            logger = loggingFactory.GetLogger<DefaultThemeManager>();
             avaliableThemes = new List<Theme>()
             {
                 ThemesHelper.LightTheme,

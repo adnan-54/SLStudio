@@ -8,7 +8,7 @@ namespace SLStudio.Core.Utilities.ErrorHandler
 
         public DefaultErrorHandler(ILoggingFactory loggingService)
         {
-            logger = loggingService.GetLoggerFor<DefaultErrorHandler>();
+            logger = loggingService.GetLogger<DefaultErrorHandler>();
         }
 
         public void HandleError(Exception exception)
