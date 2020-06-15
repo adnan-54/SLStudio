@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using SLStudio.Core.Logging;
 using SLStudio.Core.Properties;
 using SLStudio.Core.Services.BootstrapperService;
 using SLStudio.Core.Utilities.DependenciesContainer;
@@ -7,16 +8,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace SLStudio.Core
 {
     public class Bootstrapper : BootstrapperBase
     {
         private readonly Container container;
-        private ILogger logger;
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(Bootstrapper));
 
         public Bootstrapper()
         {
@@ -30,7 +29,6 @@ namespace SLStudio.Core
             try
             {
                 container.GetInstance<ICommandLineArguments>().ParseArguments(e.Args);
-                logger = container.GetInstance<ILoggingFactory>().GetLogger<Bootstrapper>();
                 logger.Debug("Initializing application");
 
                 ApplyTheme();
@@ -46,14 +44,7 @@ namespace SLStudio.Core
             }
             finally
             {
-                var windowManager = container.GetInstance<IWindowManager>();
-                if (windowManager == null)
-                {
-                    logger?.Fatal("DefaultWindowManger not found");
-                    Application.Current.Shutdown();
-                }
-                else
-                    await windowManager.CloseWindow<ISplashScreen>();
+                await container.GetInstance<IWindowManager>().CloseWindow<ISplashScreen>();
             }
         }
 
@@ -80,21 +71,7 @@ namespace SLStudio.Core
 
         protected override void OnExit(object sender, EventArgs e)
         {
-            logger?.Debug("Exiting application");
-        }
-
-        protected override void OnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
-        {
-            if (logger == null)
-            {
-                var originalSender = e.Exception.FindOriginalSource();
-                var title = $"({originalSender}) | {e.Exception.Message}";
-                MessageBox.Show(e.Exception.ToString(), $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-            else
-                logger.Fatal(e.Exception);
-
-            base.OnUnhandledException(sender, e);
+            logger.Debug("Exiting application");
         }
 
         private void ApplyTheme()
@@ -110,7 +87,6 @@ namespace SLStudio.Core
                 return;
 
             var culture = new CultureInfo(Settings.Default.LanguageCode);
-            //culture.NumberFormat.NumberDecimalSeparator = ".";
             Thread.CurrentThread.CurrentCulture = culture;
             Thread.CurrentThread.CurrentUICulture = culture;
         }

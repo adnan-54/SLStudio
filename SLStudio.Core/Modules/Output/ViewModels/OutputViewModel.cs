@@ -1,20 +1,15 @@
-﻿using DevExpress.Mvvm;
-using ICSharpCode.AvalonEdit;
-using ICSharpCode.AvalonEdit.Document;
-using ICSharpCode.AvalonEdit.Search;
-using SLStudio.Core.Docking;
-using SLStudio.Core.Events;
+﻿using SLStudio.Core.Docking;
+using SLStudio.Core.Logging;
 using System;
-using System.Windows;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
     internal class OutputViewModel : ToolBase, IOutput
     {
-        public OutputViewModel(IMessenger messenger)
+        public OutputViewModel()
         {
-            messenger.Register<LogCompletedEvent>(this, OnLogCompleted);
             DisplayName = "Output";
+            LogManager.LoggingService.LogCompleted += OnLogCompleted;
         }
 
         public override PaneLocation PreferredLocation => PaneLocation.Bottom;
@@ -41,12 +36,9 @@ namespace SLStudio.Core.Modules.Output.ViewModels
             Text = string.Empty;
         }
 
-        private void OnLogCompleted(LogCompletedEvent e)
+        private void OnLogCompleted(object sender, LogCompletedEventArgs e)
         {
-            Application.Current?.Dispatcher.Invoke(() =>
-            {
-                AppendLine(e.Log.ToString());
-            });
+            AppendLine(e.Log.ToString());
         }
     }
 }

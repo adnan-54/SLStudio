@@ -12,7 +12,7 @@ namespace SLStudio.Core.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.4.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
     public sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,18 +25,6 @@ namespace SLStudio.Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool ShowInitialScreen {
-            get {
-                return ((bool)(this["ShowInitialScreen"]));
-            }
-            set {
-                this["ShowInitialScreen"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("pt-br")]
         public string LanguageCode {
             get {
@@ -44,42 +32,6 @@ namespace SLStudio.Core.Properties {
             }
             set {
                 this["LanguageCode"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool FastSplashScreen {
-            get {
-                return ((bool)(this["FastSplashScreen"]));
-            }
-            set {
-                this["FastSplashScreen"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("500")]
-        public int SplashScreenSleepTime {
-            get {
-                return ((int)(this["SplashScreenSleepTime"]));
-            }
-            set {
-                this["SplashScreenSleepTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool ShowConsoleAtStartup {
-            get {
-                return ((bool)(this["ShowConsoleAtStartup"]));
-            }
-            set {
-                this["ShowConsoleAtStartup"] = value;
             }
         }
     }

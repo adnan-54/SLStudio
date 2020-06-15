@@ -1,18 +1,17 @@
-﻿using System.IO;
+﻿using SLStudio.Core.Logging;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace SLStudio.Core.Modules.Logger.ViewModels
 {
-    class SimpleLogViewModel : ViewModel
+    internal class SimpleLogViewModel : ViewModel
     {
         private readonly ILoggingService loggingService;
 
-        public SimpleLogViewModel(ILoggingService loggingService)
+        public SimpleLogViewModel()
         {
-            this.loggingService = loggingService;
-
+            loggingService = LogManager.LoggingService;
             DisplayName = "SLStudio - Simple Log";
-            
             FetchLogsAsync().FireAndForget();
         }
 
@@ -31,21 +30,13 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
                 saveFile.FileName = $"slstudio_simplelog_{System.DateTime.Now.ToString().Replace('/', '-').Replace(' ', '_').Replace(':', '-')}";
 
                 if (saveFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                {
-                    await Task.Run(() =>
-                    {
-                        File.WriteAllText(saveFile.FileName, SimpleLog);
-                    });
-                }
+                    await Task.Run(() => File.WriteAllText(saveFile.FileName, SimpleLog));
             }
         }
 
         public async Task FetchLogsAsync()
         {
-            await Task.Run(() =>
-            {
-                SimpleLog = loggingService.GetSimpleLogs();
-            });
+            await Task.Run(() => SimpleLog = loggingService.GetSimpleLogs());
         }
     }
 }

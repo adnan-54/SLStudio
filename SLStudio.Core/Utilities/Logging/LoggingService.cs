@@ -1,87 +1,77 @@
-﻿using DevExpress.Mvvm;
-using SLStudio.Core.Events;
-using SLStudio.Core.Utilities.Logger;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core.Services.LoggingService
+namespace SLStudio.Core.Logging
 {
+    public interface ILoggingService
+    {
+        bool LogFileExists { get; }
+        bool SimpleLogFileExists { get; }
+
+        DataTable GetLogs();
+
+        void Log(Log log);
+
+        void ExportLogsToHtml(string directory);
+
+        void ClearAllLogs();
+
+        string GetSimpleLogs();
+
+        event EventHandler<LogCompletedEventArgs> LogCompleted;
+    }
+
     internal class DefaultLoggingService : ILoggingService
     {
         private static readonly object @lock = new object();
 
-        private readonly IMessenger messenger;
         private readonly SQLiteConnection dbConnection;
-        private readonly string applicationPath;
-        private readonly string logFileName;
         private readonly string logFilePath;
+        private readonly string simpeLogFilePath;
         private readonly string connectionString;
 
-        public DefaultLoggingService(IMessenger messenger)
+        public DefaultLoggingService()
         {
-            this.messenger = messenger;
-            applicationPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-#if DEBUG
-            var count = 0;
-            while (!File.Exists(Path.Combine(applicationPath, "SLStudio.csproj")))
-            {
-                applicationPath = Directory.GetParent(applicationPath).FullName;
-
-                if (count++ > 5)
-                    throw new DirectoryNotFoundException();
-            }
-#endif
-            logFileName = "logs.db";
-            logFilePath = Path.Combine(applicationPath, "logs", logFileName);
+            var appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            logFilePath = Path.Combine(appDataPath, "SLStudio", "Logs.db");
+            simpeLogFilePath = Path.Combine(appDataPath, "SLStudio", "Logs.txt");
             connectionString = $"Data Source={logFilePath}; Version=3; datetimeformat=CurrentCulture";
 
             dbConnection = new SQLiteConnection(connectionString);
+            SetupDb();
         }
 
-        public bool LogFileExists => File.Exists(logFilePath);
+        public event EventHandler<LogCompletedEventArgs> LogCompleted;
+
+        public bool LogFileExists
+            => File.Exists(logFilePath);
 
         public bool SimpleLogFileExists
-        {
-            get
-            {
-                var path = Path.GetDirectoryName(logFilePath);
-                var simpleLogPath = Path.Combine(path, "log.txt");
-                return File.Exists(simpleLogPath);
-            }
-        }
+            => File.Exists(simpeLogFilePath);
 
-        public Task Log(Log log)
+        public void Log(Log log)
         {
-            return Task.Run(() =>
+            Task.Run(() =>
             {
                 lock (@lock)
                 {
                     try
                     {
-                        LogToDb(log.Sender, log.Level, log.Title, log.Message, log.Date);
+                        InsertLog(log.Sender, log.Level, log.Title, log.Message, log.Date);
                         Console.WriteLine(log.ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                        LogToSimleFile(ex);
-                    }
-
-                    try
-                    {
-                        messenger.Send(new LogCompletedEvent(log));
+                        OnLogCompleted(new LogCompletedEventArgs(log));
                     }
                     catch (Exception ex)
                     {
                         LogToSimleFile(ex);
                     }
                 }
-            });
+            }).FireAndForget();
         }
 
         public DataTable GetLogs()
@@ -90,7 +80,6 @@ namespace SLStudio.Core.Services.LoggingService
 
             try
             {
-                dbConnection.Open();
                 using (SQLiteDataAdapter dataAdapter = new SQLiteDataAdapter("SELECT * FROM TB_LOGS ORDER BY ID DESC", dbConnection))
                 {
                     lock (@lock)
@@ -100,10 +89,6 @@ namespace SLStudio.Core.Services.LoggingService
             catch (Exception ex)
             {
                 LogToSimleFile(ex);
-            }
-            finally
-            {
-                dbConnection.Close();
             }
 
             return dataTable;
@@ -159,17 +144,12 @@ namespace SLStudio.Core.Services.LoggingService
             {
                 LogToSimleFile(ex);
             }
-            finally
-            {
-                stringBuilder.Clear();
-            }
         }
 
         public void ClearAllLogs()
         {
             try
             {
-                dbConnection.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = dbConnection;
@@ -177,62 +157,24 @@ namespace SLStudio.Core.Services.LoggingService
 
                     command.ExecuteNonQuery();
                 }
-                EnsureLogTableIsValid();
+                EnsureDbIsValid();
             }
             catch (Exception ex)
             {
                 LogToSimleFile(ex);
             }
-            finally
-            {
-                dbConnection.Close();
-            }
         }
 
         public string GetSimpleLogs()
         {
-            var path = Path.GetDirectoryName(logFilePath);
-            var simpleLogPath = Path.Combine(path, "log.txt");
-
-            if (!File.Exists(simpleLogPath))
-                return string.Empty;
-
-            return File.ReadAllText(simpleLogPath);
+            return File.ReadAllText(simpeLogFilePath);
         }
 
-        private void LogToDb(string sender, string level, string title, string message, DateTime date)
+        private void SetupDb()
         {
+            EnsureDbFileExists();
+            dbConnection.Open();
             EnsureDbIsValid();
-            InsertLog(sender, level, title, message, date);
-        }
-
-        private void EnsureDbIsValid()
-        {
-            if (!File.Exists(logFilePath))
-            {
-                EnsureDbFileExists();
-                EnsureLogTableIsValid();
-            }
-            else
-            {
-                try
-                {
-                    dbConnection.Open();
-                    using (SQLiteCommand command = new SQLiteCommand())
-                    {
-                        command.Connection = dbConnection;
-                        command.CommandText = "SELECT * FROM TB_LOGS ORDER BY ROWID ASC LIMIT 1;";
-                        command.ExecuteNonQuery();
-                    }
-                    dbConnection.Close();
-                }
-                catch
-                {
-                    dbConnection.Close();
-                    File.Delete(logFilePath);
-                    EnsureDbIsValid();
-                }
-            }
         }
 
         private void EnsureDbFileExists()
@@ -245,11 +187,10 @@ namespace SLStudio.Core.Services.LoggingService
                 SQLiteConnection.CreateFile(logFilePath);
         }
 
-        private void EnsureLogTableIsValid()
+        private void EnsureDbIsValid()
         {
             try
             {
-                dbConnection.Open();
                 using (SQLiteCommand command = new SQLiteCommand())
                 {
                     command.Connection = dbConnection;
@@ -273,60 +214,48 @@ namespace SLStudio.Core.Services.LoggingService
                     LogToSimleFile(ex);
                 }
             }
-            finally
-            {
-                dbConnection.Close();
-            }
         }
 
         private void InsertLog(string sender, string level, string title, string message, DateTime date)
         {
-            try
+            using (SQLiteCommand command = new SQLiteCommand())
             {
-                dbConnection.Open();
-                using (SQLiteCommand command = new SQLiteCommand())
-                {
-                    command.Connection = dbConnection;
-                    command.CommandText = "INSERT INTO TB_LOGS(Sender, Level, Title, Message, Date) VALUES (@sender, @level, @title, @message, @date);";
+                command.Connection = dbConnection;
+                command.CommandText = "INSERT INTO TB_LOGS(Sender, Level, Title, Message, Date) VALUES (@sender, @level, @title, @message, @date);";
 
-                    command.Parameters.AddWithValue("@sender", sender);
-                    command.Parameters.AddWithValue("@level", level);
-                    command.Parameters.AddWithValue("@title", title);
-                    command.Parameters.AddWithValue("@message", message);
-                    command.Parameters.AddWithValue("@date", date);
+                command.Parameters.AddWithValue("@sender", sender);
+                command.Parameters.AddWithValue("@level", level);
+                command.Parameters.AddWithValue("@title", title);
+                command.Parameters.AddWithValue("@message", message);
+                command.Parameters.AddWithValue("@date", date);
 
-                    command.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogToSimleFile(ex);
-            }
-            finally
-            {
-                dbConnection.Close();
+                command.ExecuteNonQuery();
             }
         }
 
         private void LogToSimleFile(Exception exception)
         {
-            var path = Path.GetDirectoryName(logFilePath);
-            var simpleLogPath = Path.Combine(path, "log.txt");
+            var path = Path.GetDirectoryName(simpeLogFilePath);
 
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
 
-            File.AppendAllLines(simpleLogPath, GetExceptionDetails(exception));
+            File.AppendAllLines(simpeLogFilePath, GetExceptionDetails(exception));
         }
 
         private IEnumerable<string> GetExceptionDetails(Exception exception)
         {
             yield return "---------------------------------------";
             yield return DateTime.Now.ToString();
-            yield return exception.ToString();
-            yield return exception.Message;
-            yield return exception.StackTrace;
-            yield return exception.TargetSite.Name;
+            yield return exception?.ToString();
+            yield return exception?.Message;
+            yield return exception?.StackTrace;
+            yield return exception?.TargetSite?.Name;
+        }
+
+        protected virtual void OnLogCompleted(LogCompletedEventArgs e)
+        {
+            LogCompleted?.Invoke(this, e);
         }
     }
 }

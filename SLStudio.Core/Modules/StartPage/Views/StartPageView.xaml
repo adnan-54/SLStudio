@@ -5,7 +5,8 @@
              xmlns:resx="clr-namespace:SLStudio.Core.Modules.StartPage.Resources"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+             Background="{DynamicResource Control.Background}">
     <Grid Margin="24">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -47,7 +48,8 @@
 
                 <!--RecentFiles-->
                 <ListBox Grid.Row="2" Margin="{StaticResource UpMargin}" Background="Transparent"
-                         ItemsSource="{Binding RecentFiles}" SelectedItem="{Binding SelectedFile}">
+                         ItemsSource="{Binding RecentFiles}" SelectedItem="{Binding SelectedFile}"
+                         ContextMenuOpening="{DXEvent 'ContextMenuOnOpening(@args)'}">
                     <ListBox.GroupStyle>
                         <GroupStyle>
                             <GroupStyle.HeaderTemplate>
@@ -103,6 +105,7 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
 
+                    <!--ItemContainerStyle-->
                     <ListBox.ItemContainerStyle>
                         <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                             <Setter Property="Background" Value="Transparent" />
@@ -134,25 +137,35 @@
             </Grid>
 
             <!--GetStarted-->
-            <Grid Grid.Column="1" Margin="{StaticResource LargeLeftMargin}"
-                  Height="500" Width="400" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Grid Grid.Column="1" Margin="{StaticResource LargeLeftMargin}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
+
+                <!--Resources-->
+                <Grid.Resources>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource MahApps.Styles.Button.Flat}">
+                        <Setter Property="Width" Value="420" />
+                        <Setter Property="Height" Value="100" />
+                        <Setter Property="HorizontalAlignment" Value="Left" />
+                    </Style>
+
+                    <Style TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                    </Style>
+                </Grid.Resources>
 
                 <!--GetStarted-->
                 <TextBlock Grid.Row="0" Text="{x:Static resx:StartPageResources.GetStarted}" FontSize="22" />
 
                 <!--CloneRepository-->
-                <Button Grid.Row="1" Margin="{StaticResource LargeUpMargin}"
-                        Command="{DXCommand 'CloneRepository()'}"
-                        Style="{DynamicResource MahApps.Styles.Button.Flat}"
-                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
-                    <Grid Margin="{StaticResource LargeFullMargin}">
+                <Button Grid.Row="1" Command="{DXCommand 'CloneRepository()'}" Margin="{StaticResource LargeUpMargin}">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -173,10 +186,8 @@
 
                 <!--OpenProject/Solution-->
                 <Button Grid.Row="2" Margin="{StaticResource LargeUpMargin}"
-                        Command="{DXCommand 'OpenProjectOrSolution()'}"
-                        Style="{DynamicResource MahApps.Styles.Button.Flat}"
-                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
-                    <Grid Margin="{StaticResource LargeFullMargin}">
+                        Command="{DXCommand 'OpenProjectOrSolution()'}">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -197,10 +208,8 @@
 
                 <!--OpenLocalFolder-->
                 <Button Grid.Row="3" Margin="{StaticResource LargeUpMargin}"
-                        Command="{DXCommand 'OpenLocalFolder()'}"
-                        Style="{DynamicResource MahApps.Styles.Button.Flat}"
-                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
-                    <Grid Margin="{StaticResource LargeFullMargin}">
+                        Command="{DXCommand 'OpenLocalFolder()'}">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
@@ -221,10 +230,8 @@
 
                 <!--CreateNewProject -->
                 <Button Grid.Row="4" Margin="{StaticResource LargeUpMargin}"
-                        Command="{DXCommand 'CreateNewProject()'}"
-                        Style="{DynamicResource MahApps.Styles.Button.Flat}"
-                        HorizontalContentAlignment="Left" VerticalContentAlignment="Top">
-                    <Grid Margin="{StaticResource LargeFullMargin}">
+                        Command="{DXCommand 'CreateNewProject()'}">
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />

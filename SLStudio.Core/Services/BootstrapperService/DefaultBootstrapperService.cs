@@ -1,4 +1,4 @@
-﻿using SLStudio.Core.Properties;
+﻿using SLStudio.Core.Logging;
 using SLStudio.Core.Utilities.DependenciesContainer;
 using SLStudio.Core.Utilities.ModuleBase;
 using System;
@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -14,17 +13,17 @@ namespace SLStudio.Core.Services.BootstrapperService
 {
     internal class DefaultBootstrapperService : IBootstrapperService
     {
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(DefaultBootstrapperService));
+
         private readonly IContainer container;
         private readonly ISplashScreen splashScreen;
-        private readonly ILogger logger;
         private List<IModule> modules;
         private bool isInitialized;
 
-        public DefaultBootstrapperService(Container container, ISplashScreen splashScreen, ILoggingFactory loggingFactory)
+        public DefaultBootstrapperService(Container container, ISplashScreen splashScreen)
         {
             this.container = container;
             this.splashScreen = splashScreen;
-            logger = loggingFactory.GetLogger<DefaultBootstrapperService>();
             modules = new List<IModule>();
             isInitialized = false;
         }

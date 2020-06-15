@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SLStudio.Core.Utilities.Logger
+namespace SLStudio.Core.Logging
 {
     public class Log
     {

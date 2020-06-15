@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Core.Logging;
+using System;
 using System.Data;
 using System.Threading.Tasks;
 using System.Windows;
@@ -7,13 +8,13 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
 {
     internal class LogsViewModel : ViewModel, ILogsView
     {
-        private readonly ILoggingService loggingService;
         private readonly IWindowManager windowManager;
+        private readonly ILoggingService loggingService;
 
-        public LogsViewModel(ILoggingService loggingService, IWindowManager windowManager)
+        public LogsViewModel(IWindowManager windowManager)
         {
-            this.loggingService = loggingService;
             this.windowManager = windowManager;
+            loggingService = LogManager.LoggingService;
             FetchLogsAsync().FireAndForget();
 
             DisplayName = "SLStudio - Logs";
@@ -56,11 +57,14 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
             set => SetProperty(() => SelectedItem, value);
         }
 
-        public bool CanExport => Logs?.Rows.Count > 0;
+        public bool CanExport
+            => Logs?.Rows.Count > 0;
 
-        public bool CanClear => Logs?.Rows.Count > 0;
+        public bool CanClear
+            => Logs?.Rows.Count > 0;
 
-        public bool CanViewSimpleLog => loggingService.SimpleLogFileExists;
+        public bool CanViewSimpleLog
+            => loggingService.SimpleLogFileExists;
 
         private Task FetchLogsAsync()
         {
@@ -110,7 +114,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
             if (result == MessageBoxResult.Yes)
             {
                 IsBusy = true;
-                await Task.Run(() => { loggingService.ClearAllLogs(); });
+                await Task.Run(() => loggingService.ClearAllLogs());
                 FetchLogs();
                 IsBusy = false;
                 StatusText = Resources.LogsResources.AllLogsClearedSuccessfully;
@@ -119,7 +123,7 @@ namespace SLStudio.Core.Modules.Logger.ViewModels
 
         public void ViewSimpleLog()
         {
-            var simpleLogView = new SimpleLogViewModel(loggingService);
+            var simpleLogView = new SimpleLogViewModel();
             windowManager.ShowDialog(simpleLogView);
         }
 

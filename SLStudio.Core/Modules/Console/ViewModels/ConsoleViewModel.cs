@@ -1,10 +1,8 @@
-﻿using DevExpress.Mvvm;
-using ICSharpCode.AvalonEdit;
+﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Search;
-using SLStudio.Core.Events;
+using SLStudio.Core.Logging;
 using System;
-using System.Windows;
 
 namespace SLStudio.Core.Modules.Console.ViewModels
 {
@@ -12,11 +10,11 @@ namespace SLStudio.Core.Modules.Console.ViewModels
     {
         private bool editorLoaded;
 
-        public ConsoleViewModel(IMessenger messenger)
+        public ConsoleViewModel()
         {
-            TextDocument = new TextDocument();
             editorLoaded = false;
-            messenger.Register<LogCompletedEvent>(this, OnLogCompleted);
+            TextDocument = new TextDocument();
+            LogManager.LoggingService.LogCompleted += OnLogCompleted;
             DisplayName = "Console";
         }
 
@@ -26,14 +24,6 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         {
             get => GetProperty(() => WordWrap);
             set => SetProperty(() => WordWrap, value);
-        }
-
-        public void OnLogCompleted(LogCompletedEvent e)
-        {
-            Application.Current?.Dispatcher.Invoke(() =>
-            {
-                TextDocument.Text += $"{e.Log}{Environment.NewLine}";
-            });
         }
 
         public void EditorOnLoad(TextEditor editor)
@@ -48,6 +38,11 @@ namespace SLStudio.Core.Modules.Console.ViewModels
         public void ClearAll()
         {
             TextDocument.Text = string.Empty;
+        }
+
+        private void OnLogCompleted(object sender, LogCompletedEventArgs e)
+        {
+            TextDocument.Text = $"{TextDocument.Text}{e.Log}{Environment.NewLine}";
         }
     }
 

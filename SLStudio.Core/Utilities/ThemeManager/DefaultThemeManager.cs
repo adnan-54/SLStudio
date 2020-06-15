@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Core.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -8,13 +9,12 @@ namespace SLStudio.Core.Utilities.ThemeManager
 {
     internal class DefaultThemeManager : IThemeManager
     {
-        private readonly ILogger logger;
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(DefaultThemeManager));
 
         private readonly List<Theme> avaliableThemes;
 
-        public DefaultThemeManager(ILoggingFactory loggingFactory)
+        public DefaultThemeManager()
         {
-            logger = loggingFactory.GetLogger<DefaultThemeManager>();
             avaliableThemes = new List<Theme>()
             {
                 ThemesHelper.LightTheme,

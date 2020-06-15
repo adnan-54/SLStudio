@@ -1,15 +1,11 @@
-﻿using System;
+﻿using SLStudio.Core.Logging;
+using System;
 
 namespace SLStudio.Core.Utilities.ErrorHandler
 {
     internal class DefaultErrorHandler : IErrorHandler
     {
-        private readonly ILogger logger;
-
-        public DefaultErrorHandler(ILoggingFactory loggingService)
-        {
-            logger = loggingService.GetLogger<DefaultErrorHandler>();
-        }
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(DefaultErrorHandler));
 
         public void HandleError(Exception exception)
         {

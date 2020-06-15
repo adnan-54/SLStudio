@@ -1,28 +1,39 @@
 ﻿using System;
-using System.Windows;
 
-namespace SLStudio.Core.Utilities.Logger
+namespace SLStudio.Core.Logging
 {
+    public interface ILogger
+    {
+        void Debug(string message, string title = null);
+
+        void Info(string message, string title = null);
+
+        void Warning(string message, string title = null);
+
+        void Error(string message, string title = null);
+
+        void Error(Exception exception);
+
+        void Fatal(string message, string title = null);
+
+        void Fatal(Exception exception);
+    }
+
     internal class DefaultLogger : ILogger
     {
         private readonly Type sender;
-        private readonly ILoggingService loggingService;
-        private readonly ICommandLineArguments commandLineArguments;
+        private readonly DefaultLoggingService loggingService;
 
-        public DefaultLogger(Type sender, ILoggingService loggingService, ICommandLineArguments commandLineArguments)
+        public DefaultLogger(Type sender, DefaultLoggingService loggingService)
         {
             this.sender = sender;
             this.loggingService = loggingService;
-            this.commandLineArguments = commandLineArguments;
         }
 
         public void Debug(string message, string title = null)
         {
 #if DEBUG
             Log("Debug", title, message);
-#else
-            if (commandLineArguments.DebugMode)
-                Log("Debug", title, message);
 #endif
         }
 
@@ -49,7 +60,6 @@ namespace SLStudio.Core.Utilities.Logger
         public void Fatal(string message, string title = null)
         {
             Log("Fatal", title, message);
-            MessageBox.Show(message, $"Fatal: {title}", MessageBoxButton.OK, MessageBoxImage.Error);
         }
 
         public void Fatal(Exception exception)
@@ -57,9 +67,9 @@ namespace SLStudio.Core.Utilities.Logger
             Fatal(exception.Message, exception.ToString());
         }
 
-        private async void Log(string level, string title, string message)
+        private void Log(string level, string title, string message)
         {
-            await loggingService.Log(new Log(null, sender.Name, level, title, message, DateTime.Now));
+            loggingService.Log(new Log(null, sender.Name, level, title, message, DateTime.Now));
         }
     }
 }

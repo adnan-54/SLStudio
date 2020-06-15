@@ -1,18 +1,20 @@
 ﻿using Caliburn.Micro;
 using SLStudio.Core.Docking;
+using SLStudio.Core.Logging;
 using SLStudio.Core.Modules.StartPage.Models;
 using SLStudio.Core.Modules.StartPage.Resources;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Windows.Controls;
 using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
 {
     internal class StartPageViewModel : DocumentBase
     {
-        private static readonly ILogger logger = LogManager.GetLogger<StartPageViewModel>();
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(StartPageViewModel));
         private readonly BindableCollection<RecentFileModel> recentFiles;
 
         public StartPageViewModel()
@@ -25,7 +27,6 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             RecentFiles.GroupDescriptions.Add(new PropertyGroupDescription("HumanizedLastTimeSaved"));
             RecentFiles.SortDescriptions.Add(new SortDescription("LastTimeSaved", ListSortDirection.Descending));
             RecentFiles.Filter += Filter;
-            logger.Info("caiu aqui");
         }
 
         public string SearchTerm
@@ -44,6 +45,11 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
         {
             get => GetProperty(() => SelectedFile);
             set => SetProperty(() => SelectedFile, value);
+        }
+
+        public void ContextMenuOnOpening(ContextMenuEventArgs args)
+        {
+            args.Handled = SelectedFile == null;
         }
 
         public void OpenRecentFile(RecentFileModel recentFile)
