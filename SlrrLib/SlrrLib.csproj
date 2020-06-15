@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{53D04F0A-0B67-4149-909C-AAA9846DE71E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SlrrLib</RootNamespace>
+    <AssemblyName>SlrrLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Geom\GeometryBuilder.cs" />
+    <Compile Include="Geom\NamedCfgInducedModel.cs" />
+    <Compile Include="Geom\NamedPhysModel.cs" />
+    <Compile Include="Geom\NamedPolyModel.cs" />
+    <Compile Include="Geom\NamedScxModel.cs" />
+    <Compile Include="Geom\NativeGeometryCfgContext.cs" />
+    <Compile Include="Geom\NativeGeometryObjResEntryContext.cs" />
+    <Compile Include="Geom\NativeGeometryObjTypeIDContext.cs" />
+    <Compile Include="Geom\NativeGeometryScxContext.cs" />
+    <Compile Include="Geom\RpkSpatialGeometry.cs" />
+    <Compile Include="Model\CfgAccess\Cfg.cs" />
+    <Compile Include="Model\CfgAccess\CfgBodyLine.cs" />
+    <Compile Include="Model\CfgAccess\CfgLine.cs" />
+    <Compile Include="Model\CfgAccess\CfgLineToken.cs" />
+    <Compile Include="Model\CfgAccess\CfgPartPositionLine.cs" />
+    <Compile Include="Model\CfgAccess\CfgPartPosRotLine.cs" />
+    <Compile Include="Model\CfgAccess\CfgRenderLine.cs" />
+    <Compile Include="Model\CfgAccess\CfgSlotLine.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicLineNameValue.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicBoneListV4.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMeshV4.cs" />
+    <Compile Include="Geom\BoundBox3D.cs" />
+    <Compile Include="Geom\CarRpkModelFactory.cs" />
+    <Compile Include="Geom\IModelFactory.cs" />
+    <Compile Include="Geom\MapRpkModelFactory.cs" />
+    <Compile Include="Geom\NamedModel.cs" />
+    <Compile Include="Geom\RpkModelFactory.cs" />
+    <Compile Include="Geom\SCXModelFactor.cs" />
+    <Compile Include="Geom\UVUtil.cs" />
+    <Compile Include="Geom\VRML97GeomExport.cs" />
+    <Compile Include="Geom\YprRotation3D.cs" />
+    <Compile Include="Model\BasicRGBA.cs" />
+    <Compile Include="Model\BasicUV.cs" />
+    <Compile Include="Model\BasicXYZ.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryBoneIndRefV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryBoneListV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryBoneWeightsV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryCompleteVertexDataV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryFaceDefV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryHardSurfaceDefV4.cs" />
+    <Compile Include="Model\DirectScxV3Access\BinaryMaterialV3.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryMaterialV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryMaterialV4Entry.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryMaterialV4MapDefinition.cs" />
+    <Compile Include="Model\DirectScxV3Access\BinaryMeshV3.cs" />
+    <Compile Include="Model\DirectScxV3Access\BinaryScxV3.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryScxV4.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryScxV4HeaderEntry.cs" />
+    <Compile Include="Model\DirectScxV3Access\BinaryVertexV3.cs" />
+    <Compile Include="Model\DirectScxV4Access\BinaryVertexV4.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryEXTPInnerEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryICFGInnerEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryInnerPhysEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryInnerPolyEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryInnerPolyMesh.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryInnerRsdEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryNamedSpatialData.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryPhysFacingDescriptor.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryPhysVertex.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryPolyVertexData.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryResEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRpkEntriesHeader.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRpkExternalReference.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRpkHeader.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRsdEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRSDInnerEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinarySpatialNode.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryStringInnerEntry.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryXCFGInnerEntry.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicBoneWeightsV4.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicCompleteVertexDataV4.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicFaceDefV4.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicHardSurfaceDefV4.cs" />
+    <Compile Include="Model\DynamicScxV3Access\DynamicMaterialV3.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4Entry.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4FloatEntry.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4IntEntry.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4MapDefinition.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4RGBAEntry.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicMaterialV4StringEntry.cs" />
+    <Compile Include="Model\DynamicScxV3Access\DynamicMeshV3.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicEXTPInnerEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicICFGInnerEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicInnerPhysEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicInnerPolyEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicInnerPolyMesh.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicNamedSpatialData.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicPhysFacingDescriptor.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicPhysVertex.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicPolyVertexData.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicResEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicRpk.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicRpkExternalReference.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicRsdEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicRSDInnerEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicRSDInnerEntryBase.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicSpatialNode.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicStringInnerEntry.cs" />
+    <Compile Include="Model\DynamicRpkAccess\DynamicXCFGInnerEntry.cs" />
+    <Compile Include="Model\DynamicScxV3Access\DynamicScxV3.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicScxV4.cs" />
+    <Compile Include="Model\DynamicScxV3Access\DynamicVertexV3.cs" />
+    <Compile Include="Model\DynamicScxV4Access\DynamicVertexV4.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClass.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassChunk.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassCONSChunk.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassCONSConstantEntry.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassCONSNameEntry.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassCONSRpkRefEntry.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassIntCollectionChunk.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassRpkRef.cs" />
+    <Compile Include="Model\ClassAccess\ScriptClassTUFAChunk.cs" />
+    <Compile Include="Model\ClassAccess\ScriptJava.cs" />
+    <Compile Include="Model\ClassAccess\ScriptJavaClassNameToken.cs" />
+    <Compile Include="Model\ClassAccess\ScriptJavaClassToken.cs" />
+    <Compile Include="Model\ClassAccess\ScriptJavaRpkRefToken.cs" />
+    <Compile Include="Model\ClassAccess\ScriptJavaToken.cs" />
+    <Compile Include="Model\GeneralFileAccess\FileCacheHolder.cs" />
+    <Compile Include="Model\GeneralFileAccess\FileEntry.cs" />
+    <Compile Include="Model\HighLevel\BinaryRpkDataCache.cs" />
+    <Compile Include="Model\HighLevel\CarMeshPivotNormalizer.cs" />
+    <Compile Include="Model\HighLevel\CarScaler.cs" />
+    <Compile Include="Model\HighLevel\CarScalerNode.cs" />
+    <Compile Include="Model\HighLevel\CfgCache.cs" />
+    <Compile Include="Model\HighLevel\CfgSlotCacheEntry.cs" />
+    <Compile Include="Model\HighLevel\CfgSlotReference.cs" />
+    <Compile Include="Model\HighLevel\ClassJavaPairCache.cs" />
+    <Compile Include="Model\HighLevel\JavaClassScriptValidator.cs" />
+    <Compile Include="Model\HighLevel\PivotNormalizingNode.cs" />
+    <Compile Include="Model\HighLevel\RpkManager.cs" />
+    <Compile Include="Model\HighLevel\RpkMerger.cs" />
+    <Compile Include="Model\HighLevel\RpkMergerResourceDirectoryMoveDescriptor.cs" />
+    <Compile Include="Model\HighLevel\RpkMergerRpkRenameEntry.cs" />
+    <Compile Include="Model\HighLevel\RpkSCXFile.cs" />
+    <Compile Include="Model\HighLevel\RpkSlotReference.cs" />
+    <Compile Include="Model\HighLevel\ScxCache.cs" />
+    <Compile Include="Model\HighLevel\SlotReBaser.cs" />
+    <Compile Include="Model\Messages\Message.cs" />
+    <Compile Include="Model\SplAccess\SplAttributes.cs" />
+    <Compile Include="Model\SplAccess\SplLine.cs" />
+    <Compile Include="Model\SplAccess\SplNode.cs" />
+    <Compile Include="Model\TrcAccess\TrcIntersection.cs" />
+    <Compile Include="Model\TrcAccess\TrcIntersectionLane.cs" />
+    <Compile Include="Model\TrcAccess\TrcIntersectionLaneReference.cs" />
+    <Compile Include="Model\TrcAccess\TrcLane.cs" />
+    <Compile Include="Model\TrcAccess\TrcNavigatorNode.cs" />
+    <Compile Include="Model\TrcAccess\TrcObject.cs" />
+    <Compile Include="Model\TrcAccess\TrcSplineSegment.cs" />
+    <Compile Include="Model\TrcAccess\TrcWalkControlPoint3D.cs" />
+    <Compile Include="Model\TrcAccess\TrcWalkDirectionDescription.cs" />
+    <Compile Include="Model\TrcAccess\TrcWalkManager.cs" />
+    <Compile Include="Model\TrcAccess\TrcWalkSurfaceSegment.cs" />
+    <Compile Include="View\BoundDialog.xaml.cs">
+      <DependentUpon>BoundDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\IndexSelector.xaml.cs">
+      <DependentUpon>IndexSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Geom\InnerPhysGeometry.cs" />
+    <Compile Include="Geom\InnerPolyGeometry.cs" />
+    <Compile Include="Geom\NativeGeometry.cs" />
+    <Compile Include="Geom\OrbitingCamera.cs" />
+    <Compile Include="Geom\ScxV3Geometry.cs" />
+    <Compile Include="Geom\ScxV4Geometry.cs" />
+    <Compile Include="Geom\SplGeometry.cs" />
+    <Compile Include="Geom\TrcGeometry.cs" />
+    <Compile Include="Geom\WalkGeometry.cs" />
+    <Compile Include="Model\ClassAccess\ClassJavaPair.cs" />
+    <Compile Include="Model\HighLevel\GameFileManager.cs" />
+    <Compile Include="Model\Messages\MessageLog.cs" />
+    <Compile Include="Model\RpkExchange.cs" />
+    <Compile Include="Model\SplAccess\Spl.cs" />
+    <Compile Include="Model\TrcAccess\Trc.cs" />
+    <Compile Include="Model\TrcAccess\TrcWalk.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Model\DirectRpkAccess\BinaryRpk.cs" />
+    <Compile Include="Model\Scx.cs" />
+    <Compile Include="View\FlagEditor.xaml.cs">
+      <DependentUpon>FlagEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MapRpkOrbitinViewPort3D.cs" />
+    <Compile Include="View\NotifyPropertyChangedBase.cs" />
+    <Compile Include="View\OrbitingViewport3D.xaml.cs">
+      <DependentUpon>OrbitingViewport3D.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UIUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="View\BoundDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\IndexSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\FlagEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OrbitingViewport3D.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="SlrrLib.View.IndexSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="IndexSelector" Height="300" Width="300" WindowStyle="ToolWindow" Closing="Window_Closing">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ListBox Name="ctrListbox" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Button Content="OK" Click="Button_Click" Grid.ColumnSpan="2" Height="50" />
+            <!--<Button Grid.Column="1" Content="Cancel" Click="Button_Click_1" />-->
+        </Grid>
+    </Grid>
+</Window>

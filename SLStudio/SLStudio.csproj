@@ -136,9 +136,6 @@
     <Reference Include="ICSharpCode.AvalonEdit, Version=6.0.1.278, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <HintPath>..\packages\AvalonEdit.6.0.1\lib\net45\ICSharpCode.AvalonEdit.dll</HintPath>
     </Reference>
-    <Reference Include="LoadingIndicators.WPF">
-      <HintPath>LoadingIndicators\LoadingIndicators.WPF.dll</HintPath>
-    </Reference>
     <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.2.0.1\lib\net47\MahApps.Metro.dll</HintPath>
     </Reference>
@@ -226,6 +223,10 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SlrrLib\SlrrLib.csproj">
+      <Project>{53d04f0a-0b67-4149-909c-aaa9846de71e}</Project>
+      <Name>SlrrLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj">
       <Project>{95ce7144-c2d0-4a2b-a672-05c9cbd8ead2}</Project>
       <Name>SLStudio.Core</Name>

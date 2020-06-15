@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="SlrrLib.View.OrbitingViewport3D"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:SlrrLib.View"
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             MouseWheel="ctrlOrbitingViewport3D_MouseWheel" MouseLeave="ctrlOrbitingViewport3D_MouseLeave"
+             MouseDown="ctrlOrbitingViewport3D_MouseDown" MouseUp="ctrlOrbitingViewport3D_MouseUp"
+             MouseMove="ctrlOrbitingViewport3D_MouseMove"
+             Background="DarkGray">
+    <Grid>
+        <Viewport3D Name="ctrlViewPort3D" MouseWheel="ctrlOrbitingViewport3D_MouseWheel">
+        </Viewport3D>
+    </Grid>
+</UserControl>
