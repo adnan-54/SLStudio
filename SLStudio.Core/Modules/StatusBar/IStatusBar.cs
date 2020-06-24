@@ -2,7 +2,7 @@
 {
     public interface IStatusBar
     {
-        bool IsBusy { get; set; }
         string Status { get; set; }
+        object Content { get; set; }
     }
 }

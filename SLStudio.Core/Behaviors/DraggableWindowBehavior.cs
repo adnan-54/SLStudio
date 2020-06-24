@@ -12,16 +12,16 @@ namespace SLStudio.Core.Behaviors
             AssociatedObject.MouseDown += OnMouseDown;
         }
 
-        protected override void OnDetaching()
-        {
-            AssociatedObject.MouseDown -= OnMouseDown;
-            base.OnDetaching();
-        }
-
         private void OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
                 AssociatedObject.DragMove();
+        }
+
+        protected override void OnDetaching()
+        {
+            AssociatedObject.MouseDown -= OnMouseDown;
+            base.OnDetaching();
         }
     }
 }

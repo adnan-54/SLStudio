@@ -61,11 +61,11 @@ namespace SLStudio.Core.Modules.StatusBar.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Background tasks running..
+        ///   Looks up a localized string similar to Background tasks (Ctrl+E, Ctrl+T).
         /// </summary>
-        public static string BackgroundTasksRunning {
+        public static string BackgroundTasks {
             get {
-                return ResourceManager.GetString("BackgroundTasksRunning", resourceCulture);
+                return ResourceManager.GetString("BackgroundTasks", resourceCulture);
             }
         }
         

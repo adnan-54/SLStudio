@@ -1,30 +1,104 @@
-﻿<metro:MetroWindow x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
-                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                   xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                   xmlns:cal="http://caliburnmicro.com"
-                   xmlns:xcad="http://schemas.xceed.com/wpf/xaml/avalondock"
-                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                   xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
-                   xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
-                   xmlns:docking="clr-namespace:SLStudio.Core.Docking"
-                   mc:Ignorable="d" Style="{DynamicResource CleanWindowStyle}"
-                   WindowStartupLocation="CenterScreen" WindowState="Maximized">
-
+﻿<studio:StudioWindow  x:Class="SLStudio.Core.Modules.Shell.Views.ShellView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:studio="clr-namespace:SLStudio.Core"
+                      xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
+                      xmlns:docking="clr-namespace:SLStudio.Core.Docking"
+                      xmlns:menus="clr-namespace:SLStudio.Core.Menus"
+                      xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
+                      mc:Ignorable="d">
     <!--Behaviors-->
     <dxmvvm:Interaction.Behaviors>
-        <behaviors:DefaultMainWindowBehavior />
+        <behaviors:StudioShellBehavior />
+        <dxmvvm:FocusBehavior />
     </dxmvvm:Interaction.Behaviors>
 
-    <!--LeftWindowCommands-->
-    <metro:MetroWindow.LeftWindowCommands>
-        <metro:WindowCommands>
-            <StackPanel Orientation="Horizontal">
-                <ContentControl cal:View.Model="{Binding MainMenu}" />
+    <!--TitleBar-->
+    <studio:StudioWindow.LeftWindowCommands>
+        <metro:WindowCommands ShowSeparators="False">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <!--DebugMenu-->
+                <Menu metro:VisibilityHelper.IsVisible="{Binding DebugMode}">
+                    <MenuItem Header="Debug" Foreground="{DynamicResource Custom.Red}">
+                        <MenuItem Header="Super secret menu" InputGestureText="Ctrl+V, Ctrl+C" />
+                    </MenuItem>
+                </Menu>
+
+                <!--MainMenu-->
+                <Menu VerticalAlignment="Center" IsMainMenu="True">
+                    <!--Resources-->
+                    <Menu.Resources>
+                        <!--Styles-->
+                        <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+                            <Setter Property="Header" Value="{Binding DisplayName}" />
+                            <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
+                            <Setter Property="Tag" Value="{Binding Path}" />
+                            <Setter Property="Command" Value="{Binding Command}" />
+                            <Setter Property="CommandParameter" Value="{Binding Parameter}" />
+                            <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Visible}}" />
+                            <Setter Property="ToolTip" Value="{Binding ToolTip}" />
+                            <Setter Property="InputGestureText" Value="{Binding Shortcut, Converter={StaticResource KeyGestureToTextConverter}}" />
+
+                            <!--Triggers-->
+                            <Style.Triggers>
+                                <!--Separator-->
+                                <DataTrigger Binding="{Binding Converter={menus:MenuItemConverter}, ConverterParameter={x:Static menus:MenuItemTypes.Separator}}" Value="True">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Separator />
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+
+                                <!--Toggle-->
+                                <DataTrigger Binding="{Binding Converter={menus:MenuItemConverter}, ConverterParameter={x:Static menus:MenuItemTypes.Toggle}}" Value="True">
+                                    <Setter Property="IsCheckable" Value="True" />
+                                    <Setter Property="IsChecked" Value="{Binding IsChecked}" />
+                                </DataTrigger>
+
+                                <!--Icon-->
+                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IsNotNullConverter}}" Value="True">
+                                    <Setter Property="Icon">
+                                        <Setter.Value>
+                                            <Image Source="{Binding IconSource, Converter={StaticResource UriToImageSourceConverter}}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+
+                        <!--HierarchicalDataTemplate-->
+                        <HierarchicalDataTemplate DataType="{x:Type menus:MenuItem}" ItemsSource="{Binding Children}" />
+                    </Menu.Resources>
+
+                    <!--Behaviors-->
+                    <dxmvvm:Interaction.Behaviors>
+                        <menus:MenuManagerService />
+                    </dxmvvm:Interaction.Behaviors>
+                </Menu>
+
+                <!--SearchBox-->
+                <TextBox Margin="{StaticResource LargeLeftMargin}" Padding="3, 1, 3, 1"
+                         Style="{DynamicResource MahApps.Styles.TextBox.Search}"
+                         MinHeight="10" Height="22" Width="200"
+                         VerticalAlignment="Center" VerticalContentAlignment="Center"
+                         metro:TextBoxHelper.Watermark="Test"
+                         Visibility="Collapsed" />
+
+                <!--SolutionName-->
+                <TextBlock Margin="{StaticResource LargeLeftMargin}" Padding="6, 3, 6, 3"
+                           Text="Test" VerticalAlignment="Center"
+                           Background="{DynamicResource MahApps.Brushes.SemiTransparent}"
+                           Visibility="Collapsed" />
             </StackPanel>
         </metro:WindowCommands>
-    </metro:MetroWindow.LeftWindowCommands>
+    </studio:StudioWindow.LeftWindowCommands>
 
     <!--Content-->
     <Grid>
@@ -35,81 +109,90 @@
         </Grid.RowDefinitions>
 
         <!--ToolBar-->
-        <ContentControl Grid.Row="0" cal:View.Model="{Binding ToolBar}" />
+        <ToolBarTray Grid.Row="0">
+            <ToolBar metro:VisibilityHelper.IsVisible="{Binding DebugMode}">
+                <Button Content="Debug" />
+            </ToolBar>
+        </ToolBarTray>
 
-        <!--Content-->
-        <xcad:DockingManager Grid.Row="1"
-                             ActiveContent="{Binding CurrentDocument, Mode=TwoWay}"
-                             AnchorablesSource="{Binding Tools}"
-                             DocumentsSource="{Binding Documents}">
-            <!--Theme-->
-            <xcad:DockingManager.Theme>
-                <xcad:VS2010Theme />
-            </xcad:DockingManager.Theme>
+        <!--AvalonDock-->
+        <avalonDock:DockingManager Grid.Row="1" ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
+                                   AnchorablesSource="{Binding Tools}" DocumentsSource="{Binding Documents}">
+            <!--Behaviors-->
+            <dxmvvm:Interaction.Behaviors>
+                <docking:AvalonDockLayoutSerializer />
+                <docking:AvalonDockDockingService ActiveContent="{Binding SelectedItem}" />
+            </dxmvvm:Interaction.Behaviors>
 
             <!--LayoutInitializer-->
-            <xcad:DockingManager.LayoutUpdateStrategy>
+            <avalonDock:DockingManager.LayoutUpdateStrategy>
                 <docking:LayoutInitializer />
-            </xcad:DockingManager.LayoutUpdateStrategy>
+            </avalonDock:DockingManager.LayoutUpdateStrategy>
 
             <!--TemplateSelector-->
-            <xcad:DockingManager.LayoutItemTemplateSelector>
+            <avalonDock:DockingManager.LayoutItemTemplateSelector>
                 <docking:PanesTemplateSelector>
                     <!--DocumentTemplate-->
                     <docking:PanesTemplateSelector.DocumentTemplate>
                         <DataTemplate>
-                            <ContentControl cal:View.Model="{Binding}" IsTabStop="False" />
+                            <ContentControl studio:ViewBinder.Bind="{Binding}" IsTabStop="False" Focusable="False" />
                         </DataTemplate>
                     </docking:PanesTemplateSelector.DocumentTemplate>
 
                     <!--ToolTemplate-->
                     <docking:PanesTemplateSelector.ToolTemplate>
                         <DataTemplate>
-                            <ContentControl cal:View.Model="{Binding}" IsTabStop="False" />
+                            <ContentControl studio:ViewBinder.Bind="{Binding}" IsTabStop="False" Focusable="False" />
                         </DataTemplate>
                     </docking:PanesTemplateSelector.ToolTemplate>
                 </docking:PanesTemplateSelector>
-            </xcad:DockingManager.LayoutItemTemplateSelector>
+            </avalonDock:DockingManager.LayoutItemTemplateSelector>
 
             <!--StyleSelector-->
-            <xcad:DockingManager.LayoutItemContainerStyleSelector>
+            <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
                 <docking:PanesStyleSelector>
                     <!--DocumentStyle-->
                     <docking:PanesStyleSelector.DocumentStyle>
-                        <Style TargetType="{x:Type xcad:LayoutItem}">
-                            <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
-                            <Setter Property="Title" Value="{Binding Model.DisplayName, Mode=OneWay}" />
-                            <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
-                            <Setter Property="IconSource" Value="{Binding Model.IconSource, Converter={StaticResource NullableValueConverter}}" />
-                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
+                        <Style TargetType="{x:Type avalonDock:LayoutItem}">
+                            <Setter Property="ContentId" Value="{Binding Model.Id}" />
+                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected}" />
+                            <Setter Property="IsActive" Value="{Binding Model.IsActive}" />
+                            <Setter Property="ToolTip" Value="{Binding Model.ToolTip}" />
+                            <Setter Property="Title">
+                                <Setter.Value>
+                                    <MultiBinding Converter="{StaticResource DocumentTitleConverter}">
+                                        <Binding Path="Model.DisplayName" Mode="OneWay" />
+                                        <Binding Path="Model.IsDirty" Mode="OneWay" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
                         </Style>
                     </docking:PanesStyleSelector.DocumentStyle>
 
                     <!--ToolStyle-->
                     <docking:PanesStyleSelector.ToolStyle>
-                        <Style TargetType="{x:Type xcad:LayoutAnchorableItem}">
-                            <Setter Property="ContentId" Value="{Binding Model.ContentId}" />
-                            <Setter Property="Title" Value="{Binding Model.DisplayName, Mode=OneWay}" />
-                            <Setter Property="CloseCommand" Value="{Binding Model.CloseCommand}" />
-                            <Setter Property="IconSource" Value="{Binding Model.IconSource, Converter={StaticResource NullableValueConverter}}" />
-                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
-                            <Setter Property="Visibility" Value="{Binding Model.IsVisible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}" />
+                        <Style TargetType="{x:Type avalonDock:LayoutAnchorableItem}">
+                            <Setter Property="ContentId" Value="{Binding Model.Id}" />
+                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected}" />
+                            <Setter Property="Title" Value="{Binding Model.DisplayName}" />
+                            <Setter Property="IsActive" Value="{Binding Model.IsActive}" />
+                            <Setter Property="Visibility" Value="{Binding Model.IsClosed, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Visible}}" />
                         </Style>
                     </docking:PanesStyleSelector.ToolStyle>
                 </docking:PanesStyleSelector>
-            </xcad:DockingManager.LayoutItemContainerStyleSelector>
+            </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
 
             <!--LayoutRoot-->
-            <xcad:LayoutRoot>
-                <xcad:LayoutPanel Orientation="Vertical">
-                    <xcad:LayoutPanel Orientation="Horizontal">
-                        <xcad:LayoutDocumentPane />
-                    </xcad:LayoutPanel>
-                </xcad:LayoutPanel>
-            </xcad:LayoutRoot>
-        </xcad:DockingManager>
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel Orientation="Vertical">
+                    <avalonDock:LayoutPanel Orientation="Horizontal">
+                        <avalonDock:LayoutDocumentPane />
+                    </avalonDock:LayoutPanel>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
 
         <!--StatusBar-->
-        <ContentControl Grid.Row="2" cal:View.Model="{Binding StatusBar}" />
+        <ContentControl Grid.Row="2" studio:ViewBinder.Bind="{Binding StatusBar}" />
     </Grid>
-</metro:MetroWindow>
+</studio:StudioWindow>

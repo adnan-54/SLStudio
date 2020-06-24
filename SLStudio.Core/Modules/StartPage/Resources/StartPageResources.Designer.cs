@@ -70,11 +70,20 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear all.
+        ///   Looks up a localized string similar to Clear All.
         /// </summary>
         public static string ClearAll {
             get {
                 return ResourceManager.GetString("ClearAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove All From List.
+        /// </summary>
+        public static string ClearAllRecentFiles {
+            get {
+                return ResourceManager.GetString("ClearAllRecentFiles", resourceCulture);
             }
         }
         
@@ -88,6 +97,24 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Continue without code.
+        /// </summary>
+        public static string ContinueWithoutCode {
+            get {
+                return ResourceManager.GetString("ContinueWithoutCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy Path.
+        /// </summary>
+        public static string CopyPath {
+            get {
+                return ResourceManager.GetString("CopyPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a new project.
         /// </summary>
         public static string CreateANewProject {
@@ -97,11 +124,11 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Get code from an online repository like GitHub.
+        ///   Looks up a localized string similar to Get code from an online repository like GitHub or Azure DevOps.
         /// </summary>
-        public static string GetCodeFromAnOnlineRepositoryLikeGitHub {
+        public static string GetCodeFromAnOnlineRepository {
             get {
-                return ResourceManager.GetString("GetCodeFromAnOnlineRepositoryLikeGitHub", resourceCulture);
+                return ResourceManager.GetString("GetCodeFromAnOnlineRepository", resourceCulture);
             }
         }
         
@@ -115,11 +142,11 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Navigate and edit code within any folder.
+        ///   Looks up a localized string similar to Navigate and edit within any folder.
         /// </summary>
-        public static string NavigateAndEditCodeWithinAnyFolder {
+        public static string NavigateAndEditWithinAnyFolder {
             get {
-                return ResourceManager.GetString("NavigateAndEditCodeWithinAnyFolder", resourceCulture);
+                return ResourceManager.GetString("NavigateAndEditWithinAnyFolder", resourceCulture);
             }
         }
         
@@ -151,11 +178,11 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Directory.
+        ///   Looks up a localized string similar to Open local solution.
         /// </summary>
-        public static string OpenDirectory {
+        public static string OpenLocalSolution {
             get {
-                return ResourceManager.GetString("OpenDirectory", resourceCulture);
+                return ResourceManager.GetString("OpenLocalSolution", resourceCulture);
             }
         }
         
@@ -169,11 +196,38 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pinned.
+        /// </summary>
+        public static string Pinned {
+            get {
+                return ResourceManager.GetString("Pinned", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pin this item to the Recent Projects list.
+        /// </summary>
+        public static string PinThisItemToTheRecentProjectsList {
+            get {
+                return ResourceManager.GetString("PinThisItemToTheRecentProjectsList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove From List.
+        /// </summary>
+        public static string RemoveFromList {
+            get {
+                return ResourceManager.GetString("RemoveFromList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search recent (Alt+S).
         /// </summary>
-        public static string SearchRecentAltS {
+        public static string SearchRecent {
             get {
-                return ResourceManager.GetString("SearchRecentAltS", resourceCulture);
+                return ResourceManager.GetString("SearchRecent", resourceCulture);
             }
         }
         
@@ -183,6 +237,15 @@ namespace SLStudio.Core.Modules.StartPage.Resources {
         public static string StartPage {
             get {
                 return ResourceManager.GetString("StartPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unpin this item from the Recent Projects list.
+        /// </summary>
+        public static string UnpinThisItemFromTheRecentProjectsList {
+            get {
+                return ResourceManager.GetString("UnpinThisItemFromTheRecentProjectsList", resourceCulture);
             }
         }
     }

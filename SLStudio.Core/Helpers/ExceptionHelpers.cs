@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SLStudio.Core.Helpers
+namespace SLStudio.Core
 {
     public static class ExceptionHelpers
     {

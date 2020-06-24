@@ -1,23 +1,29 @@
-﻿using SLStudio.Core.Docking;
-using SLStudio.Core.Logging;
+﻿using ICSharpCode.AvalonEdit.Document;
+using SLStudio.Core.Behaviors;
+using SLStudio.Core.Modules.Output.Resources;
+using SLStudio.Logging;
 using System;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
-    internal class OutputViewModel : ToolBase, IOutput
+    internal class OutputViewModel : ToolPanelBase, IOutput
     {
+        private IAvalonEditSearch avalonEditSearch;
+
         public OutputViewModel()
         {
-            DisplayName = "Output";
-            LogManager.LoggingService.LogCompleted += OnLogCompleted;
+            DisplayName = OutputResource.Output;
+            TextDocument = new TextDocument();
+            LogManager.LogCompleted += OnLogCompleted;
         }
 
-        public override PaneLocation PreferredLocation => PaneLocation.Bottom;
+        public override ToolPlacement Placement => ToolPlacement.Bottom;
 
-        public string Text
+        public TextDocument TextDocument { get; }
+
+        public void OnLoaded()
         {
-            get => GetProperty(() => Text);
-            set => SetProperty(() => Text, value);
+            avalonEditSearch = GetService<IAvalonEditSearch>();
         }
 
         public bool WordWrap
@@ -26,19 +32,39 @@ namespace SLStudio.Core.Modules.Output.ViewModels
             set => SetProperty(() => WordWrap, value);
         }
 
-        public void AppendLine(string content)
+        public void AppendLine(string text)
         {
-            Text = $"{Text}{content}{Environment.NewLine}";
+            TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}";
         }
 
         public void Clear()
         {
-            Text = string.Empty;
+            TextDocument.Text = string.Empty;
+        }
+
+        public void ToggleWordWrap()
+        {
+            WordWrap = !WordWrap;
+        }
+
+        public void QuickFind()
+        {
+            avalonEditSearch?.Find();
+        }
+
+        public void FindNext()
+        {
+            avalonEditSearch?.FindNext();
+        }
+
+        public void FindPrevious()
+        {
+            avalonEditSearch?.FindPrevious();
         }
 
         private void OnLogCompleted(object sender, LogCompletedEventArgs e)
         {
-            AppendLine(e.Log.ToString());
+            AppendLine($"{e.Log}");
         }
     }
 }

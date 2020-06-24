@@ -1,0 +1,69 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--StudioTextBoxContextMenu-->
+    <ContextMenu x:Key="StudioTextBoxContextMenu">
+        <MenuItem Command="ApplicationCommands.Cut" >
+            <MenuItem.Icon>
+                <Image Source="{DynamicResource Cut}"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Command="ApplicationCommands.Copy" >
+            <MenuItem.Icon>
+                <Image Source="{DynamicResource Copy}"/>
+            </MenuItem.Icon>
+        </MenuItem>
+        <MenuItem Command="ApplicationCommands.Paste">
+            <MenuItem.Icon>
+                <Image Source="{DynamicResource Paste}"/>
+            </MenuItem.Icon>
+        </MenuItem>
+    </ContextMenu>
+
+    <!--StudioTextBoxStyle-->
+    <Style x:Key="StudioTextBoxStyle" TargetType="{x:Type TextBox}">
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CaretBrush" Value="{DynamicResource Foreground}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectionBackground}" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource StudioErrorValidationTemplate}" />
+        <Setter Property="ContextMenu" Value="{StaticResource StudioTextBoxContextMenu}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TextBox}">
+                    <Border x:Name="IsDefault"
+                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer x:Name="PART_ContentHost"
+                                      IsTabStop="False"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      Padding="{TemplateBinding Padding}" />
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Window.Background}" />
+                        </Trigger>
+
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Focused}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="{DynamicResource DisabledOpacity}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -1,39 +1,28 @@
-﻿using Caliburn.Micro;
-using SLStudio.Core.Docking;
-using SLStudio.Core.Modules.StartPage.ViewModels;
+﻿using SLStudio.Core.Modules.StartPage.ViewModels;
 using System.Linq;
 
 namespace SLStudio.Core.Modules.Shell.ViewModels
 {
-    internal class ShellViewModel : ViewModel, IShell
+    internal class ShellViewModel : WindowViewModel, IShell
     {
-        public ShellViewModel(IMainMenu mainMenu, IToolBar toolBar, IStatusBar statusBar, ICommandLineArguments commandLineArguments)
+        private readonly ICommandLineArguments commandLineArguments;
+
+        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments)
         {
-            MainMenu = mainMenu;
-            ToolBar = toolBar;
+            this.commandLineArguments = commandLineArguments;
+
             StatusBar = statusBar;
+            Documents = new BindableCollection<IDocumentPanel>();
+            Tools = new BindableCollection<IToolPanel>();
 
-            Documents = new BindableCollection<IDocument>();
-            Tools = new BindableCollection<ITool>();
-
-            DisplayName = "SLStudio";
-            if (commandLineArguments.DebugMode)
-                DisplayName += " (debug)";
-
-            Activate(new StartPageViewModel());
+            DisplayName = DebugMode ? "SLStudio (debug mode)" : "SLStudio";
         }
 
-        public IMainMenu MainMenu
-        {
-            get => GetProperty(() => MainMenu);
-            set => SetProperty(() => MainMenu, value);
-        }
+        public bool DebugMode => commandLineArguments.DebugMode;
 
-        public IToolBar ToolBar
-        {
-            get => GetProperty(() => ToolBar);
-            set => SetProperty(() => ToolBar, value);
-        }
+        public BindableCollection<IDocumentPanel> Documents { get; }
+
+        public BindableCollection<IToolPanel> Tools { get; }
 
         public IStatusBar StatusBar
         {
@@ -41,33 +30,45 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             set => SetProperty(() => StatusBar, value);
         }
 
-        public IDocument CurrentDocument
+        public IWorkspacePanel SelectedItem
         {
-            get => GetProperty(() => CurrentDocument);
-            set => SetProperty(() => CurrentDocument, value);
+            get => GetProperty(() => SelectedItem);
+            set => SetProperty(() => SelectedItem, value);
         }
 
-        public BindableCollection<IDocument> Documents { get; }
-
-        public BindableCollection<ITool> Tools { get; }
-
-        public void Activate(object item)
+        public void OpenPanel(IWorkspacePanel item)
         {
-            if (item is ITool tool)
+            if (item is IDocumentPanel documentPanel)
             {
-                if (!Tools.Any(t => t == tool))
-                    Tools.Add(tool);
-                tool.IsVisible = true;
-                tool.IsSelected = true;
+                if (!Documents.Any(d => d == documentPanel))
+                    Documents.Add(documentPanel);
+                documentPanel.Activate();
             }
-            else if (item is IDocument document)
+            else
+            if (item is IToolPanel toolPanel)
             {
-                if (!Documents.Any(d => d == document))
-                {
-                    Documents.Add(document);
-                }
-                CurrentDocument = document;
-                document.IsSelected = true;
+                if (!Tools.Any(t => t == toolPanel))
+                    Tools.Add(toolPanel);
+                toolPanel.Activate();
+            }
+        }
+
+        public void ClosePanel(IWorkspacePanel item)
+        {
+            if (item is IDocumentPanel documentPanel && Documents.Any(d => d == documentPanel))
+                Documents.Remove(documentPanel);
+            else
+            if (item is IToolPanel toolPanel && Tools.Any(t => t == toolPanel))
+                toolPanel.Close();
+        }
+
+        public override void OnLoaded()
+        {
+            if (!Documents.Any())
+            {
+                var startPage = new StartPageViewModel();
+                Documents.Add(startPage);
+                startPage.Activate();
             }
         }
     }

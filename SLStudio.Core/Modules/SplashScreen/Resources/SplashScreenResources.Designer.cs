@@ -70,7 +70,7 @@ namespace SLStudio.Core.Modules.SplashScreen.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Initializing.
+        ///   Looks up a localized string similar to Initializing....
         /// </summary>
         public static string Initializing {
             get {
@@ -79,16 +79,7 @@ namespace SLStudio.Core.Modules.SplashScreen.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading.
-        /// </summary>
-        public static string Loading {
-            get {
-                return ResourceManager.GetString("Loading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Version.
+        ///   Looks up a localized string similar to Version {0}.
         /// </summary>
         public static string Version {
             get {

@@ -1,60 +1,26 @@
-﻿using Caliburn.Micro;
-using DevExpress.Mvvm;
-using SLStudio.Core.Modules.Console.ViewModels;
-using SLStudio.Core.Modules.Logger.ViewModels;
-using SLStudio.Core.Modules.MainMenu.ViewModels;
+﻿using SimpleInjector;
+using SLStudio.Core.Menus;
 using SLStudio.Core.Modules.Output.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
-using SLStudio.Core.Modules.SplashScreen.ViewModels;
 using SLStudio.Core.Modules.StatusBar.ViewModels;
-using SLStudio.Core.Modules.ToolBar.ViewModels;
-using SLStudio.Core.Services.BootstrapperService;
-using SLStudio.Core.Services.SettingsService;
-using SLStudio.Core.Utilities.CommandLinesArguments;
-using SLStudio.Core.Utilities.ErrorHandler;
-using SLStudio.Core.Utilities.ObjectFactory;
-using SLStudio.Core.Utilities.ThemeManager;
-using SLStudio.Core.Utilities.WindowManager;
+using SLStudio.Core.Services;
 
 namespace SLStudio.Core
 {
     internal class Module : ModuleBase
     {
-        private static bool isRegistred = false;
+        public override string Name => "SLStudio.Core";
+        public override string Author => "Adnan54";
+        public override int Priority => int.MaxValue;
 
-        public override ModulePriority ModulePriority => ModulePriority.Core;
-        public override string ModuleName => "SLStudio Core";
-        public override string ModuleDescrition => "Core module.";
-        public override bool ShouldRegister => !isRegistred;
-
-        public override void Register(IContainer container)
+        protected override void Register(Container container)
         {
-            if (isRegistred)
-                return;
-            isRegistred = true;
+            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
+            container.RegisterSingleton<IMenuLoader, DefaultMenuLoader>();
 
-            container.Instance(container);
-
-            container.Singleton<IObjectFactory, DefaultObjectFactory>();
-            container.Singleton<IBootstrapperService, DefaultBootstrapperService>();
-            container.Singleton<ISettingsService, DefaultSettingsService>();
-            container.Singleton<IEventAggregator, EventAggregator>();
-            container.Singleton<IMessenger, Messenger>();
-            container.Singleton<ICommandLineArguments, DefaultCommandLineArguments>();
-            container.Singleton<IErrorHandler, DefaultErrorHandler>();
-            container.Singleton<IWindowManager, DefaultWindowManager>();
-            container.Singleton<IThemeManager, DefaultThemeManager>();
-            container.Singleton<ISplashScreen, SplashScreenViewModel>();
-
-            container.Singleton<IShell, ShellViewModel>();
-            container.Singleton<IMainMenu, MainMenuViewModel>();
-            container.Singleton<IToolBar, ToolBarViewModel>();
-            container.Singleton<IStatusBar, StatusBarViewModel>();
-
-            container.Singleton<IOutput, OutputViewModel>();
-
-            container.PerRequest<ILogsView, LogsViewModel>();
-            container.PerRequest<IConsole, ConsoleViewModel>();
+            container.RegisterSingleton<IShell, ShellViewModel>();
+            container.RegisterSingleton<IStatusBar, StatusBarViewModel>();
+            container.RegisterSingleton<IOutput, OutputViewModel>();
         }
     }
 }

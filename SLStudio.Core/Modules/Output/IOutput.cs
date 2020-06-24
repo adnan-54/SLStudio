@@ -1,9 +1,11 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IOutput
+    public interface IOutput : IToolPanel
     {
-        void AppendLine(string content);
+        void AppendLine(string text);
 
         void Clear();
+
+        void ToggleWordWrap();
     }
 }
