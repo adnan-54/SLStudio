@@ -1,5 +1,4 @@
-﻿using SLStudio.Core.Helpers;
-using System;
+﻿using System;
 
 namespace SLStudio.Core
 {

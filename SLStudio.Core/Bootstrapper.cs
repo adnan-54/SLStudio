@@ -1,94 +1,97 @@
-﻿using Caliburn.Micro;
-using SLStudio.Core.Logging;
-using SLStudio.Core.Properties;
-using SLStudio.Core.Services.BootstrapperService;
-using SLStudio.Core.Utilities.DependenciesContainer;
-using System;
+﻿using DevExpress.Mvvm;
+using SimpleInjector;
+using SLStudio.Core.Modules.ExceptionBox.Views;
+using SLStudio.Core.Modules.SplashScreen.Resources;
+using SLStudio.Logging;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
+using SplashScreen = SLStudio.Core.Modules.SplashScreen.SplashScreen;
 
 namespace SLStudio.Core
 {
-    public class Bootstrapper : BootstrapperBase
+    public class Bootstrapper
     {
+        private static readonly ILogger logger = LogManager.GetLoggerFor<Bootstrapper>();
+
+        private static bool initialized = false;
+
         private readonly Container container;
-        private static readonly ILogger logger = LogManager.GetLogger(typeof(Bootstrapper));
+        private readonly ICommandLineArguments commandLineArguments;
+        private readonly ILanguageManager languageManager;
+        private readonly IThemeManager themeManager;
+        private readonly IObjectFactory objectFactory;
+        private readonly IUiSynchronization uiSynchronization;
+        private readonly IAssemblyLoader assemblyLoader;
+        private readonly IModuleLoader moduleLoader;
+        private readonly IWindowManager windowManager;
+        private readonly ISplashScreen splashScreen;
 
-        public Bootstrapper()
+        private Bootstrapper(Dispatcher dispatcher, IEnumerable<string> args)
         {
+            ExceptionBox.Initialize();
+
             container = new Container();
-            ApplyCulture();
-            Initialize();
+            commandLineArguments = new DefaultCommandLineArguments(args);
+            languageManager = new DefaultLanguageManager();
+            themeManager = new DefaultThemeManager();
+            objectFactory = new DefaultObjectFactory(container);
+            uiSynchronization = new DefaultUiSynchronization(dispatcher);
+            assemblyLoader = new DefaultAssemblyLoader();
+            moduleLoader = new DefaultModuleLoader();
+            windowManager = new DefaultWindowManager(objectFactory);
+            splashScreen = new SplashScreen();
+
+            IoC.Initialize(container);
+            LogManager.Initialize(LogLevel.Info, !commandLineArguments.DebugMode, commandLineArguments.DebugMode);
+
+            Application.Current.Exit += OnExit;
         }
 
-        protected override async void OnStartup(object sender, StartupEventArgs e)
+        private async Task Initialize()
         {
-            try
-            {
-                container.GetInstance<ICommandLineArguments>().ParseArguments(e.Args);
-                logger.Debug("Initializing application");
+            logger.Info("Initializing application");
+            splashScreen.Show();
 
-                ApplyTheme();
+            RegisterDefaults();
 
-                await container.GetInstance<IWindowManager>().ShowWindow<ISplashScreen>();
-                await container.GetInstance<IBootstrapperService>().Initialize();
-                await container.GetInstance<IWindowManager>().ShowWindow<IShell>();
-            }
-            catch (Exception ex)
-            {
-                logger.Fatal(ex);
-                Application.Current.Shutdown();
-            }
-            finally
-            {
-                await container.GetInstance<IWindowManager>().CloseWindow<ISplashScreen>();
-            }
+            assemblyLoader.Initialize(splashScreen);
+            await assemblyLoader.Load();
+            moduleLoader.Initialize(splashScreen, container, objectFactory);
+            await moduleLoader.Load();
+
+            splashScreen.UpdateStatus(SplashScreenResources.Initializing);
+
+            windowManager.ShowWindow<IShell>();
+            splashScreen.Close();
         }
 
-        protected override void Configure()
+        private void RegisterDefaults()
         {
-            var coreModule = new Module();
-            coreModule.Register(container);
+            container.RegisterInstance(Messenger.Default);
+            container.RegisterInstance(commandLineArguments);
+            container.RegisterInstance(languageManager);
+            container.RegisterInstance(themeManager);
+            container.RegisterInstance(objectFactory);
+            container.RegisterInstance(uiSynchronization);
+            container.RegisterInstance(assemblyLoader);
+            container.RegisterInstance(moduleLoader);
+            container.RegisterInstance(windowManager);
         }
 
-        protected override object GetInstance(Type service, string key)
+        private void OnExit(object sender, ExitEventArgs e)
         {
-            return container.GetInstance(service, key);
+            logger.Info($"Exiting application with code '{e.ApplicationExitCode}'");
         }
 
-        protected override IEnumerable<object> GetAllInstances(Type service)
+        public static Task Run(Dispatcher dispatcher, IEnumerable<string> args)
         {
-            return container.GetAllInstances(service);
-        }
+            if (initialized)
+                return Task.FromResult(true);
+            initialized = true;
 
-        protected override void BuildUp(object instance)
-        {
-            container.BuildUp(instance);
-        }
-
-        protected override void OnExit(object sender, EventArgs e)
-        {
-            logger.Debug("Exiting application");
-        }
-
-        private void ApplyTheme()
-        {
-            var themeManager = container.GetInstance<IThemeManager>();
-            var theme = themeManager.AvaliableThemes.First();
-            themeManager.SetTheme(theme);
-        }
-
-        private void ApplyCulture()
-        {
-            if (string.IsNullOrEmpty(Settings.Default.LanguageCode))
-                return;
-
-            var culture = new CultureInfo(Settings.Default.LanguageCode);
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
+            return new Bootstrapper(dispatcher, args).Initialize();
         }
     }
 }

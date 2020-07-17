@@ -1,16 +1,26 @@
-﻿using SLStudio.Core;
+﻿using SimpleInjector;
+using SLStudio.Core;
+using SLStudio.Tests.Modules.Tests.ViewModels;
+using System.Threading.Tasks;
 
 namespace SLStudio.Tests
 {
-    public class Module : ModuleBase
+    internal class Module : ModuleBase
     {
-        public override string ModuleName => "Tests";
+        public override string Name => "SLStudio Tests";
 
-        public override string ModuleDescrition => "Module used for tests";
-
-        public override void Register(IContainer container)
+        protected override void Register(Container container)
         {
+            container.RegisterDisposable<ITest, TestViewModel>();
+        }
 
+        protected override Task Run(IObjectFactory objectFactory)
+        {
+            var shell = objectFactory.Create<IShell>();
+            var testViewModel = objectFactory.Create<ITest>();
+            shell?.OpenPanel(testViewModel);
+
+            return Task.CompletedTask;
         }
     }
 }

@@ -100,8 +100,29 @@
   <data name="OpenRecent" xml:space="preserve">
     <value>Open recent</value>
   </data>
-  <data name="SearchRecentAltS" xml:space="preserve">
+  <data name="SearchRecent" xml:space="preserve">
     <value>Search recent (Alt+S)</value>
+  </data>
+  <data name="ClearAllRecentFiles" xml:space="preserve">
+    <value>Remove All From List</value>
+  </data>
+  <data name="ClearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="OpenLocalSolution" xml:space="preserve">
+    <value>Open local solution</value>
+  </data>
+  <data name="PinThisItemToTheRecentProjectsList" xml:space="preserve">
+    <value>Pin this item to the Recent Projects list</value>
+  </data>
+  <data name="UnpinThisItemFromTheRecentProjectsList" xml:space="preserve">
+    <value>Unpin this item from the Recent Projects list</value>
+  </data>
+  <data name="RemoveFromList" xml:space="preserve">
+    <value>Remove From List</value>
+  </data>
+  <data name="CopyPath" xml:space="preserve">
+    <value>Copy Path</value>
   </data>
   <data name="GetStarted" xml:space="preserve">
     <value>Get started</value>
@@ -109,8 +130,8 @@
   <data name="CloneARepository" xml:space="preserve">
     <value>Clone a repository</value>
   </data>
-  <data name="GetCodeFromAnOnlineRepositoryLikeGitHub" xml:space="preserve">
-    <value>Get code from an online repository like GitHub</value>
+  <data name="GetCodeFromAnOnlineRepository" xml:space="preserve">
+    <value>Get code from an online repository like GitHub or Azure DevOps</value>
   </data>
   <data name="OpenAProjectOrSolution" xml:space="preserve">
     <value>Open a project or solution</value>
@@ -121,8 +142,8 @@
   <data name="OpenALocalFolder" xml:space="preserve">
     <value>Open a local folder</value>
   </data>
-  <data name="NavigateAndEditCodeWithinAnyFolder" xml:space="preserve">
-    <value>Navigate and edit code within any folder</value>
+  <data name="NavigateAndEditWithinAnyFolder" xml:space="preserve">
+    <value>Navigate and edit within any folder</value>
   </data>
   <data name="CreateANewProject" xml:space="preserve">
     <value>Create a new project</value>
@@ -130,13 +151,13 @@
   <data name="ChooseAProjectTemplateWithCodeScaffoldingToGetStarted" xml:space="preserve">
     <value>Choose a project template with code scaffolding to get started</value>
   </data>
-  <data name="ClearAll" xml:space="preserve">
-    <value>Clear all</value>
+  <data name="ContinueWithoutCode" xml:space="preserve">
+    <value>Continue without code</value>
   </data>
   <data name="StartPage" xml:space="preserve">
     <value>Start Page</value>
   </data>
-  <data name="OpenDirectory" xml:space="preserve">
-    <value>Open Directory</value>
+  <data name="Pinned" xml:space="preserve">
+    <value>Pinned</value>
   </data>
 </root>

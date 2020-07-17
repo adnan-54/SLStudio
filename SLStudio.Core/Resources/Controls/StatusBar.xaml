@@ -1,0 +1,10 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--StudioToolBarStyle-->
+    <Style x:Key="StudioStatusBarStyle" TargetType="{x:Type StatusBar}">
+        <Setter Property="Height" Value="22" />
+        <Setter Property="FontWeight" Value="Thin"/>
+        <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
+        <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+    </Style>
+</ResourceDictionary>

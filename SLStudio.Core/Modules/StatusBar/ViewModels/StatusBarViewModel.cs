@@ -1,26 +1,13 @@
-﻿using System;
-using System.ComponentModel;
-using System.Windows.Threading;
+﻿using DevExpress.Mvvm;
+using SLStudio.Core.Modules.StatusBar.Resources;
 
 namespace SLStudio.Core.Modules.StatusBar.ViewModels
 {
-    internal class StatusBarViewModel : ViewModel, IStatusBar
+    internal class StatusBarViewModel : ViewModelBase, IStatusBar
     {
-        private readonly DispatcherTimer timer;
-
         public StatusBarViewModel()
         {
-            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(5) };
-            timer.Tick += OnTickTick;
-            PropertyChanged += OnPropertyChanged;
-
-            Status = Resources.StatusBarResources.Ready;
-        }
-
-        public bool IsBusy
-        {
-            get => GetProperty(() => IsBusy);
-            set => SetProperty(() => IsBusy, value);
+            Status = StatusBarResources.Ready;
         }
 
         public string Status
@@ -29,19 +16,21 @@ namespace SLStudio.Core.Modules.StatusBar.ViewModels
             set => SetProperty(() => Status, value);
         }
 
-        private void OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        public object Content
         {
-            if (e.PropertyName == nameof(Status) && !Status.Equals(Resources.StatusBarResources.Ready, StringComparison.InvariantCultureIgnoreCase))
-            {
-                timer.Stop();
-                timer.Start();
-            }
+            get => GetProperty(() => Content);
+            set => SetProperty(() => Content, value);
         }
 
-        private void OnTickTick(object sender, EventArgs e)
+        public bool PopupIsOpen
         {
-            timer.Stop();
-            Status = Resources.StatusBarResources.Ready;
+            get => GetProperty(() => PopupIsOpen);
+            set => SetProperty(() => PopupIsOpen, value);
+        }
+
+        public void ShowPopup()
+        {
+            PopupIsOpen = !PopupIsOpen;
         }
     }
 }

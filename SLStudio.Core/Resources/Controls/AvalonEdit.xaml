@@ -1,0 +1,78 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:studio="clr-namespace:SLStudio.Core">
+    <!--StudioAvalonEditStyle-->
+    <Style x:Key="StudioAvalonEditStyle" TargetType="{x:Type ae:TextEditor}">
+        <Setter Property="AllowDrop" Value="True" />
+        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Padding" Value="6, 3, 6, 3" />
+        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+        <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="LineNumbersForeground" Value="{DynamicResource Focused}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ae:TextEditor}">
+                    <Border x:Name="Border" Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ScrollViewer Name="PART_ScrollViewer" Focusable="False"
+                                      CanContentScroll="True" Padding="{TemplateBinding Padding}"
+                                      VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                      Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                                      VerticalContentAlignment="Top" HorizontalContentAlignment="Left" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="WordWrap" Value="True">
+                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                        </Trigger>
+                        <Trigger Property="IsReadOnly" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Window.Background}" />
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Border" Value="{DynamicResource Focused}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Border" Value="0.4" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--StudioTextAreaStyle-->
+    <Style x:Key="StudioTextAreaStyle" TargetType="{x:Type ae:TextArea}" x:Shared="False">
+        <Setter Property="studio:TextAreaHelper.CaretBrush" Value="{DynamicResource Foreground}" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="SelectionBrush" Value="{DynamicResource SelectionBackground}" />
+        <Setter Property="SelectionForeground" Value="{DynamicResource SelectionForeground}" />
+        <Setter Property="SelectionBorder">
+            <Setter.Value>
+                <Pen Brush="{DynamicResource Border}" Thickness="1" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ae:TextArea}">
+                    <DockPanel Focusable="False">
+                        <ItemsControl DockPanel.Dock="Left" Focusable="False"
+                          ItemsSource="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=LeftMargins}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                        <ContentPresenter Panel.ZIndex="-1" Focusable="False"
+                              Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextView}" />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

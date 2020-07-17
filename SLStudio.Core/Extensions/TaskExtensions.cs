@@ -1,5 +1,4 @@
-﻿using Caliburn.Micro;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace SLStudio.Core
@@ -16,7 +15,6 @@ namespace SLStudio.Core
             {
                 if (errorHandler == null)
                     errorHandler = IoC.Get<IErrorHandler>();
-
                 errorHandler.HandleError(ex);
             }
         }

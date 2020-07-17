@@ -1,15 +1,18 @@
-﻿using SLStudio.Core.Docking;
-
-namespace SLStudio.Core.Modules.ToolBox.ViewModels
+﻿namespace SLStudio.Core.Modules.ToolBox.ViewModels
 {
-    internal class ToolBoxViewModel : ToolBase
+    internal class ToolBoxViewModel : ToolPanelBase
     {
         public ToolBoxViewModel()
         {
-            IsVisible = true;
             DisplayName = "Toolbox";
         }
 
-        public override PaneLocation PreferredLocation => PaneLocation.Left;
+        public override ToolPlacement Placement => ToolPlacement.Left;
+
+        public string TestText
+        {
+            get => GetProperty(() => TestText);
+            set => SetProperty(() => TestText, value);
+        }
     }
 }

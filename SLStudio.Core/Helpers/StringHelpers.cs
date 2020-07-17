@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Windows.Controls;
 
-namespace SLStudio.Core.Helpers
+namespace SLStudio.Core
 {
     public static class StringHelpers
     {
