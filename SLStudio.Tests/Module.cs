@@ -13,14 +13,5 @@ namespace SLStudio.Tests
         {
             container.RegisterDisposable<ITest, TestViewModel>();
         }
-
-        protected override Task Run(IObjectFactory objectFactory)
-        {
-            var shell = objectFactory.Create<IShell>();
-            var testViewModel = objectFactory.Create<ITest>();
-            shell?.OpenPanel(testViewModel);
-
-            return Task.CompletedTask;
-        }
     }
 }

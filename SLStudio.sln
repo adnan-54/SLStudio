@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Logging", "SLStudi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.SlrrLib", "SLStudio.SlrrLib\SLStudio.SlrrLib.csproj", "{DDACC84E-88CE-47FB-AD88-487406994829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Tests", "SLStudio.Tests\SLStudio.Tests.csproj", "{DA6CB72E-1D7D-4EE8-94D0-2DD1C841E211}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Tests", "SLStudio.Tests\SLStudio.Tests.csproj", "{DA6CB72E-1D7D-4EE8-94D0-2DD1C841E211}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -66,8 +66,8 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		RESX_PrefixTranslations = False
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal
