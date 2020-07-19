@@ -15,8 +15,9 @@ namespace SLStudio.Core
 
         protected override void Register(Container container)
         {
-            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
-            container.RegisterSingleton<IMenuLoader, DefaultMenuLoader>();
+            container.RegisterServiceAndImplementationAsSingleton<IErrorHandler, DefaultErrorHandler>();
+            container.RegisterServiceAndImplementationAsSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
+            container.RegisterServiceAndImplementationAsSingleton<IMenuLookup, DefaultMenuLookup>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
             container.RegisterSingleton<IStatusBar, StatusBarViewModel>();

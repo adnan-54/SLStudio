@@ -1,13 +1,28 @@
-﻿using SLStudio.Core.Modules.StatusBar.Resources;
+﻿using DevExpress.Mvvm.Native;
+using SLStudio.Core.Modules.StatusBar.Resources;
 using SLStudio.Core.Resources.Language;
 using System.Collections.Generic;
 using System.Linq;
+using System.Media;
 using System.Windows.Input;
 
 namespace SLStudio.Core
 {
     public class MultiKeyGesture : KeyGesture
     {
+        private static readonly IReadOnlyCollection<Key> specialKeys = new List<Key>()
+        {
+            Key.LeftCtrl,
+            Key.RightCtrl,
+            Key.LeftShift,
+            Key.RightShift,
+            Key.LeftAlt,
+            Key.RightAlt,
+            Key.LWin,
+            Key.RWin,
+            Key.System
+        };
+
         private readonly IStatusBar statusBar;
         private readonly KeyGesturePart[] gestures;
         private readonly int gesturesCount;
@@ -26,6 +41,9 @@ namespace SLStudio.Core
             if (!(inputEventArgs is KeyEventArgs args) || args.Timestamp == lastInputTimeStamp)
                 return false;
 
+            if (IsSpecialKey(args.Key))
+                return false;
+
             if (step < gesturesCount)
             {
                 if (!gestures[step].Matches(args.Key, Keyboard.Modifiers))
@@ -34,6 +52,7 @@ namespace SLStudio.Core
                     {
                         var combination = gestures.Take(step).Concat(new[] { new KeyGesturePart(args.Key, Keyboard.Modifiers) });
                         statusBar.Status = string.Format(Language.CombinationIsNotACommand, CreateDisplayString(combination));
+                        //SystemSounds.Asterisk.Play();
                     }
                     step = 0;
                     return false;
@@ -51,6 +70,11 @@ namespace SLStudio.Core
                 return true;
             }
             return false;
+        }
+
+        private static bool IsSpecialKey(Key key)
+        {
+            return specialKeys.Any(specialKey => specialKey == key);
         }
 
         private static string CreateDisplayString(IEnumerable<KeyGesturePart> gestures)

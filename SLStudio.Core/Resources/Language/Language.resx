@@ -133,7 +133,7 @@
     <value>The key combination ({0}) is not a command.</value>
   </data>
   <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) was pressed. Waiting for next key of chord</value>
+    <value>({0}) was pressed. Waiting for next key of chord...</value>
   </data>
   <data name="HumanizerDateTimeToday" xml:space="preserve">
     <value>today</value>

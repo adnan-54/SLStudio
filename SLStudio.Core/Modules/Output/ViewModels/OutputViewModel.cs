@@ -1,4 +1,5 @@
-﻿using ICSharpCode.AvalonEdit.Document;
+﻿using DevExpress.Mvvm;
+using ICSharpCode.AvalonEdit.Document;
 using SLStudio.Core.Behaviors;
 using SLStudio.Core.Modules.Output.Resources;
 using SLStudio.Logging;
@@ -8,6 +9,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 {
     internal class OutputViewModel : ToolPanelBase, IOutput
     {
+        private IDispatcherService dispatcher;
         private IAvalonEditSearch avalonEditSearch;
 
         public OutputViewModel()
@@ -23,6 +25,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void OnLoaded()
         {
+            dispatcher = GetService<IDispatcherService>();
             avalonEditSearch = GetService<IAvalonEditSearch>();
         }
 
@@ -34,7 +37,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void AppendLine(string text)
         {
-            TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}";
+            dispatcher?.Invoke(() => TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}");
         }
 
         public void Clear()

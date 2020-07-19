@@ -115,7 +115,7 @@ namespace SLStudio.Core.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ({0}) was pressed. Waiting for next key of chord.
+        ///   Looks up a localized string similar to ({0}) was pressed. Waiting for next key of chord....
         /// </summary>
         public static string WaitingForNextKeyOfChord {
             get {

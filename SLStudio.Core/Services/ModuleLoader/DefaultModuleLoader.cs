@@ -52,6 +52,7 @@ namespace SLStudio.Core
 
                 MergeResources(modules);
                 RegisterModules(modules);
+                container.Verify();
             });
             await RunModules(modules);
         }

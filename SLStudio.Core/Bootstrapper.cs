@@ -54,6 +54,7 @@ namespace SLStudio.Core
             logger.Info("Initializing application");
             splashScreen.Show();
 
+            ConfigureContainer();
             RegisterDefaults();
 
             assemblyLoader.Initialize(splashScreen);
@@ -65,6 +66,11 @@ namespace SLStudio.Core
 
             windowManager.ShowWindow<IShell>();
             splashScreen.Close();
+        }
+
+        private void ConfigureContainer()
+        {
+            container.Options.ResolveUnregisteredConcreteTypes = true;
         }
 
         private void RegisterDefaults()

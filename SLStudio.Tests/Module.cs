@@ -1,5 +1,7 @@
 ﻿using SimpleInjector;
 using SLStudio.Core;
+using SLStudio.Core.Menus;
+using SLStudio.Tests.Menus;
 using SLStudio.Tests.Modules.Tests.ViewModels;
 using System.Threading.Tasks;
 

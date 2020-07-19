@@ -8,22 +8,30 @@ namespace SLStudio.Core.Menus
     {
         public MenuItem()
         {
-            IsVisible = true;
-            IsEnabled = true;
             Children = new BindableCollection<IMenuItem>();
         }
 
-        public int Index
+        public MenuItem(string path, int index, string displayName, string toolTip, object iconSource, KeyGesture shortcut, bool isVisible, bool isEnabled) : this()
         {
-            get => GetProperty(() => Index);
-            set => SetProperty(() => Index, value);
+            Path = path;
+            Index = index;
+            DisplayName = displayName;
+            ToolTip = toolTip;
+            IconSource = iconSource;
+            Shortcut = shortcut;
+            IsVisible = isVisible;
+            IsEnabled = isEnabled;
         }
 
-        public string Path
+        public MenuItem(string path, int index) : this()
         {
-            get => GetProperty(() => Path);
-            set => SetProperty(() => Path, value);
+            Path = path;
+            Index = index;
         }
+
+        public int Index { get; }
+
+        public string Path { get; }
 
         public string DisplayName
         {
@@ -49,19 +57,19 @@ namespace SLStudio.Core.Menus
             set => SetProperty(() => IsVisible, value);
         }
 
-        public Uri IconSource
+        public object IconSource
         {
             get => GetProperty(() => IconSource);
             set => SetProperty(() => IconSource, value);
         }
 
-        public KeyGesture Shortcut { get; internal set; }
+        public KeyGesture Shortcut { get; }
 
         public ICommand Command { get; internal set; }
 
-        public object Parameter { get; internal set; }
+        public object Parameter { get; set; }
 
-        public IMenuItem Parent { get; internal set; }
+        public IMenuItem Parent { get; set; }
 
         public IObservableCollection<IMenuItem> Children { get; }
 
@@ -88,17 +96,17 @@ namespace SLStudio.Core.Menus
 
     public interface IMenuItem : IHaveDisplayName
     {
-        int Index { get; set; }
+        int Index { get; }
         string Path { get; }
-        string ToolTip { get; }
+        string ToolTip { get; set; }
         bool IsEnabled { get; }
         bool IsVisible { get; }
-        Uri IconSource { get; }
+        object IconSource { get; set; }
         KeyGesture Shortcut { get; }
         ICommand Command { get; }
-        object Parameter { get; }
+        object Parameter { get; set; }
 
-        IMenuItem Parent { get; }
+        IMenuItem Parent { get; set; }
         IObservableCollection<IMenuItem> Children { get; }
 
         void Enable();

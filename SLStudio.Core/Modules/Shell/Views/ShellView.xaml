@@ -8,6 +8,7 @@
                       xmlns:studio="clr-namespace:SLStudio.Core"
                       xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                       xmlns:docking="clr-namespace:SLStudio.Core.Docking"
+                      xmlns:converters="clr-namespace:SLStudio.Core.Converters"
                       xmlns:menus="clr-namespace:SLStudio.Core.Menus"
                       xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
                       mc:Ignorable="d">
@@ -50,7 +51,11 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
-                                                <Separator />
+                                                <Separator>
+                                                    <Separator.Style>
+                                                        <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource ResourceKey={x:Static MenuItem.SeparatorStyleKey}}" />
+                                                    </Separator.Style>
+                                                </Separator>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
@@ -62,11 +67,20 @@
                                     <Setter Property="IsChecked" Value="{Binding IsChecked}" />
                                 </DataTrigger>
 
-                                <!--Icon-->
-                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IsNotNullConverter}}" Value="True">
+                                <!--IconFromUri-->
+                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IconSourceTypeConverter}, ConverterParameter={x:Static converters:IconSourceType.FromUri}}" Value="True">
                                     <Setter Property="Icon">
                                         <Setter.Value>
                                             <Image Source="{Binding IconSource, Converter={StaticResource UriToImageSourceConverter}}" />
+                                        </Setter.Value>
+                                    </Setter>
+                                </DataTrigger>
+
+                                <!--IconFromResource-->
+                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IconSourceTypeConverter}, ConverterParameter={x:Static converters:IconSourceType.FromResource}}" Value="True">
+                                    <Setter Property="Icon">
+                                        <Setter.Value>
+                                            <Image studio:ImageHelper.ImageSource="{Binding IconSource}" />
                                         </Setter.Value>
                                     </Setter>
                                 </DataTrigger>

@@ -22,7 +22,7 @@ namespace SLStudio.Core.Menus
                 MenuItemTypes.Separator => value is IMenuSeparatorItem,
                 MenuItemTypes.Toggle => value is IMenuToggleItem,
                 MenuItemTypes.Normal => value is IMenuItem,
-                _ => false,
+                _ => false
             };
         }
 
