@@ -13,12 +13,11 @@
 
     <!--Converters-->
     <converters:DocumentTitleConverter x:Key="DocumentTitleConverter" />
-    <converters:IconSourceTypeConverter x:Key="IconSourceTypeConverter" />
+    <converters:ImageSourceConverter x:Key="ImageSourceConverter" />
     <converters:IsNullConverter x:Key="IsNullConverter" />
     <converters:IsNullConverter x:Key="IsNotNullConverter" Negate="True" />
     <converters:KeyGestureToTextConverter x:Key="KeyGestureToTextConverter" />
     <converters:NullableValueConverter x:Key="NullableValueConverter" />
-    <converters:UriToImageSourceConverter x:Key="UriToImageSourceConverter" />
     <avalonDock:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 
     <!--Effects-->

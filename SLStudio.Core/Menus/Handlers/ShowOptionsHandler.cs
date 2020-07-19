@@ -7,7 +7,7 @@ namespace SLStudio.Core.Menus.Handlers
     {
         public override Task Execute(IMenuItem menu, object parameter)
         {
-            MessageBox.Show("Fodaseeee");
+            MessageBox.Show(menu.DisplayName);
             return Task.CompletedTask;
         }
     }

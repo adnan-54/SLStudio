@@ -72,7 +72,7 @@
                             </Grid>
 
                             <!--SubMenuPopup-->
-                            <Popup x:Name="SubMenuPopup" Width="300"
+                            <Popup x:Name="SubMenuPopup" MinWidth="150"
                                    Focusable="False" PopupAnimation="None"
                                    VerticalOffset="-1" HorizontalOffset="-1"
                                    AllowsTransparency="True" Placement="Right"
@@ -118,6 +118,7 @@
                             <Setter TargetName="SubMenu" Property="Margin" Value="1" />
                             <Setter TargetName="SubMenuBorder" Property="BorderThickness" Value="1" />
                             <Setter TargetName="SubMenuPopup" Property="Placement" Value="Bottom" />
+                            <Setter TargetName="SubMenuPopup" Property="MinWidth" Value="250" />
                             <Setter TargetName="TransitionBorder" Property="Width" Value="{Binding ActualWidth, ElementName=Grid}" />
                         </Trigger>
 

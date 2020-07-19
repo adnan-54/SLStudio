@@ -21,20 +21,13 @@
     <!--TitleBar-->
     <studio:StudioWindow.LeftWindowCommands>
         <metro:WindowCommands ShowSeparators="False">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                <!--DebugMenu-->
-                <Menu metro:VisibilityHelper.IsVisible="{Binding DebugMode}">
-                    <MenuItem Header="Debug" Foreground="{DynamicResource Custom.Red}">
-                        <MenuItem Header="Super secret menu" InputGestureText="Ctrl+V, Ctrl+C" />
-                    </MenuItem>
-                </Menu>
-
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
                 <!--MainMenu-->
                 <Menu VerticalAlignment="Center" IsMainMenu="True">
                     <!--Resources-->
                     <Menu.Resources>
                         <!--Styles-->
-                        <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}">
+                        <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}" x:Shared="False">
                             <Setter Property="Header" Value="{Binding DisplayName}" />
                             <Setter Property="IsEnabled" Value="{Binding IsEnabled}" />
                             <Setter Property="Tag" Value="{Binding Path}" />
@@ -43,6 +36,11 @@
                             <Setter Property="Visibility" Value="{Binding IsVisible, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Visible}}" />
                             <Setter Property="ToolTip" Value="{Binding ToolTip}" />
                             <Setter Property="InputGestureText" Value="{Binding Shortcut, Converter={StaticResource KeyGestureToTextConverter}}" />
+                            <Setter Property="Icon">
+                                <Setter.Value>
+                                    <Image Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
+                                </Setter.Value>
+                            </Setter>
 
                             <!--Triggers-->
                             <Style.Triggers>
@@ -65,24 +63,6 @@
                                 <DataTrigger Binding="{Binding Converter={menus:MenuItemConverter}, ConverterParameter={x:Static menus:MenuItemTypes.Toggle}}" Value="True">
                                     <Setter Property="IsCheckable" Value="True" />
                                     <Setter Property="IsChecked" Value="{Binding IsChecked}" />
-                                </DataTrigger>
-
-                                <!--IconFromUri-->
-                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IconSourceTypeConverter}, ConverterParameter={x:Static converters:IconSourceType.FromUri}}" Value="True">
-                                    <Setter Property="Icon">
-                                        <Setter.Value>
-                                            <Image Source="{Binding IconSource, Converter={StaticResource UriToImageSourceConverter}}" />
-                                        </Setter.Value>
-                                    </Setter>
-                                </DataTrigger>
-
-                                <!--IconFromResource-->
-                                <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IconSourceTypeConverter}, ConverterParameter={x:Static converters:IconSourceType.FromResource}}" Value="True">
-                                    <Setter Property="Icon">
-                                        <Setter.Value>
-                                            <Image studio:ImageHelper.ImageSource="{Binding IconSource}" />
-                                        </Setter.Value>
-                                    </Setter>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -124,8 +104,8 @@
 
         <!--ToolBar-->
         <ToolBarTray Grid.Row="0">
-            <ToolBar metro:VisibilityHelper.IsVisible="{Binding DebugMode}">
-                <Button Content="Debug" />
+            <ToolBar>
+                <Separator />
             </ToolBar>
         </ToolBarTray>
 

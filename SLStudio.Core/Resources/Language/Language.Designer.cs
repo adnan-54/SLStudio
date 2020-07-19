@@ -88,6 +88,24 @@ namespace SLStudio.Core.Resources.Language {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Options....
+        /// </summary>
+        public static string MenuOptions {
+            get {
+                return ResourceManager.GetString("MenuOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Tools.
+        /// </summary>
+        public static string MenuTools {
+            get {
+                return ResourceManager.GetString("MenuTools", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Merging resources for {0}....
         /// </summary>
         public static string MergingResources {

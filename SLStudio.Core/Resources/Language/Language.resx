@@ -138,4 +138,10 @@
   <data name="HumanizerDateTimeToday" xml:space="preserve">
     <value>today</value>
   </data>
+  <data name="MenuTools" xml:space="preserve">
+    <value>_Tools</value>
+  </data>
+  <data name="MenuOptions" xml:space="preserve">
+    <value>_Options...</value>
+  </data>
 </root>
