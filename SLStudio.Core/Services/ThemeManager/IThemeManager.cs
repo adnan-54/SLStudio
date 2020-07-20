@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SLStudio.Core
 {
     public interface IThemeManager
     {
-        IEnumerable<ThemeModel> AvaliableThemes { get; }
-        ThemeModel CurrentTheme { get; }
+        IEnumerable<Theme> AvaliableThemes { get; }
 
-        event EventHandler ThemeChanged;
+        Theme CurrentTheme { get; }
 
-        void SetTheme(ThemeModel theme);
-
-        void Refresh();
+        void SetTheme(Theme theme);
 
         void Reset();
     }

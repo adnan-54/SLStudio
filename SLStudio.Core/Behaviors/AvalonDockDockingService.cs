@@ -33,12 +33,11 @@ namespace SLStudio.Core.Docking
             AssociatedObject.DocumentClosing += OnDocumentClosing;
             AssociatedObject.DocumentClosed += OnDocumentClosed;
             //AssociatedObject.LayoutUpdated += OnLayoutUpdated;
-            themeManager.ThemeChanged += OnThemeChanged;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            UpdateTheme();
+            AssociatedObject.Theme = themeManager.CurrentTheme.DockTheme;
         }
 
         public void OnActiveContentChanged(DependencyPropertyChangedEventArgs e)
@@ -77,23 +76,12 @@ namespace SLStudio.Core.Docking
             }
         }
 
-        private void OnThemeChanged(object sender, EventArgs e)
-        {
-            UpdateTheme();
-        }
-
-        private void UpdateTheme()
-        {
-            AssociatedObject.Theme = themeManager.CurrentTheme.DockTheme;
-        }
-
         protected override void OnDetaching()
         {
             AssociatedObject.Loaded -= OnLoaded;
             AssociatedObject.DocumentClosing -= OnDocumentClosing;
             AssociatedObject.DocumentClosed -= OnDocumentClosed;
             //AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
-            themeManager.ThemeChanged -= OnThemeChanged;
             base.OnDetaching();
         }
     }

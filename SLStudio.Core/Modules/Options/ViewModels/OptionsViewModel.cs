@@ -23,11 +23,11 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             DisplayName = OptionsResources.Options;
         }
 
-        public IReadOnlyCollection<ThemeModel> AvaliableThemes { get; }
+        public IReadOnlyCollection<Theme> AvaliableThemes { get; }
 
         public IReadOnlyCollection<LanguageModel> AvaliableLanguages { get; }
 
-        public ThemeModel SelectedTheme
+        public Theme SelectedTheme
         {
             get => GetProperty(() => SelectedTheme);
             set => SetProperty(() => SelectedTheme, value);

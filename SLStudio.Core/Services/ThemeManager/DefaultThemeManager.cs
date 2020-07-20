@@ -5,7 +5,6 @@ using HandyControl.Themes;
 using HandyControl.Tools;
 using MahApps.Metro.Theming;
 using SLStudio.Core.Services.ThemeManager.Resources;
-using SLStudio.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,62 +14,41 @@ namespace SLStudio.Core
 {
     internal class DefaultThemeManager : IThemeManager
     {
-        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultThemeManager>();
-
-        private readonly IList<ThemeModel> avaliableThemes;
+        private readonly IList<Theme> avaliableThemes;
 
         public DefaultThemeManager()
         {
-            var dockDarkTheme = new Vs2013DarkTheme();
-            var dockLightTheme = new Vs2013LightTheme();
-            avaliableThemes = new List<ThemeModel>()
+            avaliableThemes = new List<Theme>()
             {
-                new ThemeModel("SLStudio.Dark", ThemeManagerResources.Dark, SkinType.Dark, dockDarkTheme, new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Dark.xaml")),
-                new ThemeModel("SLStudio.Light", ThemeManagerResources.Light, SkinType.Default, dockLightTheme, new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml"))
+                new Theme("SLStudio.Dark", ThemeManagerResources.Dark, SkinType.Dark, new Vs2013DarkTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Dark.xaml")),
+                new Theme("SLStudio.Light", ThemeManagerResources.Light, SkinType.Default, new Vs2013LightTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml"))
             };
+
             Initialize();
         }
 
-        public IEnumerable<ThemeModel> AvaliableThemes => avaliableThemes;
+        public IEnumerable<Theme> AvaliableThemes => avaliableThemes;
 
-        public ThemeModel CurrentTheme => AvaliableThemes.FirstOrDefault(t => t.Id == ThemeManagerSettings.Default.UserTheme);
+        public Theme CurrentTheme { get; private set; }
 
-        public event EventHandler ThemeChanged;
-
-        private void Initialize()
+        public void SetTheme(Theme theme)
         {
-            CreateMahappsTheme();
-            SetThemeInternal(CurrentTheme);
-        }
-
-        public void SetTheme(ThemeModel theme)
-        {
-            if (theme == CurrentTheme)
-                return;
-            SetThemeInternal(theme);
-        }
-
-        public void Refresh()
-        {
-            SetTheme(CurrentTheme);
+            ThemeManagerSettings.Default.UserTheme = theme.Id;
+            ThemeManagerSettings.Default.Save();
         }
 
         public void Reset()
         {
             ThemeManagerSettings.Default.Reset();
             ThemeManagerSettings.Default.Save();
-            Initialize();
         }
 
-        private void SetThemeInternal(ThemeModel theme)
+        private void Initialize()
         {
-            UpdateHandyControlTheme(theme);
-            UpdateMahappsTheme(theme);
-
-            ThemeManagerSettings.Default.UserTheme = theme.Id;
-            ThemeManagerSettings.Default.Save();
-
-            OnThemeChanged();
+            CurrentTheme = AvaliableThemes.First(t => t.Id == ThemeManagerSettings.Default.UserTheme);
+            CreateMahappsTheme();
+            UpdateHandyControlTheme();
+            UpdateMahappsTheme();
         }
 
         private void CreateMahappsTheme()
@@ -80,36 +58,16 @@ namespace SLStudio.Core
                 ThemeManager.Current.AddLibraryTheme(new LibraryTheme(theme.Path, MahAppsLibraryThemeProvider.DefaultInstance));
         }
 
-        private void UpdateHandyControlTheme(ThemeModel theme)
+        private void UpdateHandyControlTheme()
         {
             SharedResourceDictionary.SharedDictionaries.Clear();
-            ResourceHelper.GetTheme("HandyTheme", Application.Current.Resources).Skin = theme.SkinType;
-
-            foreach (Window window in Application.Current.Windows)
-            {
-                try
-                {
-                    if (window.GetType().Namespace.Contains("avalon", StringComparison.InvariantCultureIgnoreCase))
-                        continue;
-
-                    window.OnApplyTemplate();
-                }
-                catch (Exception ex)
-                {
-                    logger.Error(ex);
-                }
-            }
+            ResourceHelper.GetTheme("HandyTheme", Application.Current.Resources).Skin = CurrentTheme.SkinType;
         }
 
-        private void UpdateMahappsTheme(ThemeModel theme)
+        private void UpdateMahappsTheme()
         {
-            var mahAppsTheme = ThemeManager.Current.GetTheme(theme.Id);
+            var mahAppsTheme = ThemeManager.Current.GetTheme(CurrentTheme.Id);
             ThemeManager.Current.ChangeTheme(Application.Current, mahAppsTheme);
-        }
-
-        private void OnThemeChanged()
-        {
-            ThemeChanged?.Invoke(this, new EventArgs());
         }
     }
 }
