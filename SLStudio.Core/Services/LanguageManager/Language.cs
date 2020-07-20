@@ -4,7 +4,7 @@ namespace SLStudio.Core
 {
     public class Language
     {
-        internal Language(string code, string displayName = null)
+        internal Language(string code, string displayName = null, bool isAuto = false)
         {
             Culture = CultureInfo.CreateSpecificCulture(code);
 
@@ -12,6 +12,8 @@ namespace SLStudio.Core
                 DisplayName = char.ToUpper(Culture.NativeName[0]) + Culture.NativeName.Substring(1);
             else
                 DisplayName = displayName;
+
+            IsAuto = isAuto;
         }
 
         public CultureInfo Culture { get; }
@@ -19,5 +21,7 @@ namespace SLStudio.Core
         public string DisplayName { get; }
 
         public string Code => Culture.Name;
+
+        public bool IsAuto { get; }
     }
 }

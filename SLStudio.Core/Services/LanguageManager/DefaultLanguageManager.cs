@@ -19,7 +19,7 @@ namespace SLStudio.Core
             {
                 new Language("en-US"),
                 new Language("pt-BR"),
-                new Language(Thread.CurrentThread.CurrentUICulture.Name, $"Auto ({Thread.CurrentThread.CurrentUICulture.DisplayName})")
+                new Language(Thread.CurrentThread.CurrentUICulture.Name, $"Auto ({Thread.CurrentThread.CurrentUICulture.DisplayName})", true)
             };
 
             Initalize();
@@ -31,7 +31,8 @@ namespace SLStudio.Core
 
         public void SetLanguage(Language language)
         {
-            LanguageManagerSettings.Default.UserLanguage = language.Code;
+            var code = language.IsAuto ? string.Empty : language.Code;
+            LanguageManagerSettings.Default.UserLanguage = code;
             LanguageManagerSettings.Default.Save();
             CurrentLanguage = language;
         }
@@ -46,7 +47,7 @@ namespace SLStudio.Core
         private void Initalize()
         {
             if (string.IsNullOrEmpty(LanguageManagerSettings.Default.UserLanguage))
-                CurrentLanguage = AvaliableLanguages.First(l => l.Code == Thread.CurrentThread.CurrentUICulture.Name);
+                CurrentLanguage = AvaliableLanguages.First(l => l.IsAuto);
             else
                 CurrentLanguage = AvaliableLanguages.First(l => l.Code == LanguageManagerSettings.Default.UserLanguage);
 
