@@ -10,8 +10,8 @@ namespace SLStudio.Core.Menus
 
         public override void Create()
         {
-            Item(Tools, 0, Language.MenuTools);
-            Item<ShowOptionsHandler>(ToolsOptions, 999, Language.MenuOptions, iconSource: "SettingsOutline");
+            Item(Tools, 0, Resources.Language.Language.MenuTools);
+            Item<ShowOptionsHandler>(ToolsOptions, 999, Resources.Language.Language.MenuOptions, iconSource: "SettingsOutline");
         }
 
         public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)

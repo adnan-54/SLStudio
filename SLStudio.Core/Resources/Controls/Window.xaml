@@ -74,8 +74,6 @@
         <Setter Property="SaveWindowPosition" Value="True" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <Setter Property="MinWidth" Value="800" />
-        <Setter Property="MinHeight" Value="600" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="TryToBeFlickerFree" Value="True" />
         <Setter Property="TitleAlignment" Value="Center" />

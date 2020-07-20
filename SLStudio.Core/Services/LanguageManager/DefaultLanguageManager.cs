@@ -1,7 +1,7 @@
 ﻿using HandyControl.Tools;
 using Humanizer.Configuration;
 using SLStudio.Core.Humanizer;
-using SLStudio.Core.Services.LanguageManager.Resources;
+using SLStudio.Core.Services.LanguageManager;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,65 +13,55 @@ namespace SLStudio.Core
 {
     internal class DefaultLanguageManager : ILanguageManager
     {
-        private readonly CultureInfo localCulture;
-
         internal DefaultLanguageManager()
         {
-            localCulture = Thread.CurrentThread.CurrentCulture;
-
-            AvaliableLanguages = new List<LanguageModel>
+            AvaliableLanguages = new List<Language>
             {
-                new LanguageModel("English", "en"),
-                new LanguageModel("Português", "pt-br"),
-                new LanguageModel("Auto", string.Empty)
+                new Language("en-US"),
+                new Language("pt-BR"),
+                new Language(Thread.CurrentThread.CurrentUICulture.Name, $"Auto ({Thread.CurrentThread.CurrentUICulture.DisplayName})")
             };
 
             Initalize();
         }
 
-        public IEnumerable<LanguageModel> AvaliableLanguages { get; }
+        public IEnumerable<Language> AvaliableLanguages { get; }
 
-        public LanguageModel CurrentLanguage => AvaliableLanguages.FirstOrDefault(l => l.Code == LanguageManagerSettings.Default.LanguageCode);
+        public Language CurrentLanguage { get; private set; }
 
-        private void Initalize()
+        public void SetLanguage(Language language)
         {
-            SetupHumanizer();
-            SetLanguage(CurrentLanguage);
-        }
-
-        public void SetLanguage(LanguageModel language)
-        {
-            if (!string.IsNullOrEmpty(language.Code))
-            {
-                var culture = CultureInfo.CreateSpecificCulture(language.Code);
-                Thread.CurrentThread.CurrentCulture = culture;
-                Thread.CurrentThread.CurrentUICulture = culture;
-                CultureInfo.DefaultThreadCurrentCulture = culture;
-                CultureInfo.DefaultThreadCurrentUICulture = culture;
-                ConfigHelper.Instance.SetLang(language.Code);
-                //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
-            }
-            else
-            {
-                CultureInfo.DefaultThreadCurrentCulture = localCulture;
-                CultureInfo.DefaultThreadCurrentUICulture = localCulture;
-                ConfigHelper.Instance.SetLang("en");
-            }
-
-            LanguageManagerSettings.Default.LanguageCode = language.Code;
+            LanguageManagerSettings.Default.UserLanguage = language.Code;
             LanguageManagerSettings.Default.Save();
-        }
-
-        private static void SetupHumanizer()
-        {
-            Configurator.DateTimeHumanizeStrategy = new DaysOnlyHumanizeStrategy();
+            CurrentLanguage = language;
         }
 
         public void Reset()
         {
             LanguageManagerSettings.Default.Reset();
             LanguageManagerSettings.Default.Save();
-            SetLanguage(CurrentLanguage);
+            CurrentLanguage = AvaliableLanguages.First(l => l.Code == Thread.CurrentThread.CurrentUICulture.Name);
+        }
+
+        private void Initalize()
+        {
+            if (string.IsNullOrEmpty(LanguageManagerSettings.Default.UserLanguage))
+                CurrentLanguage = AvaliableLanguages.First(l => l.Code == Thread.CurrentThread.CurrentUICulture.Name);
+            else
+                CurrentLanguage = AvaliableLanguages.First(l => l.Code == LanguageManagerSettings.Default.UserLanguage);
+
+            Thread.CurrentThread.CurrentCulture = CurrentLanguage.Culture;
+            Thread.CurrentThread.CurrentUICulture = CurrentLanguage.Culture;
+            CultureInfo.DefaultThreadCurrentCulture = CurrentLanguage.Culture;
+            CultureInfo.DefaultThreadCurrentUICulture = CurrentLanguage.Culture;
+            ConfigHelper.Instance.SetLang(CurrentLanguage.Code);
+            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CurrentLanguage.Code)));
+            SetupHumanizer();
+        }
+
+        private static void SetupHumanizer()
+        {
+            Configurator.DateTimeHumanizeStrategy = new DaysOnlyHumanizeStrategy();
         }
     }
 }

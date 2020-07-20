@@ -4,10 +4,11 @@ namespace SLStudio.Core
 {
     public interface ILanguageManager
     {
-        IEnumerable<LanguageModel> AvaliableLanguages { get; }
-        LanguageModel CurrentLanguage { get; }
+        IEnumerable<Language> AvaliableLanguages { get; }
 
-        void SetLanguage(LanguageModel language);
+        Language CurrentLanguage { get; }
+
+        void SetLanguage(Language language);
 
         void Reset();
     }

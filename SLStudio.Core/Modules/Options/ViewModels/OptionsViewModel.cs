@@ -25,7 +25,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
 
         public IReadOnlyCollection<Theme> AvaliableThemes { get; }
 
-        public IReadOnlyCollection<LanguageModel> AvaliableLanguages { get; }
+        public IReadOnlyCollection<Language> AvaliableLanguages { get; }
 
         public Theme SelectedTheme
         {
@@ -33,7 +33,7 @@ namespace SLStudio.Core.Modules.Options.ViewModels
             set => SetProperty(() => SelectedTheme, value);
         }
 
-        public LanguageModel SelectedLanguage
+        public Language SelectedLanguage
         {
             get => GetProperty(() => SelectedLanguage);
             set => SetProperty(() => SelectedLanguage, value);

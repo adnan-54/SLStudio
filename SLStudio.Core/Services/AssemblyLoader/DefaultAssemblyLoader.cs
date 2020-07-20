@@ -71,7 +71,7 @@ namespace SLStudio.Core
             {
                 var assemblyName = Path.GetFileNameWithoutExtension(assembly);
                 logger.Debug($"Loading assembly '{assemblyName}'");
-                splashScreen.UpdateStatus(string.Format(Language.LoadingAssemblyAssemblyName, assemblyName));
+                splashScreen.UpdateStatus(string.Format(Resources.Language.Language.LoadingAssemblyAssemblyName, assemblyName));
                 Assembly.LoadFrom(assembly);
             }
         }

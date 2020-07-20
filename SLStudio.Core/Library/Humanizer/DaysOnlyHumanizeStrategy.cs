@@ -15,7 +15,7 @@ namespace SLStudio.Core.Humanizer
             var comparisonBaseDate = comparisonBase.Date;
 
             if (inputDate == comparisonBaseDate)
-                return Language.HumanizerDateTimeToday;
+                return Resources.Language.Language.HumanizerDateTimeToday;
 
             return DefaultStrategy.Humanize(inputDate, comparisonBaseDate, culture);
         }

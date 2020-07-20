@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Services.LanguageManager.Resources {
+namespace SLStudio.Core.Services.LanguageManager {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,13 +25,13 @@ namespace SLStudio.Core.Services.LanguageManager.Resources {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("pt-br")]
-        public string LanguageCode {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserLanguage {
             get {
-                return ((string)(this["LanguageCode"]));
+                return ((string)(this["UserLanguage"]));
             }
             set {
-                this["LanguageCode"] = value;
+                this["UserLanguage"] = value;
             }
         }
     }

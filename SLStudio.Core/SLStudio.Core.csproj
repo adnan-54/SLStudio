@@ -63,7 +63,7 @@
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>Language.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="Services\LanguageManager\Resources\LanguageManagerSettings.Designer.cs">
+	  <Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
 	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>LanguageManagerSettings.settings</DependentUpon>
@@ -116,7 +116,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Services\LanguageManager\Resources\LanguageManagerSettings.settings">
+	  <None Update="Services\LanguageManager\LanguageManagerSettings.settings">
 	    <Generator>SettingsSingleFileGenerator</Generator>
 	    <LastGenOutput>LanguageManagerSettings.Designer.cs</LastGenOutput>
 	  </None>

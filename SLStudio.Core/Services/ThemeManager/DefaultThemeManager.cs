@@ -35,12 +35,14 @@ namespace SLStudio.Core
         {
             ThemeManagerSettings.Default.UserTheme = theme.Id;
             ThemeManagerSettings.Default.Save();
+            CurrentTheme = theme;
         }
 
         public void Reset()
         {
             ThemeManagerSettings.Default.Reset();
             ThemeManagerSettings.Default.Save();
+            CurrentTheme = AvaliableThemes.First(t => t.Id == ThemeManagerSettings.Default.UserTheme);
         }
 
         private void Initialize()

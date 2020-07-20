@@ -51,7 +51,7 @@ namespace SLStudio.Core
                     if (step > 0)
                     {
                         var combination = gestures.Take(step).Concat(new[] { new KeyGesturePart(args.Key, Keyboard.Modifiers) });
-                        statusBar.Status = string.Format(Language.CombinationIsNotACommand, CreateDisplayString(combination));
+                        statusBar.Status = string.Format(Resources.Language.Language.CombinationIsNotACommand, CreateDisplayString(combination));
                         //SystemSounds.Asterisk.Play();
                     }
                     step = 0;
@@ -59,7 +59,7 @@ namespace SLStudio.Core
                 }
 
                 lastInputTimeStamp = args.Timestamp;
-                statusBar.Status = string.Format(Language.WaitingForNextKeyOfChord, gestures[step]);
+                statusBar.Status = string.Format(Resources.Language.Language.WaitingForNextKeyOfChord, gestures[step]);
                 step++;
             }
 

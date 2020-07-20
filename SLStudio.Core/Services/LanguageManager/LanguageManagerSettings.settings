@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SLStudio.Core.Services.LanguageManager" GeneratedClassName="LanguageManagerSettings">
   <Profiles />
   <Settings>
-    <Setting Name="LanguageCode" Type="System.String" Scope="User">
-      <Value Profile="(Default)">pt-br</Value>
+    <Setting Name="UserLanguage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>
