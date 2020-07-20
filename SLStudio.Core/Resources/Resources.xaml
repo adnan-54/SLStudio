@@ -3,14 +3,6 @@
                     xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <!--Resources-->
-    <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons/Icons.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons/Shapes.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls.xaml" />
-    </ResourceDictionary.MergedDictionaries>
-
     <!--Converters-->
     <converters:DocumentTitleConverter x:Key="DocumentTitleConverter" />
     <converters:ImageSourceConverter x:Key="ImageSourceConverter" />

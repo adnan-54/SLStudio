@@ -12,37 +12,37 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource HoverBackground}" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" />
+                <Setter Property="Background" TargetName="border" Value="{StaticResource HoverBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Border}" />
             </Trigger>
 
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" />
+                <Setter Property="Background" TargetName="border" Value="{StaticResource SelectionBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Border}" />
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" TargetName="border" Value="{DynamicResource SelectionBackground}" />
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Border}" />
+                <Setter Property="Background" TargetName="border" Value="{StaticResource SelectionBackground}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Border}" />
             </Trigger>
 
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Focused}" />
+                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Focused}" />
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" TargetName="border" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Opacity" TargetName="border" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <!--StudioButtonStyle-->
     <Style x:Key="StudioButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="Padding" Value="11, 2, 11, 2" />
         <Setter Property="Template" Value="{StaticResource StudioButtonTemplate}" />
         <Style.Triggers>
@@ -52,24 +52,24 @@
                     <Condition Property="ToggleButton.IsChecked" Value="False" />
                     <Condition Property="IsPressed" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Foreground}" />
             </MultiTrigger>
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <!--StudioToggleButtonStyle-->
     <Style x:Key="StudioToggleButtonStyle" TargetType="{x:Type ToggleButton}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="Padding" Value="11, 2, 11, 2" />
         <Setter Property="Template" Value="{StaticResource StudioButtonTemplate}" />
         <Style.Triggers>
@@ -79,24 +79,24 @@
                     <Condition Property="ToggleButton.IsChecked" Value="False" />
                     <Condition Property="IsPressed" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Foreground}" />
             </MultiTrigger>
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <!--StudioRepeatButtonStyle-->
     <Style x:Key="StudioRepeatButtonStyle" TargetType="{x:Type RepeatButton}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="Padding" Value="11, 2, 11, 2" />
         <Setter Property="Template" Value="{StaticResource StudioButtonTemplate}" />
         <Style.Triggers>
@@ -106,13 +106,13 @@
                     <Condition Property="ToggleButton.IsChecked" Value="False" />
                     <Condition Property="IsPressed" Value="False" />
                 </MultiTrigger.Conditions>
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Foreground}" />
             </MultiTrigger>
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+                <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
             </Trigger>
         </Style.Triggers>
     </Style>

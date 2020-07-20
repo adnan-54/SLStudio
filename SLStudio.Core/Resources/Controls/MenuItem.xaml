@@ -10,7 +10,7 @@
                 <ControlTemplate TargetType="Separator">
                     <Border Margin="30, 0, 3, 0"
                             BorderThickness="1"
-                            BorderBrush="{DynamicResource Delimiter}" />
+                            BorderBrush="{StaticResource Delimiter}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -38,16 +38,16 @@
                             <Path x:Name="Checked"
                                   Grid.Column="0"
                                   Visibility="Collapsed"
-                                  Fill="{DynamicResource Focused}"
+                                  Fill="{StaticResource Focused}"
                                   VerticalAlignment="Center" HorizontalAlignment="Center"
-                                  Margin="{DynamicResource LeftMargin}"
-                                  Style="{DynamicResource UIShape.Checked}" />
+                                  Margin="{StaticResource LeftMargin}"
+                                  Style="{StaticResource UIShape.Checked}" />
 
                             <!--Icon-->
                             <ContentPresenter x:Name="Icon"
                                               Grid.Column="0"
                                               ContentSource="Icon"
-                                              Margin="{DynamicResource LeftMargin}"
+                                              Margin="{StaticResource LeftMargin}"
                                               VerticalAlignment="Center" HorizontalAlignment="Center" />
 
                             <!--Header-->
@@ -60,15 +60,15 @@
                             <!--InputGestureText-->
                             <ContentPresenter x:Name="IGT"
                                               Grid.Column="2" ContentSource="InputGestureText"
-                                              Margin="{DynamicResource LargeLeftMargin}"
+                                              Margin="{StaticResource LargeLeftMargin}"
                                               VerticalAlignment="Center" HorizontalAlignment="Right" />
 
                             <!--RightArrow-->
                             <Grid Grid.Column="3"
-                                  Margin="{DynamicResource LargeLeftMargin}">
+                                  Margin="{StaticResource LargeLeftMargin}">
                                 <Path x:Name="Arrow"
-                                      Margin="{DynamicResource RightMargin}"
-                                      Style="{DynamicResource UIShape.Right}" />
+                                      Margin="{StaticResource RightMargin}"
+                                      Style="{StaticResource UIShape.Right}" />
                             </Grid>
 
                             <!--SubMenuPopup-->
@@ -81,9 +81,9 @@
                                     <Border x:Name="SubMenuBorder"
                                             BorderThickness="1"
                                             SnapsToDevicePixels="True"
-                                            BorderBrush="{DynamicResource Border}"
-                                            Background="{DynamicResource Button.Background}"
-                                            Effect="{DynamicResource DarkShadowEffect}">
+                                            BorderBrush="{StaticResource Border}"
+                                            Background="{StaticResource Button.Background}"
+                                            Effect="{StaticResource DarkShadowEffect}">
                                         <ScrollViewer x:Name="SubMenu" CanContentScroll="True"
                                                       VerticalScrollBarVisibility="Auto"
                                                       HorizontalScrollBarVisibility="Hidden"
@@ -99,8 +99,8 @@
                                             HorizontalAlignment="Left"
                                             BorderThickness="1"
                                             SnapsToDevicePixels="False"
-                                            Background="{DynamicResource Button.Background}"
-                                            BorderBrush="{DynamicResource Button.Background}" />
+                                            Background="{StaticResource Button.Background}"
+                                            BorderBrush="{StaticResource Button.Background}" />
                                 </Grid>
                             </Popup>
                         </Grid>
@@ -145,19 +145,19 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
-                            <Setter Property="BorderBrush" Value="{DynamicResource HoverBackground}" />
-                            <Setter TargetName="Arrow" Property="Fill" Value="{DynamicResource Focused}" />
+                            <Setter Property="Foreground" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource HoverBackground}" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource Focused}" />
                         </Trigger>
 
                         <Trigger Property="IsSubmenuOpen" Value="True">
-                            <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-                            <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+                            <Setter Property="Background" Value="{StaticResource Button.Background}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
 
                         <MultiTrigger>
@@ -165,7 +165,7 @@
                                 <Condition Property="IsHighlighted" Value="True" />
                                 <Condition Property="Role" Value="SubmenuHeader" />
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource HoverBackground}" />
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource HoverBackground}" />
                         </MultiTrigger>
 
                         <MultiTrigger>

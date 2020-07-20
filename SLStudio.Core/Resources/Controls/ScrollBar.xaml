@@ -12,7 +12,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -32,7 +32,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -46,7 +46,7 @@
         <Setter Property="IsTabStop" Value="False" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="Opacity" Value="0.5" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
@@ -59,17 +59,17 @@
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Focused}" />
+                <Setter Property="Foreground" Value="{StaticResource Focused}" />
                 <Setter Property="Opacity" Value="0.8" />
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource Focused}" />
+                <Setter Property="Foreground" Value="{StaticResource Focused}" />
                 <Setter Property="Opacity" Value="1.0" />
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -82,23 +82,23 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Thumb}">
                     <Rectangle x:Name="IsDefault"
-                               Fill="{DynamicResource Border}"
+                               Fill="{StaticResource Border}"
                                MinHeight="{TemplateBinding MinHeight}"
                                MinWidth="{TemplateBinding MinWidth}" />
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource Foreground}" />
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{StaticResource Foreground}" />
                             <Setter Property="Opacity" Value="0.5" />
                         </Trigger>
 
                         <Trigger Property="IsDragging" Value="True">
-                            <Setter Property="Fill" TargetName="IsDefault" Value="{DynamicResource Foreground}" />
+                            <Setter Property="Fill" TargetName="IsDefault" Value="{StaticResource Foreground}" />
                             <Setter Property="Opacity" Value="0.8" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="IsDefault" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -108,13 +108,13 @@
 
     <!--ScrollingCornerStyle-->
     <Style x:Key="ScrollingCornerStyle" TargetType="{x:Type Border}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
+        <Setter Property="Background" Value="{StaticResource Button.Background}" />
     </Style>
 
     <!--StudioScrollBarStyle-->
     <Style x:Key="StudioScrollBarStyle" TargetType="{x:Type ScrollBar}">
-        <Setter Property="Background" Value="{DynamicResource Button.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Width" Value="22" />
@@ -126,16 +126,16 @@
                             BorderBrush="{TemplateBinding BorderBrush}">
                         <Grid>
                             <Grid.RowDefinitions>
-                                <RowDefinition x:Name="Row1" MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                                <RowDefinition x:Name="Row1" MaxHeight="{StaticResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
                                 <RowDefinition x:Name="Row2" Height="0.00001*" />
-                                <RowDefinition x:Name="Row3" MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
+                                <RowDefinition x:Name="Row3" MaxHeight="{StaticResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}" />
                             </Grid.RowDefinitions>
 
                             <RepeatButton x:Name="PART_LineUpButton" Grid.Row="0"
                                           Command="{x:Static ScrollBar.LineUpCommand}"
                                           Style="{StaticResource ScrollBarButtonStyle}">
                                 <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
-                                      Style="{DynamicResource UIShape.Up}" />
+                                      Style="{StaticResource UIShape.Up}" />
                             </RepeatButton>
 
                             <Track x:Name="PART_Track" Grid.Row="1" IsDirectionReversed="True">
@@ -159,7 +159,7 @@
                                           Command="{x:Static ScrollBar.LineDownCommand}"
                                           Style="{StaticResource ScrollBarButtonStyle}">
                                 <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
-                                      Style="{DynamicResource UIShape.Down}" />
+                                      Style="{StaticResource UIShape.Down}" />
                             </RepeatButton>
                         </Grid>
                     </Border>
@@ -179,16 +179,16 @@
                                     BorderBrush="{TemplateBinding BorderBrush}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition x:Name="Column1" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+                                        <ColumnDefinition x:Name="Column1" MaxWidth="{StaticResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
                                         <ColumnDefinition x:Name="Column2" Width="0.00001*" />
-                                        <ColumnDefinition x:Name="Column3" MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
+                                        <ColumnDefinition x:Name="Column3" MaxWidth="{StaticResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}" />
                                     </Grid.ColumnDefinitions>
 
                                     <RepeatButton x:Name="PART_LineLeftButton" Grid.Column="0"
                                                   Command="{x:Static ScrollBar.LineLeftCommand}"
                                                   Style="{StaticResource ScrollBarButtonStyle}">
                                         <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
-                                              Style="{DynamicResource UIShape.Left}" />
+                                              Style="{StaticResource UIShape.Left}" />
                                     </RepeatButton>
 
                                     <Track x:Name="PART_Track" Grid.Column="1">
@@ -212,7 +212,7 @@
                                                   Command="{x:Static ScrollBar.LineRightCommand}"
                                                   Style="{StaticResource ScrollBarButtonStyle}">
                                         <Path Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RepeatButton}}"
-                                              Style="{DynamicResource UIShape.Right}" />
+                                              Style="{StaticResource UIShape.Right}" />
                                     </RepeatButton>
                                 </Grid>
                             </Border>

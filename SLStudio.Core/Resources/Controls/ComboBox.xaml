@@ -1,15 +1,20 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ComboBoxItem.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
     <!--ComboBoxDropDownButton-->
     <Style x:Key="ComboBoxDropDownButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="ClickMode" Value="Press" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource StudioErrorValidationTemplate}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -23,29 +28,29 @@
                             <Border x:Name="IsDefault" Background="{TemplateBinding Background}" Margin="1" />
 
                             <Path x:Name="Content" Margin="3"
-                                  Style="{DynamicResource UIShape.Down}"
-                                  Fill="{DynamicResource Foreground}" />
+                                  Style="{StaticResource UIShape.Down}"
+                                  Fill="{StaticResource Foreground}" />
                         </Grid>
                     </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Content" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="Content" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Content" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Content" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
 
                         <Trigger Property="ToggleButton.IsChecked" Value="True">
-                            <Setter Property="Fill" TargetName="Content" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Content" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -78,11 +83,11 @@
                 </Grid>
 
                 <ToggleButton x:Name="DropDownButton" Focusable="False"
-                              Style="{DynamicResource ComboBoxDropDownButton}"
+                              Style="{StaticResource ComboBoxDropDownButton}"
                               IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
 
                 <Border x:Name="IsFocus" Opacity="0"
-                        BorderBrush="{DynamicResource Focused}"
+                        BorderBrush="{StaticResource Focused}"
                         BorderThickness="{TemplateBinding BorderThickness}" />
             </Grid>
 
@@ -94,8 +99,8 @@
                       MinWidth="{Binding ActualWidth, ElementName=Root}">
                     <Border x:Name="DropDownBorder"
                             BorderThickness="1"
-                            Background="{DynamicResource Editor.Background}"
-                            BorderBrush="{DynamicResource Border}">
+                            Background="{StaticResource Editor.Background}"
+                            BorderBrush="{StaticResource Border}">
                         <ScrollViewer x:Name="DropDownScrollViewer">
                             <Grid RenderOptions.ClearTypeHint="Enabled">
                                 <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -120,18 +125,18 @@
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <!--StudioComboBoxStyle-->
     <Style x:Key="StudioComboBoxStyle" TargetType="{x:Type ComboBox}">
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="ItemContainerStyle" Value="{DynamicResource StudioComboBoxItemStyle}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="ItemContainerStyle" Value="{StaticResource StudioComboBoxItemStyle}" />
         <Setter Property="Padding" Value="2, 2, 21, 2" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
@@ -149,8 +154,8 @@
                             <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
                                   MinWidth="{Binding ActualWidth, ElementName=Root}">
                                 <Border x:Name="DropDownBorder" BorderThickness="1"
-                                        Background="{DynamicResource Button.Background}"
-                                        BorderBrush="{DynamicResource Border}">
+                                        Background="{StaticResource Button.Background}"
+                                        BorderBrush="{StaticResource Border}">
                                     <ScrollViewer x:Name="DropDownScrollViewer">
                                         <Grid RenderOptions.ClearTypeHint="Enabled">
                                             <Canvas HorizontalAlignment="Left"
@@ -169,7 +174,6 @@
                             </Grid>
                         </Popup>
 
-                        <!--Style="{StaticResource {dxt:DefaultStyleThemeKey FullName=System.Windows.Controls.TextBox}}"-->
                         <TextBox x:Name="PART_EditableTextBox"
                                  Background="{TemplateBinding Background}"
                                  BorderBrush="{TemplateBinding BorderBrush}"
@@ -180,10 +184,10 @@
                         <ToggleButton x:Name="DropDownButton" Focusable="False"
                                       HorizontalAlignment="Right" Width="16"
                                       IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Style="{DynamicResource ComboBoxDropDownButton}" />
+                                      Style="{StaticResource ComboBoxDropDownButton}" />
 
                         <Grid x:Name="FocusedState" Grid.ColumnSpan="2" Opacity="0">
-                            <Border BorderThickness="1" BorderBrush="{DynamicResource Focused}" />
+                            <Border BorderThickness="1" BorderBrush="{StaticResource Focused}" />
                         </Grid>
                     </Grid>
 
@@ -218,7 +222,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="False">
-                <Setter Property="Template" Value="{DynamicResource ComboxBoxReadOnlyMode}" />
+                <Setter Property="Template" Value="{StaticResource ComboxBoxReadOnlyMode}" />
                 <Setter Property="Padding" Value="5, 3, 5, 3" />
             </Trigger>
         </Style.Triggers>

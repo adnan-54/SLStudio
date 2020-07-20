@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:properties="clr-namespace:SLStudio.Core.Modules.StartPage.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
-             Background="{DynamicResource Control.Background}">
+             Background="{StaticResource Control.Background}">
 
     <ScrollViewer x:Name="main" Padding="24"
                   VerticalScrollBarVisibility="Auto"
@@ -66,15 +66,15 @@
                                  metro:TextBoxHelper.Watermark="{x:Static properties:StartPageResources.SearchRecent}" />
 
                         <!--ClearAll-->
-                        <Button Grid.Column="1" Margin="{DynamicResource LeftMargin}"
+                        <Button Grid.Column="1" Margin="{StaticResource LeftMargin}"
                                 HorizontalAlignment="Right"
                                 Command="{DXCommand 'ClearAll()'}"
                                 ToolTip="{x:Static properties:StartPageResources.ClearAllRecentFiles}"
-                                Style="{DynamicResource MahApps.Styles.Button.Chromeless}"
+                                Style="{StaticResource MahApps.Styles.Button.Chromeless}"
                                 metro:VisibilityHelper.IsVisible="{Binding CanClearRecentFiles}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="{x:Static properties:StartPageResources.ClearAll}" FontStyle="Italic" FontWeight="Thin" />
-                                <Image Margin="{StaticResource SmallLeftMargin}" Source="{DynamicResource CloseRed}" Height="12" />
+                                <Image Margin="{StaticResource SmallLeftMargin}" Source="{StaticResource CloseRed}" Height="12" />
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -103,11 +103,11 @@
                                                     <RowDefinition Height="Auto" />
                                                 </Grid.RowDefinitions>
 
-                                                <Border Grid.Column="0" BorderBrush="{DynamicResource Border}">
+                                                <Border Grid.Column="0" BorderBrush="{StaticResource Border}">
                                                     <Grid>
                                                         <ScrollContentPresenter />
                                                         <Rectangle VerticalAlignment="Bottom" Height="20"
-                                                                   IsHitTestVisible="False" Fill="{DynamicResource Control.Background}">
+                                                                   IsHitTestVisible="False" Fill="{StaticResource Control.Background}">
                                                             <Rectangle.OpacityMask>
                                                                 <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
                                                                     <GradientStop Color="Transparent" Offset="0.0" />
@@ -212,7 +212,7 @@
                                                 <Setter Property="Source" Value="{Binding IconSource}" />
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IsNullConverter}}" Value="True">
-                                                        <Setter Property="Source" Value="{DynamicResource Document}" />
+                                                        <Setter Property="Source" Value="{StaticResource Document}" />
                                                     </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
@@ -251,11 +251,11 @@
                                         <Image>
                                             <Image.Style>
                                                 <Style TargetType="{x:Type Image}">
-                                                    <Setter Property="Source" Value="{DynamicResource Pushpin}" />
+                                                    <Setter Property="Source" Value="{StaticResource Pushpin}" />
                                                     <Style.Triggers>
                                                         <!--IsChecked-->
                                                         <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
-                                                            <Setter Property="Source" Value="{DynamicResource PushpinUnpin}" />
+                                                            <Setter Property="Source" Value="{StaticResource PushpinUnpin}" />
                                                         </DataTrigger>
 
                                                         <!--IsMouseOver-->
@@ -298,7 +298,7 @@
                                             <MenuItem Header="{x:Static properties:StartPageResources.RemoveFromList}"
                                                       Command="{DXCommand 'Remove()'}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="{DynamicResource ClearWindowContent}" />
+                                                    <Image Source="{StaticResource ClearWindowContent}" />
                                                 </MenuItem.Icon>
                                             </MenuItem>
 
@@ -307,7 +307,7 @@
                                                       metro:VisibilityHelper.IsCollapsed="{Binding IsPinned}"
                                                       Command="{DXCommand 'Pin()'}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="{DynamicResource Pushpin}" />
+                                                    <Image Source="{StaticResource Pushpin}" />
                                                 </MenuItem.Icon>
                                             </MenuItem>
 
@@ -316,7 +316,7 @@
                                                       metro:VisibilityHelper.IsVisible="{Binding IsPinned}"
                                                       Command="{DXCommand 'Unpin()'}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="{DynamicResource PushpinUnpin}" />
+                                                    <Image Source="{StaticResource PushpinUnpin}" />
                                                 </MenuItem.Icon>
                                             </MenuItem>
 
@@ -324,7 +324,7 @@
                                             <MenuItem Header="{x:Static properties:StartPageResources.CopyPath}"
                                                       Command="{DXCommand 'CopyPath()'}">
                                                 <MenuItem.Icon>
-                                                    <Image Source="{DynamicResource Copy}" />
+                                                    <Image Source="{StaticResource Copy}" />
                                                 </MenuItem.Icon>
                                             </MenuItem>
                                         </ContextMenu>
@@ -355,8 +355,8 @@
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="BorderThickness" Value="2" />
                             <Setter Property="BorderBrush" Value="Transparent" />
-                            <Setter Property="Background" Value="{DynamicResource Border}" />
-                            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                            <Setter Property="Background" Value="{StaticResource Border}" />
+                            <Setter Property="Foreground" Value="{StaticResource Foreground}" />
                             <Setter Property="Padding" Value="12, 10, 12, 0" />
                             <Setter Property="Width" Value="350" />
                             <Setter Property="Height" Value="85" />
@@ -375,15 +375,15 @@
 
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding IsFocused, RelativeSource={RelativeSource Mode=Self}}" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource Focused}" />
+                                    <Setter Property="Background" Value="{StaticResource Focused}" />
                                     <Setter Property="BorderThickness" Value="2" />
-                                    <Setter Property="BorderBrush" Value="{DynamicResource Foreground}" />
-                                    <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                                    <Setter Property="BorderBrush" Value="{StaticResource Foreground}" />
+                                    <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
                                 </DataTrigger>
 
                                 <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource Mode=Self}}" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
-                                    <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                                    <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                                    <Setter Property="Foreground" Value="{StaticResource Foreground}" />
                                     <Setter Property="BorderBrush" Value="Transparent" />
                                 </DataTrigger>
 
@@ -408,7 +408,7 @@
                             <Image Grid.Column="0"
                                    Margin="{StaticResource SmallUpMargin}"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
-                                   Source="{DynamicResource CloneToDesktop}" MaxHeight="32" />
+                                   Source="{StaticResource CloneToDesktop}" MaxHeight="32" />
 
                             <StackPanel Grid.Column="1" Margin="{StaticResource LargeLeftMargin}">
                                 <!--Header-->
@@ -434,7 +434,7 @@
                             <Image Grid.Column="0"
                                    Margin="{StaticResource SmallUpMargin}"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
-                                   Source="{DynamicResource OpenFileFromProject}" MaxHeight="32" />
+                                   Source="{StaticResource OpenFileFromProject}" MaxHeight="32" />
 
                             <StackPanel Grid.Column="1" Margin="{StaticResource LargeLeftMargin}">
                                 <!--Header-->
@@ -460,7 +460,7 @@
                             <Image Grid.Column="0"
                                    Margin="{StaticResource SmallUpMargin}"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
-                                   Source="{DynamicResource OpenFolder}" MaxHeight="32" />
+                                   Source="{StaticResource OpenFolder}" MaxHeight="32" />
 
                             <StackPanel Grid.Column="1" Margin="{StaticResource LargeLeftMargin}">
                                 <!--Header-->
@@ -486,7 +486,7 @@
                             <Image Grid.Column="0"
                                    Margin="{StaticResource SmallUpMargin}"
                                    VerticalAlignment="Top" HorizontalAlignment="Left"
-                                   Source="{DynamicResource AddDocumentGroup}" MaxHeight="32" />
+                                   Source="{StaticResource AddDocumentGroup}" MaxHeight="32" />
 
                             <StackPanel Grid.Column="1" Margin="{StaticResource LargeLeftMargin}">
                                 <!--Header-->
@@ -504,23 +504,23 @@
                     <Button Grid.Row="4" Margin="{StaticResource LargeUpMargin}"
                             HorizontalAlignment="Center" Focusable="False"
                             Cursor="Arrow" IsEnabled="False" Opacity="0.5"
-                            Style="{DynamicResource MahApps.Styles.Button.Link.VisualStudio}">
+                            Style="{StaticResource MahApps.Styles.Button.Link.VisualStudio}">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="{x:Static properties:StartPageResources.ContinueWithoutCode}" VerticalAlignment="Center"
                                        Focusable="False" Cursor="Hand">
                                 <TextBlock.Style>
                                     <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                        <Setter Property="Foreground" Value="{DynamicResource Focused}" />
+                                        <Setter Property="Foreground" Value="{StaticResource Focused}" />
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Button}}" Value="True">
-                                                <Setter Property="Foreground" Value="{DynamicResource Backstage.HoverBackground}" />
+                                                <Setter Property="Foreground" Value="{StaticResource Backstage.HoverBackground}" />
                                                 <Setter Property="TextBlock.TextDecorations" Value="Underline" />
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </TextBlock.Style>
                             </TextBlock>
-                            <Image Margin="{StaticResource SmallLeftMargin}" Source="{DynamicResource Download}">
+                            <Image Margin="{StaticResource SmallLeftMargin}" Source="{StaticResource Download}">
                                 <Image.LayoutTransform>
                                     <RotateTransform CenterX="0.5" CenterY="0.5" Angle="-90" />
                                 </Image.LayoutTransform>

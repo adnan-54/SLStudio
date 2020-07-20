@@ -12,15 +12,15 @@
             <DrawingImage.Drawing>
                 <DrawingGroup>
                     <DrawingGroup.Children>
-                        <GeometryDrawing Brush="{DynamicResource Border}" Geometry="M 0,0 L 15,15 L 30,0" />
-                        <GeometryDrawing Brush="{DynamicResource Control.Background}" Geometry="M 2,0 L 15,13 L 28,0" />
+                        <GeometryDrawing Brush="{StaticResource Border}" Geometry="M 0,0 L 15,15 L 30,0" />
+                        <GeometryDrawing Brush="{StaticResource Control.Background}" Geometry="M 2,0 L 15,13 L 28,0" />
                     </DrawingGroup.Children>
                 </DrawingGroup>
             </DrawingImage.Drawing>
         </DrawingImage>
     </UserControl.Resources>
 
-    <Grid Background="{DynamicResource Focused}" Height="22">
+    <Grid Background="{StaticResource Focused}" Height="22">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
@@ -37,25 +37,25 @@
 
                 <!--Border-->
                 <Border Grid.Row="0" Padding="12" BorderThickness="1"
-                        BorderBrush="{DynamicResource Border}"
-                        Background="{DynamicResource Control.Background}"
-                        Effect="{DynamicResource LightShadowEffect}">
+                        BorderBrush="{StaticResource Border}"
+                        Background="{StaticResource Control.Background}"
+                        Effect="{StaticResource LightShadowEffect}">
                     <TextBlock Text="{x:Static resx:StatusBarResources.NoBackgroundTasksRunning}" />
                 </Border>
 
                 <!--ArrowDown-->
                 <Image Grid.Row="1" Margin="6, -1, 0, 0" HorizontalAlignment="Left"
-                       Source="{DynamicResource ArrowDown}" Height="8" Width="12" Stretch="Fill"
-                       Effect="{DynamicResource LightShadowEffect}" />
+                       Source="{StaticResource ArrowDown}" Height="8" Width="12" Stretch="Fill"
+                       Effect="{StaticResource LightShadowEffect}" />
             </Grid>
         </Popup>
 
         <Button x:Name="button" Grid.Column="0"
                 Padding="4" Background="Transparent" Focusable="False"
-                Style="{DynamicResource MahApps.Styles.Button.DropDown}"
+                Style="{StaticResource MahApps.Styles.Button.DropDown}"
                 ToolTip="{x:Static resx:StatusBarResources.BackgroundTasks}"
                 Command="{DXCommand 'ShowPopup()'}">
-            <Image Source="{DynamicResource TaskCenterStatusBarAni_00}" />
+            <Image Source="{StaticResource TaskCenterStatusBarAni_00}" />
         </Button>
 
         <StatusBar Grid.Column="1">

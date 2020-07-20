@@ -3,11 +3,11 @@
                     xmlns:local="clr-namespace:SLStudio.Core.Resources.Controls">
     <!-- General -->
     <Style x:Key="StudioListBoxStyle" TargetType="{x:Type ListBox}">
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" x:Uid="@Value=" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" x:Uid="@Value=" />
+        <Setter Property="Background" Value="{StaticResource Editor.Background}" x:Uid="@Value=" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" x:Uid="@Value=" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" x:Uid="@Value=" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" x:Uid="@Value=" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />

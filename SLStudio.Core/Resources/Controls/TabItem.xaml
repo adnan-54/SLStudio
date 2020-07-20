@@ -6,7 +6,7 @@
         <Setter Property="BorderBrush" Value="Transparent" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -22,7 +22,7 @@
 
                         <Border x:Name="IsFocused"
                                 Visibility="Collapsed"
-                                Background="{DynamicResource Focused}" />
+                                Background="{StaticResource Focused}" />
 
                         <ContentPresenter x:Name="Content"
                                           ContentSource="Header" RecognizesAccessKey="True"
@@ -32,14 +32,14 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource Control.Background}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Border}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource Control.Background}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Border}" />
                         </Trigger>
 
                         <Trigger Property="TabStripPlacement" Value="Top">
@@ -68,7 +68,7 @@
                                 <Condition Property="TabStripPlacement" Value="Top" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 1, 0" />
                             <Setter Property="Margin" TargetName="IsDefault" Value="0, 0, 0, -1" />
                         </MultiTrigger>
@@ -79,7 +79,7 @@
                                 <Condition Property="TabStripPlacement" Value="Bottom" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 0, 1, 1" />
                             <Setter Property="Margin" TargetName="IsDefault" Value="0, -1, 0, 0" />
                         </MultiTrigger>
@@ -90,7 +90,7 @@
                                 <Condition Property="TabStripPlacement" Value="Left" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 0, 1" />
                             <Setter Property="Margin" TargetName="IsDefault" Value="0, 0, -1, 0" />
                         </MultiTrigger>
@@ -101,7 +101,7 @@
                                 <Condition Property="TabStripPlacement" Value="Right" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="BorderThickness" TargetName="IsDefault" Value="0, 1, 1, 1" />
                             <Setter Property="Margin" TargetName="IsDefault" Value="-1, 0, 0, 0" />
                         </MultiTrigger>
@@ -112,8 +112,8 @@
                                 <Condition Property="IsMouseOver" Value="True" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -122,7 +122,7 @@
                                 <Condition Property="TabStripPlacement" Value="Top" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="Height" TargetName="IsFocused" Value="2" />
                             <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
                             <Setter Property="VerticalAlignment" TargetName="IsFocused" Value="Top" />
@@ -134,7 +134,7 @@
                                 <Condition Property="TabStripPlacement" Value="Bottom" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="Height" TargetName="IsFocused" Value="2" />
                             <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
                             <Setter Property="VerticalAlignment" TargetName="IsFocused" Value="Bottom" />
@@ -146,7 +146,7 @@
                                 <Condition Property="TabStripPlacement" Value="Left" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="HorizontalAlignment" TargetName="IsFocused" Value="Left" />
                             <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
                             <Setter Property="Width" TargetName="IsFocused" Value="2" />
@@ -158,14 +158,14 @@
                                 <Condition Property="TabStripPlacement" Value="Right" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{DynamicResource Focused}" />
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
                             <Setter Property="HorizontalAlignment" TargetName="IsFocused" Value="Right" />
                             <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
                             <Setter Property="Width" TargetName="IsFocused" Value="2" />
                         </MultiTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -4,10 +4,10 @@
 
     <!--StudioTabControlStyle-->
     <Style x:Key="StudioTabControlStyle" TargetType="{x:Type TabControl}">
-        <Setter Property="Background" Value="{DynamicResource Control.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Control.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="HorizontalContentAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="11" />
@@ -70,7 +70,7 @@
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="ContentPanel" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="ContentPanel" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

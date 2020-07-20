@@ -5,7 +5,7 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Rectangle Stroke="{DynamicResource Focused}"
+                    <Rectangle Stroke="{StaticResource Focused}"
                                StrokeDashArray="1, 2" StrokeThickness="1" />
                 </ControlTemplate>
             </Setter.Value>
@@ -22,12 +22,12 @@
                             <Grid x:Name="Button" Height="16" Width="16">
                                 <Border x:Name="IsDefault" Background="Transparent" />
 
-                                <Path x:Name="Collapsed" Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Up}" />
+                                <Path x:Name="Collapsed" Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Up}" />
 
                                 <Path x:Name="Expanded" Visibility="Collapsed"
-                                      Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Down}" />
+                                      Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Down}" />
                             </Grid>
 
                             <ContentPresenter x:Name="Content" Margin="4, 0, 0, 0" RecognizesAccessKey="True" />
@@ -41,15 +41,15 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -67,11 +67,11 @@
                             <Grid x:Name="Button" Height="16" Width="16">
                                 <Border x:Name="IsDefault" Background="Transparent" />
 
-                                <Path x:Name="Collapsed" Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Down}" />
+                                <Path x:Name="Collapsed" Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Down}" />
 
-                                <Path x:Name="Expanded" Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Up}" Visibility="Collapsed" />
+                                <Path x:Name="Expanded" Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Up}" Visibility="Collapsed" />
                             </Grid>
                             <ContentPresenter x:Name="Content" Margin="4, 0, 0, 0" RecognizesAccessKey="True" />
                         </StackPanel>
@@ -84,15 +84,15 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -110,12 +110,12 @@
                             <Grid x:Name="Button" Height="16" Width="16">
                                 <Border x:Name="IsDefault" Background="Transparent" />
 
-                                <Path x:Name="Collapsed" Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Right}" />
+                                <Path x:Name="Collapsed" Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Right}" />
 
                                 <Path x:Name="Expanded" Visibility="Collapsed"
-                                      Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Left}" />
+                                      Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Left}" />
                             </Grid>
 
                             <ContentPresenter x:Name="Content" RecognizesAccessKey="True" />
@@ -128,15 +128,15 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -155,12 +155,12 @@
                                 <Border x:Name="IsDefault" Background="Transparent" />
 
                                 <Path x:Name="Collapsed"
-                                      Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Left}" />
+                                      Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Left}" />
 
                                 <Path x:Name="Expanded" Visibility="Collapsed"
-                                      Fill="{DynamicResource Foreground}"
-                                      Style="{DynamicResource UIShape.Right}" />
+                                      Fill="{StaticResource Foreground}"
+                                      Style="{StaticResource UIShape.Right}" />
                             </Grid>
 
                             <ContentPresenter x:Name="Content" RecognizesAccessKey="True" />
@@ -174,15 +174,15 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Fill" TargetName="Collapsed" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Fill" TargetName="Expanded" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Fill" TargetName="Collapsed" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Fill" TargetName="Expanded" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -25,34 +25,34 @@
 
         <ControlTemplate.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
+                <Setter Property="Background" Value="{StaticResource HoverBackground}" />
             </Trigger>
 
             <Trigger Property="IsKeyboardFocused" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
+                <Setter Property="Background" Value="{StaticResource HoverBackground}" />
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Focused}" />
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                <Setter Property="Background" Value="{StaticResource Focused}" />
+                <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
             </Trigger>
 
             <Trigger Property="ToggleButton.IsChecked" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Focused}" />
-                <Setter Property="Foreground" Value="{DynamicResource SelectionForeground}" />
+                <Setter Property="Background" Value="{StaticResource Focused}" />
+                <Setter Property="Foreground" Value="{StaticResource SelectionForeground}" />
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
     <Style x:Key="{x:Static ToolBar.ButtonStyleKey}" TargetType="{x:Type Button}">
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -60,16 +60,16 @@
         <Setter Property="MinHeight" Value="24" />
         <Setter Property="MinWidth" Value="24" />
         <Setter Property="Padding"  Value="3" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource ExpanderHeaderFocusVisual}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ExpanderHeaderFocusVisual}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template" Value="{StaticResource BaseButtonTemplate}" />
     </Style>
 
     <Style x:Key="{x:Static ToolBar.ToggleButtonStyleKey}" TargetType="{x:Type ToggleButton}">
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Center" />
@@ -77,7 +77,7 @@
         <Setter Property="MinHeight" Value="24" />
         <Setter Property="MinWidth" Value="24" />
         <Setter Property="Padding"  Value="3" />
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource ExpanderHeaderFocusVisual}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ExpanderHeaderFocusVisual}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Template" Value="{StaticResource BaseButtonTemplate}" />
     </Style>
@@ -92,9 +92,9 @@
 
     <Style x:Key="{x:Static ToolBar.SeparatorStyleKey}" TargetType="{x:Type Separator}">
         <Setter Property="MinWidth" Value="2" />
-        <Setter Property="Background" Value="{DynamicResource Delimiter}" />
+        <Setter Property="Background" Value="{StaticResource Delimiter}" />
         <Setter Property="BorderThickness" Value="1, 0, 0, 0" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Button.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Button.Background}" />
     </Style>
 
     <!--StudioToolBarStyle-->

@@ -3,6 +3,6 @@
     <!--StudioMenuStyle-->
     <Style x:Key="StudioMenuStyle" TargetType="{x:Type Menu}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
     </Style>
 </ResourceDictionary>

@@ -12,9 +12,9 @@
     <metro:MetroWindow.RightWindowCommands>
         <metro:WindowCommands ShowLastSeparator="False">
             <Button Margin="{StaticResource SmallLeftMargin}" ToolTip="{x:Static resx:ExceptionBoxResources.CopyToClipboard}"
-                    Style="{DynamicResource MahApps.Styles.Button.WindowCommands}"
+                    Style="{StaticResource MahApps.Styles.Button.WindowCommands}"
                     Padding="3" Click="OnCopyToClipboardClick">
-                <Image  Source="{DynamicResource CopyLongTextToClipboard}" />
+                <Image  Source="{StaticResource CopyLongTextToClipboard}" />
             </Button>
         </metro:WindowCommands>
     </metro:MetroWindow.RightWindowCommands>
@@ -33,7 +33,7 @@
 
         <!--ExceptionDetails-->
         <Border Grid.Row="1" Padding="12"
-                Background="{DynamicResource MahApps.Brushes.Gray8}">
+                Background="{StaticResource MahApps.Brushes.Gray8}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />

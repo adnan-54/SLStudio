@@ -2,19 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--StudioTextBoxContextMenu-->
     <ContextMenu x:Key="StudioTextBoxContextMenu">
-        <MenuItem Command="ApplicationCommands.Cut" >
+        <MenuItem Command="ApplicationCommands.Cut">
             <MenuItem.Icon>
-                <Image Source="{DynamicResource Cut}"/>
+                <Image Source="{StaticResource Cut}" />
             </MenuItem.Icon>
         </MenuItem>
-        <MenuItem Command="ApplicationCommands.Copy" >
+        <MenuItem Command="ApplicationCommands.Copy">
             <MenuItem.Icon>
-                <Image Source="{DynamicResource Copy}"/>
+                <Image Source="{StaticResource Copy}" />
             </MenuItem.Icon>
         </MenuItem>
         <MenuItem Command="ApplicationCommands.Paste">
             <MenuItem.Icon>
-                <Image Source="{DynamicResource Paste}"/>
+                <Image Source="{StaticResource Paste}" />
             </MenuItem.Icon>
         </MenuItem>
     </ContextMenu>
@@ -22,18 +22,18 @@
     <!--StudioTextBoxStyle-->
     <Style x:Key="StudioTextBoxStyle" TargetType="{x:Type TextBox}">
         <Setter Property="AllowDrop" Value="True" />
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="CaretBrush" Value="{DynamicResource Foreground}" />
+        <Setter Property="CaretBrush" Value="{StaticResource Foreground}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Padding" Value="2" />
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
-        <Setter Property="SelectionBrush" Value="{DynamicResource SelectionBackground}" />
+        <Setter Property="SelectionBrush" Value="{StaticResource SelectionBackground}" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="Validation.ErrorTemplate" Value="{DynamicResource StudioErrorValidationTemplate}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="ContextMenu" Value="{StaticResource StudioTextBoxContextMenu}" />
         <Setter Property="Template">
             <Setter.Value>
@@ -51,15 +51,15 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsReadOnly" Value="True">
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Window.Background}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Window.Background}" />
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Focused}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Focused}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="IsDefault" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="IsDefault" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

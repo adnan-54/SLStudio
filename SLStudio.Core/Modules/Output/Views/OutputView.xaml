@@ -8,7 +8,7 @@
              xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
              xmlns:resx="clr-namespace:SLStudio.Core.Modules.Output.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
-             Background="{DynamicResource Control.Background}">
+             Background="{StaticResource Control.Background}">
     <!--Behaviors-->
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:DispatcherService />
@@ -25,7 +25,7 @@
             <!--ClearAll-->
             <Button Command="{DXCommand 'Clear()'}"
                     ToolTip="{x:Static resx:OutputResource.ClearAll}">
-                <Image Source="{DynamicResource ClearWindowContent}" />
+                <Image Source="{StaticResource ClearWindowContent}" />
             </Button>
 
             <!--Separator-->
@@ -34,7 +34,7 @@
             <!--ToggleWordWrap-->
             <ToggleButton IsChecked="{Binding WordWrap}"
                           ToolTip="{x:Static resx:OutputResource.ToggleWordWrap}">
-                <Image Source="{DynamicResource WordWrap}" />
+                <Image Source="{StaticResource WordWrap}" />
             </ToggleButton>
         </ToolBar>
 
@@ -58,7 +58,7 @@
                               Command="ApplicationCommands.Copy"
                               InputGestureText="Ctrl+C">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource Copy}" />
+                            <Image Source="{StaticResource Copy}" />
                         </MenuItem.Icon>
                     </MenuItem>
 
@@ -69,7 +69,7 @@
                     <MenuItem Header="{x:Static resx:OutputResource.ClearAll}"
                               Command="{DXCommand 'Clear()'}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource ClearWindowContent}" />
+                            <Image Source="{StaticResource ClearWindowContent}" />
                         </MenuItem.Icon>
                     </MenuItem>
 
@@ -77,7 +77,7 @@
                     <MenuItem Header="{x:Static resx:OutputResource.WordWrap}"
                               IsCheckable="True" IsChecked="{Binding WordWrap}">
                         <MenuItem.Icon>
-                            <Image Source="{DynamicResource WordWrap}" />
+                            <Image Source="{StaticResource WordWrap}" />
                         </MenuItem.Icon>
                     </MenuItem>
 
@@ -91,7 +91,7 @@
                                   Command="{DXCommand 'QuickFind()'}"
                                   InputGestureText="Ctrl+F">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource QuickFind}" />
+                                <Image Source="{StaticResource QuickFind}" />
                             </MenuItem.Icon>
                         </MenuItem>
 
@@ -103,7 +103,7 @@
                                   Command="{DXCommand 'FindNext()'}"
                                   InputGestureText="F3">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource FindNext}" />
+                                <Image Source="{StaticResource FindNext}" />
                             </MenuItem.Icon>
                         </MenuItem>
 
@@ -112,7 +112,7 @@
                                   Command="{DXCommand 'FindPrevious()'}"
                                   InputGestureText="Shift+F3">
                             <MenuItem.Icon>
-                                <Image Source="{DynamicResource FindPrevious}" />
+                                <Image Source="{StaticResource FindPrevious}" />
                             </MenuItem.Icon>
                         </MenuItem>
                     </MenuItem>

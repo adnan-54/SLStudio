@@ -3,7 +3,7 @@
     <!--StudioToolBarStyle-->
     <Style x:Key="StudioStatusBarStyle" TargetType="{x:Type StatusBar}">
         <Setter Property="Height" Value="22" />
-        <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
-        <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+        <Setter Property="Background" Value="{StaticResource Backstage.Window.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
     </Style>
 </ResourceDictionary>

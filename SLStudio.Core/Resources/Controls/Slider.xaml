@@ -25,19 +25,19 @@
                     <Grid x:Name="Root" Background="Transparent">
                         <Border x:Name="IsDefault"
                                 BorderThickness="1" Height="7" Width="14"
-                                Background="{DynamicResource Foreground}"
-                                BorderBrush="{DynamicResource Window.Background}" />
+                                Background="{StaticResource Foreground}"
+                                BorderBrush="{StaticResource Window.Background}" />
                     </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter Property="Background" TargetName="IsDefault"
-                                    Value="{DynamicResource SelectionBackground}" />
+                                    Value="{StaticResource SelectionBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsDragging" Value="True">
                             <Setter Property="Background" TargetName="IsDefault"
-                                    Value="{DynamicResource SelectionBackground}" />
+                                    Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -54,17 +54,17 @@
                     <Grid x:Name="Root" Background="Transparent">
                         <Border x:Name="IsDefault"
                                 BorderThickness="1" Height="14" Width="7"
-                                Background="{DynamicResource Foreground}"
-                                BorderBrush="{DynamicResource Window.Background}" />
+                                Background="{StaticResource Foreground}"
+                                BorderBrush="{StaticResource Window.Background}" />
                     </Grid>
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsDragging" Value="True">
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -87,7 +87,7 @@
     <!-- Slider -->
     <Style x:Key="StudioSliderStyle" TargetType="{x:Type Slider}">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
         <Setter Property="Template">
@@ -101,21 +101,21 @@
                         <Grid x:Name="Root" MinHeight="22">
                             <TickBar x:Name="TopTick" Height="4" Placement="Top"
                                      VerticalAlignment="Top" Visibility="Collapsed"
-                                     Fill="{DynamicResource Foreground}" />
+                                     Fill="{StaticResource Foreground}" />
 
                             <Grid Margin="1, 0, 1, 0" VerticalAlignment="Center">
                                 <Border x:Name="TrackBackground"
                                         Height="2" VerticalAlignment="Center"
-                                        Background="{DynamicResource Border}" />
+                                        Background="{StaticResource Border}" />
 
                                 <Border x:Name="FocusState"
                                          Visibility="Collapsed"
-                                        Background="{DynamicResource Focused}" />
+                                        Background="{StaticResource Focused}" />
 
                                 <Canvas>
                                     <Rectangle x:Name="PART_SelectionRange"
                                                Height="2" Opacity="0"
-                                               Fill="{DynamicResource Foreground}" />
+                                               Fill="{StaticResource Foreground}" />
                                 </Canvas>
                             </Grid>
 
@@ -132,7 +132,7 @@
 
                                 <Track.Thumb>
                                     <Thumb x:Name="Thumb"
-                                           Background="{DynamicResource Border}"
+                                           Background="{StaticResource Border}"
                                            Height="{TemplateBinding Height}"
                                            Style="{StaticResource HorizontalSliderThumbStyle}" />
                                 </Track.Thumb>
@@ -141,7 +141,7 @@
                             <TickBar x:Name="BottomTick"
                                      Height="4" Placement="Bottom"
                                      VerticalAlignment="Bottom" Visibility="Collapsed"
-                                     Fill="{DynamicResource Foreground}" />
+                                     Fill="{StaticResource Foreground}" />
                         </Grid>
                     </Border>
 
@@ -170,7 +170,7 @@
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -190,18 +190,18 @@
                                     <TickBar x:Name="LeftTick"
                                              HorizontalAlignment="Left" Placement="Left"
                                              Visibility="Collapsed" Width="4"
-                                             Fill="{DynamicResource Foreground}" />
+                                             Fill="{StaticResource Foreground}" />
 
                                     <Grid HorizontalAlignment="Center" Margin="0, 1, 0, 1">
-                                        <Border Name="TrackBackground" Background="{DynamicResource Border}" Width="2" />
+                                        <Border Name="TrackBackground" Background="{StaticResource Border}" Width="2" />
 
                                         <Border x:Name="FocusState" Visibility="Collapsed"
-                                                Background="{DynamicResource Focused}" />
+                                                Background="{StaticResource Focused}" />
 
                                         <Canvas>
                                             <Rectangle x:Name="PART_SelectionRange"
                                                        Opacity="0" Width="2"
-                                                       Fill="{DynamicResource Foreground}" />
+                                                       Fill="{StaticResource Foreground}" />
                                         </Canvas>
                                     </Grid>
 
@@ -218,7 +218,7 @@
 
                                         <Track.Thumb>
                                             <Thumb x:Name="Thumb"
-                                                   Background="{DynamicResource Border}"
+                                                   Background="{StaticResource Border}"
                                                    Style="{StaticResource VerticalSliderThumbStyle}"
                                                    Width="{TemplateBinding Width}" />
                                         </Track.Thumb>
@@ -227,7 +227,7 @@
                                     <TickBar x:Name="RightTick"
                                              HorizontalAlignment="Right" Placement="Right"
                                              Visibility="Collapsed" Width="4"
-                                             Fill="{DynamicResource Foreground}" />
+                                             Fill="{StaticResource Foreground}" />
                                 </Grid>
                             </Border>
 
@@ -256,7 +256,7 @@
                                 </Trigger>
 
                                 <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                                    <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

@@ -3,10 +3,10 @@
                     xmlns:controlz="urn:controlzex">
     <!--StudioToolTipStyle-->
     <Style x:Key="StudioToolTipStyle" TargetType="{x:Type ToolTip}">
-        <Setter Property="Background" Value="{DynamicResource Control.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Control.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="Padding" Value="6, 4, 6, 4" />

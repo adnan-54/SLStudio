@@ -91,7 +91,7 @@
                         <!--Overlay-->
                         <Rectangle x:Name="overlay"  Opacity="0.5"
                                    Style="{TemplateBinding OverlayStyle}"
-                                   Fill="{DynamicResource Editor.Background}" />
+                                   Fill="{StaticResource Editor.Background}" />
 
                         <!--BusyContent-->
                         <ContentPresenter x:Name="busycontent">
@@ -111,10 +111,10 @@
                 <DataTemplate>
                     <Border Padding="48, 12, 48, 12"
                             BorderThickness="1"
-                            BorderBrush="{DynamicResource Focused}"
-                            Background="{DynamicResource Control.Background}"
-                            Effect="{DynamicResource LightShadowEffect}">
-                        <metro:ProgressRing Width="40" Height="40" Foreground="{DynamicResource Focused}" />
+                            BorderBrush="{StaticResource Focused}"
+                            Background="{StaticResource Control.Background}"
+                            Effect="{StaticResource LightShadowEffect}">
+                        <metro:ProgressRing Width="40" Height="40" Foreground="{StaticResource Focused}" />
                     </Border>
                 </DataTemplate>
             </Setter.Value>

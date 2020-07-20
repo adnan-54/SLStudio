@@ -9,7 +9,7 @@
         mc:Ignorable="d" ShowInTaskbar="False" WindowStartupLocation="CenterScreen"
         AllowsTransparency="True" WindowStyle="None" Background="Transparent"
         ResizeMode="NoResize" SizeToContent="WidthAndHeight"
-        Title="SLStudio" Foreground="{DynamicResource Foreground}">
+        Title="SLStudio" Foreground="{StaticResource Foreground}">
 
     <!--Behaviors-->
     <dxmvvm:Interaction.Behaviors>
@@ -20,8 +20,8 @@
     <!--Content-->
     <Grid>
         <Border CornerRadius="6" Margin="24" BorderThickness="1"
-                BorderBrush="{DynamicResource Border}"
-                Background="{DynamicResource Control.Background}">
+                BorderBrush="{StaticResource Border}"
+                Background="{StaticResource Control.Background}">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="4" Color="Black" Direction="315" Opacity="0.8" ShadowDepth="3" />
             </Border.Effect>
@@ -37,16 +37,16 @@
                 <Button Grid.Row="0" Padding="0" Margin="0, -20, -20, 0"
                         ToolTip="{x:Static resx:SplashScreenResources.Close}"
                         HorizontalAlignment="Right" VerticalAlignment="Top"
-                        Style="{DynamicResource MahApps.Styles.Button.Reveal}"
+                        Style="{StaticResource MahApps.Styles.Button.Reveal}"
                         Focusable="False" Click="OnCloseButtonClick">
-                    <Image Source="{DynamicResource CloseRed}" Width="20" />
+                    <Image Source="{StaticResource CloseRed}" Width="20" />
                 </Button>
 
                 <!--SLStudio-->
                 <TextBlock Grid.Row="0" Text="SLStudio"
                            HorizontalAlignment="Center" VerticalAlignment="Center"
                            FontFamily="Arial" FontWeight="Black" FontSize="100"
-                           Foreground="{DynamicResource Focused}" />
+                           Foreground="{StaticResource Focused}" />
 
                 <!--Infos-->
                 <Grid Grid.Row="1">

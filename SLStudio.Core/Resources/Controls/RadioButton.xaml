@@ -3,8 +3,8 @@
                     xmlns:local="clr-namespace:SLStudio.Core.Resources.Controls">
     <!-- General -->
     <Style x:Key="StudioRadioButtonStyle" TargetType="{x:Type RadioButton}">
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Padding" Value="0, 3, 0, 3" />
@@ -28,12 +28,12 @@
 
                                 <Border x:Name="IsFocused"
                                         CornerRadius="14" Opacity="0"
-                                        BorderBrush="{DynamicResource Focused}"
+                                        BorderBrush="{StaticResource Focused}"
                                         BorderThickness="{TemplateBinding BorderThickness}" />
 
                                 <Border x:Name="Checked"
                                         Margin="3" CornerRadius="8" Visibility="Collapsed"
-                                        Background="{DynamicResource Foreground}" />
+                                        Background="{StaticResource Foreground}" />
                             </Grid>
 
                             <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Grid.ColumnSpan="1"
@@ -57,21 +57,21 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="Checked" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                            <Setter Property="Background" TargetName="Checked" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource SelectionBorder}" />
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="Checked" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource SelectionBorder}" />
+                            <Setter Property="Background" TargetName="Checked" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource SelectionBorder}" />
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Background" TargetName="Checked" Value="{DynamicResource Foreground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource Editor.Background}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Focused}" />
+                            <Setter Property="Background" TargetName="Checked" Value="{StaticResource Foreground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource Editor.Background}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Focused}" />
                         </Trigger>
 
                         <MultiTrigger>
@@ -80,9 +80,9 @@
                                 <Condition Property="IsFocused" Value="True" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="Background" TargetName="Checked" Value="{DynamicResource HoverForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource HoverBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Focused}" />
+                            <Setter Property="Background" TargetName="Checked" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Focused}" />
                         </MultiTrigger>
 
                         <MultiTrigger>
@@ -91,9 +91,9 @@
                                 <Condition Property="IsFocused" Value="True" />
                             </MultiTrigger.Conditions>
 
-                            <Setter Property="Background" TargetName="Checked" Value="{DynamicResource SelectionForeground}" />
-                            <Setter Property="Background" TargetName="IsDefault" Value="{DynamicResource SelectionBackground}" />
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{DynamicResource Focused}" />
+                            <Setter Property="Background" TargetName="Checked" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource SelectionBackground}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Focused}" />
                         </MultiTrigger>
 
                         <Trigger Property="IsChecked" Value="True">
@@ -101,7 +101,7 @@
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Root" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

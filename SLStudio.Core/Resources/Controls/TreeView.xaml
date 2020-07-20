@@ -3,11 +3,11 @@
                     xmlns:local="clr-namespace:SLStudio.Core.Resources.Controls">
     <!--StudioTreeViewStyle-->
     <Style x:Key="StudioTreeViewStyle" TargetType="{x:Type TreeView}">
-        <Setter Property="Background" Value="{DynamicResource Editor.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Editor.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="Padding" Value="1" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />

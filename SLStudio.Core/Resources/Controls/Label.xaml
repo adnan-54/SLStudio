@@ -3,7 +3,7 @@
     <!--StudioLabelStyle-->
     <Style x:Key="StudioLabelStyle" TargetType="{x:Type Label}">
         <Setter Property="Padding" Value="0, 3, 0, 3" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="HorizontalContentAlignment" Value="Left" />
         <Setter Property="VerticalContentAlignment" Value="Top" />
         <Setter Property="Template">
@@ -21,7 +21,7 @@
 
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="Content" Value="{DynamicResource DisabledOpacity}" />
+                            <Setter Property="Opacity" TargetName="Content" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

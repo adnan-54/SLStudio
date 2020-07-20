@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-             Background="{DynamicResource Editor.Background}">
+             Background="{StaticResource Editor.Background}">
     <ScrollViewer>
         <GroupBox Header="GroupBox" Margin="3">
             <StackPanel>
@@ -67,7 +67,7 @@
                                                   Stretch="None" TileMode="Tile">
                                         <DrawingBrush.Drawing>
                                             <DrawingGroup>
-                                                <GeometryDrawing Brush="{DynamicResource Border}">
+                                                <GeometryDrawing Brush="{StaticResource Border}">
                                                     <GeometryDrawing.Geometry>
                                                         <GeometryGroup>
                                                             <RectangleGeometry Rect="0, 0, 10, 10" />
@@ -94,14 +94,14 @@
 
                         <TextBox Text="TextBox" />
 
-                        <Grid Height="32" ToolTip="ToolTip" Background="{DynamicResource Custom.Blue}">
+                        <Grid Height="32" ToolTip="ToolTip" Background="{StaticResource Custom.Blue}">
                             <Grid.ContextMenu>
                                 <ContextMenu IsOpen="True" StaysOpen="True">
-                                    <MenuItem Header="Item1"/>
-                                    
+                                    <MenuItem Header="Item1" />
+
                                     <Separator />
-                                    
-                                    <MenuItem Header="Item2"/>
+
+                                    <MenuItem Header="Item2" />
                                 </ContextMenu>
                             </Grid.ContextMenu>
                         </Grid>

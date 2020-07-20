@@ -2,9 +2,9 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <!--StudioContextMenuStyle-->
     <Style x:Key="StudioContextMenuStyle" TargetType="{x:Type ContextMenu}">
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Background" Value="{DynamicResource SelectionForeground}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="Background" Value="{StaticResource SelectionForeground}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="1" />
         <Setter Property="HasDropShadow" Value="True" />
@@ -13,14 +13,14 @@
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="RenderOptions.ClearTypeHint" Value="Enabled" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="MinWidth" Value="200"/>
+        <Setter Property="MinWidth" Value="200" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ContextMenu}">
                     <Grid>
-                        <Rectangle x:Name="LayoutRoot" 
+                        <Rectangle x:Name="LayoutRoot"
                                    Fill="{TemplateBinding Background}" />
-                        
+
                         <Border x:Name="Border"
                                 Padding="{TemplateBinding Padding}"
                                 Background="{TemplateBinding Background}"
@@ -30,7 +30,7 @@
 
                             <ScrollViewer x:Name="SubMenuScrollViewer"
                                           CanContentScroll="True"
-                                          Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
+                                          Style="{StaticResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
                                 <ItemsPresenter x:Name="ItemsPresenter"
                                                 Grid.IsSharedSizeScope="True"
                                                 KeyboardNavigation.DirectionalNavigation="Cycle"
@@ -39,11 +39,11 @@
                             </ScrollViewer>
                         </Border>
                     </Grid>
-                    
+
                     <ControlTemplate.Triggers>
                         <Trigger Property="HasDropShadow" Value="True">
                             <Setter TargetName="Border" Property="Margin" Value="0, 0, 5, 5" />
-                            <Setter TargetName="LayoutRoot" Property="Effect" Value="{DynamicResource DarkShadowEffect}"/>
+                            <Setter TargetName="LayoutRoot" Property="Effect" Value="{StaticResource DarkShadowEffect}" />
                             <Setter TargetName="LayoutRoot" Property="Margin" Value="0, 0, 5, 5" />
                         </Trigger>
                     </ControlTemplate.Triggers>

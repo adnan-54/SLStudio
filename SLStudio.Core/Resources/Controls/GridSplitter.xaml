@@ -5,7 +5,7 @@
         <Setter Property="Control.Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="{DynamicResource Delimiter}" />
+                    <Border Background="{StaticResource Delimiter}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -13,7 +13,7 @@
 
     <!--StudioGridSplitterStyle-->
     <Style x:Key="StudioGridSplitterStyle" TargetType="{x:Type GridSplitter}">
-        <Setter Property="Background" Value="{DynamicResource Border}" />
+        <Setter Property="Background" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="PreviewStyle" Value="{StaticResource PreviewStyle}" />
         <Setter Property="Template">
@@ -37,7 +37,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IsDefault" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="{DynamicResource HoverBackground.Color}" />
+                                                    <SolidColorBrush Color="{StaticResource HoverBackground.Color}" />
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>
@@ -49,7 +49,7 @@
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IsDefault" Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Color="{DynamicResource SelectionBackground.Color}" />
+                                                    <SolidColorBrush Color="{StaticResource SelectionBackground.Color}" />
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
                                         </ObjectAnimationUsingKeyFrames>

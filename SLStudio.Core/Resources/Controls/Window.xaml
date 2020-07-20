@@ -7,18 +7,18 @@
         <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-                <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+                <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
-                <Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
+                <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                <Setter Property="Foreground" Value="{StaticResource HoverForeground}" />
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+                <Setter Property="Background" Value="{StaticResource Backstage.Window.Background}" />
+                <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -28,18 +28,18 @@
         <Setter Property="Foreground" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-                <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+                <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+                <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
             </Trigger>
 
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
-                <Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
+                <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                <Setter Property="Foreground" Value="{StaticResource HoverForeground}" />
             </Trigger>
 
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
-                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+                <Setter Property="Background" Value="{StaticResource Backstage.Window.Background}" />
+                <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -57,20 +57,20 @@
     </Style>
 
     <!--DefaultWindowButtons-->
-    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{DynamicResource WindowButtonsStyle}" x:Shared="False" />
+    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{StaticResource WindowButtonsStyle}" x:Shared="False" />
 
     <!--StudioWindowStyle-->
     <Style x:Key="StudioWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource MahApps.Styles.MetroWindow.Clean}">
         <Setter Property="WindowButtonCommands" Value="{StaticResource DefaultWindowButtons}" />
         <Setter Property="WindowTitleBrush" Value="Transparent" />
         <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
-        <Setter Property="TitleForeground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
-        <Setter Property="Background" Value="{DynamicResource Window.Background}" />
-        <Setter Property="BorderBrush" Value="{DynamicResource Focused}" />
-        <Setter Property="NonActiveBorderBrush" Value="{DynamicResource Border}" />
-        <Setter Property="GlowBrush" Value="{DynamicResource Focused}" />
-        <Setter Property="NonActiveGlowBrush" Value="{DynamicResource Border}" />
+        <Setter Property="TitleForeground" Value="{StaticResource Foreground}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="Background" Value="{StaticResource Window.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Focused}" />
+        <Setter Property="NonActiveBorderBrush" Value="{StaticResource Border}" />
+        <Setter Property="GlowBrush" Value="{StaticResource Focused}" />
+        <Setter Property="NonActiveGlowBrush" Value="{StaticResource Border}" />
         <Setter Property="SaveWindowPosition" Value="True" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
@@ -89,12 +89,12 @@
                     <Grid Margin="6, 0, 3, 0" RenderOptions.BitmapScalingMode="HighQuality">
                         <Rectangle Height="32" Width="32">
                             <Rectangle.OpacityMask>
-                                <ImageBrush ImageSource="{DynamicResource AppIcon}" />
+                                <ImageBrush ImageSource="{StaticResource AppIcon}" />
                             </Rectangle.OpacityMask>
 
                             <Rectangle.Style>
                                 <Style TargetType="{x:Type Rectangle}">
-                                    <Setter Property="Fill" Value="{DynamicResource Focused}" />
+                                    <Setter Property="Fill" Value="{StaticResource Focused}" />
                                     <Style.Triggers>
                                         <DataTrigger Binding="{DXBinding '@a($metro:MetroWindow).IsKeyboardFocusWithin'}" Value="False">
                                             <Setter Property="Fill" Value="{DXBinding '@a($metro:MetroWindow).TitleForeground'}" />
@@ -110,7 +110,7 @@
 
         <Style.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="False">
-                <Setter Property="TitleForeground" Value="{DynamicResource MahApps.Brushes.SemiTransparent}" />
+                <Setter Property="TitleForeground" Value="{StaticResource MahApps.Brushes.SemiTransparent}" />
             </Trigger>
         </Style.Triggers>
     </Style>
