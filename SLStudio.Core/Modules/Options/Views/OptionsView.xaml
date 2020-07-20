@@ -1,0 +1,49 @@
+﻿<studio:DialogWindow x:Class="SLStudio.Core.Modules.Options.Views.OptionsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:studio="clr-namespace:SLStudio.Core"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Height="450" Width="800" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--Language-->
+        <TextBlock Grid.Row="0" Grid.Column="0"
+                   Text="Language" />
+
+        <!--SelectedLanguage-->
+        <ComboBox Grid.Row="0" Grid.Column="1"
+                  ItemsSource="{Binding AvaliableLanguages}"
+                  SelectedItem="{Binding SelectedLanguage}"
+                  DisplayMemberPath="DisplayName" IsReadOnly="True" />
+
+        <!--Theme-->
+        <TextBlock Grid.Row="1" Grid.Column="0"
+                   Text="Theme" />
+
+        <!--SelectedTheme-->
+        <ComboBox Grid.Row="1" Grid.Column="1"
+                  ItemsSource="{Binding AvaliableThemes}"
+                  SelectedItem="{Binding SelectedTheme}"
+                  DisplayMemberPath="DisplayName" IsReadOnly="True" />
+
+        <!--Reset-->
+        <Button Grid.Row="2" Grid.Column="0"
+                Content="Reset"
+                Command="{DXCommand 'Reset()'}" />
+
+        <!--Save-->
+        <Button Grid.Row="2" Grid.Column="1"
+                Content="Save"
+                Command="{DXCommand 'Save()'}" />
+    </Grid>
+</studio:DialogWindow>

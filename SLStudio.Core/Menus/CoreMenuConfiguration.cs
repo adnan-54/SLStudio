@@ -1,6 +1,5 @@
 ﻿using SLStudio.Core.Menus.Handlers;
 using SLStudio.Core.Resources.Language;
-using System.Windows.Input;
 
 namespace SLStudio.Core.Menus
 {

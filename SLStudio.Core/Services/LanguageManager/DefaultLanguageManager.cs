@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
+using System.Windows;
+using System.Windows.Markup;
 
 namespace SLStudio.Core
 {
@@ -39,20 +41,20 @@ namespace SLStudio.Core
 
         public void SetLanguage(LanguageModel language)
         {
-            if (language == CurrentLanguage)
-                return;
-
             if (!string.IsNullOrEmpty(language.Code))
             {
-                var culture = new CultureInfo(language.Code);
+                var culture = CultureInfo.CreateSpecificCulture(language.Code);
                 Thread.CurrentThread.CurrentCulture = culture;
                 Thread.CurrentThread.CurrentUICulture = culture;
+                CultureInfo.DefaultThreadCurrentCulture = culture;
+                CultureInfo.DefaultThreadCurrentUICulture = culture;
                 ConfigHelper.Instance.SetLang(language.Code);
+                //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(culture.IetfLanguageTag)));
             }
             else
             {
-                Thread.CurrentThread.CurrentCulture = localCulture;
-                Thread.CurrentThread.CurrentUICulture = localCulture;
+                CultureInfo.DefaultThreadCurrentCulture = localCulture;
+                CultureInfo.DefaultThreadCurrentUICulture = localCulture;
                 ConfigHelper.Instance.SetLang("en");
             }
 

@@ -10,6 +10,16 @@
                 <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
                 <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
             </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
+                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
+            </Trigger>
         </Style.Triggers>
     </Style>
 
@@ -20,6 +30,16 @@
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
                 <Setter Property="Opacity" Value="{DynamicResource DisabledOpacity}" />
+            </Trigger>
+
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource HoverBackground}" />
+                <Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
+            </Trigger>
+
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource Backstage.Window.Background}" />
+                <Setter Property="Foreground" Value="{DynamicResource Backstage.Foreground}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -37,7 +57,7 @@
     </Style>
 
     <!--DefaultWindowButtons-->
-    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{DynamicResource WindowButtonsStyle}" />
+    <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{DynamicResource WindowButtonsStyle}" x:Shared="False" />
 
     <!--StudioWindowStyle-->
     <Style x:Key="StudioWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource MahApps.Styles.MetroWindow.Clean}">
@@ -56,6 +76,8 @@
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="MinWidth" Value="800" />
         <Setter Property="MinHeight" Value="600" />
+        <Setter Property="WindowTransitionsEnabled" Value="False" />
+        <Setter Property="TryToBeFlickerFree" Value="True" />
         <Setter Property="TitleAlignment" Value="Center" />
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
@@ -95,11 +117,9 @@
 
     <!--DialogWindowStyle-->
     <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource StudioWindowStyle}">
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="GlowBrush" Value="Black" />
-        <Setter Property="NonActiveGlowBrush" Value="Black" />
+        <Setter Property="ShowInTaskbar" Value="False" />
         <Setter Property="ResizeMode" Value="CanResize" />
+        <Setter Property="WindowState" Value="Normal" />
         <Setter Property="SaveWindowPosition" Value="False" />
         <Setter Property="TitleAlignment" Value="Left" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterOwner" />

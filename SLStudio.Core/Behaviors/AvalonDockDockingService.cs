@@ -32,7 +32,7 @@ namespace SLStudio.Core.Docking
             AssociatedObject.Loaded += OnLoaded;
             AssociatedObject.DocumentClosing += OnDocumentClosing;
             AssociatedObject.DocumentClosed += OnDocumentClosed;
-            AssociatedObject.LayoutUpdated += OnLayoutUpdated;
+            //AssociatedObject.LayoutUpdated += OnLayoutUpdated;
             themeManager.ThemeChanged += OnThemeChanged;
         }
 
@@ -92,7 +92,7 @@ namespace SLStudio.Core.Docking
             AssociatedObject.Loaded -= OnLoaded;
             AssociatedObject.DocumentClosing -= OnDocumentClosing;
             AssociatedObject.DocumentClosed -= OnDocumentClosed;
-            AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
+            //AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
             themeManager.ThemeChanged -= OnThemeChanged;
             base.OnDetaching();
         }

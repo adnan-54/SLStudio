@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm.UI;
 using System;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -20,7 +21,7 @@ namespace SLStudio.Core.Behaviors
             if (AssociatedObject.IsLoaded)
                 windowScreen.OnLoaded();
 
-            AssociatedObject.ContentRendered += WindowLoaded;
+            AssociatedObject.Loaded += WindowLoaded;
             AssociatedObject.Closing += WindowClosing;
             AssociatedObject.Closed += WindowClosed;
             AssociatedObject.Activated += WindowActivated;

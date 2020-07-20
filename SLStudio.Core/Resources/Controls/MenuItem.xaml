@@ -82,7 +82,7 @@
                                             BorderThickness="1"
                                             SnapsToDevicePixels="True"
                                             BorderBrush="{DynamicResource Border}"
-                                            Background="{DynamicResource SelectionForeground}"
+                                            Background="{DynamicResource Button.Background}"
                                             Effect="{DynamicResource DarkShadowEffect}">
                                         <ScrollViewer x:Name="SubMenu" CanContentScroll="True"
                                                       VerticalScrollBarVisibility="Auto"
@@ -99,8 +99,8 @@
                                             HorizontalAlignment="Left"
                                             BorderThickness="1"
                                             SnapsToDevicePixels="False"
-                                            Background="{DynamicResource SelectionForeground}"
-                                            BorderBrush="{DynamicResource SelectionForeground}" />
+                                            Background="{DynamicResource Button.Background}"
+                                            BorderBrush="{DynamicResource Button.Background}" />
                                 </Grid>
                             </Popup>
                         </Grid>
@@ -153,7 +153,7 @@
 
                         <Trigger Property="IsSubmenuOpen" Value="True">
                             <Setter Property="BorderBrush" Value="{DynamicResource Border}" />
-                            <Setter Property="Background" Value="{DynamicResource SelectionForeground}" />
+                            <Setter Property="Background" Value="{DynamicResource Button.Background}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">

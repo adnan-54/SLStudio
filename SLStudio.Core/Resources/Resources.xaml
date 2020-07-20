@@ -21,8 +21,8 @@
     <avalonDock:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 
     <!--Effects-->
-    <DropShadowEffect x:Key="LightShadowEffect" BlurRadius="4" Color="{DynamicResource Foreground.Color}" Direction="315" Opacity="0.14" ShadowDepth="3" />
-    <DropShadowEffect x:Key="DarkShadowEffect" BlurRadius="4" Color="{DynamicResource Foreground.Color}" Direction="315" Opacity="0.4" ShadowDepth="3" />
+    <DropShadowEffect x:Key="LightShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.14" ShadowDepth="3" />
+    <DropShadowEffect x:Key="DarkShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.4" ShadowDepth="3" />
 
     <!--LeftMargin-->
     <Thickness x:Key="SmallLeftMargin">3, 0, 0, 0</Thickness>
