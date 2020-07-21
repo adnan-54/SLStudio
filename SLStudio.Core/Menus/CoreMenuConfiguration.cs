@@ -1,5 +1,4 @@
 ﻿using SLStudio.Core.Menus.Handlers;
-using System.Windows.Input;
 
 namespace SLStudio.Core.Menus
 {
@@ -24,7 +23,7 @@ namespace SLStudio.Core.Menus
             Item<ViewOutputHandler>(ViewOutput, 0, "Output", iconSource: "Output");
 
             Item(Tools, 2, Resources.Language.Language.MenuTools);
-            Item<ShowOptionsHandler>(ToolsOptions, 999, Resources.Language.Language.MenuOptions, iconSource: "SettingsOutline");
+            Item<ShowOptionsHandler>(ToolsOptions, 999, Resources.Language.Language.MenuOptions, iconSource: "Settings");
 
             Item(Window, 3, "Window");
             Item(Help, 4, "Help");

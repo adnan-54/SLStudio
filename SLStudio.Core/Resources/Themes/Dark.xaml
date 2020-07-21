@@ -43,7 +43,7 @@
     <Color x:Key="StatusWorking.Color">#FF007ACC</Color>
     <Color x:Key="StatusRunning.Color">#FFCA5100</Color>
     <Color x:Key="MenuPopupBackground.Color">#FF1B1B1B</Color>
-    <Color x:Key="IconBackgrounnd.Color">#FF424242</Color>
+    <Color x:Key="IconBackground.Color">#FF424242</Color>
     <Color x:Key="IconForeground.Color">#FFF6F6F6</Color>
     <Color x:Key="IconRedHighlight.Color">#FFF38B76</Color>
     <Color x:Key="IconGreenHighlight.Color">#FF83CE7F</Color>
@@ -137,7 +137,7 @@
     <SolidColorBrush x:Key="StatusWorking" Color="{StaticResource StatusWorking.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="StatusRunning" Color="{StaticResource StatusRunning.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="MenuPopupBackground" Color="{StaticResource MenuPopupBackground.Color}" options:Freeze="True" />
-    <SolidColorBrush x:Key="IconBackgrounnd" Color="{StaticResource IconBackgrounnd.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconBackground" Color="{StaticResource IconBackground.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="IconForeground" Color="{StaticResource IconForeground.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="IconRedHighlight" Color="{StaticResource IconRedHighlight.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="IconGreenHighlight" Color="{StaticResource IconGreenHighlight.Color}" options:Freeze="True" />
