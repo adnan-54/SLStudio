@@ -43,6 +43,13 @@
     <Color x:Key="StatusWorking.Color">#FF007ACC</Color>
     <Color x:Key="StatusRunning.Color">#FFCA5100</Color>
     <Color x:Key="MenuPopupBackground.Color">#FF1B1B1B</Color>
+    <Color x:Key="IconBackgrounnd.Color">#FF424242</Color>
+    <Color x:Key="IconForeground.Color">#FFF6F6F6</Color>
+    <Color x:Key="IconRedHighlight.Color">#FFF38B76</Color>
+    <Color x:Key="IconGreenHighlight.Color">#FF83CE7F</Color>
+    <Color x:Key="IconBlueHighlight.Color">#FF6EBBFF</Color>
+    <Color x:Key="IconYellowHighlight.Color">#FFFFCC00</Color>
+    <Color x:Key="IconPurpleHighlight.Color">#FFAD79D5</Color>
 
     <Color x:Key="MahApps.Colors.Highlight">#FF00589F</Color>
     <Color x:Key="MahApps.Colors.AccentBase">#FF0078D7</Color>
@@ -130,6 +137,13 @@
     <SolidColorBrush x:Key="StatusWorking" Color="{StaticResource StatusWorking.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="StatusRunning" Color="{StaticResource StatusRunning.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="MenuPopupBackground" Color="{StaticResource MenuPopupBackground.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconBackgrounnd" Color="{StaticResource IconBackgrounnd.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconForeground" Color="{StaticResource IconForeground.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconRedHighlight" Color="{StaticResource IconRedHighlight.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconGreenHighlight" Color="{StaticResource IconGreenHighlight.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconBlueHighlight" Color="{StaticResource IconBlueHighlight.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconPurpleHighlight" Color="{StaticResource IconPurpleHighlight.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="IconYellowHighlight" Color="{StaticResource IconYellowHighlight.Color}" options:Freeze="True" />
 
     <SolidColorBrush x:Key="MahApps.Brushes.ThemeBackground" Color="{StaticResource MahApps.Colors.ThemeBackground}" options:Freeze="True" />
     <SolidColorBrush x:Key="MahApps.Brushes.ThemeForeground" Color="{StaticResource MahApps.Colors.ThemeForeground}" options:Freeze="True" />

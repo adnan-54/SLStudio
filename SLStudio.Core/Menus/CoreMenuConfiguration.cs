@@ -21,7 +21,7 @@ namespace SLStudio.Core.Menus
             Item(File, 0, "File");
 
             Item(View, 1, "View");
-            Item<ViewOutputHandler>(ViewOutput, 0, "Output", shortcut: new MultiKeyGesture(new KeyGesturePart(Key.W, ModifierKeys.Control), new KeyGesturePart(Key.O)));
+            Item<ViewOutputHandler>(ViewOutput, 0, "Output", iconSource: "Output");
 
             Item(Tools, 2, Resources.Language.Language.MenuTools);
             Item<ShowOptionsHandler>(ToolsOptions, 999, Resources.Language.Language.MenuOptions, iconSource: "SettingsOutline");
