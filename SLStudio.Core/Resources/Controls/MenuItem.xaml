@@ -4,7 +4,7 @@
     <!--MenuSeparatorStyle-->
     <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
         <Setter Property="Height" Value="1" />
-        <Setter Property="Margin" Value="0, 2, 0 ,2" />
+        <Setter Property="Margin" Value="0, 2, 0, 2" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Separator">
@@ -73,7 +73,7 @@
 
                             <!--SubMenuPopup-->
                             <Popup x:Name="SubMenuPopup" MinWidth="150"
-                                   Focusable="False" PopupAnimation="None"
+                                   Focusable="False" PopupAnimation="Fade"
                                    VerticalOffset="-1" HorizontalOffset="-1"
                                    AllowsTransparency="True" Placement="Right"
                                    IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">

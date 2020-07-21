@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
@@ -18,6 +19,8 @@ namespace SLStudio.Core
 
         public bool CanAccess
             => dispatcher.CheckAccess();
+
+        public Thread DispatcherThread => dispatcher.Thread;
 
         public void EnsureExecuteOnUi(Action action)
         {

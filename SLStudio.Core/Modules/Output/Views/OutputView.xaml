@@ -82,7 +82,7 @@
                     </MenuItem>
 
                     <!--Separator-->
-                    <Separator />
+                    <Separator Background="Red" />
 
                     <!--Find-->
                     <MenuItem Header="{x:Static resx:OutputResource.Find}">

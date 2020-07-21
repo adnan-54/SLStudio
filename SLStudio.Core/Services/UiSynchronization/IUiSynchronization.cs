@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 
@@ -8,6 +9,8 @@ namespace SLStudio.Core
     {
         bool IsShuttingDown { get; }
         bool CanAccess { get; }
+
+        Thread DispatcherThread { get; }
 
         void EnsureExecuteOnUi(Action action);
 

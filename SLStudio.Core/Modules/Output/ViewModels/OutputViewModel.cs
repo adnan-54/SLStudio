@@ -4,6 +4,7 @@ using SLStudio.Core.Behaviors;
 using SLStudio.Core.Modules.Output.Resources;
 using SLStudio.Logging;
 using System;
+using System.Windows;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
@@ -12,10 +13,11 @@ namespace SLStudio.Core.Modules.Output.ViewModels
         private IDispatcherService dispatcher;
         private IAvalonEditSearch avalonEditSearch;
 
-        public OutputViewModel()
+        public OutputViewModel(IUiSynchronization uiSynchronization)
         {
             DisplayName = OutputResource.Output;
             TextDocument = new TextDocument();
+            TextDocument.SetOwnerThread(uiSynchronization.DispatcherThread);
             LogManager.LogCompleted += OnLogCompleted;
         }
 
