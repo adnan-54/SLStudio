@@ -3,7 +3,7 @@
     <!--StudioContextMenuStyle-->
     <Style x:Key="StudioContextMenuStyle" TargetType="{x:Type ContextMenu}">
         <Setter Property="Foreground" Value="{StaticResource Foreground}" />
-        <Setter Property="Background" Value="{StaticResource Button.Background}" />
+        <Setter Property="Background" Value="{StaticResource MenuPopupBackground}" />
         <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Padding" Value="1" />

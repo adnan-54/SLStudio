@@ -42,6 +42,7 @@
     <Color x:Key="StatusIdle.Color">#FF68217A</Color>
     <Color x:Key="StatusWorking.Color">#FF007ACC</Color>
     <Color x:Key="StatusRunning.Color">#FFCA5100</Color>
+    <Color x:Key="MenuPopupBackground.Color">#FFF6F6F6</Color>
 
     <Color x:Key="MahApps.Colors.Highlight">#FF00589F</Color>
     <Color x:Key="MahApps.Colors.AccentBase">#FF0078D7</Color>
@@ -128,6 +129,7 @@
     <SolidColorBrush x:Key="StatusIdle" Color="{StaticResource StatusIdle.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="StatusWorking" Color="{StaticResource StatusWorking.Color}" options:Freeze="True" />
     <SolidColorBrush x:Key="StatusRunning" Color="{StaticResource StatusRunning.Color}" options:Freeze="True" />
+    <SolidColorBrush x:Key="MenuPopupBackground" Color="{StaticResource MenuPopupBackground.Color}" options:Freeze="True" />
 
     <SolidColorBrush x:Key="MahApps.Brushes.ThemeBackground" Color="{StaticResource MahApps.Colors.ThemeBackground}" options:Freeze="True" />
     <SolidColorBrush x:Key="MahApps.Brushes.ThemeForeground" Color="{StaticResource MahApps.Colors.ThemeForeground}" options:Freeze="True" />

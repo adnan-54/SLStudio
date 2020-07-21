@@ -82,7 +82,7 @@
                                             BorderThickness="1"
                                             SnapsToDevicePixels="True"
                                             BorderBrush="{StaticResource Border}"
-                                            Background="{StaticResource Button.Background}"
+                                            Background="{StaticResource MenuPopupBackground}"
                                             Effect="{StaticResource DarkShadowEffect}">
                                         <ScrollViewer x:Name="SubMenu" CanContentScroll="True"
                                                       VerticalScrollBarVisibility="Auto"
@@ -94,13 +94,13 @@
 
                                     <Border x:Name="TransitionBorder"
                                             Margin="1, 0, 1, 0"
-                                            Width="0" Height="2"
+                                            Width="0" Height="1"
                                             VerticalAlignment="Top"
                                             HorizontalAlignment="Left"
                                             BorderThickness="1"
                                             SnapsToDevicePixels="False"
-                                            Background="{StaticResource Button.Background}"
-                                            BorderBrush="{StaticResource Button.Background}" />
+                                            Background="{StaticResource MenuPopupBackground}"
+                                            BorderBrush="{StaticResource MenuPopupBackground}" />
                                 </Grid>
                             </Popup>
                         </Grid>
@@ -153,7 +153,7 @@
 
                         <Trigger Property="IsSubmenuOpen" Value="True">
                             <Setter Property="BorderBrush" Value="{StaticResource Border}" />
-                            <Setter Property="Background" Value="{StaticResource Button.Background}" />
+                            <Setter Property="Background" Value="{StaticResource MenuPopupBackground}" />
                         </Trigger>
 
                         <Trigger Property="IsEnabled" Value="False">

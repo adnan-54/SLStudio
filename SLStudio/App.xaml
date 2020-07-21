@@ -17,7 +17,7 @@
                 <!--Local-->
                 <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Resources.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons/Icons.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons/IconsLight.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Icons/Shapes.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -20,8 +20,8 @@ namespace SLStudio.Core
         {
             avaliableThemes = new List<Theme>()
             {
-                new Theme("SLStudio.Dark", ThemeManagerResources.Dark, SkinType.Dark, new Vs2013DarkTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Dark.xaml")),
-                new Theme("SLStudio.Light", ThemeManagerResources.Light, SkinType.Default, new Vs2013LightTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml"))
+                new Theme("SLStudio.Dark", ThemeManagerResources.Dark, SkinType.Dark, new Vs2013DarkTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Dark.xaml"), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Icons/IconsDark.xaml")),
+                new Theme("SLStudio.Light", ThemeManagerResources.Light, SkinType.Default, new Vs2013LightTheme(), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Themes/Light.xaml"), new Uri("pack://application:,,,/SLStudio.Core;component/Resources/Icons/IconsLight.xaml"))
             };
 
             Initialize();
@@ -42,7 +42,6 @@ namespace SLStudio.Core
         {
             ThemeManagerSettings.Default.Reset();
             ThemeManagerSettings.Default.Save();
-            CurrentTheme = AvaliableThemes.First(t => t.Id == ThemeManagerSettings.Default.UserTheme);
         }
 
         private void Initialize()
@@ -51,6 +50,7 @@ namespace SLStudio.Core
             CreateMahappsTheme();
             UpdateHandyControlTheme();
             UpdateMahappsTheme();
+            LoadIcons();
         }
 
         private void CreateMahappsTheme()
@@ -70,6 +70,14 @@ namespace SLStudio.Core
         {
             var mahAppsTheme = ThemeManager.Current.GetTheme(CurrentTheme.Id);
             ThemeManager.Current.ChangeTheme(Application.Current, mahAppsTheme);
+        }
+
+        private void LoadIcons()
+        {
+            var targetUri = AvaliableThemes.FirstOrDefault(t => t.Id == "SLStudio.Light").Icons.OriginalString;
+            var targetResource = Application.Current.Resources.MergedDictionaries.FirstOrDefault(d => d.Source?.OriginalString == targetUri);
+            Application.Current.Resources.MergedDictionaries.Remove(targetResource);
+            Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = CurrentTheme.Icons });
         }
     }
 }
