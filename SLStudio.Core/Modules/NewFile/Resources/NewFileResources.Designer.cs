@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Resources.Language {
+namespace SLStudio.Core.Modules.NewFile.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.Core.Resources.Language {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Language {
+    public class NewFileResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Language() {
+        internal NewFileResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Resources.Language {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Resources.Language.Language", typeof(Language).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.Core.Modules.NewFile.Resources.NewFileResources", typeof(NewFileResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,83 +61,101 @@ namespace SLStudio.Core.Resources.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The key combination ({0}) is not a command..
+        ///   Looks up a localized string similar to _Cancel.
         /// </summary>
-        public static string CombinationIsNotACommand {
+        public static string Cancel {
             get {
-                return ResourceManager.GetString("CombinationIsNotACommand", resourceCulture);
+                return ResourceManager.GetString("Cancel", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to today.
+        ///   Looks up a localized string similar to Description:.
         /// </summary>
-        public static string HumanizerDateTimeToday {
+        public static string Description {
             get {
-                return ResourceManager.GetString("HumanizerDateTimeToday", resourceCulture);
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading assembly {0}....
+        ///   Looks up a localized string similar to Medium Icons.
         /// </summary>
-        public static string LoadingAssemblyAssemblyName {
+        public static string MediumIcons {
             get {
-                return ResourceManager.GetString("LoadingAssemblyAssemblyName", resourceCulture);
+                return ResourceManager.GetString("MediumIcons", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Options....
+        ///   Looks up a localized string similar to Name:.
         /// </summary>
-        public static string MenuOptions {
+        public static string Name {
             get {
-                return ResourceManager.GetString("MenuOptions", resourceCulture);
+                return ResourceManager.GetString("Name", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Tools.
+        ///   Looks up a localized string similar to Name Ascending.
         /// </summary>
-        public static string MenuTools {
+        public static string NameAscending {
             get {
-                return ResourceManager.GetString("MenuTools", resourceCulture);
+                return ResourceManager.GetString("NameAscending", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Merging resources for {0}....
+        ///   Looks up a localized string similar to Name Descending.
         /// </summary>
-        public static string MergingResources {
+        public static string NameDescending {
             get {
-                return ResourceManager.GetString("MergingResources", resourceCulture);
+                return ResourceManager.GetString("NameDescending", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Registering {0}....
+        ///   Looks up a localized string similar to New File.
         /// </summary>
-        public static string RegisteringModule {
+        public static string NewFile {
             get {
-                return ResourceManager.GetString("RegisteringModule", resourceCulture);
+                return ResourceManager.GetString("NewFile", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Running {0}....
+        ///   Looks up a localized string similar to _Open.
         /// </summary>
-        public static string RunningModule {
+        public static string Open {
             get {
-                return ResourceManager.GetString("RunningModule", resourceCulture);
+                return ResourceManager.GetString("Open", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ({0}) was pressed. Waiting for next key of chord....
+        ///   Looks up a localized string similar to Small Icons.
         /// </summary>
-        public static string WaitingForNextKeyOfChord {
+        public static string SmallIcons {
             get {
-                return ResourceManager.GetString("WaitingForNextKeyOfChord", resourceCulture);
+                return ResourceManager.GetString("SmallIcons", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort by:.
+        /// </summary>
+        public static string SortBy {
+            get {
+                return ResourceManager.GetString("SortBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Untitled.
+        /// </summary>
+        public static string Untitled {
+            get {
+                return ResourceManager.GetString("Untitled", resourceCulture);
             }
         }
     }

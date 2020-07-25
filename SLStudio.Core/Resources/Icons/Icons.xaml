@@ -362,4 +362,43 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+
+    <!--NewFile-->
+    <DrawingImage x:Key="NewFile">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M15,5.52L15,13C15,13.97,14.299,15,13,15L7,15C6.031,15,5,14.299,5,13L5,9 3,9 3,8.121 2.379,8.742 0.257,6.621 0.878,6 0,6 0,3 0.878,3 0.257,2.379 2.379,0.257 3,0.877999999999999 3,0 6,0 6,0.877999999999999 6.621,0.257 8.742,2.379 8.121,3 9,3 12.069,3z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,6.1362L14,13.0002C14,13.0002,13.965,14.0002,12.965,14.0002L6.965,14.0002C6.965,14.0002,6,14.0002,6,13.0002L6,8.1442 6.598,8.7422 7,8.3402 7,13.0002 13,13.0002 13,9.0002 13,8.0002 13,7.0002 11,7.0002 11,5.0002 9,5.0002 9,4.0002 11.625,4.0002z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M13,7L13,13 7,13 7,8.363 8.742,6.621 8.121,6 9,6 9,5 11,5 11,7z" />
+                    <GeometryDrawing Brush="#FFC27D1A" Geometry="F1M5,5L4,5 4,4 5,4z M8,4L5.707,4 7.328,2.379 6.621,1.671 5,3.292 5,1 4,1 4,3.292 2.379,1.671 1.671,2.379 3.292,4 1,4 1,5 3.292,5 1.671,6.621 2.379,7.328 4,5.707 4,8 5,8 5,5.707 6.621,7.328 7.328,6.621 5.707,5 8,5z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ItemListView-->
+    <DrawingImage x:Key="ItemListView">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M0,-0.000199999999999534L0,15.9998 10,15.9998 10,7.9998 15,7.9998 15,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M6,15L9,15 9,14 6,14z M1,15L4,15 4,14 1,14z M11,7L14,7 14,6 11,6z M6,7L9,7 9,6 6,6z M1,7L4,7 4,6 1,6z M6,12L9,12 9,9 6,9z M1,12L4,12 4,9 1,9z M11,4L14,4 14,1 11,1z M6,4L9,4 9,1 6,1z M1,1L4,1 4,4 1,4z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--BulletList-->
+    <DrawingImage x:Key="BulletList">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M0,-0.000199999999999534L0,14.9998 5,14.9998 5,13.9998 16,13.9998 16,10.9998 5,10.9998 5,8.9998 16,8.9998 16,5.9998 5,5.9998 5,4.0008 16,4.0008 16,0.9998 5,0.9998 5,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M6,8L15,8 15,7 6,7z M6,3L15,3 15,2 6,2z M6,13L15,13 15,12 6,12z" />
+                    <GeometryDrawing Brush="{StaticResource IconBlueHighlight}" Geometry="F1M1,4L4,4 4,1 1,1z M1,14L4,14 4,11 1,11z M1,6L4,6 4,9 1,9z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>

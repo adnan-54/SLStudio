@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="DevExpressMvvm" Version="19.2.3" />
+		<PackageReference Include="DevExpressMvvm" Version="20.1.6" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.1" />
 	</ItemGroup>
 </Project>

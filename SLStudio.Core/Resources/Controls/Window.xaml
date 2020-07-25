@@ -76,6 +76,7 @@
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="TryToBeFlickerFree" Value="True" />
+        <Setter Property="ShowActivated" Value="True"/>
         <Setter Property="TitleAlignment" Value="Center" />
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />

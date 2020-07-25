@@ -91,13 +91,13 @@ namespace SLStudio.Core
             logger.Info($"Exiting application with code '{e.ApplicationExitCode}'");
         }
 
-        public static Task Run(Dispatcher dispatcher, IEnumerable<string> args)
+        public static void Run(Dispatcher dispatcher, IEnumerable<string> args)
         {
             if (initialized)
-                return Task.FromResult(true);
+                return;
             initialized = true;
 
-            return new Bootstrapper(dispatcher, args).Initialize();
+            new Bootstrapper(dispatcher, args).Initialize().FireAndForget();
         }
     }
 }

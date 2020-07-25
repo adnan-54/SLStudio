@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace SLStudio.Core
+namespace SLStudio.Core.LanguageManager
 {
     public class Language
     {

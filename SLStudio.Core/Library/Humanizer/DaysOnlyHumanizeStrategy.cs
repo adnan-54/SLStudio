@@ -1,5 +1,5 @@
 ﻿using Humanizer.DateTimeHumanizeStrategy;
-using SLStudio.Core.Resources.Language;
+using SLStudio.Core.Resources;
 using System;
 using System.Globalization;
 
@@ -15,7 +15,7 @@ namespace SLStudio.Core.Humanizer
             var comparisonBaseDate = comparisonBase.Date;
 
             if (inputDate == comparisonBaseDate)
-                return Resources.Language.Language.HumanizerDateTimeToday;
+                return StudioResources.HumanizerDateTimeToday;
 
             return DefaultStrategy.Humanize(inputDate, comparisonBaseDate, culture);
         }

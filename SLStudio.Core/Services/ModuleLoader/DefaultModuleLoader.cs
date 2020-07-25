@@ -18,8 +18,7 @@ namespace SLStudio.Core
         private bool alreadyInitialized = false;
         private bool alreadyLoaded = false;
 
-        public IEnumerable<IModule> Modules
-            => modules;
+        public IEnumerable<IModule> Modules => modules;
 
         public void Initialize(ISplashScreen splashScreen, Container container, IObjectFactory objectFactory)
         {
@@ -34,16 +33,16 @@ namespace SLStudio.Core
 
         public async Task Load()
         {
-            if (!alreadyInitialized)
-                throw new InvalidOperationException($"{nameof(DefaultModuleLoader)} is not initialized yet");
-
-            if (alreadyLoaded)
-                return;
-            alreadyLoaded = true;
-
-            logger.Debug($"Searching modules");
             await Task.Run(() =>
             {
+                if (!alreadyInitialized)
+                    throw new InvalidOperationException($"{nameof(DefaultModuleLoader)} is not initialized yet");
+
+                if (alreadyLoaded)
+                    return;
+                alreadyLoaded = true;
+
+                logger.Debug($"Searching modules");
                 var types = FindModules();
                 logger.Debug($"'{types.Count()}' modules found");
 
@@ -54,6 +53,7 @@ namespace SLStudio.Core
                 RegisterModules(modules);
                 container.Verify();
             });
+
             await RunModules(modules);
         }
 

@@ -117,31 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MergingResources" xml:space="preserve">
-    <value>Merging resources for {0}...</value>
-  </data>
   <data name="RegisteringModule" xml:space="preserve">
-    <value>Registering {0}...</value>
+    <value>Registrando {0}...</value>
   </data>
   <data name="RunningModule" xml:space="preserve">
-    <value>Running {0}...</value>
+    <value>Executando {0}...</value>
+  </data>
+  <data name="MergingResources" xml:space="preserve">
+    <value>Mesclando recursos para {0}...</value>
   </data>
   <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Loading assembly {0}...</value>
+    <value>Carregando o assembly '{0}'...</value>
   </data>
   <data name="CombinationIsNotACommand" xml:space="preserve">
-    <value>The key combination ({0}) is not a command.</value>
+    <value>A combinação de teclas ({0}) não é um comando.</value>
   </data>
   <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) was pressed. Waiting for next key of chord...</value>
+    <value>({0}) foi pressionado. Esperando a próxima combinação de teclas...</value>
   </data>
   <data name="HumanizerDateTimeToday" xml:space="preserve">
-    <value>today</value>
+    <value>hoje</value>
   </data>
   <data name="MenuTools" xml:space="preserve">
-    <value>_Tools</value>
+    <value>_Ferramentas</value>
   </data>
   <data name="MenuOptions" xml:space="preserve">
-    <value>_Options...</value>
+    <value>_Opções...</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="View" xml:space="preserve">
+    <value>Exibir</value>
+  </data>
+  <data name="Window" xml:space="preserve">
+    <value>Janela</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Saída</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Ajuda</value>
   </data>
 </root>

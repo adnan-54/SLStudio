@@ -1,4 +1,5 @@
-﻿using SLStudio.Core.Modules.Options.Resources;
+﻿using SLStudio.Core.LanguageManager;
+using SLStudio.Core.Modules.Options.Resources;
 using System.Collections.Generic;
 using System.Linq;
 

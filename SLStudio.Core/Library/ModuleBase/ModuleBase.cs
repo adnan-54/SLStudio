@@ -1,5 +1,5 @@
 ﻿using SimpleInjector;
-using SLStudio.Core.Resources.Language;
+using SLStudio.Core.Resources;
 using SLStudio.Logging;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace SLStudio.Core
             alreadyMerged = true;
 
             logger.Debug($"Merging resources for '{Name}'");
-            splashScreen.UpdateStatus(string.Format(Core.Resources.Language.Language.MergingResources, Name));
+            splashScreen.UpdateStatus(string.Format(StudioResources.MergingResources, Name));
             foreach (var resource in Resources)
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = resource });
         }
@@ -54,7 +54,7 @@ namespace SLStudio.Core
             alreadyRegistered = true;
 
             logger.Debug($"Registering '{Name}'");
-            splashScreen.UpdateStatus(string.Format(Core.Resources.Language.Language.RegisteringModule, Name));
+            splashScreen.UpdateStatus(string.Format(StudioResources.RegisteringModule, Name));
 
             Register(container);
         }
@@ -71,7 +71,7 @@ namespace SLStudio.Core
             alreadyRunned = true;
 
             logger.Debug($"Running '{Name}'");
-            splashScreen.UpdateStatus(string.Format(Core.Resources.Language.Language.RunningModule, Name));
+            splashScreen.UpdateStatus(string.Format(StudioResources.RunningModule, Name));
 
             return Run(objectFactory);
         }

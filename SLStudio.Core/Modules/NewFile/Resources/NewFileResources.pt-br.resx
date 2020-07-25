@@ -97,10 +97,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="rpkEditorDescription" xml:space="preserve">
-    <value>Um arquivo de pacote de recursos em branco.</value>
+  <data name="SortBy" xml:space="preserve">
+    <value>Ordenar por:</value>
   </data>
-  <data name="rpkEditorName" xml:space="preserve">
-    <value>Arquivo Rpk</value>
+  <data name="SmallIcons" xml:space="preserve">
+    <value>Ícones pequenos</value>
+  </data>
+  <data name="MediumIcons" xml:space="preserve">
+    <value>Ícones Médios</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Descrição:</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>_Cancelar</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>_Abrir</value>
+  </data>
+  <data name="NewFile" xml:space="preserve">
+    <value>Novo Arquivo</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nome:</value>
+  </data>
+  <data name="NameAscending" xml:space="preserve">
+    <value>Nome (crescente)</value>
+  </data>
+  <data name="NameDescending" xml:space="preserve">
+    <value>Nome (decrescente)</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Sem título</value>
   </data>
 </root>

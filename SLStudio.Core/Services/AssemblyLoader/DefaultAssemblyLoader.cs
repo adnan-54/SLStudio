@@ -1,4 +1,4 @@
-﻿using SLStudio.Core.Resources.Language;
+﻿using SLStudio.Core.Resources;
 using SLStudio.Logging;
 using System;
 using System.Collections.Generic;
@@ -35,17 +35,17 @@ namespace SLStudio.Core
 
         public async Task Load()
         {
-            if (!alreadyInitialized)
-                throw new InvalidOperationException($"{nameof(DefaultAssemblyLoader)} is not initialized yet");
-
-            if (alreadyLoaded)
-                return;
-            alreadyLoaded = true;
-
-            logger.Debug($"Searching assemblies");
-
             await Task.Run(() =>
             {
+                if (!alreadyInitialized)
+                    throw new InvalidOperationException($"{nameof(DefaultAssemblyLoader)} is not initialized yet");
+
+                if (alreadyLoaded)
+                    return;
+                alreadyLoaded = true;
+
+                logger.Debug($"Searching assemblies");
+
                 Assemblies = FindAssemblies();
                 LoadedAssemblies = GetLoadedAssemblies();
                 AssembliesToLoad = Assemblies.Except(LoadedAssemblies);
@@ -71,7 +71,7 @@ namespace SLStudio.Core
             {
                 var assemblyName = Path.GetFileNameWithoutExtension(assembly);
                 logger.Debug($"Loading assembly '{assemblyName}'");
-                splashScreen.UpdateStatus(string.Format(Resources.Language.Language.LoadingAssemblyAssemblyName, assemblyName));
+                splashScreen.UpdateStatus(string.Format(StudioResources.LoadingAssemblyAssemblyName, assemblyName));
                 Assembly.LoadFrom(assembly);
             }
         }

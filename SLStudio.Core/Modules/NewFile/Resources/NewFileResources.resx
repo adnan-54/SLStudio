@@ -117,31 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisteringModule" xml:space="preserve">
-    <value>Registrando {0}...</value>
+  <data name="SortBy" xml:space="preserve">
+    <value>Sort by:</value>
   </data>
-  <data name="RunningModule" xml:space="preserve">
-    <value>Executando {0}...</value>
+  <data name="SmallIcons" xml:space="preserve">
+    <value>Small Icons</value>
   </data>
-  <data name="MergingResources" xml:space="preserve">
-    <value>Mesclando recursos para {0}...</value>
+  <data name="MediumIcons" xml:space="preserve">
+    <value>Medium Icons</value>
   </data>
-  <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Carregando o assembly '{0}'...</value>
+  <data name="Description" xml:space="preserve">
+    <value>Description:</value>
   </data>
-  <data name="CombinationIsNotACommand" xml:space="preserve">
-    <value>A combinação de teclas ({0}) não é um comando.</value>
+  <data name="Open" xml:space="preserve">
+    <value>_Open</value>
   </data>
-  <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) foi pressionado. Esperando a próxima combinação de teclas...</value>
+  <data name="Cancel" xml:space="preserve">
+    <value>_Cancel</value>
   </data>
-  <data name="HumanizerDateTimeToday" xml:space="preserve">
-    <value>hoje</value>
+  <data name="NewFile" xml:space="preserve">
+    <value>New File</value>
   </data>
-  <data name="MenuTools" xml:space="preserve">
-    <value>_Ferramentas</value>
+  <data name="Name" xml:space="preserve">
+    <value>Name:</value>
   </data>
-  <data name="MenuOptions" xml:space="preserve">
-    <value>_Opções...</value>
+  <data name="NameAscending" xml:space="preserve">
+    <value>Name Ascending</value>
+  </data>
+  <data name="NameDescending" xml:space="preserve">
+    <value>Name Descending</value>
+  </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
   </data>
 </root>

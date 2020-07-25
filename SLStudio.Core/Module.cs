@@ -18,6 +18,7 @@ namespace SLStudio.Core
             container.RegisterServiceAndImplementationAsSingleton<IErrorHandler, DefaultErrorHandler>();
             container.RegisterServiceAndImplementationAsSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
             container.RegisterServiceAndImplementationAsSingleton<IMenuLookup, DefaultMenuLookup>();
+            container.RegisterServiceAndImplementationAsSingleton<IRecentFilesRepository, DefaultRecentFilesRespository>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
             container.RegisterSingleton<IStatusBar, StatusBarViewModel>();

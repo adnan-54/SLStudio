@@ -1,9 +1,8 @@
 ﻿using DevExpress.Mvvm.Native;
 using SLStudio.Core.Modules.StatusBar.Resources;
-using SLStudio.Core.Resources.Language;
+using SLStudio.Core.Resources;
 using System.Collections.Generic;
 using System.Linq;
-using System.Media;
 using System.Windows.Input;
 
 namespace SLStudio.Core
@@ -51,7 +50,7 @@ namespace SLStudio.Core
                     if (step > 0)
                     {
                         var combination = gestures.Take(step).Concat(new[] { new KeyGesturePart(args.Key, Keyboard.Modifiers) });
-                        statusBar.Status = string.Format(Resources.Language.Language.CombinationIsNotACommand, CreateDisplayString(combination));
+                        statusBar.Status = string.Format(StudioResources.CombinationIsNotACommand, CreateDisplayString(combination));
                         //SystemSounds.Asterisk.Play();
                     }
                     step = 0;
@@ -59,7 +58,7 @@ namespace SLStudio.Core
                 }
 
                 lastInputTimeStamp = args.Timestamp;
-                statusBar.Status = string.Format(Resources.Language.Language.WaitingForNextKeyOfChord, gestures[step]);
+                statusBar.Status = string.Format(StudioResources.WaitingForNextKeyOfChord, gestures[step]);
                 step++;
             }
 

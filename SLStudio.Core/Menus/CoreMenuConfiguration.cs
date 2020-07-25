@@ -1,10 +1,14 @@
 ﻿using SLStudio.Core.Menus.Handlers;
+using SLStudio.Core.Resources;
+using System.Windows.Input;
 
 namespace SLStudio.Core.Menus
 {
     internal class CoreMenuConfiguration : MenuConfiguration
     {
         public static string File = "file";
+        public static string FileNew = $"{File}/new";
+        public static string FileNewFile = $"{FileNew}/newFile";
 
         public static string View = "view";
         public static string ViewOutput = $"{View}/output";
@@ -17,16 +21,19 @@ namespace SLStudio.Core.Menus
 
         public override void Create()
         {
-            Item(File, 0, "File");
+            Item(File, 0, StudioResources.File);
+            Item(FileNew, 0, StudioResources.New);
+            Item<CreateNewFileHandler>(FileNewFile, 0, StudioResources.File, iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
 
-            Item(View, 1, "View");
-            Item<ViewOutputHandler>(ViewOutput, 0, "Output", iconSource: "Output");
+            Item(View, 1, StudioResources.View);
+            Item<ViewOutputHandler>(ViewOutput, 0, StudioResources.Output, iconSource: "Output");
 
-            Item(Tools, 2, Resources.Language.Language.MenuTools);
-            Item<ShowOptionsHandler>(ToolsOptions, 999, Resources.Language.Language.MenuOptions, iconSource: "Settings");
+            Item(Tools, 2, StudioResources.MenuTools);
+            Item<ShowOptionsHandler>(ToolsOptions, 999, StudioResources.MenuOptions, iconSource: "Settings");
 
-            Item(Window, 3, "Window");
-            Item(Help, 4, "Help");
+            Item(Window, 3, StudioResources.Window);
+
+            Item(Help, 4, StudioResources.Help);
         }
 
         public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)

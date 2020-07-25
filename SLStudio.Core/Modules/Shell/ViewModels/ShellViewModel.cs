@@ -6,14 +6,18 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
     internal class ShellViewModel : WindowViewModel, IShell
     {
         private readonly ICommandLineArguments commandLineArguments;
+        private readonly IFileService fileService;
 
-        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments)
+        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository)
         {
             this.commandLineArguments = commandLineArguments;
 
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentPanel>();
             Tools = new BindableCollection<IToolPanel>();
+
+            fileService = new DefaultFileService(this, objectFactory, recentFilesRepository);
+            ServiceContainer.RegisterService(fileService);
 
             DisplayName = DebugMode ? "SLStudio (debug mode)" : "SLStudio";
         }

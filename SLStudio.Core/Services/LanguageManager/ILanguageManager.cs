@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SLStudio.Core.LanguageManager;
+using System.Collections.Generic;
 
 namespace SLStudio.Core
 {

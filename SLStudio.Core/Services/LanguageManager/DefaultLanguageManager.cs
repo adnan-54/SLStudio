@@ -1,7 +1,9 @@
 ﻿using HandyControl.Tools;
 using Humanizer.Configuration;
 using SLStudio.Core.Humanizer;
+using SLStudio.Core.LanguageManager;
 using SLStudio.Core.Services.LanguageManager;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
