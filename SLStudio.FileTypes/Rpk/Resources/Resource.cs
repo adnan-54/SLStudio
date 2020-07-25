@@ -6,6 +6,8 @@
 
         public override int SuperId => Parent.TypeId;
 
+        public override int AdditionalType => Definition.AdditionalType;
+
         public override ResourceType TypeOfEntry => Definition.TypeOfEntry;
 
         public T Definition { get; set; }

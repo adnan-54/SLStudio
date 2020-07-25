@@ -6,7 +6,7 @@ namespace SLStudio.FileTypes.RpkFile
 {
     public class SoundDefinition : ResourceDefinition
     {
-        public override ResourceType TypeOfEntry => ResourceType.Sound;
+        internal override ResourceType TypeOfEntry => ResourceType.Sound;
 
         public Sound Sound { get; set; }
 

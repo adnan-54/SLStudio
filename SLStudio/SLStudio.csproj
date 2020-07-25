@@ -35,7 +35,9 @@
 		<ProjectReference Include="..\SLStudio.Compilers\SLStudio.Compilers.csproj" />
 		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 		<ProjectReference Include="..\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
+		<ProjectReference Include="..\SLStudio.GameTypes\SLStudio.GameTypes.csproj" />
 		<ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
 		<ProjectReference Include="..\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
 		<ProjectReference Include="..\SLStudio.TestConsole\SLStudio.TestConsole.csproj" />
 		<ProjectReference Include="..\SLStudio.Tests\SLStudio.Tests.csproj" />

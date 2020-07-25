@@ -2,6 +2,7 @@
 {
     public abstract class ResourceDefinition
     {
-        public abstract ResourceType TypeOfEntry { get; }
+        internal virtual int AdditionalType => 0;
+        internal abstract ResourceType TypeOfEntry { get; }
     }
 }

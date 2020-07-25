@@ -5,7 +5,7 @@ namespace SLStudio.FileTypes.RpkFile
 {
     public class MeshDefinition : ResourceDefinition
     {
-        public override ResourceType TypeOfEntry => ResourceType.Mesh;
+        internal override ResourceType TypeOfEntry => ResourceType.Mesh;
 
         public Mesh Mesh { get; set; }
 

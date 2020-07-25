@@ -29,6 +29,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Compilers", "SLStu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.TestConsole", "SLStudio.TestConsole\SLStudio.TestConsole.csproj", "{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.GameTypes", "SLStudio.GameTypes\SLStudio.GameTypes.csproj", "{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.RpkEditor", "SLStudio.RpkEditor\SLStudio.RpkEditor.csproj", "{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +105,22 @@ Global
 		{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E}.Release|x64.ActiveCfg = Release|Any CPU
 		{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E}.Release|x64.Build.0 = Release|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Debug|x64.Build.0 = Debug|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Release|x64.ActiveCfg = Release|Any CPU
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}.Release|x64.Build.0 = Release|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Debug|x64.Build.0 = Debug|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Release|x64.ActiveCfg = Release|Any CPU
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,10 +135,12 @@ Global
 		{DD28B85A-A817-4DB2-B8CE-985BCA1D06A5} = {C8152E36-BF44-495A-BFEF-D74DEADC2FE4}
 		{0320F236-FE5C-47F6-8E6D-756D8DABBABD} = {C8152E36-BF44-495A-BFEF-D74DEADC2FE4}
 		{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E} = {930CF9AD-5B1D-4455-80D2-6A62B59AD962}
+		{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80} = {C8152E36-BF44-495A-BFEF-D74DEADC2FE4}
+		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

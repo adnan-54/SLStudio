@@ -65,6 +65,9 @@ namespace SLStudio.TestConsole
                 }
             });
 
+            var textureResource = new Resource<TextureDefinition>();
+            var textureDefinition = new TextureDefinition();
+
             var rpkCompiler = new RpkCompiler();
             var compiled = rpkCompiler.CompileToPlainText(rpk);
 
