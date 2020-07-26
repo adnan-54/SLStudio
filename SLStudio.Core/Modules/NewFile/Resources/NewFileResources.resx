@@ -153,4 +153,13 @@
   <data name="SearchWatermark" xml:space="preserve">
     <value>Search (Ctrl+E)</value>
   </data>
+  <data name="ValidationInvalidFileName" xml:space="preserve">
+    <value>"{PropertyValue}" is not a valid file name</value>
+  </data>
+  <data name="ValidationNameCannotBeEmpty" xml:space="preserve">
+    <value>Name cannot be empty</value>
+  </data>
+  <data name="ValidationNameLenght" xml:space="preserve">
+    <value>Name cannot have more than {MaxLength} characters</value>
+  </data>
 </root>

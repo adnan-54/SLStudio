@@ -3,6 +3,7 @@
                     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Button.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ValidationErrorTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--StudioTextBoxContextMenu-->
@@ -38,8 +39,8 @@
         <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
         <Setter Property="SelectionBrush" Value="{StaticResource SelectionBackground}" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
-        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="ContextMenu" Value="{StaticResource StudioTextBoxContextMenu}" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -74,6 +75,7 @@
 
     <!--StudioSearchTextBoxStyle-->
     <Style x:Key="StudioSearchTextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource StudioTextBoxStyle}" x:Shared="False">
+        <Setter Property="metro:TextBoxHelper.SelectAllOnFocus" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TextBox}">
@@ -101,7 +103,8 @@
                                        Text="{TemplateBinding metro:TextBoxHelper.Watermark}"
                                        TextAlignment="{TemplateBinding metro:TextBoxHelper.WatermarkAlignment}"
                                        TextTrimming="{TemplateBinding metro:TextBoxHelper.WatermarkTrimming}"
-                                       TextWrapping="{TemplateBinding metro:TextBoxHelper.WatermarkWrapping}" />
+                                       TextWrapping="{TemplateBinding metro:TextBoxHelper.WatermarkWrapping}"
+                                       Visibility="Collapsed" />
 
                             <!--SearchIcon-->
                             <Button Grid.Column="1" Margin="{StaticResource SmallRightMargin}"
@@ -124,8 +127,8 @@
                     </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsReadOnly" Value="True">
-                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Window.Background}" />
+                        <Trigger Property="Text" Value="">
+                            <Setter Property="Visibility" TargetName="Watermark" Value="Visible" />
                         </Trigger>
 
                         <Trigger Property="IsFocused" Value="True">

@@ -13,7 +13,7 @@
     <avalonDock:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 
     <!--Effects-->
-    <DropShadowEffect x:Key="LightShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.14" ShadowDepth="3" />
+    <DropShadowEffect x:Key="LightShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.25" ShadowDepth="3" />
     <DropShadowEffect x:Key="DarkShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.4" ShadowDepth="3" />
 
     <!--LeftMargin-->

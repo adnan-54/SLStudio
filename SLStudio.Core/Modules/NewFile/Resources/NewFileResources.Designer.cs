@@ -167,5 +167,32 @@ namespace SLStudio.Core.Modules.NewFile.Resources {
                 return ResourceManager.GetString("Untitled", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;{PropertyValue}&quot; is not a valid file name.
+        /// </summary>
+        public static string ValidationInvalidFileName {
+            get {
+                return ResourceManager.GetString("ValidationInvalidFileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name cannot be empty.
+        /// </summary>
+        public static string ValidationNameCannotBeEmpty {
+            get {
+                return ResourceManager.GetString("ValidationNameCannotBeEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name cannot have more than {MaxLength} characters.
+        /// </summary>
+        public static string ValidationNameLenght {
+            get {
+                return ResourceManager.GetString("ValidationNameLenght", resourceCulture);
+            }
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using DevExpress.Mvvm.POCO;
-using ICSharpCode.AvalonEdit.Search;
+using FluentValidation;
+using FluentValidation.Results;
 using SLStudio.Core.Modules.NewFile.Resources;
+using SLStudio.Core.Modules.NewFile.Validations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,16 +14,20 @@ using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.NewFile.ViewModels
 {
-    internal class NewFileViewModel : WindowViewModel
+    internal class NewFileViewModel : WindowViewModel, INotifyDataErrorInfo
     {
         private readonly IFileService fileService;
         private readonly ICollectionView collectionView;
         private readonly IUiSynchronization uiSynchronization;
+        private readonly IValidator<NewFileViewModel> validator;
+
+        private ValidationResult validationResult;
 
         public NewFileViewModel(IShell shell, IUiSynchronization uiSynchronization)
         {
             this.uiSynchronization = uiSynchronization;
             fileService = shell.GetService<IFileService>();
+            validator = new NewFileViewModelValidations();
 
             AvaliableTypes = new BindableCollection<IFileDescription>();
             collectionView = CollectionViewSource.GetDefaultView(AvaliableTypes);
@@ -41,6 +47,10 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             FileName = NewFileResources.Untitled;
             DisplayName = NewFileResources.NewFile;
         }
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        public bool HasErrors => !validationResult.IsValid;
 
         public IEnumerable<SortModeModel> SortModes { get; }
 
@@ -84,20 +94,27 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             set
             {
                 SetProperty(() => SelectedType, value);
-                UpdateSelectedFileExtension();
+                Validate(nameof(SelectedType));
+                RaisePropertyChanged(() => CanOpen);
             }
         }
 
         public string FileName
         {
             get => GetProperty(() => FileName);
-            set => SetProperty(() => FileName, value);
+            set
+            {
+                SetProperty(() => FileName, value);
+                Validate(nameof(FileName));
+                RaisePropertyChanged(() => CanOpen);
+            }
         }
 
-        private void UpdateSelectedFileExtension()
+        public bool CanOpen => !HasErrors;
+
+        public IEnumerable GetErrors(string propertyName)
         {
-            var withoutExtension = Path.GetFileNameWithoutExtension(FileName);
-            FileName = $"{withoutExtension}{SelectedType?.Extension}";
+            return validationResult?.Errors.Where(e => e.PropertyName == propertyName);
         }
 
         private Task LoadAvaliableTypes()
@@ -130,6 +147,12 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             return fileDescription.DisplayName.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)
                 || fileDescription.Description.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)
                 || fileDescription.Extension.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase);
+        }
+
+        private void Validate(string propertyName)
+        {
+            validationResult = validator.Validate(this, propertyName);
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
     }
 

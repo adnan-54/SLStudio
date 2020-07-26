@@ -1,12 +1,12 @@
 ﻿<studio:DialogWindow x:Class="SLStudio.Core.Modules.NewFile.Views.NewFileView"
                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                     xmlns:resx="clr-namespace:SLStudio.Core.Modules.NewFile.Resources"
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                      xmlns:studio="clr-namespace:SLStudio.Core"
+                     xmlns:resx="clr-namespace:SLStudio.Core.Modules.NewFile.Resources"
                      mc:Ignorable="d" Height="660" Width="955" MinHeight="450" MinWidth="800"
                      ShowMinButton="False" ShowMaxRestoreButton="False">
     <!--Content-->
@@ -23,6 +23,7 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--InputBindings-->
         <Grid.InputBindings>
             <KeyBinding Key="E" Modifiers="Ctrl" Command="{DXCommand '@e(searchBox).Focus()'}" />
         </Grid.InputBindings>
@@ -60,7 +61,8 @@
         <ListBox Grid.Row="1" Grid.Column="0"
                  Margin="{StaticResource UpMargin}"
                  ItemsSource="{Binding AvaliableTypes}"
-                 SelectedItem="{Binding SelectedType}">
+                 SelectedItem="{Binding SelectedType}"
+                 Validation.ErrorTemplate="{x:Null}">
             <!--Behaviors-->
             <dxmvvm:Interaction.Behaviors>
                 <dxmvvm:FocusBehavior FocusDelay="00:00:00.1" Event="Loaded" />
@@ -118,14 +120,15 @@
             <!--FileName-->
             <TextBox Grid.Column="1"
                      Margin="{StaticResource LeftMargin}"
-                     Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" />
+                     Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}"
+                     metro:TextBoxHelper.SelectAllOnFocus="True" />
         </Grid>
 
         <!--Actions-->
         <StackPanel Grid.Row="3" Grid.Column="1"
                     Style="{StaticResource StudioActionsStackPanelStyle}">
-            <Button Content="{x:Static resx:NewFileResources.Open}"
-                    IsDefault="True" />
+            <Button Content="{x:Static resx:NewFileResources.Open}" IsDefault="True"
+                    Command="{DXCommand 'TryClose(true)', CanExecute='CanOpen'}" />
 
             <Button Content="{x:Static resx:NewFileResources.Cancel}"
                     IsCancel="True" />

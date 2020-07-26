@@ -3,6 +3,7 @@
 
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ComboBoxItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ValidationErrorTemplate.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!--ComboBoxDropDownButton-->
@@ -14,7 +15,6 @@
         <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="OverridesDefaultStyle" Value="True" />
         <Setter Property="SnapsToDevicePixels" Value="True" />
-        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ToggleButton}">
@@ -143,6 +143,7 @@
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
+        <Setter Property="Validation.ErrorTemplate" Value="{StaticResource StudioErrorValidationTemplate}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
