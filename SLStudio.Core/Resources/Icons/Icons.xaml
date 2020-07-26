@@ -401,4 +401,28 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+
+    <!--Magnifier-->
+    <DrawingImage x:Key="Magnifier">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="M10.5 0A5.49 5.49 0 0 0 5.3 7.28L.59 12 4 15.41 8.72 10.7A5.5 5.5 0 1 0 10.5 0Z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="M10.5 1a4.47 4.47 0 0 0-4 6.51L2 12l2 2L8.49 9.51A4.49 4.49 0 1 0 10.5 1Zm0 7A2.5 2.5 0 1 1 13 5.5 2.5 2.5 0 0 1 10.5 8Z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Close-->
+    <DrawingImage x:Key="Close">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M8.707,8L12.353,11.646 11.646,12.354 8,8.707 4.353,12.354 3.646,11.646 7.293,8 3.646,4.354 4.353,3.646 8,7.293 11.646,3.646 12.353,4.354z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>

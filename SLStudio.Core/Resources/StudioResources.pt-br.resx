@@ -162,4 +162,7 @@
   <data name="Help" xml:space="preserve">
     <value>Ajuda</value>
   </data>
+  <data name="NewFileMenu" xml:space="preserve">
+    <value>Arquivo...</value>
+  </data>
 </root>

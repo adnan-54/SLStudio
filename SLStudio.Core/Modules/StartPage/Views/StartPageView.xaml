@@ -62,7 +62,7 @@
                         <!--Search-->
                         <TextBox Grid.Column="0" x:Name="searchBox" Width="350"
                                  Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}"
-                                 Style="{StaticResource MahApps.Styles.TextBox.Search}"
+                                 Style="{StaticResource StudioSearchTextBoxStyle}"
                                  metro:TextBoxHelper.Watermark="{x:Static properties:StartPageResources.SearchRecent}" />
 
                         <!--ClearAll-->

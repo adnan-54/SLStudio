@@ -142,6 +142,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File....
+        /// </summary>
+        public static string NewFileMenu {
+            get {
+                return ResourceManager.GetString("NewFileMenu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Output.
         /// </summary>
         public static string Output {

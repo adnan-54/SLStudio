@@ -23,7 +23,7 @@ namespace SLStudio.Core.Menus
         {
             Item(File, 0, StudioResources.File);
             Item(FileNew, 0, StudioResources.New);
-            Item<CreateNewFileHandler>(FileNewFile, 0, StudioResources.File, iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
+            Item<CreateNewFileHandler>(FileNewFile, 0, StudioResources.NewFileMenu, iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
 
             Item(View, 1, StudioResources.View);
             Item<ViewOutputHandler>(ViewOutput, 0, StudioResources.Output, iconSource: "Output");

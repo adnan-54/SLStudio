@@ -121,7 +121,7 @@
     <value>Abrir recente</value>
   </data>
   <data name="SearchRecent" xml:space="preserve">
-    <value>Pesquisa recente (Alt + S)</value>
+    <value>Pesquisar recentes (Alt+S)</value>
   </data>
   <data name="ClearAll" xml:space="preserve">
     <value>Limpar Tudo</value>

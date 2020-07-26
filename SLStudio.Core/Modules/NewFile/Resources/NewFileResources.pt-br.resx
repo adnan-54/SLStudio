@@ -130,4 +130,7 @@
   <data name="Untitled" xml:space="preserve">
     <value>Sem título</value>
   </data>
+  <data name="SearchWatermark" xml:space="preserve">
+    <value>Pesquisar (Ctrl+E)</value>
+  </data>
 </root>
