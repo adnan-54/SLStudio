@@ -31,7 +31,7 @@ namespace SLStudio.Core
 
         private void CreateFilesDescriptionDictionary()
         {
-            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.DefinedTypes);
+            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.DefinedTypes).Where(a => a.FullName.Contains("SLStudio", StringComparison.OrdinalIgnoreCase));
 
             foreach (var type in types)
             {

@@ -72,24 +72,33 @@
             <!--ItemTemplate-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Margin="{StaticResource SmallFullMargin}">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.TryClose(true)'}" />
+                        </Grid.InputBindings>
 
-                        <!--Icon-->
-                        <Image Grid.Column="0" Height="32"
-                               Source="{Binding IconSource}"
-                               metro:VisibilityHelper.IsVisible="{DXBinding '@a($ListBox).DataContext.ShowLargeIcons'}" />
+                        <StackPanel Orientation="Horizontal" Margin="{StaticResource FullMargin}">
+                            <!--Icon-->
+                            <Image Grid.Column="0" Height="32"
+                                   Source="{Binding IconSource}"
+                                   metro:VisibilityHelper.IsVisible="{DXBinding '@a($ListBox).DataContext.ShowLargeIcons'}" />
 
-                        <!--File Title-->
-                        <TextBlock Grid.Column="1" Margin="{StaticResource LargeLeftMargin}"
-                                   VerticalAlignment="Center"
-                                   Text="{Binding DisplayName}" />
+                            <!--File Title-->
+                            <TextBlock Grid.Column="1" Margin="{StaticResource LargeLeftMargin}"
+                                       VerticalAlignment="Center"
+                                       Text="{Binding DisplayName}" />
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
+
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                    <Setter Property="Padding" Value="0" />
+                </Style>
+            </ListBox.ItemContainerStyle>
         </ListBox>
 
         <!--Search-->
