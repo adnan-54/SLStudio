@@ -1,4 +1,6 @@
-﻿namespace SLStudio.Core
+﻿using System.Threading.Tasks;
+
+namespace SLStudio.Core
 {
     public interface IShell : IWindow
     {
@@ -6,10 +8,10 @@
 
         BindableCollection<IToolPanel> Tools { get; }
 
-        IWorkspacePanel SelectedItem { get; }
+        IPanelItem SelectedItem { get; }
 
-        void OpenPanel(IWorkspacePanel item);
+        Task OpenPanel(IPanelItem item);
 
-        void ClosePanel(IWorkspacePanel item);
+        Task ClosePanel(IPanelItem item);
     }
 }

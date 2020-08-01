@@ -127,60 +127,17 @@
 
             <!--LayoutInitializer-->
             <avalonDock:DockingManager.LayoutUpdateStrategy>
-                <docking:LayoutInitializer />
+                <studio:LayoutInitializer />
             </avalonDock:DockingManager.LayoutUpdateStrategy>
 
             <!--TemplateSelector-->
             <avalonDock:DockingManager.LayoutItemTemplateSelector>
-                <docking:PanesTemplateSelector>
-                    <!--DocumentTemplate-->
-                    <docking:PanesTemplateSelector.DocumentTemplate>
-                        <DataTemplate>
-                            <ContentControl studio:ViewBinder.Bind="{Binding}" IsTabStop="False" Focusable="False" />
-                        </DataTemplate>
-                    </docking:PanesTemplateSelector.DocumentTemplate>
-
-                    <!--ToolTemplate-->
-                    <docking:PanesTemplateSelector.ToolTemplate>
-                        <DataTemplate>
-                            <ContentControl studio:ViewBinder.Bind="{Binding}" IsTabStop="False" Focusable="False" />
-                        </DataTemplate>
-                    </docking:PanesTemplateSelector.ToolTemplate>
-                </docking:PanesTemplateSelector>
+                <docking:PanesTemplateSelector />
             </avalonDock:DockingManager.LayoutItemTemplateSelector>
 
             <!--StyleSelector-->
             <avalonDock:DockingManager.LayoutItemContainerStyleSelector>
-                <docking:PanesStyleSelector>
-                    <!--DocumentStyle-->
-                    <docking:PanesStyleSelector.DocumentStyle>
-                        <Style TargetType="{x:Type avalonDock:LayoutItem}">
-                            <Setter Property="ContentId" Value="{Binding Model.Id}" />
-                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected}" />
-                            <Setter Property="IsActive" Value="{Binding Model.IsActive}" />
-                            <Setter Property="ToolTip" Value="{Binding Model.ToolTip}" />
-                            <Setter Property="Title">
-                                <Setter.Value>
-                                    <MultiBinding Converter="{StaticResource DocumentTitleConverter}">
-                                        <Binding Path="Model.DisplayName" Mode="OneWay" />
-                                        <Binding Path="Model.IsDirty" Mode="OneWay" />
-                                    </MultiBinding>
-                                </Setter.Value>
-                            </Setter>
-                        </Style>
-                    </docking:PanesStyleSelector.DocumentStyle>
-
-                    <!--ToolStyle-->
-                    <docking:PanesStyleSelector.ToolStyle>
-                        <Style TargetType="{x:Type avalonDock:LayoutAnchorableItem}">
-                            <Setter Property="ContentId" Value="{Binding Model.Id}" />
-                            <Setter Property="IsSelected" Value="{Binding Model.IsSelected}" />
-                            <Setter Property="Title" Value="{Binding Model.DisplayName}" />
-                            <Setter Property="IsActive" Value="{Binding Model.IsActive}" />
-                            <Setter Property="Visibility" Value="{Binding Model.IsClosed, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Visible}}" />
-                        </Style>
-                    </docking:PanesStyleSelector.ToolStyle>
-                </docking:PanesStyleSelector>
+                <docking:PanesStyleSelector />
             </avalonDock:DockingManager.LayoutItemContainerStyleSelector>
 
             <!--LayoutRoot-->

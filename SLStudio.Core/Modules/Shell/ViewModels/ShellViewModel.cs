@@ -1,17 +1,19 @@
 ﻿using SLStudio.Core.Modules.StartPage.ViewModels;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core.Modules.Shell.ViewModels
 {
     internal class ShellViewModel : WindowViewModel, IShell
     {
         private readonly ICommandLineArguments commandLineArguments;
+        private readonly IUiSynchronization uiSynchronization;
         private readonly IFileService fileService;
 
-        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository)
+        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository, IUiSynchronization uiSynchronization)
         {
             this.commandLineArguments = commandLineArguments;
-
+            this.uiSynchronization = uiSynchronization;
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentPanel>();
             Tools = new BindableCollection<IToolPanel>();
@@ -34,36 +36,30 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             set => SetProperty(() => StatusBar, value);
         }
 
-        public IWorkspacePanel SelectedItem
+        public IPanelItem SelectedItem
         {
             get => GetProperty(() => SelectedItem);
             set => SetProperty(() => SelectedItem, value);
         }
 
-        public void OpenPanel(IWorkspacePanel item)
+        public async Task OpenPanel(IPanelItem item)
         {
-            if (item is IDocumentPanel documentPanel)
-            {
-                if (!Documents.Any(d => d == documentPanel))
-                    Documents.Add(documentPanel);
-                documentPanel.Activate();
-            }
+            if (item is IDocumentPanel documentPanel && !Documents.Any(d => d == documentPanel))
+                Documents.Add(documentPanel);
             else
-            if (item is IToolPanel toolPanel)
-            {
-                if (!Tools.Any(t => t == toolPanel))
-                    Tools.Add(toolPanel);
-                toolPanel.Activate();
-            }
+            if (item is IToolPanel toolPanel && !Tools.Any(t => t == toolPanel))
+                Tools.Add(toolPanel);
+
+            await uiSynchronization.EnsureExecuteOnUiAsync(() => item.Activate());
         }
 
-        public void ClosePanel(IWorkspacePanel item)
+        public async Task ClosePanel(IPanelItem item)
         {
             if (item is IDocumentPanel documentPanel && Documents.Any(d => d == documentPanel))
-                Documents.Remove(documentPanel);
+                await uiSynchronization.EnsureExecuteOnUiAsync(() => Documents.Remove(documentPanel));
             else
             if (item is IToolPanel toolPanel && Tools.Any(t => t == toolPanel))
-                toolPanel.Close();
+                await uiSynchronization.EnsureExecuteOnUiAsync(() => toolPanel.Hide());
         }
 
         public override void OnLoaded()
@@ -71,8 +67,7 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             if (!Documents.Any())
             {
                 var startPage = new StartPageViewModel();
-                Documents.Add(startPage);
-                startPage.Activate();
+                OpenPanel(startPage).FireAndForget();
             }
         }
     }

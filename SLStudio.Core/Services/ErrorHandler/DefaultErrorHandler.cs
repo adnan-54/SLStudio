@@ -11,9 +11,10 @@ namespace SLStudio.Core.Services
         {
             logger.Error(exception);
             var output = IoC.Get<IOutput>();
+            var shell = IoC.Get<IShell>();
             if (output != null)
             {
-                output.Show();
+                shell.OpenPanel(output);
                 output.AppendLine($"{exception.Message}{Environment.NewLine}{exception}");
             }
         }

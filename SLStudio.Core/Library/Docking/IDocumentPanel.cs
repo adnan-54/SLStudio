@@ -2,7 +2,7 @@
 
 namespace SLStudio.Core
 {
-    public abstract class DocumentPanelBase : WorkspacePanel, IDocumentPanel
+    public class DocumentPanelBase : PanelBase, IDocumentPanel
     {
         public string ToolTip
         {
@@ -10,20 +10,21 @@ namespace SLStudio.Core
             set => SetProperty(() => ToolTip, value);
         }
 
-        public bool IsDirty
+        public virtual void OnClosing(DocumentClosingEventArgs e)
         {
-            get => GetProperty(() => IsDirty);
-            set => SetProperty(() => IsDirty, value);
         }
 
-        public override void OnClosed(DocumentClosedEventArgs e)
+        public virtual void OnClosed(DocumentClosedEventArgs e)
         {
         }
     }
 
-    public interface IDocumentPanel : IWorkspacePanel
+    public interface IDocumentPanel : IPanelItem
     {
-        string ToolTip { get; set; }
-        bool IsDirty { get; set; }
+        string ToolTip { get; }
+
+        void OnClosing(DocumentClosingEventArgs e);
+
+        void OnClosed(DocumentClosedEventArgs e);
     }
 }

@@ -147,6 +147,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Page Update="Resources\Controls\AvalonDock.xaml">
+	    <SubType>Designer</SubType>
+	  </Page>
 	  <Page Update="Resources\Controls\Label.xaml">
 	    <SubType>Designer</SubType>
 	  </Page>

@@ -4,6 +4,7 @@
                     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:studio="clr-namespace:SLStudio.Core">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/AvalonDock.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/AvalonEdit.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/BusyIndicator.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Button.xaml" />

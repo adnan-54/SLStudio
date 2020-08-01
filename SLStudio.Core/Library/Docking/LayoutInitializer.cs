@@ -3,7 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace SLStudio.Core.Docking
+namespace SLStudio.Core
 {
     public class LayoutInitializer : ILayoutUpdateStrategy
     {
@@ -50,10 +50,12 @@ namespace SLStudio.Core.Docking
                         case ToolPlacement.Left:
                         case ToolPlacement.Right:
                             anchorablePane.DockWidth = new GridLength(tool.Width, GridUnitType.Pixel);
+                            anchorableShown.AutoHideWidth = tool.Width * 0.75;
                             break;
 
                         case ToolPlacement.Bottom:
                             anchorablePane.DockHeight = new GridLength(tool.Height, GridUnitType.Pixel);
+                            anchorableShown.AutoHideHeight = tool.Height * 0.75;
                             break;
                     }
                 }

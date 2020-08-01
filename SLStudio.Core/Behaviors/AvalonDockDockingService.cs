@@ -42,21 +42,21 @@ namespace SLStudio.Core.Docking
 
         public void OnActiveContentChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is IWorkspacePanel newItem)
+            if (e.NewValue is IPanelItem newItem)
                 newItem.OnActivated();
-            if (e.OldValue is IWorkspacePanel oldItem)
+            if (e.OldValue is IPanelItem oldItem)
                 oldItem.OnDeactivated();
         }
 
         private void OnDocumentClosing(object sender, DocumentClosingEventArgs e)
         {
-            if (e.Document.Content is IWorkspacePanel panel)
+            if (e.Document.Content is IDocumentPanel panel)
                 panel.OnClosing(e);
         }
 
         private void OnDocumentClosed(object sender, DocumentClosedEventArgs e)
         {
-            if (e.Document.Content is IWorkspacePanel panel)
+            if (e.Document.Content is IDocumentPanel panel)
             {
                 panel.OnClosed(e);
                 shell?.ClosePanel(panel);

@@ -13,10 +13,9 @@ namespace SLStudio.Core.Menus.Handlers
             this.output = output;
         }
 
-        public override Task Execute(IMenuItem menu, object parameter)
+        public override async Task Execute(IMenuItem menu, object parameter)
         {
-            shell.OpenPanel(output);
-            return Task.CompletedTask;
+            await shell.OpenPanel(output);
         }
     }
 }
