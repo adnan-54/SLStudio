@@ -165,4 +165,10 @@
   <data name="NewFileMenu" xml:space="preserve">
     <value>Arquivo...</value>
   </data>
+  <data name="Search" xml:space="preserve">
+    <value>Pesquisar</value>
+  </data>
+  <data name="Clear" xml:space="preserve">
+    <value>Limpar</value>
+  </data>
 </root>

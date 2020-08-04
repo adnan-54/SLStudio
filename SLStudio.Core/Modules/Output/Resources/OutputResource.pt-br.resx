@@ -110,7 +110,7 @@
     <value>Localizar Tudo</value>
   </data>
   <data name="FindPrevious" xml:space="preserve">
-    <value>Encontrar Anterior</value>
+    <value>Localizar Anterior</value>
   </data>
   <data name="FindNext" xml:space="preserve">
     <value>Localizar Próximo</value>

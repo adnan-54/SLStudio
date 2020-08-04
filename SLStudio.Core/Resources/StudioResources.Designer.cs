@@ -61,6 +61,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Clear.
+        /// </summary>
+        public static string Clear {
+            get {
+                return ResourceManager.GetString("Clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The key combination ({0}) is not a command..
         /// </summary>
         public static string CombinationIsNotACommand {
@@ -174,6 +183,15 @@ namespace SLStudio.Core.Resources {
         public static string RunningModule {
             get {
                 return ResourceManager.GetString("RunningModule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
             }
         }
         
