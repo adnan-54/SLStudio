@@ -111,12 +111,13 @@
 
         <!--AvalonDock-->
         <avalonDock:DockingManager Grid.Row="1" ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
-                                   AnchorablesSource="{Binding Tools}" DocumentsSource="{Binding Documents}">
+                                   AnchorablesSource="{Binding Tools}" DocumentsSource="{Binding Documents}" AllowMixedOrientation="True">
             <!--Resources-->
             <avalonDock:DockingManager.Resources>
                 <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource StudioMenuStyle}" />
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource StudioMenuItemStyle}" />
                 <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource StudioContextMenuStyle}" />
+                <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource StudioToolTipStyle}"/>
             </avalonDock:DockingManager.Resources>
 
             <!--Behaviors-->

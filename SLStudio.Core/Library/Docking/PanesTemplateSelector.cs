@@ -20,10 +20,10 @@ namespace SLStudio.Core.Docking
         {
             if (item is IToolPanel)
                 return toolTemplate;
-            if (item is IDocumentPanel)
-                return documentTemplate;
             if (item is IFileDocumentPanel)
                 return fileDocumentTemplate;
+            if (item is IDocumentPanel)
+                return documentTemplate;
 
             return base.SelectTemplate(item, container);
         }

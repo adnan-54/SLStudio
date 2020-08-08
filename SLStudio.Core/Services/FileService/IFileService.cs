@@ -1,7 +1,9 @@
-﻿using System;
+﻿using SLStudio.Core.Resources;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
@@ -11,6 +13,7 @@ namespace SLStudio.Core
         private readonly IObjectFactory objectFactory;
         private readonly IRecentFilesRepository recentFilesRepository;
         private readonly Dictionary<string, IFileDescription> filesDescription;
+        private int createdFiles = 0;
 
         public DefaultFileService(IShell shell, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository)
         {
@@ -22,11 +25,31 @@ namespace SLStudio.Core
             CreateFilesDescriptionDictionary();
         }
 
-        public bool CanEdit(string extension) => filesDescription.ContainsKey(Path.GetExtension(extension));
+        bool IFileService.CanEdit(string extension) => filesDescription.ContainsKey(Path.GetExtension(extension));
 
-        public IEnumerable<IFileDescription> GetFileDescriptions()
+        IEnumerable<IFileDescription> IFileService.GetFileDescriptions()
         {
             return filesDescription.Select(kvp => kvp.Value).Distinct();
+        }
+
+        async Task<IFileDocumentPanel> IFileService.Empty(string extension)
+        {
+            var description = GetFileDescription(extension);
+            var file = await OpenFileWorkspace(description.EditorType);
+            file.Activate();
+
+            return file;
+        }
+
+        async Task<IFileDocumentPanel> IFileService.New(string extension, string displayName, string content)
+        {
+            var description = GetFileDescription(extension);
+            return await CreateNew(displayName, content, description.EditorType);
+        }
+
+        async Task<T> IFileService.New<T>(string displayName, string content)
+        {
+            return (T)await CreateNew(displayName, content, typeof(T));
         }
 
         private void CreateFilesDescriptionDictionary()
@@ -48,6 +71,37 @@ namespace SLStudio.Core
         {
             return fileType.GetCustomAttributes(typeof(FileEditorAttribute), false).Cast<FileEditorAttribute>().FirstOrDefault();
         }
+
+        private IFileDescription GetFileDescription(string extension)
+        {
+            if (!filesDescription.TryGetValue(extension, out IFileDescription description))
+                throw new InvalidOperationException($"the type {description.EditorType} is not registred");
+            return description;
+        }
+
+        private async Task<IFileDocumentPanel> OpenFileWorkspace(Type editor)
+        {
+            var file = objectFactory.Create(editor) as IFileDocumentPanel;
+            await shell.OpenPanel(file);
+            return file;
+        }
+
+        private async Task<IFileDocumentPanel> CreateNew(string name, string content, Type fileType)
+        {
+            var file = await OpenFileWorkspace(fileType);
+            file.Activate();
+
+            var displayName = string.IsNullOrEmpty(name) ? $"{StudioResources.Untitled}{createdFiles++}" : name;
+            var ext = Path.GetExtension(displayName);
+            if (string.IsNullOrEmpty(ext))
+            {
+                ext = GetFileEditorAttribute(file.GetType())?.Extension;
+                displayName = $"{displayName}{ext}";
+            }
+            await file.New(displayName, content);
+
+            return file;
+        }
     }
 
     public interface IFileService
@@ -55,5 +109,19 @@ namespace SLStudio.Core
         bool CanEdit(string extension);
 
         IEnumerable<IFileDescription> GetFileDescriptions();
+
+        Task<IFileDocumentPanel> Empty(string extension);
+
+        Task<IFileDocumentPanel> New(string extension, string displayName = null, string content = null);
+
+        Task<T> New<T>(string displayName = null, string content = null) where T : class, IFileDocumentPanel;
+
+        //Task<IFileDocumentPanel> Open(string fileName);
+
+        //Task<T> Open<T>(string fileName) where T : class, IFileDocumentPanel;
+
+        //Task<bool> Save(IFileDocumentPanel file);
+
+        //Task<bool> SaveAs(IFileDocumentPanel file);
     }
 }

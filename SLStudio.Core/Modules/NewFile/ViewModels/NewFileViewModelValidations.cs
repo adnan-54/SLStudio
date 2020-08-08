@@ -1,9 +1,8 @@
 ﻿using FluentValidation;
 using SLStudio.Core.Modules.NewFile.Resources;
-using SLStudio.Core.Modules.NewFile.ViewModels;
 using System.Text.RegularExpressions;
 
-namespace SLStudio.Core.Modules.NewFile.Validations
+namespace SLStudio.Core.Modules.NewFile.ViewModels
 {
     internal class NewFileViewModelValidations : AbstractValidator<NewFileViewModel>
     {

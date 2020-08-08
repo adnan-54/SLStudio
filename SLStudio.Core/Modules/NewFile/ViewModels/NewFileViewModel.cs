@@ -2,19 +2,17 @@
 using FluentValidation;
 using FluentValidation.Results;
 using SLStudio.Core.Modules.NewFile.Resources;
-using SLStudio.Core.Modules.NewFile.Validations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.NewFile.ViewModels
 {
-    internal class NewFileViewModel : WindowViewModel, INotifyDataErrorInfo
+    internal partial class NewFileViewModel : WindowViewModel, INewFileDialog, INotifyDataErrorInfo
     {
         private readonly IFileService fileService;
         private readonly ICollectionView collectionView;
@@ -67,14 +65,8 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
         public bool ShowLargeIcons
         {
             get => GetProperty(() => ShowLargeIcons);
-            set
-            {
-                SetProperty(() => ShowLargeIcons, value);
-                RaisePropertyChanged(() => ShowSmallIcons);
-            }
+            set => SetProperty(() => ShowLargeIcons, value);
         }
-
-        public bool ShowSmallIcons => !ShowLargeIcons;
 
         public string SearchTerm
         {
@@ -115,6 +107,15 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
         public IEnumerable GetErrors(string propertyName)
         {
             return validationResult?.Errors.Where(e => e.PropertyName == propertyName);
+        }
+
+        public async Task OpenFile()
+        {
+            if (!CanOpen)
+                return;
+
+            await fileService.New(SelectedType.Extension, FileName);
+            TryClose(true);
         }
 
         private Task LoadAvaliableTypes()

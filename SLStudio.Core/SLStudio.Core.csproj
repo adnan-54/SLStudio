@@ -6,6 +6,7 @@
 		<UseWPF>true</UseWPF>
 		<AssemblyVersion>20.6.55.56</AssemblyVersion>
 		<FileVersion>20.6.55.56</FileVersion>
+		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,6 +28,15 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="Syncfusion.Shared.Wpf">
+	    <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\WPF\18.2.0.44\Assemblies\4.6\Syncfusion.Shared.Wpf.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Syncfusion.Tools.Wpf">
+	    <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\WPF\18.2.0.44\Assemblies\4.6\Syncfusion.Tools.WPF.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>

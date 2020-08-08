@@ -171,4 +171,10 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Untitled</value>
+  </data>
+  <data name="Toolbox" xml:space="preserve">
+    <value>Toolbox</value>
+  </data>
 </root>

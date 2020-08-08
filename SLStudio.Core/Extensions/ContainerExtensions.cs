@@ -12,7 +12,7 @@ namespace SLStudio.Core
             registration.SuppressDiagnosticWarning(DiagnosticType.DisposableTransientComponent, "We should dispose ourselves");
         }
 
-        public static void RegisterServiceAndImplementationAsSingleton<TService, TImplementation>(this Container container) where TService : class where TImplementation : class, TService
+        public static void RegisterService<TService, TImplementation>(this Container container) where TService : class where TImplementation : class, TService
         {
             container.RegisterSingleton<TImplementation>();
             container.RegisterSingleton<TService, TImplementation>();

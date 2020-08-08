@@ -4,6 +4,12 @@ namespace SLStudio.Core
 {
     public class DocumentPanelBase : PanelBase, IDocumentPanel
     {
+        public IToolboxContent ToolboxContent
+        {
+            get => GetProperty(() => ToolboxContent);
+            protected set => SetProperty(() => ToolboxContent, value);
+        }
+
         public string ToolTip
         {
             get => GetProperty(() => ToolTip);
@@ -19,7 +25,7 @@ namespace SLStudio.Core
         }
     }
 
-    public interface IDocumentPanel : IPanelItem
+    public interface IDocumentPanel : IPanelItem, IHaveToolbox
     {
         string ToolTip { get; }
 

@@ -19,11 +19,13 @@ namespace SLStudio.Core.Docking
 
         private readonly IShell shell;
         private readonly IThemeManager themeManager;
+        private readonly IToolbox toolbox;
 
         public AvalonDockDockingService()
         {
             shell = IoC.Get<IShell>();
             themeManager = IoC.Get<IThemeManager>();
+            toolbox = IoC.Get<IToolbox>();
         }
 
         protected override void OnAttached()
@@ -43,9 +45,17 @@ namespace SLStudio.Core.Docking
         public void OnActiveContentChanged(DependencyPropertyChangedEventArgs e)
         {
             if (e.NewValue is IPanelItem newItem)
+            {
                 newItem.OnActivated();
+                UpdateToolbox(newItem);
+            }
             if (e.OldValue is IPanelItem oldItem)
                 oldItem.OnDeactivated();
+        }
+
+        private void UpdateToolbox(IPanelItem item)
+        {
+            toolbox.SetContent(item);
         }
 
         private void OnDocumentClosing(object sender, DocumentClosingEventArgs e)

@@ -12,6 +12,7 @@ namespace SLStudio.Core.Menus
 
         public static string View = "view";
         public static string ViewOutput = $"{View}/output";
+        public static string ViewToolBox = $"{View}/toolbox";
 
         public static string Tools = "tools";
         public static string ToolsOptions = $"{Tools}/options";
@@ -27,6 +28,7 @@ namespace SLStudio.Core.Menus
 
             Item(View, 1, StudioResources.View);
             Item<ViewOutputHandler>(ViewOutput, 0, StudioResources.Output, iconSource: "Output");
+            Item<ViewToolboxHandler>(ViewToolBox, 1, StudioResources.Toolbox, iconSource: "Toolbox");
 
             Item(Tools, 2, StudioResources.MenuTools);
             Item<ShowOptionsHandler>(ToolsOptions, 999, StudioResources.MenuOptions, iconSource: "Settings");

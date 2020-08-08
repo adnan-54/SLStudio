@@ -42,7 +42,6 @@
 
             <!--ShowSmallIcons-->
             <RadioButton Margin="{StaticResource LeftMargin}"
-                         IsChecked="{Binding ShowSmallIcons, Mode=OneWay}"
                          Style="{StaticResource StudioContentOnlyRadioButtonStyle}"
                          ToolTip="{x:Static resx:NewFileResources.SmallIcons}">
                 <Image Source="{StaticResource ItemListView}" />
@@ -60,7 +59,7 @@
         <!--AvaliableFiles-->
         <ListBox Grid.Row="1" Grid.Column="0"
                  Margin="{StaticResource UpMargin}"
-                 ItemsSource="{Binding AvaliableTypes}"
+                 ItemsSource="{Binding AvaliableTypes, IsAsync=True}"
                  SelectedItem="{Binding SelectedType}"
                  Validation.ErrorTemplate="{x:Null}">
             <!--Behaviors-->
@@ -134,10 +133,10 @@
         </Grid>
 
         <!--Actions-->
-        <StackPanel Grid.Row="3" Grid.Column="1"
+        <StackPanel Grid.Row="2" Grid.Column="1"
                     Style="{StaticResource StudioActionsStackPanelStyle}">
             <Button Content="{x:Static resx:NewFileResources.Open}" IsDefault="True"
-                    Command="{DXCommand 'TryClose(true)', CanExecute='CanOpen'}" />
+                    Command="{DXCommand 'OpenFile()', CanExecute='CanOpen'}" />
 
             <Button Content="{x:Static resx:NewFileResources.Cancel}"
                     IsCancel="True" />

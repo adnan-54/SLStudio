@@ -1,18 +1,39 @@
-﻿namespace SLStudio.Core.Modules.ToolBox.ViewModels
+﻿using System;
+
+namespace SLStudio.Core.Modules.ToolBox.ViewModels
 {
-    internal class ToolBoxViewModel : ToolPanelBase
+    internal class ToolBoxViewModel : ToolPanelBase, IToolbox
     {
+        private readonly IToolboxContent defaultContent;
+
         public ToolBoxViewModel()
         {
+            defaultContent = new DefaultContentViewModel();
             DisplayName = "Toolbox";
         }
 
         public override ToolPlacement Placement => ToolPlacement.Left;
 
-        public string TestText
+        public IToolboxContent ToolboxContent
         {
-            get => GetProperty(() => TestText);
-            set => SetProperty(() => TestText, value);
+            get => GetProperty(() => ToolboxContent);
+            set
+            {
+                if (ToolboxContent == value)
+                    return;
+                SetProperty(() => ToolboxContent, value);
+            }
+        }
+
+        public void SetContent(IPanelItem host)
+        {
+            if (host is IHaveToolbox toolboxHost)
+            {
+                if (toolboxHost.ToolboxContent != null)
+                    ToolboxContent = toolboxHost.ToolboxContent;
+                else
+                    ToolboxContent = defaultContent;
+            }
         }
     }
 }

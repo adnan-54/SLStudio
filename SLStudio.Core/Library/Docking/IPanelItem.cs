@@ -1,7 +1,5 @@
-﻿using AvalonDock;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using System;
-using System.Windows.Input;
 
 namespace SLStudio.Core
 {
