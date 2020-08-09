@@ -103,4 +103,16 @@
   <data name="rpkEditorName" xml:space="preserve">
     <value>Arquivo Rpk</value>
   </data>
+  <data name="Code" xml:space="preserve">
+    <value>Código</value>
+  </data>
+  <data name="Design" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="Stats" xml:space="preserve">
+    <value>Estatísticas</value>
+  </data>
+  <data name="SearchAltS" xml:space="preserve">
+    <value>Pesquisar (Alt + S)</value>
+  </data>
 </root>

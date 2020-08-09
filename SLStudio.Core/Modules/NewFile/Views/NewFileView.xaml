@@ -71,9 +71,9 @@
             <!--ItemTemplate-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid Background="Transparent">
                         <Grid.InputBindings>
-                            <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.TryClose(true)'}" />
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.OpenFile()'}" />
                         </Grid.InputBindings>
 
                         <StackPanel Orientation="Horizontal" Margin="{StaticResource FullMargin}">
@@ -128,8 +128,7 @@
             <!--FileName-->
             <TextBox Grid.Column="1"
                      Margin="{StaticResource LeftMargin}"
-                     Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}"
-                     metro:TextBoxHelper.SelectAllOnFocus="True" />
+                     Text="{Binding FileName, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
         <!--Actions-->

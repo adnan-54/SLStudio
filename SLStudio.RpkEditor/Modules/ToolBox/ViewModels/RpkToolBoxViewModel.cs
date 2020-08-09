@@ -7,13 +7,6 @@ namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
     {
         public RpkToolBoxViewModel()
         {
-            Teste = "aaaaaaaaaaa to com depressão em";
-        }
-
-        public string Teste
-        {
-            get => GetProperty(() => Teste);
-            set => SetProperty(() => Teste, value);
         }
     }
 }

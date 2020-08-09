@@ -14,6 +14,6 @@
         <TextBox Grid.Row="0" Style="{StaticResource StudioSearchTextBoxStyle}" />
 
         <!--Items-->
-        <TreeView Grid.Row="1" BorderThickness="0" Margin="3"/>
+        <TreeView Grid.Row="1" BorderThickness="0" Margin="3" />
     </Grid>
 </UserControl>

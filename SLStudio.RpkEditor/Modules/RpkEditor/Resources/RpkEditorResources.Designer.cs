@@ -61,6 +61,24 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string Code {
+            get {
+                return ResourceManager.GetString("Code", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Design.
+        /// </summary>
+        public static string Design {
+            get {
+                return ResourceManager.GetString("Design", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A blank resource package file..
         /// </summary>
         public static string rpkEditorDescription {
@@ -75,6 +93,24 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.Resources {
         public static string rpkEditorName {
             get {
                 return ResourceManager.GetString("rpkEditorName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search (Alt + S).
+        /// </summary>
+        public static string SearchAltS {
+            get {
+                return ResourceManager.GetString("SearchAltS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stats.
+        /// </summary>
+        public static string Stats {
+            get {
+                return ResourceManager.GetString("Stats", resourceCulture);
             }
         }
     }

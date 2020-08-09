@@ -171,4 +171,10 @@
   <data name="Clear" xml:space="preserve">
     <value>Limpar</value>
   </data>
+  <data name="Untitled" xml:space="preserve">
+    <value>Sem título</value>
+  </data>
+  <data name="Toolbox" xml:space="preserve">
+    <value>Caixa de ferramentas</value>
+  </data>
 </root>

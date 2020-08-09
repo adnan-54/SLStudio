@@ -1,4 +1,4 @@
-﻿using System;
+﻿using SLStudio.Core.Resources;
 
 namespace SLStudio.Core.Modules.ToolBox.ViewModels
 {
@@ -9,7 +9,7 @@ namespace SLStudio.Core.Modules.ToolBox.ViewModels
         public ToolBoxViewModel()
         {
             defaultContent = new DefaultContentViewModel();
-            DisplayName = "Toolbox";
+            DisplayName = StudioResources.Toolbox;
         }
 
         public override ToolPlacement Placement => ToolPlacement.Left;

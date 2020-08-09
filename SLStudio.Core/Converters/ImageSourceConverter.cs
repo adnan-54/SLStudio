@@ -29,12 +29,15 @@ namespace SLStudio.Core.Converters
                 return new BitmapImage(uri);
             }
 
+            if (value != null && WpfHelpers.TryFindResource("DocumentError", out DrawingImage notFoundImage))
+                return notFoundImage;
+
             return Binding.DoNothing;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return Binding.DoNothing;
         }
     }
 }
