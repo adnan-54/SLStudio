@@ -4,9 +4,9 @@ using System;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class SoundDefinition : ResourceDefinition
+    public class SoundDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.Sound;
+        public override ResourceType TypeOfEntry => ResourceType.Sound;
 
         public Sound Sound { get; set; }
 

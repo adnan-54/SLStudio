@@ -15,20 +15,15 @@ namespace SLStudio.Compilers
             foreach (var externalRef in rpk.ExternalRefs)
                 sb.AppendLine($"\t\t{externalRef.Path}");
             sb.AppendLine("\t</EXTERNAL_REFS>");
-            foreach (var mesh in rpk.Meshes)
+            foreach (var resource in rpk.Resources)
             {
                 sb.AppendLine("\t<RES>");
-                sb.AppendLine($"\t\tTypeID=0x{mesh.TypeId:X8}");
-                sb.AppendLine($"\t\tSuperID=0x{mesh.SuperId:X8}");
-                sb.AppendLine($"\t\tAdditionalType={mesh.AdditionalType}");
-                sb.AppendLine($"\t\tAlias={mesh.Alias}");
-                sb.AppendLine($"\t\tIsParentCompatible={Convert.ToInt32(mesh.IsParentCompatible)}");
-                sb.AppendLine($"\t\tTypeOfEntry={Convert.ToInt32(mesh.TypeOfEntry)}");
-                sb.AppendLine($"\t\t<RSD>");
-                sb.AppendLine($"\t\t\t<STR>");
-                sb.AppendLine($"\t\t\t\tsourcefile {mesh.Definition.SourceFile}");
-                sb.AppendLine($"\t\t\t</STR>");
-                sb.AppendLine($"\t\t/<RSD>");
+                sb.AppendLine($"\t\tTypeID=0x{resource.TypeId:X8}");
+                sb.AppendLine($"\t\tSuperID=0x{resource.SuperId:X8}");
+                sb.AppendLine($"\t\tAdditionalType={resource.AdditionalType}");
+                sb.AppendLine($"\t\tAlias={resource.Alias}");
+                sb.AppendLine($"\t\tIsParentCompatible={Convert.ToInt32(resource.IsParentCompatible)}");
+                sb.AppendLine($"\t\tTypeOfEntry={Convert.ToInt32(resource.TypeOfEntry)}");
                 sb.AppendLine("\t</RES>");
             }
             sb.AppendLine("</RPK>");

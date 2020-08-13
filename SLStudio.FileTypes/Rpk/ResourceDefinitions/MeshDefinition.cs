@@ -3,9 +3,9 @@ using SLStudio.FileTypes.MeshFile;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class MeshDefinition : ResourceDefinition
+    public class MeshDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.Mesh;
+        public override ResourceType TypeOfEntry => ResourceType.Mesh;
 
         public Mesh Mesh { get; set; }
 

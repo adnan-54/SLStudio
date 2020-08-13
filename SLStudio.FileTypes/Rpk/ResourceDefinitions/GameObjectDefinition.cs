@@ -4,11 +4,12 @@ using SLStudio.FileTypes.ClassFile;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class GameObjectDefinition : ResourceDefinition
+    public class GameObjectDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.GameObject;
+        public override ResourceType TypeOfEntry => ResourceType.GameObject;
 
         public Class Class { get; set; }
+
         public Cfg Configuration { get; set; }
 
         [ResourceAttribute("script", 0)]

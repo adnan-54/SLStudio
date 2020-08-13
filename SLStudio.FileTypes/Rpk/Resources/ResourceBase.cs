@@ -1,10 +1,12 @@
-﻿namespace SLStudio.FileTypes.RpkFile
+﻿using System.Threading;
+
+namespace SLStudio.FileTypes.RpkFile
 {
     public abstract class ResourceBase
     {
-        public Rpk ResourcePackage { get; set; }
+        public Rpk Parent { get; set; }
         public int TypeId { get; set; }
-        public abstract int SuperId { get; }
+        public int SuperId { get; set; }
         public virtual int AdditionalType { get; set; }
         public string Alias { get; set; }
         public bool IsParentCompatible { get; set; }

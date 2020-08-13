@@ -3,9 +3,9 @@ using SLStudio.FileTypes.MeshFile;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class ClickDefinition : ResourceDefinition
+    public class ClickDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.Click;
+        public override ResourceType TypeOfEntry => ResourceType.Click;
 
         public Mesh Mesh { get; set; }
 

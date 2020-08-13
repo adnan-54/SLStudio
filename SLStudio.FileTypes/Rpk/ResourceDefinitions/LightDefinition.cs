@@ -3,15 +3,15 @@ using SLStudio.GameTypes;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class LightDefinition : ResourceDefinition
+    public class LightDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.Light;
+        public override ResourceType TypeOfEntry => ResourceType.Light;
 
-        public Resource<TextureDefinition> LensFlare { get; set; }
+        public TextureDefinition LensFlare { get; set; }
 
-        public Resource<TextureDefinition> HorizontalAttenuation { get; set; }
+        public TextureDefinition HorizontalAttenuation { get; set; }
 
-        public Resource<TextureDefinition> VerticalAttenuation { get; set; }
+        public TextureDefinition VerticalAttenuation { get; set; }
 
         [ResourceAttribute("type", 0)]
         public LightSourceType Type { get; set; }

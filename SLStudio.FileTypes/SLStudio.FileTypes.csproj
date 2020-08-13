@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
     <ProjectReference Include="..\SLStudio.GameTypes\SLStudio.GameTypes.csproj" />
   </ItemGroup>
 

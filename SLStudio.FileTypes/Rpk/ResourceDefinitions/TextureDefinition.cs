@@ -3,11 +3,11 @@ using SLStudio.FileTypes.TextureFile;
 
 namespace SLStudio.FileTypes.RpkFile
 {
-    public class TextureDefinition : ResourceDefinition
+    public class TextureDefinition : ResourceBase
     {
-        internal override ResourceType TypeOfEntry => ResourceType.Texture;
+        public override int AdditionalType => 4;
 
-        internal override int AdditionalType => 4;
+        public override ResourceType TypeOfEntry => ResourceType.Texture;
 
         public Texture Texture { get; set; }
 

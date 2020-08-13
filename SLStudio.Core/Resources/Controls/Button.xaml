@@ -131,10 +131,10 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ButtonBase}">
                     <ContentPresenter x:Name="contentPresenter" Focusable="False"
-                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                        Margin="{TemplateBinding Padding}"
-                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
-                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      Margin="{TemplateBinding Padding}"
+                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
