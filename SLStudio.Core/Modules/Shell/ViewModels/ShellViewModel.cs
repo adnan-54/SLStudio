@@ -8,7 +8,6 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
     {
         private readonly ICommandLineArguments commandLineArguments;
         private readonly IUiSynchronization uiSynchronization;
-        private readonly IFileService fileService;
 
         public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository, IUiSynchronization uiSynchronization)
         {
@@ -17,9 +16,6 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentPanel>();
             Tools = new BindableCollection<IToolPanel>();
-
-            fileService = new DefaultFileService(this, objectFactory, recentFilesRepository);
-            ServiceContainer.RegisterService(fileService);
 
             DisplayName = DebugMode ? "SLStudio (debug mode)" : "SLStudio";
         }

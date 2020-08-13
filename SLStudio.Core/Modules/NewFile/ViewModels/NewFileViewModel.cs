@@ -1,5 +1,4 @@
-﻿using DevExpress.Mvvm.POCO;
-using FluentValidation;
+﻿using FluentValidation;
 using FluentValidation.Results;
 using SLStudio.Core.Modules.NewFile.Resources;
 using System;
@@ -21,11 +20,11 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
 
         private ValidationResult validationResult;
 
-        public NewFileViewModel(IShell shell, IUiSynchronization uiSynchronization)
+        public NewFileViewModel(IFileService fileService, IUiSynchronization uiSynchronization)
         {
+            this.fileService = fileService;
             this.uiSynchronization = uiSynchronization;
-            fileService = shell.GetService<IFileService>();
-            validator = new NewFileViewModelValidations();
+            validator = new NewFileValidator();
 
             AvaliableTypes = new BindableCollection<IFileDescription>();
             collectionView = CollectionViewSource.GetDefaultView(AvaliableTypes);
@@ -152,7 +151,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
 
         private void Validate(string propertyName)
         {
-            validationResult = validator.Validate(this, propertyName);
+            validationResult = validator.Validate(this, options => options.IncludeProperties(propertyName));
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
     }

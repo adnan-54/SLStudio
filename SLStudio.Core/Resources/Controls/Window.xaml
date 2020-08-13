@@ -81,6 +81,8 @@
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="WindowState" Value="Maximized" />
+        <Setter Property="MinWidth" Value="800"/>
+        <Setter Property="MinHeight" Value="600"/>
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="IconTemplate">
             <Setter.Value>

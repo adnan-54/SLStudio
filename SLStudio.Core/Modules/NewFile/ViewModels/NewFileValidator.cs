@@ -4,9 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace SLStudio.Core.Modules.NewFile.ViewModels
 {
-    internal class NewFileViewModelValidations : AbstractValidator<NewFileViewModel>
+    internal class NewFileValidator : AbstractValidator<NewFileViewModel>
     {
-        public NewFileViewModelValidations()
+        public NewFileValidator()
         {
             RuleFor(vm => vm.FileName).Cascade(CascadeMode.Continue)
                 .Must(BeAValidFileName).WithMessage(NewFileResources.ValidationInvalidFileName)

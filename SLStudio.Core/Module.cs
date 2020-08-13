@@ -17,17 +17,20 @@ namespace SLStudio.Core
 
         protected override void Register(Container container)
         {
-            container.RegisterService<IErrorHandler, DefaultErrorHandler>();
-            container.RegisterService<IMenuItemFactory, DefaultMenuItemFactory>();
-            container.RegisterService<IMenuLookup, DefaultMenuLookup>();
-            container.RegisterService<IRecentFilesRepository, DefaultRecentFilesRespository>();
+            container.RegisterSingleton<IShell, ShellViewModel>();
 
+            container.RegisterSingleton<IFileService, DefaultFileService>();
+            container.RegisterSingleton<IRecentFilesRepository, DefaultRecentFilesRespository>();
             container.RegisterDisposable<INewFileDialog, NewFileViewModel>();
 
-            container.RegisterSingleton<IShell, ShellViewModel>();
-            container.RegisterSingleton<IStatusBar, StatusBarViewModel>();
-            container.RegisterSingleton<IOutput, OutputViewModel>();
-            container.RegisterSingleton<IToolbox, ToolBoxViewModel>();
+            container.RegisterSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
+            container.RegisterSingleton<IMenuLookup, DefaultMenuLookup>();
+
+            container.RegisterService<IToolbox, ToolBoxViewModel>();
+            container.RegisterService<IOutput, OutputViewModel>();
+            container.RegisterService<IStatusBar, StatusBarViewModel>();
+
+            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
         }
     }
 }

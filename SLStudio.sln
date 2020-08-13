@@ -29,9 +29,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Compilers", "SLStu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.TestConsole", "SLStudio.TestConsole\SLStudio.TestConsole.csproj", "{52D0C9BF-32BD-45D2-BAD7-76DDD6B5930E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.GameTypes", "SLStudio.GameTypes\SLStudio.GameTypes.csproj", "{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.GameTypes", "SLStudio.GameTypes\SLStudio.GameTypes.csproj", "{A912ECA0-D8F9-48E0-8116-7D5BA36A0C80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.RpkEditor", "SLStudio.RpkEditor\SLStudio.RpkEditor.csproj", "{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.RpkEditor", "SLStudio.RpkEditor\SLStudio.RpkEditor.csproj", "{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,8 +139,8 @@ Global
 		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		RESX_PrefixTranslations = False
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal
