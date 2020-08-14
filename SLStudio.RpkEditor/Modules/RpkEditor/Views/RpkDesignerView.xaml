@@ -5,6 +5,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:properties="clr-namespace:SLStudio.RpkEditor.Modules.RpkEditor.Resources"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:converters="clr-namespace:SLStudio.RpkEditor.Converters"
+             xmlns:gong="urn:gong-wpf-dragdrop"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <!--Content-->
     <Grid>
@@ -13,17 +15,27 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
+        <Grid.InputBindings>
+            <KeyBinding Key="S" Modifiers="Alt" Command="{DXCommand '@e(searchBox).Focus()'}" />
+        </Grid.InputBindings>
+
         <!--Search-->
-        <TextBox Grid.Row="0" BorderThickness="0"
+        <TextBox x:Name="searchBox" Grid.Row="0" BorderThickness="0"
                  metro:TextBoxHelper.Watermark="{x:Static properties:RpkEditorResources.SearchAltS}"
                  Style="{StaticResource StudioSearchTextBoxStyle}" />
 
         <!--Items-->
         <ListBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                 ItemsSource="{Binding Resources}"
                  SelectionMode="Extended" BorderThickness="0"
                  VirtualizingPanel.IsVirtualizing="True"
                  VirtualizingPanel.VirtualizationMode="Recycling"
-                 AlternationCount="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}">
+                 AlternationCount="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}"
+                 gong:DragDrop.IsDropTarget="True"
+                 gong:DragDrop.IsDragSource="True"
+                 gong:DragDrop.DropHandler="{Binding}"
+                 gong:DragDrop.UseDefaultDragAdorner="True">
+            <!--Resources-->
             <ListBox.Resources>
                 <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
                     <Setter Property="OverridesDefaultStyle" Value="True" />
@@ -79,8 +91,7 @@
                 </Style>
             </ListBox.Resources>
 
-            <ContentControl />
-
+            <!--ItemTemplate-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Height="48">
@@ -121,7 +132,7 @@
 
                         <!--Icon-->
                         <Image Grid.Column="1" Margin="6"
-                               Source="{StaticResource Image}" />
+                               Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
 
                         <!--Name/Description-->
                         <Grid Grid.Column="2" Margin="{StaticResource LeftMargin}">
@@ -130,25 +141,80 @@
                                 <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
+                            <!--Resources-->
+                            <Grid.Resources>
+                                <Style x:Key="HighlightTextblockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                    <Setter Property="Foreground" Value="{StaticResource Focused}" />
+                                    <Setter Property="FontStyle" Value="Italic" />
+                                    <Setter Property="FontSize" Value="16" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                            <Setter Property="Foreground" Value="Black" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Resources>
+
                             <!--Name-->
-                            <TextBlock Grid.Row="0" FontSize="18">
-                                <Run Text="Texture -" />
-                                <Run Text="nodamage.png" Foreground="Orange" FontStyle="Italic" />
-                            </TextBlock>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                <!--DisplayName-->
+                                <TextBlock Text="{Binding DisplayName, Mode=OneWay}" FontSize="16" />
+
+                                <!--Separator-->
+                                <TextBlock Text=" - " FontSize="16" />
+
+                                <!--Alias-->
+                                <TextBlock Text="{Binding Alias, Mode=OneWay}"
+                                           Style="{StaticResource HighlightTextblockStyle}"
+                                           metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNotNullConverter}}" />
+
+                                <!--TypeId-->
+                                <TextBlock Text="{Binding TypeId, Converter={converters:IntToHexIdConverter}}"
+                                           Style="{StaticResource HighlightTextblockStyle}"
+                                           metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNullConverter}}" />
+                            </StackPanel>
 
                             <!--Description-->
-                            <TextBlock Grid.Row="1">
-                                <Run Text="Load the file" />
-                                <Run Text="cars/racers/SkylineR34_data/Textures/nodamage.png" Foreground="Orange" />
-                                <Run Text="as a texture resource and assign the ID" />
-                                <Run Text="0x0000FFFF" Foreground="Orange" />
-                                <Run Text="to it." />
-                            </TextBlock>
+                            <ItemsControl Grid.Row="1" ItemsSource="{Binding Description}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel Orientation="Horizontal" />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Margin="{StaticResource SmallRightMargin}"
+                                                   Text="{Binding Text}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Highlight}" Value="True">
+                                                            <Setter Property="Foreground" Value="{StaticResource Focused}" />
+                                                            <Setter Property="FontStyle" Value="Italic" />
+                                                        </DataTrigger>
+
+                                                        <MultiDataTrigger>
+                                                            <MultiDataTrigger.Conditions>
+                                                                <Condition Binding="{Binding Highlight}" Value="True" />
+                                                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True" />
+                                                            </MultiDataTrigger.Conditions>
+
+                                                            <Setter Property="Foreground" Value="Black" />
+                                                        </MultiDataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
                         </Grid>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
+            <!--ItemContainerStyle-->
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                     <Setter Property="Margin" Value="0" />

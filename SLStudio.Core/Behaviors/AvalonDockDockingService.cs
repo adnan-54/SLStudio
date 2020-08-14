@@ -21,6 +21,8 @@ namespace SLStudio.Core.Docking
         private readonly IThemeManager themeManager;
         private readonly IToolbox toolbox;
 
+        private IDocumentPanel documentToClose;
+
         public AvalonDockDockingService()
         {
             shell = IoC.Get<IShell>();
@@ -44,32 +46,35 @@ namespace SLStudio.Core.Docking
 
         public void OnActiveContentChanged(DependencyPropertyChangedEventArgs e)
         {
-            if (e.NewValue is IPanelItem newItem)
-            {
-                newItem.OnActivated();
-                UpdateToolbox(newItem);
-            }
-            if (e.OldValue is IPanelItem oldItem)
-                oldItem.OnDeactivated();
-        }
+            var newItem = e.NewValue as IPanelItem;
+            var oldItem = e.OldValue as IPanelItem;
 
-        private void UpdateToolbox(IPanelItem item)
-        {
-            toolbox.SetContent(item);
+            newItem?.OnActivated();
+            oldItem?.OnDeactivated();
+
+            UpdateToolbox(newItem);
         }
 
         private void OnDocumentClosing(object sender, DocumentClosingEventArgs e)
         {
-            if (e.Document.Content is IDocumentPanel panel)
-                panel.OnClosing(e);
+            var panel = e.Document.Content as IDocumentPanel;
+
+            panel?.OnClosing(e);
+
+            if (!e.Cancel)
+            {
+                UpdateToolbox(null);
+                documentToClose = panel;
+            }
         }
 
         private void OnDocumentClosed(object sender, DocumentClosedEventArgs e)
         {
-            if (e.Document.Content is IDocumentPanel panel)
+            if (documentToClose != null)
             {
-                panel.OnClosed(e);
-                shell?.ClosePanel(panel);
+                documentToClose.OnClosed(e);
+                shell?.ClosePanel(documentToClose);
+                documentToClose = null;
             }
         }
 
@@ -84,6 +89,11 @@ namespace SLStudio.Core.Docking
                 window.ShowInTaskbar = true;
                 window.Title = "SLStudio";
             }
+        }
+
+        private void UpdateToolbox(IPanelItem item)
+        {
+            toolbox.SetContent(item);
         }
 
         protected override void OnDetaching()

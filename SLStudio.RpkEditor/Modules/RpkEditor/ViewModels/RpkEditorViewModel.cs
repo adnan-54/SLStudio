@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 {
-    [FileEditor(".rpk", "rpkEditorName", "rpkEditorDescription", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/rpkFileIcon.png")]
+    [FileEditor(".rpk", "rpkEditorName", "rpkEditorDescription", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png")]
     internal class RpkEditorViewModel : FileDocumentPanelBase, IRpkEditor
     {
         private readonly BindableCollection<RpkEditorBase> editors;
@@ -15,13 +15,13 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         private readonly RpkDesignerViewModel designer;
         private readonly RpkStatsViewModel stats;
 
-        public RpkEditorViewModel()
+        public RpkEditorViewModel(IWindowManager windowManager)
         {
             editors = new BindableCollection<RpkEditorBase>();
 
             code = new RpkCodeViewModel();
             editors.Add(code);
-            designer = new RpkDesignerViewModel();
+            designer = new RpkDesignerViewModel(windowManager);
             editors.Add(designer);
             stats = new RpkStatsViewModel();
             editors.Add(stats);

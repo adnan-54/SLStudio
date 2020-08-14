@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:gong="urn:gong-wpf-dragdrop"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -14,7 +15,9 @@
         <TextBox Grid.Row="0" Style="{StaticResource StudioSearchTextBoxStyle}" />
 
         <!--Items-->
-        <ListBox Grid.Row="1" ItemsSource="{Binding Resources}" BorderThickness="0">
+        <ListBox Grid.Row="1" ItemsSource="{Binding Resources}" BorderThickness="0"
+                 gong:DragDrop.IsDragSource="True"
+                 gong:DragDrop.UseDefaultDragAdorner="True">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="{StaticResource SmallFullMargin}">

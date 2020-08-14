@@ -1,0 +1,10 @@
+﻿<Window x:Class="SLStudio.RpkEditor.Editors.MeshEditor.Views.MeshEditorView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" Height="450" Width="800" WindowStartupLocation="CenterOwner">
+    <Grid>
+        
+    </Grid>
+</Window>

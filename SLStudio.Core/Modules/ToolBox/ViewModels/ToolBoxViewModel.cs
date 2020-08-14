@@ -32,8 +32,16 @@ namespace SLStudio.Core.Modules.ToolBox.ViewModels
                 if (toolboxHost.ToolboxContent != null)
                     ToolboxContent = toolboxHost.ToolboxContent;
                 else
-                    ToolboxContent = defaultContent;
+                    SetDefaultContent();
             }
+            else
+            if (host == null)
+                SetDefaultContent();
+        }
+
+        private void SetDefaultContent()
+        {
+            ToolboxContent = defaultContent;
         }
     }
 }
