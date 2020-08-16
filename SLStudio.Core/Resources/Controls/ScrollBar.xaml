@@ -117,11 +117,11 @@
         <Setter Property="BorderBrush" Value="{StaticResource Border}" />
         <Setter Property="Stylus.IsFlicksEnabled" Value="False" />
         <Setter Property="Stylus.IsPressAndHoldEnabled" Value="False" />
-        <Setter Property="Width" Value="22" />
+        <Setter Property="Width" Value="20" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ScrollBar}">
-                    <Border BorderThickness="1, 0, 0, 0"
+                    <Border BorderThickness="0.6, 0, 0, 0"
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}">
                         <Grid>
@@ -174,7 +174,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type ScrollBar}">
-                            <Border BorderThickness="0, 1, 0, 0"
+                            <Border BorderThickness="0, 0.6, 0, 0"
                                     Background="{TemplateBinding Background}"
                                     BorderBrush="{TemplateBinding BorderBrush}">
                                 <Grid>

@@ -2,5 +2,7 @@
 {
     internal interface IResourceEditor
     {
+        bool IsValid { get; }
+        void ApplyChanges();
     }
 }

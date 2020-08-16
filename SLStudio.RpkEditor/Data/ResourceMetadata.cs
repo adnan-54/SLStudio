@@ -1,4 +1,6 @@
 ﻿using DevExpress.Mvvm;
+using SLStudio.RpkEditor.Editors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -51,6 +53,8 @@ namespace SLStudio.RpkEditor.Rpk
         public abstract string IconSource { get; }
 
         public abstract string Category { get; }
+
+        public abstract IResourceEditor Editor { get; }
 
         public void UpdateDescription()
         {

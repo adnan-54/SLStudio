@@ -8,16 +8,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SLStudio.RpkEditor.Editors.MeshEditor.Views
+namespace SLStudio.RpkEditor.Modules.Editors.Views
 {
     /// <summary>
-    /// Interaction logic for MeshEditorView.xaml
+    /// Interaction logic for MeshDefinitionsView.xaml
     /// </summary>
-    public partial class MeshEditorView : Window
+    public partial class MeshDefinitionsView : UserControl
     {
-        public MeshEditorView()
+        public MeshDefinitionsView()
         {
             InitializeComponent();
         }

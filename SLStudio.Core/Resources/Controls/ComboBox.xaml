@@ -96,7 +96,8 @@
                    IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                    MaxHeight="{TemplateBinding MaxDropDownHeight}">
                 <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                      MinWidth="{Binding ActualWidth, ElementName=Root}">
+                      MinWidth="{Binding ActualWidth, ElementName=Root}"
+                      Margin="12" Effect="{StaticResource LightShadowEffect}">
                     <Border x:Name="DropDownBorder"
                             BorderThickness="1"
                             Background="{StaticResource Editor.Background}"
@@ -153,7 +154,8 @@
                                IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
                                MaxHeight="{TemplateBinding MaxDropDownHeight}">
                             <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                  MinWidth="{Binding ActualWidth, ElementName=Root}">
+                                  MinWidth="{Binding ActualWidth, ElementName=Root}"
+                                  Margin="12" Effect="{StaticResource LightShadowEffect}">
                                 <Border x:Name="DropDownBorder" BorderThickness="1"
                                         Background="{StaticResource Button.Background}"
                                         BorderBrush="{StaticResource Border}">

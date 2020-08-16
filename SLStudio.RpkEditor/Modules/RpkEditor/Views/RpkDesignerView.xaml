@@ -5,6 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:properties="clr-namespace:SLStudio.RpkEditor.Modules.RpkEditor.Resources"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:converters="clr-namespace:SLStudio.RpkEditor.Converters"
              xmlns:gong="urn:gong-wpf-dragdrop"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
@@ -27,6 +28,7 @@
         <!--Items-->
         <ListBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
                  ItemsSource="{Binding Resources}"
+                 SelectedItem="{Binding SelectedResource}"
                  SelectionMode="Extended" BorderThickness="0"
                  VirtualizingPanel.IsVirtualizing="True"
                  VirtualizingPanel.VirtualizationMode="Recycling"
@@ -35,6 +37,11 @@
                  gong:DragDrop.IsDragSource="True"
                  gong:DragDrop.DropHandler="{Binding}"
                  gong:DragDrop.UseDefaultDragAdorner="True">
+            <!--Behaviors-->
+            <dxmvvm:Interaction.Behaviors>
+                <dxmvvm:FocusBehavior PropertyName="FocusRequested" SourceObject="{Binding}" />
+            </dxmvvm:Interaction.Behaviors>
+
             <!--Resources-->
             <ListBox.Resources>
                 <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
@@ -94,12 +101,17 @@
             <!--ItemTemplate-->
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Grid Height="48">
+                    <Grid Height="48" Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+
+                        <!--InputBindings-->
+                        <Grid.InputBindings>
+                            <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.EditResource(@a($ListBoxItem).DataContext)'}" />
+                        </Grid.InputBindings>
 
                         <StackPanel Grid.Column="0" Orientation="Horizontal"
                                     Background="{StaticResource Editor.Background}">
@@ -219,6 +231,7 @@
                 <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                     <Setter Property="Margin" Value="0" />
                     <Setter Property="Padding" Value="0" />
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
