@@ -1,7 +1,10 @@
 ﻿using SLStudio.Core;
+using SLStudio.Logging;
+using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
 using SLStudio.RpkEditor.Modules.ToolBox.ViewModels;
-using SLStudio.RpkEditor.Rpk;
+using SLStudio.RpkEditor.Services;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -10,19 +13,25 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
     [FileEditor(".rpk", "rpkEditorName", "rpkEditorDescription", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png")]
     internal class RpkEditorViewModel : FileDocumentPanelBase, IRpkEditor
     {
+        private static readonly ILogger logger = LogManager.GetLoggerFor<RpkEditorViewModel>();
+
         private readonly RpkMetadata rpk;
+        private readonly IRpkManager rpkManager;
         private readonly BindableCollection<RpkEditorBase> editors;
 
         private readonly RpkCodeViewModel code;
         private readonly RpkDesignerViewModel designer;
         private readonly RpkStatsViewModel stats;
 
-        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory)
+        private event EventHandler<SelectedEditorChanged> SelectedEditorChanged;
+
+        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization)
         {
             rpk = new RpkMetadata();
+            rpkManager = new DefaultRpkManager(rpk);
             editors = new BindableCollection<RpkEditorBase>();
 
-            code = new RpkCodeViewModel();
+            code = new RpkCodeViewModel(uiSynchronization);
             designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory);
             stats = new RpkStatsViewModel();
 
@@ -33,6 +42,8 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             SelectedEditor = designer;
 
             ToolboxContent = new RpkToolBoxViewModel();
+
+            SelectedEditorChanged += OnSelectedEditorChanged;
         }
 
         public IEnumerable<RpkEditorBase> Editors => editors;
@@ -45,14 +56,17 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
                 if (SelectedEditor == value)
                     return;
 
-                OnSelectedItemChanged(SelectedEditor, value).FireAndForget();
+                var oldEditor = SelectedEditor;
+
                 SetProperty(() => SelectedEditor, value);
+                SelectedEditorChanged?.Invoke(this, new SelectedEditorChanged(oldEditor, value));
             }
         }
 
-        private Task OnSelectedItemChanged(RpkEditorBase oldItem, RpkEditorBase newItem)
+        public bool IsBusy
         {
-            return Task.CompletedTask;
+            get => GetProperty(() => IsBusy);
+            set => SetProperty(() => IsBusy, value);
         }
 
         protected override Task DoLoad()
@@ -69,9 +83,43 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         {
             return Task.CompletedTask;
         }
+
+        private async void OnSelectedEditorChanged(object sender, SelectedEditorChanged e)
+        {
+            if (e.NewEditor == code && e.OldEditor == designer)
+            {
+                try
+                {
+                    IsBusy = true;
+                    var content = await rpkManager.ParseContentAsync();
+                    await code.UpdateContent(content);
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(ex);
+                    SelectedEditor = e.OldEditor;
+                }
+                finally
+                {
+                    IsBusy = false;
+                }
+            }
+        }
     }
 
     public interface IRpkEditor : IFileDocumentPanel
     {
+    }
+
+    internal class SelectedEditorChanged : EventArgs
+    {
+        public SelectedEditorChanged(RpkEditorBase oldEditor, RpkEditorBase newEditor)
+        {
+            OldEditor = oldEditor;
+            NewEditor = newEditor;
+        }
+
+        public RpkEditorBase OldEditor { get; }
+        public RpkEditorBase NewEditor { get; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using SLStudio.RpkEditor.Resources;
 
-namespace SLStudio.RpkEditor.Rpk
+namespace SLStudio.RpkEditor.Data
 {
     public class ResourceType
     {

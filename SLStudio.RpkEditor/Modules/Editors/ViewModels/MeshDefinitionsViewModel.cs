@@ -1,18 +1,18 @@
 ﻿using DevExpress.Mvvm;
+using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Editors;
-using SLStudio.RpkEditor.Rpk.Definitions;
 
 namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 {
     internal class MeshDefinitionsViewModel : ViewModelBase, IResourceEditor
     {
-        public MeshDefinitionsViewModel(MeshDefinition definition)
+        public MeshDefinitionsViewModel(MeshDefinitionMetadata definition)
         {
             Definition = definition;
             SourceFile = definition.SourceFile;
         }
 
-        public MeshDefinition Definition { get; }
+        public MeshDefinitionMetadata Definition { get; }
 
         public string SourceFile
         {

@@ -2,10 +2,12 @@
 using SLStudio.RpkEditor.Modules.Editors.ViewModels;
 using SLStudio.RpkEditor.Resources;
 
-namespace SLStudio.RpkEditor.Rpk.Definitions
+namespace SLStudio.RpkEditor.Data
 {
-    internal class MeshDefinition : ResourceMetadata
+    internal class MeshDefinitionMetadata : ResourceMetadata
     {
+        public override int AdditionalType => 5;
+
         public override ResourceType TypeOfEntry => ResourceType.MeshType;
 
         public override string DisplayName => CommonResources.Mesh;

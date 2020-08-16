@@ -1,9 +1,9 @@
 ﻿using GongSolutions.Wpf.DragDrop;
 using SLStudio.Core;
+using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Modules.Editors.ViewModels;
 using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
 using SLStudio.RpkEditor.Modules.Toolbox.Models;
-using SLStudio.RpkEditor.Rpk;
 using System;
 using System.Windows;
 
@@ -25,7 +25,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             IconSource = "FrameworkDesignStudio";
         }
 
-        public BindableCollection<ResourceMetadata> Resources => rpk.Resources;
+        public BindableCollection<ResourceMetadata> Resources => rpk.ResourceMetadatas;
 
         public ResourceMetadata SelectedResource
         {

@@ -1,14 +1,14 @@
 ﻿using DevExpress.Mvvm;
 using SLStudio.Core;
 
-namespace SLStudio.RpkEditor.Rpk
+namespace SLStudio.RpkEditor.Data
 {
     internal class RpkMetadata : BindableBase
     {
         public RpkMetadata()
         {
             ExternalRefs = new BindableCollection<RpkMetadata>();
-            Resources = new BindableCollection<ResourceMetadata>();
+            ResourceMetadatas = new BindableCollection<ResourceMetadata>();
         }
 
         public string Path
@@ -19,6 +19,6 @@ namespace SLStudio.RpkEditor.Rpk
 
         public BindableCollection<RpkMetadata> ExternalRefs { get; }
 
-        public BindableCollection<ResourceMetadata> Resources { get; }
+        public BindableCollection<ResourceMetadata> ResourceMetadatas { get; }
     }
 }

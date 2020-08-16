@@ -1,4 +1,4 @@
-﻿namespace SLStudio.RpkEditor.Rpk
+﻿namespace SLStudio.RpkEditor.Data
 {
     internal class ResourceDescription
     {

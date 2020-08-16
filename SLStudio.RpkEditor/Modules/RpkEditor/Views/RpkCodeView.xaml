@@ -6,7 +6,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <avalonEdit:TextEditor ShowLineNumbers="True" LineNumbersForeground="{StaticResource Focused}" BorderThickness="0"
-                               Background="{StaticResource Editor.Background}" FontFamily="Consolas" />
+        <avalonEdit:TextEditor Document="{Binding TextDocument}" ShowLineNumbers="True"
+                               BorderThickness="0" FontFamily="Consolas"
+                               LineNumbersForeground="{StaticResource Focused}"
+                               Background="{StaticResource Editor.Background}"
+                               IsReadOnly="True" />
     </Grid>
 </UserControl>

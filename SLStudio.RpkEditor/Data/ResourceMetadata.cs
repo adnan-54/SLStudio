@@ -1,10 +1,9 @@
 ﻿using DevExpress.Mvvm;
 using SLStudio.RpkEditor.Editors;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace SLStudio.RpkEditor.Rpk
+namespace SLStudio.RpkEditor.Data
 {
     internal abstract class ResourceMetadata : BindableBase
     {
@@ -26,12 +25,6 @@ namespace SLStudio.RpkEditor.Rpk
             set => SetProperty(() => SuperId, value);
         }
 
-        public virtual int AdditionalType
-        {
-            get => GetProperty(() => AdditionalType);
-            set => SetProperty(() => AdditionalType, value);
-        }
-
         public string Alias
         {
             get => GetProperty(() => Alias);
@@ -43,6 +36,8 @@ namespace SLStudio.RpkEditor.Rpk
             get => GetProperty(() => IsParentCompatible);
             set => SetProperty(() => IsParentCompatible, value);
         }
+
+        public abstract int AdditionalType { get; }
 
         public abstract ResourceType TypeOfEntry { get; }
 

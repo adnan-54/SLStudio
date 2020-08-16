@@ -1,6 +1,6 @@
 ﻿using SLStudio.Core;
+using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Editors;
-using SLStudio.RpkEditor.Rpk;
 
 namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 {

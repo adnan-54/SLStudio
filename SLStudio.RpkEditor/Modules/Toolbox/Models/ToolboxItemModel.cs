@@ -1,4 +1,4 @@
-﻿using SLStudio.RpkEditor.Rpk;
+﻿using SLStudio.RpkEditor.Data;
 
 namespace SLStudio.RpkEditor.Modules.Toolbox.Models
 {

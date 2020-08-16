@@ -1,4 +1,5 @@
-﻿using SLStudio.Core;
+﻿using SimpleInjector;
+using SLStudio.Core;
 
 namespace SLStudio.FileTypes
 {
@@ -6,5 +7,13 @@ namespace SLStudio.FileTypes
     {
         public override string Name => "Rpk Editor";
         public override string Author => "Adnan54";
+
+        protected override void Register(Container container)
+        {
+            //var config = new MapperConfiguration(cfg =>
+            //{
+            //    cfg.CreateMap<Rpk, RpkMetadata>();
+            //});
+        }
     }
 }
