@@ -1,11 +1,12 @@
 ﻿using DevExpress.Mvvm;
+using SLStudio.Core.Behaviors;
 using SLStudio.RpkEditor.Editors;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SLStudio.RpkEditor.Data
 {
-    internal abstract class ResourceMetadata : BindableBase
+    internal abstract class ResourceMetadata : BindableBase, ISelectable
     {
         protected ResourceMetadata()
         {
@@ -40,6 +41,12 @@ namespace SLStudio.RpkEditor.Data
         {
             get => GetProperty(() => IsParentCompatible);
             set => SetProperty(() => IsParentCompatible, value);
+        }
+
+        public bool IsSelected
+        {
+            get => GetProperty(() => IsSelected);
+            set => SetProperty(() => IsSelected, value);
         }
 
         public abstract int AdditionalType { get; }

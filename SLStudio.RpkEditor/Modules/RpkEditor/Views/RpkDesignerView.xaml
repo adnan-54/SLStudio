@@ -6,8 +6,10 @@
              xmlns:properties="clr-namespace:SLStudio.RpkEditor.Modules.RpkEditor.Resources"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:studioBehaviors="clr-namespace:SLStudio.Core.Behaviors;assembly=SLStudio.Core"
+             xmlns:behaviors="clr-namespace:SLStudio.RpkEditor.Behaviors"
              xmlns:converters="clr-namespace:SLStudio.RpkEditor.Converters"
-             xmlns:gong="urn:gong-wpf-dragdrop"
+             xmlns:gong="urn:gong-wpf-dragdrop" Background="{StaticResource Border}"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <!--Content-->
     <Grid>
@@ -25,215 +27,208 @@
                  metro:TextBoxHelper.Watermark="{x:Static properties:RpkEditorResources.SearchAltS}"
                  Style="{StaticResource StudioSearchTextBoxStyle}" />
 
-        <!--Items-->
-        <ListBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
-                 ItemsSource="{Binding Resources}"
-                 SelectedItem="{Binding SelectedResource}"
-                 SelectionMode="Extended" BorderThickness="0"
-                 VirtualizingPanel.IsVirtualizing="True"
-                 VirtualizingPanel.VirtualizationMode="Recycling"
-                 AlternationCount="{Binding RelativeSource={RelativeSource Self}, Path=Items.Count}"
-                 gong:DragDrop.IsDropTarget="True"
-                 gong:DragDrop.IsDragSource="True"
-                 gong:DragDrop.DropHandler="{Binding}"
-                 gong:DragDrop.UseDefaultDragAdorner="True">
-            <!--Behaviors-->
-            <dxmvvm:Interaction.Behaviors>
-                <dxmvvm:FocusBehavior PropertyName="FocusRequested" SourceObject="{Binding}" />
-            </dxmvvm:Interaction.Behaviors>
+        <ScrollViewer Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Auto"
+                      VirtualizingStackPanel.IsVirtualizing="True"
+                      VirtualizingStackPanel.VirtualizationMode="Recycling">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <!--Resources-->
-            <ListBox.Resources>
-                <Style TargetType="{x:Type ScrollViewer}" BasedOn="{StaticResource {x:Type ScrollViewer}}">
-                    <Setter Property="OverridesDefaultStyle" Value="True" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ScrollViewer}">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
+                <!--behaviors-->
+                <dxmvvm:Interaction.Behaviors>
+                    <behaviors:NumberedListBoxBehavior />
+                </dxmvvm:Interaction.Behaviors>
 
+                <!--LineNumbers-->
+                <ItemsControl Grid.Column="0" Width="50"
+                              Background="{StaticResource Window.Background}"
+                              BorderBrush="{StaticResource Focused}" BorderThickness="0, 0, 1, 0"
+                              FontFamily="Consolas" FontSize="14"
+                              Focusable="False" IsTabStop="False">
+                    <!--ItemsTemplate-->
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="48">
+                                <TextBlock Text="{Binding LineNumber}"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+
+                    <!--ItemsPanel-->
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True"
+                              VirtualizationMode="Recycling" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+
+                <!--Items-->
+                <ListBox Grid.Column="1" Padding="0"
+                         SelectionMode="Extended" BorderThickness="0"
+                         ItemsSource="{Binding Resources}"
+                         SelectedItem="{Binding SelectedResource}"
+                         FocusVisualStyle="{x:Null}"
+                         gong:DragDrop.IsDropTarget="True"
+                         gong:DragDrop.IsDragSource="True"
+                         gong:DragDrop.DropHandler="{Binding}"
+                         gong:DragDrop.UseDefaultDragAdorner="True">
+                    <!--Behaviors-->
+                    <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:FocusBehavior />
+                        <studioBehaviors:ListBoxSelectionBehavior />
+                    </dxmvvm:Interaction.Behaviors>
+
+                    <!--InputBindings-->
+                    <ListBox.InputBindings>
+                        <KeyBinding Key="Return" Command="{DXCommand 'EditResource()'}" />
+                        <KeyBinding Key="Delete" Command="{DXCommand 'RemoveResources()'}" />
+                        <KeyBinding Key="Up" Modifiers="Alt" Command="{DXCommand 'MoveResourcesUp()'}" />
+                        <KeyBinding Key="Down" Modifiers="Alt" Command="{DXCommand 'MoveResourcesDown()'}" />
+                    </ListBox.InputBindings>
+
+                    <!--Template-->
+                    <ListBox.Template>
+                        <ControlTemplate TargetType="{x:Type ListBox}">
+                            <Border x:Name="Border"
+                                    Background="{TemplateBinding Background}"
+                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                    Margin="{TemplateBinding BorderThickness}"
+                                    Padding="{TemplateBinding Padding}">
+                                <ItemsPresenter />
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="Border" Value="{StaticResource DisabledOpacity}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ListBox.Template>
+
+                    <!--ItemsPanel-->
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel IsVirtualizing="True" VirtualizationMode="Recycling" />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <!--ItemTemplate-->
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="48" Background="Transparent">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--InputBindings-->
+                                <Grid.InputBindings>
+                                    <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.EditResource(@a($ListBoxItem).DataContext)'}" />
+                                </Grid.InputBindings>
+
+                                <!--Icon-->
+                                <Image Grid.Column="0" Margin="6"
+                                       Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
+
+                                <!--Name/Description-->
+                                <Grid Grid.Column="1" Margin="{StaticResource LeftMargin}">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="*" />
                                         <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
 
-                                    <Border Grid.Column="0" BorderBrush="{StaticResource Border}">
-                                        <Grid>
-                                            <!--HasError-->
-                                            <Rectangle Width="20" HorizontalAlignment="Left"
-                                                       Fill="{StaticResource Border}" />
+                                    <!--Resources-->
+                                    <Grid.Resources>
+                                        <Style x:Key="HighlightTextblockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                            <Setter Property="Foreground" Value="{StaticResource Focused}" />
+                                            <Setter Property="FontStyle" Value="Italic" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                    <Setter Property="Foreground" Value="Black" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Grid.Resources>
 
-                                            <!--LineNumber-->
-                                            <Rectangle Margin="20, 0, 0, 0" Width="50"  HorizontalAlignment="Left" />
+                                    <!--Name-->
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                        <!--DisplayName-->
+                                        <TextBlock Text="{Binding DisplayName, Mode=OneWay}" FontSize="16" />
 
-                                            <!--Separator-->
-                                            <Rectangle Margin="70, 0, 0, 0" Width="1" HorizontalAlignment="Left"
-                                                       Fill="{StaticResource Focused}" />
+                                        <!--Separator-->
+                                        <TextBlock Text=" - " FontSize="16" />
 
-                                            <!--Content-->
-                                            <ScrollContentPresenter />
-                                        </Grid>
-                                    </Border>
+                                        <!--Alias-->
+                                        <TextBlock Text="{Binding Alias, Mode=OneWay}"
+                                                   Style="{StaticResource HighlightTextblockStyle}"
+                                                   metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNotNullConverter}}" />
 
-                                    <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="1"
-                                               Value="{TemplateBinding VerticalOffset}"
-                                               Maximum="{TemplateBinding ScrollableHeight}"
-                                               ViewportSize="{TemplateBinding ViewportHeight}"
-                                               Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" />
+                                        <!--TypeId-->
+                                        <TextBlock Text="{Binding TypeId, Converter={converters:IntToHexIdConverter}}"
+                                                   Style="{StaticResource HighlightTextblockStyle}"
+                                                   metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNullConverter}}" />
+                                    </StackPanel>
 
-                                    <ScrollBar x:Name="PART_HorizontalScrollBar"
-                                               Orientation="Horizontal"
-                                               Grid.Row="1" Grid.Column="0"
-                                               Value="{TemplateBinding HorizontalOffset}"
-                                               Maximum="{TemplateBinding ScrollableWidth}"
-                                               ViewportSize="{TemplateBinding ViewportWidth}"
-                                               Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" />
+                                    <!--Description-->
+                                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Description}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal" />
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Margin="{StaticResource SmallRightMargin}"
+                                                           Text="{Binding Text}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding Highlight}" Value="True">
+                                                                    <Setter Property="Foreground" Value="{StaticResource Focused}" />
+                                                                    <Setter Property="FontStyle" Value="Italic" />
+                                                                </DataTrigger>
+
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding Highlight}" Value="True" />
+                                                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True" />
+                                                                    </MultiDataTrigger.Conditions>
+
+                                                                    <Setter Property="Foreground" Value="Black" />
+                                                                </MultiDataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
                                 </Grid>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.Resources>
-
-            <!--ItemTemplate-->
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Height="48" Background="Transparent">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <!--InputBindings-->
-                        <Grid.InputBindings>
-                            <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.EditResource(@a($ListBoxItem).DataContext)'}" />
-                        </Grid.InputBindings>
-
-                        <StackPanel Grid.Column="0" Orientation="Horizontal"
-                                    Background="{StaticResource Editor.Background}">
-                            <!--HasError-->
-                            <Grid Width="20" Background="{StaticResource Border}">
-                                <Image Margin="1" Source="{StaticResource TaskCenterStatusBarAni_00}" Visibility="Collapsed" />
                             </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
 
-                            <!--LineNumber-->
-                            <TextBlock Margin="5, 0, 15, 0" Width="30" FontSize="14"
-                                       FontFamily="Consolas" TextAlignment="Right"
-                                       Foreground="{StaticResource IconBlueHighlight}"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center"
-                                       Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TemplatedParent.(ItemsControl.AlternationIndex)}">
-                                <TextBlock.Style>
-                                    <Style TargetType="{x:Type TextBlock}">
-                                        <Setter Property="FontWeight" Value="Normal" />
-                                        <Style.Triggers>
-                                            <DataTrigger Binding="{Binding IsSelected,RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
-                                                <Setter Property="FontWeight" Value="Bold" />
-                                            </DataTrigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-
-                            <!--Separator-->
-                            <Rectangle Width="1" Fill="{StaticResource Focused}" />
-                        </StackPanel>
-
-                        <!--Icon-->
-                        <Image Grid.Column="1" Margin="6"
-                               Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
-
-                        <!--Name/Description-->
-                        <Grid Grid.Column="2" Margin="{StaticResource LeftMargin}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="*" />
-                            </Grid.RowDefinitions>
-
-                            <!--Resources-->
-                            <Grid.Resources>
-                                <Style x:Key="HighlightTextblockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                    <Setter Property="Foreground" Value="{StaticResource Focused}" />
-                                    <Setter Property="FontStyle" Value="Italic" />
-                                    <Setter Property="FontSize" Value="16" />
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
-                                            <Setter Property="Foreground" Value="Black" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Grid.Resources>
-
-                            <!--Name-->
-                            <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                <!--DisplayName-->
-                                <TextBlock Text="{Binding DisplayName, Mode=OneWay}" FontSize="16" />
-
-                                <!--Separator-->
-                                <TextBlock Text=" - " FontSize="16" />
-
-                                <!--Alias-->
-                                <TextBlock Text="{Binding Alias, Mode=OneWay}"
-                                           Style="{StaticResource HighlightTextblockStyle}"
-                                           metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNotNullConverter}}" />
-
-                                <!--TypeId-->
-                                <TextBlock Text="{Binding TypeId, Converter={converters:IntToHexIdConverter}}"
-                                           Style="{StaticResource HighlightTextblockStyle}"
-                                           metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNullConverter}}" />
-                            </StackPanel>
-
-                            <!--Description-->
-                            <ItemsControl Grid.Row="1" ItemsSource="{Binding Description}">
-                                <ItemsControl.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel Orientation="Horizontal" />
-                                    </ItemsPanelTemplate>
-                                </ItemsControl.ItemsPanel>
-
-                                <ItemsControl.ItemTemplate>
-                                    <DataTemplate>
-                                        <TextBlock Margin="{StaticResource SmallRightMargin}"
-                                                   Text="{Binding Text}">
-                                            <TextBlock.Style>
-                                                <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
-                                                    <Style.Triggers>
-                                                        <DataTrigger Binding="{Binding Highlight}" Value="True">
-                                                            <Setter Property="Foreground" Value="{StaticResource Focused}" />
-                                                            <Setter Property="FontStyle" Value="Italic" />
-                                                        </DataTrigger>
-
-                                                        <MultiDataTrigger>
-                                                            <MultiDataTrigger.Conditions>
-                                                                <Condition Binding="{Binding Highlight}" Value="True" />
-                                                                <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True" />
-                                                            </MultiDataTrigger.Conditions>
-
-                                                            <Setter Property="Foreground" Value="Black" />
-                                                        </MultiDataTrigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBlock.Style>
-                                        </TextBlock>
-                                    </DataTemplate>
-                                </ItemsControl.ItemTemplate>
-                            </ItemsControl>
-                        </Grid>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-
-            <!--ItemContainerStyle-->
-            <ListBox.ItemContainerStyle>
-                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
-                    <Setter Property="Margin" Value="0" />
-                    <Setter Property="Padding" Value="0" />
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListBox.ItemContainerStyle>
-        </ListBox>
+                    <!--ItemContainerStyle-->
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                            <Setter Property="Margin" Value="0" />
+                            <Setter Property="Padding" Value="0" />
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+                            <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
