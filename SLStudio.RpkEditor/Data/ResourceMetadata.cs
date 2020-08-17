@@ -7,6 +7,11 @@ namespace SLStudio.RpkEditor.Data
 {
     internal abstract class ResourceMetadata : BindableBase
     {
+        protected ResourceMetadata()
+        {
+            IsParentCompatible = true;
+        }
+
         public RpkMetadata Parent
         {
             get => GetProperty(() => Parent);
@@ -49,7 +54,7 @@ namespace SLStudio.RpkEditor.Data
 
         public abstract string Category { get; }
 
-        public abstract IResourceEditor Editor { get; }
+        public abstract IDefinitionEditor Editor { get; }
 
         public void UpdateDescription()
         {

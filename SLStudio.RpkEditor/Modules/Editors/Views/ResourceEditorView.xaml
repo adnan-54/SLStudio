@@ -81,7 +81,7 @@
         <!--Definitions-->
         <Grid Grid.Row="1"
               Margin="{StaticResource BottomMargin}"
-              metro:VisibilityHelper.IsVisible="{Binding DefinitionsEditor, Converter={StaticResource IsNotNullConverter}}">
+              metro:VisibilityHelper.IsVisible="{Binding DefinitionEditor, Converter={StaticResource IsNotNullConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -92,7 +92,7 @@
                 <TextBlock Text="Definitions" FontSize="16" FontWeight="Bold" />
             </Border>
 
-            <ScrollViewer Grid.Row="1" Margin="{StaticResource UpMargin}"
+            <ScrollViewer Grid.Row="1" Margin="{StaticResource LargeUpMargin}"
                           HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Resources>
                     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -101,7 +101,7 @@
                 </ScrollViewer.Resources>
 
                 <!--Definitions-->
-                <ContentControl Grid.Row="1" studio:ViewBinder.Bind="{Binding DefinitionsEditor}" />
+                <ContentControl Grid.Row="1" studio:ViewBinder.Bind="{Binding DefinitionEditor}" Margin="0, 1, 0, 0" />
             </ScrollViewer>
         </Grid>
 

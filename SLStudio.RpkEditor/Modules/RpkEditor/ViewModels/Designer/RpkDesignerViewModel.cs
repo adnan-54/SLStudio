@@ -4,6 +4,7 @@ using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Modules.Editors.ViewModels;
 using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
 using SLStudio.RpkEditor.Modules.Toolbox.Models;
+using SLStudio.RpkEditor.Services;
 using System;
 using System.Windows;
 
@@ -14,12 +15,14 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         private readonly RpkMetadata rpk;
         private readonly IWindowManager windowManager;
         private readonly IObjectFactory objectFactory;
+        private readonly IRpkManager rpkManager;
 
-        public RpkDesignerViewModel(RpkMetadata rpk, IWindowManager windowManager, IObjectFactory objectFactory)
+        public RpkDesignerViewModel(RpkMetadata rpk, IWindowManager windowManager, IObjectFactory objectFactory, IRpkManager rpkManager)
         {
             this.rpk = rpk;
             this.windowManager = windowManager;
             this.objectFactory = objectFactory;
+            this.rpkManager = rpkManager;
 
             DisplayName = RpkEditorResources.Design;
             IconSource = "FrameworkDesignStudio";
@@ -42,6 +45,8 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         private void AddResource(Type resourceType, int index = -1)
         {
             var metadata = objectFactory.Create(resourceType) as ResourceMetadata;
+            metadata.Parent = rpk;
+
             var editor = new ResourceEditorViewModel(metadata);
             var result = windowManager.ShowDialog(editor);
             if (result.GetValueOrDefault())

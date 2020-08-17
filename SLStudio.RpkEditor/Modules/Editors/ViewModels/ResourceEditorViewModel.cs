@@ -1,30 +1,42 @@
-﻿using SLStudio.Core;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using SLStudio.Core;
 using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Editors;
+using System;
+using System.Collections;
+using System.ComponentModel;
+using System.Linq;
 
 namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 {
-    internal class ResourceEditorViewModel : WindowViewModel
+    internal class ResourceEditorViewModel : WindowViewModel, INotifyDataErrorInfo
     {
+        private bool realtimeValidation = false;
+
         public ResourceEditorViewModel(ResourceMetadata metadata, bool isEditing = false)
         {
             Metadata = metadata;
-            DefinitionsEditor = metadata.Editor;
+            DefinitionEditor = metadata.Editor;
+            Alias = metadata.Alias;
+            IsParentCompatible = metadata.IsParentCompatible;
+            Validator = new ResourceEditorValidator();
 
             if (isEditing)
             {
-                Alias = metadata.Alias;
+                Validate();
                 SuperId = metadata.SuperId.ToStringId();
                 TypeId = metadata.TypeId.ToStringId();
-                IsParentCompatible = metadata.IsParentCompatible;
             }
 
             DisplayName = $"Resource Editor - {metadata.DisplayName}";
         }
 
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
         public ResourceMetadata Metadata { get; }
 
-        public IResourceEditor DefinitionsEditor { get; }
+        public IDefinitionEditor DefinitionEditor { get; }
 
         public string Alias
         {
@@ -62,31 +74,77 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             }
         }
 
-        public bool IsValid => true;
+        public IValidator<ResourceEditorViewModel> Validator { get; }
 
-        private void ApplyChanges()
+        public ValidationResult Validation => Validator.Validate(this);
+
+        public bool IsValid => Validate();
+
+        public bool HasErrors
         {
-            Metadata.Alias = Alias;
-            Metadata.SuperId = SuperId.ToIntId();
-            Metadata.TypeId = TypeId.ToIntId();
-            Metadata.IsParentCompatible = true;
+            get
+            {
+                if (realtimeValidation)
+                    return !Validation.IsValid;
 
-            DefinitionsEditor.ApplyChanges();
+                return false;
+            }
+        }
 
-            Metadata.UpdateDescription();
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return Validation.Errors.Where(e => e.PropertyName == propertyName);
+        }
+
+        public bool Validate()
+        {
+            realtimeValidation = true;
+
+            Validate(nameof(Alias));
+            Validate(nameof(SuperId));
+            Validate(nameof(TypeId));
+            Validate(nameof(IsParentCompatible));
+
+            DefinitionEditor.Validate();
+
+            return Validation.IsValid && DefinitionEditor.IsValid;
+        }
+
+        private void Validate(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
         public override void TryClose(bool? dialogResult)
         {
             if (dialogResult == true)
             {
-                if (!DefinitionsEditor.IsValid || !IsValid)
+                if (!IsValid)
                     return;
                 else
                     ApplyChanges();
             }
 
             base.TryClose(dialogResult);
+        }
+
+        private void ApplyChanges()
+        {
+            Metadata.Alias = Alias;
+            Metadata.SuperId = SuperId.ToIntId();
+            Metadata.TypeId = TypeId.ToIntId();
+            Metadata.IsParentCompatible = IsParentCompatible;
+            DefinitionEditor.ApplyChanges();
+            Metadata.UpdateDescription();
+        }
+    }
+
+    internal class ResourceEditorValidator : AbstractValidator<ResourceEditorViewModel>
+    {
+        public ResourceEditorValidator()
+        {
+            RuleFor(vm => vm.SuperId).NotEmpty();
+            RuleFor(vm => vm.TypeId).NotEmpty();
         }
     }
 }

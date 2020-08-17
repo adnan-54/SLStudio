@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace SLStudio.RpkEditor.Modules.Editors.Views
 {
     /// <summary>
-    /// Interaction logic for MeshDefinitionsView.xaml
+    /// Interaction logic for MeshDefinitionView.xaml
     /// </summary>
-    public partial class MeshDefinitionsView : UserControl
+    public partial class MeshDefinitionView : UserControl
     {
-        public MeshDefinitionsView()
+        public MeshDefinitionView()
         {
             InitializeComponent();
         }

@@ -32,7 +32,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             editors = new BindableCollection<RpkEditorBase>();
 
             code = new RpkCodeViewModel(uiSynchronization);
-            designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory);
+            designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory, rpkManager);
             stats = new RpkStatsViewModel();
 
             editors.Add(code);
