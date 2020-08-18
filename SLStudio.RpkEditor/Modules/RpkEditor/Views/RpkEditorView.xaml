@@ -8,6 +8,11 @@
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
         <Grid>
+            <!--InputBindings-->
+            <Grid.InputBindings>
+                <KeyBinding Key="Oem1" Modifiers="Ctrl" Command="{DXCommand 'FocusToolboxSearch()'}" />
+            </Grid.InputBindings>
+
             <TabControl TabStripPlacement="Bottom"
                         Padding="0" BorderThickness="0"
                         ItemsSource="{Binding Editors}"

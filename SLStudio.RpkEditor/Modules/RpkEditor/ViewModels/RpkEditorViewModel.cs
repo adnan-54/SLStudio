@@ -15,6 +15,9 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RpkEditorViewModel>();
 
+        private readonly IToolbox toolbox;
+        private readonly IShell shell;
+
         private readonly RpkMetadata rpk;
         private readonly IRpkManager rpkManager;
         private readonly BindableCollection<RpkEditorBase> editors;
@@ -25,14 +28,16 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
         private event EventHandler<SelectedEditorChanged> SelectedEditorChanged;
 
-        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization)
+        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization, IToolbox toolbox, IShell shell)
         {
+            this.toolbox = toolbox;
+            this.shell = shell;
             rpk = new RpkMetadata();
-            rpkManager = new DefaultRpkManager(rpk);
+            rpkManager = new DefaultRpkManager(rpk, objectFactory, windowManager);
             editors = new BindableCollection<RpkEditorBase>();
 
             code = new RpkCodeViewModel(uiSynchronization);
-            designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory, rpkManager);
+            designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory, rpkManager, uiSynchronization);
             stats = new RpkStatsViewModel();
 
             editors.Add(code);
@@ -41,7 +46,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
             SelectedEditor = designer;
 
-            ToolboxContent = new RpkToolBoxViewModel();
+            ToolboxContent = new RpkToolBoxViewModel(this, rpkManager);
 
             SelectedEditorChanged += OnSelectedEditorChanged;
         }
@@ -67,6 +72,18 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         {
             get => GetProperty(() => IsBusy);
             set => SetProperty(() => IsBusy, value);
+        }
+
+        public void FocusToolboxSearch()
+        {
+            shell.OpenPanel(toolbox);
+            (ToolboxContent as RpkToolBoxViewModel).FocusSearch();
+        }
+
+        public void FocusDesignerSearch()
+        {
+            SelectedEditor = designer;
+            designer.RequestSearchFocus();
         }
 
         protected override Task DoLoad()

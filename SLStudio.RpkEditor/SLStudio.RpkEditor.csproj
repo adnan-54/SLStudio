@@ -28,6 +28,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>RpkEditorResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Modules\Toolbox\Resources\ToolboxSettings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ToolboxSettings.settings</DependentUpon>
+    </Compile>
     <Compile Update="Resources\CommonResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -54,6 +59,13 @@
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.2.0" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Modules\Toolbox\Resources\ToolboxSettings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>ToolboxSettings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

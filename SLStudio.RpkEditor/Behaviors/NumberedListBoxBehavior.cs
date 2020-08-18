@@ -37,7 +37,7 @@ namespace SLStudio.RpkEditor.Behaviors
 
         private void UpdateLines()
         {
-            if (listBox == null || itemsControl == null)
+            if (listBox.Items.Count == itemsControl.Items.Count || listBox == null || itemsControl == null)
                 return;
 
             if (listBox.Items.Count > itemsControl.Items.Count)

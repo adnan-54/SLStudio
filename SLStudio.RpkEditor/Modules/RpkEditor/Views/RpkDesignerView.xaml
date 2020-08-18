@@ -25,9 +25,16 @@
         <!--Search-->
         <TextBox x:Name="searchBox" Grid.Row="0" BorderThickness="0"
                  metro:TextBoxHelper.Watermark="{x:Static properties:RpkEditorResources.SearchAltS}"
-                 Style="{StaticResource StudioSearchTextBoxStyle}" />
+                 Style="{StaticResource StudioSearchTextBoxStyle}">
+            <dxmvvm:Interaction.Behaviors>
+                <dxmvvm:FocusBehavior PropertyName="FocusRequested"
+                                      SourceObject="{DXBinding '@a($UserControl).DataContext'}" />
+            </dxmvvm:Interaction.Behaviors>
+        </TextBox>
 
         <ScrollViewer Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                      Focusable="False" IsTabStop="False"
+                      FocusVisualStyle="{x:Null}"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto"
                       VirtualizingStackPanel.IsVirtualizing="True"
@@ -63,7 +70,7 @@
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
                             <VirtualizingStackPanel IsVirtualizing="True"
-                              VirtualizationMode="Recycling" />
+                                                    VirtualizationMode="Recycling" />
                         </ItemsPanelTemplate>
                     </ItemsControl.ItemsPanel>
                 </ItemsControl>
@@ -80,7 +87,7 @@
                          gong:DragDrop.UseDefaultDragAdorner="True">
                     <!--Behaviors-->
                     <dxmvvm:Interaction.Behaviors>
-                        <dxmvvm:FocusBehavior />
+                        <!--<dxmvvm:FocusBehavior />-->
                         <studioBehaviors:ListBoxSelectionBehavior />
                     </dxmvvm:Interaction.Behaviors>
 
@@ -91,26 +98,6 @@
                         <KeyBinding Key="Up" Modifiers="Alt" Command="{DXCommand 'MoveResourcesUp()'}" />
                         <KeyBinding Key="Down" Modifiers="Alt" Command="{DXCommand 'MoveResourcesDown()'}" />
                     </ListBox.InputBindings>
-
-                    <!--Template-->
-                    <ListBox.Template>
-                        <ControlTemplate TargetType="{x:Type ListBox}">
-                            <Border x:Name="Border"
-                                    Background="{TemplateBinding Background}"
-                                    BorderBrush="{TemplateBinding BorderBrush}"
-                                    BorderThickness="{TemplateBinding BorderThickness}"
-                                    Margin="{TemplateBinding BorderThickness}"
-                                    Padding="{TemplateBinding Padding}">
-                                <ItemsPresenter />
-                            </Border>
-
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsEnabled" Value="False">
-                                    <Setter Property="Opacity" TargetName="Border" Value="{StaticResource DisabledOpacity}" />
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </ListBox.Template>
 
                     <!--ItemsPanel-->
                     <ListBox.ItemsPanel>
@@ -227,6 +214,51 @@
                             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </Style>
                     </ListBox.ItemContainerStyle>
+
+                    <!--ListBoxStyle-->
+                    <ListBox.Style>
+                        <Style TargetType="{x:Type ListBox}" BasedOn="{StaticResource {x:Type ListBox}}">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type ListBox}">
+                                        <Border x:Name="Border"
+                                                Background="{TemplateBinding Background}"
+                                                BorderBrush="{TemplateBinding BorderBrush}"
+                                                BorderThickness="{TemplateBinding BorderThickness}"
+                                                Margin="{TemplateBinding BorderThickness}"
+                                                Padding="{TemplateBinding Padding}">
+                                            <ItemsPresenter />
+                                        </Border>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsEnabled" Value="False">
+                                                <Setter Property="Opacity" TargetName="Border" Value="{StaticResource DisabledOpacity}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Style.Triggers>
+                                <Trigger Property="HasItems" Value="False">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Grid Background="{TemplateBinding Background}">
+                                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                               TextAlignment="Center" FontStyle="Italic" Opacity="0.7">
+                                                        <Run Text="No resources yet." />
+                                                        <LineBreak />
+                                                        <LineBreak />
+                                                        <Run Text="Drag and drop from the toolbox or paste from clipboard to get started." />
+                                                    </TextBlock>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.Style>
                 </ListBox>
             </Grid>
         </ScrollViewer>

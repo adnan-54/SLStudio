@@ -12,6 +12,12 @@
                       xmlns:menus="clr-namespace:SLStudio.Core.Menus"
                       xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
                       mc:Ignorable="d">
+
+    <studio:StudioWindow.TitleTemplate>
+        <DataTemplate>
+            <Grid/>
+        </DataTemplate>
+    </studio:StudioWindow.TitleTemplate>
     <!--Behaviors-->
     <dxmvvm:Interaction.Behaviors>
         <behaviors:StudioShellBehavior />

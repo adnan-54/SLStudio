@@ -1,8 +1,9 @@
-﻿using SLStudio.RpkEditor.Data;
+﻿using DevExpress.Mvvm;
+using SLStudio.RpkEditor.Data;
 
 namespace SLStudio.RpkEditor.Modules.Toolbox.Models
 {
-    internal class ToolboxItemModel
+    internal class ToolboxItemModel : BindableBase
     {
         public ToolboxItemModel(ResourceMetadata metadata)
         {
@@ -16,5 +17,11 @@ namespace SLStudio.RpkEditor.Modules.Toolbox.Models
         public string IconSource => Metadata?.IconSource;
 
         public string Category => Metadata?.Category;
+
+        public bool IsPinned
+        {
+            get => GetProperty(() => IsPinned);
+            set => SetProperty(() => IsPinned, value);
+        }
     }
 }

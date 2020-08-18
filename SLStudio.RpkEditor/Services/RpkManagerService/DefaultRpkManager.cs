@@ -1,6 +1,9 @@
 ﻿using SLStudio.Compilers;
+using SLStudio.Core;
 using SLStudio.FileTypes.RpkFile;
 using SLStudio.RpkEditor.Data;
+using SLStudio.RpkEditor.Modules.Editors.ViewModels;
+using System;
 using System.Threading.Tasks;
 
 namespace SLStudio.RpkEditor.Services
@@ -8,10 +11,14 @@ namespace SLStudio.RpkEditor.Services
     internal class DefaultRpkManager : IRpkManager
     {
         private readonly RpkMetadata rpkMetadata;
+        private readonly IObjectFactory objectFactory;
+        private readonly IWindowManager windowManager;
 
-        public DefaultRpkManager(RpkMetadata rpkMetadata)
+        public DefaultRpkManager(RpkMetadata rpkMetadata, IObjectFactory objectFactory, IWindowManager windowManager)
         {
             this.rpkMetadata = rpkMetadata;
+            this.objectFactory = objectFactory;
+            this.windowManager = windowManager;
         }
 
         public string ParseContent()
@@ -23,6 +30,26 @@ namespace SLStudio.RpkEditor.Services
         public Task<string> ParseContentAsync()
         {
             return Task.Run(() => ParseContent());
+        }
+
+        public ResourceMetadata AddResource(Type resourceType, int index = -1)
+        {
+            var metadata = objectFactory.Create(resourceType) as ResourceMetadata;
+            metadata.Parent = rpkMetadata;
+
+            var editor = new ResourceEditorViewModel(metadata);
+            var result = windowManager.ShowDialog(editor);
+            if (result.GetValueOrDefault())
+            {
+                if (index == -1)
+                    rpkMetadata.ResourceMetadatas.Add(metadata);
+                else
+                    rpkMetadata.ResourceMetadatas.Insert(index, metadata);
+
+                return metadata;
+            }
+
+            return null;
         }
 
         private Rpk ConvertToRpkData()
@@ -55,6 +82,8 @@ namespace SLStudio.RpkEditor.Services
 
     internal interface IRpkManager
     {
+        ResourceMetadata AddResource(Type resourceType, int index = -1);
+
         string ParseContent();
 
         Task<string> ParseContentAsync();

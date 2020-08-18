@@ -82,7 +82,6 @@
 
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding ElementName=RedTriangle, Path=IsMouseOver, Mode=OneWay}" Value="True" />
                     <Condition Binding="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.HasError), Mode=OneWay}" Value="True" />
                     <Condition Binding="{Binding ElementName=placeholder, Path=AdornedElement.(metro:ValidationHelper.ShowValidationErrorOnMouseOver), Mode=OneWay}" Value="True" />
                 </MultiDataTrigger.Conditions>
@@ -92,7 +91,6 @@
 
             <MultiDataTrigger>
                 <MultiDataTrigger.Conditions>
-                    <Condition Binding="{Binding ElementName=RedTriangle, Path=IsMouseOver, Mode=OneWay}" Value="True" />
                     <Condition Binding="{Binding ElementName=placeholder, Path=AdornedElement.(Validation.HasError), Mode=OneWay}" Value="True" />
                     <Condition Binding="{Binding ElementName=ValidationPopup, Path=ShowValidationErrorOnMouseOver, Mode=OneWay}" Value="True" />
                 </MultiDataTrigger.Conditions>

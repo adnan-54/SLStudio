@@ -8,7 +8,9 @@ using SLStudio.RpkEditor.Modules.Toolbox.Models;
 using SLStudio.RpkEditor.Services;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
@@ -19,15 +21,17 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         private readonly IWindowManager windowManager;
         private readonly IObjectFactory objectFactory;
         private readonly IRpkManager rpkManager;
+        private readonly IUiSynchronization uiSynchronization;
 
         private IListBoxSelection listBoxSelection;
 
-        public RpkDesignerViewModel(RpkMetadata rpk, IWindowManager windowManager, IObjectFactory objectFactory, IRpkManager rpkManager)
+        public RpkDesignerViewModel(RpkMetadata rpk, IWindowManager windowManager, IObjectFactory objectFactory, IRpkManager rpkManager, IUiSynchronization uiSynchronization)
         {
             this.rpk = rpk;
             this.windowManager = windowManager;
             this.objectFactory = objectFactory;
             this.rpkManager = rpkManager;
+            this.uiSynchronization = uiSynchronization;
 
             DisplayName = RpkEditorResources.Design;
             IconSource = "FrameworkDesignStudio";
@@ -41,26 +45,32 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             set => SetProperty(() => SelectedResource, value);
         }
 
+        public bool FocusRequested
+        {
+            get => GetProperty(() => FocusRequested);
+            set => SetProperty(() => FocusRequested, value);
+        }
+
         public IListBoxSelection ListBoxSelection => listBoxSelection ??= GetService<IListBoxSelection>();
+
+        public void RequestSearchFocus()
+        {
+            uiSynchronization.InvokeOnUi(async () =>
+            {
+                await Task.Delay(TimeSpan.FromMilliseconds(20));
+                FocusRequested = false;
+                FocusRequested = true;
+            });
+        }
 
         private void AddResource(Type resourceType, int index = -1)
         {
-            var metadata = objectFactory.Create(resourceType) as ResourceMetadata;
-            metadata.Parent = rpk;
-
-            var editor = new ResourceEditorViewModel(metadata);
-            var result = windowManager.ShowDialog(editor);
-            if (result.GetValueOrDefault())
+            var result = rpkManager.AddResource(resourceType, index);
+            if (result != null)
             {
-                if (index == -1)
-                    Resources.Add(metadata);
-                else
-                    Resources.Insert(index, metadata);
-
-                SelectedResource = metadata;
+                SelectedResource = result;
+                ListBoxSelection.Focus();
             }
-
-            ListBoxSelection.Focus();
         }
 
         public void EditResource()
@@ -104,7 +114,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         public void MoveResourcesUp()
         {
             var resources = Resources.Where(r => r.IsSelected).ToList();
-            
+
             if (!resources.Any())
                 return;
 
