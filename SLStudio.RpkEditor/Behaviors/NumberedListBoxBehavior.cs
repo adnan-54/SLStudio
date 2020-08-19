@@ -21,8 +21,8 @@ namespace SLStudio.RpkEditor.Behaviors
         {
             AssociatedObject.Loaded -= OnLoaded;
 
-            itemsControl = AssociatedObject.FindChild<ItemsControl>();
-            listBox = AssociatedObject.FindChild<ListBox>();
+            itemsControl = AssociatedObject.FindChild<ItemsControl>("lineNumbers");
+            listBox = AssociatedObject.FindChild<ListBox>("items");
 
             if (listBox != null)
                 ((INotifyCollectionChanged)listBox.Items).CollectionChanged += OnItemsChanged;

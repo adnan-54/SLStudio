@@ -36,7 +36,7 @@ namespace SLStudio.Core.Docking
             AssociatedObject.Loaded += OnLoaded;
             AssociatedObject.DocumentClosing += OnDocumentClosing;
             AssociatedObject.DocumentClosed += OnDocumentClosed;
-            //AssociatedObject.LayoutUpdated += OnLayoutUpdated;
+            AssociatedObject.LayoutUpdated += OnLayoutUpdated;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -87,7 +87,7 @@ namespace SLStudio.Core.Docking
                 window.Owner = null;
                 window.Icon = icon;
                 window.ShowInTaskbar = true;
-                window.Title = "SLStudio";
+                window.Title = $"SLStudio - {window.Model.Root.ActiveContent?.Title}";
             }
         }
 
@@ -101,7 +101,7 @@ namespace SLStudio.Core.Docking
             AssociatedObject.Loaded -= OnLoaded;
             AssociatedObject.DocumentClosing -= OnDocumentClosing;
             AssociatedObject.DocumentClosed -= OnDocumentClosed;
-            //AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
+            AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
             base.OnDetaching();
         }
     }

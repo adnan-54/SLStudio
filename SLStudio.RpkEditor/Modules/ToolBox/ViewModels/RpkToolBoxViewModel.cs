@@ -13,8 +13,11 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using Xceed.Wpf.Toolkit.Core.Converters;
 
 namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
 {
@@ -143,7 +146,14 @@ namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
 
                 resources.Clear();
 
-                resources.Add(new ToolboxItemModel(new MeshDefinitionMetadata()));
+                //todo: move this to a service so it once create the itens once
+                //todo: create resource metadata using objectFactory
+                var metadatas = Assembly.GetExecutingAssembly().GetTypes()
+                                        .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(ResourceMetadata)))
+                                        .Select(t => (ResourceMetadata)Activator.CreateInstance(t))
+                                        .Select(m => new ToolboxItemModel(m));
+
+                resources.AddRange(metadatas);
 
                 foreach (var resource in resources)
                 {

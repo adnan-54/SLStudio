@@ -88,9 +88,12 @@ namespace SLStudio.RpkEditor.Data
             set => SetProperty(() => IsSelected, value);
         }
 
-        public void UpdateDescription()
+        public void UpdateProperties()
         {
-            RaisePropertyChanged(() => Description);
+            RaisePropertyChanged(() => HasErros);
+            RaisePropertyChanged(() => HasWarnings);
+            RaisePropertyChanged(() => HasInfos);
+            RaisePropertyChanged(() => HasExternalDependency);
         }
 
         protected virtual IEnumerable<ResourceDescription> BuildDescription()

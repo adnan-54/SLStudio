@@ -135,7 +135,7 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             Metadata.TypeId = TypeId.ToIntId();
             Metadata.IsParentCompatible = IsParentCompatible;
             DefinitionEditor.ApplyChanges();
-            Metadata.UpdateDescription();
+            Metadata.UpdateProperties();
         }
     }
 

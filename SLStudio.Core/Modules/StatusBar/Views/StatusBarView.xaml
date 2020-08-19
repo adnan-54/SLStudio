@@ -6,20 +6,6 @@
              xmlns:studio="clr-namespace:SLStudio.Core"
              xmlns:resx="clr-namespace:SLStudio.Core.Modules.StatusBar.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <!--ArrowDown-->
-        <DrawingImage x:Key="ArrowDown">
-            <DrawingImage.Drawing>
-                <DrawingGroup>
-                    <DrawingGroup.Children>
-                        <GeometryDrawing Brush="{StaticResource Border}" Geometry="M 0,0 L 15,15 L 30,0" />
-                        <GeometryDrawing Brush="{StaticResource Control.Background}" Geometry="M 2,0 L 15,13 L 28,0" />
-                    </DrawingGroup.Children>
-                </DrawingGroup>
-            </DrawingImage.Drawing>
-        </DrawingImage>
-    </UserControl.Resources>
-
     <Grid Background="{StaticResource Focused}" Height="22">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />

@@ -73,6 +73,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             }
         }
 
+        //todo: move this to rpkManager
         public void EditResource()
         {
             if (Resources.Where(r => r.IsSelected).Count() != 1)
@@ -81,6 +82,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             EditResource(Resources.FirstOrDefault(r => r.IsSelected));
         }
 
+        //todo: move this to rpkManager
         public void EditResource(ResourceMetadata metadata)
         {
             if (metadata == null)
@@ -90,12 +92,13 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             windowManager.ShowDialog(editor);
         }
 
+        //todo: move this to rpkManager
         public void RemoveResources()
         {
             if (!Resources.Any(r => r.IsSelected))
                 return;
 
-            ResourceMetadata focusTarget = GetCommandToFocusBeforeRemoval(Resources.Where(r => r.IsSelected));
+            var focusTarget = GetCommandToFocusBeforeRemoval(Resources.Where(r => r.IsSelected));
 
             foreach (var metadata in Resources.Where(r => r.IsSelected).ToList())
                 Resources.Remove(metadata);
@@ -111,6 +114,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             ListBoxSelection.Focus();
         }
 
+        //todo: move this to rpkManager
         public void MoveResourcesUp()
         {
             var resources = Resources.Where(r => r.IsSelected).ToList();
@@ -131,6 +135,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             }
         }
 
+        //todo: move this to rpkManager
         public void MoveResourcesDown()
         {
             var resources = Resources.Where(r => r.IsSelected).Reverse().ToList();

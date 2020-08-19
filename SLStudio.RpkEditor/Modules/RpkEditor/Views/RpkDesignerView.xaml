@@ -38,20 +38,178 @@
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Auto"
                       VirtualizingStackPanel.IsVirtualizing="True"
-                      VirtualizingStackPanel.VirtualizationMode="Recycling">
+                      VirtualizingStackPanel.VirtualizationMode="Recycling"
+                      HorizontalContentAlignment="Right">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
                 <!--behaviors-->
                 <dxmvvm:Interaction.Behaviors>
                     <behaviors:NumberedListBoxBehavior />
                 </dxmvvm:Interaction.Behaviors>
 
+                <!--Errors/Warnings-->
+                <ItemsControl Grid.Column="0" Width="24"
+                              Focusable="False" IsTabStop="False"
+                              Padding="0" BorderThickness="0"
+                              ItemsSource="{Binding Resources}"
+                              Background="{StaticResource Window.Background}"
+                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="48">
+                                <StackPanel Margin="3" VerticalAlignment="Center">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="{x:Type ToggleButton}">
+                                            <Setter Property="Focusable" Value="False"/>
+                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="Margin" Value="0, 1, 0, 1" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <ContentPresenter />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <!--Errors-->
+                                    <ToggleButton x:Name="errors"
+                                                  ToolTip="Errors"
+                                                  metro:VisibilityHelper.IsVisible="{Binding HasErros}">
+                                        <!--Icon-->
+                                        <Image Source="{StaticResource CritcalError}" />
+                                    </ToggleButton>
+
+                                    <!--Warnings-->
+                                    <ToggleButton x:Name="warnings"
+                                                  ToolTip="Warnings"
+                                                  metro:VisibilityHelper.IsVisible="{Binding HasWarnings}">
+                                        <!--Icon-->
+                                        <Image Source="{StaticResource Warning}" />
+                                    </ToggleButton>
+                                </StackPanel>
+
+                                <!--ErrorsPopup-->
+                                <Popup IsOpen="{Binding IsChecked, ElementName=errors}"
+                                       StaysOpen="False" Focusable="False"
+                                       PlacementTarget="{Binding ElementName=errors}" Placement="Right"
+                                       AllowsTransparency="True" PopupAnimation="Fade">
+                                    <Border Margin="0, 0, 6, 6" BorderThickness="1"
+                                            Focusable="False"
+                                            BorderBrush="{StaticResource Border}"
+                                            Background="{StaticResource Button.Background}"
+                                            Effect="{StaticResource LightShadowEffect}">
+                                        <ScrollViewer MaxHeight="128"
+                                                      Focusable="False" IsTabStop="False"
+                                                      HorizontalScrollBarVisibility="Hidden"
+                                                      VerticalScrollBarVisibility="Auto">
+                                            <ItemsControl ItemsSource="{Binding Errors}" MaxWidth="200"
+                                                          Focusable="False" IsTabStop="False">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="6" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <!--Style-->
+                                                            <Grid.Style>
+                                                                <Style TargetType="{x:Type Grid}">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+
+                                                            <!--InputBindings-->
+                                                            <Grid.InputBindings>
+                                                                <MouseBinding MouseAction="LeftClick" Command="{DXCommand '@a($Popup).IsOpen=false'}" />
+                                                            </Grid.InputBindings>
+
+                                                            <!--Margin-->
+                                                            <Rectangle Grid.Column="0"
+                                                                       Fill="{StaticResource IconRedHighlight}" />
+
+                                                            <!--ErrorMessage-->
+                                                            <TextBlock Grid.Column="1" Margin="6, 3, 12, 3" Text="{Binding}"
+                                                                       TextTrimming="CharacterEllipsis" TextWrapping="Wrap" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+
+                                <!--WarningsPopup-->
+                                <Popup IsOpen="{Binding IsChecked, ElementName=warnings}"
+                                       StaysOpen="False" Focusable="False"
+                                       PlacementTarget="{Binding ElementName=warnings}" Placement="Right"
+                                       AllowsTransparency="True" PopupAnimation="Fade">
+                                    <Border Margin="0, 0, 6, 6" BorderThickness="1"
+                                            Focusable="False"
+                                            BorderBrush="{StaticResource Border}"
+                                            Background="{StaticResource Button.Background}"
+                                            Effect="{StaticResource LightShadowEffect}">
+                                        <ScrollViewer MaxHeight="128"
+                                                      Focusable="False" IsTabStop="False"
+                                                      HorizontalScrollBarVisibility="Hidden"
+                                                      VerticalScrollBarVisibility="Auto">
+                                            <ItemsControl ItemsSource="{Binding Warnings}" MaxWidth="200"
+                                                          Focusable="False" IsTabStop="False">
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="6" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <!--Style-->
+                                                            <Grid.Style>
+                                                                <Style TargetType="{x:Type Grid}">
+                                                                    <Style.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                                                                        </Trigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </Grid.Style>
+
+                                                            <!--InputBindings-->
+                                                            <Grid.InputBindings>
+                                                                <MouseBinding MouseAction="LeftClick" Command="{DXCommand '@a($Popup).IsOpen=false'}" />
+                                                            </Grid.InputBindings>
+
+                                                            <!--Margin-->
+                                                            <Rectangle Grid.Column="0"
+                                                                       Fill="{StaticResource IconYellowHighlight}" />
+
+                                                            <!--ErrorMessage-->
+                                                            <TextBlock Grid.Column="1" Margin="6, 3, 12, 3" Text="{Binding}"
+                                                                       TextTrimming="CharacterEllipsis" TextWrapping="Wrap" />
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
                 <!--LineNumbers-->
-                <ItemsControl Grid.Column="0" Width="50"
+                <ItemsControl x:Name="lineNumbers" Grid.Column="1" Width="30"
                               Background="{StaticResource Window.Background}"
                               BorderBrush="{StaticResource Focused}" BorderThickness="0, 0, 1, 0"
                               FontFamily="Consolas" FontSize="14"
@@ -76,7 +234,7 @@
                 </ItemsControl>
 
                 <!--Items-->
-                <ListBox Grid.Column="1" Padding="0"
+                <ListBox x:Name="items" Grid.Column="2" Padding="0"
                          SelectionMode="Extended" BorderThickness="0"
                          ItemsSource="{Binding Resources}"
                          SelectedItem="{Binding SelectedResource}"
@@ -87,7 +245,6 @@
                          gong:DragDrop.UseDefaultDragAdorner="True">
                     <!--Behaviors-->
                     <dxmvvm:Interaction.Behaviors>
-                        <!--<dxmvvm:FocusBehavior />-->
                         <studioBehaviors:ListBoxSelectionBehavior />
                     </dxmvvm:Interaction.Behaviors>
 
@@ -125,7 +282,8 @@
                                        Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
 
                                 <!--Name/Description-->
-                                <Grid Grid.Column="1" Margin="{StaticResource LeftMargin}">
+                                <Grid Grid.Column="1" Margin="{StaticResource LeftMargin}"
+                                      HorizontalAlignment="Left">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="*" />
@@ -162,20 +320,27 @@
                                         <TextBlock Text="{Binding TypeId, Converter={converters:IntToHexIdConverter}}"
                                                    Style="{StaticResource HighlightTextblockStyle}"
                                                    metro:VisibilityHelper.IsVisible="{Binding Alias, Converter={StaticResource IsNullConverter}}" />
+
+                                        <!--ExternalRef-->
+                                        <Image Margin="{StaticResource LeftMargin}" Source="{StaticResource ExternalFiles}"
+                                               ToolTip="This resource has an external reference"
+                                               metro:VisibilityHelper.IsVisible="{Binding HasExternalDependency}" />
                                     </StackPanel>
 
                                     <!--Description-->
-                                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Description}">
+                                    <ItemsControl Grid.Row="1" ItemsSource="{Binding Description}"
+                                                  HorizontalAlignment="Left">
                                         <ItemsControl.ItemsPanel>
                                             <ItemsPanelTemplate>
-                                                <StackPanel Orientation="Horizontal" />
+                                                <WrapPanel />
                                             </ItemsPanelTemplate>
                                         </ItemsControl.ItemsPanel>
 
                                         <ItemsControl.ItemTemplate>
                                             <DataTemplate>
                                                 <TextBlock Margin="{StaticResource SmallRightMargin}"
-                                                           Text="{Binding Text}">
+                                                           Text="{Binding Text}"
+                                                           TextTrimming="CharacterEllipsis">
                                                     <TextBlock.Style>
                                                         <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
                                                             <Style.Triggers>

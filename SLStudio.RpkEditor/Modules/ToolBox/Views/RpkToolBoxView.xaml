@@ -18,18 +18,17 @@
 
             <!--InputBindings-->
             <Grid.InputBindings>
-                <KeyBinding Key="Oem1" Modifiers="Ctrl" Command="{DXCommand '@e(searchBox).Focus()'}"/>
-                <KeyBinding Key="S" Modifiers="Alt" Command="{DXCommand 'FocusDesignerSearch()'}"/>
-            </Grid.InputBindings> 
-            
+                <KeyBinding Key="Oem1" Modifiers="Ctrl" Command="{DXCommand '@e(searchBox).Focus()'}" />
+                <KeyBinding Key="S" Modifiers="Alt" Command="{DXCommand 'FocusDesignerSearch()'}" />
+            </Grid.InputBindings>
+
             <!--Search-->
             <TextBox x:Name="searchBox" Grid.Row="0" Style="{StaticResource StudioSearchTextBoxStyle}"
                      Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}"
                      metro:TextBoxHelper.Watermark="Search (Ctrl+;)">
                 <dxmvvm:Interaction.Behaviors>
-                    <dxmvvm:FocusBehavior />
-                    <dxmvvm:FocusBehavior PropertyName="FocusRequested" 
-                                          SourceObject="{DXBinding '@a($UserControl).DataContext'}"/>
+                    <dxmvvm:FocusBehavior PropertyName="FocusRequested"
+                                          SourceObject="{DXBinding '@a($UserControl).DataContext'}" />
                 </dxmvvm:Interaction.Behaviors>
 
                 <!--InputBindings-->
@@ -47,7 +46,6 @@
                      FocusVisualStyle="{x:Null}"
                      gong:DragDrop.IsDragSource="True"
                      gong:DragDrop.UseDefaultDragAdorner="True">
-
                 <!--InputBindings-->
                 <ListBox.InputBindings>
                     <KeyBinding Key="Return" Command="{DXCommand 'AddResource()'}" />

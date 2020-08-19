@@ -45,7 +45,8 @@
             <!--SuperIdValue-->
             <TextBox Grid.Row="1" Grid.Column="1"
                      Margin="{StaticResource SmallUpMargin}"
-                     Text="{Binding Alias, UpdateSourceTrigger=PropertyChanged}">
+                     Text="{Binding Alias, UpdateSourceTrigger=PropertyChanged}"
+                     Loaded="{DXEvent '@s.CaretIndex=@s.Text.Length'}">
 
                 <!--Behaviors-->
                 <dxmvvm:Interaction.Behaviors>

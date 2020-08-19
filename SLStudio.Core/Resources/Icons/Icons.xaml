@@ -536,4 +536,58 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+
+    <!--ExternalFiles-->
+    <DrawingImage x:Key="ExternalFiles">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M6.0003,-0.000199999999999534L6.0003,1.9998 3.9993,1.9998 3.9993,6.9998 0.000300000000000189,6.9998 0.000300000000000189,15.9998 9.0003,15.9998 9.0003,13.9998 14.0003,13.9998 14.0003,12.0008 16.0003,12.0008 16.0003,3.3788 12.6203,-0.000199999999999534z M5.0003,3.0008L7.0003,3.0008 7.0003,0.9998 12.2063,0.9998 15.0003,3.7928 15.0003,10.9998 12.9993,10.9998 12.9993,13.0008 9.0003,13.0008 9.0003,6.9998 5.0003,6.9998z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M6,13L5,13 5,11.707 3.354,13.354 2.646,12.646 4.293,11 3,11 3,10 6,10z M2,14L7,14 7,9 2,9z M11.793,2L8,2 8,3 10.207,3 13,5.792 13,10 14,10 14,4.207z M10,6L11.793,6 10,4.207z M6,7L9,7 9,4 6,4z M9,7L12,7 12,12 9,12z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,14L7,14 7,9 2,9z M8,15L1,15 1,8 8,8z M6,10L6,13 5,13 5,11.707 3.354,13.354 2.646,12.646 4.293,11 3,11 3,10z M14,10L13,10 13,5.792 10.207,3 8,3 8,2 11.793,2 14,4.207z M10,6L10,4.207 11.793,6z M12.207,1L7,1 7,3 5,3 5,7 6,7 6,4 9,4 9,7 12,7 12,12 9,12 9,13 13,13 13,11 15,11 15,3.792z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--ArrowDown-->
+    <DrawingImage x:Key="ArrowDown">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource Border}" Geometry="M 0,0 L 15,15 L 30,0" />
+                    <GeometryDrawing Brush="{StaticResource Control.Background}" Geometry="M 2,0 L 15,13 L 28,0" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--CritcalError-->
+    <DrawingImage x:Key="CritcalError">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M16,8C16,12.418 12.418,16 8,16 3.582,16 0,12.418 0,8 0,3.582 3.582,0 8,0 12.418,0 16,3.582 16,8" />
+                    <GeometryDrawing Brush="{StaticResource IconRedHighlight}" Geometry="F1M12.4141,11L11.0001,12.414 8.0001,9.414 5.0001,12.414 3.5871,11 6.5861,8 3.5871,5 5.0001,3.586 8.0001,6.586 11.0001,3.586 12.4141,5 9.4141,8z M8.0001,1C4.1351,1 1.0001,4.135 1.0001,8 1.0001,11.865 4.1351,15 8.0001,15 11.8651,15 15.0001,11.865 15.0001,8 15.0001,4.135 11.8651,1 8.0001,1" />
+                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M9.4141,8L12.4141,11 11.0001,12.414 8.0001,9.414 5.0001,12.414 3.5861,11 6.5861,8 3.5861,5 5.0001,3.586 8.0001,6.586 11.0001,3.586 12.4141,5z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Warning-->
+    <DrawingImage x:Key="Warning">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M7.0002,-0.000199999999999534L0.000200000000000422,13.9998 2.0002,15.9998 14.0002,15.9998 16.0002,13.9998 9.0002,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconYellowHighlight}" Geometry="F1M9,10L7,10 7,5 9,5z M9,13L7,13 7,11 9,11z M8.382,1L7.618,1 1.217,13.803 2.5,15 13.5,15 14.783,13.803z" />
+                    <GeometryDrawing Brush="#FF000000" Geometry="F1M9,11L7,11 7,13 9,13z M9,10L7,10 7,5 9,5z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>

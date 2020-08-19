@@ -7,6 +7,11 @@ namespace SLStudio.RpkEditor.Data
 {
     internal class MeshDefinitionMetadata : ResourceMetadata
     {
+        public MeshDefinitionMetadata()
+        {
+            Editor = new MeshDefinitionViewModel(this);
+        }
+
         public override int AdditionalType => 5;
 
         public override ResourceType TypeOfEntry => ResourceType.MeshType;
@@ -17,7 +22,7 @@ namespace SLStudio.RpkEditor.Data
 
         public override string Category => CommonResources.Mesh;
 
-        public override IDefinitionEditor Editor => new MeshDefinitionViewModel(this);
+        public override IDefinitionEditor Editor { get; }
 
         public string SourceFile
         {
