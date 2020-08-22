@@ -4,6 +4,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
@@ -22,6 +23,8 @@ namespace SLStudio.RpkEditor.Data
 
     internal abstract class DefinitionsEditorBase<T> : ViewModelBase, IDefinitionsEditor, INotifyDataErrorInfo where T : class
     {
+        private static IReadOnlyCollection<string> properties;
+
         private bool realtimeValidation = false;
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
@@ -47,7 +50,10 @@ namespace SLStudio.RpkEditor.Data
         {
             realtimeValidation = true;
 
-            GetType().GetProperties().ForEach(p => Validate(p.Name));
+            if (properties == null)
+                properties = new List<string>(GetType().GetProperties().Select(p => p.Name));
+
+            properties.ForEach(p => Validate(p));
 
             return Validation.IsValid;
         }

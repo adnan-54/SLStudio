@@ -72,87 +72,89 @@
                 <!--ItemTemplate-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <Grid Margin="{StaticResource SmallFullMargin}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-
+                        <Grid Background="Transparent">
                             <!--InputBindings-->
                             <Grid.InputBindings>
                                 <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.AddResource()'}" />
                             </Grid.InputBindings>
+                            
+                            <Grid Margin="{StaticResource FullMargin}">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
 
-                            <!--Icon-->
-                            <Image Grid.Column="0" Height="24"
-                                   Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
+                                <!--Icon-->
+                                <Image Grid.Column="0" Height="24"
+                                       Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
 
-                            <!--Name-->
-                            <TextBlock Grid.Column="1" Margin="{StaticResource LeftMargin}"
-                                       Text="{Binding DisplayName}"
-                                       VerticalAlignment="Center" />
+                                <!--Name-->
+                                <TextBlock Grid.Column="1" Margin="{StaticResource LeftMargin}"
+                                           Text="{Binding DisplayName}"
+                                           VerticalAlignment="Center" />
 
-                            <!--Pin/Unpin-->
-                            <ToggleButton Grid.Column="2" VerticalAlignment="Center"
-                                          Command="{DXCommand '@a($ListBox).DataContext.ToggleIsPinned()'}"
-                                          IsChecked="{Binding IsPinned, Mode=OneWay}">
-                                <ToggleButton.Style>
-                                    <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
-                                        <Setter Property="BorderThickness" Value="0" />
-                                        <Setter Property="Background" Value="Transparent" />
-                                        <Setter Property="Focusable" Value="False" />
-                                        <Setter Property="ToolTip" Value="Pin item" />
-                                        <Setter Property="Opacity" Value="0.8" />
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type ToggleButton}">
-                                                    <ContentPresenter x:Name="contentPresenter" Focusable="False" />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                        <Style.Triggers>
-                                            <Trigger Property="IsChecked" Value="True">
-                                                <Setter Property="ToolTip" Value="Unpin" />
-                                            </Trigger>
-
-                                            <Trigger Property="IsMouseOver" Value="True">
-                                                <Setter Property="Opacity" Value="1" />
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </ToggleButton.Style>
-
-                                <!--Image-->
-                                <Image>
-                                    <Image.Style>
-                                        <Style TargetType="{x:Type Image}">
-                                            <Setter Property="Source" Value="{StaticResource Pushpin}" />
+                                <!--Pin/Unpin-->
+                                <ToggleButton Grid.Column="2" VerticalAlignment="Center"
+                                              Command="{DXCommand '@a($ListBox).DataContext.ToggleIsPinned()'}"
+                                              IsChecked="{Binding IsPinned, Mode=OneWay}">
+                                    <ToggleButton.Style>
+                                        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                                            <Setter Property="BorderThickness" Value="0" />
+                                            <Setter Property="Background" Value="Transparent" />
+                                            <Setter Property="Focusable" Value="False" />
+                                            <Setter Property="ToolTip" Value="Pin item" />
+                                            <Setter Property="Opacity" Value="0.8" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                        <ContentPresenter x:Name="contentPresenter" Focusable="False" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
                                             <Style.Triggers>
-                                                <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
-                                                    <Setter Property="Source" Value="{StaticResource PushpinUnpin}" />
-                                                </DataTrigger>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="ToolTip" Value="Unpin" />
+                                                </Trigger>
 
-                                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="False">
-                                                    <Setter Property="Visibility" Value="Hidden" />
-                                                </DataTrigger>
-
-                                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
-                                                    <Setter Property="Visibility" Value="Visible" />
-                                                </DataTrigger>
-
-                                                <MultiDataTrigger>
-                                                    <MultiDataTrigger.Conditions>
-                                                        <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True" />
-                                                        <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True" />
-                                                    </MultiDataTrigger.Conditions>
-                                                    <Setter Property="Visibility" Value="Visible" />
-                                                </MultiDataTrigger>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Opacity" Value="1" />
+                                                </Trigger>
                                             </Style.Triggers>
                                         </Style>
-                                    </Image.Style>
-                                </Image>
-                            </ToggleButton>
+                                    </ToggleButton.Style>
+
+                                    <!--Image-->
+                                    <Image>
+                                        <Image.Style>
+                                            <Style TargetType="{x:Type Image}">
+                                                <Setter Property="Source" Value="{StaticResource Pushpin}" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True">
+                                                        <Setter Property="Source" Value="{StaticResource PushpinUnpin}" />
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="False">
+                                                        <Setter Property="Visibility" Value="Hidden" />
+                                                    </DataTrigger>
+
+                                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True">
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </DataTrigger>
+
+                                                    <MultiDataTrigger>
+                                                        <MultiDataTrigger.Conditions>
+                                                            <Condition Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=ListBoxItem}}" Value="True" />
+                                                            <Condition Binding="{Binding IsChecked, RelativeSource={RelativeSource AncestorType=ToggleButton}}" Value="True" />
+                                                        </MultiDataTrigger.Conditions>
+                                                        <Setter Property="Visibility" Value="Visible" />
+                                                    </MultiDataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </ToggleButton>
+                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
@@ -161,6 +163,8 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="0"/>
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>

@@ -1,41 +1,16 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
-using SLStudio.Core;
 using SLStudio.RpkEditor.Data;
-using System;
-using System.Collections;
-using System.ComponentModel;
-using System.Linq;
 
 namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 {
-    internal class ResourceEditorViewModel : WindowViewModel, IResourceEditor, INotifyDataErrorInfo
+    internal class ResourceEditorViewModel : ResourceEditorBase<ResourceEditorViewModel>
     {
-        private readonly ResourceMetadata metadata;
-
-        private bool realtimeValidation = false;
-
-        public ResourceEditorViewModel(ResourceMetadata metadata)
+        public ResourceEditorViewModel(ResourceMetadata metadata) : base(metadata)
         {
-            this.metadata = metadata;
-
             Validator = new ResourceEditorValidator();
-            DisplayName = $"Resource Editor - {metadata.DisplayName}";
         }
 
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
-
-        public IValidator<ResourceEditorViewModel> Validator { get; }
-
-        public ValidationResult Validation => Validator.Validate(this);
-
-        public bool IsValid => Validate();
-
-        public bool HasErrors => realtimeValidation && !Validation.IsValid;
-
-        public bool HasDefinitionsEditor => DefinitionsEditor != null && !(DefinitionsEditor is NullDefinitionsEditor);
-
-        public IDefinitionsEditor DefinitionsEditor => Metadata.DefinitionsEditor ?? NullDefinitionsEditor.Default;
+        protected override IValidator<ResourceEditorViewModel> Validator { get; }
 
         public string Alias
         {
@@ -61,14 +36,7 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             set => SetProperty(() => IsParentCompatible, value);
         }
 
-        internal ResourceMetadata Metadata => metadata;
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            return Validation.Errors.Where(e => e.PropertyName == propertyName).Select(r => r.ErrorMessage);
-        }
-
-        public void LoadValues()
+        public override void LoadValues()
         {
             Alias = Metadata.Alias;
             SuperId = Metadata.SuperId.ToStringId();
@@ -77,7 +45,7 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             DefinitionsEditor.LoadValues();
         }
 
-        public void ApplyChanges()
+        public override void ApplyChanges()
         {
             Metadata.Alias = Alias;
             Metadata.SuperId = SuperId.ToIntId();
@@ -85,41 +53,6 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             Metadata.IsParentCompatible = IsParentCompatible;
             DefinitionsEditor.ApplyChanges();
             Metadata.UpdateProperties();
-        }
-
-        public bool Validate()
-        {
-            realtimeValidation = true;
-
-            Validate(nameof(Alias));
-            Validate(nameof(SuperId));
-            Validate(nameof(TypeId));
-            Validate(nameof(IsParentCompatible));
-
-            return DefinitionsEditor.IsValid && Validation.IsValid;
-        }
-
-        private void Validate(string propertyName = null)
-        {
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
-        }
-
-        public override void OnLoaded()
-        {
-            LoadValues();
-        }
-
-        public override void TryClose(bool? dialogResult)
-        {
-            if (dialogResult == true)
-            {
-                if (IsValid)
-                    ApplyChanges();
-                else
-                    return;
-            }
-
-            base.TryClose(dialogResult);
         }
     }
 

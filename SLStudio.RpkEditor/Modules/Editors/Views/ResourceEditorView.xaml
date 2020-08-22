@@ -6,13 +6,63 @@
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                      xmlns:studio="clr-namespace:SLStudio.Core;assembly=SLStudio.Core"
-                     mc:Ignorable="d" ResizeMode="NoResize"  Height="450" Width="500"
-                     MinHeight="100" MinWidth="300" MaxHeight="600" SizeToContent="Height"
+                     mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+                     Icon="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}"
+                     Width="500" MinWidth="500" MaxWidth="500"
+                     MinHeight="100"  MaxHeight="600" SizeToContent="Height"
                      ShowMaxRestoreButton="False" ShowMinButton="False">
+    <!--IconTemplate-->
+    <studio:DialogWindow.IconTemplate>
+        <DataTemplate>
+            <Grid Margin="6, 0, 0, 0">
+                <Image Visibility="Collapsed">
+                    <Image.Source>
+                        <DrawingImage>
+                            <DrawingImage.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M16,15L1,15 1,0 16,0z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,8L3,8 3,7 2,7z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,2L3,2 3,1 2,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M4,14L5.001,14 5.001,13 4,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,6L3,6 3,5 2,5z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,4L3,4 3,3 2,3z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,14L3,14 3,13 2,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,10L3,10 3,9 2,9z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M10,2L11,2 11,1 10,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M6,2L7,2 7,1 6,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M8,2L9,2 9,1 8,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,12L3,12 3,10.999 2,10.999z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M4,2L5.001,2 5.001,1 4,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M6,14L7,14 7,13 6,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M12,2L13,2 13,1 12,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,8L15,8 15,7 14,7z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M8,14L9,14 9,13 8,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,10L15,10 15,9 14,9z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,6L15,6 15,5 14,5z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,4L15,4 15,3 14,3z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,2L15,2 15,1 14,1z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,12L15,12 15,10.999 14,10.999z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M10,14L11,14 11,13 10,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M12,14L13,14 13,13 12,13z" />
+                                        <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M14,14L15,14 15,13 14,13z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingImage.Drawing>
+                        </DrawingImage>
+                    </Image.Source>
+                </Image>
+
+                <Image Source="{Binding Icon, RelativeSource={RelativeSource AncestorType=studio:DialogWindow}}" Margin="1"
+                       metro:VisibilityHelper.IsVisible="{Binding Icon, RelativeSource={RelativeSource AncestorType=studio:DialogWindow}, Converter={StaticResource IsNotNullConverter}}" />
+            </Grid>
+        </DataTemplate>
+    </studio:DialogWindow.IconTemplate>
+
     <Grid Margin="12">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -107,7 +157,7 @@
                 </ScrollViewer.Resources>
 
                 <!--Definitions-->
-                <ContentControl Grid.Row="1"  Margin="0, 1, 0, 0" studio:ViewBinder.Bind="{Binding DefinitionsEditor}" />
+                <ContentControl Grid.Row="1"  Margin="0, 1, 0, 0" studio:ViewBinder.Bind="{Binding DefinitionsEditor}"/>
             </ScrollViewer>
         </Grid>
 

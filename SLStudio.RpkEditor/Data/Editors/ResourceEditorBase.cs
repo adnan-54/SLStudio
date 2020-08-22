@@ -1,10 +1,10 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.Native;
+﻿using DevExpress.Mvvm.Native;
 using FluentValidation;
 using FluentValidation.Results;
 using SLStudio.Core;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 
@@ -23,39 +23,85 @@ namespace SLStudio.RpkEditor.Data
         bool Validate();
     }
 
-    //internal abstract class ResourceEditorBase<T> : WindowViewModel, IResourceEditor, INotifyDataErrorInfo where T : class
-    //{
-    //    private bool realtimeValidation = false;
+    internal abstract class ResourceEditorBase<T> : WindowViewModel, IResourceEditor, INotifyDataErrorInfo where T : class
+    {
+        private static IReadOnlyCollection<string> properties;
 
-    //    public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        private bool realtimeValidation = false;
 
-    //    protected abstract IValidator<T> Validator { get; }
+        protected ResourceEditorBase(ResourceMetadata metadata)
+        {
+            Metadata = metadata;
+            DisplayName = $"Resource Editor - {metadata.DisplayName}";
+            IconSource = metadata.IconSource;
+        }
 
-    //    public ValidationResult Validation => Validator.Validate(this as T);
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-    //    public bool IsValid => Validate();
+        public string IconSource
+        {
+            get => GetProperty(() => IconSource);
+            set => SetProperty(() => IconSource, value);
+        }
 
-    //    public bool HasErrors => realtimeValidation && !Validation.IsValid;
+        protected abstract IValidator<T> Validator { get; }
 
-    //    public abstract void ApplyChanges();
+        public ValidationResult Validation => Validator.Validate(this as T);
 
-    //    public IEnumerable GetErrors(string propertyName)
-    //    {
-    //        return Validation.Errors.Where(e => e.PropertyName == propertyName);
-    //    }
+        public bool IsValid => Validate();
 
-    //    public bool Validate()
-    //    {
-    //        realtimeValidation = true;
+        public bool HasErrors => realtimeValidation && !Validation.IsValid;
 
-    //        GetType().GetProperties().ForEach(p => Validate(p.Name));
+        public ResourceMetadata Metadata { get; }
 
-    //        return Validation.IsValid;
-    //    }
+        public bool HasDefinitionsEditor => DefinitionsEditor != null && !(DefinitionsEditor is NullDefinitionsEditor);
 
-    //    private void Validate(string propertyName)
-    //    {
-    //        ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
-    //    }
-    //}
+        public IDefinitionsEditor DefinitionsEditor => Metadata.DefinitionsEditor ?? NullDefinitionsEditor.Default;
+
+        public abstract void LoadValues();
+
+        public abstract void ApplyChanges();
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return Validation.Errors.Where(e => e.PropertyName == propertyName);
+        }
+
+        public bool Validate()
+        {
+            realtimeValidation = true;
+
+            if (properties == null)
+                properties = new List<string>(GetType().GetProperties().Select(p => p.Name));
+
+            properties.ForEach(p => Validate(p));
+
+            return DefinitionsEditor.IsValid && Validation.IsValid;
+        }
+
+        private void Validate(string propertyName)
+        {
+            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        public override void OnLoaded()
+        {
+            LoadValues();
+        }
+
+        public override void TryClose(bool? dialogResult)
+        {
+            if (dialogResult == true)
+            {
+                if (IsValid)
+                    ApplyChanges();
+                else
+                    return;
+            }
+            else
+                LoadValues();
+
+            base.TryClose(dialogResult);
+        }
+    }
 }
