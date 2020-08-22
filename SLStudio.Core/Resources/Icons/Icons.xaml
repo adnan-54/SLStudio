@@ -590,4 +590,166 @@
             </DrawingGroup>
         </DrawingImage.Drawing>
     </DrawingImage>
+
+    <!--Info-->
+    <DrawingImage x:Key="Info">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M0,8.0005C0,3.5825 3.582,0.000499999999998835 8,0.000499999999998835 12.418,0.000499999999998835 16,3.5825 16,8.0005 16,12.4185 12.418,16.0005 8,16.0005 3.582,16.0005 0,12.4185 0,8.0005" />
+                    <GeometryDrawing Brush="#FF1AA1E2" Geometry="F1M9,5L7,5 7,3 9,3z M9,13L7,13 7,6 9,6z M8,1C4.135,1 1,4.135 1,8 1,11.865 4.135,15 8,15 11.865,15 15,11.865 15,8 15,4.135 11.865,1 8,1" />
+                    <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M7,5L9,5 9,3 7,3z M7,6L9,6 9,13 7,13z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Link-->
+    <DrawingImage x:Key="Link">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M16,10C16,12.206,14.206,14,12,14L7,14C5.107,14,3.518,12.679,3.104,10.911L2.688,10.766C1.08,10.203 0,8.69 0,7 0,4.794 1.794,3 4,3L9,3C10.893,3,12.481,4.321,12.896,6.089L13.312,6.235C14.92,6.797,16,8.31,16,10" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M2,7C2,5.897,2.897,5,4,5L9,5C10.103,5 11,5.897 11,7 11,8.103 10.103,9 9,9L7,9C6.449,9,6,9.449,6,10L9,10C10.654,10 12,8.654 12,7 12,5.346 10.654,4 9,4L4,4C2.346,4 1,5.346 1,7 1,8.309 1.847,9.412 3.018,9.821 3.034,9.476 3.097,9.146 3.195,8.828 2.493,8.518 2,7.816 2,7 M15,10C15,11.654,13.654,13,12,13L7,13C5.346,13 4,11.654 4,10 4,8.346 5.346,7 7,7L10,7C10,7.551,9.552,8,9,8L8,8 7,8C5.897,8 5,8.897 5,10 5,11.103 5.897,12 7,12L12,12C13.103,12 14,11.103 14,10 14,9.184 13.507,8.482 12.805,8.172 12.902,7.854 12.967,7.524 12.982,7.179 14.152,7.588 15,8.691 15,10" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Delete-->
+    <DrawingImage x:Key="Delete">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="M 11.837624,8.0032439 14.885175,11.033028 11.044968,14.873234 7.9974173,11.843451 4.9550319,14.873234 1.1148254,11.033028 4.1608302,8.0032439 1.1225198,4.9633529 4.9456491,1.1267656 8.0010367,4.1666567 11.042441,1.1343479 14.776213,4.8665728 Z" />
+                    <GeometryDrawing Brush="{StaticResource IconRedHighlight}" Geometry="M 9.6391822,7.9992269 12.68415,11.044195 11.044196,12.68415 7.9992272,9.6391819 4.9558049,12.68415 3.3158503,11.044195 6.3608179,7.9992272 3.3158503,4.9542594 4.9558049,3.3158503 8.0007731,6.360818 11.044196,3.3158503 12.68415,4.9542594 Z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Trash-->
+    <DrawingImage x:Key="Trash">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M4,16C2.897,16,2,15.103,2,14L2,5 1,5 1,2 4,2C4,0.897,4.897,0,6,0L9,0C10.103,0,11,0.897,11,2L14,2 14,5 13,5 13,14C13,15.103,12.103,16,11,16z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M10,12L9,12 9,6 10,6z M8,12L7,12 7,6 8,6z M6,12L5,12 5,6 6,6z M4,14L11,14 11,4 4,4z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M11,4L4,4 4,14 11,14z M6,3L9,3 9,2 6,2z M13,3L13,4 12,4 12,14C12,14.552,11.552,15,11,15L4,15C3.448,15,3,14.552,3,14L3,4 2,4 2,3 5,3 5,2C5,1.448,5.448,1,6,1L9,1C9.552,1,10,1.448,10,2L10,3z M10,6L9,6 9,12 10,12z M8,6L7,6 7,12 8,12z M6,12L5,12 5,6 6,6z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Trash_Red-->
+    <DrawingImage x:Key="Trash_Red">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M4,16C2.897,16,2,15.103,2,14L2,5 1,5 1,2 4,2C4,0.897,4.897,0,6,0L9,0C10.103,0,11,0.897,11,2L14,2 14,5 13,5 13,14C13,15.103,12.103,16,11,16z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M10,12L9,12 9,6 10,6z M8,12L7,12 7,6 8,6z M6,12L5,12 5,6 6,6z M4,14L11,14 11,4 4,4z" />
+                    <GeometryDrawing Brush="{StaticResource IconRedHighlight}" Geometry="F1M11,4L4,4 4,14 11,14z M6,3L9,3 9,2 6,2z M13,3L13,4 12,4 12,14C12,14.552,11.552,15,11,15L4,15C3.448,15,3,14.552,3,14L3,4 2,4 2,3 5,3 5,2C5,1.448,5.448,1,6,1L9,1C9.552,1,10,1.448,10,2L10,3z M10,6L9,6 9,12 10,12z M8,6L7,6 7,12 8,12z M6,12L5,12 5,6 6,6z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Remove-->
+    <DrawingImage x:Key="Remove">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M0,10L16,10 16,6 0,6z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M15,9L1,9 1,7 15,7z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Remove_Red-->
+    <DrawingImage x:Key="Remove_Red">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M0,10L16,10 16,6 0,6z" />
+                    <GeometryDrawing Brush="{StaticResource IconRedHighlight}" Geometry="F1M15,9L1,9 1,7 15,7z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Add-->
+    <DrawingImage x:Key="Add">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M6.0003,-0.000199999999999534L6.0003,5.9998 0.000300000000000189,5.9998 0.000300000000000189,9.9998 6.0003,9.9998 6.0003,15.9998 10.0003,15.9998 10.0003,9.9998 16.0003,9.9998 16.0003,5.9998 10.0003,5.9998 10.0003,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M15,9L9,9 9,15 7,15 7,9 1,9 1,7 7,7 7,1 9,1 9,7 15,7z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Add_Green-->
+    <DrawingImage x:Key="Add_Green">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M6.0003,-0.000199999999999534L6.0003,5.9998 0.000300000000000189,5.9998 0.000300000000000189,9.9998 6.0003,9.9998 6.0003,15.9998 10.0003,15.9998 10.0003,9.9998 16.0003,9.9998 16.0003,5.9998 10.0003,5.9998 10.0003,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconGreenHighlight}" Geometry="F1M15,9L9,9 9,15 7,15 7,9 1,9 1,7 7,7 7,1 9,1 9,7 15,7z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--AddLink-->
+    <DrawingImage x:Key="AddLink">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M16,11C16,13.206,14.206,15,12,15L7,15C5.107,15,3.518,13.679,3.104,11.911L2.688,11.766C1.08,11.203 0,9.69 0,8 0,7.268 0.212,6.591 0.557,6L0,6 0,2.018 2.019,2.018 2.019,0 6,0 6,2.018 8,2.018 8,4 9,4C10.893,4,12.481,5.321,12.896,7.089L13.312,7.235C14.92,7.797,16,9.311,16,11" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M12.9814,8.1787C12.9664,8.5247 12.9024,8.8547 12.8044,9.1717 13.5064,9.4827 14.0004,10.1837 14.0004,10.9997 14.0004,12.1027 13.1024,12.9997 12.0004,12.9997L7.0004,12.9997C5.8974,12.9997 5.0004,12.1027 5.0004,10.9997 5.0004,9.8967 5.8974,8.9997 7.0004,8.9997L8.0004,8.9997 9.0004,8.9997C9.5514,8.9997,10.0004,8.5517,10.0004,7.9997L7.0004,7.9997C5.3454,7.9997 4.0004,9.3457 4.0004,10.9997 4.0004,12.6547 5.3454,13.9997 7.0004,13.9997L12.0004,13.9997C13.6544,13.9997 15.0004,12.6547 15.0004,10.9997 15.0004,9.6917 14.1524,8.5877 12.9814,8.1787 M2.0004,7.9997C2.0004,7.9367,2.0124,7.8777,2.0184,7.8167L2.0184,5.9997 1.7804,5.9997C1.3004,6.5327 1.0004,7.2287 1.0004,7.9997 1.0004,9.3087 1.8474,10.4117 3.0184,10.8217 3.0334,10.4757 3.0974,10.1457 3.1954,9.8277 2.4924,9.5177 2.0004,8.8167 2.0004,7.9997 M9.0004,5.9997L8.0004,5.9997 8.0004,4.9997 9.0004,4.9997C10.6544,4.9997 12.0004,6.3457 12.0004,7.9997 12.0004,9.6547 10.6544,10.9997 9.0004,10.9997L6.0004,10.9997C6.0004,10.4497,6.4484,9.9997,7.0004,9.9997L9.0004,9.9997C10.1024,9.9997 11.0004,9.1037 11.0004,7.9997 11.0004,6.8967 10.1024,5.9997 9.0004,5.9997" />
+                    <GeometryDrawing Brush="{StaticResource IconGreenHighlight}" Geometry="F1M7,3.0181L5,3.0181 5,1.0001 3.019,1.0001 3.019,3.0181 1,3.0181 1,5.0001 3.019,5.0001 3.019,7.0001 5,7.0001 5,5.0001 7,5.0001z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--AddReference-->
+    <DrawingImage x:Key="AddReference">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M2.0187,-0.000199999999999534L2.0187,2.0188 -0.000300000000000189,2.0188 -0.000300000000000189,5.9998 2.0187,5.9998 2.0187,6.9998 -0.000300000000000189,6.9998 -0.000300000000000189,13.9998 6.0007,13.9998 6.0007,12.0008 7.9997,12.0008 7.9997,14.9998 15.9997,14.9998 15.9997,5.9998 7.9997,5.9998 7.9997,8.9998 6.0007,8.9998 6.0007,5.9998 7.9997,5.9998 7.9997,2.0188 6.0007,2.0188 6.0007,-0.000199999999999534z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M8,10L6,10 6,11 8,11z M5,8L1,8 1,13 5,13z M15,14L9,14 9,7 15,7z" />
+                    <GeometryDrawing Brush="{StaticResource IconGreenHighlight}" Geometry="F1M7,3.0181L5,3.0181 5,1.0001 3.019,1.0001 3.019,3.0181 1,3.0181 1,5.0001 3.019,5.0001 3.019,7.0001 5,7.0001 5,5.0001 7,5.0001z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
+    <!--Reference-->
+    <DrawingImage x:Key="Reference">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+                <DrawingGroup.Children>
+                    <GeometryDrawing Brush="#00FFFFFF" Geometry="F1M16,16L0,16 0,0 16,0z" />
+                    <GeometryDrawing Brush="{StaticResource IconBackground}" Geometry="F1M8.0001,3.0004L8.0001,6.0004 6.0001,6.0004 6.0001,4.0004 9.99999999997669E-05,4.0004 9.99999999997669E-05,10.9994 6.0001,10.9994 6.0001,8.9994 8.0001,8.9994 8.0001,12.0004 16.0001,12.0004 16.0001,3.0004z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M1,10L5,10 5,5 1,5z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M9,11L15,11 15,4 9,4z" />
+                    <GeometryDrawing Brush="{StaticResource IconForeground}" Geometry="F1M6,8L8,8 8,7 6,7z" />
+                </DrawingGroup.Children>
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
 </ResourceDictionary>

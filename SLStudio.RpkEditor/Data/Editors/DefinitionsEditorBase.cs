@@ -1,15 +1,26 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.Native;
 using FluentValidation;
 using FluentValidation.Results;
-using SLStudio.RpkEditor.Editors;
 using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
 
-namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
+namespace SLStudio.RpkEditor.Data
 {
-    internal abstract class DefinitionEditorBase<T> : ViewModelBase, IDefinitionEditor, INotifyDataErrorInfo where T : class
+    internal interface IDefinitionsEditor
+    {
+        bool IsValid { get; }
+
+        bool Validate();
+
+        void LoadValues();
+
+        void ApplyChanges();
+    }
+
+    internal abstract class DefinitionsEditorBase<T> : ViewModelBase, IDefinitionsEditor, INotifyDataErrorInfo where T : class
     {
         private bool realtimeValidation = false;
 
@@ -21,16 +32,9 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 
         public bool IsValid => Validate();
 
-        public bool HasErrors
-        {
-            get
-            {
-                if (realtimeValidation)
-                    return !Validation.IsValid;
+        public bool HasErrors => realtimeValidation && !Validation.IsValid;
 
-                return false;
-            }
-        }
+        public abstract void LoadValues();
 
         public abstract void ApplyChanges();
 
@@ -43,10 +47,7 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
         {
             realtimeValidation = true;
 
-            var properties = GetType().GetProperties();
-
-            foreach (var property in properties)
-                Validate(property.Name);
+            GetType().GetProperties().ForEach(p => Validate(p.Name));
 
             return Validation.IsValid;
         }

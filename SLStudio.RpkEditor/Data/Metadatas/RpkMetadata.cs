@@ -7,8 +7,8 @@ namespace SLStudio.RpkEditor.Data
     {
         public RpkMetadata()
         {
-            ExternalRefs = new BindableCollection<RpkMetadata>();
-            ResourceMetadatas = new BindableCollection<ResourceMetadata>();
+            ExternalReferences = new BindableCollection<ExternalReferenceMetadata>();
+            Resources = new BindableCollection<ResourceMetadata>();
         }
 
         public string Path
@@ -17,8 +17,8 @@ namespace SLStudio.RpkEditor.Data
             set => SetProperty(() => Path, value);
         }
 
-        public BindableCollection<RpkMetadata> ExternalRefs { get; }
+        public BindableCollection<ExternalReferenceMetadata> ExternalReferences { get; }
 
-        public BindableCollection<ResourceMetadata> ResourceMetadatas { get; }
+        public BindableCollection<ResourceMetadata> Resources { get; }
     }
 }

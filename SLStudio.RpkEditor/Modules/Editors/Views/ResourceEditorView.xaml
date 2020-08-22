@@ -7,18 +7,17 @@
                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                      xmlns:studio="clr-namespace:SLStudio.Core;assembly=SLStudio.Core"
                      mc:Ignorable="d" ResizeMode="NoResize"  Height="450" Width="500"
-                     MinHeight="250" MinWidth="300" MaxHeight="600" SizeToContent="Height"
+                     MinHeight="100" MinWidth="300" MaxHeight="600" SizeToContent="Height"
                      ShowMaxRestoreButton="False" ShowMinButton="False">
     <Grid Margin="12">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--Parameters-->
-        <Grid Grid.Row="0"
-              Margin="{StaticResource BottomMargin}">
+        <Grid Grid.Row="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*" />
                 <ColumnDefinition Width="*" />
@@ -33,7 +32,7 @@
             </Grid.RowDefinitions>
 
             <!--Header-->
-            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="{StaticResource LargeBottomMargin}"
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Margin="{StaticResource BottomMargin}"
                     BorderBrush="{StaticResource Delimiter}" BorderThickness="0, 0, 0, 1">
                 <TextBlock Text="Parameters" FontSize="16" FontWeight="Bold" />
             </Border>
@@ -42,7 +41,7 @@
             <TextBlock Grid.Row="1" Grid.Column="0"
                        Text="Alias" />
 
-            <!--SuperIdValue-->
+            <!--AliasValue-->
             <TextBox Grid.Row="1" Grid.Column="1"
                      Margin="{StaticResource SmallUpMargin}"
                      Text="{Binding Alias, UpdateSourceTrigger=PropertyChanged}"
@@ -87,9 +86,8 @@
         </Grid>
 
         <!--Definitions-->
-        <Grid Grid.Row="1"
-              Margin="{StaticResource BottomMargin}"
-              metro:VisibilityHelper.IsVisible="{Binding DefinitionEditor, Converter={StaticResource IsNotNullConverter}}">
+        <Grid Grid.Row="1" Margin="{StaticResource UpMargin}"
+              metro:VisibilityHelper.IsVisible="{Binding HasDefinitionsEditor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -100,7 +98,7 @@
                 <TextBlock Text="Definitions" FontSize="16" FontWeight="Bold" />
             </Border>
 
-            <ScrollViewer Grid.Row="1" Margin="{StaticResource LargeUpMargin}"
+            <ScrollViewer Grid.Row="1" Margin="{StaticResource UpMargin}"
                           HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Resources>
                     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
@@ -109,12 +107,13 @@
                 </ScrollViewer.Resources>
 
                 <!--Definitions-->
-                <ContentControl Grid.Row="1" studio:ViewBinder.Bind="{Binding DefinitionEditor}" Margin="0, 1, 0, 0" />
+                <ContentControl Grid.Row="1"  Margin="0, 1, 0, 0" studio:ViewBinder.Bind="{Binding DefinitionsEditor}" />
             </ScrollViewer>
         </Grid>
 
         <!--Actions-->
-        <StackPanel Grid.Row="2" Style="{StaticResource StudioActionsStackPanelStyle}">
+        <StackPanel Grid.Row="2" Margin="{StaticResource LargeUpMargin}"
+                    Style="{StaticResource StudioActionsStackPanelStyle}">
             <Button Content="_Cancel" IsCancel="True"
                     Command="{DXCommand 'TryClose(false)'}" />
 

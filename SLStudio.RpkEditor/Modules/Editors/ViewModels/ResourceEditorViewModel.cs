@@ -2,7 +2,6 @@
 using FluentValidation.Results;
 using SLStudio.Core;
 using SLStudio.RpkEditor.Data;
-using SLStudio.RpkEditor.Editors;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -10,69 +9,21 @@ using System.Linq;
 
 namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 {
-    internal class ResourceEditorViewModel : WindowViewModel, INotifyDataErrorInfo
+    internal class ResourceEditorViewModel : WindowViewModel, IResourceEditor, INotifyDataErrorInfo
     {
+        private readonly ResourceMetadata metadata;
+
         private bool realtimeValidation = false;
 
-        public ResourceEditorViewModel(ResourceMetadata metadata, bool isEditing = false)
+        public ResourceEditorViewModel(ResourceMetadata metadata)
         {
-            Metadata = metadata;
-            DefinitionEditor = metadata.Editor;
-            Alias = metadata.Alias;
-            IsParentCompatible = metadata.IsParentCompatible;
+            this.metadata = metadata;
+
             Validator = new ResourceEditorValidator();
-
-            if (isEditing)
-            {
-                Validate();
-                SuperId = metadata.SuperId.ToStringId();
-                TypeId = metadata.TypeId.ToStringId();
-            }
-
             DisplayName = $"Resource Editor - {metadata.DisplayName}";
         }
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
-
-        public ResourceMetadata Metadata { get; }
-
-        public IDefinitionEditor DefinitionEditor { get; }
-
-        public string Alias
-        {
-            get => GetProperty(() => Alias);
-            set
-            {
-                SetProperty(() => Alias, value);
-            }
-        }
-
-        public string SuperId
-        {
-            get => GetProperty(() => SuperId);
-            set
-            {
-                SetProperty(() => SuperId, value);
-            }
-        }
-
-        public string TypeId
-        {
-            get => GetProperty(() => TypeId);
-            set
-            {
-                SetProperty(() => TypeId, value);
-            }
-        }
-
-        public bool IsParentCompatible
-        {
-            get => GetProperty(() => IsParentCompatible);
-            set
-            {
-                SetProperty(() => IsParentCompatible, value);
-            }
-        }
 
         public IValidator<ResourceEditorViewModel> Validator { get; }
 
@@ -80,20 +31,60 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
 
         public bool IsValid => Validate();
 
-        public bool HasErrors
-        {
-            get
-            {
-                if (realtimeValidation)
-                    return !Validation.IsValid;
+        public bool HasErrors => realtimeValidation && !Validation.IsValid;
 
-                return false;
-            }
+        public bool HasDefinitionsEditor => DefinitionsEditor != null && !(DefinitionsEditor is NullDefinitionsEditor);
+
+        public IDefinitionsEditor DefinitionsEditor => Metadata.DefinitionsEditor ?? NullDefinitionsEditor.Default;
+
+        public string Alias
+        {
+            get => GetProperty(() => Alias);
+            set => SetProperty(() => Alias, value);
         }
+
+        public string SuperId
+        {
+            get => GetProperty(() => SuperId);
+            set => SetProperty(() => SuperId, value);
+        }
+
+        public string TypeId
+        {
+            get => GetProperty(() => TypeId);
+            set => SetProperty(() => TypeId, value);
+        }
+
+        public bool IsParentCompatible
+        {
+            get => GetProperty(() => IsParentCompatible);
+            set => SetProperty(() => IsParentCompatible, value);
+        }
+
+        internal ResourceMetadata Metadata => metadata;
 
         public IEnumerable GetErrors(string propertyName)
         {
-            return Validation.Errors.Where(e => e.PropertyName == propertyName);
+            return Validation.Errors.Where(e => e.PropertyName == propertyName).Select(r => r.ErrorMessage);
+        }
+
+        public void LoadValues()
+        {
+            Alias = Metadata.Alias;
+            SuperId = Metadata.SuperId.ToStringId();
+            TypeId = Metadata.TypeId.ToStringId();
+            IsParentCompatible = Metadata.IsParentCompatible;
+            DefinitionsEditor.LoadValues();
+        }
+
+        public void ApplyChanges()
+        {
+            Metadata.Alias = Alias;
+            Metadata.SuperId = SuperId.ToIntId();
+            Metadata.TypeId = TypeId.ToIntId();
+            Metadata.IsParentCompatible = IsParentCompatible;
+            DefinitionsEditor.ApplyChanges();
+            Metadata.UpdateProperties();
         }
 
         public bool Validate()
@@ -105,37 +96,30 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             Validate(nameof(TypeId));
             Validate(nameof(IsParentCompatible));
 
-            DefinitionEditor.Validate();
-
-            return Validation.IsValid && DefinitionEditor.IsValid;
+            return DefinitionsEditor.IsValid && Validation.IsValid;
         }
 
-        private void Validate(string propertyName)
+        private void Validate(string propertyName = null)
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+        }
+
+        public override void OnLoaded()
+        {
+            LoadValues();
         }
 
         public override void TryClose(bool? dialogResult)
         {
             if (dialogResult == true)
             {
-                if (!IsValid)
-                    return;
-                else
+                if (IsValid)
                     ApplyChanges();
+                else
+                    return;
             }
 
             base.TryClose(dialogResult);
-        }
-
-        private void ApplyChanges()
-        {
-            Metadata.Alias = Alias;
-            Metadata.SuperId = SuperId.ToIntId();
-            Metadata.TypeId = TypeId.ToIntId();
-            Metadata.IsParentCompatible = IsParentCompatible;
-            DefinitionEditor.ApplyChanges();
-            Metadata.UpdateProperties();
         }
     }
 

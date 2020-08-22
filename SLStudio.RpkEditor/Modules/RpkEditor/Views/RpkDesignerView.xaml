@@ -15,6 +15,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -26,13 +27,94 @@
         <TextBox x:Name="searchBox" Grid.Row="0" BorderThickness="0"
                  metro:TextBoxHelper.Watermark="{x:Static properties:RpkEditorResources.SearchAltS}"
                  Style="{StaticResource StudioSearchTextBoxStyle}">
-            <dxmvvm:Interaction.Behaviors>
-                <dxmvvm:FocusBehavior PropertyName="FocusRequested"
-                                      SourceObject="{DXBinding '@a($UserControl).DataContext'}" />
-            </dxmvvm:Interaction.Behaviors>
         </TextBox>
 
-        <ScrollViewer Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Width="54"
+                    BorderThickness="0, 0, 1, 0" BorderBrush="{StaticResource Focused}"
+                    Background="{StaticResource Window.Background}"
+                    Visibility="Collapsed">
+            </Border>
+
+            <ToggleButton x:Name="toggle" Grid.Column="1"
+                          Focusable="False" IsTabStop="False"  Height="32"
+                          BorderThickness="0, 1, 0, 1">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="External References"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </ToggleButton>
+
+            <Popup IsOpen="{Binding IsChecked, ElementName=toggle}"
+                   Height="200" StaysOpen="True"
+                   AllowsTransparency="True" PopupAnimation="Fade"
+                   VerticalOffset="-1"
+                   Placement="Bottom" PlacementTarget="{Binding ElementName=toggle}">
+                <Border BorderThickness="1, 0, 1, 1" BorderBrush="{StaticResource Focused}"
+                        MinWidth="{Binding ActualWidth, ElementName=toggle}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <ScrollViewer Grid.Row="0"
+                                      VerticalScrollBarVisibility="Auto"
+                                      Background="{StaticResource Editor.Background}">
+                            <ItemsControl ItemsSource="{Binding }">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+
+                                <ItemsControl.Style>
+                                    <Style TargetType="{x:Type ItemsControl}">
+                                        <Style.Triggers>
+                                            <Trigger Property="HasItems" Value="False">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ItemsControl}">
+                                                            <Grid>
+                                                                <TextBlock Text="No external references added yet."
+                                                                           FontStyle="Italic" Opacity="0.7"
+                                                                           HorizontalAlignment="Center"
+                                                                           VerticalAlignment="Center" />
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </ItemsControl.Style>
+                            </ItemsControl>
+                        </ScrollViewer>
+
+                        <Button Grid.Row="1" BorderThickness="0, 1, 0, 0"
+                                Padding="3" IsTabStop="False" Focusable="False">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{StaticResource Add_Green}" Height="18" />
+
+                                <TextBlock Margin="{StaticResource LeftMargin}" Text="Add New"
+                                           FontStyle="Oblique"
+                                           TextOptions.TextFormattingMode="Display"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Popup>
+        </Grid>
+
+        <!--Designer-->
+        <ScrollViewer Grid.Row="2"
                       Focusable="False" IsTabStop="False"
                       FocusVisualStyle="{x:Null}"
                       VerticalScrollBarVisibility="Auto"
@@ -46,6 +128,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+
                 <!--behaviors-->
                 <dxmvvm:Interaction.Behaviors>
                     <behaviors:NumberedListBoxBehavior />
@@ -65,8 +148,8 @@
                                 <StackPanel Margin="3" VerticalAlignment="Center">
                                     <StackPanel.Resources>
                                         <Style TargetType="{x:Type ToggleButton}">
-                                            <Setter Property="Focusable" Value="False"/>
-                                            <Setter Property="IsTabStop" Value="False"/>
+                                            <Setter Property="Focusable" Value="False" />
+                                            <Setter Property="IsTabStop" Value="False" />
                                             <Setter Property="Margin" Value="0, 1, 0, 1" />
                                             <Setter Property="Template">
                                                 <Setter.Value>
@@ -245,6 +328,7 @@
                          gong:DragDrop.UseDefaultDragAdorner="True">
                     <!--Behaviors-->
                     <dxmvvm:Interaction.Behaviors>
+                        <dxmvvm:FocusBehavior />
                         <studioBehaviors:ListBoxSelectionBehavior />
                     </dxmvvm:Interaction.Behaviors>
 
@@ -324,7 +408,7 @@
                                         <!--ExternalRef-->
                                         <Image Margin="{StaticResource LeftMargin}" Source="{StaticResource ExternalFiles}"
                                                ToolTip="This resource has an external reference"
-                                               metro:VisibilityHelper.IsVisible="{Binding HasExternalDependency}" />
+                                               metro:VisibilityHelper.IsVisible="{Binding HasExternalReference}" />
                                     </StackPanel>
 
                                     <!--Description-->
@@ -374,6 +458,8 @@
                         <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                             <Setter Property="Margin" Value="0" />
                             <Setter Property="Padding" Value="0" />
+                            <Setter Property="BorderThickness" Value="1" />
+                            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
                             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                             <Setter Property="VerticalContentAlignment" Value="Stretch" />
                             <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />

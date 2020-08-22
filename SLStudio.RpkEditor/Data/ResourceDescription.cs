@@ -9,6 +9,7 @@
         }
 
         public string Text { get; }
+
         public bool Highlight { get; }
     }
 }

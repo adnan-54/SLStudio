@@ -6,18 +6,14 @@ using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Modules.RpkEditor.ViewModels;
 using SLStudio.RpkEditor.Modules.Toolbox.Models;
 using SLStudio.RpkEditor.Modules.Toolbox.Resources;
-using SLStudio.RpkEditor.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using Xceed.Wpf.Toolkit.Core.Converters;
 
 namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
 {
@@ -26,11 +22,11 @@ namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
         private static readonly ILogger logger = LogManager.GetLoggerFor<RpkToolBoxViewModel>();
 
         private readonly RpkEditorViewModel rpkEditor;
-        private readonly IRpkManager rpkManager;
+        private readonly RpkManager rpkManager;
 
         private readonly BindableCollection<ToolboxItemModel> resources;
 
-        public RpkToolBoxViewModel(RpkEditorViewModel rpkEditor, IRpkManager rpkManager)
+        public RpkToolBoxViewModel(RpkEditorViewModel rpkEditor, RpkManager rpkManager)
         {
             this.rpkEditor = rpkEditor;
             this.rpkManager = rpkManager;
@@ -67,12 +63,6 @@ namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
         {
             get => GetProperty(() => SelectedItem);
             set => SetProperty(() => SelectedItem, value);
-        }
-
-        public bool FocusRequested
-        {
-            get => GetProperty(() => FocusRequested);
-            set => SetProperty(() => FocusRequested, value);
         }
 
         public void OnLoaded()
@@ -125,17 +115,6 @@ namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
 
                 Resources.Refresh();
             }
-        }
-
-        public void FocusSearch()
-        {
-            FocusRequested = false;
-            FocusRequested = true;
-        }
-
-        public void FocusDesignerSearch()
-        {
-            rpkEditor.FocusDesignerSearch();
         }
 
         private Task FetchItems()

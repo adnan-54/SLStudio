@@ -3,7 +3,6 @@ using SLStudio.Logging;
 using SLStudio.RpkEditor.Data;
 using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
 using SLStudio.RpkEditor.Modules.ToolBox.ViewModels;
-using SLStudio.RpkEditor.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -15,11 +14,8 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RpkEditorViewModel>();
 
-        private readonly IToolbox toolbox;
-        private readonly IShell shell;
-
         private readonly RpkMetadata rpk;
-        private readonly IRpkManager rpkManager;
+        private readonly RpkManager rpkManager;
         private readonly BindableCollection<RpkEditorBase> editors;
 
         private readonly RpkCodeViewModel code;
@@ -28,16 +24,14 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
         private event EventHandler<SelectedEditorChanged> SelectedEditorChanged;
 
-        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization, IToolbox toolbox, IShell shell)
+        public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization)
         {
-            this.toolbox = toolbox;
-            this.shell = shell;
             rpk = new RpkMetadata();
-            rpkManager = new DefaultRpkManager(rpk, objectFactory, windowManager);
+            rpkManager = new RpkManager(rpk, objectFactory, windowManager);
             editors = new BindableCollection<RpkEditorBase>();
 
-            code = new RpkCodeViewModel(uiSynchronization);
-            designer = new RpkDesignerViewModel(rpk, windowManager, objectFactory, rpkManager, uiSynchronization);
+            code = new RpkCodeViewModel();
+            designer = new RpkDesignerViewModel(rpk, rpkManager);
             stats = new RpkStatsViewModel();
 
             editors.Add(code);
@@ -46,9 +40,9 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
             SelectedEditor = designer;
 
-            ToolboxContent = new RpkToolBoxViewModel(this, rpkManager);
-
             SelectedEditorChanged += OnSelectedEditorChanged;
+
+            ToolboxContent = new RpkToolBoxViewModel(this, rpkManager);
         }
 
         public IEnumerable<RpkEditorBase> Editors => editors;
@@ -74,18 +68,6 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             set => SetProperty(() => IsBusy, value);
         }
 
-        public void FocusToolboxSearch()
-        {
-            shell.OpenPanel(toolbox);
-            (ToolboxContent as RpkToolBoxViewModel).FocusSearch();
-        }
-
-        public void FocusDesignerSearch()
-        {
-            SelectedEditor = designer;
-            designer.RequestSearchFocus();
-        }
-
         protected override Task DoLoad()
         {
             return Task.CompletedTask;
@@ -101,15 +83,15 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             return Task.CompletedTask;
         }
 
-        private async void OnSelectedEditorChanged(object sender, SelectedEditorChanged e)
+        private void OnSelectedEditorChanged(object sender, SelectedEditorChanged e)
         {
             if (e.NewEditor == code && e.OldEditor == designer)
             {
                 try
                 {
                     IsBusy = true;
-                    var content = await rpkManager.ParseContentAsync();
-                    await code.UpdateContent(content);
+                    var content = rpkManager.Parse();
+                    code.UpdateContent(content);
                 }
                 catch (Exception ex)
                 {

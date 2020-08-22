@@ -7,13 +7,8 @@
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    <!--InputBindings-->
-    <UserControl.InputBindings>
-        <KeyBinding Key="Oem1" Modifiers="Ctrl" Command="{DXCommand 'FocusToolboxSearch()'}" />
-    </UserControl.InputBindings>
     <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
         <Grid>
-
             <TabControl TabStripPlacement="Bottom"
                         Padding="0" BorderThickness="0"
                         ItemsSource="{Binding Editors}"

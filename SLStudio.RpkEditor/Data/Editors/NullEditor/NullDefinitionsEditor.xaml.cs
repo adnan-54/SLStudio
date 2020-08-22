@@ -11,14 +11,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SLStudio.RpkEditor.Modules.Editors.Views
+namespace SLStudio.RpkEditor.Data.Editors
 {
     /// <summary>
-    /// Interaction logic for MeshDefinitionView.xaml
+    /// Interaction logic for NullDefinitionsEditor.xaml
     /// </summary>
-    public partial class MeshDefinitionView : UserControl
+    public partial class NullDefinitionsEditor : UserControl
     {
-        public MeshDefinitionView()
+        public NullDefinitionsEditor()
         {
             InitializeComponent();
         }

@@ -6,7 +6,7 @@ namespace SLStudio.RpkEditor
     {
         public static int ToIntId(this string id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id) || id.StartsWith('-'))
                 return -1;
 
             var sanitized = id.Replace("0x", "");

@@ -19,18 +19,13 @@
             <!--InputBindings-->
             <Grid.InputBindings>
                 <KeyBinding Key="Oem1" Modifiers="Ctrl" Command="{DXCommand '@e(searchBox).Focus()'}" />
-                <KeyBinding Key="S" Modifiers="Alt" Command="{DXCommand 'FocusDesignerSearch()'}" />
+                <!--<KeyBinding Key="S" Modifiers="Alt" Command="{DXCommand 'FocusDesignerSearch()'}" />-->
             </Grid.InputBindings>
 
             <!--Search-->
             <TextBox x:Name="searchBox" Grid.Row="0" Style="{StaticResource StudioSearchTextBoxStyle}"
                      Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}"
                      metro:TextBoxHelper.Watermark="Search (Ctrl+;)">
-                <dxmvvm:Interaction.Behaviors>
-                    <dxmvvm:FocusBehavior PropertyName="FocusRequested"
-                                          SourceObject="{DXBinding '@a($UserControl).DataContext'}" />
-                </dxmvvm:Interaction.Behaviors>
-
                 <!--InputBindings-->
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{DXCommand 'AddResource()'}" />
@@ -62,7 +57,7 @@
                                         <ControlTemplate TargetType="{x:Type GroupItem}">
                                             <Expander IsExpanded="True">
                                                 <Expander.Header>
-                                                    <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Medium" />
+                                                    <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Medium" Foreground="{StaticResource Foreground}" />
                                                 </Expander.Header>
                                                 <ItemsPresenter Margin="{StaticResource LargeLeftMargin}" />
                                             </Expander>

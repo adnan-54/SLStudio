@@ -4,7 +4,6 @@
     <Style x:Key="StudioActionsStackPanelStyle" TargetType="{x:Type StackPanel}">
         <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="HorizontalAlignment" Value="Right" />
-        <Setter Property="Margin" Value="{StaticResource UpMargin}" />
         <Style.Resources>
             <!--ButtonStyle-->
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">

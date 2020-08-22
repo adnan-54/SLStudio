@@ -1,28 +1,27 @@
-﻿using SLStudio.RpkEditor.Editors;
-using SLStudio.RpkEditor.Modules.Editors.ViewModels;
+﻿using SLStudio.RpkEditor.Modules.Editors.ViewModels;
 using SLStudio.RpkEditor.Resources;
 using System.Collections.Generic;
 
 namespace SLStudio.RpkEditor.Data
 {
-    internal class MeshDefinitionMetadata : ResourceMetadata
+    internal class MeshDefinitionsMetadata : ResourceMetadata
     {
-        public MeshDefinitionMetadata()
+        public MeshDefinitionsMetadata()
         {
-            Editor = new MeshDefinitionViewModel(this);
+            DefinitionsEditor = new MeshDefinitionsViewModel(this);
         }
+
+        public override string IconSource => "Cube";
+
+        public override string DisplayName => CommonResources.Mesh;
+
+        public override string Category => CommonResources.Mesh;
+
+        public override IDefinitionsEditor DefinitionsEditor { get; }
 
         public override int AdditionalType => 5;
 
         public override ResourceType TypeOfEntry => ResourceType.MeshType;
-
-        public override string DisplayName => CommonResources.Mesh;
-
-        public override string IconSource => "Cube";
-
-        public override string Category => CommonResources.Mesh;
-
-        public override IDefinitionEditor Editor { get; }
 
         public string SourceFile
         {
