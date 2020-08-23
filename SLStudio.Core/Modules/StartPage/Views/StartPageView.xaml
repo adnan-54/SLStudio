@@ -5,6 +5,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:properties="clr-namespace:SLStudio.Core.Modules.StartPage.Resources"
+             xmlns:studio="clr-namespace:SLStudio.Core"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              Background="{StaticResource Control.Background}">
 
@@ -63,7 +64,7 @@
                         <TextBox Grid.Column="0" x:Name="searchBox" Width="350"
                                  Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}"
                                  Style="{StaticResource StudioSearchTextBoxStyle}"
-                                 metro:TextBoxHelper.Watermark="{x:Static properties:StartPageResources.SearchRecent}" />
+                                 studio:WpfHelpers.Watermark="{x:Static properties:StartPageResources.SearchRecent}" />
 
                         <!--ClearAll-->
                         <Button Grid.Column="1" Margin="{StaticResource LeftMargin}"

@@ -36,23 +36,20 @@ namespace SLStudio.RpkEditor.Modules.Editors.ViewModels
             set => SetProperty(() => IsParentCompatible, value);
         }
 
-        public override void LoadValues()
+        protected override void OnLoadValues()
         {
             Alias = Metadata.Alias;
             SuperId = Metadata.SuperId.ToStringId();
             TypeId = Metadata.TypeId.ToStringId();
             IsParentCompatible = Metadata.IsParentCompatible;
-            DefinitionsEditor.LoadValues();
         }
 
-        public override void ApplyChanges()
+        protected override void OnApplyChanges()
         {
             Metadata.Alias = Alias;
             Metadata.SuperId = SuperId.ToIntId();
             Metadata.TypeId = TypeId.ToIntId();
             Metadata.IsParentCompatible = IsParentCompatible;
-            DefinitionsEditor.ApplyChanges();
-            Metadata.UpdateProperties();
         }
     }
 

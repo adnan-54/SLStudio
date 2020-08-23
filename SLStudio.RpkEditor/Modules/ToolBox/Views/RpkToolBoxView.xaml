@@ -6,6 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:studio="clr-namespace:SLStudio.Core;assembly=SLStudio.Core"
              xmlns:gong="urn:gong-wpf-dragdrop"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              Loaded="{DXEvent 'OnLoaded()'}">
@@ -25,7 +26,7 @@
             <!--Search-->
             <TextBox x:Name="searchBox" Grid.Row="0" Style="{StaticResource StudioSearchTextBoxStyle}"
                      Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}"
-                     metro:TextBoxHelper.Watermark="Search (Ctrl+;)">
+                     studio:WpfHelpers.Watermark="Search (Ctrl+;)">
                 <!--InputBindings-->
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{DXCommand 'AddResource()'}" />
@@ -77,7 +78,7 @@
                             <Grid.InputBindings>
                                 <MouseBinding MouseAction="LeftDoubleClick" Command="{DXCommand '@a($ListBox).DataContext.AddResource()'}" />
                             </Grid.InputBindings>
-                            
+
                             <Grid Margin="{StaticResource FullMargin}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
@@ -163,8 +164,8 @@
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                        <Setter Property="Padding" Value="0"/>
-                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="Padding" Value="0" />
+                        <Setter Property="Margin" Value="0" />
                     </Style>
                 </ListBox.ItemContainerStyle>
             </ListBox>

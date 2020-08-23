@@ -103,7 +103,7 @@
         <!--Search-->
         <TextBox x:Name="searchBox" Grid.Row="0" Grid.Column="1"
                  Style="{StaticResource StudioSearchTextBoxStyle}"
-                 metro:TextBoxHelper.Watermark="{x:Static resx:NewFileResources.SearchWatermark}"
+                 studio:WpfHelpers.Watermark="{x:Static resx:NewFileResources.SearchWatermark}"
                  Text="{Binding SearchTerm, UpdateSourceTrigger=PropertyChanged, Delay=500}" />
 
         <!--Details-->
@@ -123,6 +123,7 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0"
+                       VerticalAlignment="Center"
                        Text="{x:Static resx:NewFileResources.Name}" />
 
             <!--FileName-->
@@ -132,7 +133,7 @@
         </Grid>
 
         <!--Actions-->
-        <StackPanel Grid.Row="2" Grid.Column="1"
+        <StackPanel Grid.Row="3" Grid.Column="1"
                     Style="{StaticResource StudioActionsStackPanelStyle}">
             <Button Content="{x:Static resx:NewFileResources.Open}" IsDefault="True"
                     Command="{DXCommand 'OpenFile()', CanExecute='CanOpen'}" />

@@ -15,7 +15,7 @@
 
     <studio:StudioWindow.TitleTemplate>
         <DataTemplate>
-            <Grid/>
+            <Grid />
         </DataTemplate>
     </studio:StudioWindow.TitleTemplate>
     <!--Behaviors-->
@@ -88,7 +88,7 @@
                          Style="{StaticResource MahApps.Styles.TextBox.Search}"
                          MinHeight="10" Height="22" Width="200"
                          VerticalAlignment="Center" VerticalContentAlignment="Center"
-                         metro:TextBoxHelper.Watermark="Test"
+                         studio:WpfHelpers.Watermark="Test"
                          Visibility="Collapsed" />
 
                 <!--SolutionName-->
@@ -123,7 +123,7 @@
                 <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource StudioMenuStyle}" />
                 <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource StudioMenuItemStyle}" />
                 <Style TargetType="{x:Type ContextMenu}" BasedOn="{StaticResource StudioContextMenuStyle}" />
-                <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource StudioToolTipStyle}"/>
+                <Style TargetType="{x:Type ToolTip}" BasedOn="{StaticResource StudioToolTipStyle}" />
             </avalonDock:DockingManager.Resources>
 
             <!--Behaviors-->

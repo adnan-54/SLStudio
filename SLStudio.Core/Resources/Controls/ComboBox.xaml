@@ -1,4 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:studio="clr-namespace:SLStudio.Core"
+                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <ResourceDictionary.MergedDictionaries>
@@ -9,7 +11,7 @@
     <!--ComboBoxDropDownButton-->
     <Style x:Key="ComboBoxDropDownButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Background" Value="Transparent" />
-        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderThickness" Value="0" />
         <Setter Property="ClickMode" Value="Press" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="Foreground" Value="{StaticResource Foreground}" />
@@ -25,7 +27,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Grid Grid.Column="1">
-                            <Border x:Name="IsDefault" Background="{TemplateBinding Background}" Margin="1" />
+                            <Border x:Name="IsDefault" Background="{TemplateBinding Background}" />
 
                             <Path x:Name="Content" Margin="3"
                                   Style="{StaticResource UIShape.Down}"
@@ -60,73 +62,89 @@
 
     <!--ComboxBoxReadOnlyMode-->
     <ControlTemplate x:Key="ComboxBoxReadOnlyMode" TargetType="{x:Type ComboBox}">
-        <Grid x:Name="Root">
-            <Grid x:Name="PART_Editor">
-                <Border x:Name="IsDefault"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}" />
+        <Border x:Name="Root"
+                Background="{TemplateBinding Background}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                BorderBrush="{TemplateBinding BorderBrush}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
 
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="ColumnField" Width="*" />
-                        <ColumnDefinition x:Name="ColumnButton" Width="16" />
-                    </Grid.ColumnDefinitions>
+                <ContentPresenter x:Name="Content" Grid.Column="0"
+                                  Margin="{TemplateBinding Padding}" IsHitTestVisible="False"
+                                  Content="{TemplateBinding SelectionBoxItem}"
+                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/> 
+                
+                <TextBlock x:Name="Watermark" Grid.Column="0"
+                           Margin="{TemplateBinding Padding}"
+                           IsHitTestVisible="False" Opacity="0.6"
+                           HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                           VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                           Foreground="{TemplateBinding Foreground}"
+                           Text="{TemplateBinding studio:WpfHelpers.Watermark}"
+                           TextAlignment="{TemplateBinding metro:TextBoxHelper.WatermarkAlignment}"
+                           TextTrimming="{TemplateBinding metro:TextBoxHelper.WatermarkTrimming}"
+                           TextWrapping="{TemplateBinding metro:TextBoxHelper.WatermarkWrapping}"
+                           Visibility="Collapsed" />
+                
+                <ContentControl Grid.Column="1"
+                                Content="{TemplateBinding studio:WpfHelpers.RightContent}" />
 
-                    <ContentPresenter x:Name="Content" Grid.Column="0"
-                                      Margin="{TemplateBinding Padding}" IsHitTestVisible="False"
-                                      Content="{TemplateBinding SelectionBoxItem}"
-                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                </Grid>
+                <Grid Background="Transparent" MouseDown="{DXEvent '@e(DropDownButton).IsChecked=true'}"/>
 
-                <ToggleButton x:Name="DropDownButton" Focusable="False"
-                              Style="{StaticResource ComboBoxDropDownButton}"
-                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" />
+                <ToggleButton x:Name="DropDownButton" Grid.Column="2"
+                              Focusable="False" Width="16"
+                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              Style="{StaticResource ComboBoxDropDownButton}" />
 
-                <Border x:Name="IsFocus" Opacity="0"
-                        BorderBrush="{StaticResource Focused}"
-                        BorderThickness="{TemplateBinding BorderThickness}" />
+                <Popup x:Name="PART_Popup" Margin="1"
+                       AllowsTransparency="True" Placement="Bottom"
+                       IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                       MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                       HorizontalOffset="-1" VerticalOffset="1">
+                    <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                          MinWidth="{Binding ActualWidth, ElementName=Root}"
+                          Margin="12" Effect="{StaticResource LightShadowEffect}">
+                        <Border x:Name="DropDownBorder" BorderThickness="1, 0, 1, 1"
+                                Background="{StaticResource Button.Background}"
+                                BorderBrush="{StaticResource Border}">
+                            <ScrollViewer x:Name="DropDownScrollViewer">
+                                <Grid RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas HorizontalAlignment="Left"
+                                            VerticalAlignment="Top">
+                                        <Rectangle x:Name="OpaqueRect"
+                                                   Fill="{Binding Background, ElementName=DropDownBorder}"
+                                                   Height="{Binding ActualHeight, ElementName=DropDownBorder}"
+                                                   Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                    </Canvas>
+
+                                    <ItemsPresenter x:Name="ItemsPresenter" Margin="1"
+                                                    KeyboardNavigation.DirectionalNavigation="Contained" />
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                </Popup>
             </Grid>
-
-            <Popup x:Name="PART_Popup" Margin="1"
-                   AllowsTransparency="True" Placement="Bottom"
-                   IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                   MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                      MinWidth="{Binding ActualWidth, ElementName=Root}"
-                      Margin="12" Effect="{StaticResource LightShadowEffect}">
-                    <Border x:Name="DropDownBorder"
-                            BorderThickness="1"
-                            Background="{StaticResource Editor.Background}"
-                            BorderBrush="{StaticResource Border}">
-                        <ScrollViewer x:Name="DropDownScrollViewer">
-                            <Grid RenderOptions.ClearTypeHint="Enabled">
-                                <Canvas HorizontalAlignment="Left" VerticalAlignment="Top">
-                                    <Rectangle x:Name="OpaqueRect"
-                                               Fill="{Binding Background, ElementName=DropDownBorder}"
-                                               Height="{Binding ActualHeight, ElementName=DropDownBorder}"
-                                               Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
-                                </Canvas>
-
-                                <ItemsPresenter x:Name="ItemsPresenter" Margin="1"
-                                                KeyboardNavigation.DirectionalNavigation="Contained" />
-                            </Grid>
-                        </ScrollViewer>
-                    </Border>
-                </Grid>
-            </Popup>
-        </Grid>
+        </Border>
 
         <ControlTemplate.Triggers>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Opacity" TargetName="IsDefault" Value="1" />
-            </Trigger>
-
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
+            </Trigger>
+
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="BorderBrush" TargetName="Root" Value="{StaticResource Focused}" />
+            </Trigger>
+
+            <Trigger Property="SelectedItem" Value="{x:Null}">
+                <Setter Property="Visibility" TargetName="Watermark" Value="Visible" />
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
@@ -138,7 +156,8 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource StudioComboBoxItemStyle}" />
-        <Setter Property="Padding" Value="2, 2, 21, 2" />
+        <Setter Property="Padding" Value="2" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
@@ -148,55 +167,60 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Grid x:Name="Root">
-                        <Popup x:Name="PART_Popup" Margin="1"
-                               AllowsTransparency="True" Placement="Bottom"
-                               IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
-                               MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                            <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                                  MinWidth="{Binding ActualWidth, ElementName=Root}"
-                                  Margin="12" Effect="{StaticResource LightShadowEffect}">
-                                <Border x:Name="DropDownBorder" BorderThickness="1"
-                                        Background="{StaticResource Button.Background}"
-                                        BorderBrush="{StaticResource Border}">
-                                    <ScrollViewer x:Name="DropDownScrollViewer">
-                                        <Grid RenderOptions.ClearTypeHint="Enabled">
-                                            <Canvas HorizontalAlignment="Left"
-                                                    VerticalAlignment="Top">
-                                                <Rectangle x:Name="OpaqueRect"
-                                                           Fill="{Binding Background, ElementName=DropDownBorder}"
-                                                           Height="{Binding ActualHeight, ElementName=DropDownBorder}"
-                                                           Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
-                                            </Canvas>
+                    <Border x:Name="Root"
+                            Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
 
-                                            <ItemsPresenter x:Name="ItemsPresenter" Margin="1"
-                                                            KeyboardNavigation.DirectionalNavigation="Contained" />
-                                        </Grid>
-                                    </ScrollViewer>
-                                </Border>
-                            </Grid>
-                        </Popup>
+                            <TextBox x:Name="PART_EditableTextBox" Grid.Column="0"
+                                     Padding="{TemplateBinding Padding}"
+                                     Background="Transparent" BorderThickness="0"
+                                     Text="{TemplateBinding SelectionBoxItem}" 
+                                     studio:WpfHelpers.Watermark="{TemplateBinding studio:WpfHelpers.Watermark}"
+                                     studio:WpfHelpers.RightContent="{TemplateBinding studio:WpfHelpers.RightContent}"/>
 
-                        <TextBox x:Name="PART_EditableTextBox"
-                                 Background="{TemplateBinding Background}"
-                                 BorderBrush="{TemplateBinding BorderBrush}"
-                                 BorderThickness="{TemplateBinding BorderThickness}"
-                                 Padding="{TemplateBinding Padding}"
-                                 Text="{TemplateBinding SelectionBoxItem}" />
+                            <ToggleButton x:Name="DropDownButton" Grid.Column="1"
+                                          Focusable="False" Width="16"
+                                          IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                          Style="{StaticResource ComboBoxDropDownButton}" />
 
-                        <ToggleButton x:Name="DropDownButton" Focusable="False"
-                                      HorizontalAlignment="Right" Width="16"
-                                      IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Style="{StaticResource ComboBoxDropDownButton}" />
+                            <Popup x:Name="PART_Popup" Margin="1"
+                                   AllowsTransparency="True" Placement="Bottom"
+                                   IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}"
+                                   MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                   HorizontalOffset="-1" VerticalOffset="1">
+                                <Grid MaxHeight="{TemplateBinding MaxDropDownHeight}"
+                                      MinWidth="{Binding ActualWidth, ElementName=Root}"
+                                      Margin="12" Effect="{StaticResource LightShadowEffect}">
+                                    <Border x:Name="DropDownBorder" BorderThickness="1, 0, 1, 1"
+                                            Background="{StaticResource Button.Background}"
+                                            BorderBrush="{StaticResource Border}">
+                                        <ScrollViewer x:Name="DropDownScrollViewer">
+                                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                                <Canvas HorizontalAlignment="Left"
+                                                        VerticalAlignment="Top">
+                                                    <Rectangle x:Name="OpaqueRect"
+                                                               Fill="{Binding Background, ElementName=DropDownBorder}"
+                                                               Height="{Binding ActualHeight, ElementName=DropDownBorder}"
+                                                               Width="{Binding ActualWidth, ElementName=DropDownBorder}" />
+                                                </Canvas>
 
-                        <Grid x:Name="FocusedState" Grid.ColumnSpan="2" Opacity="0">
-                            <Border BorderThickness="1" BorderBrush="{StaticResource Focused}" />
+                                                <ItemsPresenter x:Name="ItemsPresenter" Margin="1"
+                                                                KeyboardNavigation.DirectionalNavigation="Contained" />
+                                            </Grid>
+                                        </ScrollViewer>
+                                    </Border>
+                                </Grid>
+                            </Popup>
                         </Grid>
-                    </Grid>
+                    </Border>
 
                     <ControlTemplate.Triggers>
-                        <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="True" />
-
                         <Trigger Property="HasItems" Value="False">
                             <Setter Property="Height" TargetName="DropDownBorder" Value="95" />
                         </Trigger>
@@ -204,10 +228,11 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="IsEnabled" TargetName="DropDownButton" Value="False" />
                             <Setter Property="IsEnabled" TargetName="PART_EditableTextBox" Value="False" />
+                            <!--<Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />-->
                         </Trigger>
 
-                        <Trigger Property="IsFocused" Value="True">
-                            <Setter Property="Opacity" TargetName="FocusedState" Value="1" />
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Setter Property="BorderBrush" TargetName="Root" Value="{StaticResource Focused}" />
                         </Trigger>
 
                         <Trigger Property="IsGrouping" Value="True">
@@ -226,7 +251,6 @@
         <Style.Triggers>
             <Trigger Property="IsEditable" Value="False">
                 <Setter Property="Template" Value="{StaticResource ComboxBoxReadOnlyMode}" />
-                <Setter Property="Padding" Value="5, 3, 5, 3" />
             </Trigger>
         </Style.Triggers>
     </Style>

@@ -1,11 +1,34 @@
-﻿using System.Collections.Generic;
+﻿using ICSharpCode.AvalonEdit.Editing;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace SLStudio.Core
 {
     public static class WpfHelpers
     {
+        //AvalonDock
+        public static DependencyProperty CaretBrushProperty = DependencyProperty.RegisterAttached("CaretBrush", typeof(Brush), typeof(WpfHelpers), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(15, 15, 15)), OnCaretBrushChanged));
+
+        public static void SetCaretBrush(DependencyObject d, Brush value)
+        {
+            d.SetValue(CaretBrushProperty, value);
+        }
+
+        public static Brush GetCaretBrush(DependencyObject d)
+        {
+            return (Brush)d.GetValue(CaretBrushProperty);
+        }
+
+        private static void OnCaretBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            if (!(d is TextArea textArea) || !(e.NewValue is Brush brush))
+                return;
+            textArea.Caret.CaretBrush = brush;
+        }
+
+        //WindowStartupLocation
         public static readonly DependencyProperty WindowStartupLocationProperty = DependencyProperty.RegisterAttached("WindowStartupLocation", typeof(WindowStartupLocation), typeof(WpfHelpers), new UIPropertyMetadata(WindowStartupLocation.Manual, OnWindowStartupLocationChanged));
 
         public static void SetWindowStartupLocation(DependencyObject DepObject, WindowStartupLocation value)
@@ -24,6 +47,33 @@ namespace SLStudio.Core
                 window.WindowStartupLocation = GetWindowStartupLocation(window);
         }
 
+        //Watermark
+        public static readonly DependencyProperty WatermarkProperty = DependencyProperty.RegisterAttached("Watermark", typeof(string), typeof(WpfHelpers), new FrameworkPropertyMetadata(string.Empty));
+
+        public static void SetWatermark(DependencyObject element, string value)
+        {
+            element.SetValue(WatermarkProperty, value);
+        }
+
+        public static string GetWatermark(DependencyObject element)
+        {
+            return (string)element.GetValue(WatermarkProperty);
+        }
+
+        //RightContent
+        public static readonly DependencyProperty RightContentProperty = DependencyProperty.RegisterAttached("RightContent", typeof(object), typeof(WpfHelpers), new FrameworkPropertyMetadata());
+
+        public static void SetRightContent(DependencyObject element, object value)
+        {
+            element.SetValue(RightContentProperty, value);
+        }
+
+        public static object GetRightContent(DependencyObject element)
+        {
+            return element.GetValue(RightContentProperty);
+        }
+
+        //Helpers
         public static bool TryFindResource<TResource>(object resourceKey, out TResource resource) where TResource : class
         {
             resource = Application.Current.TryFindResource(resourceKey) as TResource;

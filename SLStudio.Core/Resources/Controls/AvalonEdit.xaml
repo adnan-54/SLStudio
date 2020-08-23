@@ -47,7 +47,7 @@
 
     <!--StudioTextAreaStyle-->
     <Style x:Key="StudioTextAreaStyle" TargetType="{x:Type ae:TextArea}" x:Shared="False">
-        <Setter Property="studio:TextAreaHelper.CaretBrush" Value="{StaticResource Foreground}" />
+        <Setter Property="studio:WpfHelpers.CaretBrush" Value="{StaticResource Foreground}" />
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="SelectionBrush" Value="{StaticResource SelectionBackground}" />
         <Setter Property="SelectionForeground" Value="{StaticResource SelectionForeground}" />

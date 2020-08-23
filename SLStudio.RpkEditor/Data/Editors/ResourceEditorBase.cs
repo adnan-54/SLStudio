@@ -58,9 +58,22 @@ namespace SLStudio.RpkEditor.Data
 
         public IDefinitionsEditor DefinitionsEditor => Metadata.DefinitionsEditor ?? NullDefinitionsEditor.Default;
 
-        public abstract void LoadValues();
+        public void LoadValues()
+        {
+            OnLoadValues();
+            DefinitionsEditor.LoadValues();
+        }
 
-        public abstract void ApplyChanges();
+        protected abstract void OnLoadValues();
+
+        public void ApplyChanges()
+        {
+            OnApplyChanges();
+            DefinitionsEditor.ApplyChanges();
+            Metadata.UpdateProperties();
+        }
+
+        protected abstract void OnApplyChanges();
 
         public IEnumerable GetErrors(string propertyName)
         {
@@ -89,6 +102,12 @@ namespace SLStudio.RpkEditor.Data
             LoadValues();
         }
 
+        public override void OnClosed()
+        {
+            LoadValues();
+            Validate();
+        }
+
         public override void TryClose(bool? dialogResult)
         {
             if (dialogResult == true)
@@ -98,8 +117,6 @@ namespace SLStudio.RpkEditor.Data
                 else
                     return;
             }
-            else
-                LoadValues();
 
             base.TryClose(dialogResult);
         }

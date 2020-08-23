@@ -108,10 +108,9 @@
                        Text="Super Id" />
 
             <!--SuperIdValue-->
-            <ComboBox Grid.Row="2" Grid.Column="1"
-                      Margin="{StaticResource SmallUpMargin}"
-                      IsEditable="True"
-                      Text="{Binding SuperId, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Row="2" Grid.Column="1"
+                     Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding SuperId, UpdateSourceTrigger=PropertyChanged}" />
 
             <!--TypeId-->
             <TextBlock Grid.Row="3" Grid.Column="0"
@@ -119,10 +118,9 @@
                        Text="Type Id" />
 
             <!--TypeIdValue-->
-            <ComboBox Grid.Row="3" Grid.Column="1"
-                      Margin="{StaticResource SmallUpMargin}"
-                      IsEditable="True"
-                      Text="{Binding TypeId, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox Grid.Row="3" Grid.Column="1"
+                     Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding TypeId, UpdateSourceTrigger=PropertyChanged}" />
 
             <!--IsParentCompatible-->
             <TextBlock Grid.Row="4" Grid.Column="0"
@@ -136,7 +134,8 @@
         </Grid>
 
         <!--Definitions-->
-        <Grid Grid.Row="1" Margin="{StaticResource UpMargin}"
+        <Grid x:Name="definitions" Grid.Row="1"
+              Margin="{StaticResource UpMargin}"
               metro:VisibilityHelper.IsVisible="{Binding HasDefinitionsEditor}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -149,7 +148,7 @@
             </Border>
 
             <ScrollViewer Grid.Row="1" Margin="{StaticResource UpMargin}"
-                          HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
+                          HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Resources>
                     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
                         <Setter Property="Margin" Value="{StaticResource SmallLeftMargin}" />
@@ -157,7 +156,9 @@
                 </ScrollViewer.Resources>
 
                 <!--Definitions-->
-                <ContentControl Grid.Row="1"  Margin="0, 1, 0, 0" studio:ViewBinder.Bind="{Binding DefinitionsEditor}"/>
+                <ContentControl Grid.Row="1"  Margin="0, 1, 0, 0"
+                                studio:ViewBinder.Bind="{Binding DefinitionsEditor}"
+                                MaxWidth="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=Grid}}" />
             </ScrollViewer>
         </Grid>
 
