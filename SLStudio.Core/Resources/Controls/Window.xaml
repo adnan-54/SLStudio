@@ -76,19 +76,19 @@
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="TryToBeFlickerFree" Value="True" />
-        <Setter Property="ShowActivated" Value="True"/>
+        <Setter Property="ShowActivated" Value="True" />
         <Setter Property="TitleAlignment" Value="Center" />
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="WindowState" Value="Maximized" />
-        <Setter Property="MinWidth" Value="800"/>
-        <Setter Property="MinHeight" Value="600"/>
+        <Setter Property="MinWidth" Value="800" />
+        <Setter Property="MinHeight" Value="600" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="IconTemplate">
             <Setter.Value>
                 <DataTemplate>
-                    <Grid Margin="6, 0, 3, 0" RenderOptions.BitmapScalingMode="HighQuality">
-                        <Rectangle Height="32" Width="32">
+                    <Grid Margin="8, 0, 0, 0" RenderOptions.BitmapScalingMode="HighQuality">
+                        <Rectangle Height="28" Width="28">
                             <Rectangle.OpacityMask>
                                 <ImageBrush ImageSource="{StaticResource AppIcon}" />
                             </Rectangle.OpacityMask>

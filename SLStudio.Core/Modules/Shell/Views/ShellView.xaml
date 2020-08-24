@@ -27,9 +27,9 @@
     <!--TitleBar-->
     <studio:StudioWindow.LeftWindowCommands>
         <metro:WindowCommands ShowSeparators="False">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Stretch">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                 <!--MainMenu-->
-                <Menu VerticalAlignment="Center" IsMainMenu="True">
+                <Menu IsMainMenu="True">
                     <!--Resources-->
                     <Menu.Resources>
                         <!--Styles-->
