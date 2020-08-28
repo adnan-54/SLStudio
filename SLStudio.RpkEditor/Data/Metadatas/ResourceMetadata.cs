@@ -2,6 +2,7 @@
 using SLStudio.Core;
 using SLStudio.Core.Behaviors;
 using SLStudio.RpkEditor.Modules.Editors.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -61,7 +62,7 @@ namespace SLStudio.RpkEditor.Data
 
         public bool HasExternalReference => ExternalReference != null;
 
-        public RpkMetadata ExternalReference
+        public ExternalReferenceMetadata ExternalReference
         {
             get => GetProperty(() => ExternalReference);
             set
@@ -79,8 +80,8 @@ namespace SLStudio.RpkEditor.Data
 
         public int SuperId
         {
-            get => GetProperty(() => SuperId);
-            set => SetProperty(() => SuperId, value);
+            get => GetSuperId();
+            set => SetSuperId(value);
         }
 
         public abstract int AdditionalType { get; }
@@ -117,6 +118,44 @@ namespace SLStudio.RpkEditor.Data
         protected virtual IEnumerable<ResourceDescription> BuildDescription()
         {
             yield return new ResourceDescription("DescriptionNotDefined", true);
+        }
+
+        private int GetSuperId()
+        {
+            var externalReferenceIndex = 0;
+            if (ExternalReference != null && Parent != null)
+                externalReferenceIndex = Parent.ExternalReferences.IndexOf(ExternalReference) + 1;
+
+            var superIdValue = GetProperty(() => SuperId);
+            return Convert.ToInt32($"0x00{externalReferenceIndex:X2}{superIdValue:X4}", 16);
+        }
+
+        private void SetSuperId(int value)
+        {
+            if (value < -1 || value > 0x00FFFFFF)
+                throw new ArgumentException($"{value} is not valid. Value must be between -1 and {0x00FFFFFF}");
+
+            if (value == -1)
+            {
+                ExternalReference = null;
+                SetProperty(() => SuperId, -1);
+                return;
+            }
+
+            var stringValue = $"{value:X8}";
+
+            var externalReferenceIndex = Convert.ToInt32($"0x{stringValue[^6..^4]}", 16);
+            if (externalReferenceIndex > 0 && Parent != null)
+            {
+                if (externalReferenceIndex > Parent.ExternalReferences.Count - 1)
+                    throw new ArgumentException($"The specified external reference index '{externalReferenceIndex}' is greater than the external references count '{Parent.ExternalReferences.Count - 1}'");
+                ExternalReference = Parent.ExternalReferences[externalReferenceIndex];
+            }
+            else
+                ExternalReference = null;
+
+            var superIdValue = Convert.ToInt32($"0x{stringValue[^4..^0]}", 16);
+            SetProperty(() => SuperId, superIdValue);
         }
     }
 }

@@ -4,19 +4,20 @@ namespace SLStudio.RpkEditor.Data
 {
     internal class ExternalReferenceMetadata
     {
-        private readonly RpkMetadata parent;
-
-        public ExternalReferenceMetadata(RpkMetadata parent)
+        public ExternalReferenceMetadata(string path, string alias, string targetVersion, IReadOnlyCollection<ExternalResourceMetadata> metadatas)
         {
-            this.parent = parent;
+            Path = path;
+            Alias = alias;
+            TargetVersion = targetVersion;
+            Metadatas = metadatas;
         }
 
         public string Path { get; }
 
+        public string Alias { get; }
+
         public string TargetVersion { get; }
 
-        public int Id => parent.ExternalReferences.IndexOf(this);
-
-        public IReadOnlyCollection<ReferenceDefinitionsMetadata> Metadatas { get; }
+        public IReadOnlyCollection<ExternalResourceMetadata> Metadatas { get; }
     }
 }

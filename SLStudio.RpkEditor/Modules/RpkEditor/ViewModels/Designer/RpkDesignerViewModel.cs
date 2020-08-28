@@ -2,7 +2,6 @@
 using SLStudio.Core;
 using SLStudio.Core.Behaviors;
 using SLStudio.RpkEditor.Data;
-using SLStudio.RpkEditor.Modules.Editors.ViewModels;
 using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
 using SLStudio.RpkEditor.Modules.Toolbox.Models;
 using System;
@@ -32,13 +31,19 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
         public BindableCollection<ResourceMetadata> Resources => rpk.Resources;
 
+        public BindableCollection<ExternalReferenceMetadata> ExternalReferences => rpk.ExternalReferences;
+
         public ResourceMetadata SelectedResource
         {
             get => GetProperty(() => SelectedResource);
             set => SetProperty(() => SelectedResource, value);
         }
 
-        private void AddResource(Type resourceType, int index = -1)
+        public void AddReference()
+        {
+        }
+
+        public void AddResource(Type resourceType, int index = -1)
         {
             var metadata = rpkManager.AddResource(resourceType, index);
             if (metadata != null)

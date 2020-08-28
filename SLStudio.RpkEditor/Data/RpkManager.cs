@@ -1,5 +1,6 @@
 ﻿using SLStudio.Compilers;
 using SLStudio.Core;
+using SLStudio.FileTypes.MeshFile;
 using SLStudio.FileTypes.RpkFile;
 using System;
 using System.Collections;
@@ -84,7 +85,7 @@ namespace SLStudio.RpkEditor.Data
                         AdditionalType = meshDefinition.AdditionalType,
                         Alias = meshDefinition.Alias,
                         IsParentCompatible = meshDefinition.IsParentCompatible,
-                        Mesh = new FileTypes.MeshFile.Mesh() { Path = meshDefinition.SourceFile },
+                        Mesh = new Mesh() { Path = meshDefinition.SourceFile },
                         SuperId = meshDefinition.SuperId,
                         TypeId = meshDefinition.TypeId
                     };
