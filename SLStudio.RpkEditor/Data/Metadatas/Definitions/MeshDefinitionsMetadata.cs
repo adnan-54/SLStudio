@@ -11,8 +11,6 @@ namespace SLStudio.RpkEditor.Data
             DefinitionsEditor = new MeshDefinitionsViewModel(this);
         }
 
-        public override string IconSource => "Cube";
-
         public override string DisplayName => CommonResources.Mesh;
 
         public override string Category => CommonResources.Mesh;

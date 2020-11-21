@@ -39,7 +39,7 @@
                         HorizontalAlignment="Right" VerticalAlignment="Top"
                         Style="{StaticResource MahApps.Styles.Button.Reveal}"
                         Focusable="False" Click="OnCloseButtonClick">
-                    <Image Source="{StaticResource CloseRed}" Width="20" />
+                    <Image Source="{StaticResource Close}" Width="20" />
                 </Button>
 
                 <!--SLStudio-->

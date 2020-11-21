@@ -6,11 +6,11 @@
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                      xmlns:studio="clr-namespace:SLStudio.Core;assembly=SLStudio.Core"
-                     mc:Ignorable="d" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+                     mc:Ignorable="d" 
                      Icon="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}"
+                     ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
                      Width="500" MinWidth="500" MaxWidth="500"
-                     MinHeight="100"  MaxHeight="600" SizeToContent="Height"
-                     ShowMaxRestoreButton="False" ShowMinButton="False">
+                     MinHeight="100"  MaxHeight="600" SizeToContent="Height">
     <!--IconTemplate-->
     <studio:DialogWindow.IconTemplate>
         <DataTemplate>

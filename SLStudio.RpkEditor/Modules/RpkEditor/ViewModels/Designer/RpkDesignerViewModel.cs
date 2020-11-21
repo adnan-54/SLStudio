@@ -39,7 +39,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             set => SetProperty(() => SelectedResource, value);
         }
 
-        public void AddReference()
+        public void AddNewReference()
         {
         }
 

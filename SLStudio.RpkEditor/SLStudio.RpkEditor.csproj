@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\rdfFileIcon.png" />
     <None Remove="Resources\rpkFileIcon.png" />
   </ItemGroup>
 
@@ -17,12 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resources\Icons\rdfFileIcon.png" />
     <Resource Include="Resources\Icons\rpkFileIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Modules\RdfEditor\Resources\RdfEditorResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RdfEditorResources.resx</DependentUpon>
+    </Compile>
     <Compile Update="Modules\RpkEditor\Resources\RpkEditorResources.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -41,6 +48,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Modules\RdfEditor\Resources\RdfEditorResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>RdfEditorResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\RpkEditor\Resources\RpkEditorResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>RpkEditorResources.Designer.cs</LastGenOutput>
@@ -55,6 +66,7 @@
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="gong-wpf-dragdrop" Version="2.2.0" />
     <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+    <PackageReference Include="MvvmDialogs" Version="8.0.0-beta.4" />
   </ItemGroup>
 
   <ItemGroup>

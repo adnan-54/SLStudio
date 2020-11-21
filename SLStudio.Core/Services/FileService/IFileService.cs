@@ -102,6 +102,14 @@ namespace SLStudio.Core
 
             return file;
         }
+
+        public string GetFilter(string extension)
+        {
+            if (!filesDescription.TryGetValue(extension, out var value))
+                return string.Empty;
+
+            return value.Filter;
+        }
     }
 
     public interface IFileService
@@ -115,6 +123,8 @@ namespace SLStudio.Core
         Task<IFileDocumentPanel> New(string extension, string displayName = null, string content = null);
 
         Task<T> New<T>(string displayName = null, string content = null) where T : class, IFileDocumentPanel;
+
+        string GetFilter(string extension);
 
         //Task<IFileDocumentPanel> Open(string fileName);
 

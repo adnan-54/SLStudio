@@ -1,23 +1,35 @@
-﻿using System.Collections.Generic;
+﻿using DevExpress.Mvvm;
+using Newtonsoft.Json;
+using SLStudio.Core;
 
 namespace SLStudio.RpkEditor.Data
 {
-    internal class ExternalReferenceMetadata
+    [JsonObject(MemberSerialization.OptOut)]
+    internal class ExternalReferenceMetadata : BindableBase
     {
-        public ExternalReferenceMetadata(string path, string alias, string targetVersion, IReadOnlyCollection<ExternalResourceMetadata> metadatas)
+        public ExternalReferenceMetadata()
         {
-            Path = path;
-            Alias = alias;
-            TargetVersion = targetVersion;
-            Metadatas = metadatas;
+            Metadatas = new BindableCollection<ExternalResourceMetadata>();
         }
 
-        public string Path { get; }
+        public string Path
+        {
+            get => GetProperty(() => Path);
+            set => SetProperty(() => Path, value);
+        }
 
-        public string Alias { get; }
+        public string Alias
+        {
+            get => GetProperty(() => Alias);
+            set => SetProperty(() => Alias, value);
+        }
 
-        public string TargetVersion { get; }
+        public string TargetVersion
+        {
+            get => GetProperty(() => TargetVersion);
+            set => SetProperty(() => TargetVersion, value);
+        }
 
-        public IReadOnlyCollection<ExternalResourceMetadata> Metadatas { get; }
+        public BindableCollection<ExternalResourceMetadata> Metadatas { get; }
     }
 }

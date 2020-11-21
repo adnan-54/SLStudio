@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace SLStudio.RpkEditor
 {
@@ -9,8 +10,21 @@ namespace SLStudio.RpkEditor
             if (string.IsNullOrEmpty(id) || id.StartsWith('-'))
                 return -1;
 
-            var sanitized = id.Replace("0x", "");
-            return Convert.ToInt32(sanitized, 16);
+            if (id.StartsWith("0x", StringComparison.InvariantCultureIgnoreCase))
+            {
+                if (Regex.IsMatch(id, @"0[xX][0-9a-fA-F]+"))
+                    return Convert.ToInt32(id, 16);
+                return -1;
+            }
+
+            try
+            {
+                return Convert.ToInt32(id);
+            }
+            catch
+            {
+                return -1;
+            }
         }
     }
 }

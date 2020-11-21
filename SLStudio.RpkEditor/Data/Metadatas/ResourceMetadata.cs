@@ -28,7 +28,7 @@ namespace SLStudio.RpkEditor.Data
             ResourceEditor = new ResourceEditorViewModel(this);
         }
 
-        public abstract string IconSource { get; }
+        public virtual string IconSource => TypeOfEntry?.Icon;
 
         public abstract string DisplayName { get; }
 

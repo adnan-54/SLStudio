@@ -1,11 +1,12 @@
-﻿using SLStudio.Core;
-using SLStudio.Logging;
-using SLStudio.RpkEditor.Data;
-using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
-using SLStudio.RpkEditor.Modules.ToolBox.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using SLStudio.Core;
+using SLStudio.Logging;
+using SLStudio.RpkEditor.Data;
+using SLStudio.RpkEditor.Events;
+using SLStudio.RpkEditor.Modules.RpkEditor.Resources;
+using SLStudio.RpkEditor.Modules.ToolBox.ViewModels;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 {
@@ -108,17 +109,5 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
     public interface IRpkEditor : IFileDocumentPanel
     {
-    }
-
-    internal class SelectedEditorChanged : EventArgs
-    {
-        public SelectedEditorChanged(RpkEditorBase oldEditor, RpkEditorBase newEditor)
-        {
-            OldEditor = oldEditor;
-            NewEditor = newEditor;
-        }
-
-        public RpkEditorBase OldEditor { get; }
-        public RpkEditorBase NewEditor { get; }
     }
 }

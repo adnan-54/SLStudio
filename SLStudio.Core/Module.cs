@@ -1,4 +1,5 @@
-﻿using SimpleInjector;
+﻿using MvvmDialogs;
+using SimpleInjector;
 using SLStudio.Core.Menus;
 using SLStudio.Core.Modules.NewFile.ViewModels;
 using SLStudio.Core.Modules.Output.ViewModels;
@@ -17,20 +18,22 @@ namespace SLStudio.Core
 
         protected override void Register(Container container)
         {
-            container.RegisterSingleton<IShell, ShellViewModel>();
-
+            container.RegisterInstance<IDialogService>(new DialogService());
             container.RegisterSingleton<IFileService, DefaultFileService>();
+
             container.RegisterSingleton<IRecentFilesRepository, DefaultRecentFilesRespository>();
-            container.RegisterDisposable<INewFileDialog, NewFileViewModel>();
+
+            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
 
             container.RegisterSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
             container.RegisterSingleton<IMenuLookup, DefaultMenuLookup>();
 
+            container.RegisterSingleton<IShell, ShellViewModel>();
             container.RegisterService<IToolbox, ToolBoxViewModel>();
             container.RegisterService<IOutput, OutputViewModel>();
             container.RegisterService<IStatusBar, StatusBarViewModel>();
 
-            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
+            container.RegisterDisposable<INewFileDialog, NewFileViewModel>();
         }
     }
 }

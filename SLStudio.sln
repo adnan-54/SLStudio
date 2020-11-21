@@ -139,8 +139,8 @@ Global
 		{A3D1DB25-DEB9-48F1-9ACF-B07AB10900D3} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal
