@@ -130,7 +130,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
         {
             collectionView.SortDescriptions.Clear();
 
-            if (SelectedSortMode != null && SelectedSortMode.Description != null)
+            if (SelectedSortMode != null)
                 collectionView.SortDescriptions.Add(SelectedSortMode.Description);
 
             collectionView.Refresh();

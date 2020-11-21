@@ -8,6 +8,6 @@
 
 	<ItemGroup>
 		<PackageReference Include="DevExpressMvvm" Version="20.1.6" />
-		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.1" />
+		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.6" />
 	</ItemGroup>
 </Project>
