@@ -9,11 +9,11 @@
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              Background="{StaticResource Control.Background}">
 
-    <ScrollViewer x:Name="main" Padding="24"
+    <ScrollViewer x:Name="main" Padding="0"
                   VerticalScrollBarVisibility="Auto"
                   Focusable="False" IsTabStop="False"
                   HorizontalScrollBarVisibility="Auto">
-        <Grid MinWidth="600" MinHeight="500">
+        <Grid MinWidth="600" MinHeight="500" Margin="24">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

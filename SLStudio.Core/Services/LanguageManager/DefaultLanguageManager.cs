@@ -17,14 +17,15 @@ namespace SLStudio.Core
     {
         internal DefaultLanguageManager()
         {
-            AvaliableLanguages = new List<Language>
-            {
-                new Language("en-US"),
-                new Language("pt-BR"),
-                new Language(Thread.CurrentThread.CurrentUICulture.Name, $"Auto ({Thread.CurrentThread.CurrentUICulture.DisplayName})", true)
-            };
+            throw new NotImplementedException();
+            //AvaliableLanguages = new List<Language>
+            //{
+            //    new Language("en-US"),
+            //    new Language("pt-BR"),
+            //    new Language(null)
+            //};
 
-            Initalize();
+            //Initalize();
         }
 
         public IEnumerable<Language> AvaliableLanguages { get; }
@@ -33,38 +34,38 @@ namespace SLStudio.Core
 
         public void SetLanguage(Language language)
         {
-            var code = language.IsAuto ? string.Empty : language.Code;
-            LanguageManagerSettings.Default.UserLanguage = code;
-            LanguageManagerSettings.Default.Save();
-            CurrentLanguage = language;
+            //var code = language.IsAuto ? string.Empty : language.Code;
+            //LanguageManagerSettings.Default.UserLanguage = code;
+            //LanguageManagerSettings.Default.Save();
+            //CurrentLanguage = language;
         }
 
         public void Reset()
         {
-            LanguageManagerSettings.Default.Reset();
-            LanguageManagerSettings.Default.Save();
-            CurrentLanguage = AvaliableLanguages.First(l => l.Code == Thread.CurrentThread.CurrentUICulture.Name);
+            //LanguageManagerSettings.Default.Reset();
+            //LanguageManagerSettings.Default.Save();
+            //CurrentLanguage = AvaliableLanguages.First(l => l.Code == Thread.CurrentThread.CurrentUICulture.Name);
         }
 
         private void Initalize()
         {
-            if (string.IsNullOrEmpty(LanguageManagerSettings.Default.UserLanguage))
-                CurrentLanguage = AvaliableLanguages.First(l => l.IsAuto);
-            else
-                CurrentLanguage = AvaliableLanguages.First(l => l.Code == LanguageManagerSettings.Default.UserLanguage);
+            //if (string.IsNullOrEmpty(LanguageManagerSettings.Default.UserLanguage))
+            //    CurrentLanguage = AvaliableLanguages.First(l => l.IsAuto);
+            //else
+            //    CurrentLanguage = AvaliableLanguages.First(l => l.Code == LanguageManagerSettings.Default.UserLanguage);
 
-            Thread.CurrentThread.CurrentCulture = CurrentLanguage.Culture;
-            Thread.CurrentThread.CurrentUICulture = CurrentLanguage.Culture;
-            CultureInfo.DefaultThreadCurrentCulture = CurrentLanguage.Culture;
-            CultureInfo.DefaultThreadCurrentUICulture = CurrentLanguage.Culture;
-            ConfigHelper.Instance.SetLang(CurrentLanguage.Code);
-            FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CurrentLanguage.Code)));
-            SetupHumanizer();
+            //Thread.CurrentThread.CurrentCulture = CurrentLanguage.Culture;
+            //Thread.CurrentThread.CurrentUICulture = CurrentLanguage.Culture;
+            //CultureInfo.DefaultThreadCurrentCulture = CurrentLanguage.Culture;
+            //CultureInfo.DefaultThreadCurrentUICulture = CurrentLanguage.Culture;
+            //ConfigHelper.Instance.SetLang(CurrentLanguage.Code);
+            //FrameworkElement.LanguageProperty.OverrideMetadata(typeof(FrameworkElement), new FrameworkPropertyMetadata(XmlLanguage.GetLanguage(CurrentLanguage.Code)));
+            //SetupHumanizer();
         }
 
         private static void SetupHumanizer()
         {
-            Configurator.DateTimeHumanizeStrategy = new DaysOnlyHumanizeStrategy();
+            //Configurator.DateTimeHumanizeStrategy = new DaysOnlyHumanizeStrategy();
         }
     }
 }
