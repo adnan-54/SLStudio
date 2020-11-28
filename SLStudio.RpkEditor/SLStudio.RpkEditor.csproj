@@ -1,79 +1,80 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Library</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<AssemblyVersion>20.11.26.27</AssemblyVersion>
+		<FileVersion>20.11.26.27</FileVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Resources\Icons\rdfFileIcon.png" />
-    <None Remove="Resources\rpkFileIcon.png" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Remove="Resources\Icons\rdfFileIcon.png" />
+		<None Remove="Resources\rpkFileIcon.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SLStudio.Compilers\SLStudio.Compilers.csproj" />
-    <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
-    <ProjectReference Include="..\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SLStudio.Compilers\SLStudio.Compilers.csproj" />
+		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
+		<ProjectReference Include="..\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Resource Include="Resources\Icons\rdfFileIcon.png" />
-    <Resource Include="Resources\Icons\rpkFileIcon.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-  </ItemGroup>
+	<ItemGroup>
+		<Resource Include="Resources\Icons\rdfFileIcon.png" />
+		<Resource Include="Resources\Icons\rpkFileIcon.png">
+			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
+		</Resource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="Modules\RdfEditor\Resources\RdfEditorResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RdfEditorResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Modules\RpkEditor\Resources\RpkEditorResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RpkEditorResources.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Modules\Toolbox\Resources\ToolboxSettings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ToolboxSettings.settings</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\CommonResources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CommonResources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
+	<ItemGroup>
+		<Compile Update="Modules\RdfEditor\Resources\RdfEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RdfEditorResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\RpkEditor\Resources\RpkEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RpkEditorResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Toolbox\Resources\ToolboxSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ToolboxSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\CommonResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CommonResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
 
-  <ItemGroup>
-    <EmbeddedResource Update="Modules\RdfEditor\Resources\RdfEditorResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RdfEditorResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Modules\RpkEditor\Resources\RpkEditorResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>RpkEditorResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Resources\CommonResources.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Modules\RdfEditor\Resources\RdfEditorResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>RdfEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\RpkEditor\Resources\RpkEditorResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>RpkEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\CommonResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>CommonResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
-    <PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
-    <PackageReference Include="MvvmDialogs" Version="8.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
+		<PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+		<PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
+		<PackageReference Include="MvvmDialogs" Version="8.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Update="Modules\Toolbox\Resources\ToolboxSettings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>ToolboxSettings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
+	<ItemGroup>
+		<None Update="Modules\Toolbox\Resources\ToolboxSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>ToolboxSettings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
 </Project>

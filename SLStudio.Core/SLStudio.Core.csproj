@@ -1,12 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>20.6.55.56</AssemblyVersion>
-		<FileVersion>20.6.55.56</FileVersion>
-		<UseWindowsForms>true</UseWindowsForms>
+		<AssemblyVersion>20.11.26.83</AssemblyVersion>
+		<FileVersion>20.11.26.83</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -28,156 +27,147 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="Syncfusion.Shared.Wpf">
-	    <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\WPF\18.2.0.44\Assemblies\4.6\Syncfusion.Shared.Wpf.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Syncfusion.Tools.Wpf">
-	    <HintPath>..\..\..\..\..\..\Program Files (x86)\Syncfusion\Essential Studio\WPF\18.2.0.44\Assemblies\4.6\Syncfusion.Tools.WPF.dll</HintPath>
-	  </Reference>
+		<Compile Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ExceptionBoxResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\NewFile\Resources\NewFileResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>NewFileResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Options\Resources\OptionsResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OptionsResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Output\Resources\OutputResource.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OutputResource.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>SplashScreenResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\StartPage\Resources\StartPageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StartPageResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\StatusBar\Resources\StatusBarResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StatusBarResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\StudioResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StudioResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LanguageManagerSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RecentFilesSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Services\ThemeManager\Resources\ThemeManagerResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ThemeManagerResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Services\ThemeManager\Resources\ThemeManagerSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ThemeManagerSettings.settings</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ExceptionBoxResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\NewFile\Resources\NewFileResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>NewFileResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\Options\Resources\OptionsResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>OptionsResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\Output\Resources\OutputResource.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>OutputResource.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>SplashScreenResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\StartPage\Resources\StartPageResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>StartPageResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Modules\StatusBar\Resources\StatusBarResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>StatusBarResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Resources\StudioResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>StudioResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>LanguageManagerSettings.settings</DependentUpon>
-	  </Compile>
-	  <Compile Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>RecentFilesSettings.settings</DependentUpon>
-	  </Compile>
-	  <Compile Update="Services\ThemeManager\Resources\ThemeManagerResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ThemeManagerResources.resx</DependentUpon>
-	  </Compile>
-	  <Compile Update="Services\ThemeManager\Resources\ThemeManagerSettings.Designer.cs">
-	    <DesignTimeSharedInput>True</DesignTimeSharedInput>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>ThemeManagerSettings.settings</DependentUpon>
-	  </Compile>
+		<EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\NewFile\Resources\NewFileResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>NewFileResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Options\Resources\OptionsResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>OptionsResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Output\Resources\OutputResource.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>OutputResource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\SplashScreen\Resources\SplashScreenResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\StartPage\Resources\StartPageResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StartPageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\StatusBar\Resources\StatusBarResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\StudioResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Services\ThemeManager\Resources\ThemeManagerResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>ThemeManagerResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\NewFile\Resources\NewFileResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>NewFileResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\Options\Resources\OptionsResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>OptionsResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\Output\Resources\OutputResource.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>OutputResource.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\SplashScreen\Resources\SplashScreenResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\StartPage\Resources\StartPageResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>StartPageResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Modules\StatusBar\Resources\StatusBarResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Resources\StudioResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
-	  <EmbeddedResource Update="Services\ThemeManager\Resources\ThemeManagerResources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>ThemeManagerResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<None Update="Services\LanguageManager\LanguageManagerSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>LanguageManagerSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>RecentFilesSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Services\ThemeManager\Resources\ThemeManagerSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>ThemeManagerSettings.Designer.cs</LastGenOutput>
+		</None>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Update="Services\LanguageManager\LanguageManagerSettings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>LanguageManagerSettings.Designer.cs</LastGenOutput>
-	  </None>
-	  <None Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>RecentFilesSettings.Designer.cs</LastGenOutput>
-	  </None>
-	  <None Update="Services\ThemeManager\Resources\ThemeManagerSettings.settings">
-	    <Generator>SettingsSingleFileGenerator</Generator>
-	    <LastGenOutput>ThemeManagerSettings.Designer.cs</LastGenOutput>
-	  </None>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Page Update="Resources\Controls\AvalonDock.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Controls\Label.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Controls\GroupBox.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Controls\Page.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Icons\Shapes.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Controls\Expander.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
-	  <Page Update="Resources\Controls\AvalonEdit.xaml">
-	    <SubType>Designer</SubType>
-	  </Page>
+		<Page Update="Resources\Controls\AvalonDock.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Label.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\GroupBox.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Page.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Icons\Shapes.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Expander.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\AvalonEdit.xaml">
+			<SubType>Designer</SubType>
+		</Page>
 	</ItemGroup>
 </Project>

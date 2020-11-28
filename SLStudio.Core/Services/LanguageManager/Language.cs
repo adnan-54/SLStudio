@@ -1,10 +1,11 @@
 ﻿using System.Globalization;
+using Humanizer;
 
 namespace SLStudio.Core.LanguageManager
 {
     public class Language
     {
-        internal Language(string code)
+        public Language(string code)
         {
             if (!string.IsNullOrEmpty(code))
                 Culture = CultureInfo.CreateSpecificCulture(code);
@@ -12,7 +13,7 @@ namespace SLStudio.Core.LanguageManager
 
         public CultureInfo Culture { get; }
 
-        public string DisplayName => Culture?.NativeName ?? "Auto";
+        public string DisplayName => Culture?.NativeName.ApplyCase(LetterCasing.Title) ?? "Auto";
 
         public string Code => Culture?.Name;
     }

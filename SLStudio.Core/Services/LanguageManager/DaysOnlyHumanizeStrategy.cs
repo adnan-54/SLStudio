@@ -3,7 +3,7 @@ using SLStudio.Core.Resources;
 using System;
 using System.Globalization;
 
-namespace SLStudio.Core.Humanizer
+namespace SLStudio.Core.Services.LanguageManager
 {
     internal class DaysOnlyHumanizeStrategy : IDateTimeHumanizeStrategy
     {
