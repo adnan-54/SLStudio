@@ -205,7 +205,7 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Untitled.
+        ///   Looks up a localized string similar to Untitled {0}.
         /// </summary>
         public static string Untitled {
             get {

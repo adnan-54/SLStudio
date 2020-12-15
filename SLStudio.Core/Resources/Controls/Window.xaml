@@ -81,8 +81,8 @@
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="WindowState" Value="Maximized" />
-        <Setter Property="MinWidth" Value="800" />
-        <Setter Property="MinHeight" Value="600" />
+        <Setter Property="MinWidth" Value="400" />
+        <Setter Property="MinHeight" Value="400" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="IconTemplate">
             <Setter.Value>
@@ -118,11 +118,25 @@
 
     <!--DialogWindowStyle-->
     <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource StudioWindowStyle}">
+        <Setter Property="ShowMinButton" Value="False" />
+        <Setter Property="ShowMaxRestoreButton" Value="False" />
+        <Setter Property="WindowTitleBrush" Value="{StaticResource Editor.Background}" />
+        <Setter Property="NonActiveWindowTitleBrush" Value="{StaticResource Editor.Background}" />
         <Setter Property="ShowInTaskbar" Value="False" />
+        <Setter Property="ShowIconOnTitleBar" Value="False" />
         <Setter Property="ResizeMode" Value="CanResize" />
         <Setter Property="WindowState" Value="Normal" />
         <Setter Property="SaveWindowPosition" Value="False" />
         <Setter Property="TitleAlignment" Value="Left" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterOwner" />
+        <Setter Property="TitleTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Margin="{StaticResource LeftMargin}"
+                       Text="{DXBinding '@a($studio:DialogWindow).Title'}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
 </ResourceDictionary>

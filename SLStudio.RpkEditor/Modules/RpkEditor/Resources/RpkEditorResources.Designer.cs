@@ -61,6 +61,15 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General/Game Files/.
+        /// </summary>
+        public static string categoryPath {
+            get {
+                return ResourceManager.GetString("categoryPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string Code {

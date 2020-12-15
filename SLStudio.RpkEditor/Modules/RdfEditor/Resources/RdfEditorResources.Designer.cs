@@ -61,6 +61,15 @@ namespace SLStudio.RpkEditor.Modules.RdfEditor.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General/SLStudio Files/.
+        /// </summary>
+        public static string categoryPath {
+            get {
+                return ResourceManager.GetString("categoryPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A blank resource definitions file..
         /// </summary>
         public static string rdfEditorDescription {

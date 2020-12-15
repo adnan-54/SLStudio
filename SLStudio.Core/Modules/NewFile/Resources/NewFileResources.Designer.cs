@@ -63,135 +63,108 @@ namespace SLStudio.Core.Modules.NewFile.Resources {
         /// <summary>
         ///   Looks up a localized string similar to _Cancel.
         /// </summary>
-        public static string Cancel {
+        public static string button_Cancel {
             get {
-                return ResourceManager.GetString("Cancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Description:.
-        /// </summary>
-        public static string Description {
-            get {
-                return ResourceManager.GetString("Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Medium Icons.
-        /// </summary>
-        public static string MediumIcons {
-            get {
-                return ResourceManager.GetString("MediumIcons", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name:.
-        /// </summary>
-        public static string Name {
-            get {
-                return ResourceManager.GetString("Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name Ascending.
-        /// </summary>
-        public static string NameAscending {
-            get {
-                return ResourceManager.GetString("NameAscending", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Name Descending.
-        /// </summary>
-        public static string NameDescending {
-            get {
-                return ResourceManager.GetString("NameDescending", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New File.
-        /// </summary>
-        public static string NewFile {
-            get {
-                return ResourceManager.GetString("NewFile", resourceCulture);
+                return ResourceManager.GetString("button_Cancel", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to _Open.
         /// </summary>
-        public static string Open {
+        public static string button_Open {
             get {
-                return ResourceManager.GetString("Open", resourceCulture);
+                return ResourceManager.GetString("button_Open", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search (Ctrl+E).
+        ///   Looks up a localized string similar to Default.
         /// </summary>
-        public static string SearchWatermark {
+        public static string combo_Default {
             get {
-                return ResourceManager.GetString("SearchWatermark", resourceCulture);
+                return ResourceManager.GetString("combo_Default", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Small Icons.
+        ///   Looks up a localized string similar to Name Ascending.
         /// </summary>
-        public static string SmallIcons {
+        public static string combo_NameAscending {
             get {
-                return ResourceManager.GetString("SmallIcons", resourceCulture);
+                return ResourceManager.GetString("combo_NameAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name Descending.
+        /// </summary>
+        public static string combo_NameDescending {
+            get {
+                return ResourceManager.GetString("combo_NameDescending", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Sort by:.
         /// </summary>
-        public static string SortBy {
+        public static string label_SortBy {
             get {
-                return ResourceManager.GetString("SortBy", resourceCulture);
+                return ResourceManager.GetString("label_SortBy", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Untitled.
+        ///   Looks up a localized string similar to Type:.
         /// </summary>
-        public static string Untitled {
+        public static string label_Type {
             get {
-                return ResourceManager.GetString("Untitled", resourceCulture);
+                return ResourceManager.GetString("label_Type", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;{PropertyValue}&quot; is not a valid file name.
+        ///   Looks up a localized string similar to Medium Icons.
         /// </summary>
-        public static string ValidationInvalidFileName {
+        public static string tooltip_MediumIcons {
             get {
-                return ResourceManager.GetString("ValidationInvalidFileName", resourceCulture);
+                return ResourceManager.GetString("tooltip_MediumIcons", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name cannot be empty.
+        ///   Looks up a localized string similar to Small Icons.
         /// </summary>
-        public static string ValidationNameCannotBeEmpty {
+        public static string tooltip_SmallIcons {
             get {
-                return ResourceManager.GetString("ValidationNameCannotBeEmpty", resourceCulture);
+                return ResourceManager.GetString("tooltip_SmallIcons", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name cannot have more than {MaxLength} characters.
+        ///   Looks up a localized string similar to General.
         /// </summary>
-        public static string ValidationNameLenght {
+        public static string treeview_GeneralCategory {
             get {
-                return ResourceManager.GetString("ValidationNameLenght", resourceCulture);
+                return ResourceManager.GetString("treeview_GeneralCategory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search (Ctrl+E).
+        /// </summary>
+        public static string watermark_Search {
+            get {
+                return ResourceManager.GetString("watermark_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New File.
+        /// </summary>
+        public static string window_Title {
+            get {
+                return ResourceManager.GetString("window_Title", resourceCulture);
             }
         }
     }

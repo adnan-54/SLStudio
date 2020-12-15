@@ -15,6 +15,6 @@ namespace SLStudio.Core.LanguageManager
 
         public string DisplayName => Culture?.NativeName.ApplyCase(LetterCasing.Title) ?? "Auto";
 
-        public string Code => Culture?.Name;
+        public string Code => Culture?.Name.ToUpper();
     }
 }

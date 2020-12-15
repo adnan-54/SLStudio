@@ -1,55 +1,52 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
+﻿using SLStudio.Core.Modules.NewFile.Models;
 using SLStudio.Core.Modules.NewFile.Resources;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.NewFile.ViewModels
 {
-    internal partial class NewFileViewModel : WindowViewModel, INewFileDialog, INotifyDataErrorInfo
+    internal partial class NewFileViewModel : WindowViewModel, INewFileDialog
     {
         private readonly IFileService fileService;
-        private readonly ICollectionView collectionView;
-        private readonly IUiSynchronization uiSynchronization;
-        private readonly IValidator<NewFileViewModel> validator;
+        private readonly Dictionary<string, CategoryModel> categoriesCache;
+        private readonly ICollectionView availableFilesView;
 
-        private ValidationResult validationResult;
-
-        public NewFileViewModel(IFileService fileService, IUiSynchronization uiSynchronization)
+        public NewFileViewModel(IFileService fileService)
         {
             this.fileService = fileService;
-            this.uiSynchronization = uiSynchronization;
-            validator = new NewFileValidator();
+            categoriesCache = new Dictionary<string, CategoryModel>();
 
-            AvaliableTypes = new BindableCollection<IFileDescription>();
-            collectionView = CollectionViewSource.GetDefaultView(AvaliableTypes);
-            collectionView.Filter += Filter;
-
-            LoadAvaliableTypes().FireAndForget();
-
-            SortModes = new List<SortModeModel>()
+            AvailableCategories = new BindableCollection<CategoryModel>();
+            AvailableSortModes = new List<SortModeModel>()
             {
-                new SortModeModel(NewFileResources.NameAscending, new SortDescription("DisplayName", ListSortDirection.Ascending)),
-                new SortModeModel(NewFileResources.NameDescending, new SortDescription("DisplayName", ListSortDirection.Descending))
+                new SortModeModel(NewFileResources.combo_Default, new SortDescription()),
+                new SortModeModel(NewFileResources.combo_NameAscending, new SortDescription(nameof(SortModeModel.DisplayName), ListSortDirection.Ascending)),
+                new SortModeModel(NewFileResources.combo_NameDescending, new SortDescription(nameof(SortModeModel.DisplayName), ListSortDirection.Descending))
             };
+            AvailableFiles = new BindableCollection<NewFileModel>();
+            availableFilesView = CollectionViewSource.GetDefaultView(AvailableFiles);
+            availableFilesView.Filter += Filter;
+            availableFilesView.CollectionChanged += OnCollectionChanged;
 
-            SelectedSortMode = SortModes.FirstOrDefault();
+            FetchCategories().FireAndForget();
+            FetchFiles().FireAndForget();
 
-            ShowLargeIcons = true;
-            FileName = NewFileResources.Untitled;
-            DisplayName = NewFileResources.NewFile;
+            DisplayName = NewFileResources.window_Title;
         }
 
-        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        public BindableCollection<CategoryModel> AvailableCategories { get; }
 
-        public bool HasErrors => !validationResult.IsValid;
+        public IEnumerable<SortModeModel> AvailableSortModes { get; }
 
-        public IEnumerable<SortModeModel> SortModes { get; }
+        public BindableCollection<NewFileModel> AvailableFiles { get; }
+
+        public CategoryModel SelectedCategory => categoriesCache.Values.FirstOrDefault(c => c.IsSelected);
 
         public SortModeModel SelectedSortMode
         {
@@ -57,14 +54,18 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             set
             {
                 SetProperty(() => SelectedSortMode, value);
-                SortAvaliableTypes();
+                Sort();
             }
         }
 
-        public bool ShowLargeIcons
+        public NewFileModel SelectedFile
         {
-            get => GetProperty(() => ShowLargeIcons);
-            set => SetProperty(() => ShowLargeIcons, value);
+            get => GetProperty(() => SelectedFile);
+            set
+            {
+                SetProperty(() => SelectedFile, value);
+                RaisePropertyChanged(() => CanOpen);
+            }
         }
 
         public string SearchTerm
@@ -73,98 +74,144 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             set
             {
                 SetProperty(() => SearchTerm, value);
-                collectionView.Refresh();
+                availableFilesView.Refresh();
             }
         }
 
-        public BindableCollection<IFileDescription> AvaliableTypes { get; }
+        public bool CanOpen => SelectedFile != null;
 
-        public IFileDescription SelectedType
-        {
-            get => GetProperty(() => SelectedType);
-            set
-            {
-                SetProperty(() => SelectedType, value);
-                Validate(nameof(SelectedType));
-                RaisePropertyChanged(() => CanOpen);
-            }
-        }
-
-        public string FileName
-        {
-            get => GetProperty(() => FileName);
-            set
-            {
-                SetProperty(() => FileName, value);
-                Validate(nameof(FileName));
-                RaisePropertyChanged(() => CanOpen);
-            }
-        }
-
-        public bool CanOpen => !HasErrors;
-
-        public IEnumerable GetErrors(string propertyName)
-        {
-            return validationResult?.Errors.Where(e => e.PropertyName == propertyName);
-        }
-
-        public async Task OpenFile()
+        public void Open()
         {
             if (!CanOpen)
                 return;
 
-            await fileService.New(SelectedType.Extension, FileName);
+            fileService.New(SelectedFile.FileDescription.Extension);
             TryClose(true);
         }
 
-        private Task LoadAvaliableTypes()
+        private Task FetchCategories()
         {
-            return uiSynchronization.InvokeOnUiAsync(() =>
-            {
-                AvaliableTypes.AddRange(fileService.GetFileDescriptions());
-                SelectedType = collectionView.Cast<IFileDescription>().FirstOrDefault();
-            });
+            CreateBaseCache();
+            CreateCategories();
+            PopulateParents();
+            AddRootCategories();
+
+            return Task.FromResult(true);
         }
 
-        private void SortAvaliableTypes()
+        private void CreateBaseCache()
         {
-            collectionView.SortDescriptions.Clear();
+            foreach (var file in fileService.GetFileDescriptions().Where(d => !d.ReadOnly))
+            {
+                if (!categoriesCache.ContainsKey(file.Category))
+                    categoriesCache.Add(file.Category, new CategoryModel(file.Category));
+            }
+        }
 
-            if (SelectedSortMode != null)
-                collectionView.SortDescriptions.Add(SelectedSortMode.Description);
+        private void CreateCategories()
+        {
+            foreach (var category in categoriesCache.Values.ToList())
+            {
+                var splitted = category.Path.Split('/', StringSplitOptions.RemoveEmptyEntries);
+                var newPath = string.Empty;
+                foreach (var split in splitted)
+                {
+                    newPath = $"{newPath}{split}/";
+                    if (!categoriesCache.ContainsKey(newPath))
+                        categoriesCache.Add(newPath, new CategoryModel(newPath));
+                }
+            }
+        }
 
-            collectionView.Refresh();
+        private void PopulateParents()
+        {
+            foreach (var category in categoriesCache.Values)
+            {
+                var splittedPath = category.Path.Split('/', StringSplitOptions.RemoveEmptyEntries);
+                var parentPath = string.Join("/", splittedPath.Take(splittedPath.Length - 1));
+
+                if (!parentPath.EndsWith('/'))
+                    parentPath = $"{parentPath}/";
+
+                if (categoriesCache.TryGetValue(parentPath, out var parent))
+                    parent.Children.Add(category);
+            }
+        }
+
+        private void AddRootCategories()
+        {
+            var rootCategories = categoriesCache.Where(c => c.Key.Count(c => c == '/') == 1).Select(c => c.Value);
+            foreach (var category in rootCategories)
+                AvailableCategories.Add(category);
+        }
+
+        private Task FetchFiles()
+        {
+            var files = fileService.GetFileDescriptions().Where(d => !d.ReadOnly);
+
+            foreach (var file in files)
+            {
+                var fileModel = new NewFileModel(file);
+                AvailableFiles.Add(fileModel);
+            }
+
+            return Task.FromResult(true);
         }
 
         private bool Filter(object obj)
         {
-            if (!(obj is IFileDescription fileDescription))
+            if (obj is not NewFileModel model)
                 return false;
 
-            if (string.IsNullOrWhiteSpace(SearchTerm))
+            if (SelectedCategory != null)
+            {
+                if (string.IsNullOrEmpty(SearchTerm))
+                    return SelectedCategory.Match(model);
+
+                return SelectedCategory.Match(model) && (model.DisplayName.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || model.Category.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (string.IsNullOrEmpty(SearchTerm))
                 return true;
 
-            return fileDescription.DisplayName.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)
-                || fileDescription.Description.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase)
-                || fileDescription.Extension.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase);
+            return model.DisplayName.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase) || model.Category.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase);
         }
 
-        private void Validate(string propertyName)
+        private void Sort()
         {
-            validationResult = validator.Validate(this, options => options.IncludeProperties(propertyName));
-            ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
-        }
-    }
+            if (SelectedSortMode == null)
+                return;
 
-    internal class SortModeModel
-    {
-        public SortModeModel(string displayName, SortDescription description)
+            using (availableFilesView.DeferRefresh())
+            {
+                availableFilesView.SortDescriptions.Clear();
+                if (!string.IsNullOrEmpty(SelectedSortMode.SortDescription.PropertyName))
+                    availableFilesView.SortDescriptions.Add(SelectedSortMode.SortDescription);
+            }
+        }
+
+        public void OnSelectedCategoryChanged()
         {
-            DisplayName = displayName;
-            Description = description;
+            availableFilesView.Refresh();
         }
 
-        public string DisplayName { get; }
-        public SortDescription Description { get; }
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            var view = availableFilesView.Cast<NewFileModel>();
+            if (!view.Contains(SelectedFile))
+                SelectedFile = view.FirstOrDefault();
+        }
+
+        public override void OnLoaded()
+        {
+            if (SelectedCategory == null)
+                AvailableCategories.FirstOrDefault().IsSelected = true;
+
+            if (SelectedSortMode == null)
+                SelectedSortMode = AvailableSortModes.FirstOrDefault();
+
+            if (SelectedFile == null)
+                SelectedFile = AvailableFiles.FirstOrDefault();
+        }
     }
 }

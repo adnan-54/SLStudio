@@ -109,6 +109,8 @@
     <Style x:Key="StudioSearchTextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource StudioTextBoxStyle}" x:Shared="False">
         <Setter Property="AcceptsReturn" Value="False" />
         <Setter Property="AcceptsTab" Value="False" />
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="metro:TextBoxHelper.SelectAllOnFocus" Value="True" />
         <Setter Property="Template">
             <Setter.Value>

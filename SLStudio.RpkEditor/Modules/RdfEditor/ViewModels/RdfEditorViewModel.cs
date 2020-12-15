@@ -15,7 +15,7 @@ using SLStudio.RpkEditor.Modules.RdfEditor.Resources;
 
 namespace SLStudio.RpkEditor.Modules.RdfEditor.ViewModels
 {
-    [FileEditor(".rdf", "rdfEditorName", "rdfEditorDescription", typeof(RdfEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rdfFileIcon.png", FileEditorCategory.Advanced)]
+    [FileEditor(".rdf", "rdfEditorName", "rdfEditorDescription", "categoryPath", typeof(RdfEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rdfFileIcon.png")]
     internal class RdfEditorViewModel : FileDocumentPanelBase, IRdfEditor
     {
         private readonly IWindowManager windowManager;
@@ -197,7 +197,7 @@ namespace SLStudio.RpkEditor.Modules.RdfEditor.ViewModels
 
         private bool Filter(object obj)
         {
-            if (!(obj is ExternalResourceMetadata item))
+            if (obj is not ExternalResourceMetadata item)
                 return false;
 
             return string.IsNullOrEmpty(SearchTerm)
@@ -205,8 +205,8 @@ namespace SLStudio.RpkEditor.Modules.RdfEditor.ViewModels
                 || item.TypeOfEntry.Name.Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase);
         }
     }
-}
 
-internal interface IRdfEditor : IFileDocumentPanel
-{
+    public interface IRdfEditor : IFileDocumentPanel
+    {
+    }
 }

@@ -4,12 +4,13 @@
     <Style x:Key="StudioActionsStackPanelStyle" TargetType="{x:Type StackPanel}">
         <Setter Property="Orientation" Value="Horizontal" />
         <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="6, 6, 12, 6" />
         <Style.Resources>
             <!--ButtonStyle-->
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                 <Setter Property="Margin" Value="{StaticResource LeftMargin}" />
-                <Setter Property="Padding" Value="24, 3, 24, 3" />
-                <Setter Property="MinWidth" Value="100" />
+                <Setter Property="Padding" Value="3, 3, 3, 3" />
+                <Setter Property="MinWidth" Value="80" />
             </Style>
         </Style.Resources>
     </Style>

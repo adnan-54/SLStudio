@@ -68,19 +68,21 @@
                 BorderBrush="{TemplateBinding BorderBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <ContentPresenter x:Name="Content" Grid.Column="0"
-                                  Margin="{TemplateBinding Padding}" IsHitTestVisible="False"
-                                  Content="{TemplateBinding SelectionBoxItem}"
-                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/> 
-                
+                <Grid Grid.Column="0" Margin="2, 0, 0, 0">
+                    <ContentPresenter x:Name="Content" 
+                                      Margin="{TemplateBinding Padding}" IsHitTestVisible="False"
+                                      Content="{TemplateBinding SelectionBoxItem}"
+                                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                      ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                </Grid>
+
                 <TextBlock x:Name="Watermark" Grid.Column="0"
                            Margin="{TemplateBinding Padding}"
                            IsHitTestVisible="False" Opacity="0.6"
@@ -92,11 +94,15 @@
                            TextTrimming="{TemplateBinding metro:TextBoxHelper.WatermarkTrimming}"
                            TextWrapping="{TemplateBinding metro:TextBoxHelper.WatermarkWrapping}"
                            Visibility="Collapsed" />
-                
+
                 <ContentControl Grid.Column="1"
                                 Content="{TemplateBinding studio:WpfHelpers.RightContent}" />
 
-                <Grid Background="Transparent" MouseDown="{DXEvent '@e(DropDownButton).IsChecked=true'}"/>
+                <Grid Background="Transparent" MouseDown="{DXEvent '@e(DropDownButton).IsChecked=false'}"
+                      metro:VisibilityHelper.IsVisible="{DXBinding '@e(DropDownButton).IsChecked'}" />
+
+                <Grid Background="Transparent" MouseDown="{DXEvent '@e(DropDownButton).IsChecked=true'}"
+                      metro:VisibilityHelper.IsCollapsed="{DXBinding '@e(DropDownButton).IsChecked'}" />
 
                 <ToggleButton x:Name="DropDownButton" Grid.Column="2"
                               Focusable="False" Width="16"
@@ -156,8 +162,9 @@
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="Foreground" Value="{StaticResource Foreground}" />
         <Setter Property="ItemContainerStyle" Value="{StaticResource StudioComboBoxItemStyle}" />
-        <Setter Property="Padding" Value="2" />
-        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="Padding" Value="3, 2, 3, 2" />
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="True" />
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.PanningMode" Value="Both" />
@@ -180,9 +187,9 @@
                             <TextBox x:Name="PART_EditableTextBox" Grid.Column="0"
                                      Padding="{TemplateBinding Padding}"
                                      Background="Transparent" BorderThickness="0"
-                                     Text="{TemplateBinding SelectionBoxItem}" 
+                                     Text="{TemplateBinding SelectionBoxItem}"
                                      studio:WpfHelpers.Watermark="{TemplateBinding studio:WpfHelpers.Watermark}"
-                                     studio:WpfHelpers.RightContent="{TemplateBinding studio:WpfHelpers.RightContent}"/>
+                                     studio:WpfHelpers.RightContent="{TemplateBinding studio:WpfHelpers.RightContent}" />
 
                             <ToggleButton x:Name="DropDownButton" Grid.Column="1"
                                           Focusable="False" Width="16"
@@ -228,7 +235,7 @@
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="IsEnabled" TargetName="DropDownButton" Value="False" />
                             <Setter Property="IsEnabled" TargetName="PART_EditableTextBox" Value="False" />
-                            <!--<Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />-->
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
                         </Trigger>
 
                         <Trigger Property="IsKeyboardFocusWithin" Value="True">

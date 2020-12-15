@@ -2,7 +2,6 @@
 using Humanizer.Configuration;
 using SLStudio.Core.LanguageManager;
 using SLStudio.Core.Services.LanguageManager;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -18,7 +17,7 @@ namespace SLStudio.Core
 
         private readonly IList<Language> avaliableLanguages = new List<Language>()
         {
-            new Language("en-US"),
+            new Language("en"),
             new Language("pt-BR"),
             new Language(null)
         };

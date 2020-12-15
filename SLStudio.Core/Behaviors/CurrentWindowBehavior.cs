@@ -14,7 +14,7 @@ namespace SLStudio.Core.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
-            if (!(AssociatedObject.DataContext is WindowViewModel windowScreen))
+            if (AssociatedObject.DataContext is not WindowViewModel windowScreen)
                 throw new InvalidOperationException($"The Window DataContext does not implement {nameof(WindowViewModel)}");
 
             viewModel = windowScreen;
@@ -78,7 +78,7 @@ namespace SLStudio.Core.Behaviors
 
         protected override void OnDetaching()
         {
-            AssociatedObject.ContentRendered -= WindowLoaded;
+            AssociatedObject.Loaded -= WindowLoaded;
             AssociatedObject.Closing -= WindowClosing;
             AssociatedObject.Closed -= WindowClosed;
             AssociatedObject.Activated -= WindowActivated;

@@ -10,7 +10,7 @@ using SLStudio.RpkEditor.Modules.ToolBox.ViewModels;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 {
-    [FileEditor(".rpk", "rpkEditorName", "rpkEditorDescription", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png")]
+    [FileEditor(".rpk", "rpkEditorName", "rpkEditorDescription", "categoryPath", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png")]
     internal class RpkEditorViewModel : FileDocumentPanelBase, IRpkEditor
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RpkEditorViewModel>();

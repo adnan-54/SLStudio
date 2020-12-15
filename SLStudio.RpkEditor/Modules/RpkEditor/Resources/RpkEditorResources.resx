@@ -135,4 +135,7 @@
   <data name="SearchAltS" xml:space="preserve">
     <value>Search (Alt + S)</value>
   </data>
+  <data name="categoryPath" xml:space="preserve">
+    <value>General/Game Files/</value>
+  </data>
 </root>
