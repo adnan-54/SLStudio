@@ -142,15 +142,6 @@ namespace SLStudio.Core.Modules.NewFile.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to General.
-        /// </summary>
-        public static string treeview_GeneralCategory {
-            get {
-                return ResourceManager.GetString("treeview_GeneralCategory", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Search (Ctrl+E).
         /// </summary>
         public static string watermark_Search {

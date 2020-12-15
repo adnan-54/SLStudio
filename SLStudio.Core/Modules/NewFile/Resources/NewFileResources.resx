@@ -150,7 +150,4 @@
   <data name="combo_Default" xml:space="preserve">
     <value>Default</value>
   </data>
-  <data name="treeview_GeneralCategory" xml:space="preserve">
-    <value>General</value>
-  </data>
 </root>
