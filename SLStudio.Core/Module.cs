@@ -20,11 +20,8 @@ namespace SLStudio.Core
         {
             container.RegisterInstance<IDialogService>(new DialogService());
             container.RegisterSingleton<IFileService, DefaultFileService>();
-
             container.RegisterSingleton<IRecentFilesRepository, DefaultRecentFilesRespository>();
-
             container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
-
             container.RegisterSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
             container.RegisterSingleton<IMenuLookup, DefaultMenuLookup>();
 

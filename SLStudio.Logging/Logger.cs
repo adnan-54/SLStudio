@@ -16,14 +16,12 @@ namespace SLStudio.Logging
 
         public void Debug(string message, string title = null)
         {
-            if (!LogManager.IgnoreDebugLevel)
-                Log(title, message, LogLevel.Debug);
+            Log(title, message, LogLevel.Debug);
         }
 
         public void Debug(Exception exception)
         {
-            if (!LogManager.IgnoreDebugLevel)
-                Log(exception, LogLevel.Debug);
+            Log(exception, LogLevel.Debug);
         }
 
         public void Error(string message, string title = null)
@@ -58,12 +56,12 @@ namespace SLStudio.Logging
 
         public void Log(string message, string title = null)
         {
-            Log(title, message, LogManager.DefaultLogLevel);
+            Log(title, message, LogManager.Configuraion.DefaultLogLevel);
         }
 
         public void Log(Exception exception)
         {
-            Log(exception, LogManager.DefaultLogLevel);
+            Log(exception, LogManager.Configuraion.DefaultLogLevel);
         }
 
         public void Warn(string message, string title = null)
@@ -78,14 +76,18 @@ namespace SLStudio.Logging
 
         private async void Log(string title, string message, LogLevel level)
         {
+            if (level == LogLevel.Debug && LogManager.Configuraion.IgnoreDebugLevel)
+                return;
+
             var result = await loggingService.CreateLog(title, message, Name, level);
             if (result != null)
             {
-                if (LogManager.LogToConsole)
+                if (LogManager.Configuraion.LogToConsole)
                 {
                     Console.WriteLine($"{result}");
                     System.Diagnostics.Debug.WriteLine($"{result}");
                 }
+
                 LogManager.OnLogCompleted(result);
             }
         }

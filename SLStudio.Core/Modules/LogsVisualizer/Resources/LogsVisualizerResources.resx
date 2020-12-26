@@ -117,67 +117,98 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisteringModule" xml:space="preserve">
-    <value>Registrando {0}...</value>
+  <data name="window_title_Details" xml:space="preserve">
+    <value>Log Details</value>
   </data>
-  <data name="RunningModule" xml:space="preserve">
-    <value>Executando {0}...</value>
+  <data name="window_title_SimpleLog" xml:space="preserve">
+    <value>Simple Logs</value>
   </data>
-  <data name="MergingResources" xml:space="preserve">
-    <value>Mesclando recursos para {0}...</value>
+  <data name="filter_textFile" xml:space="preserve">
+    <value>Text File (*.txt)|*.txt</value>
   </data>
-  <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Carregando o assembly '{0}'...</value>
+  <data name="dialog_title_exportTxt" xml:space="preserve">
+    <value>Export Logs to Text</value>
   </data>
-  <data name="CombinationIsNotACommand" xml:space="preserve">
-    <value>A combinação de teclas ({0}) não é um comando.</value>
+  <data name="window_title_logs" xml:space="preserve">
+    <value>Logs</value>
   </data>
-  <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) foi pressionado. Esperando a próxima combinação de teclas...</value>
+  <data name="statusbar_totalLogsFormat" xml:space="preserve">
+    <value>Total Logs: {0}</value>
   </data>
-  <data name="HumanizerDateTimeToday" xml:space="preserve">
-    <value>hoje</value>
+  <data name="filter_htmlFile" xml:space="preserve">
+    <value>HTML File (*.html)|*.html</value>
   </data>
-  <data name="MenuTools" xml:space="preserve">
-    <value>_Ferramentas</value>
+  <data name="statusbar_totalSizeFormat" xml:space="preserve">
+    <value>Total Size: {0}</value>
   </data>
-  <data name="MenuOptions" xml:space="preserve">
-    <value>_Opções...</value>
+  <data name="dialog_title_exportHtml" xml:space="preserve">
+    <value>Export Logs to HTML</value>
   </data>
-  <data name="File" xml:space="preserve">
-    <value>Arquivo</value>
+  <data name="dialog_title_clearLogs" xml:space="preserve">
+    <value>Clear Logs</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Novo</value>
+  <data name="dialog_message_clearConfirmation" xml:space="preserve">
+    <value>This action will delete all logs from the database
+Are you sure you want to continue?</value>
   </data>
-  <data name="View" xml:space="preserve">
-    <value>Exibir</value>
+  <data name="statusbar_status_working" xml:space="preserve">
+    <value>Working...</value>
   </data>
-  <data name="Window" xml:space="preserve">
-    <value>Janela</value>
+  <data name="statusbar_status_ready" xml:space="preserve">
+    <value>Ready</value>
   </data>
-  <data name="Output" xml:space="preserve">
-    <value>Saída</value>
+  <data name="button_exportAll" xml:space="preserve">
+    <value>_Export All</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ajuda</value>
+  <data name="button_ok" xml:space="preserve">
+    <value>_Ok</value>
   </data>
-  <data name="NewFileMenu" xml:space="preserve">
-    <value>Arquivo...</value>
+  <data name="label_date" xml:space="preserve">
+    <value>Date:</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Pesquisar</value>
+  <data name="label_id" xml:space="preserve">
+    <value>Id:</value>
   </data>
-  <data name="Clear" xml:space="preserve">
-    <value>Limpar</value>
+  <data name="label_level" xml:space="preserve">
+    <value>Level:</value>
   </data>
-  <data name="Untitled" xml:space="preserve">
-    <value>Sem título {0}</value>
+  <data name="label_message" xml:space="preserve">
+    <value>Message:</value>
   </data>
-  <data name="Toolbox" xml:space="preserve">
-    <value>Caixa de ferramentas</value>
+  <data name="label_sender" xml:space="preserve">
+    <value>Sender:</value>
   </data>
-  <data name="menu_Logs" xml:space="preserve">
-    <value>Registros...</value>
+  <data name="label_title" xml:space="preserve">
+    <value>Title:</value>
+  </data>
+  <data name="header_date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="header_id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="header_level" xml:space="preserve">
+    <value>Level</value>
+  </data>
+  <data name="header_message" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="header_sender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="header_title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="tooltip_clearAll" xml:space="preserve">
+    <value>Clear All</value>
+  </data>
+  <data name="tooltip_exportToHtml" xml:space="preserve">
+    <value>Export to HTML (Ctrl+E)</value>
+  </data>
+  <data name="tooltip_refresh" xml:space="preserve">
+    <value>Refresh (F5)</value>
+  </data>
+  <data name="tooltip_viewSimpleLogs" xml:space="preserve">
+    <value>View Simple Logs</value>
   </data>
 </root>

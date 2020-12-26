@@ -115,6 +115,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logs....
+        /// </summary>
+        public static string menu_Logs {
+            get {
+                return ResourceManager.GetString("menu_Logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Options....
         /// </summary>
         public static string MenuOptions {

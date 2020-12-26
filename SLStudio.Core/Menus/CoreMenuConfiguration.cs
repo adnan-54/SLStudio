@@ -18,7 +18,9 @@ namespace SLStudio.Core.Menus
         public static string ToolsOptions = $"{Tools}/options";
 
         public static string Window = "window";
+
         public static string Help = "help";
+        public static string HelpLogs = $"{Help}/logs";
 
         public override void Create()
         {
@@ -36,6 +38,7 @@ namespace SLStudio.Core.Menus
             Item(Window, 3, StudioResources.Window);
 
             Item(Help, 4, StudioResources.Help);
+            Item<ViewLogsHandler>(HelpLogs, 0, StudioResources.menu_Logs, iconSource: "Log");
         }
 
         public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)

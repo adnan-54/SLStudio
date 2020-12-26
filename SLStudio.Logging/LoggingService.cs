@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
@@ -8,6 +9,7 @@ namespace SLStudio.Logging
 {
     internal class LoggingService
     {
+        private object @lock = new object();
         private bool isInitialized;
         private readonly string logsPath;
         private readonly string dbFilePath;
@@ -25,10 +27,10 @@ namespace SLStudio.Logging
 
         internal async Task<Log> CreateLog(string title, string message, string sender, LogLevel level)
         {
-            if (!isInitialized)
-                await Initialize();
+            await Initialize();
 
             var log = new Log(title, message, sender, $"{level}", DateTime.Now);
+
             try
             {
                 await InsertIntoDb(log);
@@ -41,11 +43,91 @@ namespace SLStudio.Logging
             }
         }
 
+        internal async Task<DataTable> GetLogs()
+        {
+            await Initialize();
+
+            var dataTable = new DataTable();
+
+            try
+            {
+                var commandString = "SELECT * FROM LOGS ORDER BY ID DESC";
+
+                if (LogManager.Configuraion.MaxRetrieveResults > 0)
+                    commandString = $"{commandString} LIMIT {LogManager.Configuraion.MaxRetrieveResults}";
+
+                var dataAdapter = new SQLiteDataAdapter(commandString, dbConnection);
+                await Task.Run(() =>
+                {
+                    lock (@lock)
+                        dataAdapter.Fill(dataTable);
+                });
+            }
+            catch (Exception exception)
+            {
+                await LogToSimpleFile(exception);
+            }
+
+            return dataTable;
+        }
+
+        internal long GetLogFileSize()
+        {
+            try
+            {
+                if (File.Exists(dbFilePath))
+                    return new FileInfo(dbFilePath).Length;
+            }
+            catch (Exception ex)
+            {
+                LogToSimpleFile(ex).GetAwaiter().GetResult();
+            }
+
+            return 0;
+        }
+
+        internal async Task<string> GetSimpleLogFile()
+        {
+            try
+            {
+                if (File.Exists(txtFilePath))
+                    return await File.ReadAllTextAsync(txtFilePath);
+            }
+            catch (Exception ex)
+            {
+                await LogToSimpleFile(ex);
+            }
+
+            return string.Empty;
+        }
+
+        internal async Task ClearAll()
+        {
+            try
+            {
+                if (dbConnection.State != ConnectionState.Closed)
+                    await dbConnection.CloseAsync();
+
+                if (File.Exists(dbFilePath))
+                    File.Delete(dbFilePath);
+            }
+            catch (Exception ex)
+            {
+                await LogToSimpleFile(ex);
+            }
+
+            isInitialized = false;
+            await Initialize();
+
+            await CreateLog("Clear Logs", "All logs have been successfully deleted", nameof(LoggingService), LogLevel.Info);
+        }
+
         private async Task Initialize()
         {
             if (isInitialized)
                 return;
             isInitialized = true;
+
             try
             {
                 CreateDatabase();
@@ -62,6 +144,7 @@ namespace SLStudio.Logging
         {
             if (!Directory.Exists(logsPath))
                 Directory.CreateDirectory(logsPath);
+
             if (!File.Exists(dbFilePath))
                 SQLiteConnection.CreateFile(dbFilePath);
         }
@@ -89,16 +172,21 @@ namespace SLStudio.Logging
         {
             try
             {
-                StringBuilder builder = new StringBuilder();
-                builder.AppendLine("---------------------------");
-                builder.AppendLine($"Date: {DateTime.Now}");
-                builder.AppendLine();
+                var sb = new StringBuilder();
+                sb.AppendLine("---------------------------");
+                sb.AppendLine($"Date: {DateTime.Now}");
+                sb.AppendLine();
+
                 if (log != null)
-                    builder.AppendLine($"Log: {log}{Environment.NewLine}");
-                builder.AppendLine($"Message: {exception.Message}");
-                builder.AppendLine();
-                builder.AppendLine($"Exception: {exception}");
-                await File.AppendAllTextAsync(txtFilePath, builder.ToString());
+                {
+                    sb.AppendLine($"Log: {log}");
+                    sb.AppendLine();
+                }
+
+                sb.AppendLine($"Message: {exception.Message}");
+                sb.AppendLine();
+                sb.AppendLine($"Exception: {exception}");
+                await File.AppendAllTextAsync(txtFilePath, sb.ToString()).ConfigureAwait(false);
             }
             catch { }
         }

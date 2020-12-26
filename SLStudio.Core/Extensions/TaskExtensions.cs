@@ -15,7 +15,7 @@ namespace SLStudio.Core
             {
                 if (errorHandler == null)
                     errorHandler = IoC.Get<IErrorHandler>();
-                errorHandler.HandleError(ex);
+                errorHandler?.HandleError(ex);
             }
         }
     }

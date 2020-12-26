@@ -44,7 +44,16 @@ namespace SLStudio.Core
             splashScreen = new SplashScreen();
 
             IoC.Initialize(container);
-            LogManager.Initialize(LogLevel.Info, !commandLineArguments.DebugMode, commandLineArguments.DebugMode);
+
+            var loggerConfiguration = new LogManagerConfiguration()
+            {
+                DefaultLogLevel = LogLevel.Info,
+                IgnoreDebugLevel = !commandLineArguments.DebugMode,
+                LogToConsole = commandLineArguments.DebugMode,
+                MaxRetrieveResults = 0
+            };
+
+            LogManager.Configure(loggerConfiguration);
 
             Application.Current.Exit += OnExit;
         }

@@ -177,4 +177,7 @@
   <data name="Toolbox" xml:space="preserve">
     <value>Toolbox</value>
   </data>
+  <data name="menu_Logs" xml:space="preserve">
+    <value>Logs...</value>
+  </data>
 </root>

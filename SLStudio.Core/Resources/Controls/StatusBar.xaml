@@ -5,5 +5,11 @@
         <Setter Property="Height" Value="22" />
         <Setter Property="Background" Value="{StaticResource Backstage.Window.Background}" />
         <Setter Property="Foreground" Value="{StaticResource Backstage.Foreground}" />
+        <Style.Resources>
+            <!--SeparatorStyle-->
+            <Style TargetType="{x:Type Separator}" BasedOn="{StaticResource MahApps.Styles.Separator.StatusBar}">
+                <Setter Property="Background" Value="{StaticResource Delimiter}"/>
+            </Style>
+        </Style.Resources>
     </Style>
 </ResourceDictionary>

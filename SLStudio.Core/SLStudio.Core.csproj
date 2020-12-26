@@ -4,9 +4,17 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>20.12.65.182</AssemblyVersion>
-		<FileVersion>20.12.65.182</FileVersion>
+		<AssemblyVersion>20.12.145.262</AssemblyVersion>
+		<FileVersion>20.12.145.262</FileVersion>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AvalonEdit" Version="6.1.0-preview1" />
@@ -35,6 +43,11 @@
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>ExceptionBoxResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>LogsVisualizerResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\NewFile\Resources\NewFileResources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -97,6 +110,10 @@
 		<EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>LogsVisualizerResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\NewFile\Resources\NewFileResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

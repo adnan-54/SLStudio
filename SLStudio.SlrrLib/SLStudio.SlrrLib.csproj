@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>20.12.59.120</AssemblyVersion>
-		<FileVersion>20.12.59.120</FileVersion>
+		<AssemblyVersion>20.12.137.198</AssemblyVersion>
+		<FileVersion>20.12.137.198</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

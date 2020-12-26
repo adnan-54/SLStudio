@@ -15,14 +15,6 @@ namespace SLStudio.Core
             set => SetProperty(() => DisplayName, value);
         }
 
-        public virtual void OnLoaded()
-        {
-        }
-
-        public virtual void OnActivated()
-        {
-        }
-
         public void Activate()
         {
             CurrentWindow.Activate();
@@ -51,6 +43,14 @@ namespace SLStudio.Core
         public virtual void TryClose(bool? dialogResult)
         {
             CurrentWindow.TryClose(dialogResult);
+        }
+
+        public virtual void OnLoaded()
+        {
+        }
+
+        public virtual void OnActivated()
+        {
         }
 
         public virtual void OnClosing(CancelEventArgs args)
