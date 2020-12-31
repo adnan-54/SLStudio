@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IToolboxContent
+    public interface IToolContent
     {
     }
 }

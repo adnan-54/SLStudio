@@ -6,21 +6,18 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
 {
     internal class ShellViewModel : WindowViewModel, IShell
     {
-        private readonly ICommandLineArguments commandLineArguments;
         private readonly IUiSynchronization uiSynchronization;
 
-        public ShellViewModel(IStatusBar statusBar, ICommandLineArguments commandLineArguments, IObjectFactory objectFactory, IRecentFilesRepository recentFilesRepository, IUiSynchronization uiSynchronization)
+        public ShellViewModel(IUiSynchronization uiSynchronization, ICommandLineArguments commandLineArguments, IStatusBar statusBar)
         {
-            this.commandLineArguments = commandLineArguments;
             this.uiSynchronization = uiSynchronization;
+
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentPanel>();
             Tools = new BindableCollection<IToolPanel>();
 
-            DisplayName = DebugMode ? "SLStudio (debug mode)" : "SLStudio";
+            DisplayName = commandLineArguments.DebugMode ? "SLStudio - (debug mode)" : "SLStudio";
         }
-
-        public bool DebugMode => commandLineArguments.DebugMode;
 
         public BindableCollection<IDocumentPanel> Documents { get; }
 

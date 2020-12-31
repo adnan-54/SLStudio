@@ -17,7 +17,7 @@ using System.Windows.Data;
 
 namespace SLStudio.RpkEditor.Modules.ToolBox.ViewModels
 {
-    internal class RpkToolBoxViewModel : ViewModelBase, IToolboxContent
+    internal class RpkToolBoxViewModel : ViewModelBase, IToolContent
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RpkToolBoxViewModel>();
 

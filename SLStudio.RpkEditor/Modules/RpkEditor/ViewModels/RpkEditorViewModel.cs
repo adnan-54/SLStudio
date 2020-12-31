@@ -23,7 +23,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         private readonly RpkDesignerViewModel designer;
         private readonly RpkStatsViewModel stats;
 
-        private event EventHandler<SelectedEditorChanged> SelectedEditorChanged;
+        private event EventHandler<SelectedEditorChangedEventArgs> SelectedEditorChanged;
 
         public RpkEditorViewModel(IWindowManager windowManager, IObjectFactory objectFactory, IUiSynchronization uiSynchronization)
         {
@@ -41,9 +41,9 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
             SelectedEditor = designer;
 
-            SelectedEditorChanged += OnSelectedEditorChanged;
+            ToolContentProvider = new RpkEditorToolProvider(this, rpkManager);
 
-            ToolboxContent = new RpkToolBoxViewModel(this, rpkManager);
+            SelectedEditorChanged += OnSelectedEditorChanged;
         }
 
         public IEnumerable<RpkEditorBase> Editors => editors;
@@ -59,7 +59,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
                 var oldEditor = SelectedEditor;
 
                 SetProperty(() => SelectedEditor, value);
-                SelectedEditorChanged?.Invoke(this, new SelectedEditorChanged(oldEditor, value));
+                SelectedEditorChanged?.Invoke(this, new SelectedEditorChangedEventArgs(oldEditor, value));
             }
         }
 
@@ -84,7 +84,7 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             return Task.CompletedTask;
         }
 
-        private void OnSelectedEditorChanged(object sender, SelectedEditorChanged e)
+        private void OnSelectedEditorChanged(object sender, SelectedEditorChangedEventArgs e)
         {
             if (e.NewEditor == code && e.OldEditor == designer)
             {

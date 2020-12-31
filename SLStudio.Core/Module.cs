@@ -1,12 +1,12 @@
 ﻿using MvvmDialogs;
 using SimpleInjector;
 using SLStudio.Core.Menus;
-using SLStudio.Core.Modules.NewFile.ViewModels;
 using SLStudio.Core.Modules.Output.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StatusBar.ViewModels;
 using SLStudio.Core.Modules.ToolBox.ViewModels;
 using SLStudio.Core.Services;
+using SLStudio.Core.Services.ToolManager;
 
 namespace SLStudio.Core
 {
@@ -19,18 +19,17 @@ namespace SLStudio.Core
         protected override void Register(Container container)
         {
             container.RegisterInstance<IDialogService>(new DialogService());
-            container.RegisterSingleton<IFileService, DefaultFileService>();
-            container.RegisterSingleton<IRecentFilesRepository, DefaultRecentFilesRespository>();
-            container.RegisterSingleton<IErrorHandler, DefaultErrorHandler>();
-            container.RegisterSingleton<IMenuItemFactory, DefaultMenuItemFactory>();
-            container.RegisterSingleton<IMenuLookup, DefaultMenuLookup>();
+            container.RegisterService<IFileService, DefaultFileService>();
+            container.RegisterService<IRecentFilesRepository, DefaultRecentFilesRespository>();
+            container.RegisterService<IErrorHandler, DefaultErrorHandler>();
+            container.RegisterService<IMenuItemFactory, DefaultMenuItemFactory>();
+            container.RegisterService<IMenuLookup, DefaultMenuLookup>();
+            container.RegisterService<IToolManager, DefaultToolManager>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
-            container.RegisterService<IToolbox, ToolBoxViewModel>();
-            container.RegisterService<IOutput, OutputViewModel>();
-            container.RegisterService<IStatusBar, StatusBarViewModel>();
-
-            container.RegisterDisposable<INewFileDialog, NewFileViewModel>();
+            container.RegisterSingleton<IToolbox, ToolBoxViewModel>();
+            container.RegisterSingleton<IOutput, OutputViewModel>();
+            container.RegisterSingleton<IStatusBar, StatusBarViewModel>();
         }
     }
 }

@@ -3,9 +3,9 @@ using System;
 
 namespace SLStudio.RpkEditor.Events
 {
-    internal class SelectedEditorChanged : EventArgs
+    internal class SelectedEditorChangedEventArgs : EventArgs
     {
-        public SelectedEditorChanged(RpkEditorBase oldEditor, RpkEditorBase newEditor)
+        public SelectedEditorChangedEventArgs(RpkEditorBase oldEditor, RpkEditorBase newEditor)
         {
             OldEditor = oldEditor;
             NewEditor = newEditor;

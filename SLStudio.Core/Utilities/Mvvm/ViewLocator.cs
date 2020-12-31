@@ -29,7 +29,7 @@ namespace SLStudio.Core
         {
             var name = viewModelType.Name;
             if (name.Contains("`"))
-                name = name.Replace(name.Substring(name.IndexOf("`")), "");
+                name = name.Replace(name[name.IndexOf("`")..], "");
             return Regex.Replace(name, @"ViewModel$", "View");
         }
     }

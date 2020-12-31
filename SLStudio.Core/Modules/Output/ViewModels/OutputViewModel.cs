@@ -4,7 +4,6 @@ using SLStudio.Core.Behaviors;
 using SLStudio.Core.Modules.Output.Resources;
 using SLStudio.Logging;
 using System;
-using System.Windows;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
@@ -15,9 +14,11 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public OutputViewModel(IUiSynchronization uiSynchronization)
         {
+            CanSetContent = false;
             DisplayName = OutputResource.Output;
             TextDocument = new TextDocument();
             TextDocument.SetOwnerThread(uiSynchronization.DispatcherThread);
+
             LogManager.LogCompleted += OnLogCompleted;
         }
 

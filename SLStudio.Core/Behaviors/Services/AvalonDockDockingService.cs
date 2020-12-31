@@ -1,4 +1,5 @@
 ﻿using AvalonDock;
+using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;
 using System;
 using System.Windows;
@@ -19,15 +20,14 @@ namespace SLStudio.Core.Docking
 
         private readonly IShell shell;
         private readonly IThemeManager themeManager;
-        private readonly IToolbox toolbox;
-
+        private readonly IMessenger messenger;
         private IDocumentPanel documentToClose;
 
         public AvalonDockDockingService()
         {
             shell = IoC.Get<IShell>();
             themeManager = IoC.Get<IThemeManager>();
-            toolbox = IoC.Get<IToolbox>();
+            messenger = IoC.Get<IMessenger>();
         }
 
         protected override void OnAttached()
@@ -52,7 +52,7 @@ namespace SLStudio.Core.Docking
             newItem?.OnActivated();
             oldItem?.OnDeactivated();
 
-            UpdateToolbox(newItem);
+            messenger.Send(new AvalonDockActiveContentChangedEventArgs(newItem));
         }
 
         private void OnDocumentClosing(object sender, DocumentClosingEventArgs e)
@@ -62,10 +62,7 @@ namespace SLStudio.Core.Docking
             panel?.OnClosing(e);
 
             if (!e.Cancel)
-            {
-                UpdateToolbox(null);
                 documentToClose = panel;
-            }
         }
 
         private void OnDocumentClosed(object sender, DocumentClosedEventArgs e)
@@ -89,11 +86,6 @@ namespace SLStudio.Core.Docking
                 window.ShowInTaskbar = true;
                 window.Title = $"SLStudio - {window.Model.Root.ActiveContent?.Title}";
             }
-        }
-
-        private void UpdateToolbox(IPanelItem item)
-        {
-            toolbox.SetContent(item);
         }
 
         protected override void OnDetaching()

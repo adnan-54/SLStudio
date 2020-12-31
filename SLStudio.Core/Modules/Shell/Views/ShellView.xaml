@@ -116,8 +116,11 @@
         </ToolBarTray>
 
         <!--AvalonDock-->
-        <avalonDock:DockingManager Grid.Row="1" ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
-                                   AnchorablesSource="{Binding Tools}" DocumentsSource="{Binding Documents}" AllowMixedOrientation="True">
+        <avalonDock:DockingManager Grid.Row="1" 
+                                   ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
+                                   AnchorablesSource="{Binding Tools}" 
+                                   DocumentsSource="{Binding Documents}" 
+                                   AllowMixedOrientation="True">
             <!--Resources-->
             <avalonDock:DockingManager.Resources>
                 <Style TargetType="{x:Type Menu}" BasedOn="{StaticResource StudioMenuStyle}" />

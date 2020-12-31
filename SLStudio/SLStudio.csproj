@@ -4,8 +4,8 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>20.12.137.267</AssemblyVersion>
-		<FileVersion>20.12.137.267</FileVersion>
+		<AssemblyVersion>20.12.146.276</AssemblyVersion>
+		<FileVersion>20.12.146.276</FileVersion>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
