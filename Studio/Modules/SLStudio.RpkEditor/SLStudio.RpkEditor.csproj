@@ -4,19 +4,13 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.0.204</AssemblyVersion>
-		<FileVersion>21.1.0.204</FileVersion>
+		<AssemblyVersion>21.1.2.206</AssemblyVersion>
+		<FileVersion>21.1.2.206</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<None Remove="Resources\Icons\rdfFileIcon.png" />
 		<None Remove="Resources\rpkFileIcon.png" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\SLStudio.Compilers\SLStudio.Compilers.csproj" />
-		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
-		<ProjectReference Include="..\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -69,6 +63,12 @@
 		<PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
 		<PackageReference Include="LiveCharts.Wpf.NetCore3" Version="0.9.7" />
 		<PackageReference Include="MvvmDialogs" Version="8.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\SLRR\SLStudio.Compilers\SLStudio.Compilers.csproj" />
+	  <ProjectReference Include="..\..\..\SLRR\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
+	  <ProjectReference Include="..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

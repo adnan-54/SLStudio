@@ -3,11 +3,11 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.0.206</AssemblyVersion>
-		<FileVersion>21.1.0.206</FileVersion>
+		<AssemblyVersion>21.1.2.208</AssemblyVersion>
+		<FileVersion>21.1.2.208</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <ProjectReference Include="..\..\Studio\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 </Project>

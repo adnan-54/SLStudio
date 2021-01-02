@@ -5,9 +5,9 @@
 
 		<IsPackable>false</IsPackable>
 
-		<AssemblyVersion>21.1.0.4</AssemblyVersion>
+		<AssemblyVersion>21.1.1.5</AssemblyVersion>
 
-		<FileVersion>21.1.0.4</FileVersion>
+		<FileVersion>21.1.1.5</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
-		<ProjectReference Include="..\SLStudio\SLStudio.csproj" />
+	  <ProjectReference Include="..\..\Studio\SLStudio.Core\SLStudio.Core.csproj" />
+	  <ProjectReference Include="..\..\Studio\SLStudio\SLStudio.csproj" />
 	</ItemGroup>
 </Project>
