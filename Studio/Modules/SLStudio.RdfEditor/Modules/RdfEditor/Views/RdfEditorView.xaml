@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="SLStudio.RdfEditor.Modules.RdfEditor.Views.RdfEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:vm="clr-namespace:SLStudio.RdfEditor.Modules.RdfEditor.ViewModels"
+             xmlns:views="clr-namespace:SLStudio.RdfEditor.Modules.RdfEditor.Views"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <!--Designer-->
+        <DataTemplate DataType="{x:Type vm:RdfDesignerViewModel}">
+            <views:RdfDesignerView IsTabStop="False" Focusable="False" />
+        </DataTemplate>
+
+        <!--Code-->
+        <DataTemplate DataType="{x:Type vm:RdfCodeViewModel}">
+            <views:RdfCodeView IsTabStop="False" Focusable="False" />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <xctk:BusyIndicator IsBusy="{Binding IsBusy}">
+        <TabControl Padding="0"
+                    ItemsSource="{Binding Editors}"
+                    SelectedItem="{Binding SelectedEditor}"
+                    IsTabStop="False" Focusable="False"
+                    TabStripPlacement="Bottom">
+            <!--ItemTemplate-->
+            <TabControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Image Source="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}"
+                               Width="16" Stretch="Uniform" VerticalAlignment="Center" />
+
+                        <TextBlock Margin="{StaticResource LeftMargin}"
+                                   Text="{Binding DisplayName}" VerticalAlignment="Center" />
+                    </StackPanel>
+                </DataTemplate>
+            </TabControl.ItemTemplate>
+
+            <!--ItemContainerStyle-->
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}" BasedOn="{StaticResource {x:Type TabItem}}">
+                    <Setter Property="IsTabStop" Value="False" />
+                    <Setter Property="Padding" Value="12, 5, 12, 5" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="FontSize" Value="14" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+        </TabControl>
+    </xctk:BusyIndicator>
+</UserControl>

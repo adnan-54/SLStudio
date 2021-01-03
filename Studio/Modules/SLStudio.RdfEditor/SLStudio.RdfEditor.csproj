@@ -4,11 +4,36 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.2.206</AssemblyVersion>
-		<FileVersion>21.1.2.206</FileVersion>
+		<AssemblyVersion>21.1.29.233</AssemblyVersion>
+		<FileVersion>21.1.29.233</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Icons\rdfFileIcon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Data\SLStudio.Data.Rdf\SLStudio.Data.Rdf.csproj" />
+		<ProjectReference Include="..\..\..\Language\SLStudio.Language.Rdf\SLStudio.Language.Rdf.csproj" />
 		<ProjectReference Include="..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\Icons\rdfFileIcon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Modules\RdfEditor\Resources\RdfEditorResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>RdfEditorResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Modules\RdfEditor\Resources\RdfEditorResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>RdfEditorResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

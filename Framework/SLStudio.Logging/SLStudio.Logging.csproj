@@ -2,9 +2,13 @@
 
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
-		<AssemblyVersion>21.1.2.63</AssemblyVersion>
-		<FileVersion>21.1.2.63</FileVersion>
+		<AssemblyVersion>21.1.4.65</AssemblyVersion>
+		<FileVersion>21.1.4.65</FileVersion>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\..\SolutionItems\SLStudioConstants.cs" Link="SLStudioConstants.cs" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="DevExpressMvvm" Version="20.2.3" />

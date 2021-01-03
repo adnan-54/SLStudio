@@ -4,17 +4,15 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.2.206</AssemblyVersion>
-		<FileVersion>21.1.2.206</FileVersion>
+		<AssemblyVersion>21.1.19.223</AssemblyVersion>
+		<FileVersion>21.1.19.223</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Resources\Icons\rdfFileIcon.png" />
 		<None Remove="Resources\rpkFileIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Resources\Icons\rdfFileIcon.png" />
 		<Resource Include="Resources\Icons\rpkFileIcon.png">
 			<CopyToOutputDirectory>Never</CopyToOutputDirectory>
 		</Resource>

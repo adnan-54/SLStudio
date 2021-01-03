@@ -1,6 +1,8 @@
-﻿namespace SLStudio.Core
+﻿using System.ComponentModel;
+
+namespace SLStudio.Core
 {
-    public interface IToolContent
+    public interface IToolContent : INotifyPropertyChanged
     {
     }
 }

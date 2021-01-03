@@ -13,7 +13,7 @@ namespace SLStudio.Core.Tests
         public void ResolveNullLanguageCode()
         {
             //arrange
-            var language = new Language(null);
+            var language = new LanguageManager.Language(null);
 
             //assert
             Assert.Equal("Auto", language.DisplayName);

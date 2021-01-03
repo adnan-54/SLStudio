@@ -9,7 +9,7 @@ namespace SLStudio.Logging
 {
     internal class LoggingService
     {
-        private object @lock = new object();
+        private readonly object @lock = new object();
         private bool isInitialized;
         private readonly string logsPath;
         private readonly string dbFilePath;
@@ -19,9 +19,9 @@ namespace SLStudio.Logging
         public LoggingService()
         {
             isInitialized = false;
-            logsPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SLStudio", "Logs");
-            dbFilePath = Path.Combine(logsPath, "logs.db");
-            txtFilePath = Path.Combine(logsPath, "logs.txt");
+            logsPath = SLStudioConstants.LogsDirectory;
+            dbFilePath = SLStudioConstants.LogFilePath;
+            txtFilePath = SLStudioConstants.SimpleLogsFilePath;
             dbConnection = new SQLiteConnection($"Data Source={dbFilePath}; Version=3; datetimeformat=CurrentCulture");
         }
 

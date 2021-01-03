@@ -15,7 +15,7 @@ using SLStudio.RpkEditor.Modules.RdfEditor.Resources;
 
 namespace SLStudio.RpkEditor.Modules.RdfEditor.ViewModels
 {
-    [FileEditor(".rdf", "rdfEditorName", "rdfEditorDescription", "categoryPath", typeof(RdfEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rdfFileIcon.png")]
+    //[FileEditor(".rdf", "rdfEditorName", "rdfEditorDescription", "categoryPath", typeof(RdfEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rdfFileIcon.png")]
     internal class RdfEditorViewModel : FileDocumentPanelBase, IRdfEditor
     {
         private readonly IWindowManager windowManager;

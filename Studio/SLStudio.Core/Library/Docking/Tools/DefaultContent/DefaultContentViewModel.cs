@@ -1,6 +1,8 @@
-﻿namespace SLStudio.Core.Library.Docking.Tools.DefaultContent
+﻿using DevExpress.Mvvm;
+
+namespace SLStudio.Core.Library.Docking.Tools.DefaultContent
 {
-    class DefaultContentViewModel : IToolContent
+    internal class DefaultContentViewModel : ViewModelBase, IToolContent
     {
     }
 }
