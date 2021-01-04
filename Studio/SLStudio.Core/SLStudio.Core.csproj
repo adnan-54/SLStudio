@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.19.292</AssemblyVersion>
-		<FileVersion>21.1.19.292</FileVersion>
+		<AssemblyVersion>21.1.28.301</AssemblyVersion>
+		<FileVersion>21.1.28.301</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -165,10 +165,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Page Update="Resources\Controls\ListboxLineNumberMargin.xaml">
-		  <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
-		  <SubType>Designer</SubType>
-		</Page>
 		<Page Update="Resources\Controls\AvalonDock.xaml">
 			<SubType>Designer</SubType>
 		</Page>

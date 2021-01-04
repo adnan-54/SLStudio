@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio", "Studio\SLStudio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Core", "Studio\SLStudio.Core\SLStudio.Core.csproj", "{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.RpkEditor", "Studio\Modules\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj", "{435033CF-B015-4D7B-964D-4F0E6878DD6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435033CF-B015-4D7B-964D-4F0E6878DD6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435033CF-B015-4D7B-964D-4F0E6878DD6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435033CF-B015-4D7B-964D-4F0E6878DD6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435033CF-B015-4D7B-964D-4F0E6878DD6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -49,10 +55,11 @@ Global
 		{2480A905-1530-4958-8115-014DB9CFE398} = {ED8F8382-F8EB-418C-A7AC-65B8BDD5B8EB}
 		{195D4E17-DC23-4C18-8F63-F36100E4A22F} = {8E0C118E-89FC-4315-BFAB-6B07CD8DB871}
 		{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B} = {8E0C118E-89FC-4315-BFAB-6B07CD8DB871}
+		{435033CF-B015-4D7B-964D-4F0E6878DD6C} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

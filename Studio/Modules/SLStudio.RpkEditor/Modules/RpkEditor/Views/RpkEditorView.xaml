@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="SLStudio.RpkEditor.Modules.RpkEditor.Views.RpkEditorView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <ae:TextEditor Document="{Binding TextDocument}"
+                       ShowLineNumbers="True" FontFamily="Consolas"
+                       LineNumbersForeground="{StaticResource Focused}"
+                       Background="{StaticResource Editor.Background}"
+                       HorizontalScrollBarVisibility="Auto"
+                       SyntaxHighlighting="XML">
+        </ae:TextEditor>
+    </Grid>
+</UserControl>

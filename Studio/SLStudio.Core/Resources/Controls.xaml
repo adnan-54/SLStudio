@@ -18,7 +18,6 @@
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Label.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ListBox.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ListBoxItem.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/ListboxLineNumberMargin.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Menu.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/MenuItem.xaml" />
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Page.xaml" />

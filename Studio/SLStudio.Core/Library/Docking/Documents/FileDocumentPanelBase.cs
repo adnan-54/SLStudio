@@ -8,19 +8,19 @@ namespace SLStudio.Core
         public string FileName
         {
             get => GetProperty(() => FileName);
-            private set => SetProperty(() => FileName, value);
+            set => SetProperty(() => FileName, value);
         }
 
         public bool IsNew
         {
             get => GetProperty(() => IsNew);
-            protected set => SetProperty(() => IsNew, value);
+            set => SetProperty(() => IsNew, value);
         }
 
         public bool IsDirty
         {
             get => GetProperty(() => IsDirty);
-            protected set => SetProperty(() => IsDirty, value);
+            set => SetProperty(() => IsDirty, value);
         }
 
         public virtual bool ShouldBackup => IsDirty;
@@ -33,8 +33,6 @@ namespace SLStudio.Core
             return DoNew(content);
         }
 
-        protected abstract Task DoNew(string content);
-
         public Task Load(string fileName)
         {
             IsNew = false;
@@ -43,8 +41,6 @@ namespace SLStudio.Core
 
             return DoLoad();
         }
-
-        protected abstract Task DoLoad();
 
         public async Task Save(string fileName)
         {
@@ -55,6 +51,10 @@ namespace SLStudio.Core
             await DoSave();
             IsDirty = false;
         }
+
+        protected abstract Task DoNew(string content);
+
+        protected abstract Task DoLoad();
 
         protected abstract Task DoSave();
     }
