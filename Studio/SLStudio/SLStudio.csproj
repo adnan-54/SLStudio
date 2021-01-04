@@ -38,15 +38,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Data\SLStudio.Data.Rdf\SLStudio.Data.Rdf.csproj" />
 	  <ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 	  <ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
-	  <ProjectReference Include="..\..\Language\SLStudio.Language.Rdf\SLStudio.Language.Rdf.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.Compilers\SLStudio.Compilers.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.GameTypes\SLStudio.GameTypes.csproj" />
-	  <ProjectReference Include="..\Modules\SLStudio.RdfEditor\SLStudio.RdfEditor.csproj" />
-	  <ProjectReference Include="..\Modules\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
 	  <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
