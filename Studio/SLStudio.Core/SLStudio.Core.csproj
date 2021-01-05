@@ -4,12 +4,16 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.82.355</AssemblyVersion>
-		<FileVersion>21.1.82.355</FileVersion>
+		<AssemblyVersion>21.1.94.367</AssemblyVersion>
+		<FileVersion>21.1.94.367</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <None Remove="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="..\..\SolutionItems\SLStudioConstants.cs" Link="SLStudioConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -84,15 +88,15 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>StudioResources.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Resources\StudioSettings.Designer.cs">
+		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>StudioSettings.settings</DependentUpon>
+		</Compile>
 		<Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>LanguageManagerSettings.settings</DependentUpon>
-		</Compile>
-		<Compile Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.Designer.cs">
-			<DesignTimeSharedInput>True</DesignTimeSharedInput>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>RecentFilesSettings.settings</DependentUpon>
 		</Compile>
 		<Compile Update="Services\ThemeManager\Resources\ThemeManagerResources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -150,13 +154,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Update="Resources\StudioSettings.settings">
+		  <Generator>SettingsSingleFileGenerator</Generator>
+		  <LastGenOutput>StudioSettings.Designer.cs</LastGenOutput>
+		</None>
 		<None Update="Services\LanguageManager\LanguageManagerSettings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>LanguageManagerSettings.Designer.cs</LastGenOutput>
-		</None>
-		<None Update="Services\RecentFilesRepository\Resources\RecentFilesSettings.settings">
-			<Generator>SettingsSingleFileGenerator</Generator>
-			<LastGenOutput>RecentFilesSettings.Designer.cs</LastGenOutput>
 		</None>
 		<None Update="Services\ThemeManager\Resources\ThemeManagerSettings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>

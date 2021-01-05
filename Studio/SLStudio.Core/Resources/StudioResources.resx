@@ -180,4 +180,10 @@
   <data name="menu_Logs" xml:space="preserve">
     <value>Logs...</value>
   </data>
+  <data name="statusbar_status_fileSaved" xml:space="preserve">
+    <value>Item(s) Saved</value>
+  </data>
+  <data name="filter_allFiles" xml:space="preserve">
+    <value>All Files|*.*</value>
+  </data>
 </root>

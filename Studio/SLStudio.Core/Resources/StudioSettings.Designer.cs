@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.Core.Services.RecentFilesRepository.Resources {
+namespace SLStudio.Core.Resources {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.6.0.0")]
-    internal sealed partial class RecentFilesSettings : global::System.Configuration.ApplicationSettingsBase {
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    internal sealed partial class StudioSettings : global::System.Configuration.ApplicationSettingsBase {
         
-        private static RecentFilesSettings defaultInstance = ((RecentFilesSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new RecentFilesSettings())));
+        private static StudioSettings defaultInstance = ((StudioSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new StudioSettings())));
         
-        public static RecentFilesSettings Default {
+        public static StudioSettings Default {
             get {
                 return defaultInstance;
             }
@@ -25,10 +25,9 @@ namespace SLStudio.Core.Services.RecentFilesRepository.Resources {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RecentFiles {
+        public global::System.Collections.Specialized.StringCollection RecentFiles {
             get {
-                return ((string)(this["RecentFiles"]));
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentFiles"]));
             }
             set {
                 this["RecentFiles"] = value;

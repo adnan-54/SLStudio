@@ -9,6 +9,10 @@ namespace SLStudio.Core.Menus
         public static string File = "file";
         public static string FileNew = $"{File}/new";
         public static string FileNewFile = $"{FileNew}/newFile";
+        public static string FileSeparator = $"{File}/separator";
+        public static string FileSave = $"{File}/save";
+        public static string FileSaveAs = $"{File}/saveAs";
+        public static string FileSaveAll = $"{File}/saveAll";
 
         public static string View = "view";
         public static string ViewOutput = $"{View}/output";
@@ -27,6 +31,10 @@ namespace SLStudio.Core.Menus
             Item(File, 0, StudioResources.File);
             Item(FileNew, 0, StudioResources.New);
             Item<CreateNewFileHandler>(FileNewFile, 0, StudioResources.NewFileMenu, iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
+            Separator(FileSeparator, 1);
+            Item<SaveFileHandler>(FileSave, 2, "Save", iconSource: "NewFile", shortcut: new KeyGesture(Key.S, ModifierKeys.Control));
+            Item<SaveFileAsHandler>(FileSaveAs, 3, "Save As", iconSource: "NewFile", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Shift));
+            Item<SaveAllFilesHandler>(FileSaveAll, 4, "Save All", iconSource: "NewFile", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Alt));
 
             Item(View, 1, StudioResources.View);
             Item<ViewOutputHandler>(ViewOutput, 0, StudioResources.Output, iconSource: "Output");

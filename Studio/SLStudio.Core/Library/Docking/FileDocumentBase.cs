@@ -36,6 +36,7 @@ namespace SLStudio.Core
         public Task New(string displayName, string content)
         {
             IsNew = true;
+            IsDirty = true;
             DisplayName = displayName;
 
             return DoNew(content);
@@ -65,7 +66,7 @@ namespace SLStudio.Core
 
     public interface IFileDocumentItem : IDocumentItem
     {
-        string FileName { get; }
+        string FileName { get; set; }
 
         bool IsNew { get; }
 

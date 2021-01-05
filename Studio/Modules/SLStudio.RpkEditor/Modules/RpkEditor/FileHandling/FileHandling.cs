@@ -9,10 +9,6 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
         protected override Task DoNew(string content)
         {
-            content ??= string.Empty;
-
-            SetCheckpoint(content);
-
             return Task.CompletedTask;
         }
 
@@ -21,9 +17,13 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
             return Task.CompletedTask;
         }
 
-        protected override Task DoSaveTo(Stream stream)
+        protected override async Task DoSaveTo(Stream stream)
         {
-            return Task.CompletedTask;
+            var streamWriter = new StreamWriter(stream);
+            await streamWriter.WriteAsync(Content);
+            await streamWriter.FlushAsync();
+
+            SetCheckpoint(Content);
         }
 
         private void SetCheckpoint(string content)
@@ -34,6 +34,12 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 
         private void UpdateIsDirty()
         {
+            if (IsNew || string.IsNullOrEmpty(FileName))
+            {
+                IsDirty = true;
+                return;
+            }
+
             if (string.IsNullOrEmpty(lastCheckpoint))
                 lastCheckpoint = string.Empty;
 

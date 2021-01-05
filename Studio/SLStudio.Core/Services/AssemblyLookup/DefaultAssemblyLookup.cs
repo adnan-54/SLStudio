@@ -9,21 +9,18 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
-    internal class DefaultAssemblyLoader : IAssemblyLoader
+    internal class DefaultAssemblyLookup : IAssemblyLookup
     {
         private const string SEARCH_PATTERN = "SLStudio.*.dll";
 
-        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultAssemblyLoader>();
+        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultAssemblyLookup>();
 
+        private readonly IList<Assembly> loadedAssemblies = new List<Assembly>();
         private ISplashScreen splashScreen;
         private bool alreadyInitialized = false;
         private bool alreadyLoaded = false;
 
-        public IEnumerable<string> Assemblies { get; private set; }
-
-        public IEnumerable<string> LoadedAssemblies { get; private set; }
-
-        public IEnumerable<string> AssembliesToLoad { get; private set; }
+        public IEnumerable<Assembly> LoadedAssemblies => loadedAssemblies;
 
         public void Initialize(ISplashScreen splashScreen)
         {
@@ -38,7 +35,7 @@ namespace SLStudio.Core
             await Task.Run(() =>
             {
                 if (!alreadyInitialized)
-                    throw new InvalidOperationException($"{nameof(DefaultAssemblyLoader)} is not initialized yet");
+                    throw new InvalidOperationException($"{nameof(DefaultAssemblyLookup)} is not initialized yet");
 
                 if (alreadyLoaded)
                     return;
@@ -46,21 +43,21 @@ namespace SLStudio.Core
 
                 logger.Debug($"Searching assemblies");
 
-                Assemblies = FindAssemblies();
-                LoadedAssemblies = GetLoadedAssemblies();
-                AssembliesToLoad = Assemblies.Except(LoadedAssemblies);
+                var assemblies = FindAssemblies();
+                var loadedAssemblies = GetLoadedAssemblies();
+                var assembliesToLoad = assemblies.Except(loadedAssemblies);
 
-                LoadAssemblies(AssembliesToLoad);
+                LoadAssemblies(assembliesToLoad);
             });
         }
 
-        private IEnumerable<string> FindAssemblies()
+        private static IEnumerable<string> FindAssemblies()
         {
             var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return Directory.GetFiles(directory, SEARCH_PATTERN);
         }
 
-        private IEnumerable<string> GetLoadedAssemblies()
+        private static IEnumerable<string> GetLoadedAssemblies()
         {
             return AppDomain.CurrentDomain.GetAssemblies().Select(a => a.Location);
         }
@@ -70,9 +67,10 @@ namespace SLStudio.Core
             foreach (var assembly in assemblies)
             {
                 var assemblyName = Path.GetFileNameWithoutExtension(assembly);
-                logger.Debug($"Loading assembly '{assemblyName}'");
+                logger.Debug($"Loading assembly {assemblyName}");
                 splashScreen.UpdateStatus(string.Format(StudioResources.LoadingAssemblyAssemblyName, assemblyName));
-                Assembly.LoadFrom(assembly);
+                var loaded = Assembly.LoadFrom(assembly);
+                loadedAssemblies.Add(loaded);
             }
         }
     }

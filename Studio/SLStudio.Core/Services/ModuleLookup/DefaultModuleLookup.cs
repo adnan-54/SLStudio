@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
-    internal class DefaultModuleLoader : IModuleLoader
+    internal class DefaultModuleLookup : IModuleLookup
     {
-        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultModuleLoader>();
+        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultModuleLookup>();
 
         private ISplashScreen splashScreen;
         private Container container;
@@ -17,8 +17,6 @@ namespace SLStudio.Core
         private readonly List<IModule> modules = new List<IModule>();
         private bool alreadyInitialized = false;
         private bool alreadyLoaded = false;
-
-        public IEnumerable<IModule> Modules => modules;
 
         public void Initialize(ISplashScreen splashScreen, Container container, IObjectFactory objectFactory)
         {
@@ -31,12 +29,14 @@ namespace SLStudio.Core
             this.objectFactory = objectFactory;
         }
 
+        public IEnumerable<IModule> Modules => modules;
+
         public async Task Load()
         {
             await Task.Run(() =>
             {
                 if (!alreadyInitialized)
-                    throw new InvalidOperationException($"{nameof(DefaultModuleLoader)} is not initialized yet");
+                    throw new InvalidOperationException($"{nameof(DefaultModuleLookup)} is not initialized yet");
 
                 if (alreadyLoaded)
                     return;
@@ -44,7 +44,7 @@ namespace SLStudio.Core
 
                 logger.Debug($"Searching modules");
                 var types = FindModules();
-                logger.Debug($"'{types.Count()}' modules found");
+                logger.Debug($"{types.Count()} modules found");
 
                 var instances = CreateInstances(types);
                 modules.AddRange(instances);
@@ -68,7 +68,7 @@ namespace SLStudio.Core
             var modules = new List<IModule>();
             foreach (var type in types)
             {
-                logger.Debug($"Creating instance for '{type.FullName}' from assembly '{type.Assembly}'");
+                logger.Debug($"Creating instance for {type.FullName} from assembly {type.Assembly}");
                 modules.Add(Activator.CreateInstance(type) as IModule);
             }
 

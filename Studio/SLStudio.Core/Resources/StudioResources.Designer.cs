@@ -88,6 +88,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Files|*.*.
+        /// </summary>
+        public static string filter_allFiles {
+            get {
+                return ResourceManager.GetString("filter_allFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string Help {
@@ -201,6 +210,15 @@ namespace SLStudio.Core.Resources {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Item(s) Saved.
+        /// </summary>
+        public static string statusbar_status_fileSaved {
+            get {
+                return ResourceManager.GetString("statusbar_status_fileSaved", resourceCulture);
             }
         }
         

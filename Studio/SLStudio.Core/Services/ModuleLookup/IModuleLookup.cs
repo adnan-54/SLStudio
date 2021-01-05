@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
-    public interface IModuleLoader
+    public interface IModuleLookup
     {
         IEnumerable<IModule> Modules { get; }
 
