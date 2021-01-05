@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ae:TextEditor Document="{Binding TextDocument}"
-                       ShowLineNumbers="True" FontFamily="Consolas"
+                       ShowLineNumbers="True" FontFamily="Consolas" FontSize="14"
                        LineNumbersForeground="{StaticResource Focused}"
                        Background="{StaticResource Editor.Background}"
                        HorizontalScrollBarVisibility="Auto"

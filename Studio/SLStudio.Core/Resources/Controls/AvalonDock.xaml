@@ -26,8 +26,6 @@
         <Setter Property="IsSelected" Value="{Binding Model.IsSelected, Mode=TwoWay}" />
         <Setter Property="IsActive" Value="{Binding Model.IsActive, Mode=TwoWay}" />
         <Setter Property="Visibility" Value="{Binding Model.IsVisible, Mode=TwoWay, Converter={StaticResource BoolToVisibilityConverter}, ConverterParameter={x:Static Visibility.Hidden}}" />
-        <Setter Property="Width" Value="{Binding Model.Width, Mode=TwoWay}" />
-        <Setter Property="Height" Value="{Binding Model.Height, Mode=TwoWay}" />
         <Style.Triggers>
             <DataTrigger Binding="{Binding Model.IconSource, Converter={StaticResource IsNotNullConverter}}" Value="True">
                 <Setter Property="IconSource" Value="{Binding Model.IconSource, Converter={StaticResource ImageSourceConverter}}" />
@@ -52,6 +50,14 @@
     <!--StudioFileDocumentStyle-->
     <Style x:Key="StudioFileDocumentStyle" TargetType="{x:Type avalonDock:LayoutDocumentItem}" BasedOn="{StaticResource StudioDocumentStyle}">
         <Style.Triggers>
+            <MultiDataTrigger>
+                <MultiDataTrigger.Conditions>
+                    <Condition Binding="{Binding Model.ToolTip, Converter={StaticResource IsNullConverter}}" Value="True"/>
+                    <Condition Binding="{Binding Model.FileName, Converter={StaticResource IsNotNullConverter}}" Value="True"/>
+                </MultiDataTrigger.Conditions>
+                <Setter Property="ToolTip" Value="{Binding Model.FileName}"/>
+            </MultiDataTrigger>
+            
             <DataTrigger Binding="{Binding Model.IsDirty, Mode=OneWay}" Value="True">
                 <Setter Property="Title" Value="{DXBinding 'Model.DisplayName + `*`'}" />
             </DataTrigger>

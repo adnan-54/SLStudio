@@ -135,9 +135,9 @@
                 <docking:DockingService />
             </dxmvvm:Interaction.Behaviors>
 
-            <!--LayoutInitializer-->
+            <!--UpdateStrategy-->
             <avalonDock:DockingManager.LayoutUpdateStrategy>
-                <studio:LayoutInitializer />
+                <studio:WorkspaceUpdateStrategy />
             </avalonDock:DockingManager.LayoutUpdateStrategy>
 
             <!--TemplateSelector-->

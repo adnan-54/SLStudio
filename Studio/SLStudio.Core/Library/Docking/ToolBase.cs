@@ -10,9 +10,13 @@ namespace SLStudio.Core
             CanSetContent = true;
             SetContent(DefaultContent);
 
-            Width = 300.0d;
-            Height = 300.0d;
+            PreferredWidth = 300.0d;
+            PreferredHeight = 300.0d;
         }
+
+        public virtual double PreferredWidth { get; }
+
+        public virtual double PreferredHeight { get; }
 
         public bool IsVisible
         {
@@ -24,18 +28,6 @@ namespace SLStudio.Core
         {
             get => GetProperty(() => Content);
             private set => SetProperty(() => Content, value);
-        }
-
-        public virtual double Width
-        {
-            get => GetProperty(() => Width);
-            set => SetProperty(() => Width, value);
-        }
-
-        public virtual double Height
-        {
-            get => GetProperty(() => Height);
-            set => SetProperty(() => Height, value);
         }
 
         public override bool IsClosed
@@ -72,9 +64,9 @@ namespace SLStudio.Core
     {
         IToolContent Content { get; }
 
-        public double Width { get; set; }
+        public double PreferredWidth { get; }
 
-        public double Height { get; set; }
+        public double PreferredHeight { get; }
 
         void SetContent(IToolContent content);
     }

@@ -5,24 +5,32 @@ using System.Windows.Controls;
 
 namespace SLStudio.Core
 {
-    public class LayoutInitializer : ILayoutUpdateStrategy
+    public class WorkspaceUpdateStrategy : ILayoutUpdateStrategy
     {
         public bool BeforeInsertAnchorable(LayoutRoot layout, LayoutAnchorable anchorableToShow, ILayoutContainer destinationContainer)
         {
             if (anchorableToShow.Content is IToolItem tool)
             {
                 var target = $"{tool.Placement}";
+                if (tool.Placement == WorkspaceItemPlacement.Document)
+                    target = $"{WorkspaceItemPlacement.Left}";
+
                 var toolsPane = layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(d => d.Name == target);
                 if (toolsPane == null)
                 {
                     switch (tool.Placement)
                     {
                         case WorkspaceItemPlacement.Left:
+                        case WorkspaceItemPlacement.Document:
                             toolsPane = CreateAnchorablePane(layout, Orientation.Horizontal, target, InsertPosition.Start);
                             break;
 
                         case WorkspaceItemPlacement.Right:
                             toolsPane = CreateAnchorablePane(layout, Orientation.Horizontal, target, InsertPosition.End);
+                            break;
+
+                        case WorkspaceItemPlacement.Top:
+                            toolsPane = CreateAnchorablePane(layout, Orientation.Vertical, target, InsertPosition.Start);
                             break;
 
                         case WorkspaceItemPlacement.Bottom:
@@ -43,19 +51,23 @@ namespace SLStudio.Core
         {
             if (anchorableShown.Content is IToolItem tool)
             {
-                if (anchorableShown.Parent is LayoutAnchorablePane anchorablePane && anchorablePane.ChildrenCount == 1)
+                if (tool.Placement == WorkspaceItemPlacement.Document)
+                    anchorableShown.DockAsDocument();
+                else
+                if (anchorableShown.Parent is LayoutAnchorablePane anchorablePane && anchorablePane.Children.Select(c => c.Content as IToolItem).Count(t => t.Placement != WorkspaceItemPlacement.Document) == 1)
                 {
                     switch (tool.Placement)
                     {
                         case WorkspaceItemPlacement.Left:
                         case WorkspaceItemPlacement.Right:
-                            anchorablePane.DockWidth = new GridLength(tool.Width, GridUnitType.Pixel);
-                            anchorableShown.AutoHideWidth = tool.Width * 0.75;
+                            anchorablePane.DockWidth = new GridLength(tool.PreferredWidth, GridUnitType.Pixel);
+                            anchorableShown.AutoHideWidth = tool.PreferredWidth * 0.75;
                             break;
 
                         case WorkspaceItemPlacement.Bottom:
-                            anchorablePane.DockHeight = new GridLength(tool.Height, GridUnitType.Pixel);
-                            anchorableShown.AutoHideHeight = tool.Height * 0.75;
+                        case WorkspaceItemPlacement.Top:
+                            anchorablePane.DockHeight = new GridLength(tool.PreferredHeight, GridUnitType.Pixel);
+                            anchorableShown.AutoHideHeight = tool.PreferredHeight * 0.75;
                             break;
                     }
                 }
