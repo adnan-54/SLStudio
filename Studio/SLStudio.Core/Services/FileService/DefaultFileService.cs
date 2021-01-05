@@ -32,7 +32,7 @@ namespace SLStudio.Core
             return filesDescription.Select(kvp => kvp.Value).Distinct();
         }
 
-        async Task<IFileDocumentPanel> IFileService.Empty(string extension)
+        async Task<IFileDocumentItem> IFileService.Empty(string extension)
         {
             var description = GetFileDescription(extension);
             var file = await OpenFileWorkspace(description.EditorType);
@@ -41,7 +41,7 @@ namespace SLStudio.Core
             return file;
         }
 
-        async Task<IFileDocumentPanel> IFileService.New(string extension, string displayName, string content)
+        async Task<IFileDocumentItem> IFileService.New(string extension, string displayName, string content)
         {
             var description = GetFileDescription(extension);
             return await CreateNew(displayName, content, description.EditorType);
@@ -79,14 +79,14 @@ namespace SLStudio.Core
             return description;
         }
 
-        private async Task<IFileDocumentPanel> OpenFileWorkspace(Type editor)
+        private async Task<IFileDocumentItem> OpenFileWorkspace(Type editor)
         {
-            var file = objectFactory.Create(editor) as IFileDocumentPanel;
-            await shell.OpenPanel(file);
+            var file = objectFactory.Create(editor) as IFileDocumentItem;
+            await shell.OpenWorkspaces(file);
             return file;
         }
 
-        private async Task<IFileDocumentPanel> CreateNew(string name, string content, Type fileType)
+        private async Task<IFileDocumentItem> CreateNew(string name, string content, Type fileType)
         {
             var file = await OpenFileWorkspace(fileType);
             file.Activate();

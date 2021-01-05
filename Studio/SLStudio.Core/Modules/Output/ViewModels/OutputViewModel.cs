@@ -7,7 +7,7 @@ using System;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
-    internal class OutputViewModel : ToolPanelBase, IOutput
+    internal class OutputViewModel : ToolBase, IOutput
     {
         private IDispatcherService dispatcher;
         private IAvalonEditSearch avalonEditSearch;
@@ -22,7 +22,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
             LogManager.LogCompleted += OnLogCompleted;
         }
 
-        public override ToolPlacement Placement => ToolPlacement.Bottom;
+        public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Bottom;
 
         public TextDocument TextDocument { get; }
 

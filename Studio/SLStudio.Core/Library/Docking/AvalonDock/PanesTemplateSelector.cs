@@ -18,11 +18,11 @@ namespace SLStudio.Core.Docking
 
         public override DataTemplate SelectTemplate(object item, DependencyObject container)
         {
-            if (item is IToolPanel)
+            if (item is IToolItem)
                 return toolTemplate;
-            if (item is IFileDocumentPanel)
+            if (item is IFileDocumentItem)
                 return fileDocumentTemplate;
-            if (item is IDocumentPanel)
+            if (item is IDocumentItem)
                 return documentTemplate;
 
             return base.SelectTemplate(item, container);

@@ -1,5 +1,4 @@
-﻿using DevExpress.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace SLStudio.Core
@@ -17,7 +16,7 @@ namespace SLStudio.Core
 
         public abstract void Register();
 
-        public void Register<TTool, TContent>(TContent content) where TTool : IToolPanel where TContent : IToolContent
+        public void Register<TTool, TContent>(TContent content) where TTool : IToolItem where TContent : IToolContent
         {
             var toolType = typeof(TTool);
             if (contentCache.ContainsKey(toolType))
@@ -42,5 +41,10 @@ namespace SLStudio.Core
 
             Register();
         }
+    }
+
+    public interface IToolContentProvider
+    {
+        IToolContent GetContent(Type tool);
     }
 }

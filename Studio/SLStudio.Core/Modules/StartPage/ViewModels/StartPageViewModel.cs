@@ -8,7 +8,7 @@ using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
 {
-    internal class StartPageViewModel : DocumentPanelBase
+    internal class StartPageViewModel : DocumentBase
     {
         private readonly BindableCollection<RecentFileViewModel> recentFiles;
 

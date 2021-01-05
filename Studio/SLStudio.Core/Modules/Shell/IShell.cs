@@ -1,17 +1,22 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
     public interface IShell : IWindow
     {
-        BindableCollection<IDocumentPanel> Documents { get; }
+        IReadOnlyCollection<IWorkspaceItem> Workspaces { get; }
 
-        BindableCollection<IToolPanel> Tools { get; }
+        IWorkspaceItem ActiveWorkspace { get; }
 
-        IPanelItem SelectedItem { get; }
+        Task<T> AddWorkspace<T>() where T : class, IWorkspaceItem;
 
-        Task OpenPanel(IPanelItem item);
+        Task<T> OpenWorkspace<T>() where T : class, IWorkspaceItem;
 
-        Task ClosePanel(IPanelItem item);
+        Task AddWorkspaces(params IWorkspaceItem[] workspaces);
+
+        Task OpenWorkspaces(params IWorkspaceItem[] workspaces);
+
+        Task CloseWorkspaces(params IWorkspaceItem[] workspaces);
     }
 }

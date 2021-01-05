@@ -9,15 +9,15 @@ namespace SLStudio.Core.Services.ToolManager
 {
     class DefaultToolManager : IToolManager
     {
-        private readonly Dictionary<Type, IToolPanel> toolsCache;
+        private readonly Dictionary<Type, IToolItem> toolsCache;
 
         public DefaultToolManager(IMessenger messenger)
         {
             toolsCache = new();
-            messenger.Register<AvalonDockActiveContentChangedEventArgs>(this, UpdateTools);
+            messenger.Register<ActiveWorkspaceChangedEvent>(this, UpdateTools);
         }
 
-        public void Register<TService, TTool>(TTool tool) where TService : class where TTool : TService, IToolPanel
+        public void Register<TService, TTool>(TTool tool) where TService : class where TTool : TService, IToolItem
         {
             var serviceType = typeof(TService);
 
@@ -29,7 +29,7 @@ namespace SLStudio.Core.Services.ToolManager
             toolsCache.Add(serviceType, tool);
         }
 
-        public void Unregister(IToolPanel tool)
+        public void Unregister(IToolItem tool)
         {
             if(!toolsCache.ContainsValue(tool))
                 throw new InvalidOperationException($"{tool} is not registred");
@@ -39,9 +39,9 @@ namespace SLStudio.Core.Services.ToolManager
 
         }
 
-        private void UpdateTools(AvalonDockActiveContentChangedEventArgs args)
+        private void UpdateTools(ActiveWorkspaceChangedEvent args)
         {
-            if (args.NewItem is not IDocumentPanel document)
+            if (args.NewItem is not IDocumentItem document)
                 return;
 
             if (document.ToolContentProvider != null)

@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IToolbox : IToolPanel
+    public interface IToolbox : IToolItem
     {
     }
 }

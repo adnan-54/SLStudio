@@ -1,4 +1,6 @@
 ﻿using SLStudio.Core.Modules.StartPage.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -6,22 +8,33 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
 {
     internal class ShellViewModel : WindowViewModel, IShell
     {
+        private readonly IObjectFactory objectFactory;
         private readonly IUiSynchronization uiSynchronization;
 
-        public ShellViewModel(IUiSynchronization uiSynchronization, ICommandLineArguments commandLineArguments, IStatusBar statusBar)
+        public ShellViewModel(IObjectFactory objectFactory, IUiSynchronization uiSynchronization,
+                              ICommandLineArguments commandLineArguments, IStatusBar statusBar)
         {
+            this.objectFactory = objectFactory;
             this.uiSynchronization = uiSynchronization;
 
             StatusBar = statusBar;
-            Documents = new BindableCollection<IDocumentPanel>();
-            Tools = new BindableCollection<IToolPanel>();
+            Documents = new BindableCollection<IDocumentItem>();
+            Tools = new BindableCollection<IToolItem>();
 
             DisplayName = commandLineArguments.DebugMode ? "SLStudio - (debug mode)" : "SLStudio";
         }
 
-        public BindableCollection<IDocumentPanel> Documents { get; }
+        public IReadOnlyCollection<IWorkspaceItem> Workspaces => Documents.Cast<IWorkspaceItem>().Concat(Tools).ToList();
 
-        public BindableCollection<IToolPanel> Tools { get; }
+        public BindableCollection<IDocumentItem> Documents { get; }
+
+        public BindableCollection<IToolItem> Tools { get; }
+
+        public IWorkspaceItem ActiveWorkspace
+        {
+            get => GetProperty(() => ActiveWorkspace);
+            set => SetProperty(() => ActiveWorkspace, value);
+        }
 
         public IStatusBar StatusBar
         {
@@ -29,39 +42,68 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             set => SetProperty(() => StatusBar, value);
         }
 
-        public IPanelItem SelectedItem
+        public async Task<T> AddWorkspace<T>() where T : class, IWorkspaceItem
         {
-            get => GetProperty(() => SelectedItem);
-            set => SetProperty(() => SelectedItem, value);
+            var workspace = objectFactory.Create<T>();
+            await AddWorkspaces(workspace);
+
+            return workspace;
         }
 
-        public async Task OpenPanel(IPanelItem item)
+        public async Task<T> OpenWorkspace<T>() where T : class, IWorkspaceItem
         {
-            if (item is IDocumentPanel documentPanel && !Documents.Any(d => d == documentPanel))
-                Documents.Add(documentPanel);
-            else
-            if (item is IToolPanel toolPanel && !Tools.Any(t => t == toolPanel))
-                Tools.Add(toolPanel);
+            var workspace = objectFactory.Create<T>();
+            await OpenWorkspaces(workspace);
 
-            await uiSynchronization.EnsureExecuteOnUiAsync(() => item.Activate());
+            return workspace;
         }
 
-        public async Task ClosePanel(IPanelItem item)
+        public Task AddWorkspaces(params IWorkspaceItem[] workspaces)
         {
-            if (item is IDocumentPanel documentPanel && Documents.Any(d => d == documentPanel))
-                await uiSynchronization.EnsureExecuteOnUiAsync(() => Documents.Remove(documentPanel));
-            else
-            if (item is IToolPanel toolPanel && Tools.Any(t => t == toolPanel))
-                await uiSynchronization.EnsureExecuteOnUiAsync(() => toolPanel.Hide());
-        }
-
-        public override void OnLoaded()
-        {
-            if (!Documents.Any())
+            return uiSynchronization.EnsureExecuteOnUiAsync(() =>
             {
-                var startPage = new StartPageViewModel();
-                OpenPanel(startPage).FireAndForget();
-            }
+                foreach (var item in workspaces)
+                    EnsureAddWorkspace(item);
+            });
+        }
+
+        public Task OpenWorkspaces(params IWorkspaceItem[] workspaces)
+        {
+            return uiSynchronization.EnsureExecuteOnUiAsync(() =>
+            {
+                foreach (var item in workspaces)
+                {
+                    EnsureAddWorkspace(item);
+                    item.Activate();
+                }
+            });
+        }
+
+        public Task CloseWorkspaces(params IWorkspaceItem[] workspaces)
+        {
+            return uiSynchronization.EnsureExecuteOnUiAsync(() =>
+            {
+                foreach (var item in workspaces)
+                    EnsureRemoveWorkspace(item);
+            });
+        }
+
+        private void EnsureAddWorkspace(IWorkspaceItem item)
+        {
+            if (item is IToolItem tool && !Tools.Contains(tool))
+                Tools.Add(tool);
+            else
+            if (item is IDocumentItem document && !Documents.Contains(document))
+                Documents.Add(document);
+        }
+
+        private void EnsureRemoveWorkspace(IWorkspaceItem item)
+        {
+            if (item is IToolItem tool && Tools.Contains(tool))
+                Tools.Remove(tool);
+            else
+            if (item is IDocumentItem document && Documents.Contains(document))
+                Documents.Remove(document);
         }
     }
 }

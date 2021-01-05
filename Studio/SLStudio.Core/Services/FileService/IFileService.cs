@@ -9,11 +9,11 @@ namespace SLStudio.Core
 
         IEnumerable<IFileDescription> GetFileDescriptions();
 
-        Task<IFileDocumentPanel> Empty(string extension);
+        Task<IFileDocumentItem> Empty(string extension);
 
-        Task<IFileDocumentPanel> New(string extension, string displayName = null, string content = null);
+        Task<IFileDocumentItem> New(string extension, string displayName = null, string content = null);
 
-        Task<T> New<T>(string displayName = null, string content = null) where T : class, IFileDocumentPanel;
+        Task<T> New<T>(string displayName = null, string content = null) where T : class, IFileDocumentItem;
 
         string GetFilter(string extension);
 

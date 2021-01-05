@@ -1,5 +1,6 @@
 ﻿using SLStudio.Logging;
 using System;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core.Services
 {
@@ -9,12 +10,17 @@ namespace SLStudio.Core.Services
 
         public void HandleError(Exception exception)
         {
+            HandleErrorAsync(exception).FireAndForget();
+        }
+
+        private static async Task HandleErrorAsync(Exception exception)
+        {
             logger.Error(exception);
-            var output = IoC.Get<IOutput>();
             var shell = IoC.Get<IShell>();
-            if (output != null)
+            var output = IoC.Get<IOutput>();
+            if (shell != null && output != null)
             {
-                shell.OpenPanel(output);
+                await shell.OpenWorkspaces(output);
                 output.AppendLine($"{exception.Message}{Environment.NewLine}{exception}");
             }
         }

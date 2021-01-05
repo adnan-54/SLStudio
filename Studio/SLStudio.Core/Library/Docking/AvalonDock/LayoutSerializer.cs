@@ -3,7 +3,7 @@ using DevExpress.Mvvm.UI.Interactivity;
 
 namespace SLStudio.Core.Docking
 {
-    internal class AvalonDockLayoutSerializer : Behavior<DockingManager>
+    internal class LayoutSerializer : Behavior<DockingManager>
     {
         protected override void OnAttached()
         {

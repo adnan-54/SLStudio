@@ -9,7 +9,7 @@ namespace SLStudio.Core
     {
         public bool BeforeInsertAnchorable(LayoutRoot layout, LayoutAnchorable anchorableToShow, ILayoutContainer destinationContainer)
         {
-            if (anchorableToShow.Content is IToolPanel tool)
+            if (anchorableToShow.Content is IToolItem tool)
             {
                 var target = $"{tool.Placement}";
                 var toolsPane = layout.Descendents().OfType<LayoutAnchorablePane>().FirstOrDefault(d => d.Name == target);
@@ -17,15 +17,15 @@ namespace SLStudio.Core
                 {
                     switch (tool.Placement)
                     {
-                        case ToolPlacement.Left:
+                        case WorkspaceItemPlacement.Left:
                             toolsPane = CreateAnchorablePane(layout, Orientation.Horizontal, target, InsertPosition.Start);
                             break;
 
-                        case ToolPlacement.Right:
+                        case WorkspaceItemPlacement.Right:
                             toolsPane = CreateAnchorablePane(layout, Orientation.Horizontal, target, InsertPosition.End);
                             break;
 
-                        case ToolPlacement.Bottom:
+                        case WorkspaceItemPlacement.Bottom:
                             toolsPane = CreateAnchorablePane(layout, Orientation.Vertical, target, InsertPosition.End);
                             break;
                     }
@@ -41,19 +41,19 @@ namespace SLStudio.Core
 
         public void AfterInsertAnchorable(LayoutRoot layout, LayoutAnchorable anchorableShown)
         {
-            if (anchorableShown.Content is IToolPanel tool)
+            if (anchorableShown.Content is IToolItem tool)
             {
                 if (anchorableShown.Parent is LayoutAnchorablePane anchorablePane && anchorablePane.ChildrenCount == 1)
                 {
                     switch (tool.Placement)
                     {
-                        case ToolPlacement.Left:
-                        case ToolPlacement.Right:
+                        case WorkspaceItemPlacement.Left:
+                        case WorkspaceItemPlacement.Right:
                             anchorablePane.DockWidth = new GridLength(tool.Width, GridUnitType.Pixel);
                             anchorableShown.AutoHideWidth = tool.Width * 0.75;
                             break;
 
-                        case ToolPlacement.Bottom:
+                        case WorkspaceItemPlacement.Bottom:
                             anchorablePane.DockHeight = new GridLength(tool.Height, GridUnitType.Pixel);
                             anchorableShown.AutoHideHeight = tool.Height * 0.75;
                             break;

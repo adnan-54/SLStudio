@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.IO;
+using System.Threading.Tasks;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 {
@@ -6,23 +7,22 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
     {
         private string lastCheckpoint;
 
-        protected override Task DoLoad()
-        {
-            return Task.CompletedTask;
-        }
-
         protected override Task DoNew(string content)
         {
-            Content = content;
-            SetCheckpoint(Content);
+            content ??= string.Empty;
+
+            SetCheckpoint(content);
 
             return Task.CompletedTask;
         }
 
-        protected override Task DoSave()
+        protected override Task DoLoadFrom(Stream stream)
         {
-            SetCheckpoint(Content);
+            return Task.CompletedTask;
+        }
 
+        protected override Task DoSaveTo(Stream stream)
+        {
             return Task.CompletedTask;
         }
 

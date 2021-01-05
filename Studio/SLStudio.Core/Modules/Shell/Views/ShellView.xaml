@@ -116,10 +116,10 @@
         </ToolBarTray>
 
         <!--AvalonDock-->
-        <avalonDock:DockingManager Grid.Row="1" 
-                                   ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
-                                   AnchorablesSource="{Binding Tools}" 
-                                   DocumentsSource="{Binding Documents}" 
+        <avalonDock:DockingManager Grid.Row="1"
+                                   ActiveContent="{Binding ActiveWorkspace, Mode=TwoWay}"
+                                   AnchorablesSource="{Binding Tools}"
+                                   DocumentsSource="{Binding Documents}"
                                    AllowMixedOrientation="True">
             <!--Resources-->
             <avalonDock:DockingManager.Resources>
@@ -131,8 +131,8 @@
 
             <!--Behaviors-->
             <dxmvvm:Interaction.Behaviors>
-                <docking:AvalonDockLayoutSerializer />
-                <docking:AvalonDockDockingService ActiveContent="{Binding SelectedItem}" />
+                <docking:LayoutSerializer />
+                <docking:DockingService />
             </dxmvvm:Interaction.Behaviors>
 
             <!--LayoutInitializer-->
