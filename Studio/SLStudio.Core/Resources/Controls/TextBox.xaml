@@ -109,8 +109,8 @@
     <Style x:Key="StudioSearchTextBoxStyle" TargetType="{x:Type TextBox}" BasedOn="{StaticResource StudioTextBoxStyle}" x:Shared="False">
         <Setter Property="AcceptsReturn" Value="False" />
         <Setter Property="AcceptsTab" Value="False" />
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="metro:TextBoxHelper.SelectAllOnFocus" Value="True" />
         <Setter Property="Template">
             <Setter.Value>
@@ -133,6 +133,7 @@
                             <TextBlock x:Name="Watermark" Grid.Column="0"
                                        Margin="3, 0" Padding="{TemplateBinding Padding}"
                                        IsHitTestVisible="False" Opacity="0.6"
+                                       FontWeight="Thin"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                        Foreground="{TemplateBinding Foreground}"
@@ -147,7 +148,7 @@
                                     Style="{StaticResource StudioSearchButtonStyle}"
                                     Width="{Binding Height, ElementName=IsDefault}"
                                     Command="{DXCommand '@a($TextBox).Focus()'}"
-                                    ToolTip="{x:Static resx:StudioResources.Search}"
+                                    ToolTip="{x:Static resx:StudioResources.StudioSearchTextBoxStyle_tooltip_search}"
                                     metro:VisibilityHelper.IsVisible="{TemplateBinding Text, Converter={StaticResource IsNullConverter}}">
                                 <Image Source="{StaticResource Magnifier}" />
                             </Button>
@@ -157,7 +158,7 @@
                                     Style="{StaticResource StudioSearchButtonStyle}"
                                     Width="{Binding Height, ElementName=IsDefault}"
                                     Command="{DXCommand '@a($TextBox).Text=``'}"
-                                    ToolTip="{x:Static resx:StudioResources.Clear}"
+                                    ToolTip="{x:Static resx:StudioResources.StudioSearchTextBoxStyle_tooltip_clear}"
                                     metro:VisibilityHelper.IsVisible="{TemplateBinding Text, Converter={StaticResource IsNotNullConverter}}">
                                 <Image Source="{StaticResource Close}" />
                             </Button>

@@ -117,67 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RegisteringModule" xml:space="preserve">
-    <value>Registrando {0}...</value>
+  <data name="file" xml:space="preserve">
+    <value>_File</value>
   </data>
-  <data name="RunningModule" xml:space="preserve">
-    <value>Executando {0}...</value>
+  <data name="file/close" xml:space="preserve">
+    <value>_Close</value>
   </data>
-  <data name="MergingResources" xml:space="preserve">
-    <value>Mesclando recursos para {0}...</value>
+  <data name="file/new" xml:space="preserve">
+    <value>_New</value>
   </data>
-  <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Carregando o assembly '{0}'...</value>
+  <data name="file/new/newFile" xml:space="preserve">
+    <value>_File...</value>
   </data>
-  <data name="CombinationIsNotACommand" xml:space="preserve">
-    <value>A combinação de teclas ({0}) não é um comando.</value>
+  <data name="file/open" xml:space="preserve">
+    <value>_Open</value>
   </data>
-  <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) foi pressionado. Esperando a próxima combinação de teclas...</value>
+  <data name="file/open/openFile" xml:space="preserve">
+    <value>_File...</value>
   </data>
-  <data name="HumanizerDateTimeToday" xml:space="preserve">
-    <value>hoje</value>
+  <data name="file/save" xml:space="preserve">
+    <value>_Save</value>
   </data>
-  <data name="MenuTools" xml:space="preserve">
-    <value>_Ferramentas</value>
+  <data name="file/saveAll" xml:space="preserve">
+    <value>Save A_ll</value>
   </data>
-  <data name="MenuOptions" xml:space="preserve">
-    <value>_Opções...</value>
+  <data name="file/saveAs" xml:space="preserve">
+    <value>Save _As...</value>
   </data>
-  <data name="File" xml:space="preserve">
-    <value>Arquivo</value>
+  <data name="help" xml:space="preserve">
+    <value>_Help</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>Novo</value>
+  <data name="help/logs" xml:space="preserve">
+    <value>_Logs...</value>
   </data>
-  <data name="View" xml:space="preserve">
-    <value>Exibir</value>
+  <data name="tools" xml:space="preserve">
+    <value>_Tools</value>
   </data>
-  <data name="Window" xml:space="preserve">
-    <value>Janela</value>
+  <data name="tools/options" xml:space="preserve">
+    <value>_Options...</value>
   </data>
-  <data name="Output" xml:space="preserve">
-    <value>Saída</value>
+  <data name="view" xml:space="preserve">
+    <value>_View</value>
   </data>
-  <data name="Help" xml:space="preserve">
-    <value>Ajuda</value>
+  <data name="view/output" xml:space="preserve">
+    <value>_Output</value>
   </data>
-  <data name="NewFileMenu" xml:space="preserve">
-    <value>Arquivo...</value>
+  <data name="view/toolbox" xml:space="preserve">
+    <value>_Toolbox</value>
   </data>
-  <data name="Search" xml:space="preserve">
-    <value>Pesquisar</value>
-  </data>
-  <data name="Clear" xml:space="preserve">
-    <value>Limpar</value>
-  </data>
-  <data name="Untitled" xml:space="preserve">
-    <value>Sem título {0}</value>
-  </data>
-  <data name="Toolbox" xml:space="preserve">
-    <value>Caixa de ferramentas</value>
-  </data>
-  <data name="menu_Logs" xml:space="preserve">
-    <value>Registros...</value>
+  <data name="window" xml:space="preserve">
+    <value>_Window</value>
   </data>
 </root>

@@ -61,15 +61,6 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Clear.
-        /// </summary>
-        public static string Clear {
-            get {
-                return ResourceManager.GetString("Clear", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The key combination ({0}) is not a command..
         /// </summary>
         public static string CombinationIsNotACommand {
@@ -97,15 +88,6 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
-        /// </summary>
-        public static string Help {
-            get {
-                return ResourceManager.GetString("Help", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to today.
         /// </summary>
         public static string HumanizerDateTimeToday {
@@ -124,65 +106,11 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Logs....
-        /// </summary>
-        public static string menu_Logs {
-            get {
-                return ResourceManager.GetString("menu_Logs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Options....
-        /// </summary>
-        public static string MenuOptions {
-            get {
-                return ResourceManager.GetString("MenuOptions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Tools.
-        /// </summary>
-        public static string MenuTools {
-            get {
-                return ResourceManager.GetString("MenuTools", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Merging resources for {0}....
         /// </summary>
         public static string MergingResources {
             get {
                 return ResourceManager.GetString("MergingResources", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New.
-        /// </summary>
-        public static string New {
-            get {
-                return ResourceManager.GetString("New", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File....
-        /// </summary>
-        public static string NewFileMenu {
-            get {
-                return ResourceManager.GetString("NewFileMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Output.
-        /// </summary>
-        public static string Output {
-            get {
-                return ResourceManager.GetString("Output", resourceCulture);
             }
         }
         
@@ -205,15 +133,6 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search.
-        /// </summary>
-        public static string Search {
-            get {
-                return ResourceManager.GetString("Search", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Item(s) Saved.
         /// </summary>
         public static string statusbar_status_fileSaved {
@@ -223,11 +142,20 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Toolbox.
+        ///   Looks up a localized string similar to Clear.
         /// </summary>
-        public static string Toolbox {
+        public static string StudioSearchTextBoxStyle_tooltip_clear {
             get {
-                return ResourceManager.GetString("Toolbox", resourceCulture);
+                return ResourceManager.GetString("StudioSearchTextBoxStyle_tooltip_clear", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string StudioSearchTextBoxStyle_tooltip_search {
+            get {
+                return ResourceManager.GetString("StudioSearchTextBoxStyle_tooltip_search", resourceCulture);
             }
         }
         
@@ -241,29 +169,11 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View.
-        /// </summary>
-        public static string View {
-            get {
-                return ResourceManager.GetString("View", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ({0}) was pressed. Waiting for next key of chord....
         /// </summary>
         public static string WaitingForNextKeyOfChord {
             get {
                 return ResourceManager.GetString("WaitingForNextKeyOfChord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Window.
-        /// </summary>
-        public static string Window {
-            get {
-                return ResourceManager.GetString("Window", resourceCulture);
             }
         }
     }

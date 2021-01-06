@@ -63,9 +63,9 @@ namespace SLStudio.Core.Modules.Output.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Clear All.
         /// </summary>
-        public static string ClearAll {
+        public static string button_clearAll {
             get {
-                return ResourceManager.GetString("ClearAll", resourceCulture);
+                return ResourceManager.GetString("button_clearAll", resourceCulture);
             }
         }
         

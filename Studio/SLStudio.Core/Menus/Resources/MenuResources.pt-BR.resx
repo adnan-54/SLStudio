@@ -117,43 +117,55 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MergingResources" xml:space="preserve">
-    <value>Merging resources for {0}...</value>
+  <data name="file" xml:space="preserve">
+    <value>_Arquivo</value>
   </data>
-  <data name="RegisteringModule" xml:space="preserve">
-    <value>Registering {0}...</value>
+  <data name="file/close" xml:space="preserve">
+    <value>_Fechar</value>
   </data>
-  <data name="RunningModule" xml:space="preserve">
-    <value>Running {0}...</value>
+  <data name="file/new" xml:space="preserve">
+    <value>_Novo</value>
   </data>
-  <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Loading assembly {0}...</value>
+  <data name="file/new/newFile" xml:space="preserve">
+    <value>_Arquivo...</value>
   </data>
-  <data name="CombinationIsNotACommand" xml:space="preserve">
-    <value>The key combination ({0}) is not a command.</value>
+  <data name="file/open" xml:space="preserve">
+    <value>_Abrir</value>
   </data>
-  <data name="WaitingForNextKeyOfChord" xml:space="preserve">
-    <value>({0}) was pressed. Waiting for next key of chord...</value>
+  <data name="file/open/openFile" xml:space="preserve">
+    <value>_Arquivo...</value>
   </data>
-  <data name="HumanizerDateTimeToday" xml:space="preserve">
-    <value>today</value>
+  <data name="file/save" xml:space="preserve">
+    <value>_Salvar</value>
   </data>
-  <data name="File" xml:space="preserve">
-    <value>File</value>
+  <data name="file/saveAll" xml:space="preserve">
+    <value>Salvar _Todos</value>
   </data>
-  <data name="StudioSearchTextBoxStyle_tooltip_clear" xml:space="preserve">
-    <value>Clear</value>
+  <data name="file/saveAs" xml:space="preserve">
+    <value>Salvar _Como...</value>
   </data>
-  <data name="StudioSearchTextBoxStyle_tooltip_search" xml:space="preserve">
-    <value>Search</value>
+  <data name="help" xml:space="preserve">
+    <value>Aj_uda</value>
   </data>
-  <data name="Untitled" xml:space="preserve">
-    <value>Untitled {0}</value>
+  <data name="help/logs" xml:space="preserve">
+    <value>_Registros...</value>
   </data>
-  <data name="statusbar_status_fileSaved" xml:space="preserve">
-    <value>Item(s) Saved</value>
+  <data name="tools" xml:space="preserve">
+    <value>_Ferramentas</value>
   </data>
-  <data name="filter_allFiles" xml:space="preserve">
-    <value>All Files|*.*</value>
+  <data name="tools/options" xml:space="preserve">
+    <value>_Opções...</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>_Ver</value>
+  </data>
+  <data name="view/output" xml:space="preserve">
+    <value>_Saída</value>
+  </data>
+  <data name="view/toolbox" xml:space="preserve">
+    <value>_Caixa de Ferramentas</value>
+  </data>
+  <data name="window" xml:space="preserve">
+    <value>_Janela</value>
   </data>
 </root>

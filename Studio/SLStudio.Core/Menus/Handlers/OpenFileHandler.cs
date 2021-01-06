@@ -36,6 +36,7 @@ namespace SLStudio.Core.Menus.Handlers
             }
         }
 
+        //Todo: move this to file service: string BuildFilter(IEnumerable<string> extensions, FilterOptions.IncludeAllFiles | FilterOptions.IncludeSupportedFiles)
         private static string BuildFilter()
         {
             var allFilesFilter = $"All Files|*.*";

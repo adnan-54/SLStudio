@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.114.387</AssemblyVersion>
-		<FileVersion>21.1.114.387</FileVersion>
+		<AssemblyVersion>21.1.135.408</AssemblyVersion>
+		<FileVersion>21.1.135.408</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -43,6 +43,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Menus\Resources\MenuResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>MenuResources.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -111,6 +116,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Update="Menus\Resources\MenuResources.resx">
+		  <Generator>ResXFileCodeGenerator</Generator>
+		  <LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>

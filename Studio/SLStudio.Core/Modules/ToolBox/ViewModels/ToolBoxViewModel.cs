@@ -6,7 +6,6 @@ namespace SLStudio.Core.Modules.ToolBox.ViewModels
     {
         public ToolBoxViewModel(IToolManager manager)
         {
-            DisplayName = StudioResources.Toolbox;
             manager.Register<IToolbox, ToolBoxViewModel>(this);
         }
 
