@@ -27,7 +27,7 @@ namespace SLStudio.Core.Menus
                 index = lastIndex++;
 
             var item = new MenuItem(path, index, displayName, toolTip, iconSource, shortcut, isVisible, isEnabled);
-            item.Command = new MenuCommandHandlerWrapper(item, objectFactory.Create<THandler>());
+            item.Command = new MenuCommandWrapper(item, objectFactory.Create<THandler>());
 
             return item;
         }
@@ -39,7 +39,7 @@ namespace SLStudio.Core.Menus
 
             var toggle = new MenuToggleItem(path, index, displayName, toolTip, iconSource, shortcut, isVisible, isEnabled, isChecked);
             var handler = objectFactory.Create<THandler>();
-            toggle.Command = new MenuCommandHandlerWrapper(toggle, handler);
+            toggle.Command = new MenuCommandWrapper(toggle, handler);
             toggle.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(toggle.IsChecked))

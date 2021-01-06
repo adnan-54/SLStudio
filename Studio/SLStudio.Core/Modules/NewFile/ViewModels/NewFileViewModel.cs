@@ -85,7 +85,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             if (!CanOpen)
                 return;
 
-            fileService.New(SelectedFile.FileDescription.Extensions.FirstOrDefault());
+            fileService.New(SelectedFile.FileDescription.Extensions.FirstOrDefault()).FireAndForget();
             TryClose(true);
         }
 
@@ -213,5 +213,9 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             if (SelectedFile == null)
                 SelectedFile = AvailableFiles.FirstOrDefault();
         }
+    }
+
+    internal interface INewFileDialog : IWindow
+    {
     }
 }

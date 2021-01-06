@@ -144,6 +144,12 @@
   <data name="file/saveAs" xml:space="preserve">
     <value>Salvar _Como...</value>
   </data>
+  <data name="file/saveAs_format" xml:space="preserve">
+    <value>Salvar {0} _Como...</value>
+  </data>
+  <data name="file/save_format" xml:space="preserve">
+    <value>_Salvar {0}</value>
+  </data>
   <data name="file/startPage" xml:space="preserve">
     <value>_Pagina Inicial</value>
   </data>
@@ -160,7 +166,7 @@
     <value>_Opções...</value>
   </data>
   <data name="view" xml:space="preserve">
-    <value>_Ver</value>
+    <value>_Exibir</value>
   </data>
   <data name="view/output" xml:space="preserve">
     <value>_Saída</value>

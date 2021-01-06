@@ -147,12 +147,15 @@ namespace SLStudio.Core
         private async Task<IFileDocumentItem> AddWorkspace(Type editor)
         {
             var file = objectFactory.Create(editor) as IFileDocumentItem;
-            await shell.OpenWorkspaces(file);
+            await shell.AddWorkspaces(file);
             return file;
         }
 
         private async Task<IFileDocumentItem> CreateNew(string name, string content, IFileEditorDescription description)
         {
+            if (string.IsNullOrEmpty(content))
+                content = string.Empty;
+
             var file = await AddWorkspace(description.EditorType);
 
             if (string.IsNullOrEmpty(name))
@@ -163,6 +166,7 @@ namespace SLStudio.Core
                 while (openedDocuments.Any(i => i.DisplayName == $"{name}{description.Extensions.First()}"))
                     name = string.Format(StudioResources.Untitled, ++index);
             }
+
             var ext = Path.GetExtension(name);
             if (string.IsNullOrEmpty(ext))
             {
@@ -170,8 +174,8 @@ namespace SLStudio.Core
                 name = $"{name}{ext}";
             }
 
-            await file.New(name, content);
             file.Activate();
+            await file.New(name, content);
             return file;
         }
 
@@ -188,9 +192,9 @@ namespace SLStudio.Core
                 file = OpenedFiles.FirstOrDefault(d => d.FileName == fileName);
                 if (file == null)
                     file = await AddWorkspace(editorType);
-                file.Activate();
 
                 file.FileName = fileName;
+                file.Activate();
                 await file.LoadFrom(stream);
                 await recentFilesRepository.Add(fileName);
 

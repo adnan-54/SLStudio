@@ -124,6 +124,15 @@ namespace SLStudio.Core.Menus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Save {0}.
+        /// </summary>
+        internal static string file_save_format {
+            get {
+                return ResourceManager.GetString("file/save_format", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save A_ll.
         /// </summary>
         internal static string file_saveAll {
@@ -138,6 +147,15 @@ namespace SLStudio.Core.Menus.Resources {
         internal static string file_saveAs {
             get {
                 return ResourceManager.GetString("file/saveAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save {0} _As....
+        /// </summary>
+        internal static string file_saveAs_format {
+            get {
+                return ResourceManager.GetString("file/saveAs_format", resourceCulture);
             }
         }
         

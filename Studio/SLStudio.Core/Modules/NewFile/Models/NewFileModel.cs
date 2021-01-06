@@ -11,7 +11,7 @@
 
         public string DisplayName => FileDescription.Name;
 
-        public string Type => FileDescription.Name;
+        public string Type => FileDescription.Category.Substring(0, FileDescription.Category.IndexOf("/"));
 
         public string Description => FileDescription.Description;
 

@@ -84,7 +84,7 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
         {
             if (File.Exists(item.Location))
             {
-                fileService.Open(item.Location);
+                fileService.Open(item.Location).FireAndForget();
             }
             else
             {

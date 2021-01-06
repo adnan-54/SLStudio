@@ -2,13 +2,15 @@
 
 namespace SLStudio.Core
 {
-    class ActiveWorkspaceChangedEvent : EventArgs
+    internal class ActiveWorkspaceChangedEvent : EventArgs
     {
-        public ActiveWorkspaceChangedEvent(IWorkspaceItem item)
+        public ActiveWorkspaceChangedEvent(IWorkspaceItem oldItem, IWorkspaceItem newItem)
         {
-            NewItem = item;
+            OldItem = oldItem;
+            NewItem = newItem;
         }
 
+        public IWorkspaceItem OldItem { get; }
         public IWorkspaceItem NewItem { get; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using MvvmDialogs;
 using SimpleInjector;
 using SLStudio.Core.Menus;
+using SLStudio.Core.Modules.NewFile.ViewModels;
 using SLStudio.Core.Modules.Output.ViewModels;
 using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StartPage.ViewModels;
@@ -32,6 +33,8 @@ namespace SLStudio.Core
             container.RegisterSingleton<IStatusBar, StatusBarViewModel>();
 
             container.RegisterSingleton<IStartPage, StartPageViewModel>();
+
+            container.RegisterDisposable<INewFileDialog, NewFileViewModel>();
         }
     }
 }

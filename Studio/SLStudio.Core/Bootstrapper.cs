@@ -15,8 +15,6 @@ namespace SLStudio.Core
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<Bootstrapper>();
 
-        private static bool initialized = false;
-
         private readonly Container container;
         private readonly ICommandLineArguments commandLineArguments;
         private readonly ILanguageManager languageManager;
@@ -102,10 +100,6 @@ namespace SLStudio.Core
 
         public static void Run(Dispatcher dispatcher, IEnumerable<string> args)
         {
-            if (initialized)
-                return;
-            initialized = true;
-
             new Bootstrapper(dispatcher, args).Initialize().FireAndForget();
         }
     }

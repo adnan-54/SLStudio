@@ -5,19 +5,16 @@ namespace SLStudio.Core.Menus.Handlers
 {
     internal class CreateNewFileHandler : MenuCommandHandler
     {
-        private readonly IFileService fileService;
         private readonly IWindowManager windowManager;
 
-        public CreateNewFileHandler(IFileService fileService, IWindowManager windowManager)
+        public CreateNewFileHandler(IWindowManager windowManager)
         {
-            this.fileService = fileService;
             this.windowManager = windowManager;
         }
 
         public override Task Execute(IMenuItem menu, object parameter)
         {
-            var newFileDialog = new NewFileViewModel(fileService);
-            windowManager.ShowDialog(newFileDialog);
+            windowManager.ShowDialog<INewFileDialog>();
             return Task.CompletedTask;
         }
     }

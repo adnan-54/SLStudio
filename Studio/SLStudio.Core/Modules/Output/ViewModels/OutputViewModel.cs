@@ -9,15 +9,16 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 {
     internal class OutputViewModel : ToolBase, IOutput
     {
-        private IDispatcherService dispatcher;
+        private readonly IUiSynchronization uiSynchronization;
         private IAvalonEditSearch avalonEditSearch;
 
         public OutputViewModel(IUiSynchronization uiSynchronization)
         {
+            this.uiSynchronization = uiSynchronization;
+            TextDocument = new TextDocument();
+
             CanSetContent = false;
             DisplayName = OutputResource.Output;
-            TextDocument = new TextDocument();
-            TextDocument.SetOwnerThread(uiSynchronization.DispatcherThread);
 
             LogManager.LogCompleted += OnLogCompleted;
         }
@@ -25,12 +26,6 @@ namespace SLStudio.Core.Modules.Output.ViewModels
         public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Bottom;
 
         public TextDocument TextDocument { get; }
-
-        public void OnLoaded()
-        {
-            dispatcher = GetService<IDispatcherService>();
-            avalonEditSearch = GetService<IAvalonEditSearch>();
-        }
 
         public bool WordWrap
         {
@@ -40,12 +35,12 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void AppendLine(string text)
         {
-            dispatcher?.Invoke(() => TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}");
+            uiSynchronization.EnsureExecuteOnUiAsync(() => TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}").FireAndForget();
         }
 
         public void Clear()
         {
-            TextDocument.Text = string.Empty;
+            uiSynchronization.EnsureExecuteOnUiAsync(() => TextDocument.Text = TextDocument.Text = string.Empty).FireAndForget();
         }
 
         public void ToggleWordWrap()
@@ -66,6 +61,11 @@ namespace SLStudio.Core.Modules.Output.ViewModels
         public void FindPrevious()
         {
             avalonEditSearch?.FindPrevious();
+        }
+
+        public void OnLoaded()
+        {
+            avalonEditSearch = GetService<IAvalonEditSearch>();
         }
 
         private void OnLogCompleted(object sender, LogCompletedEventArgs e)

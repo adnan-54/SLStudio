@@ -12,12 +12,13 @@ namespace SLStudio.Core.Docking
         private readonly IShell shell;
         private readonly IThemeManager themeManager;
         private readonly IMessenger messenger;
-        private IDocumentItem documentToClose;
-        private IDocumentItem documentToFocus;
-        private IWorkspaceItem previousActiveItem;
-        private IWorkspaceItem currentActiveItem;
+        private IWorkspaceItem lastActiveWorkspace;
+        private IWorkspaceItem currentActiveWorkspace;
+        private IToolItem lastActiveTool;
+        private IToolItem currentActiveTool;
         private IDocumentItem lastActiveDocument;
         private IDocumentItem currentActiveDocument;
+        private IDocumentItem documentToClose;
 
         public DockingService()
         {
@@ -43,19 +44,29 @@ namespace SLStudio.Core.Docking
 
         private void OnActiveContentChanged(object sender, EventArgs e)
         {
-            previousActiveItem = currentActiveItem;
-            currentActiveItem = AssociatedObject.ActiveContent as IWorkspaceItem;
+            if (AssociatedObject.ActiveContent is not IWorkspaceItem workspaceItem)
+                return;
 
-            if (AssociatedObject.ActiveContent is IDocumentItem document)
+            lastActiveWorkspace = currentActiveWorkspace;
+            currentActiveWorkspace = workspaceItem;
+
+            messenger.Send(new ActiveWorkspaceChangedEvent(lastActiveWorkspace, currentActiveWorkspace));
+
+            if (workspaceItem is IToolItem toolItem)
+            {
+                lastActiveTool = currentActiveTool;
+                currentActiveTool = toolItem;
+
+                messenger.Send(new ActiveToolChangedEvent(lastActiveTool, currentActiveTool));
+            }
+            else
+            if (workspaceItem is IDocumentItem documentItem)
             {
                 lastActiveDocument = currentActiveDocument;
-                currentActiveDocument = document;
+                currentActiveDocument = documentItem;
+
+                messenger.Send(new ActiveDocumentChangedEvent(lastActiveDocument, currentActiveDocument));
             }
-
-            previousActiveItem?.OnDeactivated();
-            currentActiveItem?.OnActivated();
-
-            messenger.Send(new ActiveWorkspaceChangedEvent(currentActiveItem));
         }
 
         private void OnDocumentClosing(object sender, DocumentClosingEventArgs e)
@@ -67,7 +78,6 @@ namespace SLStudio.Core.Docking
             if (result)
             {
                 documentToClose = document;
-                documentToFocus = lastActiveDocument;
             }
 
             e.Cancel = !result;
@@ -78,22 +88,13 @@ namespace SLStudio.Core.Docking
             if (documentToClose == null)
                 return;
 
-            documentToClose.OnClosed();
             await shell.CloseWorkspaces(documentToClose);
-            documentToClose.Dispose();
+            documentToClose.OnClosed();
 
-            if (documentToFocus != null)
-            {
-                if (shell.Workspaces.Contains(documentToFocus))
-                    await shell.OpenWorkspaces(documentToFocus);
-                else
-                    await shell.OpenWorkspaces(shell.Workspaces.OfType<IDocumentItem>().LastOrDefault());
-            }
+            if (documentToClose == currentActiveDocument)
+                FocusLastDocument();
 
-            DisposeItem(documentToClose);
-
-            documentToClose = null;
-            documentToFocus = null;
+            DisposeDocumentToClose();
         }
 
         private void OnLayoutUpdated(object sender, EventArgs e)
@@ -109,25 +110,26 @@ namespace SLStudio.Core.Docking
             }
         }
 
-        private void DisposeItem(IWorkspaceItem item)
+        private void DisposeDocumentToClose()
         {
-            if (item == documentToClose)
-                documentToClose = null;
-
-            if (item == documentToFocus)
-                documentToFocus = null;
-
-            if (item == previousActiveItem)
-                previousActiveItem = null;
-
-            if (item == currentActiveItem)
-                currentActiveItem = null;
-
-            if (item == lastActiveDocument)
+            if (documentToClose == lastActiveDocument)
                 lastActiveDocument = null;
-
-            if (item == currentActiveDocument)
+            if (documentToClose == currentActiveDocument)
                 currentActiveDocument = null;
+            if (documentToClose == lastActiveWorkspace)
+                lastActiveWorkspace = null;
+            if (documentToClose == currentActiveWorkspace)
+                currentActiveWorkspace = null;
+
+            documentToClose.Dispose();
+            documentToClose = null;
+        }
+
+        private void FocusLastDocument()
+        {
+            var target = lastActiveDocument ?? shell.Workspaces.OfType<IDocumentItem>().LastOrDefault();
+            if (target != null)
+                shell.OpenWorkspaces(target);
         }
 
         protected override void OnDetaching()

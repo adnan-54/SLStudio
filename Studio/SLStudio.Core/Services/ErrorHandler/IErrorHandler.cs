@@ -17,10 +17,9 @@ namespace SLStudio.Core
         {
             logger.Error(exception);
             var shell = IoC.Get<IShell>();
-            var output = IoC.Get<IOutput>();
-            if (shell != null && output != null)
+            if (shell != null)
             {
-                await shell.OpenWorkspaces(output);
+                var output = await shell.OpenWorkspace<IOutput>();
                 output.AppendLine($"{exception.Message}{Environment.NewLine}{exception}");
             }
         }

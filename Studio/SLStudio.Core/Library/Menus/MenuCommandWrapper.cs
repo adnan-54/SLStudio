@@ -5,12 +5,12 @@ using System.Windows.Input;
 
 namespace SLStudio.Core.Library.Menus
 {
-    internal class MenuCommandHandlerWrapper : ICommand
+    internal class MenuCommandWrapper : ICommand
     {
         private readonly IMenuItem menuItem;
         private readonly IMenuCommandHandler commandHandler;
 
-        public MenuCommandHandlerWrapper(IMenuItem menuItem, IMenuCommandHandler commandHandler)
+        public MenuCommandWrapper(IMenuItem menuItem, IMenuCommandHandler commandHandler)
         {
             this.menuItem = menuItem;
             this.commandHandler = commandHandler;

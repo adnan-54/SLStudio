@@ -14,12 +14,15 @@ namespace SLStudio.Core.Menus.Handlers
             this.fileService = fileService;
         }
 
-        public override Task Execute(IMenuItem menu, object parameter)
+        public override bool CanExecute(IMenuItem menu, object parameter)
         {
-            foreach (var file in shell.Workspaces.OfType<IFileDocumentItem>().Where(i => i.IsDirty))
-                fileService.Save(file);
+            return shell.Workspaces.OfType<IFileDocumentItem>().Any(f => !fileService.GetDescription(f).ReadOnly);
+        }
 
-            return Task.CompletedTask;
+        public override async Task Execute(IMenuItem menu, object parameter)
+        {
+            foreach (var file in shell.Workspaces.OfType<IFileDocumentItem>().Where(f => f.IsDirty))
+                await fileService.Save(file);
         }
     }
 }

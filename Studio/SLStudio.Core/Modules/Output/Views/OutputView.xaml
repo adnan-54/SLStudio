@@ -9,11 +9,6 @@
              xmlns:resx="clr-namespace:SLStudio.Core.Modules.Output.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              Background="{StaticResource Control.Background}">
-    <!--Behaviors-->
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:DispatcherService />
-    </dxmvvm:Interaction.Behaviors>
-
     <!--Content-->
     <Grid>
         <Grid.RowDefinitions>

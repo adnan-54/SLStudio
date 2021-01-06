@@ -117,64 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="file" xml:space="preserve">
-    <value>_File</value>
+  <data name="editorCategory" xml:space="preserve">
+    <value>Geral/Arquivos do Jogo/</value>
   </data>
-  <data name="file/close" xml:space="preserve">
-    <value>_Close</value>
+  <data name="editorDescription" xml:space="preserve">
+    <value>Um arquivo RPK em branco.</value>
   </data>
-  <data name="file/new" xml:space="preserve">
-    <value>_New</value>
-  </data>
-  <data name="file/new/newFile" xml:space="preserve">
-    <value>_File...</value>
-  </data>
-  <data name="file/open" xml:space="preserve">
-    <value>_Open</value>
-  </data>
-  <data name="file/open/openFile" xml:space="preserve">
-    <value>_File...</value>
-  </data>
-  <data name="file/save" xml:space="preserve">
-    <value>_Save</value>
-  </data>
-  <data name="file/saveAll" xml:space="preserve">
-    <value>Save A_ll</value>
-  </data>
-  <data name="file/saveAs" xml:space="preserve">
-    <value>Save _As...</value>
-  </data>
-  <data name="file/saveAs_format" xml:space="preserve">
-    <value>Save {0} _As...</value>
-  </data>
-  <data name="file/save_format" xml:space="preserve">
-    <value>_Save {0}</value>
-  </data>
-  <data name="file/startPage" xml:space="preserve">
-    <value>Start _Page</value>
-  </data>
-  <data name="help" xml:space="preserve">
-    <value>_Help</value>
-  </data>
-  <data name="help/logs" xml:space="preserve">
-    <value>_Logs...</value>
-  </data>
-  <data name="tools" xml:space="preserve">
-    <value>_Tools</value>
-  </data>
-  <data name="tools/options" xml:space="preserve">
-    <value>_Options...</value>
-  </data>
-  <data name="view" xml:space="preserve">
-    <value>_View</value>
-  </data>
-  <data name="view/output" xml:space="preserve">
-    <value>_Output</value>
-  </data>
-  <data name="view/toolbox" xml:space="preserve">
-    <value>_Toolbox</value>
-  </data>
-  <data name="window" xml:space="preserve">
-    <value>_Window</value>
+  <data name="editorName" xml:space="preserve">
+    <value>Arquivo Rpk</value>
   </data>
 </root>
