@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SlrrLib.Model
 {
@@ -37,6 +38,26 @@ namespace SlrrLib.Model
             }
         }
 
+        public async Task<string> GetRdb2FromRpkStream(Stream stream)
+        {
+            await Task.Run(() =>
+            {
+                DynamicRpk rpkDat = new DynamicRpk(new BinaryRpk(stream));
+                sb = new StringBuilder();
+                saveRpk(rpkDat);
+            });
+            return sb.ToString();
+        }
+
+        public Task ConvertStringToRpkStream(Stream stream, string content)
+        {
+            return Task.Run(() =>
+            {
+                var dynRpk = LoadRPKFromRDB2(content.Split(Environment.NewLine));
+                dynRpk.SaveAs(stream);
+            });
+        }
+
         public string GetLastReadLineAndIndex()
         {
             if (li >= lns.Length)
@@ -48,6 +69,65 @@ namespace SlrrLib.Model
         {
             MessageLog.AddMessage("Reading...");
             lns = File.ReadAllLines(rdbFnam);
+            dat = new DynamicRpk();
+            DynamicResEntry lastRes = new DynamicResEntry();
+            while (anyLinesLeft())
+            {
+                string curLine = stepLine();
+                if (curLine.Trim() == "<RPK>")
+                {
+                }
+                else if (curLine.Trim() == "</RPK>")
+                {
+                    break;
+                }
+                else if (curLine.Trim() == "<EXTERNAL_REFS>")
+                {
+                    while (stepLine().Trim() != "</EXTERNAL_REFS>")
+                    {
+                        dat.ExternalReferences.Add(currentLine().Trim());
+                    }
+                }
+                else if (curLine.Trim() == "<RES>")
+                {
+                    lastRes = new DynamicResEntry();
+                    while (stepLine().Trim() != "</RES>")
+                    {
+                        if (currentLineKey() == "typeid")
+                            lastRes.TypeID = currentLineValueHex();
+                        else if (currentLineKey() == "superid")
+                            lastRes.SuperID = currentLineValueHex();
+                        else if (currentLineKey() == "additionaltype")
+                            lastRes.AdditionalType = (byte)currentLineValueInt();
+                        else if (currentLineKey() == "alias")
+                            lastRes.Alias = currentLineValue();
+                        else if (currentLineKey() == "isparentcompatible")
+                            lastRes.IsParentCompatible = currentLineValueInt();
+                        else if (currentLineKey() == "typeofentry")
+                            lastRes.TypeOfEntry = (byte)currentLineValueInt();
+                        else if (currentLineKey() == "<FLOAT_BOUNDS>")
+                        {
+                            lastRes.AdditionalFloatList = new List<float>();
+                            while (stepLine().Trim() != "</FLOAT_BOUNDS>")
+                            {
+                                lastRes.AdditionalFloatList.Add(currentLineFloat());
+                            }
+                        }
+                        else if (currentLineKey().Trim() == "<RSD>")
+                        {
+                            lastRes.RSD = loadRsd();
+                        }
+                    }
+                    dat.Entries.Add(lastRes);
+                }
+            }
+            return dat;
+        }
+
+        public DynamicRpk LoadRPKFromRDB2(string[] lines)
+        {
+            MessageLog.AddMessage("Reading...");
+            lns = lines;
             dat = new DynamicRpk();
             DynamicResEntry lastRes = new DynamicResEntry();
             while (anyLinesLeft())

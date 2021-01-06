@@ -1,13 +1,19 @@
 ﻿using ICSharpCode.AvalonEdit.Document;
+using SlrrLib.Model;
 using SLStudio.Core;
 using SLStudio.RpkEditor.Resources;
 using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
 {
     [FileEditor("editorName", "editorDescription", "editorCategory", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png", false, ".rpk")]
-    internal partial class RpkEditorViewModel : FileDocumentBase
+    internal class RpkEditorViewModel : FileDocumentBase
     {
+        private string lastCheckpoint;
+        private int busyOperations = 0;
+
         public RpkEditorViewModel()
         {
             TextDocument = new TextDocument();
@@ -20,6 +26,69 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         {
             get => TextDocument.Text;
             set => TextDocument.Text = value;
+        }
+
+        public bool IsBusy => busyOperations > 0;
+
+        protected override Task DoNew(string content)
+        {
+            Content = content;
+
+            return Task.CompletedTask;
+        }
+
+        protected async override Task DoLoadFrom(Stream stream)
+        {
+            Busy();
+
+            var rpkex = new RpkExchange();
+            Content = await rpkex.GetRdb2FromRpkStream(stream);
+            SetCheckpoint(Content);
+
+            Idle();
+        }
+
+        protected override async Task DoSaveTo(Stream stream)
+        {
+            Busy();
+
+            var rpkex = new RpkExchange();
+            await rpkex.ConvertStringToRpkStream(stream, Content);
+            SetCheckpoint(Content);
+
+            Idle();
+        }
+
+        private void Busy()
+        {
+            ++busyOperations;
+            RaisePropertyChanged(() => IsBusy);
+        }
+
+        private void Idle()
+        {
+            --busyOperations;
+            RaisePropertyChanged(() => IsBusy);
+        }
+
+        private void SetCheckpoint(string content)
+        {
+            lastCheckpoint = content;
+            UpdateIsDirty();
+        }
+
+        private void UpdateIsDirty()
+        {
+            if (IsNew || string.IsNullOrEmpty(FileName))
+            {
+                IsDirty = true;
+                return;
+            }
+
+            if (string.IsNullOrEmpty(lastCheckpoint))
+                lastCheckpoint = string.Empty;
+
+            IsDirty = !lastCheckpoint.Equals(Content);
         }
 
         private void OnTextChanged(object sender, EventArgs e)

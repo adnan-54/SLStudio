@@ -2,12 +2,12 @@
 
 namespace SLStudio.Core.Menus.Handlers
 {
-    internal class SaveFileHandler : MenuCommandHandler
+    internal class SaveFileAsHandler : MenuCommandHandler
     {
         private readonly IShell shell;
         private readonly IFileService fileService;
 
-        public SaveFileHandler(IShell shell, IFileService fileService)
+        public SaveFileAsHandler(IShell shell, IFileService fileService)
         {
             this.shell = shell;
             this.fileService = fileService;
@@ -21,7 +21,7 @@ namespace SLStudio.Core.Menus.Handlers
         public override Task Execute(IMenuItem menu, object parameter)
         {
             if (shell.ActiveWorkspace is IFileDocumentItem file)
-                fileService.Save(file);
+                fileService.SaveAs(file);
 
             return Task.CompletedTask;
         }

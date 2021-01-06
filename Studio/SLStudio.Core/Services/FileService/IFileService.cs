@@ -147,7 +147,7 @@ namespace SLStudio.Core
         private async Task<IFileDocumentItem> AddWorkspace(Type editor)
         {
             var file = objectFactory.Create(editor) as IFileDocumentItem;
-            await shell.AddWorkspaces(file);
+            await shell.OpenWorkspaces(file);
             return file;
         }
 
@@ -188,6 +188,7 @@ namespace SLStudio.Core
                 file = OpenedFiles.FirstOrDefault(d => d.FileName == fileName);
                 if (file == null)
                     file = await AddWorkspace(editorType);
+                file.Activate();
 
                 file.FileName = fileName;
                 await file.LoadFrom(stream);
