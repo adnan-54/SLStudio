@@ -92,7 +92,7 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
         public override void OnLoaded()
         {
             if (!Documents.Any())
-                OpenWorkspaces(new StartPageViewModel(recentFilesRepository)).FireAndForget();
+                OpenWorkspace<IStartPage>().FireAndForget();
         }
 
         private void EnsureAddWorkspace(IWorkspaceItem item)

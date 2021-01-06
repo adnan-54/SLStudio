@@ -1,23 +1,27 @@
 ﻿using Humanizer;
 using SLStudio.Core.Modules.StartPage.Converters;
 using SLStudio.Core.Modules.StartPage.Resources;
+using SLStudio.Core.Resources;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
 {
-    internal class StartPageViewModel : DocumentBase
+    internal class StartPageViewModel : DocumentBase, IStartPage
     {
         private readonly IRecentFilesRepository recentFilesRepository;
+        private readonly IFileService fileService;
         private readonly BindableCollection<RecentFileViewModel> recentFiles;
 
-        public StartPageViewModel(IRecentFilesRepository recentFilesRepository)
+        public StartPageViewModel(IRecentFilesRepository recentFilesRepository, IFileService fileService)
         {
             this.recentFilesRepository = recentFilesRepository;
+            this.fileService = fileService;
             recentFiles = new BindableCollection<RecentFileViewModel>();
             RecentFiles = CollectionViewSource.GetDefaultView(recentFiles);
             RecentFiles.GroupDescriptions.Add(new PropertyGroupDescription(null, new StartPageGroupFilterConverter()));
@@ -26,10 +30,13 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             RecentFiles.Filter += Filter;
             recentFiles.CollectionChanged += RecentFilesOnCollectionChanged;
 
-            FetchRecentFiles().FireAndForget();
+            if (StudioSettings.Default.StartPagePinnedFiles == null)
+                StudioSettings.Default.StartPagePinnedFiles = new();
 
             DisplayName = StartPageResources.StartPage;
         }
+
+        public ICollectionView RecentFiles { get; }
 
         public string SearchTerm
         {
@@ -43,16 +50,64 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
 
         public bool CanClearRecentFiles => recentFiles.Count > 0;
 
-        public ICollectionView RecentFiles { get; }
-
-        public void RemoveItem(RecentFileViewModel item)
-        {
-            recentFiles.Remove(item);
-        }
-
         public void ClearAll()
         {
-            recentFiles.Clear();
+            //todo: show confirmation
+
+            foreach (var file in recentFiles)
+                Remove(file);
+        }
+
+        public void UpdatePinned(RecentFileViewModel item)
+        {
+            if (item.IsPinned)
+            {
+                if (!StudioSettings.Default.StartPagePinnedFiles.Contains(item.Location))
+                {
+                    StudioSettings.Default.StartPagePinnedFiles.Add(item.Location);
+                    StudioSettings.Default.Save();
+                }
+            }
+            else
+            {
+                if (StudioSettings.Default.StartPagePinnedFiles.Contains(item.Location))
+                {
+                    StudioSettings.Default.StartPagePinnedFiles.Remove(item.Location);
+                    StudioSettings.Default.Save();
+                }
+            }
+
+            RecentFiles.Refresh();
+        }
+
+        public void OpenItem(RecentFileViewModel item)
+        {
+            if (File.Exists(item.Location))
+            {
+                fileService.Open(item.Location);
+            }
+            else
+            {
+                //todo: show error and ask if user want to remove from list
+            }
+        }
+
+        public void Remove(RecentFileViewModel item)
+        {
+            recentFiles.Remove(item);
+            if (StudioSettings.Default.StartPagePinnedFiles.Contains(item.Location))
+            {
+                StudioSettings.Default.StartPagePinnedFiles.Remove(item.Location);
+                StudioSettings.Default.Save();
+            }
+            recentFilesRepository.Remove(item.Location);
+
+            RecentFiles.Refresh();
+        }
+
+        public void OnLoaded()
+        {
+            FetchRecentFiles().FireAndForget();
         }
 
         private async Task FetchRecentFiles()
@@ -60,7 +115,29 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             recentFiles.Clear();
 
             var fromRepository = await recentFilesRepository.GetAll();
-            recentFiles.AddRange(fromRepository.Select(r => new RecentFileViewModel(r.FileName, r.CreationDate)));
+            var files = fromRepository.Select(r => CreateRecentFile(r.FileName, r.CreationDate));
+            recentFiles.AddRange(files);
+
+            foreach (var pinned in StudioSettings.Default.StartPagePinnedFiles)
+            {
+                var target = recentFiles.FirstOrDefault(r => r.Location.Equals(pinned));
+                if (target != null)
+                    target.IsPinned = true;
+            }
+
+            RecentFiles.Refresh();
+
+            RecentFileViewModel CreateRecentFile(string fileName, DateTime date)
+            {
+                Uri iconUri = null;
+                var extension = Path.GetExtension(fileName);
+                var iconSource = fileService.GetDescription(extension)?.IconSource;
+
+                if (!string.IsNullOrEmpty(iconSource))
+                    iconUri = new Uri(iconSource);
+
+                return new RecentFileViewModel(fileName, date, this, iconUri);
+            }
         }
 
         private void RecentFilesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
@@ -78,5 +155,9 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
                     || recentFile.ModifiedDate.Humanize(false).Contains(SearchTerm, StringComparison.InvariantCultureIgnoreCase);
             return false;
         }
+    }
+
+    internal interface IStartPage : IDocumentItem
+    {
     }
 }

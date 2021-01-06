@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SLStudio.Core.Menus.Handlers

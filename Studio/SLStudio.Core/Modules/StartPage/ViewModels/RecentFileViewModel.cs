@@ -10,12 +10,15 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
     internal class RecentFileViewModel : BindableBase
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RecentFileViewModel>();
+        private readonly StartPageViewModel startPage;
 
-        public RecentFileViewModel(string fileName, DateTime modifiedDate)
+        public RecentFileViewModel(string fileName, DateTime modifiedDate, StartPageViewModel startPage, Uri iconSource)
         {
+            this.startPage = startPage;
             FileName = Path.GetFileName(fileName);
             Location = fileName;
             ModifiedDate = modifiedDate;
+            IconSource = iconSource;
         }
 
         public Uri IconSource { get; set; }
@@ -33,11 +36,18 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
         public void Pin()
         {
             IsPinned = true;
+            startPage.UpdatePinned(this);
         }
 
         public void Unpin()
         {
             IsPinned = false;
+            startPage.UpdatePinned(this);
+        }
+
+        public void Remove()
+        {
+            startPage.Remove(this);
         }
 
         public void CopyPath()

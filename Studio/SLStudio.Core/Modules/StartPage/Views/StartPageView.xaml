@@ -7,7 +7,8 @@
              xmlns:properties="clr-namespace:SLStudio.Core.Modules.StartPage.Resources"
              xmlns:studio="clr-namespace:SLStudio.Core"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
-             Background="{StaticResource Control.Background}">
+             Background="{StaticResource Control.Background}"
+             Loaded="{DXEvent 'OnLoaded()'}">
 
     <ScrollViewer x:Name="main" Padding="0"
                   VerticalScrollBarVisibility="Auto"
@@ -36,9 +37,9 @@
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1.2*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="0.75*" />
                 </Grid.ColumnDefinitions>
 
                 <!--OpenRecent-->
@@ -74,8 +75,7 @@
                                 Style="{StaticResource MahApps.Styles.Button.Chromeless}"
                                 metro:VisibilityHelper.IsVisible="{Binding CanClearRecentFiles}">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{x:Static properties:StartPageResources.ClearAll}" FontStyle="Italic" FontWeight="Thin" />
-                                <Image Margin="{StaticResource SmallLeftMargin}" Source="{StaticResource CloseRed}" Height="12" />
+                                <Image Source="{StaticResource Trash}" Height="12" />
                             </StackPanel>
                         </Button>
                     </Grid>
@@ -177,7 +177,7 @@
                                                 <ControlTemplate TargetType="{x:Type GroupItem}">
                                                     <Expander IsExpanded="True">
                                                         <Expander.Header>
-                                                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Medium" />
+                                                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Medium" Foreground="{StaticResource Foreground}" />
                                                         </Expander.Header>
                                                         <ItemsPresenter Margin="{StaticResource LargeLeftMargin}" />
                                                     </Expander>
@@ -192,7 +192,7 @@
                         <!--ItemTemplate-->
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <Grid ToolTip="{Binding ToolTip}">
+                                <Grid ToolTip="{Binding ToolTip}" Background="Transparent">
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto" />
                                         <ColumnDefinition Width="*" />
@@ -204,6 +204,10 @@
                                         <RowDefinition Height="*" />
                                         <RowDefinition Height="*" />
                                     </Grid.RowDefinitions>
+
+                                    <Grid.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" Command="{DXCommand '@a($UserControl).DataContext.OpenItem(@c)'}" />
+                                    </Grid.InputBindings>
 
                                     <!--Icon-->
                                     <Image Grid.Row="0" Grid.Column="0"
@@ -231,9 +235,11 @@
                                                Text="{Binding ModifiedDate}" />
 
                                     <!--Pinned-->
-                                    <ToggleButton Grid.Row="0" Grid.Column="3"
+                                    <ToggleButton x:Name="pinned" Grid.Row="0" Grid.Column="3"
                                                   Margin="{StaticResource LeftMargin}"
-                                                  IsChecked="{Binding IsPinned}" VerticalAlignment="Top">
+                                                  IsChecked="{Binding IsPinned}" VerticalAlignment="Top"
+                                                  Checked="{DXEvent '@a($UserControl).DataContext.UpdatePinned(@c)'}"
+                                                  Unchecked="{DXEvent '@a($UserControl).DataContext.UpdatePinned(@c)'}">
                                         <ToggleButton.Style>
                                             <Style TargetType="{x:Type ToggleButton}">
                                                 <Setter Property="BorderThickness" Value="0" />

@@ -33,5 +33,16 @@ namespace SLStudio.Core.Resources {
                 this["RecentFiles"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Specialized.StringCollection StartPagePinnedFiles {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["StartPagePinnedFiles"]));
+            }
+            set {
+                this["StartPagePinnedFiles"] = value;
+            }
+        }
     }
 }

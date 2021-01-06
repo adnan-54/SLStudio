@@ -144,6 +144,9 @@
   <data name="file/saveAs" xml:space="preserve">
     <value>Salvar _Como...</value>
   </data>
+  <data name="file/startPage" xml:space="preserve">
+    <value>_Pagina Inicial</value>
+  </data>
   <data name="help" xml:space="preserve">
     <value>Aj_uda</value>
   </data>

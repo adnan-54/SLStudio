@@ -133,7 +133,6 @@
                             <TextBlock x:Name="Watermark" Grid.Column="0"
                                        Margin="3, 0" Padding="{TemplateBinding Padding}"
                                        IsHitTestVisible="False" Opacity="0.6"
-                                       FontWeight="Thin"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                        Foreground="{TemplateBinding Foreground}"

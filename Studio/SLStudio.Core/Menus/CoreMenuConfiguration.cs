@@ -17,6 +17,7 @@ namespace SLStudio.Core.Menus
 
             Item("file/open");
             Item<OpenFileHandler>("file/open/openFile", iconSource: "OpenFolder", shortcut: new KeyGesture(Key.O, ModifierKeys.Control));
+            Item<StartPageHandler>("file/startPage", iconSource: "ShowStartPage");
 
             Separator("file/separator1");
 

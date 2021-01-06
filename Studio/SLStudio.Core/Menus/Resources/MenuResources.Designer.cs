@@ -142,6 +142,15 @@ namespace SLStudio.Core.Menus.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start _Page.
+        /// </summary>
+        internal static string file_startPage {
+            get {
+                return ResourceManager.GetString("file/startPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Help.
         /// </summary>
         internal static string help {
