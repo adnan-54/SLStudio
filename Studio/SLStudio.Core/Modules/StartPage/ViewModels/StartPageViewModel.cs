@@ -4,16 +4,20 @@ using SLStudio.Core.Modules.StartPage.Resources;
 using System;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Data;
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
 {
     internal class StartPageViewModel : DocumentBase
     {
+        private readonly IRecentFilesRepository recentFilesRepository;
         private readonly BindableCollection<RecentFileViewModel> recentFiles;
 
-        public StartPageViewModel()
+        public StartPageViewModel(IRecentFilesRepository recentFilesRepository)
         {
+            this.recentFilesRepository = recentFilesRepository;
             recentFiles = new BindableCollection<RecentFileViewModel>();
             RecentFiles = CollectionViewSource.GetDefaultView(recentFiles);
             RecentFiles.GroupDescriptions.Add(new PropertyGroupDescription(null, new StartPageGroupFilterConverter()));
@@ -22,7 +26,7 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             RecentFiles.Filter += Filter;
             recentFiles.CollectionChanged += RecentFilesOnCollectionChanged;
 
-            FetchRecentFiles();
+            FetchRecentFiles().FireAndForget();
 
             DisplayName = StartPageResources.StartPage;
         }
@@ -43,38 +47,25 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
 
         public void RemoveItem(RecentFileViewModel item)
         {
-            item.PropertyChanged -= RecentFileOnPropertyChanged;
             recentFiles.Remove(item);
         }
 
         public void ClearAll()
         {
-            foreach (var recentFile in recentFiles)
-                recentFile.PropertyChanged -= RecentFileOnPropertyChanged;
-
             recentFiles.Clear();
         }
 
-        private void FetchRecentFiles()
+        private async Task FetchRecentFiles()
         {
-            foreach (var recentFile in recentFiles)
-                recentFile.PropertyChanged -= RecentFileOnPropertyChanged;
-
             recentFiles.Clear();
 
-            foreach (var recentFile in recentFiles)
-                recentFile.PropertyChanged += RecentFileOnPropertyChanged;
+            var fromRepository = await recentFilesRepository.GetAll();
+            recentFiles.AddRange(fromRepository.Select(r => new RecentFileViewModel(r.FileName, r.CreationDate)));
         }
 
         private void RecentFilesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             RaisePropertyChanged(() => CanClearRecentFiles);
-        }
-
-        private void RecentFileOnPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(RecentFileViewModel.IsPinned))
-                RecentFiles.Refresh();
         }
 
         private bool Filter(object obj)

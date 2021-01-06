@@ -42,7 +42,7 @@ namespace SLStudio.Core
 
         private string BuildFilter()
         {
-            var builder = new StringBuilder($"{Name}|");
+            var builder = new StringBuilder($"{Name} ({string.Join(", ", Extensions)})|");
             foreach (var ext in Extensions)
                 builder.AppendFormat("*{0};", ext);
 

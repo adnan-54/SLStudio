@@ -10,13 +10,14 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
     {
         private readonly IObjectFactory objectFactory;
         private readonly IUiSynchronization uiSynchronization;
+        private readonly IRecentFilesRepository recentFilesRepository;
 
         public ShellViewModel(IObjectFactory objectFactory, IUiSynchronization uiSynchronization,
-                              ICommandLineArguments commandLineArguments, IStatusBar statusBar)
+                              ICommandLineArguments commandLineArguments, IRecentFilesRepository recentFilesRepository, IStatusBar statusBar)
         {
             this.objectFactory = objectFactory;
             this.uiSynchronization = uiSynchronization;
-
+            this.recentFilesRepository = recentFilesRepository;
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentItem>();
             Tools = new BindableCollection<IToolItem>();
@@ -86,6 +87,12 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
                 foreach (var item in workspaces)
                     EnsureRemoveWorkspace(item);
             });
+        }
+
+        public override void OnLoaded()
+        {
+            if (!Documents.Any())
+                OpenWorkspaces(new StartPageViewModel(recentFilesRepository)).FireAndForget();
         }
 
         private void EnsureAddWorkspace(IWorkspaceItem item)

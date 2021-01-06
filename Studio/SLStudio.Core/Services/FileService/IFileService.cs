@@ -159,7 +159,7 @@ namespace SLStudio.Core
             {
                 var openedDocuments = shell.Workspaces.OfType<IDocumentItem>();
                 var index = 1;
-                name = string.Format("Untitled {0}", index);
+                name = string.Format(StudioResources.Untitled, index);
                 while (openedDocuments.Any(i => i.DisplayName == $"{name}{description.Extensions.First()}"))
                     name = string.Format(StudioResources.Untitled, ++index);
             }
@@ -214,15 +214,20 @@ namespace SLStudio.Core
             Stream stream = new MemoryStream();
             try
             {
-                if (!file.CanSave)
+                var description = GetDescription(file);
+
+                if (description.ReadOnly || !file.CanSave)
                     return false;
 
-                if (string.IsNullOrEmpty(file.FileName) || showSaveAs)
+                if (string.IsNullOrEmpty(file.FileName) || file.IsNew || showSaveAs)
                 {
                     var saveFileDialog = new SaveFileDialog()
                     {
                         FileName = file.DisplayName,
-                        Filter = GetDescription(file).Filter
+                        Filter = description.Filter,
+                        AddExtension = true,
+                        DefaultExt = description.Extensions.First(),
+                        Title = SLStudioConstants.ProductName
                     };
 
                     if (!saveFileDialog.ShowDialog().GetValueOrDefault())
