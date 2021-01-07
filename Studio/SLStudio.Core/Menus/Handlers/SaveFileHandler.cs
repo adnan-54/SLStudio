@@ -1,7 +1,5 @@
 ﻿using DevExpress.Mvvm;
 using SLStudio.Core.Menus.Resources;
-using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SLStudio.Core.Menus.Handlers
@@ -14,6 +12,10 @@ namespace SLStudio.Core.Menus.Handlers
         {
             this.shell = shell;
         }
+
+        public override string DisplayName => MenuResources.file_save;
+
+        public override string DisplayNameFormat => MenuResources.file_save_format;
 
         public override async Task Execute(IMenuItem menu, object parameter)
         {

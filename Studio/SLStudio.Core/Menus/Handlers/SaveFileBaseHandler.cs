@@ -1,5 +1,4 @@
 ﻿using DevExpress.Mvvm;
-using SLStudio.Core.Menus.Resources;
 
 namespace SLStudio.Core.Menus.Handlers
 {
@@ -16,6 +15,10 @@ namespace SLStudio.Core.Menus.Handlers
         }
 
         public IFileService FileService { get; }
+
+        public abstract string DisplayName { get; }
+
+        public abstract string DisplayNameFormat { get; }
 
         public override bool CanExecute(IMenuItem menu, object parameter)
         {
@@ -40,8 +43,8 @@ namespace SLStudio.Core.Menus.Handlers
         private string GetDisplayName()
         {
             if (activeFileDocument != null)
-                return string.Format(MenuResources.file_saveAs_format, activeFileDocument.DisplayName);
-            return MenuResources.file_saveAs;
+                return string.Format(DisplayNameFormat, activeFileDocument.DisplayName);
+            return DisplayName;
         }
     }
 }
