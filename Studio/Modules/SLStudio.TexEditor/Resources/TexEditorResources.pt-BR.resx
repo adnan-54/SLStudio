@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="editorCategory" xml:space="preserve">
-    <value>General/Game Files/</value>
-  </data>
-  <data name="editorDescription" xml:space="preserve">
-    <value>A blank .rpk file.</value>
+    <value>Geral/Arquivos do Jogo/</value>
   </data>
   <data name="editorName" xml:space="preserve">
-    <value>Rpk File</value>
+    <value>Arquivo Tex</value>
+  </data>
+  <data name="editorDescription" xml:space="preserve">
+    <value>Um arquivo .tex em branco.</value>
   </data>
 </root>

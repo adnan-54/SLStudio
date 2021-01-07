@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using SLStudio.Core.Resources;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -63,16 +64,11 @@ namespace SLStudio.Core.Menus.Handlers
             string GetAllSupportedFiles()
             {
                 var builder = new StringBuilder();
-                builder.Append($"{StudioResources.filter_allSupportedFiles} (*");
-
-                foreach (var desc in descriptions)
-                    builder.Append(string.Join(", *", desc.Extensions));
-
+                builder.Append(StudioResources.filter_allSupportedFiles);
+                builder.Append(" (*");
+                builder.Append(string.Join(", *", descriptions.SelectMany(d => d.Extensions)));
                 builder.Append(")|*");
-
-                foreach (var desc in descriptions)
-                    builder.Append(string.Join(";*", desc.Extensions));
-
+                builder.Append(string.Join(";*", descriptions.SelectMany(d => d.Extensions)));
                 builder.Append('|');
 
                 return builder.ToString();

@@ -121,7 +121,7 @@
     <value>Geral/Arquivos do Jogo/</value>
   </data>
   <data name="editorDescription" xml:space="preserve">
-    <value>Um arquivo RPK em branco.</value>
+    <value>Um arquivo .rpk em branco.</value>
   </data>
   <data name="editorName" xml:space="preserve">
     <value>Arquivo Rpk</value>

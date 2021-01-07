@@ -6,10 +6,10 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
+namespace SLStudio.RpkEditor
 {
     [FileEditor("editorName", "editorDescription", "editorCategory", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png", false, ".rpk")]
-    internal class RpkEditorViewModel : FileDocumentBase
+    internal class RpkEditorViewModel : FileDocumentBase, IRpkEditor
     {
         private string lastCheckpoint;
         private int busyOperations = 0;
@@ -95,5 +95,9 @@ namespace SLStudio.RpkEditor.Modules.RpkEditor.ViewModels
         {
             UpdateIsDirty();
         }
+    }
+
+    public interface IRpkEditor : IFileDocumentItem
+    {
     }
 }

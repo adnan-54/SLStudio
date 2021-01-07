@@ -266,18 +266,15 @@ namespace SLStudio.Core
             }
         }
 
-        private static Task WriteStream(Stream content, string fileName)
+        private static async Task WriteStream(Stream content, string fileName)
         {
             var file = new FileInfo(fileName);
             var fileMode = file.Exists ? FileMode.Truncate : FileMode.Create;
-            using (var fileStream = new FileStream(file.FullName, fileMode, FileAccess.Write, FileShare.Read))
-            {
-                content.Seek(0, SeekOrigin.Begin);
-                content.CopyTo(fileStream);
-                fileStream.Flush();
-            }
 
-            return Task.FromResult(true);
+            using var fileStream = new FileStream(file.FullName, fileMode, FileAccess.Write, FileShare.Read);
+            content.Seek(0, SeekOrigin.Begin);
+            await content.CopyToAsync(fileStream);
+            await fileStream.FlushAsync();
         }
     }
 

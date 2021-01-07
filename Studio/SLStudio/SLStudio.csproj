@@ -4,8 +4,8 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.216.493</AssemblyVersion>
-		<FileVersion>21.1.216.493</FileVersion>
+		<AssemblyVersion>21.1.229.506</AssemblyVersion>
+		<FileVersion>21.1.229.506</FileVersion>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
@@ -41,6 +41,7 @@
 	  <ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 	  <ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
 	  <ProjectReference Include="..\Modules\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
+	  <ProjectReference Include="..\Modules\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
 	  <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 

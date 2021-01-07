@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SLStudio.RpkEditor.Resources {
+namespace SLStudio.TexEditor.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace SLStudio.RpkEditor.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class RpkEditorResources {
+    public class TexEditorResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal RpkEditorResources() {
+        internal TexEditorResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SLStudio.RpkEditor.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.RpkEditor.Resources.RpkEditorResources", typeof(RpkEditorResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SLStudio.TexEditor.Resources.TexEditorResources", typeof(TexEditorResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,7 +70,7 @@ namespace SLStudio.RpkEditor.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A blank .rpk file..
+        ///   Looks up a localized string similar to A blank .tex file..
         /// </summary>
         public static string editorDescription {
             get {
@@ -79,7 +79,7 @@ namespace SLStudio.RpkEditor.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rpk File.
+        ///   Looks up a localized string similar to Tex File.
         /// </summary>
         public static string editorName {
             get {

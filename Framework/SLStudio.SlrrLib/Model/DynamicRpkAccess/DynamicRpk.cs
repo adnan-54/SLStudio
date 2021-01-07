@@ -71,24 +71,28 @@ namespace SlrrLib.Model
             {
                 foreach (var strEntr in res.RSD.InnerEntries)
                 {
-                    var strObj = strEntr as DynamicStringInnerEntry;
-                    if (strObj != null)
+                    if (strEntr is DynamicStringInnerEntry strObj)
                     {
                         if (strObj.StringData != "" && !strObj.StringData.EndsWith("\r\n"))
                             strObj.StringData += "\r\n";
                     }
                 }
             }
-            BinaryWriter bw = new BinaryWriter(stream, Encoding.UTF8, true);
+
+            using BinaryWriter bw = new BinaryWriter(stream, Encoding.UTF8, true);
             byte[] signatureBuff = new byte[4];
             string signPropLength = Signature;
+
             while (signPropLength.Length < 4)
                 signPropLength += " ";
-            Array.Copy(ASCIIEncoding.ASCII.GetBytes(signPropLength), signatureBuff, 4);
+
+            Array.Copy(Encoding.ASCII.GetBytes(signPropLength), signatureBuff, 4);
+
             bw.Write(signatureBuff);
             bw.Write(Version512);
-            bw.Write((int)ExternalReferences.Count);
+            bw.Write(ExternalReferences.Count);
             bw.Write(ExternalReferencesUnkownZero);
+
             short ext_i = 1;
             foreach (var extRef in ExternalReferences)
             {
@@ -96,13 +100,15 @@ namespace SlrrLib.Model
                 bw.Write(ext_i);
                 ext_i++;
                 byte[] extRefBuff = new byte[60];
-                Array.Copy(ASCIIEncoding.ASCII.GetBytes(extRef), extRefBuff, extRef.Length >= extRefBuff.Length ? extRefBuff.Length : extRef.Length);
+                Array.Copy(Encoding.ASCII.GetBytes(extRef), extRefBuff, extRef.Length >= extRefBuff.Length ? extRefBuff.Length : extRef.Length);
                 bw.Write(extRefBuff);
             }
+
             bw.Write(entriesSize());
             bw.Write((int)Entries.Count);
             bw.Write((int)Entries.Count(x => x.TypeOfEntry == 1));
             bw.Write((int)Entries.Count(x => x.TypeOfEntry != 1));
+
             int rsdOffset = (int)bw.BaseStream.Position + entriesSize();
             foreach (var res in Entries)
             {
@@ -110,12 +116,11 @@ namespace SlrrLib.Model
                 if (res.RSD != null)
                     rsdOffset += res.RSD.GetSizeIncludingHiddenEntries();
             }
+
             foreach (var res in Entries)
-            {
                 res.RSD.Save(bw);
-            }
+
             bw.Flush();
-            bw.Close();
         }
 
         public void SaveAs(string fnam, bool bak = true, string BakSignature = "_BAK_Rpk_")

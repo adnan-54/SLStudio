@@ -121,9 +121,9 @@
     <value>General/Game Files/</value>
   </data>
   <data name="editorDescription" xml:space="preserve">
-    <value>A blank .rpk file.</value>
+    <value>A blank .tex file.</value>
   </data>
   <data name="editorName" xml:space="preserve">
-    <value>Rpk File</value>
+    <value>Tex File</value>
   </data>
 </root>
