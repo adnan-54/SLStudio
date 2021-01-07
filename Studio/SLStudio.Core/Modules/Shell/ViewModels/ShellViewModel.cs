@@ -1,4 +1,5 @@
-﻿using SLStudio.Core.Modules.StartPage.ViewModels;
+﻿using SLStudio.Core.Docking;
+using SLStudio.Core.Modules.StartPage.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,14 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
     {
         private readonly IObjectFactory objectFactory;
         private readonly IUiSynchronization uiSynchronization;
-        private readonly IRecentFilesRepository recentFilesRepository;
+        private readonly IOutput output;
 
         public ShellViewModel(IObjectFactory objectFactory, IUiSynchronization uiSynchronization,
-                              ICommandLineArguments commandLineArguments, IRecentFilesRepository recentFilesRepository, IStatusBar statusBar)
+                              ICommandLineArguments commandLineArguments, IOutput output, IStatusBar statusBar)
         {
             this.objectFactory = objectFactory;
             this.uiSynchronization = uiSynchronization;
-            this.recentFilesRepository = recentFilesRepository;
+            this.output = output;
             StatusBar = statusBar;
             Documents = new BindableCollection<IDocumentItem>();
             Tools = new BindableCollection<IToolItem>();
@@ -42,6 +43,8 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             get => GetProperty(() => StatusBar);
             set => SetProperty(() => StatusBar, value);
         }
+
+        public IDockingService DockingService => GetService<IDockingService>();
 
         public async Task<T> AddWorkspace<T>() where T : class, IWorkspaceItem
         {
@@ -73,10 +76,11 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             return uiSynchronization.EnsureExecuteOnUiAsync(() =>
             {
                 foreach (var item in workspaces)
-                {
                     EnsureAddWorkspace(item);
-                    item.Activate();
-                }
+
+                ActiveWorkspace = workspaces.LastOrDefault();
+                ActiveWorkspace?.Activate();
+                DockingService?.FocusItem(ActiveWorkspace);
             });
         }
 
@@ -86,6 +90,8 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             {
                 foreach (var item in workspaces)
                     EnsureRemoveWorkspace(item);
+
+                DockingService?.FocusItem();
             });
         }
 
@@ -93,6 +99,7 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
         {
             if (!Documents.Any())
                 OpenWorkspace<IStartPage>().FireAndForget();
+            output.Clear();
         }
 
         private void EnsureAddWorkspace(IWorkspaceItem item)
@@ -107,10 +114,17 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
         private void EnsureRemoveWorkspace(IWorkspaceItem item)
         {
             if (item is IToolItem tool && Tools.Contains(tool))
-                Tools.Remove(tool);
+            {
+                DockingService?.CloseFromId(tool.Id);
+                tool.Close();
+            }
             else
             if (item is IDocumentItem document && Documents.Contains(document))
+            {
+                document.Close();
+                DockingService?.CloseFromId(document.Id);
                 Documents.Remove(document);
+            }
         }
     }
 }

@@ -160,6 +160,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Toolbox.
+        /// </summary>
+        public static string toolbox_displayName {
+            get {
+                return ResourceManager.GetString("toolbox_displayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Untitled {0}.
         /// </summary>
         public static string Untitled {

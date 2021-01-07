@@ -104,11 +104,17 @@ namespace SLStudio.Core
             return (await DoLoad(fileName, typeof(T))) as T;
         }
 
-        Task<IFileDocumentItem> IFileService.Open(string fileName)
+        async Task<IFileDocumentItem> IFileService.Open(string fileName)
         {
+            var shellTarget = shell.Workspaces.OfType<IFileDocumentItem>().FirstOrDefault(i => !string.IsNullOrEmpty(i.FileName) && i.FileName.Equals(fileName));
+            if (shellTarget != null)
+            {
+                await shell.OpenWorkspaces(shellTarget);
+                return shellTarget;
+            }
             var description = GetDescription(Path.GetExtension(fileName));
             if (description != null)
-                return DoLoad(fileName, description.EditorType);
+                return await DoLoad(fileName, description.EditorType);
 
             return null;
         }
@@ -174,8 +180,8 @@ namespace SLStudio.Core
                 name = $"{name}{ext}";
             }
 
-            file.Activate();
             await file.New(name, content);
+            await shell.OpenWorkspaces(file);
             return file;
         }
 
@@ -194,7 +200,7 @@ namespace SLStudio.Core
                     file = await AddWorkspace(editorType);
 
                 file.FileName = fileName;
-                file.Activate();
+                await shell.OpenWorkspaces(file);
                 await file.LoadFrom(stream);
                 await recentFilesRepository.Add(fileName);
 

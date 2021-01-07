@@ -127,7 +127,7 @@
     <value>Executando {0}...</value>
   </data>
   <data name="LoadingAssemblyAssemblyName" xml:space="preserve">
-    <value>Carregando assembly {0}....</value>
+    <value>Carregando assembly {0}...</value>
   </data>
   <data name="CombinationIsNotACommand" xml:space="preserve">
     <value>A combinação de teclas ({0}) não é um comando.</value>
@@ -155,5 +155,8 @@
   </data>
   <data name="StudioSearchTextBoxStyle_tooltip_search" xml:space="preserve">
     <value>Pesquisar</value>
+  </data>
+  <data name="toolbox_displayName" xml:space="preserve">
+    <value>Caixa de Ferramentas</value>
   </data>
 </root>

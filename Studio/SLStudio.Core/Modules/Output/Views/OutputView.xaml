@@ -37,8 +37,7 @@
         <ae:TextEditor Grid.Row="1" Margin="3"
                        IsReadOnly="True" BorderThickness="0"
                        WordWrap="{Binding WordWrap}"
-                       Document="{Binding TextDocument}"
-                       Loaded="{DXEvent 'OnLoaded()'}">
+                       Document="{Binding TextDocument}">
             <!--Behaviors-->
             <dxmvvm:Interaction.Behaviors>
                 <dxmvvm:EventToCommand EventName="TextChanged" Command="{DXCommand '@a($ae:TextEditor).ScrollToEnd()'}" />

@@ -10,7 +10,6 @@ namespace SLStudio.Core.Modules.Output.ViewModels
     internal class OutputViewModel : ToolBase, IOutput
     {
         private readonly IUiSynchronization uiSynchronization;
-        private IAvalonEditSearch avalonEditSearch;
 
         public OutputViewModel(IUiSynchronization uiSynchronization)
         {
@@ -26,6 +25,8 @@ namespace SLStudio.Core.Modules.Output.ViewModels
         public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Bottom;
 
         public TextDocument TextDocument { get; }
+
+        public IAvalonEditSearch AvalonEditSearch => GetService<IAvalonEditSearch>();
 
         public bool WordWrap
         {
@@ -50,22 +51,17 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void QuickFind()
         {
-            avalonEditSearch?.Find();
+            AvalonEditSearch?.Find();
         }
 
         public void FindNext()
         {
-            avalonEditSearch?.FindNext();
+            AvalonEditSearch?.FindNext();
         }
 
         public void FindPrevious()
         {
-            avalonEditSearch?.FindPrevious();
-        }
-
-        public void OnLoaded()
-        {
-            avalonEditSearch = GetService<IAvalonEditSearch>();
+            AvalonEditSearch?.FindPrevious();
         }
 
         private void OnLogCompleted(object sender, LogCompletedEventArgs e)

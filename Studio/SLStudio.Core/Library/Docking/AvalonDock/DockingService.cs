@@ -1,13 +1,17 @@
 ﻿using AvalonDock;
+using AvalonDock.Controls;
+using AvalonDock.Layout;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 
 namespace SLStudio.Core.Docking
 {
-    internal class DockingService : ServiceBaseGeneric<DockingManager>
+    internal class DockingService : ServiceBaseGeneric<DockingManager>, IDockingService
     {
         private readonly IShell shell;
         private readonly IThemeManager themeManager;
@@ -37,6 +41,28 @@ namespace SLStudio.Core.Docking
             AssociatedObject.LayoutUpdated += OnLayoutUpdated;
         }
 
+        public void CloseFromId(string id)
+        {
+            var layoutPanel = AssociatedObject.Layout.Children.OfType<LayoutPanel>()?.FirstOrDefault();
+            var layoutDocument = layoutPanel.Descendents().OfType<LayoutDocument>().FirstOrDefault(d => d.ContentId == id);
+            layoutDocument?.Close();
+        }
+
+        public void FocusItem(IWorkspaceItem item)
+        {
+            if (item == null)
+                item = lastActiveDocument;
+
+            if (item == null)
+                return;
+
+            Keyboard.ClearFocus();
+            Application.Current.MainWindow.Focus();
+            FocusManager.SetFocusedElement(Application.Current.MainWindow, Application.Current.MainWindow);
+            Keyboard.Focus(Application.Current.MainWindow);
+            item.Activate();
+        }
+
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             AssociatedObject.Theme = themeManager.CurrentTheme.DockTheme;
@@ -47,25 +73,34 @@ namespace SLStudio.Core.Docking
             if (AssociatedObject.ActiveContent is not IWorkspaceItem workspaceItem)
                 return;
 
-            lastActiveWorkspace = currentActiveWorkspace;
-            currentActiveWorkspace = workspaceItem;
+            if (workspaceItem != currentActiveWorkspace)
+            {
+                lastActiveWorkspace = currentActiveWorkspace;
+                currentActiveWorkspace = workspaceItem;
 
-            messenger.Send(new ActiveWorkspaceChangedEvent(lastActiveWorkspace, currentActiveWorkspace));
+                messenger.Send(new ActiveWorkspaceChangedEvent(lastActiveWorkspace, currentActiveWorkspace));
+            }
 
             if (workspaceItem is IToolItem toolItem)
             {
-                lastActiveTool = currentActiveTool;
-                currentActiveTool = toolItem;
+                if (toolItem != currentActiveTool)
+                {
+                    lastActiveTool = currentActiveTool;
+                    currentActiveTool = toolItem;
 
-                messenger.Send(new ActiveToolChangedEvent(lastActiveTool, currentActiveTool));
+                    messenger.Send(new ActiveToolChangedEvent(lastActiveTool, currentActiveTool));
+                }
             }
             else
             if (workspaceItem is IDocumentItem documentItem)
             {
-                lastActiveDocument = currentActiveDocument;
-                currentActiveDocument = documentItem;
+                if (documentItem != currentActiveDocument)
+                {
+                    lastActiveDocument = currentActiveDocument;
+                    currentActiveDocument = documentItem;
 
-                messenger.Send(new ActiveDocumentChangedEvent(lastActiveDocument, currentActiveDocument));
+                    messenger.Send(new ActiveDocumentChangedEvent(lastActiveDocument, currentActiveDocument));
+                }
             }
         }
 
@@ -76,9 +111,7 @@ namespace SLStudio.Core.Docking
 
             var result = document.OnClosing();
             if (result)
-            {
                 documentToClose = document;
-            }
 
             e.Cancel = !result;
         }
@@ -92,7 +125,9 @@ namespace SLStudio.Core.Docking
             documentToClose.OnClosed();
 
             if (documentToClose == currentActiveDocument)
-                FocusLastDocument();
+                FocusLastDocument().FireAndForget();
+
+            messenger.Send(new WorkspaceClosedEvent(documentToClose));
 
             DisposeDocumentToClose();
         }
@@ -125,11 +160,11 @@ namespace SLStudio.Core.Docking
             documentToClose = null;
         }
 
-        private void FocusLastDocument()
+        private async Task FocusLastDocument()
         {
             var target = lastActiveDocument ?? shell.Workspaces.OfType<IDocumentItem>().LastOrDefault();
             if (target != null)
-                shell.OpenWorkspaces(target);
+                await shell.OpenWorkspaces(target);
         }
 
         protected override void OnDetaching()
@@ -141,5 +176,12 @@ namespace SLStudio.Core.Docking
             AssociatedObject.LayoutUpdated -= OnLayoutUpdated;
             base.OnDetaching();
         }
+    }
+
+    internal interface IDockingService
+    {
+        void CloseFromId(string id);
+
+        void FocusItem(IWorkspaceItem item = null);
     }
 }

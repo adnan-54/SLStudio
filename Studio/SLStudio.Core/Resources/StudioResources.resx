@@ -156,4 +156,7 @@
   <data name="filter_allFiles" xml:space="preserve">
     <value>All Files|*.*</value>
   </data>
+  <data name="toolbox_displayName" xml:space="preserve">
+    <value>Toolbox</value>
+  </data>
 </root>
