@@ -79,11 +79,20 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to All Files|*.*.
+        ///   Looks up a localized string similar to All Files (*.*)|*.*.
         /// </summary>
         public static string filter_allFiles {
             get {
                 return ResourceManager.GetString("filter_allFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Supported Files.
+        /// </summary>
+        public static string filter_allSupportedFiles {
+            get {
+                return ResourceManager.GetString("filter_allSupportedFiles", resourceCulture);
             }
         }
         

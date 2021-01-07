@@ -154,9 +154,12 @@
     <value>Item(s) Saved</value>
   </data>
   <data name="filter_allFiles" xml:space="preserve">
-    <value>All Files|*.*</value>
+    <value>All Files (*.*)|*.*</value>
   </data>
   <data name="toolbox_displayName" xml:space="preserve">
     <value>Toolbox</value>
+  </data>
+  <data name="filter_allSupportedFiles" xml:space="preserve">
+    <value>All Supported Files</value>
   </data>
 </root>
