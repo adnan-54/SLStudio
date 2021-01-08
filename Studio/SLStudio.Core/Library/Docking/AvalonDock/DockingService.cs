@@ -4,6 +4,7 @@ using AvalonDock.Layout;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;
 using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,7 +15,9 @@ namespace SLStudio.Core.Docking
     internal class DockingService : ServiceBaseGeneric<DockingManager>, IDockingService
     {
         private readonly IShell shell;
+        private readonly IWindowManager windowManager;
         private readonly IThemeManager themeManager;
+        private readonly IFileService fileService;
         private readonly IMessenger messenger;
         private IWorkspaceItem lastActiveWorkspace;
         private IWorkspaceItem currentActiveWorkspace;
@@ -27,9 +30,13 @@ namespace SLStudio.Core.Docking
         public DockingService()
         {
             shell = IoC.Get<IShell>();
+            windowManager = IoC.Get<IWindowManager>();
             themeManager = IoC.Get<IThemeManager>();
+            fileService = IoC.Get<IFileService>();
             messenger = IoC.Get<IMessenger>();
         }
+
+        public IShell Shell { get; set; }
 
         protected override void OnAttached()
         {
@@ -108,12 +115,27 @@ namespace SLStudio.Core.Docking
         {
             if (e.Document.Content is not IDocumentItem document)
                 return;
+            var cancelEventArgs = new CancelEventArgs();
+            document.OnClosing(cancelEventArgs);
 
-            var result = document.OnClosing();
-            if (result)
+            if (document is IFileDocumentItem file && file.IsDirty)
+            {
+                var model = new ConfirmDocumentsClosingViewModel(file);
+                windowManager.ShowDialog(model);
+
+                if (model.Result != ConfirmDocumentsClosingViewModel.ConfirmationResult.Cancel)
+                {
+                    foreach (var fileToSave in model.FilesToSave)
+                        fileService.Save(fileToSave);
+                }
+                else
+                    cancelEventArgs.Cancel = true;
+            }
+
+            e.Cancel = cancelEventArgs.Cancel;
+
+            if (!e.Cancel)
                 documentToClose = document;
-
-            e.Cancel = !result;
         }
 
         private async void OnDocumentClosed(object sender, DocumentClosedEventArgs e)
@@ -165,6 +187,24 @@ namespace SLStudio.Core.Docking
             var target = lastActiveDocument ?? shell.Workspaces.OfType<IDocumentItem>().LastOrDefault();
             if (target != null)
                 await shell.OpenWorkspaces(target);
+        }
+
+        //todo: way to supress this from shell
+        private bool ShowClosingDialog(IFileDocumentItem fileDocument)
+        {
+            if (fileDocument == null || !fileDocument.IsDirty)
+                return true;
+
+            //todo: show dialog
+            bool? dialogResult = null;
+
+            if (dialogResult == null)
+                return false;
+            else
+            if (dialogResult == true)
+                fileService.Save(fileDocument);
+
+            return true;
         }
 
         protected override void OnDetaching()

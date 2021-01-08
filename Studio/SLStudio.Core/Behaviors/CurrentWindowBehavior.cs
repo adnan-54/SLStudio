@@ -14,37 +14,72 @@ namespace SLStudio.Core.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
-            if (AssociatedObject.DataContext is not WindowViewModel windowScreen)
-                throw new InvalidOperationException($"The Window DataContext does not implement {nameof(WindowViewModel)}");
 
-            viewModel = windowScreen;
+            if (AssociatedObject.DataContext is not WindowViewModel viewModel)
+                throw new InvalidOperationException($"The Window DataContext does not implement {nameof(WindowViewModel)}");
+            this.viewModel = viewModel;
+
+            viewModel.SetupEvents(this);
+
             if (AssociatedObject.IsLoaded)
-                windowScreen.OnLoaded();
+                LoadedAction?.Invoke(AssociatedObject, EventArgs.Empty);
 
             AssociatedObject.Loaded += WindowLoaded;
+            AssociatedObject.Activated += WindowActivated;
             AssociatedObject.Closing += WindowClosing;
             AssociatedObject.Closed += WindowClosed;
-            AssociatedObject.Activated += WindowActivated;
+        }
+
+        public Action<object, EventArgs> LoadedAction { get; private set; }
+
+        public Action<object, EventArgs> ActivatedAction { get; private set; }
+
+        public Action<object, CancelEventArgs> ClosingAction { get; private set; }
+
+        public Action<object, EventArgs> ClosedAction { get; private set; }
+
+        internal void SetLoadedAction(Action<object, EventArgs> action)
+        {
+            if (LoadedAction == null)
+                LoadedAction = action;
+        }
+
+        internal void SetActivatedAction(Action<object, EventArgs> action)
+        {
+            if (ActivatedAction == null)
+                ActivatedAction = action;
+        }
+
+        internal void SetClosingAction(Action<object, CancelEventArgs> action)
+        {
+            if (ClosingAction == null)
+                ClosingAction = action;
+        }
+
+        internal void SetClosedAction(Action<object, EventArgs> action)
+        {
+            if (ClosedAction == null)
+                ClosedAction = action;
         }
 
         private void WindowLoaded(object sender, EventArgs e)
         {
-            viewModel.OnLoaded();
-        }
-
-        private void WindowClosing(object sender, CancelEventArgs e)
-        {
-            viewModel.OnClosing(e);
-        }
-
-        private void WindowClosed(object sender, EventArgs e)
-        {
-            viewModel.OnClosed();
+            LoadedAction?.Invoke(sender, e);
         }
 
         private void WindowActivated(object sender, EventArgs e)
         {
-            viewModel.OnActivated();
+            ActivatedAction?.Invoke(sender, e);
+        }
+
+        private void WindowClosing(object sender, CancelEventArgs e)
+        {
+            ClosingAction?.Invoke(sender, e);
+        }
+
+        private void WindowClosed(object sender, EventArgs e)
+        {
+            ClosedAction?.Invoke(sender, e);
         }
 
         public void Activate()
@@ -79,9 +114,9 @@ namespace SLStudio.Core.Behaviors
         protected override void OnDetaching()
         {
             AssociatedObject.Loaded -= WindowLoaded;
+            AssociatedObject.Activated -= WindowActivated;
             AssociatedObject.Closing -= WindowClosing;
             AssociatedObject.Closed -= WindowClosed;
-            AssociatedObject.Activated -= WindowActivated;
 
             base.OnDetaching();
         }

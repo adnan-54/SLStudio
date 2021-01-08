@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using System;
+using System.ComponentModel;
 
 namespace SLStudio.Core
 {
@@ -96,9 +97,8 @@ namespace SLStudio.Core
         {
         }
 
-        public virtual bool OnClosing()
+        public virtual void OnClosing(CancelEventArgs e)
         {
-            return true;
         }
 
         public virtual void OnClosed()
@@ -148,7 +148,7 @@ namespace SLStudio.Core
 
         void OnDeactivated();
 
-        bool OnClosing();
+        void OnClosing(CancelEventArgs e);
 
         void OnClosed();
     }

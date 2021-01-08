@@ -202,7 +202,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
                 SelectedFile = view.FirstOrDefault();
         }
 
-        public override void OnLoaded()
+        protected override void OnLoaded()
         {
             if (SelectedCategory == null)
                 AvailableCategories.FirstOrDefault().IsSelected = true;

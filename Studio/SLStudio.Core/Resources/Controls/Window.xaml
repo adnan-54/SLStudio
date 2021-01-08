@@ -81,8 +81,8 @@
         <Setter Property="TitleCharacterCasing" Value="Normal" />
         <Setter Property="BorderThickness" Value="1" />
         <Setter Property="WindowState" Value="Maximized" />
-        <Setter Property="MinWidth" Value="400" />
-        <Setter Property="MinHeight" Value="400" />
+        <Setter Property="MinWidth" Value="100" />
+        <Setter Property="MinHeight" Value="100" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="IconTemplate">
             <Setter.Value>
@@ -133,8 +133,8 @@
             <Setter.Value>
                 <DataTemplate>
                     <TextBlock Margin="{StaticResource LeftMargin}"
-                       Text="{DXBinding '@a($studio:DialogWindow).Title'}"
-                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+                               Text="{DXBinding '@a($studio:DialogWindow).Title'}"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
                 </DataTemplate>
             </Setter.Value>
         </Setter>

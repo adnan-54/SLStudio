@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.239.512</AssemblyVersion>
-		<FileVersion>21.1.239.512</FileVersion>
+		<AssemblyVersion>21.1.263.536</AssemblyVersion>
+		<FileVersion>21.1.263.536</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -73,6 +73,11 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>OutputResource.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Modules\Shell\Resources\ShellResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>ShellResources.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -139,6 +144,10 @@
 		<EmbeddedResource Update="Modules\Output\Resources\OutputResource.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>OutputResource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Shell\Resources\ShellResources.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>ShellResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\SplashScreen\Resources\SplashScreenResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>

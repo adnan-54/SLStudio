@@ -1,11 +1,10 @@
 ﻿using SLStudio.Core.Docking;
 using SLStudio.Core.Modules.StartPage.ViewModels;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SLStudio.Core.Modules.Shell.ViewModels
+namespace SLStudio.Core
 {
     internal class ShellViewModel : WindowViewModel, IShell
     {
@@ -95,7 +94,7 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
             });
         }
 
-        public override void OnLoaded()
+        protected override void OnLoaded()
         {
             if (!Documents.Any())
                 OpenWorkspace<IStartPage>().FireAndForget();
@@ -126,5 +125,22 @@ namespace SLStudio.Core.Modules.Shell.ViewModels
                 Documents.Remove(document);
             }
         }
+    }
+
+    public interface IShell : IWindow
+    {
+        IReadOnlyCollection<IWorkspaceItem> Workspaces { get; }
+
+        IWorkspaceItem ActiveWorkspace { get; }
+
+        Task<T> AddWorkspace<T>() where T : class, IWorkspaceItem;
+
+        Task<T> OpenWorkspace<T>() where T : class, IWorkspaceItem;
+
+        Task AddWorkspaces(params IWorkspaceItem[] workspaces);
+
+        Task OpenWorkspaces(params IWorkspaceItem[] workspaces);
+
+        Task CloseWorkspaces(params IWorkspaceItem[] workspaces);
     }
 }

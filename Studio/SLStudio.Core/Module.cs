@@ -3,7 +3,6 @@ using SimpleInjector;
 using SLStudio.Core.Menus;
 using SLStudio.Core.Modules.NewFile.ViewModels;
 using SLStudio.Core.Modules.Output.ViewModels;
-using SLStudio.Core.Modules.Shell.ViewModels;
 using SLStudio.Core.Modules.StartPage.ViewModels;
 using SLStudio.Core.Modules.StatusBar.ViewModels;
 using SLStudio.Core.Modules.ToolBox.ViewModels;
@@ -28,6 +27,8 @@ namespace SLStudio.Core
             container.RegisterService<IToolManager, DefaultToolManager>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
+            container.RegisterSingleton<IShellClosingStrategy, ShellClosingStrategy>();
+
             container.RegisterSingleton<IToolbox, ToolBoxViewModel>();
             container.RegisterSingleton<IOutput, OutputViewModel>();
             container.RegisterSingleton<IStatusBar, StatusBarViewModel>();
