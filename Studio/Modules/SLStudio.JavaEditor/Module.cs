@@ -1,7 +1,7 @@
 ﻿using SimpleInjector;
 using SLStudio.Core;
 
-namespace SLStudio.RpkEditor
+namespace SLStudio.JavaEditor
 {
     internal class Module : ModuleBase
     {

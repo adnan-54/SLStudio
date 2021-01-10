@@ -20,6 +20,8 @@ namespace SLStudio.RpkEditor
             TextDocument.TextChanged += OnTextChanged;
         }
 
+        public bool IsBusy => busyOperations > 0;
+
         public TextDocument TextDocument { get; }
 
         public string Content
@@ -27,8 +29,6 @@ namespace SLStudio.RpkEditor
             get => TextDocument.Text;
             set => TextDocument.Text = value;
         }
-
-        public bool IsBusy => busyOperations > 0;
 
         protected override Task DoNew(string content)
         {

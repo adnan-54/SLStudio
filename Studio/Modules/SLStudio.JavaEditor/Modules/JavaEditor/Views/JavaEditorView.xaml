@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SLStudio.TexEditor.Modules.TexEditor.Views.TexEditorView"
+﻿<UserControl x:Class="SLStudio.JavaEditor.Modules.JavaEditor.Views.JavaEditorView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -12,7 +12,7 @@
                        LineNumbersForeground="{StaticResource Focused}"
                        Background="{StaticResource Editor.Background}"
                        HorizontalScrollBarVisibility="Auto"
-                       SyntaxHighlighting="XML">
+                       SyntaxHighlighting="Java">
         </ae:TextEditor>
     </xctk:BusyIndicator>
 </UserControl>

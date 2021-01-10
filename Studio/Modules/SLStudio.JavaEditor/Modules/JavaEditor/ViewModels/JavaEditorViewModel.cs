@@ -1,19 +1,19 @@
 ﻿using ICSharpCode.AvalonEdit.Document;
 using SLStudio.Core;
-using SLStudio.TexEditor.Resources;
+using SLStudio.JavaEditor.Resources;
 using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace SLStudio.TexEditor
+namespace SLStudio.JavaEditor
 {
-    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(TexEditorResources), "", false, ".tex")]
-    internal class TexEditorViewModel : FileDocumentBase, ITexEditor
+    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(JavaEditorResources), "", false, ".java")]
+    internal class JavaEditorViewModel : FileDocumentBase, IJavaEditor
     {
         private string lastCheckpoint;
         private int busyOperations = 0;
 
-        public TexEditorViewModel()
+        public JavaEditorViewModel()
         {
             TextDocument = new TextDocument();
             TextDocument.TextChanged += OnTextChanged;
@@ -99,7 +99,7 @@ namespace SLStudio.TexEditor
         }
     }
 
-    public interface ITexEditor : IFileDocumentItem
+    public interface IJavaEditor
     {
     }
 }

@@ -9,26 +9,25 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 	  <ProjectReference Include="..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\TexEditorResources.Designer.cs">
+	  <Folder Include="Resources\Icons\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\JavaEditorResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
-	    <DependentUpon>TexEditorResources.resx</DependentUpon>
+	    <DependentUpon>JavaEditorResources.resx</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\TexEditorResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>TexEditorResources.Designer.cs</LastGenOutput>
+	  <EmbeddedResource Update="Resources\JavaEditorResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>JavaEditorResources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Resources\Icons\" />
 	</ItemGroup>
 </Project>

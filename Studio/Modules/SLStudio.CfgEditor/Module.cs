@@ -1,7 +1,7 @@
 ﻿using SimpleInjector;
 using SLStudio.Core;
 
-namespace SLStudio.RpkEditor
+namespace SLStudio.CfgEditor
 {
     internal class Module : ModuleBase
     {

@@ -21,6 +21,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.RpkEditor", "Studi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.TexEditor", "Studio\Modules\SLStudio.TexEditor\SLStudio.TexEditor.csproj", "{0DEA0E10-2441-492A-BD11-2739CAA48EBE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.CfgEditor", "Studio\Modules\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj", "{9D45925C-77B0-4B88-9EF1-6100AEA56BA3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.JavaEditor", "Studio\Modules\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj", "{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{0DEA0E10-2441-492A-BD11-2739CAA48EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DEA0E10-2441-492A-BD11-2739CAA48EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DEA0E10-2441-492A-BD11-2739CAA48EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D45925C-77B0-4B88-9EF1-6100AEA56BA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D45925C-77B0-4B88-9EF1-6100AEA56BA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D45925C-77B0-4B88-9EF1-6100AEA56BA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D45925C-77B0-4B88-9EF1-6100AEA56BA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,10 +75,12 @@ Global
 		{800A54E0-D2CD-4DE2-B590-AAAB66E1A69B} = {8E0C118E-89FC-4315-BFAB-6B07CD8DB871}
 		{435033CF-B015-4D7B-964D-4F0E6878DD6C} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 		{0DEA0E10-2441-492A-BD11-2739CAA48EBE} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
+		{9D45925C-77B0-4B88-9EF1-6100AEA56BA3} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
+		{84E017C9-A9EB-4A4D-AE77-DE0D6FF64709} = {4ED0CEB9-3772-4AAD-A467-5BA067DF55C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal

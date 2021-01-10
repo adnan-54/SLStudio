@@ -12,8 +12,6 @@ namespace SLStudio.Core
 {
     internal class Module : ModuleBase
     {
-        public override string Name => "SLStudio.Core";
-        public override string Author => "Adnan54";
         public override int Priority => int.MaxValue;
 
         protected override void Register(Container container)
