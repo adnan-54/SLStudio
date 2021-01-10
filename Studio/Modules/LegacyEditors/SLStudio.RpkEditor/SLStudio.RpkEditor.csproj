@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.258.531</AssemblyVersion>
-		<FileVersion>21.1.258.531</FileVersion>
+		<AssemblyVersion>21.1.259.532</AssemblyVersion>
+		<FileVersion>21.1.259.532</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -18,9 +18,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
-		<ProjectReference Include="..\..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
-		<ProjectReference Include="..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+	  <ProjectReference Include="..\..\..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
+	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

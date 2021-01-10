@@ -4,16 +4,16 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.256.529</AssemblyVersion>
-		<FileVersion>21.1.256.529</FileVersion>
+		<AssemblyVersion>21.1.257.530</AssemblyVersion>
+		<FileVersion>21.1.257.530</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <Folder Include="Resources\Icons\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Icons\" />
+	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
