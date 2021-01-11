@@ -162,4 +162,13 @@
   <data name="filter_allSupportedFiles" xml:space="preserve">
     <value>All Supported Files</value>
   </data>
+  <data name="Column" xml:space="preserve">
+    <value>Ch:</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Ln:</value>
+  </data>
+  <data name="NoIssuesFound" xml:space="preserve">
+    <value>No issues found</value>
+  </data>
 </root>

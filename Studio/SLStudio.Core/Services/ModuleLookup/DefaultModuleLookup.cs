@@ -44,7 +44,6 @@ namespace SLStudio.Core
 
                 logger.Debug($"Searching modules");
                 var types = FindModules();
-                logger.Debug($"{types.Count()} modules found");
 
                 var instances = CreateInstances(types);
                 modules.AddRange(instances);

@@ -61,6 +61,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ch:.
+        /// </summary>
+        public static string Column {
+            get {
+                return ResourceManager.GetString("Column", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The key combination ({0}) is not a command..
         /// </summary>
         public static string CombinationIsNotACommand {
@@ -106,6 +115,15 @@ namespace SLStudio.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ln:.
+        /// </summary>
+        public static string Line {
+            get {
+                return ResourceManager.GetString("Line", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading assembly {0}....
         /// </summary>
         public static string LoadingAssemblyAssemblyName {
@@ -120,6 +138,15 @@ namespace SLStudio.Core.Resources {
         public static string MergingResources {
             get {
                 return ResourceManager.GetString("MergingResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No issues found.
+        /// </summary>
+        public static string NoIssuesFound {
+            get {
+                return ResourceManager.GetString("NoIssuesFound", resourceCulture);
             }
         }
         

@@ -1,7 +1,6 @@
 ﻿using ICSharpCode.AvalonEdit.Editing;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace SLStudio.Core
@@ -9,7 +8,7 @@ namespace SLStudio.Core
     public static class WpfHelpers
     {
         //AvalonDock
-        public static DependencyProperty CaretBrushProperty = DependencyProperty.RegisterAttached("CaretBrush", typeof(Brush), typeof(WpfHelpers), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(15, 15, 15)), OnCaretBrushChanged));
+        public static readonly DependencyProperty CaretBrushProperty = DependencyProperty.RegisterAttached("CaretBrush", typeof(Brush), typeof(WpfHelpers), new PropertyMetadata(new SolidColorBrush(Color.FromRgb(15, 15, 15)), OnCaretBrushChanged));
 
         public static void SetCaretBrush(DependencyObject d, Brush value)
         {
@@ -23,7 +22,7 @@ namespace SLStudio.Core
 
         private static void OnCaretBrushChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (!(d is TextArea textArea) || !(e.NewValue is Brush brush))
+            if (d is not TextArea textArea || e.NewValue is not Brush brush)
                 return;
             textArea.Caret.CaretBrush = brush;
         }

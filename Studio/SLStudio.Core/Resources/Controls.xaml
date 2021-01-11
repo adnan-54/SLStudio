@@ -44,6 +44,9 @@
     <!--AvalonEdit-->
     <Style TargetType="{x:Type ae:TextEditor}" BasedOn="{StaticResource StudioAvalonEditStyle}" />
 
+    <!--StudioTextEditor-->
+    <Style TargetType="{x:Type studio:StudioTextEditor}" BasedOn="{StaticResource StudioTextEditorStyle}" />
+
     <!--TextArea-->
     <Style TargetType="{x:Type ae:TextArea}" BasedOn="{StaticResource StudioTextAreaStyle}" />
 

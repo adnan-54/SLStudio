@@ -34,7 +34,7 @@
         </ToolBar>
 
         <!--Output-->
-        <ae:TextEditor Grid.Row="1" Margin="3"
+        <ae:TextEditor Grid.Row="1"
                        IsReadOnly="True" BorderThickness="0"
                        WordWrap="{Binding WordWrap}"
                        Document="{Binding TextDocument}">
