@@ -1,8 +1,6 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
-using SLStudio.Core.Modules.Output.ViewModels;
-using SLStudio.Core.Modules.Output.Views;
-using SLStudio.Core.Modules.ToolBox.ViewModels;
+using SLStudio.Core.Controls;
 using System;
 using System.Linq;
 using System.Windows;
@@ -122,12 +120,59 @@ namespace SLStudio.Core
         {
             Loaded -= OnLoaded;
 
+            SetupZoomComboBox();
+            SetupCurrentLineHighlighter();
+            SetupLeftMargins();
+        }
+
+        private void SetupZoomComboBox()
+        {
             var scrollViewer = Template.FindName("PART_ScrollViewer", this) as ScrollViewer;
             zoomCombo = scrollViewer.Template.FindName("PART_ZoomComboBox", scrollViewer) as ComboBox;
             zoomCombo.PreviewKeyDown += PART_ZoomComboBox_OnPreviewKeyDown;
             zoomCombo.PreviewLostKeyboardFocus += PART_ZoomComboBox_OnPreviewLostKeyboardFocus;
             zoomCombo.DropDownClosed += PART_ZoomComboBox_OnDropDownClosed;
             lastValidZoomComboValue = zoomCombo.Text;
+        }
+
+        private void SetupCurrentLineHighlighter()
+        {
+            TextArea.Options.HighlightCurrentLine = true;
+
+            WpfHelpers.TryFindResource("HoverBorder", out Brush borderBrush);
+            var backgorund = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
+            var border = new Pen(borderBrush, 2.5);
+
+            backgorund.Freeze();
+            border.Freeze();
+
+            TextArea.TextView.CurrentLineBackground = backgorund;
+            TextArea.TextView.CurrentLineBorder = border;
+        }
+
+        private void SetupLeftMargins()
+        {
+            foreach (var item in TextArea.LeftMargins.ToList())
+            {
+                if (item is LineNumberMargin || item is Line)
+                {
+                    TextArea.LeftMargins.Remove(item);
+                    continue;
+                }
+            }
+
+            var leftMargin = new StudioTextEditorLeftMargin(CreateLineNumberMargin());
+            TextArea.LeftMargins.Insert(0, leftMargin);
+        }
+
+        private LineNumberMargin CreateLineNumberMargin()
+        {
+            LineNumberMargin lineNumbers = new LineNumberMargin();
+            WpfHelpers.TryFindResource("Focused", out SolidColorBrush foregroundColor);
+            lineNumbers.SetValue(ForegroundProperty, foregroundColor);
+            lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
+            lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
+            return lineNumbers;
         }
 
         private void PART_ZoomComboBox_OnPreviewKeyDown(object sender, KeyEventArgs e)

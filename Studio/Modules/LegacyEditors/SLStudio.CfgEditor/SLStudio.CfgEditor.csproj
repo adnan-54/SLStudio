@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.329.602</AssemblyVersion>
-		<FileVersion>21.1.329.602</FileVersion>
+		<AssemblyVersion>21.1.348.621</AssemblyVersion>
+		<FileVersion>21.1.348.621</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
