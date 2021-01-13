@@ -31,14 +31,14 @@ namespace SLStudio.Core
 
         public IHighlightingDefinition SyntaxHighlighting => GetSyntaxHighlighting();
 
-        protected virtual string LightThemeSyntaxHighlightingPath { get; }
+        protected virtual string LightThemeXshd { get; }
 
-        protected virtual string DarkThemeSyntaxHighlightingPath { get; }
+        protected virtual string DarkThemeXshd { get; }
 
         private IHighlightingDefinition GetSyntaxHighlighting()
         {
             if (syntaxHighlighting == null)
-                syntaxHighlighting = CreateSyntaxHighlighting(themeManager.CurrentTheme.IsDark ? DarkThemeSyntaxHighlightingPath : LightThemeSyntaxHighlightingPath);
+                syntaxHighlighting = CreateSyntaxHighlighting(themeManager.CurrentTheme.IsDark ? DarkThemeXshd : LightThemeXshd);
             return syntaxHighlighting;
         }
 
@@ -46,14 +46,14 @@ namespace SLStudio.Core
         {
             try
             {
-                using var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(path);
+                using var stream = GetType().Assembly.GetManifestResourceStream(path);
                 using var reader = new XmlTextReader(stream);
 
                 var xshd = HighlightingLoader.LoadXshd(reader);
                 var manager = HighlightingManager.Instance;
 
                 var definition = HighlightingLoader.Load(xshd, manager);
-                manager.RegisterHighlighting(xshd.Name, xshd.Extensions.ToArray(), definition);
+                manager.RegisterHighlighting(Name, new string[] { Extension }, definition);
 
                 return manager.GetDefinition(Name);
             }
