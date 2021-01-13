@@ -23,6 +23,7 @@ namespace SLStudio.Core
             container.RegisterService<IMenuItemFactory, DefaultMenuItemFactory>();
             container.RegisterService<IMenuLookup, DefaultMenuLookup>();
             container.RegisterService<IToolManager, DefaultToolManager>();
+            container.RegisterService<ILanguageDefinitionManager, DefaultLanguageDefinitionManager>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
             container.RegisterSingleton<IShellClosingStrategy, ShellClosingStrategy>();
