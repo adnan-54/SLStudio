@@ -3,8 +3,6 @@ using ICSharpCode.AvalonEdit.Highlighting.Xshd;
 using ICSharpCode.AvalonEdit.Indentation;
 using SLStudio.Logging;
 using System;
-using System.Linq;
-using System.Reflection;
 using System.Xml;
 
 namespace SLStudio.Core
@@ -16,9 +14,9 @@ namespace SLStudio.Core
         private readonly IThemeManager themeManager;
         private IHighlightingDefinition syntaxHighlighting;
 
-        protected LanguageDefinition()
+        protected LanguageDefinition(IThemeManager themeManager)
         {
-            themeManager = IoC.Get<IThemeManager>();
+            this.themeManager = themeManager;
         }
 
         public abstract string Name { get; }

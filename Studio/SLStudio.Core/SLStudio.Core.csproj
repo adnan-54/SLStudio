@@ -4,8 +4,8 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.372.645</AssemblyVersion>
-		<FileVersion>21.1.372.645</FileVersion>
+		<AssemblyVersion>21.1.382.655</AssemblyVersion>
+		<FileVersion>21.1.382.655</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -36,6 +36,7 @@
 		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
 		<PackageReference Include="SharpVectors.Reloaded" Version="1.7.1" />
 		<PackageReference Include="SimpleInjector" Version="5.1.0" />
+		<PackageReference Include="System.Reactive" Version="5.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -4,18 +4,20 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.355.628</AssemblyVersion>
-		<FileVersion>21.1.355.628</FileVersion>
+		<AssemblyVersion>21.1.366.639</AssemblyVersion>
+		<FileVersion>21.1.366.639</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Remove="Modules\RpkEditor\AvalonEdit\RpkLight.xshd" />
+		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
 		<None Remove="Resources\Icons\rpkFileIcon.ai" />
 		<None Remove="Resources\Icons\rpkFileIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Modules\RpkEditor\AvalonEdit\RpkLight.xshd" />
+	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>

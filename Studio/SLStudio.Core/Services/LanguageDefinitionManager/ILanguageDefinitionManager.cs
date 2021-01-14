@@ -8,11 +8,14 @@ namespace SLStudio.Core
     internal class DefaultLanguageDefinitionManager : ILanguageDefinitionManager
     {
         private readonly IAssemblyLookup assemblyLookup;
-        private List<ILanguageDefinition> languageDefinitionsCache;
+        private readonly IObjectFactory objectFactory;
 
-        public DefaultLanguageDefinitionManager(IAssemblyLookup assemblyLookup)
+        private IReadOnlyCollection<ILanguageDefinition> languageDefinitionsCache;
+
+        public DefaultLanguageDefinitionManager(IAssemblyLookup assemblyLookup, IObjectFactory objectFactory)
         {
             this.assemblyLookup = assemblyLookup;
+            this.objectFactory = objectFactory;
         }
 
         public IEnumerable<ILanguageDefinition> LanguageDefinitions => Lookup();
@@ -30,17 +33,20 @@ namespace SLStudio.Core
         private IEnumerable<ILanguageDefinition> Lookup()
         {
             if (languageDefinitionsCache == null)
-            {
-                var definitions = assemblyLookup.LoadedAssemblies
-                                                .SelectMany(assembly => assembly.DefinedTypes)
-                                                .Where(type => type.GetCustomAttribute<LanguageDefinitionAttribute>() != null)
-                                                .Where(type => type.IsSubclassOf(typeof(LanguageDefinition)))
-                                                .Select(type => (ILanguageDefinition)Activator.CreateInstance(type));
-
-                languageDefinitionsCache = new List<ILanguageDefinition>(definitions);
-            }
+                CreateCache();
 
             return languageDefinitionsCache;
+        }
+
+        private void CreateCache()
+        {
+            var definitions = assemblyLookup.LoadedAssemblies
+                                            .SelectMany(assembly => assembly.DefinedTypes)
+                                            .Where(type => type.IsSubclassOf(typeof(LanguageDefinition)))
+                                            .Where(type => type.GetCustomAttribute<LanguageDefinitionAttribute>() != null)
+                                            .Select(type => objectFactory.Create(type) as ILanguageDefinition);
+
+            languageDefinitionsCache = new List<ILanguageDefinition>(definitions);
         }
     }
 

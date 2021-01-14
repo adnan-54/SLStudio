@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<SyntaxDefinition name="RpkFile" extensions=".rpk" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+<SyntaxDefinition name="Rpk File" extensions=".rpk" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
 	<Color name="Digits" foreground="DarkBlue" exampleText="3.14" />
 	<Color name="Comment" foreground="Green" exampleText="// comment" />
 	<Color name="String" foreground="Sienna" exampleText="var text = &quot;Hello, World!&quot;;" />
