@@ -1,126 +1,73 @@
 ﻿<?xml version="1.0"?>
 <SyntaxDefinition name="Rpk File" extensions=".rpk" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
-	<Color name="Digits" foreground="DarkBlue" exampleText="3.14" />
-	<Color name="Comment" foreground="Green" exampleText="// comment" />
-	<Color name="String" foreground="Sienna" exampleText="var text = &quot;Hello, World!&quot;;" />
-	<Color name="Character" foreground="Sienna" exampleText="var char = 'a';" />
-	<Color name="Regex" foreground="Sienna" exampleText="/abc/m" />
-	<Color name="JavaScriptKeyWords" foreground="Blue" exampleText="return myVariable;" />
-	<Color name="JavaScriptIntrinsics" foreground="Blue" exampleText="Math.random()" />
-	<Color name="JavaScriptLiterals" foreground="Blue" exampleText="return false;" />
-	<Color name="JavaScriptGlobalFunctions" foreground="Blue" exampleText="escape(myString);" />
-	<RuleSet ignoreCase="false">
-		<Keywords color="JavaScriptKeyWords">
-			<Word>break</Word>
-			<Word>continue</Word>
-			<Word>delete</Word>
-			<Word>else</Word>
-			<Word>for</Word>
-			<Word>function</Word>
-			<Word>if</Word>
-			<Word>in</Word>
-			<Word>new</Word>
-			<Word>return</Word>
-			<Word>this</Word>
-			<Word>typeof</Word>
-			<Word>var</Word>
-			<Word>void</Word>
-			<Word>while</Word>
-			<Word>with</Word>
-			<Word>abstract</Word>
-			<Word>boolean</Word>
-			<Word>byte</Word>
-			<Word>case</Word>
-			<Word>catch</Word>
-			<Word>char</Word>
-			<Word>class</Word>
-			<Word>const</Word>
-			<Word>debugger</Word>
-			<Word>default</Word>
-			<Word>do</Word>
-			<Word>double</Word>
-			<Word>enum</Word>
-			<Word>export</Word>
-			<Word>extends</Word>
-			<Word>final</Word>
-			<Word>finally</Word>
-			<Word>float</Word>
-			<Word>goto</Word>
-			<Word>implements</Word>
-			<Word>import</Word>
-			<Word>instanceof</Word>
-			<Word>int</Word>
-			<Word>interface</Word>
-			<Word>long</Word>
-			<Word>native</Word>
-			<Word>package</Word>
-			<Word>private</Word>
-			<Word>protected</Word>
-			<Word>public</Word>
-			<Word>short</Word>
-			<Word>static</Word>
-			<Word>super</Word>
-			<Word>switch</Word>
-			<Word>synchronized</Word>
-			<Word>throw</Word>
-			<Word>throws</Word>
-			<Word>transient</Word>
-			<Word>try</Word>
-			<Word>volatile</Word>
-		</Keywords>
-		<Keywords color="JavaScriptIntrinsics">
-			<Word>Array</Word>
-			<Word>Boolean</Word>
-			<Word>Date</Word>
-			<Word>Function</Word>
-			<Word>Global</Word>
-			<Word>Math</Word>
-			<Word>Number</Word>
-			<Word>Object</Word>
-			<Word>RegExp</Word>
-			<Word>String</Word>
-		</Keywords>
-		<Keywords color="JavaScriptLiterals">
-			<Word>false</Word>
-			<Word>null</Word>
-			<Word>true</Word>
-			<Word>NaN</Word>
-			<Word>Infinity</Word>
-		</Keywords>
-		<Keywords color="JavaScriptGlobalFunctions">
-			<Word>eval</Word>
-			<Word>parseInt</Word>
-			<Word>parseFloat</Word>
-			<Word>escape</Word>
-			<Word>unescape</Word>
-			<Word>isNaN</Word>
-			<Word>isFinite</Word>
-		</Keywords>
+	<Color name="Tags" foreground="#569cd6" />
+	<Color name="Path" fontStyle="italic" />
+	<Color name="Values" foreground="#c8c8c8" />
+	<Color name="Comment" foreground="#57a64a" />
+	<Color name="SpecialWords" foreground="#92caf4" />
+	<Color name="SpecialChars" foreground="#808080" />
+	<RuleSet ignoreCase="true">
+		<!--Tags-->
+		<Rule color="Tags">(?=&lt;?\\?)\w+(?=&gt;)</Rule>
+
+		<!--Paths-->
+		<Rule color="Path">\w*[\\](.*[\\].(.+)|.*$)\.*</Rule>
+
+		<!--Values-->
+		<Rule color="Values">(?&lt;=\=).*</Rule>
+
+		<!--Comment-->
 		<Span color="Comment">
-			<Begin>//</Begin>
+			<Begin>;</Begin>
 		</Span>
-		<Span color="Comment" multiline="true">
-			<Begin>/\*</Begin>
-			<End>\*/</End>
-		</Span>
-		<Span color="Regex">
-			<Begin>(?&lt;!([})\]\w]+\s*))/</Begin>
-			<End>/</End>
-		</Span>
-		<Span color="String" multiline="true">
-			<Begin>"</Begin>
-			<End>"</End>
-			<RuleSet>
-				<Span begin="\\" end="." />
-			</RuleSet>
-		</Span>
-		<Span color="Character">
-			<Begin>'</Begin>
-			<End>'</End>
-			<RuleSet>
-				<Span begin="\\" end="." />
-			</RuleSet>
-		</Span>
-		<Rule color="Digits">\b0[xX][0-9a-fA-F]+|(\b\d+(\.[0-9]+)?|\.[0-9]+)([eE][+-]?[0-9]+)?</Rule>
+
+		<!--SpecialWords-->
+		<Keywords color="SpecialWords">
+			<Word>TypeID</Word>
+			<Word>SuperID</Word>
+			<Word>AdditionalType</Word>
+			<Word>Alias</Word>
+			<Word>IsParentCompatible</Word>
+			<Word>TypeOfEntry</Word>
+			<Word>mass</Word>
+			<Word>shape</Word>
+			<Word>mesh</Word>
+			<Word>flags</Word>
+			<Word>lod_amp</Word>
+			<Word>texture</Word>
+			<Word>script</Word>
+			<Word>native</Word>
+			<Word>car</Word>
+			<Word>type</Word>
+			<Word>diffuse</Word>
+			<Word>specular</Word>
+			<Word>ambient</Word>
+			<Word>position</Word>
+			<Word>direction</Word>
+			<Word>range</Word>
+			<Word>attenuation</Word>
+			<Word>theta</Word>
+			<Word>phi</Word>
+			<Word>lf_texture</Word>
+			<Word>lf_glow_color</Word>
+			<Word>lf_glow_colortype</Word>
+			<Word>lit_dynamic</Word>
+			<Word>attH_texture</Word>
+			<Word>attV_texture</Word>
+			<Word>lf_glow_offset</Word>
+			<Word>lf_glow_minsize</Word>
+			<Word>lf_glow_maxsize</Word>
+			<Word>lf_ray_minwidth</Word>
+			<Word>lf_ray_maxwidth</Word>
+			<Word>lf_ray_minlenght</Word>
+			<Word>lf_ray_maxlenght</Word>
+			<Word>lf_flare_minsize</Word>
+			<Word>lf_flare_maxsize</Word>
+			<Word>lf_flare_distance</Word>
+			<Word>lf_texturemode</Word>
+		</Keywords>
+
+		<!--SpecialChars-->
+		<Rule color="SpecialChars">(&lt;|\/|&gt;)</Rule>
 	</RuleSet>
 </SyntaxDefinition>

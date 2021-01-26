@@ -43,7 +43,7 @@ namespace SLStudio.Core.Menus.Handlers
         private string GetDisplayName()
         {
             if (activeFileDocument != null)
-                return string.Format(DisplayNameFormat, activeFileDocument.DisplayName);
+                return string.Format(DisplayNameFormat, activeFileDocument.DisplayName.Replace("_", @"__"));
             return DisplayName;
         }
     }

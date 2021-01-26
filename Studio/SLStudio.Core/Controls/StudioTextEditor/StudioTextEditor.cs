@@ -139,7 +139,7 @@ namespace SLStudio.Core
         {
             TextArea.Options.HighlightCurrentLine = true;
 
-            WpfHelpers.TryFindResource("HoverBorder", out Brush borderBrush);
+            WpfHelpers.TryFindResource("Border", out Brush borderBrush);
             var backgorund = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
             var border = new Pen(borderBrush, 2.5);
 

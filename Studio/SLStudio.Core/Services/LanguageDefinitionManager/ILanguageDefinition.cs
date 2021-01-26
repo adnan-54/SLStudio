@@ -11,12 +11,11 @@ namespace SLStudio.Core
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<LanguageDefinition>();
 
-        private readonly IThemeManager themeManager;
-        private IHighlightingDefinition syntaxHighlighting;
+        private Lazy<IHighlightingDefinition> syntaxHighlighting;
 
-        protected LanguageDefinition(IThemeManager themeManager)
+        protected LanguageDefinition()
         {
-            this.themeManager = themeManager;
+            syntaxHighlighting = new Lazy<IHighlightingDefinition>(GetSyntaxHighlighting);
         }
 
         public abstract string Name { get; }
@@ -27,17 +26,16 @@ namespace SLStudio.Core
 
         public virtual IFoldingStrategy FoldingStrategy { get; }
 
-        public IHighlightingDefinition SyntaxHighlighting => GetSyntaxHighlighting();
+        public IHighlightingDefinition SyntaxHighlighting => syntaxHighlighting.Value;
 
         protected virtual string LightThemeXshd { get; }
 
         protected virtual string DarkThemeXshd { get; }
 
-        private IHighlightingDefinition GetSyntaxHighlighting()
+        protected virtual IHighlightingDefinition GetSyntaxHighlighting()
         {
-            if (syntaxHighlighting == null)
-                syntaxHighlighting = CreateSyntaxHighlighting(themeManager.CurrentTheme.IsDark ? DarkThemeXshd : LightThemeXshd);
-            return syntaxHighlighting;
+            var themeManager = IoC.Get<IThemeManager>();
+            return CreateSyntaxHighlighting(themeManager.CurrentTheme.IsDark ? DarkThemeXshd : LightThemeXshd);
         }
 
         private IHighlightingDefinition CreateSyntaxHighlighting(string path)
