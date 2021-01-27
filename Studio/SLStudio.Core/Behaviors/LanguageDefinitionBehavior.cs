@@ -84,6 +84,7 @@ namespace SLStudio.Core.Behaviors
                                         .Throttle(TimeSpan.FromMilliseconds(500))
                                         .DistinctUntilChanged()
                                         .Subscribe(x => uiSynchronization.EnsureExecuteOnUiAsync(() => UpdateFolding()));
+            uiSynchronization.EnsureExecuteOnUiAsync(() => UpdateFolding());
         }
 
         private void ApplySyntaxHighlighting()
