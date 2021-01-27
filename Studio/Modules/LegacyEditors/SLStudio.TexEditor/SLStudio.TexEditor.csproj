@@ -9,6 +9,16 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+	  <None Remove="LanguageDefinition\LightHighlighting.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Update="Resources\TexEditorResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>

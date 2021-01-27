@@ -8,11 +8,9 @@ namespace SLStudio.Core
     {
         private static bool isInitialized = false;
 
-        private static Func<Type, object> GetInstance = (service)
-            => throw new InvalidOperationException("IoC is not initialized");
+        private static Func<Type, object> GetInstance { get; set; }
 
-        private static Func<Type, IEnumerable<object>> GetAllInstances = service
-            => throw new InvalidOperationException("IoC is not initialized");
+        private static Func<Type, IEnumerable<object>> GetAllInstances { get; set; }
 
         public static object Get(Type service)
             => GetInstance(service);
