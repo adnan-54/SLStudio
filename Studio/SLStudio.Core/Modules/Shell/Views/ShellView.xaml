@@ -8,7 +8,6 @@
                       xmlns:studio="clr-namespace:SLStudio.Core"
                       xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
                       xmlns:docking="clr-namespace:SLStudio.Core.Docking"
-                      xmlns:converters="clr-namespace:SLStudio.Core.Converters"
                       xmlns:menus="clr-namespace:SLStudio.Core.Menus"
                       xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
                       mc:Ignorable="d">
@@ -32,6 +31,7 @@
                 <Menu IsMainMenu="True">
                     <!--Resources-->
                     <Menu.Resources>
+                        <!--Todo: create style selector for this-->
                         <!--Styles-->
                         <Style TargetType="{x:Type MenuItem}" BasedOn="{StaticResource {x:Type MenuItem}}" x:Shared="False">
                             <Setter Property="Header" Value="{Binding DisplayName}" />
@@ -52,6 +52,8 @@
                             <Style.Triggers>
                                 <!--Separator-->
                                 <DataTrigger Binding="{Binding Converter={menus:MenuItemConverter}, ConverterParameter={x:Static menus:MenuItemTypes.Separator}}" Value="True">
+                                    <Setter Property="IsTabStop" Value="False" />
+                                    <Setter Property="Focusable" Value="False" />
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
@@ -85,16 +87,18 @@
 
                 <!--SearchBox-->
                 <TextBox Margin="{StaticResource LargeLeftMargin}" Padding="3, 1, 3, 1"
-                         Style="{StaticResource MahApps.Styles.TextBox.Search}"
+                         Style="{StaticResource StudioSearchTextBoxStyle}"
                          MinHeight="10" Height="22" Width="200"
                          VerticalAlignment="Center" VerticalContentAlignment="Center"
-                         studio:WpfHelpers.Watermark="Test"
+                         studio:WpfHelpers.Watermark="Search (Ctrl+Q)"
                          Visibility="Collapsed" />
 
                 <!--SolutionName-->
-                <TextBlock Margin="{StaticResource LargeLeftMargin}" Padding="6, 3, 6, 3"
-                           Text="Test" VerticalAlignment="Center"
-                           Background="{StaticResource MahApps.Brushes.SemiTransparent}"
+                <TextBlock Margin="{StaticResource LargeLeftMargin}" Padding="6, 4, 6, 4"
+                           Text="SLStudio" VerticalAlignment="Center"
+                           Background="{StaticResource Border}"
+                           Foreground="{StaticResource Foreground}"
+                           ToolTip="C:/SLStudio.sls"
                            Visibility="Collapsed" />
             </StackPanel>
         </metro:WindowCommands>
@@ -116,10 +120,10 @@
         </ToolBarTray>
 
         <!--AvalonDock-->
-        <avalonDock:DockingManager Grid.Row="1" 
-                                   ActiveContent="{Binding SelectedItem, Mode=TwoWay}"
-                                   AnchorablesSource="{Binding Tools}" 
-                                   DocumentsSource="{Binding Documents}" 
+        <avalonDock:DockingManager Grid.Row="1"
+                                   ActiveContent="{Binding ActiveWorkspace, Mode=TwoWay}"
+                                   AnchorablesSource="{Binding Tools}"
+                                   DocumentsSource="{Binding Documents}"
                                    AllowMixedOrientation="True">
             <!--Resources-->
             <avalonDock:DockingManager.Resources>
@@ -131,13 +135,13 @@
 
             <!--Behaviors-->
             <dxmvvm:Interaction.Behaviors>
-                <docking:AvalonDockLayoutSerializer />
-                <docking:AvalonDockDockingService ActiveContent="{Binding SelectedItem}" />
+                <docking:LayoutSerializer />
+                <docking:DockingService />
             </dxmvvm:Interaction.Behaviors>
 
-            <!--LayoutInitializer-->
+            <!--UpdateStrategy-->
             <avalonDock:DockingManager.LayoutUpdateStrategy>
-                <studio:LayoutInitializer />
+                <studio:WorkspaceUpdateStrategy />
             </avalonDock:DockingManager.LayoutUpdateStrategy>
 
             <!--TemplateSelector-->

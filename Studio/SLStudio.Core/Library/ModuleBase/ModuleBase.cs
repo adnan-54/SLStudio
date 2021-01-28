@@ -32,8 +32,7 @@ namespace SLStudio.Core
 
         public bool Loaded => alreadyMerged && alreadyRegistered && alreadyRunned;
 
-        public virtual IEnumerable<Uri> Resources
-            => Enumerable.Empty<Uri>();
+        public virtual IEnumerable<Uri> Resources => Enumerable.Empty<Uri>();
 
         public void MergeResources(ISplashScreen splashScreen)
         {
@@ -41,7 +40,7 @@ namespace SLStudio.Core
                 return;
             alreadyMerged = true;
 
-            logger.Debug($"Merging resources for '{Name}'");
+            logger.Debug($"Merging resources for {Name}");
             splashScreen.UpdateStatus(string.Format(StudioResources.MergingResources, Name));
             foreach (var resource in Resources)
                 Application.Current.Resources.MergedDictionaries.Add(new ResourceDictionary { Source = resource });
@@ -53,7 +52,7 @@ namespace SLStudio.Core
                 return;
             alreadyRegistered = true;
 
-            logger.Debug($"Registering '{Name}'");
+            logger.Debug($"Registering {Name}");
             splashScreen.UpdateStatus(string.Format(StudioResources.RegisteringModule, Name));
 
             Register(container);
@@ -61,7 +60,6 @@ namespace SLStudio.Core
 
         protected virtual void Register(Container container)
         {
-            return;
         }
 
         public Task Run(ISplashScreen splashScreen, IObjectFactory objectFactory)
@@ -70,7 +68,7 @@ namespace SLStudio.Core
                 return Task.FromResult(true);
             alreadyRunned = true;
 
-            logger.Debug($"Running '{Name}'");
+            logger.Debug($"Running {Name}");
             splashScreen.UpdateStatus(string.Format(StudioResources.RunningModule, Name));
 
             return Run(objectFactory);

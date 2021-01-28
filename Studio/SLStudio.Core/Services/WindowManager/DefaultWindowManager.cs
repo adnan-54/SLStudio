@@ -42,7 +42,7 @@ namespace SLStudio.Core
 
         private Window InstantiateView(object model, Type viewType)
         {
-            if (!(model is WindowViewModel viewModel))
+            if (model is not WindowViewModel viewModel)
                 throw new NotSupportedException($"The {nameof(model)} needs to be a '{nameof(WindowViewModel)}");
 
             if (viewType == null)

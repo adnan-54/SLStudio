@@ -4,8 +4,8 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.28.305</AssemblyVersion>
-		<FileVersion>21.1.28.305</FileVersion>
+		<AssemblyVersion>21.1.374.651</AssemblyVersion>
+		<FileVersion>21.1.374.651</FileVersion>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<SignAssembly>false</SignAssembly>
 	</PropertyGroup>
@@ -38,15 +38,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Data\SLStudio.Data.Rdf\SLStudio.Data.Rdf.csproj" />
 	  <ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 	  <ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
-	  <ProjectReference Include="..\..\Language\SLStudio.Language.Rdf\SLStudio.Language.Rdf.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.Compilers\SLStudio.Compilers.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.FileTypes\SLStudio.FileTypes.csproj" />
-	  <ProjectReference Include="..\..\SLRR\SLStudio.GameTypes\SLStudio.GameTypes.csproj" />
-	  <ProjectReference Include="..\Modules\SLStudio.RdfEditor\SLStudio.RdfEditor.csproj" />
-	  <ProjectReference Include="..\Modules\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
+	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj" />
+	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj" />
+	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
+	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
 	  <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 

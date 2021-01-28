@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    public interface IOutput : IToolPanel
+    public interface IOutput : IToolItem
     {
         void AppendLine(string text);
 

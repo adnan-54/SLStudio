@@ -85,7 +85,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             if (!CanOpen)
                 return;
 
-            fileService.New(SelectedFile.FileDescription.Extension);
+            fileService.New(SelectedFile.FileDescription.Extensions.FirstOrDefault()).FireAndForget();
             TryClose(true);
         }
 
@@ -101,7 +101,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
 
         private void CreateBaseCache()
         {
-            foreach (var file in fileService.GetFileDescriptions().Where(d => !d.ReadOnly))
+            foreach (var file in fileService.GetDescriptions().Where(d => !d.ReadOnly))
             {
                 if (!categoriesCache.ContainsKey(file.Category))
                     categoriesCache.Add(file.Category, new CategoryModel(file.Category));
@@ -147,7 +147,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
 
         private Task FetchFiles()
         {
-            var files = fileService.GetFileDescriptions().Where(d => !d.ReadOnly);
+            var files = fileService.GetDescriptions().Where(d => !d.ReadOnly);
 
             foreach (var file in files)
             {
@@ -202,7 +202,7 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
                 SelectedFile = view.FirstOrDefault();
         }
 
-        public override void OnLoaded()
+        protected override void OnLoaded()
         {
             if (SelectedCategory == null)
                 AvailableCategories.FirstOrDefault().IsSelected = true;
@@ -213,5 +213,9 @@ namespace SLStudio.Core.Modules.NewFile.ViewModels
             if (SelectedFile == null)
                 SelectedFile = AvailableFiles.FirstOrDefault();
         }
+    }
+
+    internal interface INewFileDialog : IWindow
+    {
     }
 }

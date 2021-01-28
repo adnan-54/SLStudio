@@ -138,46 +138,37 @@
   <data name="HumanizerDateTimeToday" xml:space="preserve">
     <value>today</value>
   </data>
-  <data name="MenuTools" xml:space="preserve">
-    <value>_Tools</value>
-  </data>
-  <data name="MenuOptions" xml:space="preserve">
-    <value>_Options...</value>
-  </data>
   <data name="File" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="New" xml:space="preserve">
-    <value>New</value>
-  </data>
-  <data name="View" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="Window" xml:space="preserve">
-    <value>Window</value>
-  </data>
-  <data name="Output" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="NewFileMenu" xml:space="preserve">
-    <value>File...</value>
-  </data>
-  <data name="Clear" xml:space="preserve">
+  <data name="StudioSearchTextBoxStyle_tooltip_clear" xml:space="preserve">
     <value>Clear</value>
   </data>
-  <data name="Search" xml:space="preserve">
+  <data name="StudioSearchTextBoxStyle_tooltip_search" xml:space="preserve">
     <value>Search</value>
   </data>
   <data name="Untitled" xml:space="preserve">
     <value>Untitled {0}</value>
   </data>
-  <data name="Toolbox" xml:space="preserve">
+  <data name="statusbar_status_fileSaved" xml:space="preserve">
+    <value>Item(s) Saved</value>
+  </data>
+  <data name="filter_allFiles" xml:space="preserve">
+    <value>All Files (*.*)|*.*</value>
+  </data>
+  <data name="toolbox_displayName" xml:space="preserve">
     <value>Toolbox</value>
   </data>
-  <data name="menu_Logs" xml:space="preserve">
-    <value>Logs...</value>
+  <data name="filter_allSupportedFiles" xml:space="preserve">
+    <value>All Supported Files</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>Ch:</value>
+  </data>
+  <data name="Line" xml:space="preserve">
+    <value>Ln:</value>
+  </data>
+  <data name="NoIssuesFound" xml:space="preserve">
+    <value>No issues found</value>
   </data>
 </root>

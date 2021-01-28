@@ -7,30 +7,26 @@ using System;
 
 namespace SLStudio.Core.Modules.Output.ViewModels
 {
-    internal class OutputViewModel : ToolPanelBase, IOutput
+    internal class OutputViewModel : ToolBase, IOutput
     {
-        private IDispatcherService dispatcher;
-        private IAvalonEditSearch avalonEditSearch;
+        private readonly IUiSynchronization uiSynchronization;
 
         public OutputViewModel(IUiSynchronization uiSynchronization)
         {
+            this.uiSynchronization = uiSynchronization;
+            TextDocument = new TextDocument();
+
             CanSetContent = false;
             DisplayName = OutputResource.Output;
-            TextDocument = new TextDocument();
-            TextDocument.SetOwnerThread(uiSynchronization.DispatcherThread);
 
             LogManager.LogCompleted += OnLogCompleted;
         }
 
-        public override ToolPlacement Placement => ToolPlacement.Bottom;
+        public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Bottom;
 
         public TextDocument TextDocument { get; }
 
-        public void OnLoaded()
-        {
-            dispatcher = GetService<IDispatcherService>();
-            avalonEditSearch = GetService<IAvalonEditSearch>();
-        }
+        public IAvalonEditSearch AvalonEditSearch => GetService<IAvalonEditSearch>();
 
         public bool WordWrap
         {
@@ -40,12 +36,12 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void AppendLine(string text)
         {
-            dispatcher?.Invoke(() => TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}");
+            uiSynchronization.EnsureExecuteOnUiAsync(() => TextDocument.Text = $"{TextDocument.Text}{text}{Environment.NewLine}").FireAndForget();
         }
 
         public void Clear()
         {
-            TextDocument.Text = string.Empty;
+            uiSynchronization.EnsureExecuteOnUiAsync(() => TextDocument.Text = TextDocument.Text = string.Empty).FireAndForget();
         }
 
         public void ToggleWordWrap()
@@ -55,17 +51,17 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         public void QuickFind()
         {
-            avalonEditSearch?.Find();
+            AvalonEditSearch?.Find();
         }
 
         public void FindNext()
         {
-            avalonEditSearch?.FindNext();
+            AvalonEditSearch?.FindNext();
         }
 
         public void FindPrevious()
         {
-            avalonEditSearch?.FindPrevious();
+            AvalonEditSearch?.FindPrevious();
         }
 
         private void OnLogCompleted(object sender, LogCompletedEventArgs e)

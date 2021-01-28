@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<AssemblyVersion>21.1.364.637</AssemblyVersion>
+		<FileVersion>21.1.364.637</FileVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+	  <None Remove="LanguageDefinition\LightHighlighting.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Resources\Icons\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\JavaEditorResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>JavaEditorResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\JavaEditorResources.resx">
+	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>JavaEditorResources.Designer.cs</LastGenOutput>
+	  </EmbeddedResource>
+	</ItemGroup>
+</Project>

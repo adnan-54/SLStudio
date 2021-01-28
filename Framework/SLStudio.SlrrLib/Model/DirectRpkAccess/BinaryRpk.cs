@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SlrrLib.Model
@@ -66,6 +67,13 @@ namespace SlrrLib.Model
         public BinaryRpk(string fnam, bool cache = false)
         {
             fileData = new FileCacheHolder(fnam, cache);
+            FileHeader = new BinaryRpkHeader(fileData);
+            EntriesHeader = new BinaryRpkEntriesHeader(fileData, FileHeader.Size + (FileHeader.ExternalReferencesCount * 64));
+        }
+
+        public BinaryRpk(Stream stream, bool cache = false)
+        {
+            fileData = new FileCacheHolder(stream);
             FileHeader = new BinaryRpkHeader(fileData);
             EntriesHeader = new BinaryRpkEntriesHeader(fileData, FileHeader.Size + (FileHeader.ExternalReferencesCount * 64));
         }

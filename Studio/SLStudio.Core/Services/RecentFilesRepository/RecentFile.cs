@@ -1,19 +1,51 @@
-﻿using System;
+﻿using SLStudio.Logging;
+using System;
+using System.Globalization;
 
 namespace SLStudio.Core
 {
-    public class RecentFile
+    internal class RecentFile : IRecentFile
     {
-        public RecentFile(string location, DateTime date)
+        private static readonly ILogger logger = LogManager.GetLoggerFor<RecentFile>();
+
+        public RecentFile(string fileName, DateTime creationDate)
         {
-            Location = location;
-            Date = date;
+            FileName = fileName;
+            CreationDate = creationDate;
         }
 
-        public string Location { get; }
+        public string FileName { get; }
 
-        public DateTime Date { get; }
+        public DateTime CreationDate { get; }
 
-        public bool Pinned { get; set; }
+        public override string ToString()
+        {
+            return $"{FileName};{CreationDate.ToString(CultureInfo.InvariantCulture)}";
+        }
+
+        public static bool TryParse(string entry, out RecentFile parsed)
+        {
+            try
+            {
+                var splitted = entry.Split(';');
+                var fileName = splitted[0];
+                var creationDate = DateTime.Parse(splitted[1], CultureInfo.InvariantCulture);
+                parsed = new RecentFile(fileName, creationDate);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Warn(ex);
+                parsed = null;
+                return false;
+            }
+        }
+    }
+
+    public interface IRecentFile
+    {
+        string FileName { get; }
+
+        DateTime CreationDate { get; }
     }
 }

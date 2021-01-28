@@ -1,4 +1,5 @@
 ﻿using SLStudio.Core.Menus.Handlers;
+using SLStudio.Core.Menus.Resources;
 using SLStudio.Core.Resources;
 using System.Windows.Input;
 
@@ -6,43 +7,51 @@ namespace SLStudio.Core.Menus
 {
     internal class CoreMenuConfiguration : MenuConfiguration
     {
-        public static string File = "file";
-        public static string FileNew = $"{File}/new";
-        public static string FileNewFile = $"{FileNew}/newFile";
-
-        public static string View = "view";
-        public static string ViewOutput = $"{View}/output";
-        public static string ViewToolBox = $"{View}/toolbox";
-
-        public static string Tools = "tools";
-        public static string ToolsOptions = $"{Tools}/options";
-
-        public static string Window = "window";
-
-        public static string Help = "help";
-        public static string HelpLogs = $"{Help}/logs";
-
         public override void Create()
         {
-            Item(File, 0, StudioResources.File);
-            Item(FileNew, 0, StudioResources.New);
-            Item<CreateNewFileHandler>(FileNewFile, 0, StudioResources.NewFileMenu, iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
+            //file
+            Item("file");
 
-            Item(View, 1, StudioResources.View);
-            Item<ViewOutputHandler>(ViewOutput, 0, StudioResources.Output, iconSource: "Output");
-            Item<ViewToolboxHandler>(ViewToolBox, 1, StudioResources.Toolbox, iconSource: "Toolbox");
+            Item("file/new");
+            Item<CreateNewFileHandler>("file/new/newFile", iconSource: "NewFile", shortcut: new KeyGesture(Key.N, ModifierKeys.Control));
 
-            Item(Tools, 2, StudioResources.MenuTools);
-            Item<ShowOptionsHandler>(ToolsOptions, 999, StudioResources.MenuOptions, iconSource: "Settings");
+            Item("file/open");
+            Item<OpenFileHandler>("file/open/openFile", iconSource: "OpenFolder", shortcut: new KeyGesture(Key.O, ModifierKeys.Control));
+            Item<StartPageHandler>("file/startPage", iconSource: "ShowStartPage");
 
-            Item(Window, 3, StudioResources.Window);
+            Separator("file/separator1");
 
-            Item(Help, 4, StudioResources.Help);
-            Item<ViewLogsHandler>(HelpLogs, 0, StudioResources.menu_Logs, iconSource: "Log");
+            Item<CloseFileHandler>("file/close", shortcut: new KeyGesture(Key.W, ModifierKeys.Control));
+
+            Separator("file/separator2");
+
+            Item<SaveFileHandler>("file/save", iconSource: "Save", shortcut: new KeyGesture(Key.S, ModifierKeys.Control));
+            Item<SaveFileAsHandler>("file/saveAs", iconSource: "SaveAs", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Shift));
+            Item<SaveAllFilesHandler>("file/saveAll", iconSource: "SaveAll", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Alt));
+
+            //view
+            Item("view");
+
+            Item<ViewOutputHandler>("view/output", iconSource: "Output");
+            Item<ViewToolboxHandler>("view/toolbox", iconSource: "Toolbox");
+
+            //tool
+            Item("tools");
+
+            Item<ShowOptionsHandler>("tools/options", 999, iconSource: "Settings");
+
+            //window
+            Item("window");
+
+            //help
+            Item("help");
+
+            Item<ViewLogsHandler>("help/logs", iconSource: "Log");
         }
 
         public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)
         {
+            SetResourceContext(typeof(MenuResources));
         }
     }
 }

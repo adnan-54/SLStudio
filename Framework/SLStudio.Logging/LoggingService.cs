@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
@@ -27,6 +28,8 @@ namespace SLStudio.Logging
 
         internal async Task<Log> CreateLog(string title, string message, string sender, LogLevel level)
         {
+            //todo: queue log
+
             await Initialize();
 
             var log = new Log(title, message, sender, $"{level}", DateTime.Now);
@@ -116,15 +119,14 @@ namespace SLStudio.Logging
                 await LogToSimpleFile(ex);
             }
 
-            isInitialized = false;
-            await Initialize();
+            await Initialize(true);
 
             await CreateLog("Clear Logs", "All logs have been successfully deleted", nameof(LoggingService), LogLevel.Info);
         }
 
-        private async Task Initialize()
+        private async Task Initialize(bool forceInitialize = false)
         {
-            if (isInitialized)
+            if (!forceInitialize && isInitialized)
                 return;
             isInitialized = true;
 

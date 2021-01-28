@@ -9,11 +9,6 @@
              xmlns:resx="clr-namespace:SLStudio.Core.Modules.Output.Resources"
              mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
              Background="{StaticResource Control.Background}">
-    <!--Behaviors-->
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:DispatcherService />
-    </dxmvvm:Interaction.Behaviors>
-
     <!--Content-->
     <Grid>
         <Grid.RowDefinitions>
@@ -24,7 +19,7 @@
         <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True">
             <!--ClearAll-->
             <Button Command="{DXCommand 'Clear()'}"
-                    ToolTip="{x:Static resx:OutputResource.ClearAll}">
+                    ToolTip="{x:Static resx:OutputResource.button_clearAll}">
                 <Image Source="{StaticResource ClearWindowContent}" />
             </Button>
 
@@ -39,11 +34,10 @@
         </ToolBar>
 
         <!--Output-->
-        <ae:TextEditor Grid.Row="1" Margin="3"
+        <ae:TextEditor Grid.Row="1"
                        IsReadOnly="True" BorderThickness="0"
                        WordWrap="{Binding WordWrap}"
-                       Document="{Binding TextDocument}"
-                       Loaded="{DXEvent 'OnLoaded()'}">
+                       Document="{Binding TextDocument}">
             <!--Behaviors-->
             <dxmvvm:Interaction.Behaviors>
                 <dxmvvm:EventToCommand EventName="TextChanged" Command="{DXCommand '@a($ae:TextEditor).ScrollToEnd()'}" />
@@ -66,7 +60,7 @@
                     <Separator />
 
                     <!--ClearAll-->
-                    <MenuItem Header="{x:Static resx:OutputResource.ClearAll}"
+                    <MenuItem Header="{x:Static resx:OutputResource.button_clearAll}"
                               Command="{DXCommand 'Clear()'}">
                         <MenuItem.Icon>
                             <Image Source="{StaticResource ClearWindowContent}" />

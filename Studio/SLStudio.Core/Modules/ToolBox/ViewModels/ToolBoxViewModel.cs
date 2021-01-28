@@ -2,14 +2,15 @@
 
 namespace SLStudio.Core.Modules.ToolBox.ViewModels
 {
-    internal class ToolBoxViewModel : ToolPanelBase, IToolbox
+    internal class ToolBoxViewModel : ToolBase, IToolbox
     {
         public ToolBoxViewModel(IToolManager manager)
         {
-            DisplayName = StudioResources.Toolbox;
+            DisplayName = StudioResources.toolbox_displayName;
+
             manager.Register<IToolbox, ToolBoxViewModel>(this);
         }
 
-        public override ToolPlacement Placement => ToolPlacement.Left;
+        public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Left;
     }
 }

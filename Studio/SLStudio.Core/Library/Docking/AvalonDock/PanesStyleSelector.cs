@@ -18,11 +18,11 @@ namespace SLStudio.Core.Docking
 
         public override Style SelectStyle(object item, DependencyObject container)
         {
-            if (item is IToolPanel)
+            if (item is IToolItem)
                 return toolStyle;
-            if (item is IFileDocumentPanel)
+            if (item is IFileDocumentItem)
                 return fileDocumentStyle;
-            if (item is IDocumentPanel)
+            if (item is IDocumentItem)
                 return documentStyle;
 
             return base.SelectStyle(item, container);

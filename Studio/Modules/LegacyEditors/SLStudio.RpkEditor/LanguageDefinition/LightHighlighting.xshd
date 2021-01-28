@@ -1,0 +1,73 @@
+﻿<?xml version="1.0"?>
+<SyntaxDefinition name="Rpk File" extensions=".rpk" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+	<Color name="Tags" foreground="#a31515" />
+	<Color name="Path" fontStyle="italic" />
+	<Color name="Values" foreground="#0000fe" />
+	<Color name="Comment" foreground="#008000" />
+	<Color name="SpecialWords" foreground="#ff0000" />
+	<Color name="SpecialChars" foreground="#0000fe" />
+	<RuleSet ignoreCase="true">
+		<!--Tags-->
+		<Rule color="Tags">(?=&lt;?\\?)\w+(?=&gt;)</Rule>
+
+		<!--Paths-->
+		<Rule color="Path">\w*[\\](.*[\\].(.+)|.*$)\.*</Rule>
+
+		<!--Values-->
+		<Rule color="Values">(?&lt;=\=).*</Rule>
+
+		<!--Comment-->
+		<Span color="Comment">
+			<Begin>;</Begin>
+		</Span>
+
+		<!--SpecialWords-->
+		<Keywords color="SpecialWords">
+			<Word>TypeID</Word>
+			<Word>SuperID</Word>
+			<Word>AdditionalType</Word>
+			<Word>Alias</Word>
+			<Word>IsParentCompatible</Word>
+			<Word>TypeOfEntry</Word>
+			<Word>mass</Word>
+			<Word>shape</Word>
+			<Word>mesh</Word>
+			<Word>flags</Word>
+			<Word>lod_amp</Word>
+			<Word>texture</Word>
+			<Word>script</Word>
+			<Word>native</Word>
+			<Word>car</Word>
+			<Word>type</Word>
+			<Word>diffuse</Word>
+			<Word>specular</Word>
+			<Word>ambient</Word>
+			<Word>position</Word>
+			<Word>direction</Word>
+			<Word>range</Word>
+			<Word>attenuation</Word>
+			<Word>theta</Word>
+			<Word>phi</Word>
+			<Word>lf_texture</Word>
+			<Word>lf_glow_color</Word>
+			<Word>lf_glow_colortype</Word>
+			<Word>lit_dynamic</Word>
+			<Word>attH_texture</Word>
+			<Word>attV_texture</Word>
+			<Word>lf_glow_offset</Word>
+			<Word>lf_glow_minsize</Word>
+			<Word>lf_glow_maxsize</Word>
+			<Word>lf_ray_minwidth</Word>
+			<Word>lf_ray_maxwidth</Word>
+			<Word>lf_ray_minlenght</Word>
+			<Word>lf_ray_maxlenght</Word>
+			<Word>lf_flare_minsize</Word>
+			<Word>lf_flare_maxsize</Word>
+			<Word>lf_flare_distance</Word>
+			<Word>lf_texturemode</Word>
+		</Keywords>
+
+		<!--SpecialChars-->
+		<Rule color="SpecialChars">(&lt;|\/|&gt;)</Rule>
+	</RuleSet>
+</SyntaxDefinition>

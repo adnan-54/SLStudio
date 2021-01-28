@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 namespace SLStudio.Logging
 {
@@ -16,65 +17,70 @@ namespace SLStudio.Logging
 
         public void Debug(string message, string title = null)
         {
-            Log(title, message, LogLevel.Debug);
+            _ = Log(title, message, LogLevel.Debug);
         }
 
         public void Debug(Exception exception)
         {
-            Log(exception, LogLevel.Debug);
+            LogException(exception, LogLevel.Debug);
         }
 
         public void Error(string message, string title = null)
         {
-            Log(title, message, LogLevel.Error);
+            _ = Log(title, message, LogLevel.Error);
         }
 
         public void Error(Exception exception)
         {
-            Log(exception, LogLevel.Error);
+            LogException(exception, LogLevel.Error);
         }
 
         public void Fatal(string message, string title = null)
         {
-            Log(title, message, LogLevel.Fatal);
+            _ = Log(title, message, LogLevel.Fatal);
         }
 
         public void Fatal(Exception exception)
         {
-            Log(exception, LogLevel.Fatal);
+            LogException(exception, LogLevel.Fatal);
         }
 
         public void Info(string message, string title = null)
         {
-            Log(title, message, LogLevel.Info);
+            _ = Log(title, message, LogLevel.Info);
         }
 
         public void Info(Exception exception)
         {
-            Log(exception, LogLevel.Info);
+            LogException(exception, LogLevel.Info);
         }
 
         public void Log(string message, string title = null)
         {
-            Log(title, message, LogManager.Configuraion.DefaultLogLevel);
+            _ = Log(title, message, LogManager.Configuraion.DefaultLogLevel);
         }
 
         public void Log(Exception exception)
         {
-            Log(exception, LogManager.Configuraion.DefaultLogLevel);
+            LogException(exception, LogManager.Configuraion.DefaultLogLevel);
         }
 
         public void Warn(string message, string title = null)
         {
-            Log(title, message, LogLevel.Warning);
+            _ = Log(title, message, LogLevel.Warning);
         }
 
         public void Warn(Exception exception)
         {
-            Log(exception, LogLevel.Warning);
+            LogException(exception, LogLevel.Warning);
         }
 
-        private async void Log(string title, string message, LogLevel level)
+        private void LogException(Exception exception, LogLevel level)
+        {
+            _ = Log(exception.Message, exception.ToString(), level);
+        }
+
+        private async Task Log(string title, string message, LogLevel level)
         {
             if (level == LogLevel.Debug && LogManager.Configuraion.IgnoreDebugLevel)
                 return;
@@ -90,11 +96,6 @@ namespace SLStudio.Logging
 
                 LogManager.OnLogCompleted(result);
             }
-        }
-
-        private void Log(Exception exception, LogLevel level)
-        {
-            Log(exception.Message, exception.ToString(), level);
         }
     }
 }

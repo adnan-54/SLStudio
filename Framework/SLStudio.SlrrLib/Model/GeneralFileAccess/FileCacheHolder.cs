@@ -32,6 +32,17 @@ namespace SlrrLib.Model
                 CacheData();
         }
 
+        public FileCacheHolder(Stream stream)
+        {
+            fnam = "";
+            isDataCached = true;
+            using (var memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                cachedData = memoryStream.ToArray();
+            }
+        }
+
         public FileCacheHolder(byte[] dataToCopy)
         {
             this.fnam = "";

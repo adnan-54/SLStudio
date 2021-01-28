@@ -15,16 +15,14 @@ namespace SLStudio.Core
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<Bootstrapper>();
 
-        private static bool initialized = false;
-
         private readonly Container container;
         private readonly ICommandLineArguments commandLineArguments;
         private readonly ILanguageManager languageManager;
         private readonly IThemeManager themeManager;
         private readonly IObjectFactory objectFactory;
         private readonly IUiSynchronization uiSynchronization;
-        private readonly IAssemblyLoader assemblyLoader;
-        private readonly IModuleLoader moduleLoader;
+        private readonly IAssemblyLookup assemblyLoader;
+        private readonly IModuleLookup moduleLoader;
         private readonly IWindowManager windowManager;
         private readonly ISplashScreen splashScreen;
 
@@ -38,8 +36,8 @@ namespace SLStudio.Core
             themeManager = new DefaultThemeManager();
             objectFactory = new DefaultObjectFactory(container);
             uiSynchronization = new DefaultUiSynchronization(dispatcher);
-            assemblyLoader = new DefaultAssemblyLoader();
-            moduleLoader = new DefaultModuleLoader();
+            assemblyLoader = new DefaultAssemblyLookup();
+            moduleLoader = new DefaultModuleLookup();
             windowManager = new DefaultWindowManager(objectFactory);
             splashScreen = new SplashScreen();
 
@@ -102,10 +100,6 @@ namespace SLStudio.Core
 
         public static void Run(Dispatcher dispatcher, IEnumerable<string> args)
         {
-            if (initialized)
-                return;
-            initialized = true;
-
             new Bootstrapper(dispatcher, args).Initialize().FireAndForget();
         }
     }

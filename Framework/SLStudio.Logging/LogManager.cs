@@ -20,14 +20,19 @@ namespace SLStudio.Logging
             Configuraion = configuration;
         }
 
-        public static Task<DataTable> GetLogs()
+        public static ILogger GetLoggerFor<Type>() where Type : class
         {
-            return loggingService.GetLogs();
+            return GetLogger(typeof(Type));
         }
 
-        public static ILogger GetLoggerFor(string name)
+        public static ILogger GetLogger(Type type)
         {
-            if (!loggers.TryGetValue(name, out ILogger logger))
+            return GetLogger(type.Name);
+        }
+
+        public static ILogger GetLogger(string name)
+        {
+            if (!loggers.TryGetValue(name, out var logger))
             {
                 logger = new Logger(name, loggingService);
                 loggers.Add(name, logger);
@@ -36,14 +41,9 @@ namespace SLStudio.Logging
             return logger;
         }
 
-        public static ILogger GetLogger(Type type)
+        public static Task<DataTable> GetLogs()
         {
-            return GetLoggerFor(type.Name);
-        }
-
-        public static ILogger GetLoggerFor<Type>() where Type : class
-        {
-            return GetLogger(typeof(Type));
+            return loggingService.GetLogs();
         }
 
         /// <summary>

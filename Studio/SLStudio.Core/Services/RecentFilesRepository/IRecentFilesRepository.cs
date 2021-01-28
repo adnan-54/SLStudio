@@ -1,68 +1,153 @@
-﻿using Newtonsoft.Json;
-using SLStudio.Core.Services.RecentFilesRepository.Resources;
+﻿using SLStudio.Core.Resources;
+using SLStudio.Logging;
+using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SLStudio.Core
 {
     internal class DefaultRecentFilesRespository : IRecentFilesRepository
     {
-        private readonly List<RecentFile> recentFiles;
+        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultRecentFilesRespository>();
+
+        private readonly object repositoryLock;
 
         public DefaultRecentFilesRespository()
         {
-            recentFiles = new List<RecentFile>();
-            Load();
+            repositoryLock = new object();
+
+            if (StudioSettings.Default.RecentFiles == null)
+                StudioSettings.Default.RecentFiles = new();
         }
 
-        public IEnumerable<RecentFile> RecentFiles => recentFiles;
+        public event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        public void Add(RecentFile file)
+        public async Task<IEnumerable<IRecentFile>> GetAll()
         {
-            if (!recentFiles.Contains(file))
+            return await Task.Run(() =>
             {
-                recentFiles.Add(file);
-                Save();
-            }
+                lock (repositoryLock)
+                {
+                    var settings = StudioSettings.Default.RecentFiles;
+                    if (settings == null || settings.Count == 0)
+                        return Enumerable.Empty<IRecentFile>();
+
+                    var recentFiles = new string[settings.Count];
+                    settings.CopyTo(recentFiles, 0);
+
+                    var hasChanged = false;
+                    var result = new List<RecentFile>();
+                    foreach (var file in recentFiles)
+                    {
+                        if (RecentFile.TryParse(file, out RecentFile parsed))
+                            result.Add(parsed);
+                        else
+                            hasChanged |= RemoveInternal(file);
+                    }
+
+                    if (hasChanged)
+                        StudioSettings.Default.Save();
+
+                    return result;
+                }
+            });
         }
 
-        public void Remove(RecentFile file)
+        Task IRecentFilesRepository.Add(string fileName)
         {
-            recentFiles.Remove(file);
-            Save();
-        }
-
-        public void RemoveAll()
-        {
-            recentFiles.Clear();
-            Save();
-        }
-
-        private void Load()
-        {
-            var list = JsonConvert.DeserializeObject<List<RecentFile>>(RecentFilesSettings.Default.RecentFiles);
-            if (list != null)
+            lock (repositoryLock)
             {
-                recentFiles.Clear();
-                recentFiles.AddRange(list);
+                try
+                {
+                    RemoveInternal(fileName);
+
+                    var item = new RecentFile(fileName, DateTime.Now);
+                    StudioSettings.Default.RecentFiles.Add(item.ToString());
+                    StudioSettings.Default.Save();
+
+                    RaiseCollectionChanged(NotifyCollectionChangedAction.Add, fileName);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn(ex);
+                }
             }
+
+            return Task.FromResult(true);
         }
 
-        private void Save()
+        Task IRecentFilesRepository.Remove(string fileName)
         {
-            var jsonString = JsonConvert.SerializeObject(recentFiles);
-            RecentFilesSettings.Default.RecentFiles = jsonString;
-            RecentFilesSettings.Default.Save();
+            lock (repositoryLock)
+            {
+                try
+                {
+                    if (RemoveInternal(fileName))
+                    {
+                        StudioSettings.Default.Save();
+                        RaiseCollectionChanged(NotifyCollectionChangedAction.Remove, fileName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn(ex);
+                }
+            }
+
+            return Task.FromResult(true);
+        }
+
+        Task IRecentFilesRepository.Clear()
+        {
+            lock (repositoryLock)
+            {
+                try
+                {
+                    StudioSettings.Default.RecentFiles.Clear();
+                    StudioSettings.Default.Save();
+                    RaiseCollectionChanged(NotifyCollectionChangedAction.Reset, null);
+                }
+                catch (Exception ex)
+                {
+                    logger.Warn(ex);
+                }
+            }
+
+            return Task.FromResult(true);
+        }
+
+        private static bool RemoveInternal(string fileName)
+        {
+            for (int i = 0; i < StudioSettings.Default.RecentFiles.Count; i++)
+            {
+                var entry = StudioSettings.Default.RecentFiles[i];
+                if (entry.Contains(fileName))
+                {
+                    StudioSettings.Default.RecentFiles.Remove(entry);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void RaiseCollectionChanged(NotifyCollectionChangedAction action, object item)
+        {
+            CollectionChanged?.Invoke(this, new NotifyCollectionChangedEventArgs(action, item));
         }
     }
 
     public interface IRecentFilesRepository
     {
-        IEnumerable<RecentFile> RecentFiles { get; }
+        event NotifyCollectionChangedEventHandler CollectionChanged;
 
-        void Add(RecentFile file);
+        Task<IEnumerable<IRecentFile>> GetAll();
 
-        void Remove(RecentFile file);
+        Task Add(string fileName);
 
-        void RemoveAll();
+        Task Remove(string fileName);
+
+        Task Clear();
     }
 }

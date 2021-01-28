@@ -2,16 +2,16 @@
 {
     internal class NewFileModel
     {
-        public NewFileModel(IFileDescription fileDescription)
+        public NewFileModel(IFileEditorDescription fileDescription)
         {
             FileDescription = fileDescription;
         }
 
-        public IFileDescription FileDescription { get; }
+        public IFileEditorDescription FileDescription { get; }
 
         public string DisplayName => FileDescription.Name;
 
-        public string Type => FileDescription.Name;
+        public string Type => FileDescription.Category.Substring(0, FileDescription.Category.IndexOf("/"));
 
         public string Description => FileDescription.Description;
 

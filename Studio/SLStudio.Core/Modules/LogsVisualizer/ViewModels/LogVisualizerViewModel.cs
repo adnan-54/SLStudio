@@ -127,7 +127,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             windowManager.ShowDialog(vm);
         }
 
-        public override void OnLoaded()
+        protected override void OnLoaded()
         {
             Refresh();
         }

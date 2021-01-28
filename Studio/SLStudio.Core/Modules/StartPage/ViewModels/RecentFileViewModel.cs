@@ -2,6 +2,7 @@
 using SLStudio.Core.Modules.StartPage.Resources;
 using SLStudio.Logging;
 using System;
+using System.IO;
 using System.Windows;
 
 namespace SLStudio.Core.Modules.StartPage.ViewModels
@@ -9,12 +10,15 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
     internal class RecentFileViewModel : BindableBase
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<RecentFileViewModel>();
+        private readonly StartPageViewModel startPage;
 
-        private StartPageViewModel parent;
-
-        public RecentFileViewModel(StartPageViewModel parent)
+        public RecentFileViewModel(string fileName, DateTime modifiedDate, StartPageViewModel startPage, Uri iconSource)
         {
-            this.parent = parent;
+            this.startPage = startPage;
+            FileName = Path.GetFileName(fileName);
+            Location = fileName;
+            ModifiedDate = modifiedDate;
+            IconSource = iconSource;
         }
 
         public Uri IconSource { get; set; }
@@ -29,20 +33,21 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             set => SetProperty(() => IsPinned, value);
         }
 
-        public void Remove()
-        {
-            parent.RemoveItem(this);
-            parent = null;
-        }
-
         public void Pin()
         {
             IsPinned = true;
+            startPage.UpdatePinned(this);
         }
 
         public void Unpin()
         {
             IsPinned = false;
+            startPage.UpdatePinned(this);
+        }
+
+        public void Remove()
+        {
+            startPage.Remove(this);
         }
 
         public void CopyPath()
@@ -53,7 +58,7 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             }
             catch (Exception ex)
             {
-                logger.Error(ex);
+                logger.Warn(ex);
             }
         }
     }
