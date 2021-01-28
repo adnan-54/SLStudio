@@ -10,7 +10,9 @@
                       xmlns:docking="clr-namespace:SLStudio.Core.Docking"
                       xmlns:menus="clr-namespace:SLStudio.Core.Menus"
                       xmlns:avalonDock="https://github.com/Dirkster99/AvalonDock"
-                      mc:Ignorable="d">
+                      xmlns:gong="urn:gong-wpf-dragdrop"
+                      mc:Ignorable="d"
+                      gong:DragDrop.IsDropTarget="True" gong:DragDrop.DropHandler="{Binding DragDropHandler}" gong:DragDrop.UseDefaultDragAdorner="True">
 
     <studio:StudioWindow.TitleTemplate>
         <DataTemplate>

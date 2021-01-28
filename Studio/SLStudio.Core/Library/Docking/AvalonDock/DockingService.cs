@@ -1,5 +1,4 @@
 ﻿using AvalonDock;
-using AvalonDock.Controls;
 using AvalonDock.Layout;
 using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;

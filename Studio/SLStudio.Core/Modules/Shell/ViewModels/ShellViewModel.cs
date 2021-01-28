@@ -1,4 +1,5 @@
-﻿using SLStudio.Core.Docking;
+﻿using GongSolutions.Wpf.DragDrop;
+using SLStudio.Core.Docking;
 using SLStudio.Core.Modules.StartPage.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace SLStudio.Core
         private readonly IObjectFactory objectFactory;
         private readonly IUiSynchronization uiSynchronization;
         private readonly IOutput output;
+        private IDockingService dockingService;
 
         public ShellViewModel(IObjectFactory objectFactory, IUiSynchronization uiSynchronization,
                               ICommandLineArguments commandLineArguments, IOutput output, IStatusBar statusBar)
@@ -19,8 +21,10 @@ namespace SLStudio.Core
             this.uiSynchronization = uiSynchronization;
             this.output = output;
             StatusBar = statusBar;
+
             Documents = new BindableCollection<IDocumentItem>();
             Tools = new BindableCollection<IToolItem>();
+            DragDropHandler = new ShellDragDropHandler();
 
             DisplayName = commandLineArguments.DebugMode ? "SLStudio - (debug mode)" : "SLStudio";
         }
@@ -43,7 +47,7 @@ namespace SLStudio.Core
             set => SetProperty(() => StatusBar, value);
         }
 
-        public IDockingService DockingService => GetService<IDockingService>();
+        public IDropTarget DragDropHandler { get; }
 
         public async Task<T> AddWorkspace<T>() where T : class, IWorkspaceItem
         {
@@ -79,7 +83,7 @@ namespace SLStudio.Core
 
                 ActiveWorkspace = workspaces.LastOrDefault();
                 ActiveWorkspace?.Activate();
-                DockingService?.FocusItem(ActiveWorkspace);
+                dockingService?.FocusItem(ActiveWorkspace);
             });
         }
 
@@ -90,12 +94,14 @@ namespace SLStudio.Core
                 foreach (var item in workspaces)
                     EnsureRemoveWorkspace(item);
 
-                DockingService?.FocusItem();
+                dockingService?.FocusItem();
             });
         }
 
         protected override void OnLoaded()
         {
+            dockingService = GetService<IDockingService>();
+
             if (!Documents.Any())
                 OpenWorkspace<IStartPage>().FireAndForget();
             output.Clear();
@@ -114,14 +120,14 @@ namespace SLStudio.Core
         {
             if (item is IToolItem tool && Tools.Contains(tool))
             {
-                DockingService?.CloseFromId(tool.Id);
+                dockingService?.CloseFromId(tool.Id);
                 tool.Close();
             }
             else
             if (item is IDocumentItem document && Documents.Contains(document))
             {
                 document.Close();
-                DockingService?.CloseFromId(document.Id);
+                dockingService?.CloseFromId(document.Id);
                 Documents.Remove(document);
             }
         }
