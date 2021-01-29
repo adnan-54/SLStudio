@@ -25,7 +25,7 @@ namespace SLStudio.Core.Menus.Handlers
                 CheckPathExists = true,
                 Filter = filter ??= BuildFilter(),
                 Multiselect = true,
-                Title = SLStudioConstants.ProductName,
+                Title = StudioConstants.ProductName,
                 ValidateNames = true
             };
 

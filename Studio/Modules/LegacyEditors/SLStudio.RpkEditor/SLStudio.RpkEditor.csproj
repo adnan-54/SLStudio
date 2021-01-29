@@ -4,8 +4,7 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.366.639</AssemblyVersion>
-		<FileVersion>21.1.366.639</FileVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -16,8 +15,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
-	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+		<Compile Include="..\..\..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+		<EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -25,9 +28,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
-	  <ProjectReference Include="..\..\..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
-	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

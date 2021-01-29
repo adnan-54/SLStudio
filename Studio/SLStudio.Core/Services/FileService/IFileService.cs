@@ -209,7 +209,7 @@ namespace SLStudio.Core
             catch (Exception ex)
             {
                 file?.Close();
-                MessageBox.Show($"Failed to open file {fileName}", SLStudioConstants.ProductName, MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Failed to open file {fileName}", StudioConstants.ProductName, MessageBoxButton.OK, MessageBoxImage.Error);
                 logger.Error(ex);
 
                 return null;
@@ -238,7 +238,7 @@ namespace SLStudio.Core
                         Filter = description.Filter,
                         AddExtension = true,
                         DefaultExt = description.Extensions.First(),
-                        Title = SLStudioConstants.ProductName
+                        Title = StudioConstants.ProductName
                     };
 
                     if (!saveFileDialog.ShowDialog().GetValueOrDefault())

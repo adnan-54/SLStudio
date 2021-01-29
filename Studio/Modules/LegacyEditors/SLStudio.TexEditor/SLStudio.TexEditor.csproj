@@ -4,41 +4,44 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.364.637</AssemblyVersion>
-		<FileVersion>21.1.364.637</FileVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="LanguageDefinition\DarkHighlighting.xshd" />
-	  <None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
-	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+		<Compile Include="..\..\..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\TexEditorResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>TexEditorResources.resx</DependentUpon>
-	  </Compile>
+		<EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+		<EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\TexEditorResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>TexEditorResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<Compile Update="Resources\TexEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TexEditorResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Icons\" />
+		<EmbeddedResource Update="Resources\TexEditorResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>TexEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
-	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+		<Folder Include="Resources\Icons\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 </Project>

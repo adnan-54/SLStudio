@@ -4,11 +4,10 @@
 		<OutputType>WinExe</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.374.651</AssemblyVersion>
-		<FileVersion>21.1.374.651</FileVersion>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
-		<SignAssembly>false</SignAssembly>
+		<SignAssembly>true</SignAssembly>
 		<StartupObject>SLStudio.Program</StartupObject>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -17,7 +16,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="..\..\SolutionItems\SLStudioConstants.cs" Link="SLStudioConstants.cs" />
+		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

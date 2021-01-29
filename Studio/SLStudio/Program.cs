@@ -1,6 +1,5 @@
 ﻿using SLStudio.Core;
 using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Windows;
@@ -14,20 +13,12 @@ namespace SLStudio
         [STAThread]
         public static void Main()
         {
-            try
-            {
-                mutex = new Mutex(true, SLStudioConstants.GlobalKey);
+            mutex = new Mutex(true, StudioConstants.GlobalKey);
 
-                if (mutex.WaitOne(TimeSpan.FromMilliseconds(100), false))
-                    Run();
-                else
-                    SendToCurrentInstance();
-            }
-            finally
-            {
-                if (mutex != null)
-                    mutex.ReleaseMutex();
-            }
+            if (mutex.WaitOne(TimeSpan.Zero, false))
+                Run();
+            else
+                SendToCurrentInstance();
         }
 
         private static void Run()
@@ -53,11 +44,14 @@ namespace SLStudio
             //todo: improve this
             //files should be queued and opened later because we need to exit the method as soon as possible
             //we shouldn't use dispatcher either
-            await Application.Current.Dispatcher.InvokeAsync(() =>
+            await Application.Current?.Dispatcher?.InvokeAsync(() =>
             {
                 var fileService = IoC.Get<IFileService>();
                 var files = e.Split(';').ToList();
                 files.ForEach(f => fileService?.Open(f));
+
+                if (Application.Current?.MainWindow is null)
+                    return;
 
                 if (Application.Current.MainWindow.WindowState == WindowState.Minimized)
                     SystemCommands.RestoreWindow(Application.Current.MainWindow);

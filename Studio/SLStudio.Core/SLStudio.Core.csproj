@@ -4,20 +4,20 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.382.655</AssemblyVersion>
-		<FileVersion>21.1.382.655</FileVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+		<None Remove="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Include="..\..\SolutionItems\SLStudioConstants.cs" Link="SLStudioConstants.cs" />
+		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+		<EmbeddedResource Include="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -42,14 +42,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<Compile Update="Menus\Resources\MenuResources.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>MenuResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>MenuResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -57,9 +57,9 @@
 			<DependentUpon>ExceptionBoxResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>LogsVisualizerResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LogsVisualizerResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\NewFile\Resources\NewFileResources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -77,9 +77,9 @@
 			<DependentUpon>OutputResource.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\Shell\Resources\ShellResources.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>ShellResources.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ShellResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
 			<DesignTime>True</DesignTime>
@@ -102,9 +102,9 @@
 			<DependentUpon>StudioResources.resx</DependentUpon>
 		</Compile>
 		<Compile Update="Resources\StudioSettings.Designer.cs">
-		  <DesignTimeSharedInput>True</DesignTimeSharedInput>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>StudioSettings.settings</DependentUpon>
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StudioSettings.settings</DependentUpon>
 		</Compile>
 		<Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
 			<DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -125,16 +125,16 @@
 
 	<ItemGroup>
 		<EmbeddedResource Update="Menus\Resources\MenuResources.resx">
-		  <Generator>ResXFileCodeGenerator</Generator>
-		  <LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>LogsVisualizerResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LogsVisualizerResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\NewFile\Resources\NewFileResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -149,8 +149,8 @@
 			<LastGenOutput>OutputResource.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\Shell\Resources\ShellResources.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>ShellResources.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ShellResources.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="Modules\SplashScreen\Resources\SplashScreenResources.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
@@ -176,8 +176,8 @@
 
 	<ItemGroup>
 		<None Update="Resources\StudioSettings.settings">
-		  <Generator>SettingsSingleFileGenerator</Generator>
-		  <LastGenOutput>StudioSettings.Designer.cs</LastGenOutput>
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>StudioSettings.Designer.cs</LastGenOutput>
 		</None>
 		<None Update="Services\LanguageManager\LanguageManagerSettings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>

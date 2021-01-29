@@ -10,7 +10,7 @@ namespace SLStudio.Core
         {
             DirtyDocuments = dirtyDocuments.Select(d => new DirtyDocumentModel(d)).ToList();
 
-            DisplayName = SLStudioConstants.ProductName;
+            DisplayName = StudioConstants.ProductName;
         }
 
         public IReadOnlyCollection<DirtyDocumentModel> DirtyDocuments { get; }

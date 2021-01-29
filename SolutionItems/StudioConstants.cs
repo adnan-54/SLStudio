@@ -2,7 +2,8 @@ using System;
 using System.Diagnostics;
 using System.IO;
 
-internal class SLStudioConstants
+internal class StudioConstants
+
 {
     public static readonly string ProductName = "SLStudio";
 

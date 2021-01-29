@@ -4,40 +4,43 @@
 		<OutputType>Library</OutputType>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
-		<AssemblyVersion>21.1.363.636</AssemblyVersion>
-		<FileVersion>21.1.363.636</FileVersion>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="LanguageDefinition\DarkHighlighting.xshd" />
-	  <None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
-	  <EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+		<Compile Include="..\..\..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Icons\" />
+		<EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+		<EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+		<Folder Include="Resources\Icons\" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\CfgEditorResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>CfgEditorResources.resx</DependentUpon>
-	  </Compile>
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\CfgEditorResources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>CfgEditorResources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<Compile Update="Resources\CfgEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>CfgEditorResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\CfgEditorResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>CfgEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 	</ItemGroup>
 </Project>

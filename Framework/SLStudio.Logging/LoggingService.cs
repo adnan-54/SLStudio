@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Concurrent;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
@@ -20,9 +19,9 @@ namespace SLStudio.Logging
         public LoggingService()
         {
             isInitialized = false;
-            logsPath = SLStudioConstants.LogsDirectory;
-            dbFilePath = SLStudioConstants.LogFilePath;
-            txtFilePath = SLStudioConstants.SimpleLogsFilePath;
+            logsPath = StudioConstants.LogsDirectory;
+            dbFilePath = StudioConstants.LogFilePath;
+            txtFilePath = StudioConstants.SimpleLogsFilePath;
             dbConnection = new SQLiteConnection($"Data Source={dbFilePath}; Version=3; datetimeformat=CurrentCulture");
         }
 

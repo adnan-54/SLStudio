@@ -8,18 +8,24 @@ namespace SLStudio.Core
     {
         private static bool isInitialized = false;
 
-        private static Func<Type, object> GetInstance { get; set; }
+        private static Func<Type, object> GetInstance = @object => throw new InvalidOperationException("IoC is not initialized yet");
 
-        private static Func<Type, IEnumerable<object>> GetAllInstances { get; set; }
+        private static Func<Type, IEnumerable<object>> GetAllInstances = @object => throw new InvalidOperationException("IoC is not initialized yet");
 
         public static object Get(Type service)
-            => GetInstance(service);
+        {
+            return GetInstance(service);
+        }
 
         public static TService Get<TService>() where TService : class
-            => (TService)GetInstance(typeof(TService));
+        {
+            return (TService)GetInstance(typeof(TService));
+        }
 
         public static IEnumerable<object> GetAll(Type service)
-            => GetAllInstances(service);
+        {
+            return GetAllInstances(service);
+        }
 
         internal static void Initialize(Container container)
         {

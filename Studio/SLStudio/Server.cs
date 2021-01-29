@@ -33,7 +33,7 @@ namespace SLStudio
         {
             isRunning = true;
 
-            server = new NamedPipeServerStream(SLStudioConstants.GlobalKey);
+            server = new NamedPipeServerStream(StudioConstants.GlobalKey);
             cancellationTokenSource = new CancellationTokenSource();
             serverTask = Task.Run(() => RunAsync(), cancellationTokenSource.Token);
             serverTask.ContinueWith(t => Stop());
@@ -92,6 +92,35 @@ namespace SLStudio
         private void OnMessageRecived(string message)
         {
             MessageRecived?.Invoke(this, message);
+        }
+    }
+
+    internal class InternalClient
+    {
+        public static void SendMessage(string message)
+        {
+            using var client = new NamedPipeClientStream(StudioConstants.GlobalKey);
+
+            if (!TryConnect(client))
+                return;
+
+            using StreamWriter writer = new StreamWriter(client);
+            writer.Write(message);
+            writer.Flush();
+        }
+
+        private static bool TryConnect(NamedPipeClientStream client)
+        {
+            try
+            {
+                client.Connect(100);
+            }
+            catch
+            {
+                return false;
+            }
+
+            return client.IsConnected;
         }
     }
 }
