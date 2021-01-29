@@ -7,7 +7,7 @@ namespace SLStudio
     {
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            Bootstrapper.Run(Dispatcher, e.Args);
+            Bootstrapper.Run(Dispatcher);
         }
     }
 }

@@ -4,6 +4,7 @@ using SLStudio.Core.Modules.StartPage.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace SLStudio.Core
 {
@@ -15,7 +16,7 @@ namespace SLStudio.Core
         private IDockingService dockingService;
 
         public ShellViewModel(IObjectFactory objectFactory, IUiSynchronization uiSynchronization,
-                              ICommandLineArguments commandLineArguments, IOutput output, IStatusBar statusBar)
+                              IOutput output, IStatusBar statusBar)
         {
             this.objectFactory = objectFactory;
             this.uiSynchronization = uiSynchronization;
@@ -26,7 +27,7 @@ namespace SLStudio.Core
             Tools = new BindableCollection<IToolItem>();
             DragDropHandler = new ShellDragDropHandler();
 
-            DisplayName = commandLineArguments.DebugMode ? "SLStudio - (debug mode)" : "SLStudio";
+            DisplayName = "SLStudio";
         }
 
         public IReadOnlyCollection<IWorkspaceItem> Workspaces => Documents.Cast<IWorkspaceItem>().Concat(Tools).ToList();

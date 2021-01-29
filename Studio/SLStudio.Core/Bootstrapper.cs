@@ -26,12 +26,12 @@ namespace SLStudio.Core
         private readonly IWindowManager windowManager;
         private readonly ISplashScreen splashScreen;
 
-        private Bootstrapper(Dispatcher dispatcher, IEnumerable<string> args)
+        private Bootstrapper(Dispatcher dispatcher)
         {
             ExceptionBox.Initialize();
 
             container = new Container();
-            commandLineArguments = new DefaultCommandLineArguments(args);
+            commandLineArguments = new DefaultCommandLineArguments();
             languageManager = new DefaultLanguageManager();
             themeManager = new DefaultThemeManager();
             objectFactory = new DefaultObjectFactory(container);
@@ -46,8 +46,8 @@ namespace SLStudio.Core
             var loggerConfiguration = new LogManagerConfiguration()
             {
                 DefaultLogLevel = LogLevel.Info,
-                IgnoreDebugLevel = !commandLineArguments.DebugMode,
-                LogToConsole = commandLineArguments.DebugMode,
+                IgnoreDebugLevel = !commandLineArguments.Debug,
+                LogToConsole = commandLineArguments.Debug,
                 MaxRetrieveResults = 0
             };
 
@@ -98,9 +98,9 @@ namespace SLStudio.Core
             logger.Info($"Exiting application with code '{e.ApplicationExitCode}'");
         }
 
-        public static void Run(Dispatcher dispatcher, IEnumerable<string> args)
+        public static void Run(Dispatcher dispatcher)
         {
-            new Bootstrapper(dispatcher, args).Initialize().FireAndForget();
+            new Bootstrapper(dispatcher).Initialize().FireAndForget();
         }
     }
 }

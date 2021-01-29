@@ -8,6 +8,7 @@
 		<FileVersion>21.1.374.651</FileVersion>
 		<ApplicationIcon>icon.ico</ApplicationIcon>
 		<SignAssembly>false</SignAssembly>
+		<StartupObject>SLStudio.Program</StartupObject>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -16,7 +17,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Include="..\..\SolutionItems\SLStudioConstants.cs" Link="SLStudioConstants.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="AvalonEdit" Version="6.1.0-preview1" />
+		<PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
 		<PackageReference Include="ControlzEx" Version="4.4.0" />
 		<PackageReference Include="DevExpressMvvm" Version="20.2.3" />
 		<PackageReference Include="Dirkster.AvalonDock" Version="4.50.1" />
@@ -39,13 +45,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
-	  <ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
-	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj" />
-	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj" />
-	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
-	  <ProjectReference Include="..\Modules\LegacyEditors\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
-	  <ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
+		<ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
+		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj" />
+		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj" />
+		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
+		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
+		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

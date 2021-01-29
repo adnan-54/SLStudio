@@ -1,9 +1,41 @@
 ﻿using SLStudio.Core.Docking;
+using System;
 using System.ComponentModel;
 using System.Linq;
 
 namespace SLStudio.Core
 {
+    internal class ShellOpeningStrategy : IShellOpeningStrategy
+    {
+        private readonly ICommandLineArguments commandLineArguments;
+        private readonly IFileService fileService;
+
+        public ShellOpeningStrategy(IShell shell, ICommandLineArguments commandLineArguments, IFileService fileService)
+        {
+            this.commandLineArguments = commandLineArguments;
+            this.fileService = fileService;
+            shell.Loaded += OnLoaded;
+        }
+
+        private async void OnLoaded(object sender, EventArgs e)
+        {
+            var filesToOpen = commandLineArguments.Files;
+            IFileDocumentItem lastOpenedFile = null;
+
+            foreach (var file in filesToOpen)
+            {
+                if (fileService.CanHandle(file))
+                    lastOpenedFile = await fileService.Open(file);
+            }
+
+            lastOpenedFile?.Activate();
+        }
+    }
+
+    public interface IShellOpeningStrategy
+    {
+    }
+
     internal class ShellClosingStrategy : IShellClosingStrategy
     {
         private readonly IShell shell;

@@ -22,6 +22,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="AvalonEdit" Version="6.1.0-preview1" />
+		<PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
 		<PackageReference Include="ControlzEx" Version="4.4.0" />
 		<PackageReference Include="DevExpressMvvm" Version="20.2.3" />
 		<PackageReference Include="Dirkster.AvalonDock" Version="4.50.1" />

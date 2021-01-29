@@ -26,6 +26,7 @@ namespace SLStudio.Core
             container.RegisterService<ILanguageDefinitionManager, DefaultLanguageDefinitionManager>();
 
             container.RegisterSingleton<IShell, ShellViewModel>();
+            container.RegisterSingleton<IShellOpeningStrategy, ShellOpeningStrategy>();
             container.RegisterSingleton<IShellClosingStrategy, ShellClosingStrategy>();
 
             container.RegisterSingleton<IToolbox, ToolBoxViewModel>();

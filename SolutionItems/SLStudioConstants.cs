@@ -1,9 +1,13 @@
 using System;
+using System.Diagnostics;
 using System.IO;
 
 internal class SLStudioConstants
 {
-    public const string ProductName = "SLStudio";
+    public static readonly string ProductName = "SLStudio";
+
+    public static readonly string LocalKey = $"{ProductName}({Process.GetCurrentProcess().SessionId})";
+    public static readonly string GlobalKey = $"Global\\{LocalKey}";
 
     public static readonly string LocalDocumentsDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), ProductName);
     public static readonly string LocalAppDataDirectory = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ProductName);
