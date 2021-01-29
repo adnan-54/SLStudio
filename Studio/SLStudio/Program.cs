@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SLStudio.Core;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -10,7 +11,7 @@ namespace SLStudio
     {
         private static Mutex mutex;
 
-        [STAThread()]
+        [STAThread]
         public static void Main()
         {
             try
@@ -31,19 +32,38 @@ namespace SLStudio
 
         private static void Run()
         {
+            StartServer();
+
             var splashScreen = new SplashScreen("splashscreen.png");
             splashScreen.Show(true);
             App app = new App();
-            app.Startup += AppStartup;
             app.InitializeComponent();
             app.Run();
         }
 
-        private static void AppStartup(object sender, StartupEventArgs e)
+        private static void StartServer()
         {
             var server = InternalServer.Create();
             server.Start();
-            server.MessageRecived += (s, e) => Debug.WriteLine($"sender: {s}, date:{DateTime.Now}, args:{e}");
+            server.MessageRecived += OnMessageMessageRecived;
+        }
+
+        private static async void OnMessageMessageRecived(object sender, string e)
+        {
+            //todo: improve this
+            //files should be queued and opened later because we need to exit the method as soon as possible
+            //we shouldn't use dispatcher either
+            await Application.Current.Dispatcher.InvokeAsync(() =>
+            {
+                var fileService = IoC.Get<IFileService>();
+                var files = e.Split(';').ToList();
+                files.ForEach(f => fileService?.Open(f));
+
+                if (Application.Current.MainWindow.WindowState == WindowState.Minimized)
+                    SystemCommands.RestoreWindow(Application.Current.MainWindow);
+
+                Application.Current.MainWindow.Activate();
+            });
         }
 
         private static void SendToCurrentInstance()

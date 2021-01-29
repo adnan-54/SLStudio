@@ -2,6 +2,7 @@
 using System.IO;
 using System.IO.Pipes;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace SLStudio
 {
@@ -10,9 +11,9 @@ namespace SLStudio
         private static InternalServer instance;
 
         private bool isRunning;
-        private Thread serverThread;
         private NamedPipeServerStream server;
-        private CancellationTokenSource cancellationToken;
+        private CancellationTokenSource cancellationTokenSource;
+        private Task serverTask;
 
         private InternalServer()
         {
@@ -30,44 +31,62 @@ namespace SLStudio
 
         public void Start()
         {
-            serverThread = new Thread(ServerThread)
-            {
-                IsBackground = true,
-                Priority = ThreadPriority.BelowNormal
-            };
+            isRunning = true;
 
             server = new NamedPipeServerStream(SLStudioConstants.GlobalKey);
-            cancellationToken = new CancellationTokenSource();
-            serverThread.Start();
-            isRunning = true;
+            cancellationTokenSource = new CancellationTokenSource();
+            serverTask = Task.Run(() => RunAsync(), cancellationTokenSource.Token);
+            serverTask.ContinueWith(t => Stop());
         }
 
         public void Stop()
         {
-            if (!isRunning || serverThread is null)
+            if (!isRunning || serverTask is null)
                 return;
 
-            cancellationToken.Cancel();
-            serverThread = null;
-            server.Dispose();
-            server = null;
             isRunning = false;
+
+            cancellationTokenSource.Cancel();
+            cancellationTokenSource.Dispose();
+            cancellationTokenSource = null;
+
+            server.Close();
+            server = null;
+
+            serverTask.Dispose();
+            serverTask = null;
         }
 
-        private void ServerThread(object param)
+        private async Task RunAsync()
         {
-            while (true)
+            try
             {
-                cancellationToken.Token.ThrowIfCancellationRequested();
+                while (isRunning)
+                {
+                    cancellationTokenSource.Token.ThrowIfCancellationRequested();
 
-                server.WaitForConnection();
+                    await server.WaitForConnectionAsync(cancellationTokenSource.Token);
 
-                using var streamReader = new StreamReader(server, leaveOpen: true);
-                var message = streamReader.ReadToEnd();
-                OnMessageRecived(message);
+                    var message = await ReadMessageAsync();
 
-                server.Disconnect();
+                    server.Disconnect();
+
+                    OnMessageRecived(message);
+                }
             }
+            catch
+            {
+                await Task.FromException(new TaskCanceledException());
+            }
+        }
+
+        private Task<string> ReadMessageAsync()
+        {
+            if (!server.IsConnected)
+                return Task.FromResult(string.Empty);
+
+            using var streamReader = new StreamReader(server, leaveOpen: true);
+            return streamReader.ReadToEndAsync();
         }
 
         private void OnMessageRecived(string message)
