@@ -188,6 +188,15 @@ namespace SLStudio.Core.Modules.LogsVisualizer.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Called From:.
+        /// </summary>
+        public static string label_calledFrom {
+            get {
+                return ResourceManager.GetString("label_calledFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date:.
         /// </summary>
         public static string label_date {
@@ -229,6 +238,15 @@ namespace SLStudio.Core.Modules.LogsVisualizer.Resources {
         public static string label_sender {
             get {
                 return ResourceManager.GetString("label_sender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stack Trace:.
+        /// </summary>
+        public static string label_stackTrace {
+            get {
+                return ResourceManager.GetString("label_stackTrace", resourceCulture);
             }
         }
         

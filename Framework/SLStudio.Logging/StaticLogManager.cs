@@ -1,0 +1,34 @@
+﻿using System;
+
+namespace SLStudio.Logging
+{
+    public partial class LogManager
+    {
+        static LogManager()
+        {
+            Default = new LogManager();
+        }
+
+        public static ILogManager Default { get; }
+
+        public static ILogger GetLoggerFor<Type>() where Type : class
+        {
+            return GetLogger(typeof(Type));
+        }
+
+        public static ILogger GetLogger(Type type)
+        {
+            return GetLogger(type.Name);
+        }
+
+        public static ILogger GetLogger(string name)
+        {
+            return Default.GetLogger(name);
+        }
+
+        public static void RequestDump()
+        {
+            (Default as LogManager).OnDumpRequested();
+        }
+    }
+}

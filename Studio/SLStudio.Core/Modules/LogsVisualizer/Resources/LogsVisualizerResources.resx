@@ -211,4 +211,10 @@ Are you sure you want to continue?</value>
   <data name="tooltip_viewSimpleLogs" xml:space="preserve">
     <value>View Simple Logs</value>
   </data>
+  <data name="label_stackTrace" xml:space="preserve">
+    <value>Stack Trace:</value>
+  </data>
+  <data name="label_calledFrom" xml:space="preserve">
+    <value>Called From:</value>
+  </data>
 </root>

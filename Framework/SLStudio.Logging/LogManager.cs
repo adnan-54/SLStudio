@@ -1,73 +1,145 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SimpleInjector;
+using System;
 using System.Data;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace SLStudio.Logging
 {
-    public static class LogManager
+    public partial class LogManager : ILogManager
     {
-        private static readonly Dictionary<string, ILogger> loggers = new Dictionary<string, ILogger>();
+        private readonly Container container;
+        private readonly IObjectFactory objectFactory;
+        private readonly ILoggerFactory loggerFactory;
+        private readonly ILoggingService loggingService;
+        private readonly IInternalLogger internalLogger;
+        private readonly IConfigurationService configurationService;
+        private readonly ConsoleLogger consoleLogger;
+        private readonly DebugLogger debugLogger;
+        private bool initialized;
 
-        private static readonly LoggingService loggingService = new LoggingService();
-
-        public static event EventHandler<LogCompletedEventArgs> LogCompleted;
-
-        public static LogManagerConfiguration Configuraion { get; private set; } = new DefaultLogManagerConfiguration();
-
-        public static void Configure(LogManagerConfiguration configuration)
+        private LogManager()
         {
-            Configuraion = configuration;
+            container = new Container();
+            objectFactory = new DefaultObjectFactory(container);
+            loggerFactory = new DefaultLoggerFactory(objectFactory);
+            internalLogger = new DefaultInternalLogger();
+            configurationService = new DefaultConfigurationService();
+            loggingService = new DefaultLoggingService(this, internalLogger, configurationService);
+            consoleLogger = new ConsoleLogger(this, configurationService);
+            debugLogger = new DebugLogger(this, configurationService);
+
+            RegisterInstances();
         }
 
-        public static ILogger GetLoggerFor<Type>() where Type : class
+        public event EventHandler<LogCompletedEventArgs> LogCompleted;
+
+        public event EventHandler Initialized;
+
+        public event EventHandler DumpRequested;
+
+        public bool IsInitialized => initialized;
+
+        ILogger ILogManager.GetLogger(string name)
         {
-            return GetLogger(typeof(Type));
+            return loggerFactory.Create(name);
         }
 
-        public static ILogger GetLogger(Type type)
+        public void Initialize(LoggerConfiguration configuration)
         {
-            return GetLogger(type.Name);
+            if (initialized)
+                return;
+            initialized = true;
+
+            var logsDir = StudioConstants.LogsDirectory;
+            if (!Directory.Exists(logsDir))
+                Directory.CreateDirectory(logsDir);
+
+            configurationService.Initialize(configuration);
+
+            OnInitialized();
         }
 
-        public static ILogger GetLogger(string name)
-        {
-            if (!loggers.TryGetValue(name, out var logger))
-            {
-                logger = new Logger(name, loggingService);
-                loggers.Add(name, logger);
-            }
-
-            return logger;
-        }
-
-        public static Task<DataTable> GetLogs()
+        public Task<DataTable> GetLogs()
         {
             return loggingService.GetLogs();
         }
 
-        /// <summary>
-        /// Get the logs database file size in bytes
-        /// </summary>
-        /// <returns>The database size in bytes</returns>
-        public static long GetLogFileSize()
+        public long GetLogsSize()
         {
-            return loggingService.GetLogFileSize();
+            return loggingService.GetSize();
         }
 
-        public static Task<string> GetSimpleLog()
+        public Task DeleteAllLogs()
         {
-            return loggingService.GetSimpleLogFile();
+            return loggingService.DeleteAll();
         }
 
-        public static Task ClearAll()
+        public Task<string> GetInternalLogs()
         {
-            return loggingService.ClearAll();
+            return internalLogger.GetLogs();
         }
 
-        internal static void OnLogCompleted(Log log)
+        public long GetInternalLogsSize()
         {
-            LogCompleted?.Invoke(loggingService, new LogCompletedEventArgs(log));
+            return internalLogger.GetSize();
         }
+
+        public void ExportToZip(string fileName)
+        {
+            using var zipExporter = new ZipExporter(fileName);
+            zipExporter.Export();
+        }
+
+        internal void OnLogCompleted(Log log)
+        {
+            LogCompleted?.Invoke(this, new LogCompletedEventArgs(log));
+        }
+
+        private void OnInitialized()
+        {
+            Initialized?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void OnDumpRequested()
+        {
+            DumpRequested?.Invoke(this, EventArgs.Empty);
+        }
+
+        private void RegisterInstances()
+        {
+            container.RegisterInstance(this);
+            container.RegisterInstance(objectFactory);
+            container.RegisterInstance(loggerFactory);
+            container.RegisterInstance(loggingService);
+            container.RegisterInstance(internalLogger);
+            container.RegisterInstance(configurationService);
+            container.RegisterInstance(consoleLogger);
+            container.RegisterInstance(debugLogger);
+            container.Register<DefaultLogger>();
+        }
+    }
+
+    public interface ILogManager
+    {
+        event EventHandler<LogCompletedEventArgs> LogCompleted;
+
+        event EventHandler Initialized;
+
+        void Initialize(LoggerConfiguration configuration);
+
+        ILogger GetLogger(string name);
+
+        Task<DataTable> GetLogs();
+
+        long GetLogsSize();
+
+        Task DeleteAllLogs();
+
+        Task<string> GetInternalLogs();
+
+        long GetInternalLogsSize();
+
+        void ExportToZip(string fileName);
     }
 }

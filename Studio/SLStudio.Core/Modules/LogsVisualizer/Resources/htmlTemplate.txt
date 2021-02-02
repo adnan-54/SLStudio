@@ -60,6 +60,10 @@
                 <th>Title</th>
                 <th>Message</th>
                 <th>Date</th>
+                <th>Caller File</th>
+                <th>Caller Member</th>
+                <th>Caller Line</th>
+                <th>Stack Trace</th>
             </tr>
  ****tablePlaceHolder****
         </table>

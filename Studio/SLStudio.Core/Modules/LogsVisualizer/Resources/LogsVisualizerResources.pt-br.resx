@@ -211,4 +211,10 @@
     <value>Esta ação excluirá todos os registros do banco de dados
 Tem certeza que deseja continuar?</value>
   </data>
+  <data name="label_stackTrace" xml:space="preserve">
+    <value>Pilha de Execução:</value>
+  </data>
+  <data name="label_calledFrom" xml:space="preserve">
+    <value>Chamado De:</value>
+  </data>
 </root>

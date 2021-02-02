@@ -18,6 +18,8 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
@@ -105,10 +107,38 @@
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_calledFrom}" />
+
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding CalledFrom, Mode=OneTime}" />
+        </Grid>
+
+        <!--Message-->
+        <Grid Grid.Row="3" Margin="{StaticResource UpMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
                        Text="{x:Static resx:LogsVisualizerResources.label_message}" />
 
             <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
                      Text="{Binding Message, Mode=OneTime}" />
+        </Grid>
+
+        <!--StackTrace-->
+        <Grid Grid.Row="4" Margin="{StaticResource UpMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_stackTrace}" />
+
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding StackTrace, Mode=OneTime}" />
         </Grid>
     </Grid>
 </studio:DialogWindow>

@@ -18,13 +18,14 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
     {
         private readonly IDialogService dialogService;
         private readonly IWindowManager windowManager;
-
+        private readonly ILogManager logManager;
         private int busyOperations;
 
-        public LogVisualizerViewModel(IDialogService dialogService, IWindowManager windowManager)
+        public LogVisualizerViewModel(IDialogService dialogService, IWindowManager windowManager, ILogManager logManager)
         {
             this.dialogService = dialogService;
             this.windowManager = windowManager;
+            this.logManager = logManager;
             DisplayName = LogsVisualizerResources.window_title_logs;
         }
 
@@ -56,7 +57,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
 
         public string TotalLogs => string.Format(LogsVisualizerResources.statusbar_totalLogsFormat, Logs?.Rows?.Count);
 
-        public static string TotalSize => string.Format(LogsVisualizerResources.statusbar_totalSizeFormat, LogManager.GetLogFileSize().Bytes().Humanize("MB"));
+        public string TotalSize => string.Format(LogsVisualizerResources.statusbar_totalSizeFormat, logManager.GetLogsSize().Bytes().Humanize("MB"));
 
         public void Refresh()
         {
@@ -89,7 +90,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
 
         public void ViewSimpleLog()
         {
-            var vm = new SimpleLogVisualizerViewModel(dialogService);
+            var vm = new SimpleLogVisualizerViewModel(dialogService, logManager);
             windowManager.ShowDialog(vm);
         }
 
@@ -111,7 +112,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             {
                 Busy();
 
-                await LogManager.ClearAll();
+                await logManager.DeleteAllLogs();
                 Refresh();
 
                 Idle();
@@ -136,7 +137,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
         {
             Busy();
 
-            Logs = await LogManager.GetLogs();
+            Logs = await logManager.GetLogs();
 
             Idle();
         }
@@ -192,6 +193,10 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
                 sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][3]}</td>");
                 sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][4]}</td>");
                 sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][5]}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][6]}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][7]}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][8]}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][9]}</td>");
                 sb.AppendLine("\t\t\t</tr>");
             }
 

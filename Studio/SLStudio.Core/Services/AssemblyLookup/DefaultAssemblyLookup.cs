@@ -59,7 +59,7 @@ namespace SLStudio.Core
 
         private static IEnumerable<string> GetLoadedAssemblies()
         {
-            return AppDomain.CurrentDomain.GetAssemblies().Select(a => a.Location);
+            return AppDomain.CurrentDomain.GetAssemblies().Where(a => !a.IsDynamic).Select(a => a.Location);
         }
 
         private void LoadAssemblies(IEnumerable<string> assemblies)

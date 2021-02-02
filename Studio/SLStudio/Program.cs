@@ -1,4 +1,5 @@
 ﻿using SLStudio.Core;
+using SLStudio.Logging;
 using System;
 using System.Linq;
 using System.Threading;
@@ -8,17 +9,32 @@ namespace SLStudio
 {
     internal static class Program
     {
+        private static readonly ILogger logger = LogManager.GetLogger(typeof(Program));
+
         private static Mutex mutex;
 
         [STAThread]
         public static void Main()
         {
-            mutex = new Mutex(true, StudioConstants.GlobalKey);
+            try
+            {
+                mutex = new Mutex(true, StudioConstants.GlobalKey);
 
-            if (mutex.WaitOne(TimeSpan.Zero, false))
-                Run();
-            else
-                SendToCurrentInstance();
+                if (mutex.WaitOne(TimeSpan.Zero, false))
+                    Run();
+                else
+                    SendToCurrentInstance();
+            }
+            catch (Exception ex)
+            {
+                logger.Fatal(ex);
+                LogManager.RequestDump();
+                throw;
+            }
+            finally
+            {
+                mutex?.ReleaseMutex();
+            }
         }
 
         private static void Run()

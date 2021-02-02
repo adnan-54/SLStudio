@@ -13,6 +13,8 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             Date = dataRow.Row["date"].ToString();
             Title = dataRow.Row["title"].ToString();
             Message = dataRow.Row["message"].ToString();
+            StackTrace = dataRow.Row["stacktrace"].ToString();
+            CalledFrom = $"{dataRow.Row["callerfile"]}: line {dataRow.Row["callerline"]}, {dataRow.Row["callermember"]}";
 
             DisplayName = LogsVisualizerResources.window_title_Details;
         }
@@ -23,5 +25,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
         public string Date { get; }
         public string Title { get; }
         public string Message { get; }
+        public string StackTrace { get; }
+        public string CalledFrom { get; }
     }
 }

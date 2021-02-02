@@ -43,15 +43,17 @@ namespace SLStudio.Core
 
             IoC.Initialize(container);
 
-            var loggerConfiguration = new LogManagerConfiguration()
+            var loggerConfiguration = new LoggerConfiguration()
             {
+                MinimumLogLevel = LogLevel.Debug,
                 DefaultLogLevel = LogLevel.Info,
                 IgnoreDebugLevel = !commandLineArguments.Debug,
                 LogToConsole = commandLineArguments.Debug,
+                LogToDebug = commandLineArguments.Debug,
                 MaxRetrieveResults = 0
             };
 
-            LogManager.Configure(loggerConfiguration);
+            LogManager.Default.Initialize(loggerConfiguration);
 
             Application.Current.Exit += OnExit;
         }
@@ -83,6 +85,7 @@ namespace SLStudio.Core
         private void RegisterDefaults()
         {
             container.RegisterInstance(Messenger.Default);
+            container.RegisterInstance(LogManager.Default);
             container.RegisterInstance(commandLineArguments);
             container.RegisterInstance(languageManager);
             container.RegisterInstance(themeManager);

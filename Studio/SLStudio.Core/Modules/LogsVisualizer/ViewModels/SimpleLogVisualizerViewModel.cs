@@ -11,11 +11,12 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
     internal class SimpleLogVisualizerViewModel : WindowViewModel
     {
         private readonly IDialogService dialogService;
+        private readonly ILogManager logManager;
 
-        public SimpleLogVisualizerViewModel(IDialogService dialogService)
+        public SimpleLogVisualizerViewModel(IDialogService dialogService, ILogManager logManager)
         {
             this.dialogService = dialogService;
-
+            this.logManager = logManager;
             FetchLogs().FireAndForget();
 
             DisplayName = LogsVisualizerResources.window_title_SimpleLog;
@@ -55,7 +56,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
 
         private async Task FetchLogs()
         {
-            SimpleLogs = await LogManager.GetSimpleLog();
+            SimpleLogs = await logManager.GetInternalLogs();
         }
     }
 }

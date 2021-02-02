@@ -12,6 +12,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="DevExpressMvvm" Version="20.2.3" />
+		<PackageReference Include="DotNetZip" Version="1.15.0" />
+		<PackageReference Include="SimpleInjector" Version="5.2.1" />
 		<PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.7" />
 	</ItemGroup>
 </Project>
