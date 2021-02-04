@@ -5,8 +5,10 @@ using MvvmDialogs.FrameworkDialogs.SaveFile;
 using SLStudio.Core.Modules.LogsVisualizer.Resources;
 using SLStudio.Logging;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,12 +28,13 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             this.dialogService = dialogService;
             this.windowManager = windowManager;
             this.logManager = logManager;
+
             DisplayName = LogsVisualizerResources.window_title_logs;
         }
 
         public bool IsBusy => busyOperations > 0;
 
-        public DataTable Logs
+        public IEnumerable<Log> Logs
         {
             get => GetProperty(() => Logs);
             set
@@ -43,7 +46,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             }
         }
 
-        public DataRowView SelectedItem
+        public Log SelectedItem
         {
             get => GetProperty(() => SelectedItem);
             set => SetProperty(() => SelectedItem, value);
@@ -55,7 +58,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             set => SetProperty(() => StatusBarStatus, value);
         }
 
-        public string TotalLogs => string.Format(LogsVisualizerResources.statusbar_totalLogsFormat, Logs?.Rows?.Count);
+        public string TotalLogs => string.Format(LogsVisualizerResources.statusbar_totalLogsFormat, Logs?.Count());
 
         public string TotalSize => string.Format(LogsVisualizerResources.statusbar_totalSizeFormat, logManager.GetLogsSize().Bytes().Humanize("MB"));
 
@@ -94,9 +97,9 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             windowManager.ShowDialog(vm);
         }
 
-        public async Task ClearAll()
+        public void ClearAll()
         {
-            if (Logs?.Rows?.Count <= 1)
+            if (!Logs.Any())
                 return;
 
             var settings = new MessageBoxSettings()
@@ -112,7 +115,7 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             {
                 Busy();
 
-                await logManager.DeleteAllLogs();
+                logManager.DeleteAllLogs();
                 Refresh();
 
                 Idle();
@@ -133,13 +136,15 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             Refresh();
         }
 
-        private async Task FetchLogs()
+        private Task FetchLogs()
         {
             Busy();
 
-            Logs = await logManager.GetLogs();
+            Logs = logManager.GetLogs();
 
             Idle();
+
+            return Task.CompletedTask;
         }
 
         private void Busy()
@@ -160,43 +165,35 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             }
         }
 
-        private async Task<string> BuildHtmlString()
+        private Task<string> BuildHtmlString()
         {
-            var result = string.Empty;
-
-            await Task.Run(() =>
+            return Task.Run(() =>
             {
                 using Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("SLStudio.Core.Modules.LogsVisualizer.Resources.htmlTemplate.txt");
                 using StreamReader reader = new StreamReader(stream);
 
-                result = reader.ReadToEnd();
-
-                result = result.Replace("****tablePlaceHolder****", BuildRows());
+                return reader.ReadToEnd().Replace("****tablePlaceHolder****", BuildRows());
             });
-
-            return result;
         }
 
         private string BuildRows()
         {
             var sb = new StringBuilder();
+            var logs = new List<Log>(Logs.Take(1000));
 
-            for (int i = 0; i <= 1000; i++)
+            foreach (var log in logs)
             {
-                if (i >= Logs.Rows.Count - 1)
-                    break;
-
                 sb.AppendLine("\t\t\t<tr>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][0]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][1]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][2]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][3]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][4]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][5]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][6]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][7]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][8]}</td>");
-                sb.AppendLine($"\t\t\t\t<td>{Logs.Rows[i][9]}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Id}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Sender}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Level}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Title}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Message}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.Date}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.CallerFile}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.CallerMember}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.CallerLine}</td>");
+                sb.AppendLine($"\t\t\t\t<td>{log.StackTrace}</td>");
                 sb.AppendLine("\t\t\t</tr>");
             }
 

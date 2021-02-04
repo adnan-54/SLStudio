@@ -1,9 +1,8 @@
-﻿using System;
-using System.Text;
+﻿using System.Text;
 
 namespace SLStudio.Logging
 {
-    public record Log(string Title, string Message, string Sender, string Level, DateTime Date, string CallerFile, string CallerMember, int CallerLine, string StackTrace)
+    public record Log(string Title, string Message, string Sender, string Level, string Date, string CallerFile, string CallerMember, int CallerLine, string StackTrace, int Id)
     {
         private string stringRepresentation;
 
@@ -24,8 +23,10 @@ namespace SLStudio.Logging
 
                 sb.Append($"\"{Message}\"");
                 sb.AppendLine();
-                sb.Append($"{CallerFile}, {CallerMember}, {CallerLine}");
-                sb.Append($"@{StackTrace}");
+                sb.Append($"{CallerFile}: Line: {CallerLine}, {CallerMember}");
+
+                if (!string.IsNullOrEmpty(StackTrace))
+                    sb.AppendLine($"@{StackTrace}");
 
                 stringRepresentation = $"{sb}";
             }

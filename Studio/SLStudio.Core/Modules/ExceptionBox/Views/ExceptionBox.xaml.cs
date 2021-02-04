@@ -81,7 +81,11 @@ namespace SLStudio.Core.Modules.ExceptionBox.Views
             finally
             {
                 if (exceptionBox.mustTerminate)
-                    Environment.FailFast("Fatal unhandled exception");
+                {
+                    LogManager.RequestDump();
+                    Environment.FailFast("Fatal unhandled exception", exception);
+                    Environment.Exit(-1);
+                }
 
                 showingBox = false;
             }

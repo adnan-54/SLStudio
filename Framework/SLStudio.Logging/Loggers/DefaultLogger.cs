@@ -80,7 +80,7 @@ namespace SLStudio.Logging
 
         private void Enqueue(string title, object message, string level, string callerFile, string callerMember, int callerLine)
         {
-            loggingService.EnqueueLog(Name, title, $"{message}", level, callerFile, callerMember, callerLine, Environment.StackTrace);
+            loggingService.EnqueueLog(Name, title, $"{message}", level, callerFile, callerMember, callerLine);
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SLStudio.Logging
 {
@@ -23,7 +22,7 @@ namespace SLStudio.Logging
             logFile = new FileInfo(filePath);
         }
 
-        public async void Log(object message, Log log, string callerFile, string callerMember, int callerLine)
+        public void Log(object message, Log log, string callerFile, string callerMember, int callerLine)
         {
             var sb = new StringBuilder();
             try
@@ -78,8 +77,8 @@ namespace SLStudio.Logging
                 }
 
                 logStream.Seek(0, SeekOrigin.End);
-                await logWriter.WriteAsync($"{sb}").ConfigureAwait(false);
-                await logWriter.FlushAsync().ConfigureAwait(false);
+                logWriter.Write($"{sb}");
+                logWriter.Flush();
             }
             catch (Exception ex)
             {
@@ -87,10 +86,10 @@ namespace SLStudio.Logging
             }
         }
 
-        public Task<string> GetLogs()
+        public string GetLogs()
         {
             logStream.Seek(0, SeekOrigin.Begin);
-            return logReader.ReadToEndAsync();
+            return logReader.ReadToEnd();
         }
 
         public long GetSize()
@@ -104,7 +103,7 @@ namespace SLStudio.Logging
     {
         void Log(object message, Log log = null, [CallerFilePath] string callerFile = null, [CallerMemberName] string callerMember = null, [CallerLineNumber] int callerLine = 0);
 
-        Task<string> GetLogs();
+        string GetLogs();
 
         long GetSize();
     }

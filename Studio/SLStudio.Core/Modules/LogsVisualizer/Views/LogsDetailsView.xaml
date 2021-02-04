@@ -6,7 +6,7 @@
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:studio="clr-namespace:SLStudio.Core"
                      xmlns:resx="clr-namespace:SLStudio.Core.Modules.LogsVisualizer.Resources"
-                     mc:Ignorable="d" Height="450" Width="800"
+                     mc:Ignorable="d" Width="800" SizeToContent="Height"
                      Background="{StaticResource Editor.Background}">
     <!--InputBindings-->
     <studio:DialogWindow.InputBindings>
@@ -20,7 +20,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <!--Resources-->
@@ -99,7 +99,7 @@
                      Text="{Binding Title, Mode=OneTime}" />
         </Grid>
 
-        <!--Message-->
+        <!--CalledFrom-->
         <Grid Grid.Row="2" Margin="{StaticResource UpMargin}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -114,7 +114,8 @@
         </Grid>
 
         <!--Message-->
-        <Grid Grid.Row="3" Margin="{StaticResource UpMargin}">
+        <Grid Grid.Row="3" Margin="{StaticResource UpMargin}"
+              MinHeight="200">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -128,7 +129,9 @@
         </Grid>
 
         <!--StackTrace-->
-        <Grid Grid.Row="4" Margin="{StaticResource UpMargin}">
+        <Grid Grid.Row="4" Margin="{StaticResource UpMargin}"
+              MinHeight="200"
+              metro:VisibilityHelper.IsCollapsed="{Binding StackTrace, Converter={StaticResource IsNullConverter}}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

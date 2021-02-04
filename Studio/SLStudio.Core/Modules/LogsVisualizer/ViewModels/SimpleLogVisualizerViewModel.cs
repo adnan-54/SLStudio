@@ -11,26 +11,16 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
     internal class SimpleLogVisualizerViewModel : WindowViewModel
     {
         private readonly IDialogService dialogService;
-        private readonly ILogManager logManager;
 
         public SimpleLogVisualizerViewModel(IDialogService dialogService, ILogManager logManager)
         {
             this.dialogService = dialogService;
-            this.logManager = logManager;
-            FetchLogs().FireAndForget();
+            SimpleLogs = logManager.GetInternalLogs();
 
             DisplayName = LogsVisualizerResources.window_title_SimpleLog;
         }
 
-        public string SimpleLogs
-        {
-            get => GetProperty(() => SimpleLogs);
-            set
-            {
-                SetProperty(() => SimpleLogs, value);
-                RaisePropertyChanged(() => CanExport);
-            }
-        }
+        public string SimpleLogs { get; }
 
         public bool CanExport => !string.IsNullOrEmpty(SimpleLogs);
 
@@ -52,11 +42,6 @@ namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
             var result = dialogService.ShowSaveFileDialog(this, settings);
             if (result == true)
                 await File.WriteAllTextAsync(settings.FileName, SimpleLogs);
-        }
-
-        private async Task FetchLogs()
-        {
-            SimpleLogs = await logManager.GetInternalLogs();
         }
     }
 }

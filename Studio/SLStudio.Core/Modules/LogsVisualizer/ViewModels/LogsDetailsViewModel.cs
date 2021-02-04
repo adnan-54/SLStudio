@@ -1,31 +1,26 @@
 ﻿using SLStudio.Core.Modules.LogsVisualizer.Resources;
-using System.Data;
+using SLStudio.Logging;
 
 namespace SLStudio.Core.Modules.LogsVisualizer.ViewModels
 {
     internal class LogsDetailsViewModel : WindowViewModel
     {
-        public LogsDetailsViewModel(DataRowView dataRow)
+        private readonly Log log;
+
+        public LogsDetailsViewModel(Log log)
         {
-            Id = dataRow.Row["id"].ToString();
-            Sender = dataRow.Row["sender"].ToString();
-            Level = dataRow.Row["level"].ToString();
-            Date = dataRow.Row["date"].ToString();
-            Title = dataRow.Row["title"].ToString();
-            Message = dataRow.Row["message"].ToString();
-            StackTrace = dataRow.Row["stacktrace"].ToString();
-            CalledFrom = $"{dataRow.Row["callerfile"]}: line {dataRow.Row["callerline"]}, {dataRow.Row["callermember"]}";
+            this.log = log;
 
             DisplayName = LogsVisualizerResources.window_title_Details;
         }
 
-        public string Id { get; }
-        public string Sender { get; }
-        public string Level { get; }
-        public string Date { get; }
-        public string Title { get; }
-        public string Message { get; }
-        public string StackTrace { get; }
-        public string CalledFrom { get; }
+        public int Id => log.Id;
+        public string Sender => log.Sender;
+        public string Level => log.Level;
+        public string Date => log.Date;
+        public string Title => log.Title;
+        public string Message => log.Message;
+        public string StackTrace => log.StackTrace;
+        public string CalledFrom => $"{log.CallerFile}: line {log.CallerLine}, {log.CallerMember}";
     }
 }

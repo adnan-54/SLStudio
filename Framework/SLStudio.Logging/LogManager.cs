@@ -1,5 +1,6 @@
 ﻿using SimpleInjector;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Threading.Tasks;
@@ -11,8 +12,8 @@ namespace SLStudio.Logging
         private readonly Container container;
         private readonly IObjectFactory objectFactory;
         private readonly ILoggerFactory loggerFactory;
-        private readonly ILoggingService loggingService;
         private readonly IInternalLogger internalLogger;
+        private readonly ILoggingService loggingService;
         private readonly IConfigurationService configurationService;
         private readonly ConsoleLogger consoleLogger;
         private readonly DebugLogger debugLogger;
@@ -20,6 +21,10 @@ namespace SLStudio.Logging
 
         private LogManager()
         {
+            var logsDir = StudioConstants.LogsDirectory;
+            if (!Directory.Exists(logsDir))
+                Directory.CreateDirectory(logsDir);
+
             container = new Container();
             objectFactory = new DefaultObjectFactory(container);
             loggerFactory = new DefaultLoggerFactory(objectFactory);
@@ -51,16 +56,12 @@ namespace SLStudio.Logging
                 return;
             initialized = true;
 
-            var logsDir = StudioConstants.LogsDirectory;
-            if (!Directory.Exists(logsDir))
-                Directory.CreateDirectory(logsDir);
-
             configurationService.Initialize(configuration);
 
             OnInitialized();
         }
 
-        public Task<DataTable> GetLogs()
+        public IEnumerable<Log> GetLogs()
         {
             return loggingService.GetLogs();
         }
@@ -70,12 +71,12 @@ namespace SLStudio.Logging
             return loggingService.GetSize();
         }
 
-        public Task DeleteAllLogs()
+        public void DeleteAllLogs()
         {
-            return loggingService.DeleteAll();
+            loggingService.DeleteAll();
         }
 
-        public Task<string> GetInternalLogs()
+        public string GetInternalLogs()
         {
             return internalLogger.GetLogs();
         }
@@ -124,19 +125,17 @@ namespace SLStudio.Logging
     {
         event EventHandler<LogCompletedEventArgs> LogCompleted;
 
-        event EventHandler Initialized;
-
         void Initialize(LoggerConfiguration configuration);
 
         ILogger GetLogger(string name);
 
-        Task<DataTable> GetLogs();
+        IEnumerable<Log> GetLogs();
 
         long GetLogsSize();
 
-        Task DeleteAllLogs();
+        void DeleteAllLogs();
 
-        Task<string> GetInternalLogs();
+        string GetInternalLogs();
 
         long GetInternalLogsSize();
 

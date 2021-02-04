@@ -64,7 +64,7 @@
         <!--BusyIndicator-->
         <xctk:BusyIndicator Grid.Row="1" IsBusy="{Binding IsBusy}">
             <!--DataGrid-->
-            <DataGrid ItemsSource="{Binding Logs.DefaultView}"
+            <DataGrid ItemsSource="{Binding Logs}"
                       SelectedItem="{Binding SelectedItem}"
                       CanUserAddRows="False" CanUserDeleteRows="False"
                       SelectionUnit="FullRow" SelectionMode="Single"
@@ -95,7 +95,7 @@
                     <!--HeaderStyle-->
                     <Style x:Key="HeaderStyle" TargetType="{x:Type DataGridColumnHeader}"
                            BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader.Azure}">
-                        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                         <Setter Property="Margin" Value="0, 0, 0, 3" />
                     </Style>
@@ -104,7 +104,7 @@
                 <!--CellStyle-->
                 <DataGrid.CellStyle>
                     <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MahApps.Styles.DataGridCell}">
-                        <Setter Property="Foreground" Value="{StaticResource Foreground}"/>
+                        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
                         <Style.Triggers>
                             <DataTrigger Binding="{DXBinding '@s.Content.Text', Converter={StaticResource IsNotNullConverter}}" Value="True">
                                 <Setter Property="ToolTip" Value="{DXBinding '@s.Content.Text'}" />
@@ -123,7 +123,7 @@
                 <!--Columns-->
                 <DataGrid.Columns>
                     <!--Id-->
-                    <DataGridTextColumn Binding="{Binding ID}" IsReadOnly="True"
+                    <DataGridTextColumn Binding="{Binding Id}" IsReadOnly="True"
                                         Header="{x:Static resx:LogsVisualizerResources.header_id}"
                                         ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
                                         Width="SizeToHeader" SortDirection="Ascending" MinWidth="50" />
