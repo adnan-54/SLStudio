@@ -20,6 +20,8 @@ internal class StudioConstants
     public static readonly string InternalLogsFile = Path.Combine(LogsDirectory, "logs.txt");
     public static string NewTempDirectory => GetNewTempDirectory();
 
+    public static string ApiRoute = @"http://slstudio.app/api/";
+
     public static readonly TimeSpan DefaultTimeout = TimeSpan.FromMinutes(2);
     public static readonly TimeSpan AutoSaveTimeout = TimeSpan.FromSeconds(30);
 

@@ -11,7 +11,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
     {
         private readonly IUiSynchronization uiSynchronization;
 
-        public OutputViewModel(ILogManager logManager, IUiSynchronization uiSynchronization)
+        public OutputViewModel(ILogManager logManager, ICommandLineArguments commandLineArguments, IUiSynchronization uiSynchronization)
         {
             this.uiSynchronization = uiSynchronization;
             TextDocument = new TextDocument();
@@ -19,7 +19,8 @@ namespace SLStudio.Core.Modules.Output.ViewModels
             CanSetContent = false;
             DisplayName = OutputResource.Output;
 
-            logManager.LogCompleted += OnLogCompleted;
+            if (commandLineArguments.Debug)
+                logManager.LogCompleted += OnLogCompleted;
         }
 
         public override WorkspaceItemPlacement Placement => WorkspaceItemPlacement.Bottom;
@@ -66,7 +67,7 @@ namespace SLStudio.Core.Modules.Output.ViewModels
 
         private void OnLogCompleted(object sender, LogCompletedEventArgs e)
         {
-            AppendLine($"{e.Log}");
+            AppendLine($"{e.Log.StringRepresentation}");
         }
     }
 }

@@ -10,8 +10,8 @@
     <system:String x:Key="Theme.DisplayName">Dark</system:String>
     <system:String x:Key="Theme.BaseColorScheme">Dark</system:String>
     <system:String x:Key="Theme.ColorScheme">Blue</system:String>
-    <Color x:Key="Theme.PrimaryAccentColor">#FFD80073</Color>
-    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="#FFD80073" options:Freeze="True" />
+    <Color x:Key="Theme.PrimaryAccentColor">#FF007ACC</Color>
+    <SolidColorBrush x:Key="Theme.ShowcaseBrush" Color="{StaticResource Theme.PrimaryAccentColor}" options:Freeze="True" />
 
     <!--Colors-->
     <Color x:Key="Backstage.Button.Background.Color">#FF118EDA</Color>

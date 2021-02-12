@@ -15,11 +15,15 @@ namespace SLStudio.Logging
 
         public DefaultInternalLogger()
         {
-            var filePath = StudioConstants.InternalLogsFile;
-            logStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            logReader = new StreamReader(logStream);
-            logWriter = new StreamWriter(logStream);
-            logFile = new FileInfo(filePath);
+            try
+            {
+                var filePath = StudioConstants.InternalLogsFile;
+                logStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                logReader = new StreamReader(logStream);
+                logWriter = new StreamWriter(logStream);
+                logFile = new FileInfo(filePath);
+            }
+            catch { }
         }
 
         public void Log(object message, Log log, string callerFile, string callerMember, int callerLine)
@@ -27,6 +31,8 @@ namespace SLStudio.Logging
             var sb = new StringBuilder();
             try
             {
+                logStream.Seek(0, SeekOrigin.End);
+
                 sb.AppendLine("---------------------------");
                 sb.AppendLine($"Date: {DateTime.Now}");
                 sb.AppendLine();
@@ -76,7 +82,6 @@ namespace SLStudio.Logging
                     sb.AppendLine();
                 }
 
-                logStream.Seek(0, SeekOrigin.End);
                 logWriter.Write($"{sb}");
                 logWriter.Flush();
             }

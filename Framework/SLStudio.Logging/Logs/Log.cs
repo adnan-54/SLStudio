@@ -13,7 +13,7 @@ namespace SLStudio.Logging
             if (string.IsNullOrEmpty(stringRepresentation))
             {
                 var sb = new StringBuilder();
-                sb.Append($"({Date}) | [{Level}] <{Sender}>: ");
+                sb.Append($"({Date}) | <{Sender}>: [{Level}] ");
 
                 if (!string.IsNullOrEmpty(Title))
                 {
@@ -22,8 +22,6 @@ namespace SLStudio.Logging
                 }
 
                 sb.Append($"\"{Message}\"");
-                sb.AppendLine();
-                sb.Append($"{CallerFile}: Line: {CallerLine}, {CallerMember}");
 
                 if (!string.IsNullOrEmpty(StackTrace))
                     sb.AppendLine($"@{StackTrace}");
