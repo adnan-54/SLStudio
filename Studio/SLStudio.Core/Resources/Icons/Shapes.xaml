@@ -101,4 +101,38 @@
         <Setter Property="Stretch" Value="Fill" />
         <Setter Property="VerticalAlignment" Value="Center" />
     </Style>
+
+    <!--BarDrag-->
+    <Style x:Key="UIShape.DragWidget" TargetType="{x:Type Path}">
+        <Setter Property="Data" Value="F1 M 0,0L 1,0L 1,1L 0,1L 0,0 Z M 0,4.00002L 0.999999,4.00002L 0.999999,5.00002L 0,5.00002L 0,4.00002 Z M 0,8.00001L 0.999999,8.00001L 0.999999,9.00001L 0,9.00001L 0,8.00001 Z M 0,12L 0.999999,12L 0.999999,13L 0,13L 0,12 Z M 0,16L 0.999999,16L 0.999999,17L 0,17L 0,16 Z M 4,1.14441e-005L 5,1.14441e-005L 5,1.00001L 4,1.00001L 4,1.14441e-005 Z M 4,4.00001L 5,4.00001L 5,5.00001L 4,5.00001L 4,4.00001 Z M 4,8L 5,8L 5,9L 4,9L 4,8 Z M 4,12L 5,12L 5,13L 4,13L 4,12 Z M 4,16L 5,16L 5,17L 4,17L 4,16 Z M 2,2L 3,2L 3,3L 2,3L 2,2 Z M 2,6L 3,6L 3,7L 2,7L 2,6 Z M 2,10L 3,10L 3,11L 2,11L 2,10 Z M 2,14L 3,14L 3,15L 2,15L 2,14 Z " />
+        <Setter Property="Fill" Value="{StaticResource Foreground}" />
+        <Setter Property="Height" Value="17" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="1" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="5" />
+    </Style>
+    
+    <!--DropDownDots-->
+    <Style x:Key="UIShape.DropDownDots" TargetType="{x:Type Path}">
+        <Setter Property="Data" Value="F1 M 2,0C 3.10457,0 4,0.895431 4,2C 4,3.10457 3.10457,4 2,4C 0.89543,4 -1.58946e-007,3.10457 -1.58946e-007,2C -1.58946e-007,0.895431 0.89543,0 2,0 Z M 10,9.53674e-007C 11.1046,9.53674e-007 12,0.895432 12,2C 12,3.10457 11.1046,4 10,4C 8.89543,4 8,3.10457 8,2C 8,0.895432 8.89543,9.53674e-007 10,9.53674e-007 Z M 18,9.53674e-007C 19.1046,9.53674e-007 20,0.895431 20,2C 20,3.10457 19.1046,4 18,4C 16.8954,4 16,3.10457 16,2C 16,0.895432 16.8954,9.53674e-007 18,9.53674e-007 Z " />
+        <Setter Property="Fill" Value="{StaticResource Foreground}" />
+        <Setter Property="Height" Value="4" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="Width" Value="20" />
+    </Style>
+
+    <!--LeftGrip-->
+    <Style x:Key="UIShape.LeftGrip" TargetType="{x:Type Path}">
+        <Setter Property="Data" Value="M73.19,73.14H0V0h73.19V73.14z M73.19,219.43H0v73.14h73.19V219.43z M73.19,438.86H0V512h73.19V438.86z M292.42,438.86h-73.19V512h73.19V438.86z M512,438.86h-73.19V512H512V438.86z M292.42,218.86h-73.19v73.14h73.19V218.86z" />
+        <Setter Property="Fill" Value="{StaticResource Foreground}" />
+        <Setter Property="Opacity" Value="0.7"/>
+        <Setter Property="Stretch" Value="Fill" />
+    </Style>
 </ResourceDictionary>

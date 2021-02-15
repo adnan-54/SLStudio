@@ -2,7 +2,9 @@
                     xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:studio="clr-namespace:SLStudio.Core"
+                    xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
                     xmlns:resx="clr-namespace:SLStudio.Core.Resources"
+                    xmlns:hc="https://handyorg.github.io/handycontrol"
                     xmlns:converters="clr-namespace:SLStudio.Core.Converters">
     <!--StudioAvalonEditScrollViewerTemplate-->
     <ControlTemplate x:Key="StudioAvalonEditScrollViewerTemplate" TargetType="{x:Type ScrollViewer}">
@@ -161,13 +163,152 @@
                 <ControlTemplate TargetType="{x:Type ae:TextEditor}">
                     <Border x:Name="Border" Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                        <ScrollViewer Name="PART_ScrollViewer" Focusable="False" CanContentScroll="True"
-                                      Padding="{StaticResource SmallLeftMargin}"
-                                      VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
-                                      HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
-                                      Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
-                                      Template="{StaticResource StudioAvalonEditScrollViewerTemplate}"
-                                      VerticalContentAlignment="Top" HorizontalContentAlignment="Left" />
+                        <Grid>
+                            <!--TextEditor-->
+                            <ScrollViewer Name="PART_ScrollViewer" Focusable="False" CanContentScroll="True"
+                                          Padding="{StaticResource SmallLeftMargin}"
+                                          VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}"
+                                          HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                          Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                                          Template="{StaticResource StudioAvalonEditScrollViewerTemplate}"
+                                          VerticalContentAlignment="Top" HorizontalContentAlignment="Left" />
+
+                            <!--Search&Replace-->
+                            <Grid Margin="0, 0, 20, 0"
+                                  VerticalAlignment="Top" HorizontalAlignment="Right"
+                                  MinHeight="58" MinWidth="280" MaxWidth="{Binding ActualWidth, ElementName=PART_ScrollViewer}">
+                                <Border x:Name="border" Background="{StaticResource Control.Background}"
+                                        BorderThickness="0, 0, 0, 5">
+                                    <Border.Style>
+                                        <Style TargetType="{x:Type Border}">
+                                            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                                    <Setter Property="BorderBrush" Value="{StaticResource Focused}" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+
+                                    <Grid Margin="0, 6, 3, 0">
+                                        <!--Content-->
+                                        <Grid Grid.IsSharedSizeScope="True">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--ToggleReplace-->
+                                            <ToggleButton Grid.Column="0" Grid.Row="0" Margin="{StaticResource SmallLeftMargin}">
+                                            </ToggleButton>
+
+                                            <!--Search-->
+                                            <Grid Grid.Column="1" Grid.Row="0" Margin="{StaticResource SmallBottomMargin}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="Actions" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--SearchText-->
+                                                <TextBox Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
+                                                         Style="{DynamicResource StudioSearchTextBoxStyle}" />
+
+                                                <!--Actions-->
+                                                <hc:SplitButton Grid.Column="1" Margin="{StaticResource SmallLeftMargin}">
+                                                    <hc:SplitButton.DropDownContent>
+                                                        <StackPanel>
+                                                            <MenuItem />
+                                                            <MenuItem />
+                                                            <MenuItem />
+                                                        </StackPanel>
+                                                    </hc:SplitButton.DropDownContent>
+                                                </hc:SplitButton>
+
+                                                <metro:SplitButton Grid.Column="1" SelectedIndex="-1">
+                                                    <metro:SplitButton.Items>
+                                                        <Label>1</Label>
+                                                        <Label>2</Label>
+                                                    </metro:SplitButton.Items>
+                                                </metro:SplitButton>
+                                            </Grid>
+
+                                            <!--Replace-->
+                                            <Grid Grid.Column="1" Grid.Row="1" Margin="{StaticResource SmallBottomMargin}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" SharedSizeGroup="Actions" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--ReplaceText-->
+                                                <TextBox Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
+                                                         Style="{DynamicResource StudioSearchTextBoxStyle}" />
+
+                                                <!--Actions-->
+                                                <StackPanel Grid.Column="1" Orientation="Horizontal">
+
+                                                    <!--ReplaceNext-->
+                                                    <Button Grid.Column="1" Margin="{StaticResource SmallLeftMargin}" MinHeight="10" />
+
+                                                    <!--ReplaceAll-->
+                                                    <Button Grid.Column="2" Margin="{StaticResource SmallLeftMargin}" MinHeight="10" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <!--Options-->
+                                            <Grid Grid.Column="1" Grid.Row="2" Margin="{StaticResource SmallBottomMargin}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--MatchCase-->
+                                                <ToggleButton Grid.Column="0" Margin="{StaticResource SmallLeftMargin}">
+                                                    <Image Source="{StaticResource CritcalError}" />
+                                                </ToggleButton>
+
+                                                <!--WholeWord-->
+                                                <ToggleButton Grid.Column="1" Margin="{StaticResource SmallLeftMargin}">
+                                                    <Image Source="{StaticResource CritcalError}" />
+                                                </ToggleButton>
+
+                                                <!--UseRegex-->
+                                                <ToggleButton Grid.Column="2" Margin="{StaticResource SmallLeftMargin}">
+                                                    <Image Source="{StaticResource CritcalError}" />
+                                                </ToggleButton>
+
+                                                <!--SearchOptions-->
+                                                <ComboBox Grid.Column="3" Margin="{StaticResource SmallLeftMargin}" />
+                                            </Grid>
+
+                                            <!--Close-->
+                                            <Button Grid.Row="0" Grid.Column="2" Margin="{StaticResource SmallLeftMargin}">
+                                                <Image Source="{StaticResource Close}" />
+                                            </Button>
+                                        </Grid>
+
+                                        <!--ResizeThumb-->
+                                        <Thumb x:Name="PART_Thumb" Margin="1" Height="9" Width="9"
+                                               VerticalAlignment="Bottom" HorizontalAlignment="Left" Cursor="SizeWE">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Border Background="Transparent">
+                                                        <Path Style="{StaticResource UIShape.LeftGrip}" Margin="1" />
+                                                    </Border>
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="WordWrap" Value="True">

@@ -1,6 +1,7 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
 using SLStudio.Core.Controls;
+using SLStudio.Core.Controls.StudioTextEditor;
 using System;
 using System.Linq;
 using System.Windows;
@@ -113,7 +114,45 @@ namespace SLStudio.Core
                     DecreseZoom();
                     e.Handled = true;
                 }
+                else
+                if (e.Key == Key.G)
+                {
+                    ShowGoToLine();
+                    e.Handled = true;
+                }
+                else
+                if (e.Key == Key.F)
+                {
+                    ShowFind();
+                    e.Handled = true;
+                }
+                else
+                if (e.Key == Key.H)
+                {
+                    ShowFindAndReplace();
+                    e.Handled = true;
+                }
             }
+        }
+
+        private void ShowGoToLine()
+        {
+            var maxLine = Document.LineCount;
+            var dialog = new GoToLineWindow(maxLine, TextArea.Caret.Line) { Owner = Application.Current.MainWindow };
+            if (dialog.ShowDialog().GetValueOrDefault() && dialog.TryGetResult(out var targetLine))
+            {
+                TextArea.Caret.Column = 0;
+                TextArea.Caret.Line = targetLine;
+                ScrollToLine(targetLine);
+            }
+        }
+
+        private void ShowFind()
+        {
+        }
+
+        private void ShowFindAndReplace()
+        {
         }
 
         private void OnLoaded(object sender, RoutedEventArgs e)
@@ -186,7 +225,7 @@ namespace SLStudio.Core
 
         private void PART_ZoomComboBox_OnPreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (int.TryParse(zoomCombo.Text.TrimEnd('%'), out var _))
+            if (int.TryParse(zoomCombo.Text.TrimEnd('%'), out _))
                 lastValidZoomComboValue = zoomCombo.Text;
             else
                 zoomCombo.Text = lastValidZoomComboValue;
