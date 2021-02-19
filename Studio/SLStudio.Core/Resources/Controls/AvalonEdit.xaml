@@ -49,16 +49,7 @@
                     <ComboBox x:Name="PART_ZoomComboBox" Grid.Column="0" Padding="0"
                               Margin="2" IsEditable="True" FontSize="11"
                               VerticalAlignment="Center" VerticalContentAlignment="Bottom"
-                              Background="{StaticResource Editor.Background}"
-                              Text="{Binding CurrentZoom, RelativeSource={RelativeSource AncestorType=studio:StudioTextEditor}, Converter={converters:ZoomFactorConverter}, StringFormat={}{0}%, UpdateSourceTrigger=LostFocus}">
-                        <ComboBoxItem Content="20" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="50" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="70" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="100" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="150" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="200" ContentStringFormat="{}{0}%" />
-                        <ComboBoxItem Content="400" ContentStringFormat="{}{0}%" />
-                    </ComboBox>
+                              Background="{StaticResource Editor.Background}" />
 
                     <!--Status-->
                     <Grid Grid.Column="1" VerticalAlignment="Center">

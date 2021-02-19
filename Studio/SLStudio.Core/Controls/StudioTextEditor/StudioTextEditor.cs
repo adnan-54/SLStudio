@@ -14,8 +14,6 @@ namespace SLStudio.Core
 {
     public class StudioTextEditor : TextEditor
     {
-        #region DependencyProperties
-
         static StudioTextEditor()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(StudioTextEditor), new FrameworkPropertyMetadata(typeof(StudioTextEditor)));
@@ -23,18 +21,21 @@ namespace SLStudio.Core
 
         public static readonly DependencyProperty CurrentLineProperty = DependencyProperty.RegisterAttached("CurrentLine", typeof(int), typeof(TextEditor), new PropertyMetadata(1));
 
-        public static readonly DependencyProperty CurrentColumnProperty = DependencyProperty.RegisterAttached("CurrentColumn", typeof(int), typeof(TextEditor), new PropertyMetadata(1));
-
-        public static readonly DependencyProperty CurrentZoomProperty = DependencyProperty.RegisterAttached("CurrentZoom", typeof(double), typeof(TextEditor), new PropertyMetadata(1.0, OnCurrentZoomChanged));
+        public static int GetCurrentLine(DependencyObject d)
+        {
+            return (int)d.GetValue(CurrentLineProperty);
+        }
 
         public static void SetCurrentLine(DependencyObject d, int value)
         {
             d.SetValue(CurrentLineProperty, value);
         }
 
-        public static int GetCurrentLine(DependencyObject d)
+        public static readonly DependencyProperty CurrentColumnProperty = DependencyProperty.RegisterAttached("CurrentColumn", typeof(int), typeof(TextEditor), new PropertyMetadata(1));
+
+        public static int GetCurrentColumn(DependencyObject d)
         {
-            return (int)d.GetValue(CurrentLineProperty);
+            return (int)d.GetValue(CurrentColumnProperty);
         }
 
         public static void SetCurrentColumn(DependencyObject d, int value)
@@ -42,9 +43,11 @@ namespace SLStudio.Core
             d.SetValue(CurrentColumnProperty, value);
         }
 
-        public static int GetCurrentColumn(DependencyObject d)
+        public static readonly DependencyProperty CurrentZoomProperty = DependencyProperty.RegisterAttached("CurrentZoom", typeof(double), typeof(TextEditor), new PropertyMetadata(1.0, OnCurrentZoomChanged));
+
+        public static double GetCurrentZoom(DependencyObject d)
         {
-            return (int)d.GetValue(CurrentColumnProperty);
+            return (double)d.GetValue(CurrentZoomProperty);
         }
 
         public static void SetCurrentZoom(DependencyObject d, double value)
@@ -52,32 +55,33 @@ namespace SLStudio.Core
             d.SetValue(CurrentZoomProperty, value);
         }
 
-        public static double GetCurrentZoom(DependencyObject d)
-        {
-            return (double)d.GetValue(CurrentZoomProperty);
-        }
-
         private static void OnCurrentZoomChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is not StudioTextEditor textEditor || e.NewValue is not double newValue)
+            if (d is not StudioTextEditor textEditor || e.NewValue is not double newValue || e.OldValue is not double oldValue)
                 return;
 
-            var textArea = textEditor.TextArea;
-            if (textArea != null)
-                textArea.FontSize = 14f * newValue;
+            textEditor.OnCurrentZoomChanged(newValue, oldValue);
         }
-
-        #endregion DependencyProperties
-
-        private ComboBox zoomCombo;
-        private string lastValidZoomComboValue;
 
         public StudioTextEditor()
         {
+            new ZoomHandler(this);
             TextArea.Caret.PositionChanged += CaretPositionChanged;
-            PreviewMouseWheel += OnMouseWheel;
             PreviewKeyDown += OnPreviewKeyDown;
             Loaded += OnLoaded;
+        }
+
+        public event EventHandler<ValueChangedEventArgs<double>> CurrentZoomChanged;
+
+        public double CurrentZoom
+        {
+            get => GetCurrentZoom(this);
+            set => SetCurrentZoom(this, value);
+        }
+
+        private void OnCurrentZoomChanged(double newValue, double oldValue)
+        {
+            CurrentZoomChanged?.Invoke(this, new ValueChangedEventArgs<double>(newValue, oldValue));
         }
 
         private void CaretPositionChanged(object sender, EventArgs e)
@@ -86,35 +90,10 @@ namespace SLStudio.Core
             SetCurrentLine(this, TextArea.Caret.Line);
         }
 
-        private void OnMouseWheel(object sender, MouseWheelEventArgs e)
-        {
-            if (!Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
-                return;
-
-            if (e.Delta > 0)
-                IncreaseZoom();
-            else
-                DecreseZoom();
-
-            e.Handled = true;
-        }
-
         private void OnPreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
-                if (e.Key == Key.Add)
-                {
-                    IncreaseZoom();
-                    e.Handled = true;
-                }
-                else
-                if (e.Key == Key.Subtract)
-                {
-                    DecreseZoom();
-                    e.Handled = true;
-                }
-                else
                 if (e.Key == Key.G)
                 {
                     ShowGoToLine();
@@ -159,19 +138,8 @@ namespace SLStudio.Core
         {
             Loaded -= OnLoaded;
 
-            SetupZoomComboBox();
             SetupCurrentLineHighlighter();
             SetupLeftMargins();
-        }
-
-        private void SetupZoomComboBox()
-        {
-            var scrollViewer = Template.FindName("PART_ScrollViewer", this) as ScrollViewer;
-            zoomCombo = scrollViewer.Template.FindName("PART_ZoomComboBox", scrollViewer) as ComboBox;
-            zoomCombo.PreviewKeyDown += PART_ZoomComboBox_OnPreviewKeyDown;
-            zoomCombo.PreviewLostKeyboardFocus += PART_ZoomComboBox_OnPreviewLostKeyboardFocus;
-            zoomCombo.DropDownClosed += PART_ZoomComboBox_OnDropDownClosed;
-            lastValidZoomComboValue = zoomCombo.Text;
         }
 
         private void SetupCurrentLineHighlighter()
@@ -212,46 +180,6 @@ namespace SLStudio.Core
             lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
             lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
             return lineNumbers;
-        }
-
-        private void PART_ZoomComboBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Return)
-            {
-                TextArea.Focus();
-                e.Handled = true;
-            }
-        }
-
-        private void PART_ZoomComboBox_OnPreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if (int.TryParse(zoomCombo.Text.TrimEnd('%'), out _))
-                lastValidZoomComboValue = zoomCombo.Text;
-            else
-                zoomCombo.Text = lastValidZoomComboValue;
-        }
-
-        private void PART_ZoomComboBox_OnDropDownClosed(object sender, EventArgs e)
-        {
-            TextArea.Focus();
-        }
-
-        private void IncreaseZoom()
-        {
-            var targetZoom = GetCurrentZoom(this) + 0.1;
-            if (targetZoom >= 4.0)
-                targetZoom = 4.0;
-
-            SetCurrentZoom(this, targetZoom);
-        }
-
-        private void DecreseZoom()
-        {
-            var targetZoom = GetCurrentZoom(this) - 0.1;
-            if (targetZoom <= 0.2)
-                targetZoom = 0.2;
-
-            SetCurrentZoom(this, targetZoom);
         }
     }
 }

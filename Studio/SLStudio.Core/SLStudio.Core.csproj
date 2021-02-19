@@ -212,4 +212,8 @@
 			<SubType>Designer</SubType>
 		</Page>
 	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controls\StudioTextEditor\Resources\" />
+	</ItemGroup>
 </Project>
