@@ -3,6 +3,7 @@ using ICSharpCode.AvalonEdit.Editing;
 using SLStudio.Core.Controls;
 using SLStudio.Core.Controls.StudioTextEditor;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -63,15 +64,46 @@ namespace SLStudio.Core
             textEditor.OnCurrentZoomChanged(newValue, oldValue);
         }
 
+        private readonly IEnumerable<ITextEditorHandler> handlers;
+
         public StudioTextEditor()
         {
-            new ZoomHandler(this);
-            TextArea.Caret.PositionChanged += CaretPositionChanged;
+            handlers = new List<ITextEditorHandler>()
+            {
+                new ZoomHandler(this),
+                new CaretPositionHandler(this),
+            };
             PreviewKeyDown += OnPreviewKeyDown;
             Loaded += OnLoaded;
         }
 
         public event EventHandler<ValueChangedEventArgs<double>> CurrentZoomChanged;
+
+        public int CurrentLine
+        {
+            get => GetCurrentLine(this);
+            set
+            {
+                if (CurrentLine == value)
+                    return;
+
+                SetCurrentLine(this, value);
+                TextArea.Caret.Line = value;
+            }
+        }
+
+        public int CurrentColumn
+        {
+            get => GetCurrentColumn(this);
+            set
+            {
+                if (CurrentColumn == value)
+                    return;
+
+                SetCurrentColumn(this, value);
+                TextArea.Caret.Column = value;
+            }
+        }
 
         public double CurrentZoom
         {
@@ -82,12 +114,6 @@ namespace SLStudio.Core
         private void OnCurrentZoomChanged(double newValue, double oldValue)
         {
             CurrentZoomChanged?.Invoke(this, new ValueChangedEventArgs<double>(newValue, oldValue));
-        }
-
-        private void CaretPositionChanged(object sender, EventArgs e)
-        {
-            SetCurrentColumn(this, TextArea.Caret.Column);
-            SetCurrentLine(this, TextArea.Caret.Line);
         }
 
         private void OnPreviewKeyDown(object sender, KeyEventArgs e)

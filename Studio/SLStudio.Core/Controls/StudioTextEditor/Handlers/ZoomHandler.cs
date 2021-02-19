@@ -1,15 +1,14 @@
 ﻿using DevExpress.Mvvm;
+using ICSharpCode.AvalonEdit.Folding;
 using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
-using System.Linq;
-using ICSharpCode.AvalonEdit.Folding;
 
 namespace SLStudio.Core
 {
-    internal class ZoomHandler : BindableBase
+    internal class ZoomHandler : BindableBase, ITextEditorHandler
     {
         private readonly StudioTextEditor textEditor;
         private double initialFontSize;
