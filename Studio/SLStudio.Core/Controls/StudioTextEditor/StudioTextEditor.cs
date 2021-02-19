@@ -1,15 +1,10 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
-using SLStudio.Core.Controls;
 using SLStudio.Core.Controls.StudioTextEditor;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace SLStudio.Core
 {
@@ -72,6 +67,8 @@ namespace SLStudio.Core
             {
                 new ZoomHandler(this),
                 new CaretPositionHandler(this),
+                new RendersHandlers(this),
+                new LeftMarginsHandler(this),
             };
             PreviewKeyDown += OnPreviewKeyDown;
             Loaded += OnLoaded;
@@ -163,49 +160,6 @@ namespace SLStudio.Core
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             Loaded -= OnLoaded;
-
-            SetupCurrentLineHighlighter();
-            SetupLeftMargins();
-        }
-
-        private void SetupCurrentLineHighlighter()
-        {
-            TextArea.Options.HighlightCurrentLine = true;
-
-            WpfHelpers.TryFindResource("Border", out Brush borderBrush);
-            var backgorund = new SolidColorBrush(Color.FromArgb(0, 0, 0, 0));
-            var border = new Pen(borderBrush, 2.5);
-
-            backgorund.Freeze();
-            border.Freeze();
-
-            TextArea.TextView.CurrentLineBackground = backgorund;
-            TextArea.TextView.CurrentLineBorder = border;
-        }
-
-        private void SetupLeftMargins()
-        {
-            foreach (var item in TextArea.LeftMargins.ToList())
-            {
-                if (item is LineNumberMargin || item is Line)
-                {
-                    TextArea.LeftMargins.Remove(item);
-                    continue;
-                }
-            }
-
-            var leftMargin = new StudioTextEditorLeftMargin(CreateLineNumberMargin());
-            TextArea.LeftMargins.Insert(0, leftMargin);
-        }
-
-        private LineNumberMargin CreateLineNumberMargin()
-        {
-            LineNumberMargin lineNumbers = new LineNumberMargin();
-            WpfHelpers.TryFindResource("Focused", out SolidColorBrush foregroundColor);
-            lineNumbers.SetValue(ForegroundProperty, foregroundColor);
-            lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
-            lineNumbers.SetValue(AbstractMargin.TextViewProperty, TextArea.TextView);
-            return lineNumbers;
         }
     }
 }

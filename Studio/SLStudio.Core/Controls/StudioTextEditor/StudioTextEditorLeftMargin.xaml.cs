@@ -1,22 +1,17 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace SLStudio.Core.Controls
+namespace SLStudio.Core
 {
     public partial class StudioTextEditorLeftMargin : UserControl
     {
-        public static readonly DependencyProperty MarginContentProperty = DependencyProperty.Register("MarginContent", typeof(UIElement), typeof(StudioTextEditorLeftMargin), new PropertyMetadata(null));
-
         public StudioTextEditorLeftMargin(UIElement marginContent)
         {
-            InitializeComponent();
             MarginContent = marginContent;
+
+            InitializeComponent();
         }
 
-        public UIElement MarginContent
-        {
-            get => (UIElement)GetValue(MarginContentProperty);
-            set => SetValue(MarginContentProperty, value);
-        }
+        public UIElement MarginContent { get; set; }
     }
 }
