@@ -1,6 +1,6 @@
 ﻿namespace SLStudio.Core
 {
-    internal interface ITextEditorHandler
+    public interface ITextEditorHandler
     {
     }
 }

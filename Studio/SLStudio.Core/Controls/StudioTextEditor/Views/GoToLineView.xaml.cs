@@ -17,7 +17,7 @@ namespace SLStudio.Core.Controls.StudioTextEditor.Views
     /// <summary>
     /// Interaction logic for GoToLineView.xaml
     /// </summary>
-    public partial class GoToLineView : Window
+    public partial class GoToLineView
     {
         public GoToLineView()
         {

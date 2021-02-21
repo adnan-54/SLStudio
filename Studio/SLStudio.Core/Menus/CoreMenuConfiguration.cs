@@ -7,6 +7,11 @@ namespace SLStudio.Core.Menus
 {
     internal class CoreMenuConfiguration : MenuConfiguration
     {
+        public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)
+        {
+            SetResourceContext(typeof(MenuResources));
+        }
+
         public override void Create()
         {
             //file
@@ -29,6 +34,12 @@ namespace SLStudio.Core.Menus
             Item<SaveFileAsHandler>("file/saveAs", iconSource: "SaveAs", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Shift));
             Item<SaveAllFilesHandler>("file/saveAll", iconSource: "SaveAll", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Alt));
 
+            //edit
+            Item("edit");
+
+            Item("edit/goto");
+            Item<OpenFileHandler>("edit/goto/gotoline", shortcut: new KeyGesture(Key.G, ModifierKeys.Control));
+
             //view
             Item("view");
 
@@ -47,11 +58,6 @@ namespace SLStudio.Core.Menus
             Item("help");
 
             Item<ViewLogsHandler>("help/logs", iconSource: "Log");
-        }
-
-        public CoreMenuConfiguration(IMenuItemFactory menuItemFactory) : base(menuItemFactory)
-        {
-            SetResourceContext(typeof(MenuResources));
         }
     }
 }

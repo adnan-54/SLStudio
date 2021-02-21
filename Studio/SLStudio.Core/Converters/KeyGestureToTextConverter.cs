@@ -9,7 +9,7 @@ namespace SLStudio.Core.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(value is KeyGesture keyGesture))
+            if (value is not KeyGesture keyGesture)
                 return Binding.DoNothing;
 
             if (keyGesture is MultiKeyGesture multiGesture)

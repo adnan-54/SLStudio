@@ -46,6 +46,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Compile Update="Controls\StudioTextEditor\Resources\TextEditorResources.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>TextEditorResources.resx</DependentUpon>
+		</Compile>
 		<Compile Update="Menus\Resources\MenuResources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -124,6 +129,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Update="Controls\StudioTextEditor\Resources\TextEditorResources.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>TextEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Menus\Resources\MenuResources.resx">
 			<Generator>ResXFileCodeGenerator</Generator>
 			<LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
@@ -211,9 +220,5 @@
 		<Page Update="Resources\Controls\AvalonEdit.xaml">
 			<SubType>Designer</SubType>
 		</Page>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controls\StudioTextEditor\Resources\" />
 	</ItemGroup>
 </Project>

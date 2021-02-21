@@ -3,11 +3,11 @@ using System.Windows.Media;
 
 namespace SLStudio.Core
 {
-    internal class RendersHandlers : ITextEditorHandler
+    internal class RenderersHandler : ITextEditorHandler
     {
         private readonly StudioTextEditor textEditor;
 
-        public RendersHandlers(StudioTextEditor textEditor)
+        public RenderersHandler(StudioTextEditor textEditor)
         {
             this.textEditor = textEditor;
 

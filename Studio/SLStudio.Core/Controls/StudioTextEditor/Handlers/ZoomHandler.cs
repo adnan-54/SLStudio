@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace SLStudio.Core
 {
-    internal class ZoomHandler : BindableBase, ITextEditorHandler
+    internal class ZoomHandler : ITextEditorHandler
     {
         private readonly StudioTextEditor textEditor;
         private double initialFontSize;

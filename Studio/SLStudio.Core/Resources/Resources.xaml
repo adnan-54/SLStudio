@@ -10,6 +10,7 @@
     <converters:KeyGestureToTextConverter x:Key="KeyGestureToTextConverter" />
     <converters:NullableValueConverter x:Key="NullableValueConverter" />
     <avalonDock:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <converters:StringFormatConverter x:Key="StringFormatConverter" />
 
     <!--Effects-->
     <DropShadowEffect x:Key="LightShadowEffect" BlurRadius="4" Color="Black" Direction="315" Opacity="0.25" ShadowDepth="3" />

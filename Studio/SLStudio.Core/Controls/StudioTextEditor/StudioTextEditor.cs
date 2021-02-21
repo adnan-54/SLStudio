@@ -59,7 +59,7 @@ namespace SLStudio.Core
             textEditor.OnCurrentZoomChanged(newValue, oldValue);
         }
 
-        private readonly IEnumerable<ITextEditorHandler> handlers;
+        private readonly IList<ITextEditorHandler> handlers;
 
         public StudioTextEditor()
         {
@@ -67,14 +67,16 @@ namespace SLStudio.Core
             {
                 new ZoomHandler(this),
                 new CaretPositionHandler(this),
-                new RendersHandlers(this),
+                new RenderersHandler(this),
                 new LeftMarginsHandler(this),
+                new GoToLineHandler(this),
             };
             PreviewKeyDown += OnPreviewKeyDown;
-            Loaded += OnLoaded;
         }
 
         public event EventHandler<ValueChangedEventArgs<double>> CurrentZoomChanged;
+
+        public IEnumerable<ITextEditorHandler> Handlers => handlers;
 
         public int CurrentLine
         {
@@ -117,12 +119,6 @@ namespace SLStudio.Core
         {
             if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control))
             {
-                if (e.Key == Key.G)
-                {
-                    ShowGoToLine();
-                    e.Handled = true;
-                }
-                else
                 if (e.Key == Key.F)
                 {
                     ShowFind();
@@ -137,29 +133,12 @@ namespace SLStudio.Core
             }
         }
 
-        private void ShowGoToLine()
-        {
-            var maxLine = Document.LineCount;
-            var dialog = new GoToLineWindow(maxLine, TextArea.Caret.Line) { Owner = Application.Current.MainWindow };
-            if (dialog.ShowDialog().GetValueOrDefault() && dialog.TryGetResult(out var targetLine))
-            {
-                TextArea.Caret.Column = 0;
-                TextArea.Caret.Line = targetLine;
-                ScrollToLine(targetLine);
-            }
-        }
-
         private void ShowFind()
         {
         }
 
         private void ShowFindAndReplace()
         {
-        }
-
-        private void OnLoaded(object sender, RoutedEventArgs e)
-        {
-            Loaded -= OnLoaded;
         }
     }
 }

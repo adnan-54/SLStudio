@@ -14,7 +14,7 @@ namespace SLStudio.Core.Menus
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (!(parameter is MenuItemTypes menuType))
+            if (parameter is not MenuItemTypes menuType)
                 return false;
 
             return menuType switch
