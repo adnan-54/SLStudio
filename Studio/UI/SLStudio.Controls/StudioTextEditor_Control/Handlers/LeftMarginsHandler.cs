@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace SLStudio.Core
+namespace SLStudio.Controls.StudioTextEditor_Control
 {
     internal class LeftMarginsHandler
     {

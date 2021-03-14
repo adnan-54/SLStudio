@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace SLStudio.Core
+namespace SLStudio.Controls.StudioTextEditor_Control
 {
     internal class GoToLineHandler
     {

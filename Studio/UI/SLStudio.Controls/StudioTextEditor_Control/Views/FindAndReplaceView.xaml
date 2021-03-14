@@ -1,0 +1,220 @@
+﻿<UserControl x:Class="SLStudio.Core.Controls.StudioTextEditor.Views.FindAndReplaceView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:studio="clr-namespace:SLStudio.Core"
+             mc:Ignorable="d" Margin="0, 0, 20, 0" MinHeight="58" MinWidth="280"
+             VerticalAlignment="Top" HorizontalAlignment="Right"
+             metro:VisibilityHelper.IsVisible="{Binding IsOpen}"
+             Background="{StaticResource Control.Background}">
+    <UserControl.Resources>
+        <!--ButtonStyle-->
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource StudioButtonStyle}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+
+        <!--ToggleButtonStyle-->
+        <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource StudioToggleButtonStyle}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="2" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+
+        <!--ToggleReplaceStyle-->
+        <Style x:Key="ToggleReplaceStyle" TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource StudioToggleButtonStyle}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Grid x:Name="root">
+                            <Image x:Name="icon" Source="{StaticResource ExpandDown}" Margin="2" />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="root" Property="Background" Value="{StaticResource HoverBackground}" />
+                            </Trigger>
+
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter TargetName="root" Property="Background" Value="{StaticResource HoverBackground}" />
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="LayoutTransform">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="180" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <!--Content-->
+    <Border BorderThickness="0, 0, 0, 5">
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+                <Style.Triggers>
+                    <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                        <Setter Property="BorderBrush" Value="{StaticResource Focused}" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <Grid>
+            <Grid Margin="3, 6, 3, 6" Grid.IsSharedSizeScope="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!--ToggleReplace-->
+                <ToggleButton Grid.Column="0" Grid.Row="0"
+                              IsChecked="{Binding FindReplace.IsReplacing}"
+                              Style="{StaticResource ToggleReplaceStyle}"
+                              ToolTip="Toggle to switch between find and replace modes" />
+
+                <!--Search-->
+                <Grid Grid.Column="1" Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="actionsGroup" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--SearchText-->
+                    <TextBox Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
+                             Text="{Binding FindReplace.FindTerm, UpdateSourceTrigger=PropertyChanged, Delay=50}"
+                             ToolTip="Search term"
+                             studio:WpfHelpers.Watermark="Find..." />
+
+                    <!--SearchActions-->
+                    <StackPanel Grid.Column="1"
+                                Margin="{StaticResource SmallLeftMargin}"
+                                Orientation="Horizontal">
+                        <!--FindPrevious-->
+                        <Button Command="{DXCommand 'FindReplace.FindPrevious()'}"
+                                ToolTip="Find previous (Shift+F3)">
+                            <Image Source="{StaticResource FindPrevious}" />
+                        </Button>
+
+                        <!--FindNext-->
+                        <Button Margin="{StaticResource SmallLeftMargin}"
+                                Command="{DXCommand 'FindReplace.FindNext()'}"
+                                ToolTip="Find next (F3)">
+                            <Image Source="{StaticResource FindNext}" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <!--Close-->
+                <Button Grid.Column="3" Grid.Row="0" Margin="{StaticResource SmallLeftMargin}"
+                        Command="{DXCommand 'Close()'}"
+                        ToolTip="Close">
+                    <Image Source="{StaticResource Close}" />
+                </Button>
+
+                <!--Replace-->
+                <Grid Grid.Column="1" Grid.Row="1"
+                      Margin="{StaticResource SmallUpMargin}"
+                      metro:VisibilityHelper.IsVisible="{Binding FindReplace.IsReplacing}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="actionsGroup" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--ReplaceText-->
+                    <TextBox Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
+                             Text="{Binding FindReplace.ReplaceTerm, UpdateSourceTrigger=PropertyChanged}"
+                             ToolTip="Replacement term"
+                             studio:WpfHelpers.Watermark="Replace..." />
+
+                    <!--ReplaceActions-->
+                    <StackPanel Grid.Column="1"
+                                Margin="{StaticResource SmallLeftMargin}"
+                                Orientation="Horizontal">
+                        <!--ReplaceNext-->
+                        <Button Command="{DXCommand 'FindReplace.ReplaceNext()'}"
+                                ToolTip="Replace next (Alt+R)">
+                            <Image Source="{StaticResource QuickReplace}" />
+                        </Button>
+
+                        <!--ReplaceAll-->
+                        <Button Margin="{StaticResource SmallLeftMargin}"
+                                Command="{DXCommand 'FindReplace.ReplaceAll()'}"
+                                ToolTip="Replace all (Alt+A)">
+                            <Image Source="{StaticResource ReplaceAll}" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+
+                <!--Options-->
+                <Grid Grid.Column="1" Grid.Row="3"
+                      Margin="{StaticResource SmallUpMargin}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <!--MatchCase-->
+                    <ToggleButton Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
+                                  IsChecked="{Binding FindReplace.MatchCase}"
+                                  ToolTip="Match case (Alt+C)">
+                        <Image Source="{StaticResource CaseSensitive}" />
+                    </ToggleButton>
+
+                    <!--WholeWord-->
+                    <ToggleButton Grid.Column="1" Margin="{StaticResource SmallLeftMargin}"
+                                  IsChecked="{Binding FindReplace.MatchWholeWord}"
+                                  ToolTip="Match whole word (Alt+W)">
+                        <Image Source="{StaticResource WholeWordMatch}" />
+                    </ToggleButton>
+
+                    <!--UseRegex-->
+                    <ToggleButton Grid.Column="2" Margin="{StaticResource SmallLeftMargin}"
+                                  IsChecked="{Binding FindReplace.UseRegex}"
+                                  ToolTip="Use Regular Expressions (Alt+E)">
+                        <Image Source="{StaticResource RegularExpression}" />
+                    </ToggleButton>
+
+                    <!--Mode-->
+                    <ComboBox Grid.Column="3" Margin="{StaticResource SmallLeftMargin}"
+                              Visibility="Collapsed">
+                        <ComboBoxItem Content="Current Document" />
+                        <ComboBoxItem Content="Selection" />
+                    </ComboBox>
+                </Grid>
+            </Grid>
+
+            <!--ResizeThumb-->
+            <Thumb Margin="1" Height="9" Width="9" Cursor="SizeWE"
+                   VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                   DragDelta="Thumb_DragDelta">
+                <Thumb.Template>
+                    <ControlTemplate TargetType="{x:Type Thumb}">
+                        <Border Background="Transparent">
+                            <Path Style="{StaticResource UIShape.LeftGrip}" Margin="1" />
+                        </Border>
+                    </ControlTemplate>
+                </Thumb.Template>
+            </Thumb>
+        </Grid>
+    </Border>
+</UserControl>

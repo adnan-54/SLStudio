@@ -37,6 +37,7 @@
 			<Word>texture</Word>
 			<Word>script</Word>
 			<Word>native</Word>
+			<Word>part</Word>
 			<Word>car</Word>
 			<Word>type</Word>
 			<Word>diffuse</Word>
@@ -65,6 +66,31 @@
 			<Word>lf_flare_maxsize</Word>
 			<Word>lf_flare_distance</Word>
 			<Word>lf_texturemode</Word>
+			<Word>lf_ray_count</Word>
+			<Word>lf_flare_count</Word>
+			<Word>sourcefile</Word>
+			<Word>lf_ray_firstangle</Word>
+			<Word>lf_ray_rotating</Word>
+			<Word>volume</Word>
+			<Word>instances</Word>
+			<Word>mindist</Word>
+			<Word>maxdist</Word>
+			<Word>particle</Word>
+			<Word>skidmark</Word>
+			<Word>lod_bias</Word>
+			<Word>oc_rect</Word>
+			<Word>slot</Word>
+			<Word>radius</Word>
+			<Word>lf_glow_size</Word>
+			<Word>lf_glow_uv</Word>
+			<Word>skeleton</Word>
+			<Word>button</Word>
+			<Word>invitem</Word>
+			<Word>shd_center</Word>
+			<Word>shd_diru</Word>
+			<Word>shd_dirv</Word>
+			<Word>shd_vbase</Word>
+			<Word>shd_vup</Word>
 		</Keywords>
 
 		<!--SpecialChars-->

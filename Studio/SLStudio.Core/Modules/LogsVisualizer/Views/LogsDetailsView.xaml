@@ -6,7 +6,7 @@
                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                      xmlns:studio="clr-namespace:SLStudio.Core"
                      xmlns:resx="clr-namespace:SLStudio.Core.Modules.LogsVisualizer.Resources"
-                     mc:Ignorable="d" Width="800" SizeToContent="Height"
+                     mc:Ignorable="d" Width="800" MaxHeight="800" SizeToContent="Height"
                      Background="{StaticResource Editor.Background}">
     <!--InputBindings-->
     <studio:DialogWindow.InputBindings>

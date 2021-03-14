@@ -5,7 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace SLStudio.Core
+namespace SLStudio.Controls.StudioTextEditor_Control
 {
     internal class ZoomHandler
     {

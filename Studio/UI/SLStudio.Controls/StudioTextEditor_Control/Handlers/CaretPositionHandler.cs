@@ -2,7 +2,7 @@
 using System;
 using System.Windows;
 
-namespace SLStudio.Core
+namespace SLStudio.Controls.StudioTextEditor_Control
 {
     internal class CaretPositionHandler
     {

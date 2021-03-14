@@ -1,9 +1,14 @@
 ﻿using ICSharpCode.AvalonEdit;
 using ICSharpCode.AvalonEdit.Editing;
+using SLStudio.Controls.StudioTextEditor_Control;
+using SLStudio.Controls.StudioTextEditor_Control.Handlers;
+using SLStudio.Core.Controls;
+using SLStudio.Core.Controls.Handlers;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
-namespace SLStudio.Core
+namespace SLStudio.Controls
 {
     public class StudioTextEditor : TextEditor
     {

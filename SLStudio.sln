@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.TexEditor", "Studi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SLStudio.Api", "Framework\SLStudio.Api\SLStudio.Api.csproj", "{55F0231E-A45A-4E74-9E58-7A4DDF0B11C8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{F8225E62-A941-4F07-88DC-E2EF4C144757}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,10 +89,11 @@ Global
 		{4888DC90-7C08-434F-A780-05CFDFC0888D} = {EF09F02E-EF9B-4D42-9C39-DE3FB7D479F0}
 		{87DC1582-5926-4893-B0A7-CDC36215BBF0} = {EF09F02E-EF9B-4D42-9C39-DE3FB7D479F0}
 		{55F0231E-A45A-4E74-9E58-7A4DDF0B11C8} = {ED8F8382-F8EB-418C-A7AC-65B8BDD5B8EB}
+		{F8225E62-A941-4F07-88DC-E2EF4C144757} = {8E0C118E-89FC-4315-BFAB-6B07CD8DB871}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_StartDate = 2000/1/1
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		RESX_PrefixTranslations = False
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		BuildVersion_StartDate = 2000/1/1
 	EndGlobalSection
 EndGlobal
