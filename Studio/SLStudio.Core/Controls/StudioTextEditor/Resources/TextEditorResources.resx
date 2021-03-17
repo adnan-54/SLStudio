@@ -135,4 +135,52 @@
   <data name="window_title" xml:space="preserve">
     <value>Go To Line</value>
   </data>
+  <data name="tooltip_toggleFindReplaceMode" xml:space="preserve">
+    <value>Toggle to switch between find and replace modes</value>
+  </data>
+  <data name="tooltip_searchTerm" xml:space="preserve">
+    <value>Search term</value>
+  </data>
+  <data name="watermark_searchTerm" xml:space="preserve">
+    <value>Find...</value>
+  </data>
+  <data name="tooltip_findPrevious" xml:space="preserve">
+    <value>Find previous (Shift+F3)</value>
+  </data>
+  <data name="tooltip_findNext" xml:space="preserve">
+    <value>Find next (F3)</value>
+  </data>
+  <data name="tooltip_close" xml:space="preserve">
+    <value>Close (Esc)</value>
+  </data>
+  <data name="tooltip_replacementTerm" xml:space="preserve">
+    <value>Replacement term</value>
+  </data>
+  <data name="watermark_replacementTerm" xml:space="preserve">
+    <value>Replace...</value>
+  </data>
+  <data name="tooltip_replaceNext" xml:space="preserve">
+    <value>Replace next (Alt+R)</value>
+  </data>
+  <data name="tooltip_replaceAll" xml:space="preserve">
+    <value>Replace all (Alt+A)</value>
+  </data>
+  <data name="tooltip_matchCase" xml:space="preserve">
+    <value>Match case (Alt+C)</value>
+  </data>
+  <data name="tooltip_matchWholeWord" xml:space="preserve">
+    <value>Match whole word (Alt+W)</value>
+  </data>
+  <data name="tooltip_useRegex" xml:space="preserve">
+    <value>Use Regular Expressions (Alt+E)</value>
+  </data>
+  <data name="label_searching" xml:space="preserve">
+    <value>Searching...</value>
+  </data>
+  <data name="label_searchResult_format_plural" xml:space="preserve">
+    <value>{0} results found</value>
+  </data>
+  <data name="label_searchResult_format_singular" xml:space="preserve">
+    <value>{0} result found</value>
+  </data>
 </root>

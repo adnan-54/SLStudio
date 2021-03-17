@@ -4,6 +4,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:resx="clr-namespace:SLStudio.Core.Controls.StudioTextEditor.Resources"
              xmlns:studio="clr-namespace:SLStudio.Core"
              mc:Ignorable="d" MinHeight="58" MinWidth="280"
              MaxWidth="{Binding MaxWidth, RelativeSource={RelativeSource AncestorType=ContentControl}}"
@@ -106,7 +107,7 @@
                 <ToggleButton Grid.Column="0" Grid.Row="0"
                               IsChecked="{Binding FindReplace.IsReplacing}"
                               Style="{StaticResource ToggleReplaceStyle}"
-                              ToolTip="Toggle to switch between find and replace modes" />
+                              ToolTip="{x:Static resx:TextEditorResources.tooltip_toggleFindReplaceMode}" />
 
                 <!--Search-->
                 <Grid Grid.Column="1" Grid.Row="0">
@@ -119,8 +120,8 @@
                     <TextBox x:Name="searchBox" Grid.Column="0"
                              Margin="{StaticResource SmallLeftMargin}"
                              Text="{Binding FindReplace.FindTerm, UpdateSourceTrigger=PropertyChanged}"
-                             ToolTip="Search term"
-                             studio:WpfHelpers.Watermark="Find...">
+                             ToolTip="{x:Static resx:TextEditorResources.tooltip_searchTerm}"
+                             studio:WpfHelpers.Watermark="{x:Static resx:TextEditorResources.watermark_searchTerm}">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Return" Command="{DXCommand 'FindReplace.FindNext()'}" />
                         </TextBox.InputBindings>
@@ -132,14 +133,14 @@
                                 Orientation="Horizontal">
                         <!--FindPrevious-->
                         <Button Command="{DXCommand 'FindReplace.FindPrevious()'}"
-                                ToolTip="Find previous (Shift+F3)">
+                                ToolTip="{x:Static resx:TextEditorResources.tooltip_findPrevious}">
                             <Image Source="{StaticResource FindPrevious}" />
                         </Button>
 
                         <!--FindNext-->
                         <Button Margin="{StaticResource SmallLeftMargin}"
                                 Command="{DXCommand 'FindReplace.FindNext()'}"
-                                ToolTip="Find next (F3)">
+                                ToolTip="{x:Static resx:TextEditorResources.tooltip_findNext}">
                             <Image Source="{StaticResource FindNext}" />
                         </Button>
                     </StackPanel>
@@ -148,7 +149,7 @@
                 <!--Close-->
                 <Button Grid.Column="3" Grid.Row="0" Margin="{StaticResource SmallLeftMargin}"
                         Command="{DXCommand 'Close()'}"
-                        ToolTip="Close">
+                        ToolTip="{x:Static resx:TextEditorResources.tooltip_close}">
                     <Image Source="{StaticResource Close}" />
                 </Button>
 
@@ -164,8 +165,8 @@
                     <!--ReplaceText-->
                     <TextBox Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
                              Text="{Binding FindReplace.ReplaceTerm, UpdateSourceTrigger=PropertyChanged}"
-                             ToolTip="Replacement term"
-                             studio:WpfHelpers.Watermark="Replace...">
+                             ToolTip="{x:Static resx:TextEditorResources.tooltip_replacementTerm}"
+                             studio:WpfHelpers.Watermark="{x:Static resx:TextEditorResources.watermark_replacementTerm}">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Return" Command="{DXCommand 'FindReplace.ReplaceNext()'}" />
                         </TextBox.InputBindings>
@@ -177,14 +178,14 @@
                                 Orientation="Horizontal">
                         <!--ReplaceNext-->
                         <Button Command="{DXCommand 'FindReplace.ReplaceNext()'}"
-                                ToolTip="Replace next (Alt+R)">
+                                ToolTip="{x:Static resx:TextEditorResources.tooltip_replaceNext}">
                             <Image Source="{StaticResource QuickReplace}" />
                         </Button>
 
                         <!--ReplaceAll-->
                         <Button Margin="{StaticResource SmallLeftMargin}"
                                 Command="{DXCommand 'FindReplace.ReplaceAll()'}"
-                                ToolTip="Replace all (Alt+A)">
+                                ToolTip="{x:Static resx:TextEditorResources.tooltip_replaceAll}">
                             <Image Source="{StaticResource ReplaceAll}" />
                         </Button>
                     </StackPanel>
@@ -203,21 +204,21 @@
                     <!--MatchCase-->
                     <ToggleButton Grid.Column="0" Margin="{StaticResource SmallLeftMargin}"
                                   IsChecked="{Binding FindReplace.MatchCase}"
-                                  ToolTip="Match case (Alt+C)">
+                                  ToolTip="{x:Static resx:TextEditorResources.tooltip_matchCase}">
                         <Image Source="{StaticResource CaseSensitive}" />
                     </ToggleButton>
 
                     <!--WholeWord-->
                     <ToggleButton Grid.Column="1" Margin="{StaticResource SmallLeftMargin}"
                                   IsChecked="{Binding FindReplace.MatchWholeWord}"
-                                  ToolTip="Match whole word (Alt+W)">
+                                  ToolTip="{x:Static resx:TextEditorResources.tooltip_matchWholeWord}">
                         <Image Source="{StaticResource WholeWordMatch}" />
                     </ToggleButton>
 
                     <!--UseRegex-->
                     <ToggleButton Grid.Column="2" Margin="{StaticResource SmallLeftMargin}"
                                   IsChecked="{Binding FindReplace.UseRegex}"
-                                  ToolTip="Use Regular Expressions (Alt+E)">
+                                  ToolTip="{x:Static resx:TextEditorResources.tooltip_useRegex}">
                         <Image Source="{StaticResource RegularExpression}" />
                     </ToggleButton>
 
@@ -244,7 +245,7 @@
                                      VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
                         <!--SearchingLabel-->
-                        <TextBlock Text="Searching..." VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        <TextBlock Text="{x:Static resx:TextEditorResources.label_searching}" VerticalAlignment="Center" HorizontalAlignment="Center" />
                     </Grid>
                 </Grid>
             </Grid>

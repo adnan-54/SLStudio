@@ -1,11 +1,16 @@
 ﻿using DevExpress.Mvvm;
+using SLStudio.Core.Controls.StudioTextEditor.Resources;
 using System;
 using System.ComponentModel;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SLStudio.Core
 {
     public class FindAndReplaceViewModel : BindableBase
     {
+        private static readonly Regex currentWordRegex = new(@"([a-z0-9_])\w+", RegexOptions.IgnoreCase);
+
         private readonly StudioTextEditor textEditor;
 
         public FindAndReplaceViewModel(StudioTextEditor textEditor, IFindReplaceService findReplace)
@@ -34,6 +39,7 @@ namespace SLStudio.Core
         public void Show()
         {
             IsOpen = true;
+            FindReplace.FindTerm = GetSearchText();
             FindReplace.ShowBackgroundRenderer();
             FocusRequested?.Invoke(this, EventArgs.Empty);
         }
@@ -78,28 +84,38 @@ namespace SLStudio.Core
             if (result == 0)
                 return string.Empty;
             if (result == 1)
-                return string.Format("{0} result found", result);
+                return string.Format(TextEditorResources.label_searchResult_format_singular, result);
 
-            return string.Format("{0} results found", result);
+            return string.Format(TextEditorResources.label_searchResult_format_plural, result);
         }
 
         private string GetSearchText()
         {
             if (textEditor.SelectionLength > 0)
                 return textEditor.SelectedText;
-            af
 
-            //regex pattern: ([a-z1-9_])\w+
-            //flags: case insensitive
             var caretOffset = textEditor.CaretOffset;
             var currentLine = textEditor.Document.GetLineByOffset(caretOffset);
+            var currentLineText = textEditor.Document.GetText(currentLine.Offset, currentLine.Length);
+            caretOffset -= currentLine.Offset;
 
             if (currentLine != null)
             {
-                var currentLineText = textEditor.Document.GetText(currentLine.Offset, currentLine.Length);
+                var matches = currentWordRegex.Matches(currentLineText);
+                Match targetWord = null;
+                if (caretOffset == currentLine.Length)
+                    targetWord = matches.FirstOrDefault(m => caretOffset >= m.Index && caretOffset <= (m.Index + m.Length));
+                else
+                    targetWord = matches.FirstOrDefault(m => caretOffset >= m.Index && caretOffset < (m.Index + m.Length));
+
+                if (targetWord != null)
+                    return targetWord.Value;
             }
 
-            return string.Empty;
+            if (caretOffset >= currentLineText.Length)
+                return currentLineText[^1].ToString();
+
+            return currentLineText[caretOffset].ToString();
         }
 
         private void FindService_OnPropertyChanged(object sender, PropertyChangedEventArgs e)

@@ -115,4 +115,52 @@
   <data name="validation_valueMustBeNumber" xml:space="preserve">
     <value>O valor deve ser um número</value>
   </data>
+  <data name="label_searching" xml:space="preserve">
+    <value>Procurando...</value>
+  </data>
+  <data name="label_searchResult_format_plural" xml:space="preserve">
+    <value>{0} resultados encontrados</value>
+  </data>
+  <data name="label_searchResult_format_singular" xml:space="preserve">
+    <value>{0} resultado encontrado</value>
+  </data>
+  <data name="tooltip_close" xml:space="preserve">
+    <value>Fechar (Esc)</value>
+  </data>
+  <data name="tooltip_toggleFindReplaceMode" xml:space="preserve">
+    <value>Ativar/desativar para alternar entre os modos localizar e substituir</value>
+  </data>
+  <data name="tooltip_searchTerm" xml:space="preserve">
+    <value>Termo de pesquisa</value>
+  </data>
+  <data name="watermark_searchTerm" xml:space="preserve">
+    <value>Localizar...</value>
+  </data>
+  <data name="tooltip_findPrevious" xml:space="preserve">
+    <value>Localizar anterior (Shift+F3)</value>
+  </data>
+  <data name="tooltip_findNext" xml:space="preserve">
+    <value>Localizar próximo (F3)</value>
+  </data>
+  <data name="tooltip_replacementTerm" xml:space="preserve">
+    <value>Termo de substituição</value>
+  </data>
+  <data name="watermark_replacementTerm" xml:space="preserve">
+    <value>Substituir...</value>
+  </data>
+  <data name="tooltip_replaceNext" xml:space="preserve">
+    <value>Substituir próximo (Alt+R)</value>
+  </data>
+  <data name="tooltip_replaceAll" xml:space="preserve">
+    <value>Substituir tudo (Alt+A)</value>
+  </data>
+  <data name="tooltip_matchCase" xml:space="preserve">
+    <value>Diferenciar maiúsculas e minúsculas (Alt+C)</value>
+  </data>
+  <data name="tooltip_matchWholeWord" xml:space="preserve">
+    <value>Somente palavras completas (Alt+W)</value>
+  </data>
+  <data name="tooltip_useRegex" xml:space="preserve">
+    <value>Utilizar Expressões Regulares (Alt+E)</value>
+  </data>
 </root>
