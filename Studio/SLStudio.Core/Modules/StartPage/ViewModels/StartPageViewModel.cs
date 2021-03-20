@@ -129,14 +129,9 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
 
             RecentFileViewModel CreateRecentFile(string fileName, DateTime date)
             {
-                Uri iconUri = null;
                 var extension = Path.GetExtension(fileName);
                 var iconSource = fileService.GetDescription(extension)?.IconSource;
-
-                if (!string.IsNullOrEmpty(iconSource))
-                    iconUri = new Uri(iconSource);
-
-                return new RecentFileViewModel(fileName, date, this, iconUri);
+                return new RecentFileViewModel(fileName, date, this, iconSource);
             }
         }
 

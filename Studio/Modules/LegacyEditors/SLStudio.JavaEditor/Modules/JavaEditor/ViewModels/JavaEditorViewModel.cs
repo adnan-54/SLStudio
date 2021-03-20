@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.JavaEditor
 {
-    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(JavaEditorResources), "", false, ".java")]
+    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(JavaEditorResources), "JavaIcon", false, ".java")]
     internal class JavaEditorViewModel : FileDocumentBase, IJavaEditor
     {
         private string lastCheckpoint;

@@ -1,6 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:converters="clr-namespace:SLStudio.Core.Converters">
+
+    <!--FontSizeComparerConverter-->
+    <converters:EqualityConverter x:Key="FontSizeComparerConverter" Comparison="LessOrEqualTo" />
 
     <!--StudioTextBlockStyle-->
-    <Style x:Key="StudioTextBlockStyle" TargetType="{x:Type TextBlock}" />
+    <Style x:Key="StudioTextBlockStyle" TargetType="{x:Type TextBlock}">
+        <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+        <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding FontSize, RelativeSource={RelativeSource Self}, Converter={StaticResource FontSizeComparerConverter}, ConverterParameter=12}" Value="True">
+                <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

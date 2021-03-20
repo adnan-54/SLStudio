@@ -10,6 +10,9 @@
 	<ItemGroup>
 		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
 		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="Resources\Icons\javaIcon.ai" />
+		<None Remove="Resources\Icons\javaIcon.ico" />
+		<None Remove="Resources\Icons\javaIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -22,11 +25,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Resources\Icons\" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <Resource Include="Resources\Icons\javaIcon.ai" />
+	  <Resource Include="Resources\Icons\javaIcon.ico" />
+	  <Resource Include="Resources\Icons\javaIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>

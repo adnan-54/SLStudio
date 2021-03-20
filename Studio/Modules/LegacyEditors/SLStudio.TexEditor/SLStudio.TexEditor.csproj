@@ -10,6 +10,9 @@
 	<ItemGroup>
 		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
 		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="Resources\Icons\texIcon.ai" />
+		<None Remove="Resources\Icons\texIcon.ico" />
+		<None Remove="Resources\Icons\texIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -37,11 +40,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Resources\Icons\" />
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
-		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <Resource Include="Resources\Icons\texIcon.ai" />
+	  <Resource Include="Resources\Icons\texIcon.ico" />
+	  <Resource Include="Resources\Icons\texIcon.png" />
 	</ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.RpkEditor
 {
-    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(RpkEditorResources), "pack://application:,,,/SLStudio.RpkEditor;component/Resources/Icons/rpkFileIcon.png", false, ".rpk")]
+    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(RpkEditorResources), "RpkIcon", false, ".rpk")]
     internal class RpkEditorViewModel : FileDocumentBase, IRpkEditor
     {
         private string lastCheckpoint;

@@ -1,6 +1,5 @@
 ﻿using SLStudio.Core.Menus.Handlers;
 using SLStudio.Core.Menus.Resources;
-using SLStudio.Core.Resources;
 using System.Windows.Input;
 
 namespace SLStudio.Core.Menus
@@ -35,10 +34,10 @@ namespace SLStudio.Core.Menus
             Item<SaveAllFilesHandler>("file/saveAll", iconSource: "SaveAll", shortcut: new KeyGesture(Key.S, ModifierKeys.Control | ModifierKeys.Alt));
 
             //edit
-            Item("edit");
+            //Item("edit");
 
-            Item("edit/goto");
-            Item<OpenFileHandler>("edit/goto/gotoline", shortcut: new KeyGesture(Key.G, ModifierKeys.Control));
+            //Item("edit/goto");
+            //Item<OpenFileHandler>("edit/goto/gotoline", shortcut: new KeyGesture(Key.G, ModifierKeys.Control));
 
             //view
             Item("view");

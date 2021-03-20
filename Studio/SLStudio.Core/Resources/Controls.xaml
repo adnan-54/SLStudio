@@ -41,6 +41,11 @@
         <ResourceDictionary Source="pack://application:,,,/SLStudio.Core;component/Resources/Controls/Window.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
+    <!--ImageStyle-->
+    <Style TargetType="{x:Type Image}">
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
+    </Style>
+
     <!--AvalonEdit-->
     <Style TargetType="{x:Type ae:TextEditor}" BasedOn="{StaticResource StudioAvalonEditStyle}" />
 

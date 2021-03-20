@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.TexEditor
 {
-    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(TexEditorResources), "", false, ".tex")]
+    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(TexEditorResources), "TexIcon", false, ".tex")]
     internal class TexEditorViewModel : FileDocumentBase, ITexEditor
     {
         private string lastCheckpoint;

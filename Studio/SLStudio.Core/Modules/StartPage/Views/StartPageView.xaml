@@ -214,7 +214,7 @@
                                            Grid.RowSpan="2" Height="32">
                                         <Image.Style>
                                             <Style TargetType="{x:Type Image}">
-                                                <Setter Property="Source" Value="{Binding IconSource}" />
+                                                <Setter Property="Source" Value="{Binding IconSource, Converter={StaticResource ImageSourceConverter}}" />
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding IconSource, Converter={StaticResource IsNullConverter}}" Value="True">
                                                         <Setter Property="Source" Value="{StaticResource Document}" />

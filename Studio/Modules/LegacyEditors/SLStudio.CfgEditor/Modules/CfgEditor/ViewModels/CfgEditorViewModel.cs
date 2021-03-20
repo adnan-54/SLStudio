@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.CfgEditor
 {
-    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(CfgEditorResources), "", false, ".cfg")]
+    [FileEditor("editorName", "editorDescription", "editorCategory", typeof(CfgEditorResources), "CfgIcon", false, ".cfg")]
     internal class CfgEditorViewModel : FileDocumentBase, ICfgEditor
     {
         private string lastCheckpoint;

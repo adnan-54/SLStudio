@@ -10,6 +10,9 @@
 	<ItemGroup>
 		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
 		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="Resources\Icons\cfgIcon.ai" />
+		<None Remove="Resources\Icons\cfgIcon.ico" />
+		<None Remove="Resources\Icons\cfgIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -22,11 +25,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Resources\Icons\" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	  <Resource Include="Resources\Icons\cfgIcon.ai" />
+	  <Resource Include="Resources\Icons\cfgIcon.ico" />
+	  <Resource Include="Resources\Icons\cfgIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -60,7 +60,7 @@
     <metro:WindowButtonCommands x:Key="DefaultWindowButtons" Style="{StaticResource WindowButtonsStyle}" x:Shared="False" />
 
     <!--StudioWindowStyle-->
-    <Style x:Key="StudioWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource MahApps.Styles.MetroWindow.Clean}">
+    <Style x:Key="StudioWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource MahApps.Styles.MetroWindow.Clean}" x:Shared="False">
         <Setter Property="WindowButtonCommands" Value="{StaticResource DefaultWindowButtons}" />
         <Setter Property="WindowTitleBrush" Value="Transparent" />
         <Setter Property="NonActiveWindowTitleBrush" Value="Transparent" />
@@ -74,7 +74,6 @@
         <Setter Property="SaveWindowPosition" Value="True" />
         <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="ResizeMode" Value="CanResizeWithGrip" />
-        <Setter Property="WindowTransitionsEnabled" Value="False" />
         <Setter Property="TryToBeFlickerFree" Value="True" />
         <Setter Property="ShowActivated" Value="True" />
         <Setter Property="TitleAlignment" Value="Center" />
@@ -83,6 +82,10 @@
         <Setter Property="WindowState" Value="Maximized" />
         <Setter Property="MinWidth" Value="100" />
         <Setter Property="MinHeight" Value="100" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
+        <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
         <Setter Property="studio:WpfHelpers.WindowStartupLocation" Value="CenterScreen" />
         <Setter Property="IconTemplate">
             <Setter.Value>
@@ -117,7 +120,7 @@
     </Style>
 
     <!--DialogWindowStyle-->
-    <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource StudioWindowStyle}">
+    <Style x:Key="DialogWindowStyle" TargetType="{x:Type metro:MetroWindow}" BasedOn="{StaticResource StudioWindowStyle}" x:Shared="False">
         <Setter Property="ShowMinButton" Value="False" />
         <Setter Property="ShowMaxRestoreButton" Value="False" />
         <Setter Property="WindowTitleBrush" Value="{StaticResource Editor.Background}" />

@@ -12,7 +12,7 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
         private static readonly ILogger logger = LogManager.GetLoggerFor<RecentFileViewModel>();
         private readonly StartPageViewModel startPage;
 
-        public RecentFileViewModel(string fileName, DateTime modifiedDate, StartPageViewModel startPage, Uri iconSource)
+        public RecentFileViewModel(string fileName, DateTime modifiedDate, StartPageViewModel startPage, string iconSource)
         {
             this.startPage = startPage;
             FileName = Path.GetFileName(fileName);
@@ -21,7 +21,7 @@ namespace SLStudio.Core.Modules.StartPage.ViewModels
             IconSource = iconSource;
         }
 
-        public Uri IconSource { get; set; }
+        public string IconSource { get; set; }
         public string FileName { get; set; }
         public DateTime ModifiedDate { get; set; }
         public string Location { get; set; }

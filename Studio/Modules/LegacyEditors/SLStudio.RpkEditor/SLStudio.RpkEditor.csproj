@@ -10,8 +10,9 @@
 	<ItemGroup>
 		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
 		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
-		<None Remove="Resources\Icons\rpkFileIcon.ai" />
-		<None Remove="Resources\Icons\rpkFileIcon.png" />
+		<None Remove="Resources\Icons\rpkIcon.ai" />
+		<None Remove="Resources\Icons\rpkIcon.ico" />
+		<None Remove="Resources\Icons\rpkIcon.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -49,7 +50,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Resource Include="Resources\Icons\rpkFileIcon.ai" />
-		<Resource Include="Resources\Icons\rpkFileIcon.png" />
+		<Resource Include="Resources\Icons\rpkIcon.ai" />
+		<Resource Include="Resources\Icons\rpkIcon.ico" />
+		<Resource Include="Resources\Icons\rpkIcon.png" />
 	</ItemGroup>
 </Project>
