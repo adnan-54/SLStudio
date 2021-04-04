@@ -1,4 +1,5 @@
 ﻿using Ionic.Zip;
+using SLStudio.Framework;
 using System;
 using System.IO;
 using System.Reflection;
@@ -8,26 +9,20 @@ namespace SLStudio.Logging
 {
     internal class ZipExporter : IDisposable
     {
-        private readonly string tempDirectoryName;
+        private readonly ITempDirectory tempDirectory;
         private readonly string outputFileName;
 
         public ZipExporter(string fileName)
         {
             outputFileName = fileName;
-            tempDirectoryName = StudioConstants.NewTempDirectory;
+            tempDirectory = TempStorage.NewDirectory();
         }
 
         public void Export()
         {
-            CreateTempDirectory();
             CreateSystemInfoFile();
             CopyFilesToTempDirectory();
             ZipFiles();
-        }
-
-        private void CreateTempDirectory()
-        {
-            Directory.CreateDirectory(tempDirectoryName);
         }
 
         private void CreateSystemInfoFile()
@@ -45,13 +40,13 @@ namespace SLStudio.Logging
                 catch { }
             }
 
-            File.WriteAllText(Path.Combine(tempDirectoryName, "localInfos.txt"), sb.ToString());
+            File.WriteAllText(Path.Combine(tempDirectory.FullName, "environment.bin"), sb.ToString());
         }
 
         private void CopyFilesToTempDirectory()
         {
-            File.Copy(StudioConstants.LogsFile, Path.Combine(tempDirectoryName, "logs.db"));
-            File.Copy(StudioConstants.InternalLogsFile, Path.Combine(tempDirectoryName, "logs.txt"));
+            File.Copy(StudioConstants.StudioLogFile, Path.Combine(tempDirectory.FullName, "logs.bin"));
+            File.Copy(StudioConstants.InternalLogFile, Path.Combine(tempDirectory.FullName, "internallogs.bin"));
         }
 
         private void ZipFiles()
@@ -60,18 +55,13 @@ namespace SLStudio.Logging
             {
                 Password = "4@-B$Vq6@$*7QChW"
             };
-            zipFile.AddDirectory(tempDirectoryName);
+            zipFile.AddDirectory(tempDirectory.FullName);
             zipFile.Save(outputFileName);
         }
 
         public void Dispose()
         {
-            try
-            {
-                if (Directory.Exists(tempDirectoryName))
-                    Directory.Delete(tempDirectoryName, true);
-            }
-            catch { }
+            tempDirectory.Dispose();
         }
     }
 }

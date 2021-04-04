@@ -3,6 +3,7 @@ using Humanizer.Configuration;
 using SLStudio.Core.LanguageManager;
 using SLStudio.Core.Services.LanguageManager;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -27,6 +28,16 @@ namespace SLStudio.Core
             DefaultLanguage = new Language(Thread.CurrentThread.CurrentCulture.Name);
 
             Initalize();
+
+            Debug.WriteLine("******************");
+            Debug.WriteLine("");
+            Debug.WriteLine("");
+            Debug.WriteLine("");
+            Debug.WriteLine(StudioConstants.DefaultCulture.Name);
+            Debug.WriteLine("");
+            Debug.WriteLine("");
+            Debug.WriteLine("");
+            Debug.WriteLine("******************");
         }
 
         public IEnumerable<Language> AvaliableLanguages => avaliableLanguages;

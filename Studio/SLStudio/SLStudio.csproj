@@ -53,6 +53,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Framework\SLStudio.Api\SLStudio.Api.csproj" />
+		<ProjectReference Include="..\..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
 		<ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 		<ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj" />

@@ -9,7 +9,7 @@ namespace SLStudio.Core.Modules.SplashScreen
         public SplashScreen()
         {
             InitializeComponent();
-            versionText.Text = string.Format(SplashScreenResources.Version, GetType().Assembly.GetName().Version.ToString());
+            versionText.Text = string.Format(SplashScreenResources.Version, StudioConstants.ProductVersion);
         }
 
         public void UpdateStatus(string status)

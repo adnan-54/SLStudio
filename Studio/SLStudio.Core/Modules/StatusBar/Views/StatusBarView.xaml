@@ -47,6 +47,26 @@
         <StatusBar Grid.Column="1">
             <StatusBarItem Content="{Binding Status}" />
             <ContentControl studio:ViewBinder.Bind="{Binding Content}" />
+
+            <StatusBarItem Margin="{StaticResource LargeRightMargin}" Padding="0"
+                           HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Button Padding="4" Style="{StaticResource MahApps.Styles.Button.DropDown}" Background="Transparent">
+                            <Image Source="{StaticResource NotificationAlert}" />
+                        </Button>
+
+                        <Border Margin="0, 0, -1, 1" CornerRadius="100" Background="Red"
+                                Width="13" Height="13" IsHitTestVisible="False"
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                            <Label Margin="0, 0, 0, 0" Padding="0"
+                                   Content="2"
+                                   Foreground="White" FontSize="11"
+                                   HorizontalContentAlignment="Center" />
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </StatusBarItem>
         </StatusBar>
     </Grid>
 </UserControl>

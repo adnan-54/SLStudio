@@ -21,7 +21,7 @@ namespace SLStudio.Logging
         public DefaultLoggingService(LogManager logManager, IInternalLogger internalLogger, IConfigurationService configurationService)
         {
             logRespository = new DefaultLogRespository(configurationService);
-            dbFile = new FileInfo(StudioConstants.LogsFile);
+            dbFile = new FileInfo(StudioConstants.StudioLogFile);
             logsProcessor = new LogsProcessor(logManager, internalLogger, configurationService, logRespository);
         }
 

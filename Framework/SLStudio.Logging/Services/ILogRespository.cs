@@ -46,7 +46,7 @@ namespace SLStudio.Logging
 
             protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             {
-                var connection = new SqliteConnection($"Data Source={StudioConstants.LogsFile};Password=J_C#,qU^Ew4f[t;");
+                var connection = new SqliteConnection($"Data Source={StudioConstants.StudioLogFile};Password=J_C#,qU^Ew4f[t;");
                 connection.Open();
                 optionsBuilder.UseSqlite(connection);
             }

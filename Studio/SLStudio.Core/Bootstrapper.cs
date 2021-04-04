@@ -4,6 +4,7 @@ using SLStudio.Core.Modules.ExceptionBox.Views;
 using SLStudio.Core.Modules.SplashScreen.Resources;
 using SLStudio.Logging;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;

@@ -17,7 +17,7 @@ namespace SLStudio.Logging
         {
             try
             {
-                var filePath = StudioConstants.InternalLogsFile;
+                var filePath = StudioConstants.InternalLogFile;
                 logStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
                 logReader = new StreamReader(logStream);
                 logWriter = new StreamWriter(logStream);
