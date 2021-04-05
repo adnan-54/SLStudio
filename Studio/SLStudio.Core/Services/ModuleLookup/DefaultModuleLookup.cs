@@ -59,7 +59,7 @@ namespace SLStudio.Core
 
         private IEnumerable<Type> FindModules()
         {
-            return AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => type.IsClass && type.Name == "Module" && type.IsSubclassOf(typeof(ModuleBase)));
+            return AppDomain.CurrentDomain.GetAssemblies().SelectMany(assembly => assembly.GetTypes()).Where(type => type.IsClass && type.Name == "Module" && type.IsSubclassOf(typeof(StudioModule)));
         }
 
         private IEnumerable<IModule> CreateInstances(IEnumerable<Type> types)

@@ -4,69 +4,51 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:studio="clr-namespace:SLStudio.Core"
-             xmlns:resx="clr-namespace:SLStudio.Core.Modules.StatusBar.Resources"
-             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="{StaticResource Focused}" Height="22">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+             xmlns:viewModels="clr-namespace:SLStudio.Core.Modules.StatusBar.ViewModels"
+             mc:Ignorable="d" d:DataContext="{d:DesignInstance Type=viewModels:StatusBarViewModel}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <StatusBar>
+        <StatusBar.Resources>
+            <Style TargetType="{x:Type ItemsControl}">
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <StackPanel Orientation="Horizontal" />
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="ItemTemplate">
+                    <Setter.Value>
+                        <DataTemplate>
+                            <ContentControl studio:ViewBinder.Bind="{Binding}" />
+                        </DataTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </StatusBar.Resources>
 
-        <Popup IsOpen="{Binding PopupIsOpen}" StaysOpen="False" AllowsTransparency="True"
-               Placement="Top" PlacementTarget="{Binding ElementName=button}">
-            <!--Content-->
-            <Grid Margin="{StaticResource LargeRightMargin}">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+        <StatusBar.ItemsPanel>
+            <ItemsPanelTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </ItemsPanelTemplate>
+        </StatusBar.ItemsPanel>
 
-                <!--Border-->
-                <Border Grid.Row="0" Padding="12" BorderThickness="1"
-                        BorderBrush="{StaticResource Border}"
-                        Background="{StaticResource Control.Background}"
-                        Effect="{StaticResource LightShadowEffect}">
-                    <TextBlock Text="{x:Static resx:StatusBarResources.NoBackgroundTasksRunning}" />
-                </Border>
+        <StatusBarItem Grid.Column="0" HorizontalContentAlignment="Left">
+            <ItemsControl ItemsSource="{Binding StatusBarManager.LeftContents}" />
+        </StatusBarItem>
 
-                <!--ArrowDown-->
-                <Image Grid.Row="1" Margin="6, -1, 0, 0" HorizontalAlignment="Left"
-                       Source="{StaticResource ArrowDown}" Height="8" Width="12" Stretch="Fill"
-                       Effect="{StaticResource LightShadowEffect}" />
-            </Grid>
-        </Popup>
+        <StatusBarItem Grid.Column="1" HorizontalContentAlignment="Center">
+            <ItemsControl ItemsSource="{Binding StatusBarManager.CenterContents}" />
+        </StatusBarItem>
 
-        <Button x:Name="button" Grid.Column="0"
-                Padding="4" Background="Transparent" Focusable="False"
-                Style="{StaticResource MahApps.Styles.Button.DropDown}"
-                ToolTip="{x:Static resx:StatusBarResources.BackgroundTasks}"
-                Command="{DXCommand 'ShowPopup()'}">
-            <Image Source="{StaticResource TaskCenterStatusBarAni_00}" />
-        </Button>
-
-        <StatusBar Grid.Column="1">
-            <StatusBarItem Content="{Binding Status}" />
-            <ContentControl studio:ViewBinder.Bind="{Binding Content}" />
-
-            <StatusBarItem Margin="{StaticResource LargeRightMargin}" Padding="0"
-                           HorizontalAlignment="Right">
-                <StackPanel Orientation="Horizontal">
-                    <Grid>
-                        <Button Padding="4" Style="{StaticResource MahApps.Styles.Button.DropDown}" Background="Transparent">
-                            <Image Source="{StaticResource NotificationAlert}" />
-                        </Button>
-
-                        <Border Margin="0, 0, -1, 1" CornerRadius="100" Background="Red"
-                                Width="13" Height="13" IsHitTestVisible="False"
-                                HorizontalAlignment="Right" VerticalAlignment="Bottom">
-                            <Label Margin="0, 0, 0, 0" Padding="0"
-                                   Content="2"
-                                   Foreground="White" FontSize="11"
-                                   HorizontalContentAlignment="Center" />
-                        </Border>
-                    </Grid>
-                </StackPanel>
-            </StatusBarItem>
-        </StatusBar>
-    </Grid>
+        <StatusBarItem Grid.Column="2" Margin="{StaticResource LargeRightMargin}" HorizontalContentAlignment="Right">
+            <ItemsControl ItemsSource="{Binding StatusBarManager.RightContents}" />
+        </StatusBarItem>
+    </StatusBar>
 </UserControl>

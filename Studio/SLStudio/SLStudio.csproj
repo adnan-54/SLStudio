@@ -60,6 +60,7 @@
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
+		<ProjectReference Include="..\Modules\SLStudio.NotificationCenter\SLStudio.NotificationCenter.csproj" />
 		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 

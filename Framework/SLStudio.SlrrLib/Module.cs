@@ -2,7 +2,7 @@
 
 namespace SLStudio.SlrrLib
 {
-    internal class Module : ModuleBase
+    internal class Module : StudioModule
     {
         public override string Author => "Amilmand";
     }

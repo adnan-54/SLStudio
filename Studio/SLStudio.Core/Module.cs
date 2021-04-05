@@ -10,7 +10,7 @@ using SLStudio.Core.Services.ToolManager;
 
 namespace SLStudio.Core
 {
-    internal class Module : ModuleBase
+    internal class Module : StudioModule
     {
         public override int Priority => int.MaxValue;
 
@@ -22,6 +22,7 @@ namespace SLStudio.Core
             container.RegisterService<IErrorHandler, DefaultErrorHandler>();
             container.RegisterService<IMenuItemFactory, DefaultMenuItemFactory>();
             container.RegisterService<IMenuLookup, DefaultMenuLookup>();
+            container.RegisterService<IStatusBarManager, DefaultStatusBarManager>();
             container.RegisterService<IToolManager, DefaultToolManager>();
             container.RegisterService<ILanguageDefinitionManager, DefaultLanguageDefinitionManager>();
 

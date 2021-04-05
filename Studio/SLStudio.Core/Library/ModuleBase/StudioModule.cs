@@ -10,9 +10,9 @@ using System.Windows;
 
 namespace SLStudio.Core
 {
-    public abstract class ModuleBase : IModule
+    public abstract class StudioModule : IModule
     {
-        private static readonly ILogger logger = LogManager.GetLoggerFor<ModuleBase>();
+        private static readonly ILogger logger = LogManager.GetLoggerFor<StudioModule>();
 
         private bool alreadyMerged = false;
         private bool alreadyRegistered = false;
