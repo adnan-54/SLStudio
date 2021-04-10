@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace SLStudio.Framework
+namespace SLStudio
 {
     public static class TempStorage
     {

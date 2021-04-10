@@ -18,7 +18,7 @@ namespace SLStudio.Logging
 
         public static ILogger GetLogger(Type type)
         {
-            return GetLogger(type.Name);
+            return GetLogger(type.FullName);
         }
 
         public static ILogger GetLogger(string name)

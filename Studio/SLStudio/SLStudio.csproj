@@ -53,14 +53,12 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Framework\SLStudio.Api\SLStudio.Api.csproj" />
-		<ProjectReference Include="..\..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
 		<ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
 		<ProjectReference Include="..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.CfgEditor\SLStudio.CfgEditor.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.JavaEditor\SLStudio.JavaEditor.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.RpkEditor\SLStudio.RpkEditor.csproj" />
 		<ProjectReference Include="..\Modules\LegacyEditors\SLStudio.TexEditor\SLStudio.TexEditor.csproj" />
-		<ProjectReference Include="..\Modules\SLStudio.NotificationCenter\SLStudio.NotificationCenter.csproj" />
 		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
 

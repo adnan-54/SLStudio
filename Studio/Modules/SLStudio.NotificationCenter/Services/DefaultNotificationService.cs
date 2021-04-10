@@ -1,7 +1,9 @@
-﻿using SLStudio.Logging;
+﻿using SLStudio.Core;
+using SLStudio.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace SLStudio.NotificationCenter
@@ -10,73 +12,64 @@ namespace SLStudio.NotificationCenter
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultNotificationService>();
 
-        private readonly object lockObject = new();
-        private readonly List<INotification> notifications;
-        private readonly List<INotificationModule> notificationModules;
+        private readonly IObjectFactory objectFactory;
 
-        public DefaultNotificationService()
+        public DefaultNotificationService(IObjectFactory objectFactory)
         {
-            notificationModules = new List<INotificationModule>();
-            notifications = new List<INotification>();
+            this.objectFactory = objectFactory;
         }
+
+        public event EventHandler UpdateStarted;
+
+        public event EventHandler UpdateEnded;
 
         public event EventHandler UpdateSucceeded;
 
         public event EventHandler UpdateFailed;
 
-        public IEnumerable<INotification> Notifications => notifications;
+        public bool IsUpdating { get; set; }
 
-        public IEnumerable<INotificationModule> NotificationModules => notificationModules;
+        public IEnumerable<INotificationModule> Modules { get; private set; }
 
-        public void RegisterModule(INotificationModule module)
-        {
-            if (module is null)
-                throw new ArgumentNullException(nameof(module));
-
-            lock (lockObject)
-            {
-                if (notificationModules.Contains(module))
-                    return;
-
-                notificationModules.Add(module);
-            }
-        }
-
-        public void UnregisterModule(INotificationModule module)
-        {
-            if (module is null)
-                throw new ArgumentNullException(nameof(module));
-
-            lock (lockObject)
-            {
-                if (!notificationModules.Contains(module))
-                    return;
-
-                notificationModules.Remove(module);
-            }
-        }
+        public IEnumerable<INotification> Notifications { get; private set; }
 
         public async Task UpdateNotifications()
         {
+            UpdateStarted?.Invoke(this, EventArgs.Empty);
+            IsUpdating = true;
+
             try
             {
-                var newNotifications = new List<INotification>();
-
-                foreach (var notificationModule in NotificationModules)
-                    newNotifications.AddRange(await notificationModule.FetchNotifications());
-
-                notifications.Clear();
-                notifications.AddRange(newNotifications.OrderBy(n => n.PublicationDate));
-
+                Notifications = await FetchNotifications();
                 UpdateSucceeded?.Invoke(this, EventArgs.Empty);
             }
             catch (Exception ex)
             {
                 logger.Warn(ex);
-                notifications.Clear();
+                Notifications = Enumerable.Empty<INotification>();
 
                 UpdateFailed?.Invoke(this, EventArgs.Empty);
             }
+
+            IsUpdating = false;
+            UpdateEnded?.Invoke(this, EventArgs.Empty);
+        }
+
+        private IEnumerable<INotificationModule> CreateModulesCache()
+        {
+            var types = GetType().Assembly.GetTypes().Where(t => t.IsClass && t.GetCustomAttribute<NotificationModuleAttribute>(false) != null).ToList();
+
+            return types.Select(type => objectFactory.Create<INotificationModule>(type)).ToList();
+        }
+
+        private async Task<IEnumerable<INotification>> FetchNotifications()
+        {
+            var notifications = new List<INotification>();
+
+            foreach (var notificationModule in Modules)
+                notifications.AddRange(await notificationModule.FetchNotifications());
+
+            return notifications.OrderBy(n => n.PublicationDate);
         }
     }
 }

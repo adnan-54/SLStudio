@@ -12,8 +12,19 @@ namespace SLStudio.Core
             this.container = container;
         }
 
-        TService IObjectFactory.Create<TService>() => container.GetInstance<TService>();
+        TService IObjectFactory.Create<TService>()
+        {
+            return container.GetInstance<TService>();
+        }
 
-        object IObjectFactory.Create(Type serviceType) => container.GetInstance(serviceType);
+        object IObjectFactory.Create(Type serviceType)
+        {
+            return container.GetInstance(serviceType);
+        }
+
+        TService IObjectFactory.Create<TService>(Type serviceType)
+        {
+            return (TService)container.GetInstance(serviceType);
+        }
     }
 }

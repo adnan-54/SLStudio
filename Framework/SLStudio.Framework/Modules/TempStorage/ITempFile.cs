@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace SLStudio.Framework
+namespace SLStudio
 {
     public interface ITempFile : ITempStorage<FileInfo>
     {

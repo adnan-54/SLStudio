@@ -1,12 +1,13 @@
 ﻿using SLStudio.Core;
+using SLStudio.NotificationCenter.StatusBar;
 
 namespace SLStudio.NotificationCenter
 {
     internal class NotificationsCenterViewModel : ToolBase, INotificationsCenter
     {
-        public NotificationsCenterViewModel(IStatusBarManager statusBarManager)
+        public NotificationsCenterViewModel(IStatusBarManager statusBarManager, RightContentViewModel rightContent)
         {
-            StatusBarProvider = new NotificationsStatusBarProvider();
+            StatusBarProvider = new NotificationsStatusBarProvider(rightContent);
 
             DisplayName = "Notifications";
 

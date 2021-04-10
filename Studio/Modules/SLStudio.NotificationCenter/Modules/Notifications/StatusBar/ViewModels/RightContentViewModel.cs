@@ -3,13 +3,13 @@ using SLStudio.Core;
 using System;
 using System.Linq;
 
-namespace SLStudio.NotificationCenter
+namespace SLStudio.NotificationCenter.StatusBar
 {
-    internal class StatusBarRightViewModel : BindableBase, IStatusBarContent
+    internal class RightContentViewModel : BindableBase, IStatusBarContent
     {
         private readonly INotificationService notificationService;
 
-        public StatusBarRightViewModel(INotificationService notificationService)
+        public RightContentViewModel(INotificationService notificationService)
         {
             this.notificationService = notificationService;
             notificationService.UpdateSucceeded += OnUpdateSucceeded;
@@ -38,7 +38,7 @@ namespace SLStudio.NotificationCenter
             set => SetProperty(() => FailedToUpdate, value);
         }
 
-        public void Show()
+        public void ToggleNotifications()
         {
         }
 

@@ -1,5 +1,6 @@
 ﻿using SimpleInjector;
 using SLStudio.Core;
+using SLStudio.NotificationCenter.StatusBar;
 
 namespace SLStudio.NotificationCenter
 {
@@ -9,6 +10,7 @@ namespace SLStudio.NotificationCenter
         {
             container.RegisterService<INotificationService, DefaultNotificationService>();
             container.RegisterSingleton<INotificationsCenter, NotificationsCenterViewModel>();
+            container.RegisterSingleton<RightContentViewModel>();
         }
     }
 }

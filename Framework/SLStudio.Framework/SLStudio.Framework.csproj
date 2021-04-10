@@ -3,10 +3,40 @@
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWPF>true</UseWPF>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
 		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SimpleInjector" Version="5.2.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Mvvm\" />
+		<Folder Include="WPF\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SLStudio.Logging\SLStudio.Logging.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Resources\Localization\StudioResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>StudioResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Resources\Localization\StudioResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SLStudio.Resources</CustomToolNamespace>
+	  </EmbeddedResource>
 	</ItemGroup>
 </Project>

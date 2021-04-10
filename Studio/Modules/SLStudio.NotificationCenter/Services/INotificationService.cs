@@ -6,17 +6,19 @@ namespace SLStudio.NotificationCenter
 {
     public interface INotificationService
     {
-        public event EventHandler UpdateSucceeded;
+        event EventHandler UpdateStarted;
 
-        public event EventHandler UpdateFailed;
+        event EventHandler UpdateEnded;
+
+        event EventHandler UpdateSucceeded;
+
+        event EventHandler UpdateFailed;
+
+        bool IsUpdating { get; }
+
+        IEnumerable<INotificationModule> Modules { get; }
 
         IEnumerable<INotification> Notifications { get; }
-
-        IEnumerable<INotificationModule> NotificationModules { get; }
-
-        void RegisterModule(INotificationModule module);
-
-        void UnregisterModule(INotificationModule module);
 
         Task UpdateNotifications();
     }
