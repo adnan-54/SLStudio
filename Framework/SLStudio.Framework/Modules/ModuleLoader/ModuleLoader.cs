@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SLStudio.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
-using SLStudio.Logging;
 
 namespace SLStudio
 {
@@ -11,75 +11,118 @@ namespace SLStudio
     {
         private static readonly ILogger logger = LogManager.GetLoggerFor<ModuleLoader>();
 
-        private readonly IObjectFactory objectFactory;
         private readonly ISplashScreen splashScreen;
-        private readonly IModuleRegister moduleRegister;
-        private readonly List<IModuleInfo> loadedModules;
+        private readonly IModuleContainerFactory moduleContainerFactory;
+        private readonly IObjectFactory objectFactory;
 
-        public ModuleLoader(IObjectFactory objectFactory, ISplashScreen splashScreen, IModuleRegister moduleRegister)
+        public ModuleLoader(ISplashScreen splashScreen, IModuleContainerFactory moduleContainerFactory, IObjectFactory objectFactory)
         {
-            this.objectFactory = objectFactory;
             this.splashScreen = splashScreen;
-            this.moduleRegister = moduleRegister;
-            loadedModules = new List<IModuleInfo>();
+            this.moduleContainerFactory = moduleContainerFactory;
+            this.objectFactory = objectFactory;
         }
 
-        public IEnumerable<IModuleInfo> LoadedModules => loadedModules;
+        public IEnumerable<IModuleInfo> LoadedModules { get; private set; }
 
-        public async Task LoadModules(IEnumerable<IStudioModule> modules)
+        public async Task LoadModules()
         {
+            if (LoadedModules != null)
+                return;
+
             logger.Debug("Loading modules...");
             splashScreen.UpdateStatus("Loading modules...");
 
-            var registeredModules = RegisterModules(modules.OrderByDescending(module => module.Priority));
+            var modules = FindModules();
+
+            var containers = modules.Where(module => module.ShouldBeLoaded).OrderByDescending(module => module.Priority).Select(moduleContainerFactory.CreateContainerFor).ToList();
+
+            foreach (var container in containers)
+                LoadModule(container);
+
+            var actions = containers.Select(c => RunModule(c));
+            await Task.WhenAll(actions);
+
+            LoadedModules = containers.Select(container => new ModuleInfo(container));
+
+            var modulesCount = LoadedModules.Count();
+            logger.Debug($"{modulesCount} modules loaded...");
+            splashScreen.UpdateStatus("{0} modules loaded...", modulesCount);
         }
 
-        private IEnumerable<IModuleRegister> RegisterModules(IEnumerable<IStudioModule> modules)
+        private IEnumerable<IStudioModule> FindModules()
         {
+            logger.Debug("Searching modules...");
+            splashScreen.UpdateStatus("Searching modules...");
+
+            var types = AppDomain.CurrentDomain.GetAssemblies().SelectMany(a => a.GetTypes()).Where(t => !t.IsAbstract && t.IsClass && t.IsAssignableTo(typeof(StudioModule))).ToList();
+
+            logger.Debug($"{types.Count} modules found.");
+            splashScreen.UpdateStatus("{0} modules found.", types.Count);
+
+            return types.Select(CreateModule);
+        }
+
+        private IStudioModule CreateModule(Type type)
+        {
+            var name = type.Assembly.GetName().Name;
+            logger.Debug($"Creating instance for {name}...");
+            splashScreen.UpdateStatus("Creating instance for {0}...", name);
+
+            return (IStudioModule)Activator.CreateInstance(type);
+        }
+
+        private void LoadModule(IModuleContainer container)
+        {
+            var module = container.Module;
+
             try
             {
-                logger.Debug("Registering modules");
+                logger.Debug($"Loading module {module.Name}");
+                splashScreen.UpdateStatus("Loading module {0}", module.Name);
 
-                var result = modules.Select(RegisterModule);
+                module.Load(container);
 
-                logger.Debug("Modules registered successfully");
-
-                return result;
+                logger.Debug($"Module {module.Name} loaded successfully");
+                splashScreen.UpdateStatus("Module {0} loaded successfully", module.Name);
             }
             catch (Exception ex)
             {
-                logger.Warn("Failed to register modules");
-                logger.Error(ex);
+                logger.Error($"Failed to load module {module.Name}");
+                logger.Fatal(ex);
 
                 throw;
             }
         }
 
-        private IModuleRegister RegisterModule(IStudioModule module)
+        private Task RunModule(IModuleContainer container)
         {
-            splashScreen.UpdateStatusFormat("Registering module {0}...", module.Name);
+            var module = container.Module;
+            var scheduler = container.Scheduler;
+            try
+            {
+                logger.Debug($"Running module {module.Name}");
+                splashScreen.UpdateStatus("Running module {0}", module.Name);
 
-            module.RegisterModule(moduleRegister);
+                foreach (var action in scheduler.ScheduledActions)
+                    action.Run(objectFactory);
 
-            return moduleRegister;
+                var tasks = scheduler.ScheduledTasks.Select(task => task.Run(objectFactory));
+                return Task.WhenAll(tasks).ContinueWith(t =>
+                {
+                    if (t.Exception != null)
+                        throw t.Exception;
+
+                    logger.Debug($"Module {module.Name} ran successfully");
+                    splashScreen.UpdateStatus("Module {0} ran successfully", module.Name);
+                });
+            }
+            catch (Exception ex)
+            {
+                logger.Error($"Failed to run module {module.Name}");
+                logger.Fatal(ex);
+
+                throw;
+            }
         }
-    }
-
-    public interface IModuleLoader : IStudioService
-    {
-        IEnumerable<IModuleInfo> LoadedModules { get; }
-
-        Task LoadModules(IEnumerable<IStudioModule> modules);
-    }
-
-    public interface IRegister
-
-
-    public interface IModuleRegister
-    {
-    }
-
-    public interface ModuleContainer
-    {
     }
 }

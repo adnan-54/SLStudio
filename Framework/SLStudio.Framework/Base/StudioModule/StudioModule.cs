@@ -1,7 +1,4 @@
 ﻿using SLStudio.Logging;
-using SLStudio.Resources;
-using System;
-using System.Threading.Tasks;
 
 namespace SLStudio
 {
@@ -10,6 +7,7 @@ namespace SLStudio
         private static readonly ILogger logger = LogManager.GetLoggerFor<StudioModule>();
 
         private bool isRegistered;
+        private bool isScheduled;
 
         protected StudioModule()
         {
@@ -27,31 +25,48 @@ namespace SLStudio
 
         public virtual bool ShouldBeLoaded { get; }
 
-        public bool IsLoaded => isRegistered;
+        public bool IsLoaded => isRegistered && isScheduled;
 
-        public void RegisterModule(IModuleRegister register)
+        public void Load(IModuleContainer container)
+        {
+            Register(container);
+            Schedule(container);
+        }
+
+        private void Register(IModuleContainer container)
         {
             if (isRegistered)
                 return;
 
             logger.Debug($"Registering module {Name}");
 
-            try
-            {
-                Register(register);
-                isRegistered = true;
+            Register(container.Register);
 
-                logger.Debug($"Module {Name} registered successfully");
-            }
-            catch (Exception ex)
-            {
-                logger.Debug($"Failed to register module {Name}");
-                logger.Error(ex);
+            logger.Debug($"Module {Name} registered successfully");
 
-                throw;
-            }
+            isRegistered = true;
         }
 
-        protected abstract void Register(IModuleRegister register);
+        private void Schedule(IModuleContainer container)
+        {
+            if (isScheduled)
+                return;
+
+            logger.Debug($"Scheduling module {Name}");
+
+            Schedule(container.Scheduler);
+
+            logger.Debug($"Module {Name} scheduled successfully");
+
+            isScheduled = true;
+        }
+
+        protected virtual void Register(IModuleRegister register)
+        {
+        }
+
+        protected virtual void Schedule(IModuleScheduler scheduler)
+        {
+        }
     }
 }

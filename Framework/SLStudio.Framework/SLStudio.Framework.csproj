@@ -16,6 +16,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Modules\NewFolder\" />
+		<Folder Include="Modules\TaskScheduler\" />
 		<Folder Include="Mvvm\" />
 		<Folder Include="WPF\" />
 	</ItemGroup>
@@ -25,18 +27,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Resources\Localization\StudioResources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>StudioResources.resx</DependentUpon>
-	  </Compile>
+		<Compile Update="Resources\Localization\StudioResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StudioResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Update="Resources\Localization\StudioResources.resx">
-	    <Generator>PublicResXFileCodeGenerator</Generator>
-	    <LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
-	    <CustomToolNamespace>SLStudio.Resources</CustomToolNamespace>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Resources\Localization\StudioResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
+			<CustomToolNamespace>SLStudio.Resources</CustomToolNamespace>
+		</EmbeddedResource>
 	</ItemGroup>
 </Project>

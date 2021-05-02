@@ -2,11 +2,7 @@
 
 namespace SLStudio
 {
-    public interface ITempFile : ITempStorage<FileInfo>
-    {
-    }
-
-    internal class TempFile : TempStorage<FileInfo>, ITempFile
+    internal class TempFile : TempItem<FileInfo>, ITempFile
     {
         internal TempFile(FileInfo fileInfo) : base(fileInfo)
         {

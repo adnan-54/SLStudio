@@ -3,9 +3,9 @@ using System.IO;
 
 namespace SLStudio
 {
-    public static class TempStorage
+    internal class TempStorage : StudioService, ITempStorage
     {
-        public static ITempDirectory NewDirectory(string directory = null)
+        public ITempDirectory NewDirectory(string directory)
         {
             if (string.IsNullOrEmpty(directory))
                 directory = StudioConstants.TempDirectory;
@@ -25,7 +25,7 @@ namespace SLStudio
             return new TempDirectory(directoryInfo);
         }
 
-        public static ITempFile NewFile(string extension = null, string directory = null)
+        public ITempFile NewFile(string extension, string directory)
         {
             if (string.IsNullOrEmpty(extension))
                 extension = StudioConstants.TempFileExtension;

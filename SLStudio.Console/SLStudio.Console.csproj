@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<OutputType>Exe</OutputType>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
+	</ItemGroup>
+</Project>

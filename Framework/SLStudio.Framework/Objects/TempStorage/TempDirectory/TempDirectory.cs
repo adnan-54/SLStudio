@@ -2,11 +2,7 @@
 
 namespace SLStudio
 {
-    public interface ITempDirectory : ITempStorage<DirectoryInfo>
-    {
-    }
-
-    internal class TempDirectory : TempStorage<DirectoryInfo>, ITempDirectory
+    internal class TempDirectory : TempItem<DirectoryInfo>, ITempDirectory
     {
         internal TempDirectory(DirectoryInfo directoryInfo) : base(directoryInfo)
         {

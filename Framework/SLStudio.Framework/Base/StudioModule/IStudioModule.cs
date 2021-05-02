@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace SLStudio
+﻿namespace SLStudio
 {
     public interface IStudioModule : IHaveName
     {
@@ -9,6 +7,6 @@ namespace SLStudio
         bool ShouldBeLoaded { get; }
         bool IsLoaded { get; }
 
-        void RegisterModule(IModuleRegister register);
+        void Load(IModuleContainer container);
     }
 }

@@ -1,13 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
 namespace SLStudio
 {
-    public interface IContainer
+    public interface IModuleRegister : IHaveModuleInfos
     {
+        void RegisterDisposable<TType>()
+            where TType : class;
+
+        void RegisterDisposable<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService;
+
         void RegisterInstance<TService>(TService instance)
             where TService : class;
 
@@ -18,9 +23,6 @@ namespace SLStudio
             where TService : class
             where TImplementation : class, TService;
 
-        void RegisterSplashScreen<TSplashScreen>()
-            where TSplashScreen : ISplashScreen;
-
         void RegisterService<TService, TImplementation>()
             where TService : class, IStudioService
             where TImplementation : StudioService, TService;
@@ -29,7 +31,7 @@ namespace SLStudio
             where TWorker : class, IStudioService
             where TImplementation : StudioWorker, TWorker;
 
-        void RegisterViewModel<TViewModel, TImplementation>()
+        void RegisterViewModel<TViewModel, TImplementation>(Lifestyle lifestyle = Lifestyle.Transient)
             where TViewModel : class, IStudioViewModel
             where TImplementation : StudioViewModel, TViewModel;
 
@@ -52,24 +54,5 @@ namespace SLStudio
             where TLanguage : class, IStudioLanguage;
 
         void RegisterResource(Uri uri);
-
-        void Run(Action<IObjectFactory> action);
-
-        void RunAsync(Func<IObjectFactory, Task> action);
-
-        object GetInstance(Type serviceType);
-
-        TService GetInstance<TService>()
-            where TService : class;
-
-        TService GetInstance<TService>(Type serviceType)
-            where TService : class;
-
-        IEnumerable<object> GetAllInstances(Type serviceType);
-
-        IEnumerable<TService> GetAllInstances<TService>()
-            where TService : class;
-
-        void Verify();
     }
 }

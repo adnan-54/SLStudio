@@ -9,8 +9,4 @@ namespace SLStudio
     public abstract class StudioTheme : IStudioTheme
     {
     }
-
-    public interface IStudioTheme
-    {
-    }
 }

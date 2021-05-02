@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\SolutionItems\SharedWpfInfo.cs" Link="SharedWpfInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
+	</ItemGroup>
+</Project>
