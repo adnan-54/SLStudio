@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using System.Windows.Threading;
 
 namespace SLStudio
 {
@@ -18,13 +17,6 @@ namespace SLStudio
             this.container = container;
             this.application = application;
             services = new List<IStudioService>();
-
-            RegisterDefaults();
-        }
-
-        public IContainer GetContainer()
-        {
-            return container;
         }
 
         public TService GetService<TService>() where TService : class, IStudioService
@@ -66,7 +58,7 @@ namespace SLStudio
             services.Add(service);
         }
 
-        public Bootstrapper CreateBootstrapper(Application application)
+        public static Bootstrapper CreateBootstrapper(Application application)
         {
             if (instance is null)
             {
@@ -74,7 +66,9 @@ namespace SLStudio
                 IoC.Initialize(container);
 
                 instance = new Bootstrapper(container, application);
+                instance.RegisterDefaults();
             }
+
             return instance;
         }
 

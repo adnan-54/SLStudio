@@ -5,6 +5,7 @@
 		<TargetFramework>net5.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<StartupObject>WpfApp1.Program</StartupObject>
 	</PropertyGroup>
 
 	<ItemGroup>

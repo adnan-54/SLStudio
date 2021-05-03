@@ -6,41 +6,33 @@ namespace SLStudio
     internal class SplashScreen : StudioService, ISplashScreen
     {
         private readonly IUiSynchronization uiSynchronization;
-        private Type viewType;
         private ISplashScreenView view;
-        private bool isShowing;
 
         public SplashScreen(IUiSynchronization uiSynchronization)
         {
             this.uiSynchronization = uiSynchronization;
         }
 
+        public bool IsShowing => view is not null && view.IsShowing;
+
         public string Status => view?.Status;
 
         public void Show()
         {
-            if (viewType is null || isShowing)
+            if (view is null || IsShowing)
                 return;
 
-            uiSynchronization.Execute(() =>
-            {
-                var window = (Window)Activator.CreateInstance(viewType);
-                window.Show();
-
-                view = (ISplashScreenView)window;
-            });
-
-            isShowing = true;
+            uiSynchronization.Execute(() => view.Show());
         }
 
-        public void SetView<TView>() where TView : Window, ISplashScreenView
+        public void SetView(ISplashScreenView view)
         {
-            viewType = typeof(TView);
+            this.view = view;
         }
 
         public void UpdateStatus(string status)
         {
-            if (view is null || !isShowing)
+            if (view is null || !IsShowing)
                 return;
 
             uiSynchronization.Execute(() => view.Status = status);
@@ -53,15 +45,12 @@ namespace SLStudio
 
         public void Close()
         {
-            if (!isShowing || view is null)
+            if (!IsShowing || view is null)
                 return;
 
-            var window = (Window)view;
-            uiSynchronization.Execute(() => window.Close());
+            uiSynchronization.Execute(() => view.Close());
 
             view = null;
-
-            isShowing = false;
         }
     }
 }

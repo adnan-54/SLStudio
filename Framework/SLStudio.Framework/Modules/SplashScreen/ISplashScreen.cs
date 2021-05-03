@@ -8,8 +8,7 @@ namespace SLStudio
 
         void Show();
 
-        void SetView<TView>()
-            where TView : Window, ISplashScreenView;
+        void SetView(ISplashScreenView view);
 
         void UpdateStatus(string status);
 

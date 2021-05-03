@@ -7,19 +7,31 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Modules\NewFolder\**" />
+	  <Compile Remove="Modules\TaskScheduler\**" />
+	  <Compile Remove="Mvvm\**" />
+	  <Compile Remove="WPF\**" />
+	  <EmbeddedResource Remove="Modules\NewFolder\**" />
+	  <EmbeddedResource Remove="Modules\TaskScheduler\**" />
+	  <EmbeddedResource Remove="Mvvm\**" />
+	  <EmbeddedResource Remove="WPF\**" />
+	  <None Remove="Modules\NewFolder\**" />
+	  <None Remove="Modules\TaskScheduler\**" />
+	  <None Remove="Mvvm\**" />
+	  <None Remove="WPF\**" />
+	  <Page Remove="Modules\NewFolder\**" />
+	  <Page Remove="Modules\TaskScheduler\**" />
+	  <Page Remove="Mvvm\**" />
+	  <Page Remove="WPF\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
 		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="SimpleInjector" Version="5.2.1" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Modules\NewFolder\" />
-		<Folder Include="Modules\TaskScheduler\" />
-		<Folder Include="Mvvm\" />
-		<Folder Include="WPF\" />
 	</ItemGroup>
 
 	<ItemGroup>
