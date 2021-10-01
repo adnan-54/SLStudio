@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\adnan\\source\\repos\\adnan-54\\SLStudio\\Client\\Framework\\SLStudio.Logging\\SLStudio.Logging.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\adnan\\source\\repos\\adnan-54\\SLStudio\\Client\\Framework\\SLStudio.Logging\\SLStudio.Logging.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\adnan\\source\\repos\\adnan-54\\SLStudio\\Client\\Framework\\SLStudio.Logging\\SLStudio.Logging.csproj",
+        "projectName": "SLStudio.Logging",
+        "projectPath": "C:\\Users\\adnan\\source\\repos\\adnan-54\\SLStudio\\Client\\Framework\\SLStudio.Logging\\SLStudio.Logging.csproj",
+        "packagesPath": "C:\\Users\\adnan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\adnan\\source\\repos\\adnan-54\\SLStudio\\Client\\Framework\\SLStudio.Logging\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\adnan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0-windows7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0-windows7.0": {
+            "targetAlias": "net5.0-windows",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "dependencies": {
+            "DevExpressMvvm": {
+              "target": "Package",
+              "version": "[20.2.3, )"
+            },
+            "DotNetZip": {
+              "target": "Package",
+              "version": "[1.15.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite.Core": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "SQLitePCLRaw.bundle_e_sqlcipher": {
+              "target": "Package",
+              "version": "[2.0.4, )"
+            },
+            "SimpleInjector": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
