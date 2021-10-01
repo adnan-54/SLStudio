@@ -1,0 +1,29 @@
+/*Button.module.css*/
+
+.content {
+	@apply my-3 text-gray-700;
+}
+
+.content h1 {
+	@apply my-6 text-4xl;
+}
+
+.content h2 {
+	@apply mt-16 mb-6 text-3xl;
+}
+
+.content h3 {
+	@apply my-6 text-2xl;
+}
+
+.content p {
+	@apply my-2;
+}
+
+.content img {
+	@apply mx-auto my-6 w-4/5 border-blue-400 border-2 shadow-md block hover:shadow-lg;
+}
+
+.content a {
+	@apply px-3 py-1 rounded-lg text-blue-500 transition duration-200 ease-in-out hover:bg-blue-100;
+}
