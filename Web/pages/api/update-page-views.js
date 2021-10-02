@@ -13,7 +13,7 @@ export default async function updatePageViews(req, res) {
 
 async function onPostRequest({ req }) {
 	const page = req.query.page;
-	await supabaseClient.rpc("update_page_views", {
+	return await supabaseClient.rpc("update_page_views", {
 		url: page,
 	});
 }

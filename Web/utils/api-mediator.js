@@ -155,7 +155,11 @@ async function sendResponse(
 
 	response.status(statusCode);
 
-	if (!data) response.send();
+	if (!data)
+		response.send({
+			status: statusCode,
+			statusText: statusMessage,
+		});
 	else response.json(data);
 }
 
