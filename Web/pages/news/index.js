@@ -42,7 +42,7 @@ async function getAllPosts() {
 		});
 	}
 
-	return posts;
+	return posts.reverse();
 }
 
 async function getPage(pageNumber) {

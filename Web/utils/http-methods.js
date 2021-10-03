@@ -60,7 +60,6 @@ function createBody(data) {
 
 function processResponse(response) {
 	if (!response.ok) throw response;
-	console.log(response);
 
 	const responseType = response.headers.get("Content-Type");
 	if (responseType && responseType.includes("application/json"))
