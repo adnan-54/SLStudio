@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="LanguageDefinition\DarkHighlighting.xshd" />
+		<None Remove="LanguageDefinition\LightHighlighting.xshd" />
+		<None Remove="Resources\Icons\rpkIcon.ai" />
+		<None Remove="Resources\Icons\rpkIcon.ico" />
+		<None Remove="Resources\Icons\rpkIcon.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\..\..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="LanguageDefinition\DarkHighlighting.xshd" />
+		<EmbeddedResource Include="LanguageDefinition\LightHighlighting.xshd" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AvalonEdit" Version="6.1.0-preview1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\..\..\Framework\SLStudio.SlrrLib\SLStudio.SlrrLib.csproj" />
+		<ProjectReference Include="..\..\..\SLStudio.Core\SLStudio.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Resources\RpkEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>RpkEditorResources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\RpkEditorResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>RpkEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\Icons\rpkIcon.ai" />
+		<Resource Include="Resources\Icons\rpkIcon.ico" />
+		<Resource Include="Resources\Icons\rpkIcon.png" />
+	</ItemGroup>
+</Project>

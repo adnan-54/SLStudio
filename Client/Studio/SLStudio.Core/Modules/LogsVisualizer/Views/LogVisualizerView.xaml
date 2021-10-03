@@ -1,0 +1,190 @@
+﻿<studio:DialogWindow x:Class="SLStudio.Core.Modules.LogsVisualizer.Views.LogVisualizerView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+                     xmlns:resx="clr-namespace:SLStudio.Core.Modules.LogsVisualizer.Resources"
+                     xmlns:studio="clr-namespace:SLStudio.Core"
+                     xmlns:vm="clr-namespace:SLStudio.Core.Modules.LogsVisualizer.ViewModels"
+                     xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
+                     mc:Ignorable="d" Height="800" Width="800"
+                     ShowMaxRestoreButton="True" ShowMinButton="True" WindowState="Maximized"
+                     d:DataContext="{d:DesignInstance vm:LogVisualizerViewModel}"
+                     md:DialogServiceViews.IsRegistered="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--InputBindings-->
+        <Grid.InputBindings>
+            <KeyBinding Key="F5" Command="{DXCommand 'Refresh()'}" />
+            <KeyBinding Key="E" Modifiers="Ctrl" Command="{DXCommand 'ExportToHtml()'}" />
+        </Grid.InputBindings>
+
+        <!--Menu-->
+        <ToolBarTray Grid.Row="0" Background="{StaticResource Editor.Background}">
+            <ToolBar>
+                <!--Refresh-->
+                <Button ToolTip="{x:Static resx:LogsVisualizerResources.tooltip_refresh}"
+                        Command="{DXCommand 'Refresh()'}">
+                    <Image Source="{StaticResource Refresh}" />
+                </Button>
+
+                <!--ExportLogs-->
+                <Button ToolTip="{x:Static resx:LogsVisualizerResources.tooltip_exportToHtml}"
+                        Command="{DXCommand 'ExportToHtml()'}">
+                    <Image Source="{StaticResource Export}" />
+                </Button>
+
+                <!--Separator-->
+                <Separator />
+
+                <!--ViewSimpleLogs-->
+                <Button ToolTip="{x:Static resx:LogsVisualizerResources.tooltip_viewSimpleLogs}"
+                        Command="{DXCommand 'ViewSimpleLog()'}">
+                    <Image Source="{StaticResource Log}" />
+                </Button>
+
+                <!--Separator-->
+                <Separator />
+
+                <!--ClearAllLogs-->
+                <Button ToolTip="{x:Static resx:LogsVisualizerResources.tooltip_clearAll}"
+                        Command="{DXCommand 'ClearAll()'}">
+                    <Image Source="{StaticResource ClearWindowContent}" />
+                </Button>
+            </ToolBar>
+        </ToolBarTray>
+
+        <!--BusyIndicator-->
+        <xctk:BusyIndicator Grid.Row="1" IsBusy="{Binding IsBusy}">
+            <!--DataGrid-->
+            <DataGrid ItemsSource="{Binding Logs}"
+                      SelectedItem="{Binding SelectedItem}"
+                      CanUserAddRows="False" CanUserDeleteRows="False"
+                      SelectionUnit="FullRow" SelectionMode="Single"
+                      AutoGenerateColumns="False" EnableRowVirtualization="True"
+                      VirtualizingPanel.IsVirtualizing="True"
+                      VirtualizingPanel.VirtualizationMode="Recycling"
+                      RowHeight="20" Style="{StaticResource MahApps.Styles.DataGrid.Azure}">
+                <!--Behaviors-->
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:FocusBehavior />
+                </dxmvvm:Interaction.Behaviors>
+
+                <!--InputBindings-->
+                <DataGrid.InputBindings>
+                    <KeyBinding Key="Return" Command="{DXCommand 'ViewDetails()'}" />
+                </DataGrid.InputBindings>
+
+                <!--Resources-->
+                <DataGrid.Resources>
+                    <!--ColumnStyle-->
+                    <Style x:Key="ColumnStyle" TargetType="{x:Type TextBlock}">
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        <Setter Property="TextWrapping" Value="Wrap" />
+                        <Setter Property="Margin" Value="3" />
+                        <Setter Property="Padding" Value="0" />
+                    </Style>
+
+                    <!--HeaderStyle-->
+                    <Style x:Key="HeaderStyle" TargetType="{x:Type DataGridColumnHeader}"
+                           BasedOn="{StaticResource MahApps.Styles.DataGridColumnHeader.Azure}">
+                        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        <Setter Property="Margin" Value="0, 0, 0, 3" />
+                    </Style>
+                </DataGrid.Resources>
+
+                <!--CellStyle-->
+                <DataGrid.CellStyle>
+                    <Style TargetType="{x:Type DataGridCell}" BasedOn="{StaticResource MahApps.Styles.DataGridCell}">
+                        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{DXBinding '@s.Content.Text', Converter={StaticResource IsNotNullConverter}}" Value="True">
+                                <Setter Property="ToolTip" Value="{DXBinding '@s.Content.Text'}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+
+                <!--RowStyle-->
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}" BasedOn="{StaticResource MahApps.Styles.DataGridRow}">
+                        <EventSetter Event="PreviewMouseDoubleClick" Handler="OnPreviewMouseDoubleClick" />
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <!--Columns-->
+                <DataGrid.Columns>
+                    <!--Id-->
+                    <DataGridTextColumn Binding="{Binding Id}" IsReadOnly="True"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_id}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        Width="SizeToHeader" SortDirection="Ascending" MinWidth="50" />
+
+                    <!--Sender-->
+                    <DataGridTextColumn Binding="{Binding Sender}"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_sender}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        IsReadOnly="True" MaxWidth="200" MinWidth="50" />
+
+                    <!--Level-->
+                    <DataGridTextColumn Binding="{Binding Level}"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_level}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        IsReadOnly="True" Width="SizeToHeader" MinWidth="50" />
+
+                    <!--Title-->
+                    <DataGridTextColumn Binding="{Binding Title}"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_title}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        IsReadOnly="True" Width="*" MinWidth="50" />
+
+                    <!--Message-->
+                    <DataGridTextColumn Binding="{Binding Message}"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_message}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        IsReadOnly="True" Width="*" MinWidth="50" />
+
+                    <!--Date-->
+                    <DataGridTextColumn Binding="{Binding Date}"
+                                        Header="{x:Static resx:LogsVisualizerResources.header_date}"
+                                        ElementStyle="{StaticResource ColumnStyle}" HeaderStyle="{StaticResource HeaderStyle}"
+                                        IsReadOnly="True" Width="135" MinWidth="50" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </xctk:BusyIndicator>
+
+        <!--StatusBar-->
+        <StatusBar Grid.Row="2">
+            <!--LeftSide-->
+            <StatusBarItem HorizontalAlignment="Left" Margin="{StaticResource LeftMargin}">
+                <StackPanel Orientation="Horizontal">
+                    <!--StatusBarStatus-->
+                    <TextBlock Text="{Binding StatusBarStatus, Mode=OneWay}" />
+                </StackPanel>
+            </StatusBarItem>
+
+            <!--RightSide-->
+            <StatusBarItem HorizontalAlignment="Right" Margin="{StaticResource RightMargin}">
+                <StackPanel Orientation="Horizontal">
+                    <!--TotalLogs-->
+                    <TextBlock Text="{Binding TotalLogs, Mode=OneWay}" />
+
+                    <!--Separator-->
+                    <Separator Margin="{StaticResource LeftMargin}" />
+
+                    <!--TotalSize-->
+                    <TextBlock Margin="{StaticResource LeftMargin}"
+                               Text="{Binding TotalSize, Mode=OneWay}" />
+                </StackPanel>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</studio:DialogWindow>

@@ -1,0 +1,225 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Remove="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\SolutionItems\SharedWpfInfo.cs" Link="SharedWpfInfo.cs" />
+		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Include="Modules\LogsVisualizer\Resources\htmlTemplate.txt" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AvalonEdit" Version="6.1.0-preview1" />
+		<PackageReference Include="CommandLineParser" Version="2.9.0-preview1" />
+		<PackageReference Include="ControlzEx" Version="4.4.0" />
+		<PackageReference Include="DevExpressMvvm" Version="20.2.3" />
+		<PackageReference Include="Dirkster.AvalonDock" Version="4.50.1" />
+		<PackageReference Include="Dirkster.AvalonDock.Themes.VS2013" Version="4.50.1" />
+		<PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="4.6.96" />
+		<PackageReference Include="FluentValidation" Version="9.4.0" />
+		<PackageReference Include="gong-wpf-dragdrop" Version="2.3.2" />
+		<PackageReference Include="HandyControls" Version="3.0.0" />
+		<PackageReference Include="Humanizer" Version="2.8.26" />
+		<PackageReference Include="MahApps.Metro" Version="2.4.3" />
+		<PackageReference Include="MMLib.RapidPrototyping" Version="1.3.0" />
+		<PackageReference Include="MvvmDialogs" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+		<PackageReference Include="ReactiveUI.WPF" Version="13.1.1" />
+		<PackageReference Include="SharpVectors.Reloaded" Version="1.7.1" />
+		<PackageReference Include="System.Reactive" Version="5.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Controls\StudioTextEditor\Resources\TextEditorResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>TextEditorResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Menus\Resources\MenuResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>MenuResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ExceptionBoxResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LogsVisualizerResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\NewFile\Resources\NewFileResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>NewFileResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Options\Resources\OptionsResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OptionsResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Output\Resources\OutputResource.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>OutputResource.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\Shell\Resources\ShellResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ShellResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\SplashScreen\Resources\SplashScreenResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>SplashScreenResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\StartPage\Resources\StartPageResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StartPageResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Modules\StatusBar\Resources\StatusBarResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StatusBarResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\StudioResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StudioResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Resources\StudioSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>StudioSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Services\LanguageManager\LanguageManagerSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>LanguageManagerSettings.settings</DependentUpon>
+		</Compile>
+		<Compile Update="Services\ThemeManager\Resources\ThemeManagerResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ThemeManagerResources.resx</DependentUpon>
+		</Compile>
+		<Compile Update="Services\ThemeManager\Resources\ThemeManagerSettings.Designer.cs">
+			<DesignTimeSharedInput>True</DesignTimeSharedInput>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>ThemeManagerSettings.settings</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Controls\StudioTextEditor\Resources\TextEditorResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>TextEditorResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Menus\Resources\MenuResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\ExceptionBox\Resources\ExceptionBoxResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ExceptionBoxResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\LogsVisualizer\Resources\LogsVisualizerResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>LogsVisualizerResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\NewFile\Resources\NewFileResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>NewFileResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Options\Resources\OptionsResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>OptionsResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Output\Resources\OutputResource.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>OutputResource.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\Shell\Resources\ShellResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>ShellResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\SplashScreen\Resources\SplashScreenResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>SplashScreenResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\StartPage\Resources\StartPageResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StartPageResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Modules\StatusBar\Resources\StatusBarResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StatusBarResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Resources\StudioResources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+		<EmbeddedResource Update="Services\ThemeManager\Resources\ThemeManagerResources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>ThemeManagerResources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="Resources\StudioSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>StudioSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Services\LanguageManager\LanguageManagerSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>LanguageManagerSettings.Designer.cs</LastGenOutput>
+		</None>
+		<None Update="Services\ThemeManager\Resources\ThemeManagerSettings.settings">
+			<Generator>SettingsSingleFileGenerator</Generator>
+			<LastGenOutput>ThemeManagerSettings.Designer.cs</LastGenOutput>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<Page Update="Resources\Controls\AvalonDock.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Label.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\GroupBox.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Page.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Icons\Shapes.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\Expander.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+		<Page Update="Resources\Controls\AvalonEdit.xaml">
+			<SubType>Designer</SubType>
+		</Page>
+	</ItemGroup>
+</Project>

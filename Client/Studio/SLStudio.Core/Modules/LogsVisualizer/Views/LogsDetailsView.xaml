@@ -1,0 +1,147 @@
+﻿<studio:DialogWindow x:Class="SLStudio.Core.Modules.LogsVisualizer.Views.LogsDetailsView"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                     xmlns:studio="clr-namespace:SLStudio.Core"
+                     xmlns:resx="clr-namespace:SLStudio.Core.Modules.LogsVisualizer.Resources"
+                     mc:Ignorable="d" Width="800" MaxHeight="800" SizeToContent="Height"
+                     Background="{StaticResource Editor.Background}">
+    <!--InputBindings-->
+    <studio:DialogWindow.InputBindings>
+        <KeyBinding Key="Esc" Command="{DXCommand 'TryClose()'}" />
+    </studio:DialogWindow.InputBindings>
+
+    <!--Content-->
+    <Grid Margin="{StaticResource FullMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!--Resources-->
+        <Grid.Resources>
+            <!--TextBlockStyle-->
+            <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="VerticalAlignment" Value="Center" />
+                <Setter Property="FontWeight" Value="Bold" />
+            </Style>
+
+            <!--TextBoxStyle-->
+            <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="IsReadOnlyCaretVisible" Value="False" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            </Style>
+        </Grid.Resources>
+
+        <!--Id/Sender/Date-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.8*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.4*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <!--Id-->
+            <TextBlock Grid.Column="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_id}" />
+
+            <TextBox Grid.Column="1" Margin="{StaticResource SmallLeftMargin}"
+                     Text="{Binding Id, Mode=OneTime}" />
+
+            <!--Sender-->
+            <TextBlock Grid.Column="2" Margin="{StaticResource LargeLeftMargin}"
+                       Text="{x:Static resx:LogsVisualizerResources.label_sender}" />
+
+            <TextBox Grid.Column="3" Margin="{StaticResource SmallLeftMargin}"
+                     Text="{Binding Sender, Mode=OneTime}" />
+
+            <!--Date-->
+            <TextBlock Grid.Column="4" Margin="{StaticResource LargeLeftMargin}"
+                       Text="{x:Static resx:LogsVisualizerResources.label_level}" />
+
+            <TextBox Grid.Column="5" Margin="{StaticResource SmallLeftMargin}"
+                     Text="{Binding Level, Mode=OneTime}" />
+
+            <!--Date-->
+            <TextBlock Grid.Column="6" Margin="{StaticResource LargeLeftMargin}"
+                       Text="{x:Static resx:LogsVisualizerResources.label_date}" />
+
+            <TextBox Grid.Column="7" Margin="{StaticResource SmallLeftMargin}"
+                     Text="{Binding Date, Mode=OneTime}" />
+        </Grid>
+
+        <!--Title-->
+        <Grid Grid.Row="1" Margin="{StaticResource UpMargin}"
+              metro:VisibilityHelper.IsVisible="{Binding Title, Mode=OneTime, Converter={StaticResource IsNotNullConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_title}" />
+
+            <TextBox Grid.Column="1" Margin="{StaticResource SmallLeftMargin}"
+                     Text="{Binding Title, Mode=OneTime}" />
+        </Grid>
+
+        <!--CalledFrom-->
+        <Grid Grid.Row="2" Margin="{StaticResource UpMargin}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_calledFrom}" />
+
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding CalledFrom, Mode=OneTime}" />
+        </Grid>
+
+        <!--Message-->
+        <Grid Grid.Row="3" Margin="{StaticResource UpMargin}"
+              MinHeight="200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_message}" />
+
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding Message, Mode=OneTime}" />
+        </Grid>
+
+        <!--StackTrace-->
+        <Grid Grid.Row="4" Margin="{StaticResource UpMargin}"
+              MinHeight="200"
+              metro:VisibilityHelper.IsCollapsed="{Binding StackTrace, Converter={StaticResource IsNullConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                       Text="{x:Static resx:LogsVisualizerResources.label_stackTrace}" />
+
+            <TextBox Grid.Row="1" Margin="{StaticResource SmallUpMargin}"
+                     Text="{Binding StackTrace, Mode=OneTime}" />
+        </Grid>
+    </Grid>
+</studio:DialogWindow>

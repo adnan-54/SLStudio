@@ -1,0 +1,175 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- General -->
+    <Style x:Key="StudioTabItemStyle" TargetType="{x:Type TabItem}">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Foreground" Value="{StaticResource Foreground}" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Padding" Value="12, 3, 12, 3" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type TabItem}">
+                    <Grid x:Name="Root">
+                        <Border x:Name="IsDefault"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}" />
+
+                        <Border x:Name="IsFocused"
+                                Visibility="Collapsed"
+                                Background="{StaticResource Focused}" />
+
+                        <ContentPresenter x:Name="Content"
+                                          ContentSource="Header" RecognizesAccessKey="True"
+                                          Margin="{TemplateBinding Padding}"
+                                          TextElement.Foreground="{TemplateBinding Foreground}" />
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
+                        </Trigger>
+
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource SelectionForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource Control.Background}" />
+                            <Setter Property="BorderBrush" TargetName="IsDefault" Value="{StaticResource Border}" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Top">
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 1, 0" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="0, 1, 0, 1" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Bottom">
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 0, 1, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="0, 1, 0, 1" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Left">
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 0, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="1, 0, 1, 0" />
+                        </Trigger>
+
+                        <Trigger Property="TabStripPlacement" Value="Right">
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="0, 1, 1, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="1, 0, 1, 0" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Top" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 1, 0" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="0, 0, 0, -1" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Bottom" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 0, 1, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="0, -1, 0, 0" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Left" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="1, 1, 0, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="0, 0, -1, 0" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Right" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="BorderThickness" TargetName="IsDefault" Value="0, 1, 1, 1" />
+                            <Setter Property="Margin" TargetName="IsDefault" Value="-1, 0, 0, 0" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="False" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" TargetName="IsDefault" Value="{StaticResource HoverBackground}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Top" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="Height" TargetName="IsFocused" Value="2" />
+                            <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
+                            <Setter Property="VerticalAlignment" TargetName="IsFocused" Value="Top" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Bottom" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="Height" TargetName="IsFocused" Value="2" />
+                            <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
+                            <Setter Property="VerticalAlignment" TargetName="IsFocused" Value="Bottom" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Left" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="HorizontalAlignment" TargetName="IsFocused" Value="Left" />
+                            <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
+                            <Setter Property="Width" TargetName="IsFocused" Value="2" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="True" />
+                                <Condition Property="TabStripPlacement" Value="Right" />
+                            </MultiTrigger.Conditions>
+
+                            <Setter Property="TextElement.Foreground" TargetName="Content" Value="{StaticResource Focused}" />
+                            <Setter Property="HorizontalAlignment" TargetName="IsFocused" Value="Right" />
+                            <Setter Property="Visibility" TargetName="IsFocused" Value="Visible" />
+                            <Setter Property="Width" TargetName="IsFocused" Value="2" />
+                        </MultiTrigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="Root" Value="{StaticResource DisabledOpacity}" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

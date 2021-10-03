@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--StudioActionsStackPanelStyle-->
+    <Style x:Key="StudioActionsStackPanelStyle" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal" />
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="Margin" Value="6, 6, 12, 6" />
+        <Style.Resources>
+            <!--ButtonStyle-->
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                <Setter Property="Margin" Value="{StaticResource LeftMargin}" />
+                <Setter Property="Padding" Value="3, 3, 3, 3" />
+                <Setter Property="MinWidth" Value="80" />
+            </Style>
+        </Style.Resources>
+    </Style>
+</ResourceDictionary>

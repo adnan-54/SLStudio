@@ -1,0 +1,185 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--MenuSeparatorStyle-->
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="Separator">
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="0, 2, 0, 2" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Separator">
+                    <Border Margin="30, 0, 3, 0"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource Delimiter}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="StudioMenuItemStyle" TargetType="{x:Type MenuItem}">
+        <Setter Property="Foreground" Value="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type MenuBase}}}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type MenuItem}">
+                    <Border x:Name="Border"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
+                        <Grid x:Name="Grid" VerticalAlignment="Center">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="Col0" Width="Auto" MinWidth="24" SharedSizeGroup="IconColumn" />
+                                <ColumnDefinition x:Name="Col1" Width="*" />
+                                <ColumnDefinition x:Name="Col2" Width="Auto" SharedSizeGroup="InputGestureTextColumn" />
+                                <ColumnDefinition x:Name="Col3" Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <!--Checked-->
+                            <Path x:Name="Checked"
+                                  Grid.Column="0"
+                                  Visibility="Collapsed"
+                                  Fill="{StaticResource Focused}"
+                                  VerticalAlignment="Center" HorizontalAlignment="Center"
+                                  Margin="{StaticResource LeftMargin}"
+                                  Style="{StaticResource UIShape.Checked}" />
+
+                            <!--Icon-->
+                            <ContentPresenter x:Name="Icon"
+                                              Grid.Column="0"
+                                              ContentSource="Icon"
+                                              Margin="{StaticResource LeftMargin}"
+                                              VerticalAlignment="Center" HorizontalAlignment="Center" />
+
+                            <!--Header-->
+                            <ContentPresenter x:Name="Header"
+                                              Grid.Column="1" ContentSource="Header"
+                                              Margin="12, 0, 12, 1"
+                                              RecognizesAccessKey="True"
+                                              VerticalAlignment="Center" />
+
+                            <!--InputGestureText-->
+                            <ContentPresenter x:Name="IGT"
+                                              Grid.Column="2" ContentSource="InputGestureText"
+                                              Margin="{StaticResource LargeLeftMargin}"
+                                              VerticalAlignment="Center" HorizontalAlignment="Right" />
+
+                            <!--RightArrow-->
+                            <Grid Grid.Column="3"
+                                  Margin="{StaticResource LargeLeftMargin}">
+                                <Path x:Name="Arrow"
+                                      Margin="{StaticResource RightMargin}"
+                                      Style="{StaticResource UIShape.Right}" />
+                            </Grid>
+
+                            <!--SubMenuPopup-->
+                            <Popup x:Name="SubMenuPopup" MinWidth="150"
+                                   Focusable="False" PopupAnimation="Fade"
+                                   VerticalOffset="-1" HorizontalOffset="-1"
+                                   AllowsTransparency="True" Placement="Right"
+                                   IsOpen="{Binding Path=IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}">
+                                <Grid Margin="0, 0, 5, 5">
+                                    <Border x:Name="SubMenuBorder"
+                                            BorderThickness="1"
+                                            SnapsToDevicePixels="True"
+                                            BorderBrush="{StaticResource Border}"
+                                            Background="{StaticResource MenuPopupBackground}"
+                                            Effect="{StaticResource DarkShadowEffect}">
+                                        <ScrollViewer x:Name="SubMenu" CanContentScroll="True"
+                                                      VerticalScrollBarVisibility="Auto"
+                                                      HorizontalScrollBarVisibility="Hidden"
+                                                      Focusable="False">
+                                            <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                                        </ScrollViewer>
+                                    </Border>
+
+                                    <Border x:Name="TransitionBorder"
+                                            Margin="1, 0, 1, 0"
+                                            Width="0" Height="1"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            BorderThickness="1"
+                                            SnapsToDevicePixels="False"
+                                            Background="{StaticResource MenuPopupBackground}"
+                                            BorderBrush="{StaticResource MenuPopupBackground}" />
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Role" Value="TopLevelHeader">
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="IGT" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Col0" Property="MinWidth" Value="0" />
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col2" Property="Width" Value="0" />
+                            <Setter TargetName="Col3" Property="Width" Value="0" />
+                            <Setter TargetName="SubMenu" Property="Margin" Value="1" />
+                            <Setter TargetName="SubMenuBorder" Property="BorderThickness" Value="1" />
+                            <Setter TargetName="SubMenuPopup" Property="Placement" Value="Bottom" />
+                            <Setter TargetName="SubMenuPopup" Property="MinWidth" Value="250" />
+                            <Setter TargetName="TransitionBorder" Property="Width" Value="{Binding ActualWidth, ElementName=Grid}" />
+                        </Trigger>
+
+                        <Trigger Property="Role" Value="TopLevelItem">
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="IGT" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Col0" Property="MinWidth" Value="0" />
+                            <Setter TargetName="Col0" Property="Width" Value="*" />
+                            <Setter TargetName="Col2" Property="Width" Value="0" />
+                            <Setter TargetName="Col3" Property="Width" Value="0" />
+                            <Setter TargetName="SubMenu" Property="Margin" Value="1" />
+                        </Trigger>
+
+                        <Trigger Property="Role" Value="SubmenuHeader">
+                            <Setter TargetName="SubMenu" Property="Margin" Value="1" />
+                            <Setter TargetName="Border" Property="MinHeight" Value="22" />
+                            <Setter TargetName="Border" Property="BorderThickness" Value="0" />
+                        </Trigger>
+
+                        <Trigger Property="Role" Value="SubmenuItem">
+                            <Setter TargetName="Arrow" Property="Visibility" Value="Collapsed" />
+                            <Setter TargetName="Border" Property="MinHeight" Value="22" />
+                        </Trigger>
+
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Foreground" Value="{StaticResource HoverForeground}" />
+                            <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource HoverBackground}" />
+                            <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource Focused}" />
+                        </Trigger>
+
+                        <Trigger Property="IsSubmenuOpen" Value="True">
+                            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+                            <Setter Property="Background" Value="{StaticResource MenuPopupBackground}" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="{StaticResource DisabledOpacity}" />
+                        </Trigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsHighlighted" Value="True" />
+                                <Condition Property="Role" Value="SubmenuHeader" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource HoverBackground}" />
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsChecked" Value="True" />
+                                <Condition Property="IsCheckable" Value="True" />
+                                <Condition Property="Role" Value="SubmenuItem" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Checked" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="Icon" Property="Visibility" Value="Collapsed" />
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

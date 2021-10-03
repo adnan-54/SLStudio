@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="SLStudio.Core.Modules.Output.Views.OutputView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:ae="http://icsharpcode.net/sharpdevelop/avalonedit"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviors="clr-namespace:SLStudio.Core.Behaviors"
+             xmlns:resx="clr-namespace:SLStudio.Core.Modules.Output.Resources"
+             mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800"
+             Background="{StaticResource Control.Background}">
+    <!--Content-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <!--Toolbar-->
+        <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True">
+            <!--ClearAll-->
+            <Button Command="{DXCommand 'Clear()'}"
+                    ToolTip="{x:Static resx:OutputResource.button_clearAll}">
+                <Image Source="{StaticResource ClearWindowContent}" />
+            </Button>
+
+            <!--Separator-->
+            <Separator />
+
+            <!--ToggleWordWrap-->
+            <ToggleButton IsChecked="{Binding WordWrap}"
+                          ToolTip="{x:Static resx:OutputResource.ToggleWordWrap}">
+                <Image Source="{StaticResource WordWrap}" />
+            </ToggleButton>
+        </ToolBar>
+
+        <!--Output-->
+        <ae:TextEditor Grid.Row="1"
+                       IsReadOnly="True" BorderThickness="0"
+                       WordWrap="{Binding WordWrap}"
+                       Document="{Binding TextDocument}">
+            <!--Behaviors-->
+            <dxmvvm:Interaction.Behaviors>
+                <dxmvvm:EventToCommand EventName="TextChanged" Command="{DXCommand '@a($ae:TextEditor).ScrollToEnd()'}" />
+                <behaviors:AvalonEditSearchBehavior />
+            </dxmvvm:Interaction.Behaviors>
+
+            <!--ContextMenu-->
+            <ae:TextEditor.ContextMenu>
+                <ContextMenu>
+                    <!--Copy-->
+                    <MenuItem Header="{x:Static resx:OutputResource.Copy}"
+                              Command="ApplicationCommands.Copy"
+                              InputGestureText="Ctrl+C">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource Copy}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <!--Separator-->
+                    <Separator />
+
+                    <!--ClearAll-->
+                    <MenuItem Header="{x:Static resx:OutputResource.button_clearAll}"
+                              Command="{DXCommand 'Clear()'}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource ClearWindowContent}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <!--WordWrap-->
+                    <MenuItem Header="{x:Static resx:OutputResource.WordWrap}"
+                              IsCheckable="True" IsChecked="{Binding WordWrap}">
+                        <MenuItem.Icon>
+                            <Image Source="{StaticResource WordWrap}" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+
+                    <!--Separator-->
+                    <Separator Background="Red" />
+
+                    <!--Find-->
+                    <MenuItem Header="{x:Static resx:OutputResource.Find}">
+                        <!--QuickFind-->
+                        <MenuItem Header="{x:Static resx:OutputResource.QuickFind}"
+                                  Command="{DXCommand 'QuickFind()'}"
+                                  InputGestureText="Ctrl+F">
+                            <MenuItem.Icon>
+                                <Image Source="{StaticResource QuickFind}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <!--Separator-->
+                        <Separator />
+
+                        <!--FindNext-->
+                        <MenuItem Header="{x:Static resx:OutputResource.FindNext}"
+                                  Command="{DXCommand 'FindNext()'}"
+                                  InputGestureText="F3">
+                            <MenuItem.Icon>
+                                <Image Source="{StaticResource FindNext}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+
+                        <!--FindPrevious-->
+                        <MenuItem Header="{x:Static resx:OutputResource.FindPrevious}"
+                                  Command="{DXCommand 'FindPrevious()'}"
+                                  InputGestureText="Shift+F3">
+                            <MenuItem.Icon>
+                                <Image Source="{StaticResource FindPrevious}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </MenuItem>
+                </ContextMenu>
+            </ae:TextEditor.ContextMenu>
+        </ae:TextEditor>
+    </Grid>
+</UserControl>
