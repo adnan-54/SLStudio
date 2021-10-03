@@ -7,27 +7,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Modules\NewFolder\**" />
-	  <Compile Remove="Modules\TaskScheduler\**" />
-	  <Compile Remove="Mvvm\**" />
-	  <Compile Remove="WPF\**" />
-	  <EmbeddedResource Remove="Modules\NewFolder\**" />
-	  <EmbeddedResource Remove="Modules\TaskScheduler\**" />
-	  <EmbeddedResource Remove="Mvvm\**" />
-	  <EmbeddedResource Remove="WPF\**" />
-	  <None Remove="Modules\NewFolder\**" />
-	  <None Remove="Modules\TaskScheduler\**" />
-	  <None Remove="Mvvm\**" />
-	  <None Remove="WPF\**" />
-	  <Page Remove="Modules\NewFolder\**" />
-	  <Page Remove="Modules\TaskScheduler\**" />
-	  <Page Remove="Mvvm\**" />
-	  <Page Remove="WPF\**" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
-		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
+		<Compile Include="..\..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -39,18 +20,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Compile Update="Resources\Localization\StudioResources.Designer.cs">
-			<DesignTime>True</DesignTime>
-			<AutoGen>True</AutoGen>
-			<DependentUpon>StudioResources.resx</DependentUpon>
-		</Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-		<EmbeddedResource Update="Resources\Localization\StudioResources.resx">
-			<Generator>PublicResXFileCodeGenerator</Generator>
-			<LastGenOutput>StudioResources.Designer.cs</LastGenOutput>
-			<CustomToolNamespace>SLStudio.Resources</CustomToolNamespace>
-		</EmbeddedResource>
+		<Folder Include="Shared\" />
 	</ItemGroup>
 </Project>

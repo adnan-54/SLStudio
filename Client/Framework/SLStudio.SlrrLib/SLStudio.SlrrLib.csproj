@@ -7,10 +7,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Studio\SLStudio.Core\SLStudio.Core.csproj" />
+		<PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SLStudio.Framework\SLStudio.Framework.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Shared\" />
 	</ItemGroup>
 </Project>

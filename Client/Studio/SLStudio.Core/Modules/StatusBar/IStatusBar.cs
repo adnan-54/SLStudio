@@ -1,7 +1,6 @@
-﻿namespace SLStudio.Core
+﻿namespace SLStudio
 {
-    public interface IStatusBar
+    public interface IStatusBar : IViewModel
     {
-        string Status { get; set; }
     }
 }

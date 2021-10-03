@@ -1,11 +1,6 @@
-﻿using System.Windows.Controls;
-
-namespace SLStudio.Core.Modules.StatusBar.Views
+﻿namespace SLStudio.Core
 {
-    /// <summary>
-    /// Interaction logic for StatusBarView.xaml
-    /// </summary>
-    public partial class StatusBarView : UserControl
+    public partial class StatusBarView
     {
         public StatusBarView()
         {

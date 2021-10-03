@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Shared\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ServiceStack.Text" Version="5.11.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
+	</ItemGroup>
+</Project>

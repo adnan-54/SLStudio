@@ -75,7 +75,7 @@ namespace SLStudio.Logging
 
         private void LogException(Exception exception, string level, string callerFile, string callerMember, int callerLine)
         {
-            Enqueue(exception.Message, exception.ToString(), level, callerFile, callerMember, callerLine);
+            Enqueue(exception.Message, exception, level, callerFile, callerMember, callerLine);
         }
 
         private void Enqueue(string title, object message, string level, string callerFile, string callerMember, int callerLine)

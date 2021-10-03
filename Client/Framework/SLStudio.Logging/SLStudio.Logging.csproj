@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net5.0-windows</TargetFramework>
@@ -6,8 +6,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Compile Include="..\..\SolutionItems\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
-		<Compile Include="..\..\SolutionItems\StudioConstants.cs" Link="StudioConstants.cs" />
+		<Compile Include="..\..\Solution Items\SharedAssemblyInfo.cs" Link="SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\Solution Items\SharedConstants.cs" Link="SharedConstants.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

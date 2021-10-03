@@ -12,7 +12,7 @@ namespace SLStudio.Logging
 {
     internal class DefaultLoggingService : ILoggingService
     {
-        private static readonly ILogger logger = LogManager.GetLoggerFor<DefaultLoggingService>();
+        private static readonly ILogger logger = LogManager.GetLogger<DefaultLoggingService>();
 
         private readonly ILogRespository logRespository;
         private readonly FileInfo dbFile;
@@ -21,7 +21,7 @@ namespace SLStudio.Logging
         public DefaultLoggingService(LogManager logManager, IInternalLogger internalLogger, IConfigurationService configurationService)
         {
             logRespository = new DefaultLogRespository(configurationService);
-            dbFile = new FileInfo(StudioConstants.StudioLogFile);
+            dbFile = new FileInfo(SharedConstants.StudioLogFile);
             logsProcessor = new LogsProcessor(logManager, internalLogger, configurationService, logRespository);
         }
 

@@ -1,110 +1,52 @@
-﻿using DevExpress.Mvvm;
-using SimpleInjector;
-using SLStudio.Core.Modules.ExceptionBox.Views;
-using SLStudio.Core.Modules.SplashScreen.Resources;
-using SLStudio.Logging;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
-using SplashScreen = SLStudio.Core.Modules.SplashScreen.SplashScreen;
 
 namespace SLStudio.Core
 {
     public class Bootstrapper
     {
-        private static readonly ILogger logger = LogManager.GetLoggerFor<Bootstrapper>();
+        private readonly IServiceCollection serviceCollection;
+        private readonly ISplashScreenManager splashScreenManager;
 
-        private readonly Container container;
-        private readonly ICommandLineArguments commandLineArguments;
-        private readonly ILanguageManager languageManager;
-        private readonly IThemeManager themeManager;
-        private readonly IObjectFactory objectFactory;
-        private readonly IUiSynchronization uiSynchronization;
-        private readonly IAssemblyLookup assemblyLoader;
-        private readonly IModuleLookup moduleLoader;
-        private readonly IWindowManager windowManager;
-        private readonly ISplashScreen splashScreen;
-
-        private Bootstrapper(Dispatcher dispatcher)
+        public Bootstrapper(IServiceCollection serviceCollection, ISplashScreenManager splashScreenManager)
         {
-            ExceptionBox.Initialize();
-
-            container = new Container();
-            commandLineArguments = new DefaultCommandLineArguments();
-            languageManager = new DefaultLanguageManager();
-            themeManager = new DefaultThemeManager();
-            objectFactory = new DefaultObjectFactory(container);
-            uiSynchronization = new DefaultUiSynchronization(dispatcher);
-            assemblyLoader = new DefaultAssemblyLookup();
-            moduleLoader = new DefaultModuleLookup();
-            windowManager = new DefaultWindowManager(objectFactory);
-            splashScreen = new SplashScreen();
-
-            IoC.Initialize(container);
-
-            var loggerConfiguration = new LoggerConfiguration()
-            {
-                MinimumLogLevel = LogLevel.Debug,
-                DefaultLogLevel = LogLevel.Info,
-                IgnoreDebugLevel = !commandLineArguments.Debug,
-                LogToConsole = commandLineArguments.Debug,
-                LogToDebug = commandLineArguments.Debug,
-                MaxRetrieveResults = 0
-            };
-
-            LogManager.Default.Initialize(loggerConfiguration);
-
-            Application.Current.Exit += OnExit;
+            this.serviceCollection = serviceCollection;
+            this.splashScreenManager = splashScreenManager;
         }
 
-        private async Task Initialize()
+        public Task Run()
         {
-            logger.Info("Initializing application");
-            splashScreen.Show();
-
-            ConfigureContainer();
-            RegisterDefaults();
-
-            assemblyLoader.Initialize(splashScreen);
-            await assemblyLoader.Load();
-            moduleLoader.Initialize(splashScreen, container, objectFactory);
-            await moduleLoader.Load();
-
-            splashScreen.UpdateStatus(SplashScreenResources.Initializing);
-
-            windowManager.ShowWindow<IShell>();
-            splashScreen.Close();
+            return Task.Run(RunCore);
         }
 
-        private void ConfigureContainer()
+        private async Task RunCore()
         {
-            container.Options.ResolveUnregisteredConcreteTypes = true;
+            var assemblyFinder = serviceCollection.Get<IAssemblyFinder>();
+            var assemblyLoader = serviceCollection.Get<IAssemblyLoader>();
+            var moduleFinder = serviceCollection.Get<IModuleFinder>();
+            var moduleLoader = serviceCollection.Get<IModuleLoader>();
+            var windowManager = serviceCollection.Get<IWindowManager>();
+            var container = serviceCollection.Get<IContainer>();
+
+            var assemblies = assemblyFinder.FindAssemblies();
+            assemblyLoader.LoadAssemblies(assemblies);
+
+            var modules = moduleFinder.FindModules();
+            await moduleLoader.LoadModules(modules);
+
+            container.Verify();
+
+            windowManager.Show<IShell>();
+
+            splashScreenManager.Close();
         }
 
-        private void RegisterDefaults()
+        public static Bootstrapper Create(Application application, ISplashScreen splashScreen)
         {
-            container.RegisterInstance(Messenger.Default);
-            container.RegisterInstance(LogManager.Default);
-            container.RegisterInstance(commandLineArguments);
-            container.RegisterInstance(languageManager);
-            container.RegisterInstance(themeManager);
-            container.RegisterInstance(objectFactory);
-            container.RegisterInstance(uiSynchronization);
-            container.RegisterInstance(assemblyLoader);
-            container.RegisterInstance(moduleLoader);
-            container.RegisterInstance(windowManager);
-        }
-
-        private void OnExit(object sender, ExitEventArgs e)
-        {
-            logger.Info($"Exiting application with code '{e.ApplicationExitCode}'");
-        }
-
-        public static void Run(Dispatcher dispatcher)
-        {
-            new Bootstrapper(dispatcher).Initialize().FireAndForget();
+            var container = FrameworkModule.CreateServiceCollection(application);
+            var splashScreenManager = container.Get<ISplashScreenManager>();
+            splashScreenManager.SetSplashScreen(splashScreen);
+            return new Bootstrapper(container, splashScreenManager);
         }
     }
 }

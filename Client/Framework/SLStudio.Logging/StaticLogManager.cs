@@ -11,7 +11,7 @@ namespace SLStudio.Logging
 
         public static ILogManager Default { get; }
 
-        public static ILogger GetLoggerFor<Type>() where Type : class
+        public static ILogger GetLogger<Type>() where Type : class
         {
             return GetLogger(typeof(Type));
         }

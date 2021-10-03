@@ -1,9 +1,8 @@
-﻿namespace SLStudio.Core.Modules.Shell.Views
+﻿using System.Windows;
+
+namespace SLStudio.Core
 {
-    /// <summary>
-    /// Interaction logic for ShellView.xaml
-    /// </summary>
-    public partial class ShellView
+    public partial class ShellView : Window
     {
         public ShellView()
         {

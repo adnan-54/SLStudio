@@ -2,7 +2,7 @@
   "profiles": {
     "SLStudio": {
       "commandName": "Project",
-      "commandLineArgs": "--debug"
+      "commandLineArgs": "--teste"
     }
   }
 }

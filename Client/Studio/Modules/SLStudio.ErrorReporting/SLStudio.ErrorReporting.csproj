@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\..\..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\..\..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
+		<Compile Include="..\..\..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Modules\ExceptionBox\Resources\" />
+		<Folder Include="Shared\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Framework\SLStudio.Framework\SLStudio.Framework.csproj" />
+		<ProjectReference Include="..\..\..\Framework\SLStudio.Logging\SLStudio.Logging.csproj" />
+		<ProjectReference Include="..\..\..\Web\SLStudio.Web.Api\SLStudio.Web.Api.csproj" />
+	</ItemGroup>
+</Project>

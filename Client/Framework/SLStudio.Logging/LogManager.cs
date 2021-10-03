@@ -21,7 +21,7 @@ namespace SLStudio.Logging
 
         private LogManager()
         {
-            var logsDir = StudioConstants.LogsDirectory;
+            var logsDir = SharedConstants.LogsDirectory;
             if (!Directory.Exists(logsDir))
                 Directory.CreateDirectory(logsDir);
 
