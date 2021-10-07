@@ -1,16 +1,10 @@
-﻿using System.Threading.Tasks;
-
-namespace SLStudio
+﻿namespace SLStudio
 {
-	public interface IMenuItemHandler<TMenuItem>
-		where TMenuItem : class, IMenuItem
-	{
-		TMenuItem Menu { get; }
+    public interface IMenuItemHandler<TMenuItem>
+        where TMenuItem : class, IMenuItem
+    {
+        TMenuItem Menu { get; }
 
-		bool CanExecute(object parameter);
-
-		Task Execute(object parameter);
-
-		void SetMenu(TMenuItem menu);
-	}
+        void SetMenu(TMenuItem menu);
+    }
 }

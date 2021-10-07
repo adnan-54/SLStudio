@@ -7,5 +7,11 @@ namespace SLStudio
         KeyGesture Shortcut { get; }
 
         ICommand Command { get; }
+
+        bool IsExecuting { get; }
+
+        bool CanExecute { get; }
+
+        void Execute();
     }
 }

@@ -1,9 +1,17 @@
-﻿using System.Threading.Tasks;
+﻿using System;
 
 namespace SLStudio
 {
     public interface IMenuToggleHandler : IMenuItemHandler<IMenuToggle>
     {
-        Task OnToggle();
+        event EventHandler CanToggleChanged;
+
+        event EventHandler IsTogglingChanged;
+
+        bool IsToggling { get; }
+
+        bool CanToggle();
+
+        void Toggle();
     }
 }

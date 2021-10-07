@@ -1,24 +1,30 @@
-﻿using SLStudio.Logging;
-using System;
+﻿using System.Windows.Input;
 
 namespace SLStudio
 {
-    internal class MenuToggle : MenuButton, IMenuToggle
+    internal class MenuToggle : MenuItem, IMenuToggle
     {
-        private static readonly ILogger logger = LogManager.GetLogger<MenuToggle>();
-
         private readonly IMenuToggleHandler handler;
 
         public MenuToggle(IMenuToggleHandler handler)
         {
             this.handler = handler;
+
+            handler.IsTogglingChanged += (_, _) => RaisePropertyChanged(nameof(IsToggling));
+            handler.CanToggleChanged += (_, _) => RaisePropertyChanged(nameof(CanToggle));
         }
+
+        public KeyGesture Shortcut { get; init; }
 
         public bool IsChecked
         {
             get => GetValue<bool>();
             set => SetValue(value, OnToggled);
         }
+
+        public bool IsToggling => handler.IsToggling;
+
+        public bool CanToggle => handler.CanToggle();
 
         public void Check()
         {
@@ -35,16 +41,9 @@ namespace SLStudio
             IsChecked = !IsChecked;
         }
 
-        private async void OnToggled()
+        private void OnToggled()
         {
-            try
-            {
-                await handler.OnToggle();
-            }
-            catch (Exception ex)
-            {
-                logger.Warn(ex);
-            }
+            handler.Toggle();
         }
     }
 }

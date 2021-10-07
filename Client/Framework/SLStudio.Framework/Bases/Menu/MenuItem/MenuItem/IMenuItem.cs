@@ -12,6 +12,12 @@ namespace SLStudio
 
         string Path { get; }
 
+        string ParentPath { get; }
+
+        bool IsRootItem { get; }
+
+        int HierarchicalLevel { get; }
+
         string Title { get; }
 
         string ToolTip { get; }
@@ -25,8 +31,6 @@ namespace SLStudio
         bool IsEnabled { get; }
 
         int GetIndex();
-
-        string GetParentPath();
 
         void Show();
 

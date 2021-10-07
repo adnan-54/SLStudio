@@ -29,7 +29,7 @@ namespace SLStudio.Core
 
         public IMenuItem GetFromPath(string path)
         {
-            return menuBuilder.Items[path];
+            return menuBuilder.Menus[path];
         }
     }
 

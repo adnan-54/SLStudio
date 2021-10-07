@@ -1,24 +1,24 @@
 ﻿namespace SLStudio.Core
 {
-	internal class CoreModule : Module
-	{
-		protected override void Register(IModuleRegister register)
-		{
-			//MainMenu
-			register.ViewModel<IMainMenu, MainMenuViewModel>(LifeStyle.Singleton);
-			register.View<MainMenuView, IMainMenu>();
+    internal class CoreModule : Module
+    {
+        protected override void Register(IModuleRegister register)
+        {
+            //MenuConfiguration
+            register.MenuConfiguration<CoreMenuConfiguration>();
 
-			//Shell
-			register.ViewModel<IShell, ShellViewModel>(LifeStyle.Singleton);
-			register.Window<ShellView, IShell>();
-			register.Singleton<ShellOpeningStrategy>();
+            //MainMenu
+            register.ViewModel<IMainMenu, MainMenuViewModel>(LifeStyle.Singleton);
+            register.View<MainMenuView, IMainMenu>();
 
-			//StatusBar
-			register.ViewModel<IStatusBar, StatusBarViewModel>(LifeStyle.Singleton);
-			register.View<StatusBarView, IStatusBar>();
+            //Shell
+            register.ViewModel<IShell, ShellViewModel>(LifeStyle.Singleton);
+            register.Window<ShellView, IShell>();
+            register.Singleton<ShellOpeningStrategy>();
 
-			//MenuConfiguration
-			register.MenuConfiguration<CoreMenuConfiguration>();
-		}
-	}
+            //StatusBar
+            register.ViewModel<IStatusBar, StatusBarViewModel>(LifeStyle.Singleton);
+            register.View<StatusBarView, IStatusBar>();
+        }
+    }
 }

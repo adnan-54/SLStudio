@@ -9,22 +9,27 @@ namespace SLStudio
     {
         private readonly BindableCollection<IMenuItem> children;
 
+        private bool isParentPathSet;
+        private string parentPath;
+
         public MenuItem()
         {
             children = new BindableCollection<IMenuItem>();
         }
 
-        public IMenuItem Parent
-        {
-            get => GetValue<IMenuItem>();
-            private set => SetValue(value);
-        }
+        public IMenuItem Parent { get; private set; }
 
         public IEnumerable<IMenuItem> Children => children;
 
         public int? Index { get; init; }
 
         public string Path { get; init; }
+
+        public string ParentPath => GetParentPath();
+
+        public bool IsRootItem => string.IsNullOrEmpty(ParentPath);
+
+        public int HierarchicalLevel => Path.Count(c => c == '|') - 1;
 
         public string Title
         {
@@ -62,6 +67,8 @@ namespace SLStudio
             set => SetValue(value);
         }
 
+
+
         public int GetIndex()
         {
             if (Index.HasValue)
@@ -69,13 +76,9 @@ namespace SLStudio
             return Parent.Children.Count();
         }
 
-        public string GetParentPath()
-        {
-            if (Path.Count(c => c == '|') == 1)
-                return null;
-            var splitted = Path.Split('|', options: StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
-            return $"{string.Join('|', splitted)}|";
-        }
+
+
+
 
         public void Show()
         {
@@ -126,6 +129,25 @@ namespace SLStudio
             var ordered = children.OrderBy(c => c.GetIndex());
             children.Clear();
             children.AddRange(ordered);
+        }
+
+        private string GetParentPath()
+        {
+            if (!isParentPathSet)
+            {
+                if (Path.Count(c => c == '|') > 1)
+                {
+                    var parents = Path.Split('|', options: StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
+                    parentPath = $"{string.Join('|', parents)}|";
+
+                }
+                else
+                    parentPath = null;
+
+                isParentPathSet = true;
+            }
+
+            return parentPath;
         }
 
         public override string ToString()
