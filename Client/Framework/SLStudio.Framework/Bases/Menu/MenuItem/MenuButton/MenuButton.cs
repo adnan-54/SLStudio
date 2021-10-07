@@ -2,10 +2,10 @@
 
 namespace SLStudio
 {
-	public class MenuButton : MenuItem, IMenuButton
-	{
-		public KeyGesture Shortcut { get; init; }
+    internal class MenuButton : MenuItem, IMenuButton
+    {
+        public KeyGesture Shortcut { get; init; }
 
-		public ICommand Command { get; init; }
-	}
+        public ICommand Command { get; init; }
+    }
 }

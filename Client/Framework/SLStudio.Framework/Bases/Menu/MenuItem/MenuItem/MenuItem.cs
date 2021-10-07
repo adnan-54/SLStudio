@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SLStudio
 {
-    public class MenuItem : BindableBase, IMenuItem
+    internal class MenuItem : BindableBase, IMenuItem
     {
         private readonly BindableCollection<IMenuItem> children;
 
@@ -71,11 +71,10 @@ namespace SLStudio
 
         public string GetParentPath()
         {
-            if (Parent != null)
-                return Parent.Path;
-            if (string.IsNullOrEmpty(Path))
-                return string.Empty;
-            return Path.Substring(0, Path.LastIndexOf('|') + 1);
+            if (Path.Count(c => c == '|') == 1)
+                return null;
+            var splitted = Path.Split('|', options: StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
+            return $"{string.Join('|', splitted)}|";
         }
 
         public void Show()
@@ -102,10 +101,13 @@ namespace SLStudio
         {
             if (Parent is not null)
                 return;
-
             if (parent is null)
                 throw new ArgumentNullException(nameof(parent));
-            if (!Path.StartsWith(parent.Path))
+
+            var parentPath = GetParentPath();
+            if (parentPath is null)
+                throw new InvalidOperationException("Cannot set a parent in a root item");
+            if (!parent.Path.Equals(parentPath))
                 throw new InvalidOperationException("Parent does not match the child path");
 
             Parent = parent;

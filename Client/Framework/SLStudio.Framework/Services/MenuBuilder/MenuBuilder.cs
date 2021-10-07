@@ -28,13 +28,12 @@ namespace SLStudio
             {
                 var parentPath = menu.GetParentPath();
 
-                if (parentPath.Equals(menu.Path, StringComparison.OrdinalIgnoreCase))
+                if (parentPath is null)
                     continue;
 
                 if (!menus.TryGetValue(parentPath, out var parent))
                     throw new InvalidOperationException($"Parent for menu item '{menu.Path}' not found");
 
-                menu.SetParent(parent);
                 parent.AddChild(menu);
             }
 

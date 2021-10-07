@@ -1,15 +1,13 @@
-﻿using System;
-
-namespace SLStudio
+﻿namespace SLStudio
 {
-	public interface IMenuToggle : IMenuButton
-	{
-		bool IsChecked { get; }
+    public interface IMenuToggle : IMenuButton
+    {
+        bool IsChecked { get; }
 
-		void Check();
+        void Check();
 
-		void Uncheck();
+        void Uncheck();
 
-		void Toggle();
-	}
+        void Toggle();
+    }
 }

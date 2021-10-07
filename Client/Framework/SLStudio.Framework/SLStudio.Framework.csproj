@@ -22,5 +22,6 @@
 	<ItemGroup>
 		<Folder Include="Events\EventArgs\" />
 		<Folder Include="Shared\" />
+		<Folder Include="Shared\" />
 	</ItemGroup>
 </Project>
