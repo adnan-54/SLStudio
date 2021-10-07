@@ -1,7 +1,7 @@
-﻿using DevExpress.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DevExpress.Mvvm;
 
 namespace SLStudio
 {
@@ -20,7 +20,10 @@ namespace SLStudio
             messenger.Register<MenuConfigurationRegisteredMessage>(this, OnConfigurationRegistered);
         }
 
-        public IReadOnlyDictionary<string, IMenuItem> Menus { get; private set; }
+        public IReadOnlyDictionary<string, IMenuItem> Menus
+        {
+            get; private set;
+        }
 
         public IEnumerable<IMenuItem> BuildMenus()
         {

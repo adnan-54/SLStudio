@@ -4,42 +4,44 @@ using System.Windows.Controls;
 
 namespace SLStudio
 {
-	public interface IModuleRegister : IService
-	{
-		void MenuConfiguration<TConfiguratiton>()
-			where TConfiguratiton : class, IMenuConfiguration;
+    public interface IModuleRegister : IService
+    {
+        void RegisterResource(Uri uri);
 
-		void ViewModel<TConcrete>(LifeStyle lifeStyle)
-			where TConcrete : class, IViewModel;
+        void MenuConfiguration<TConfiguratiton>()
+            where TConfiguratiton : class, IMenuConfiguration;
 
-		void ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
-			where TService : class, IViewModel
-			where TImplementation : class, TService;
+        void ViewModel<TConcrete>(LifeStyle lifeStyle)
+            where TConcrete : class, IViewModel;
 
-		void View<TView, TViewModel>()
-			where TView : UserControl
-			where TViewModel : class, IViewModel;
+        void ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
+            where TService : class, IViewModel
+            where TImplementation : class, TService;
 
-		void Window<TWindow, TViewModel>()
-			where TWindow : Window
-			where TViewModel : class, IWindowViewModel;
+        void View<TView, TViewModel>()
+            where TView : UserControl
+            where TViewModel : class, IViewModel;
 
-		void Singleton<TConcrete>()
-			where TConcrete : class;
+        void Window<TWindow, TViewModel>()
+            where TWindow : Window
+            where TViewModel : class, IWindowViewModel;
 
-		void Singleton<TService, TImplementation>()
-			where TService : class
-			where TImplementation : class, TService;
+        void Singleton<TConcrete>()
+            where TConcrete : class;
 
-		void Service<TConcrete>()
-			where TConcrete : class, IService;
+        void Singleton<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService;
 
-		void Service<TService, TImplementation>()
-			where TService : class, IService
-			where TImplementation : class, TService;
+        void Service<TConcrete>()
+            where TConcrete : class, IService;
 
-		void ServiceCollection(IServiceCollection serviceContainer);
+        void Service<TService, TImplementation>()
+            where TService : class, IService
+            where TImplementation : class, TService;
 
-		void Custom(Action<IContainer> callback);
-	}
+        void ServiceCollection(IServiceCollection serviceContainer);
+
+        void Custom(Action<IContainer> callback);
+    }
 }

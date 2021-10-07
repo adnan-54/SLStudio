@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -11,11 +12,19 @@ namespace SLStudio
             Application = application;
         }
 
-        public Application Application { get; }
+        public Application Application
+        {
+            get;
+        }
 
         public Dispatcher Dispatcher => Application.Dispatcher;
 
         public Window CurrentWindow => GetCurrentWindow();
+
+        public void MergeResource(Uri uri)
+        {
+            Application.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
+        }
 
         private Window GetCurrentWindow()
         {

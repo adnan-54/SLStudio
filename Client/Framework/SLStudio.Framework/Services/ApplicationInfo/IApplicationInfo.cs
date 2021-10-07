@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Threading;
 
 namespace SLStudio
@@ -10,5 +11,7 @@ namespace SLStudio
         Dispatcher Dispatcher { get; }
 
         Window CurrentWindow { get; }
+
+        void MergeResource(Uri uri);
     }
 }

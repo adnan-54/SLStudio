@@ -1,7 +1,7 @@
-﻿using DevExpress.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DevExpress.Mvvm;
 
 namespace SLStudio
 {
@@ -17,13 +17,22 @@ namespace SLStudio
             children = new BindableCollection<IMenuItem>();
         }
 
-        public IMenuItem Parent { get; private set; }
+        public IMenuItem Parent
+        {
+            get; private set;
+        }
 
         public IEnumerable<IMenuItem> Children => children;
 
-        public int? Index { get; init; }
+        public int? Index
+        {
+            get; init;
+        }
 
-        public string Path { get; init; }
+        public string Path
+        {
+            get; init;
+        }
 
         public string ParentPath => GetParentPath();
 
@@ -67,18 +76,12 @@ namespace SLStudio
             set => SetValue(value);
         }
 
-
-
         public int GetIndex()
         {
             if (Index.HasValue)
                 return Index.Value;
             return Parent.Children.Count();
         }
-
-
-
-
 
         public void Show()
         {
@@ -125,8 +128,7 @@ namespace SLStudio
 
             child.SetParent(this);
             children.Add(child);
-
-            var ordered = children.OrderBy(c => c.GetIndex());
+            var ordered = children.OrderBy(c => c.GetIndex()).ToList();
             children.Clear();
             children.AddRange(ordered);
         }

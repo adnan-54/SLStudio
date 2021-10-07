@@ -6,6 +6,8 @@
         {
             Item("file|");
             Item("file|save|");
+            Separator("file|separator|");
+            Item("file|open|");
             Item("edit|");
             Item("view|");
         }

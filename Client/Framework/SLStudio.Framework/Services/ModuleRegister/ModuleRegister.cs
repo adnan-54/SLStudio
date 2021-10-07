@@ -6,12 +6,19 @@ namespace SLStudio
     internal class ModuleRegister : Service, IModuleRegister
     {
         private readonly IContainer container;
+        private readonly IApplicationInfo applicationInfo;
         private readonly IMessenger messenger;
 
-        public ModuleRegister(IContainer container, IMessenger messenger)
+        public ModuleRegister(IContainer container, IApplicationInfo applicationInfo, IMessenger messenger)
         {
             this.container = container;
+            this.applicationInfo = applicationInfo;
             this.messenger = messenger;
+        }
+
+        void IModuleRegister.RegisterResource(Uri uri)
+        {
+            applicationInfo.MergeResource(uri);
         }
 
         void IModuleRegister.MenuConfiguration<TConfiguratiton>()

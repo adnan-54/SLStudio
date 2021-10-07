@@ -1,5 +1,5 @@
-﻿using DevExpress.Mvvm;
-using System.Windows;
+﻿using System.Windows;
+using DevExpress.Mvvm;
 
 namespace SLStudio
 {
@@ -22,7 +22,7 @@ namespace SLStudio
             var moduleFinder = new ModuleFinder() as IModuleFinder;
             var container = new Container() as IContainer;
             var messenger = Messenger.Default;
-            var moduleRegister = new ModuleRegister(container, messenger) as IModuleRegister;
+            var moduleRegister = new ModuleRegister(container, applicationInfo, messenger) as IModuleRegister;
             var objectFactory = new ObjectFactory(container) as IObjectFactory;
             var menuItemFactory = new MenuItemFactory(objectFactory) as IMenuItemFactory;
             var menuBuilder = new MenuBuilder(objectFactory, menuItemFactory, messenger) as IMenuBuilder;
@@ -41,14 +41,14 @@ namespace SLStudio
             RegisterService(container);
             RegisterService(moduleRegister);
             RegisterService(objectFactory);
+            RegisterService(menuItemFactory);
+            RegisterService(menuBuilder);
             RegisterService(moduleScheduler);
             RegisterService(moduleLoader);
             RegisterService(viewModelLocator);
             RegisterService(viewLocator);
             RegisterService(windowManager);
             RegisterService(messenger);
-            RegisterService(menuItemFactory);
-            RegisterService(menuBuilder);
 
             IoC.Initialize(container);
         }

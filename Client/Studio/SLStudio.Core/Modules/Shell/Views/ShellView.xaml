@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <slstudio:ViewArea Grid.Row="0" ViewModel="{Binding MainMenu}" />
-
+        
         <slstudio:ViewArea Grid.Row="4" ViewModel="{Binding StatusBar}" />
     </Grid>
 </Window>
