@@ -37,16 +37,16 @@ namespace SLStudio
 
 		private void OnViewRegistered(ViewRegisteredMessage message)
 		{
-			var viewType = message.View;
-			var viewModelType = message.ViewModel;
+			var viewType = message.ViewType;
+			var viewModelType = message.ViewModelType;
 
 			fromViews.TryAdd(viewType, viewModelType);
 		}
 
 		private void OnViewModelRegistered(ViewModelRegisteredMessage message)
 		{
-			var serviceType = message.Service;
-			var implementationType = message.Implementation;
+			var serviceType = message.ServiceType;
+			var implementationType = message.ImplementationType;
 
 			fromViewModels.TryAdd(serviceType, serviceType);
 			fromViewModels.TryAdd(implementationType, serviceType);

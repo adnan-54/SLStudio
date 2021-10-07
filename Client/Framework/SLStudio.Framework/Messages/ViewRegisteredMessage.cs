@@ -2,16 +2,16 @@
 
 namespace SLStudio
 {
-	internal class ViewRegisteredMessage
-	{
-		public ViewRegisteredMessage(Type view, Type viewModel)
-		{
-			View = view;
-			ViewModel = viewModel;
-		}
+    internal class ViewRegisteredMessage
+    {
+        public ViewRegisteredMessage(Type viewType, Type viewModelType)
+        {
+            ViewType = viewType;
+            ViewModelType = viewModelType;
+        }
 
-		public Type View { get; }
+        public Type ViewType { get; }
 
-		public Type ViewModel { get; }
-	}
+        public Type ViewModelType { get; }
+    }
 }

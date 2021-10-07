@@ -1,12 +1,14 @@
-﻿namespace SLStudio
-{
-	internal class MenuConfigurationRegisteredMessage
-	{
-		public MenuConfigurationRegisteredMessage(IMenuConfiguration menuConfiguration)
-		{
-			MenuConfiguration = menuConfiguration;
-		}
+﻿using System;
 
-		public IMenuConfiguration MenuConfiguration { get; }
-	}
+namespace SLStudio
+{
+    internal class MenuConfigurationRegisteredMessage
+    {
+        public MenuConfigurationRegisteredMessage(Type menuConfigurationType)
+        {
+            MenuConfigurationType = menuConfigurationType;
+        }
+
+        public Type MenuConfigurationType { get; }
+    }
 }

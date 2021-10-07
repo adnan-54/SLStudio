@@ -7,13 +7,15 @@ namespace SLStudio
 {
     internal class MenuBuilder : Service, IMenuBuilder
     {
+        private readonly IObjectFactory objectFactory;
         private readonly IMenuItemFactory menuItemFactory;
-        private readonly List<IMenuItem> menus;
+        private readonly List<Type> configurationsTypes;
 
-        public MenuBuilder(IMenuItemFactory menuItemFactory, IMessenger messenger)
+        public MenuBuilder(IObjectFactory objectFactory, IMenuItemFactory menuItemFactory, IMessenger messenger)
         {
+            this.objectFactory = objectFactory;
             this.menuItemFactory = menuItemFactory;
-            menus = new List<IMenuItem>();
+            configurationsTypes = new List<Type>();
 
             messenger.Register<MenuConfigurationRegisteredMessage>(this, OnConfigurationRegistered);
         }
@@ -22,6 +24,10 @@ namespace SLStudio
 
         public IEnumerable<IMenuItem> BuildMenus()
         {
+            var configurations = configurationsTypes.Select(t => objectFactory.Create<IMenuConfiguration>(t));
+            var menus = configurations.SelectMany(c => c.BuildMenu(menuItemFactory)).OrderBy(m => m.HierarchicalLevel).ToList();
+            Menus = menus.ToDictionary(m => m.Path, m => m);
+
             foreach (var menu in menus.OrderBy(m => m.HierarchicalLevel))
             {
                 if (menu.IsRootItem)
@@ -38,9 +44,7 @@ namespace SLStudio
 
         private void OnConfigurationRegistered(MenuConfigurationRegisteredMessage message)
         {
-            var configuration = message.MenuConfiguration;
-            menus.AddRange(configuration.BuildMenu(menuItemFactory));
-            Menus = menus.ToDictionary(m => m.Path, m => m);
+            configurationsTypes.Add(message.MenuConfigurationType);
         }
     }
 }

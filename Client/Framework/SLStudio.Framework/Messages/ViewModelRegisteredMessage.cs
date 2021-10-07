@@ -2,16 +2,16 @@
 
 namespace SLStudio
 {
-	internal class ViewModelRegisteredMessage
-	{
-		public ViewModelRegisteredMessage(Type service, Type implementation)
-		{
-			Service = service;
-			Implementation = implementation;
-		}
+    internal class ViewModelRegisteredMessage
+    {
+        public ViewModelRegisteredMessage(Type serviceType, Type implementationType)
+        {
+            ServiceType = serviceType;
+            ImplementationType = implementationType;
+        }
 
-		public Type Service { get; }
+        public Type ServiceType { get; }
 
-		public Type Implementation { get; }
-	}
+        public Type ImplementationType { get; }
+    }
 }

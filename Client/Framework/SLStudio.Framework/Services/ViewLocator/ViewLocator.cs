@@ -49,11 +49,11 @@ namespace SLStudio
 
 		private void OnViewRegistered(ViewRegisteredMessage message)
 		{
-			if (message.View.IsAssignableTo(typeof(Window)))
-				windows.Add(message.ViewModel, message.View);
+			if (message.ViewType.IsAssignableTo(typeof(Window)))
+				windows.Add(message.ViewModelType, message.ViewType);
 			else
-			if (message.View.IsAssignableTo(typeof(UserControl)))
-				views.Add(message.ViewModel, message.View);
+			if (message.ViewType.IsAssignableTo(typeof(UserControl)))
+				views.Add(message.ViewModelType, message.ViewType);
 		}
 	}
 }
