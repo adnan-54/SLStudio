@@ -7,9 +7,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=core:MainMenuViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Menu IsMainMenu="True">
-        <Menu.Resources>
-            <HierarchicalDataTemplate />
-        </Menu.Resources>
+    <Menu IsMainMenu="True"
+          ItemsSource="{Binding Menus}">
     </Menu>
 </UserControl>

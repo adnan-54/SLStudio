@@ -20,6 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<Folder Include="Events\EventArgs\" />
 		<Folder Include="Shared\" />
 	</ItemGroup>
 </Project>

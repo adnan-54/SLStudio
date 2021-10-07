@@ -1,98 +1,92 @@
-﻿using System;
+﻿using DevExpress.Mvvm;
+using System;
 
 namespace SLStudio
 {
-    internal class ModuleRegister : Service, IModuleRegister
-    {
-        private event EventHandler<ViewModelRegisteredEventArgs> ViewModelRegistered;
+	internal class ModuleRegister : Service, IModuleRegister
+	{
+		private readonly IContainer container;
+		private readonly IMessenger messenger;
 
-        private event EventHandler<ViewRegisteredEventArgs> ViewRegistered;
+		public ModuleRegister(IContainer container, IMessenger messenger)
+		{
+			this.container = container;
+			this.messenger = messenger;
+		}
 
-        private readonly IContainer container;
+		void IModuleRegister.MenuConfiguration<TConfiguratiton>()
+		{
+			var configuration = container.GetInstance<TConfiguratiton>();
 
-        public ModuleRegister(IContainer container)
-        {
-            this.container = container;
-        }
+			messenger.Send(new MenuConfigurationRegisteredMessage(configuration));
+		}
 
-        event EventHandler<ViewModelRegisteredEventArgs> IModuleRegister.ViewModelRegistered
-        {
-            add => ViewModelRegistered += value;
-            remove => ViewModelRegistered -= value;
-        }
+		void IModuleRegister.ViewModel<TConcrete>(LifeStyle lifeStyle)
+		{
+			container.Register<TConcrete>(lifeStyle.ToLifestyle());
 
-        event EventHandler<ViewRegisteredEventArgs> IModuleRegister.ViewRegistered
-        {
-            add => ViewRegistered += value;
-            remove => ViewRegistered -= value;
-        }
+			messenger.Send(new ViewModelRegisteredMessage(typeof(TConcrete), typeof(TConcrete)));
+		}
 
-        void IModuleRegister.ViewModel<TConcrete>(LifeStyle lifeStyle)
-        {
-            container.Register<TConcrete>(lifeStyle.ToLifestyle());
+		void IModuleRegister.ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
+		{
+			container.Register<TService, TImplementation>(lifeStyle.ToLifestyle());
 
-            ViewModelRegistered?.Invoke(this, new ViewModelRegisteredEventArgs(typeof(TConcrete), typeof(TConcrete)));
-        }
+			messenger.Send(new ViewModelRegisteredMessage(typeof(TService), typeof(TImplementation)));
+		}
 
-        void IModuleRegister.ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
-        {
-            container.Register<TService, TImplementation>(lifeStyle.ToLifestyle());
+		void IModuleRegister.View<TView, TViewModel>()
+		{
+			var viewType = typeof(TView);
+			var viewModelType = typeof(TViewModel);
 
-            ViewModelRegistered?.Invoke(this, new ViewModelRegisteredEventArgs(typeof(TService), typeof(TImplementation)));
-        }
+			messenger.Send(new ViewRegisteredMessage(viewType, viewModelType));
+		}
 
-        void IModuleRegister.View<TView, TViewModel>()
-        {
-            var viewType = typeof(TView);
-            var viewModelType = typeof(TViewModel);
+		void IModuleRegister.Window<TWindow, TViewModel>()
+		{
+			var windowType = typeof(TWindow);
+			var viewModelType = typeof(TViewModel);
 
-            ViewRegistered?.Invoke(this, new ViewRegisteredEventArgs(viewType, viewModelType));
-        }
+			messenger.Send(new ViewRegisteredMessage(windowType, viewModelType));
+		}
 
-        void IModuleRegister.Window<TWindow, TViewModel>()
-        {
-            var windowType = typeof(TWindow);
-            var viewModelType = typeof(TViewModel);
+		void IModuleRegister.Singleton<TConcrete>()
+		{
+			container.RegisterSingleton<TConcrete>();
+		}
 
-            ViewRegistered?.Invoke(this, new ViewRegisteredEventArgs(windowType, viewModelType));
-        }
+		void IModuleRegister.Singleton<TService, TImplementation>()
+		{
+			container.RegisterSingleton<TService, TImplementation>();
+		}
 
-        void IModuleRegister.Singleton<TConcrete>()
-        {
-            container.RegisterSingleton<TConcrete>();
-        }
+		void IModuleRegister.Service<TConcrete>()
+		{
+			container.RegisterSingleton<TConcrete>();
+		}
 
-        void IModuleRegister.Singleton<TService, TImplementation>()
-        {
-            container.RegisterSingleton<TService, TImplementation>();
-        }
+		void IModuleRegister.Service<TService, TImplementation>()
+		{
+			container.RegisterSingleton<TService, TImplementation>();
+		}
 
-        void IModuleRegister.Service<TConcrete>()
-        {
-            container.RegisterSingleton<TConcrete>();
-        }
+		public void ServiceCollection(IServiceCollection serviceContainer)
+		{
+			var servicesDictionary = serviceContainer.GetAll();
+			serviceContainer.Lock();
 
-        void IModuleRegister.Service<TService, TImplementation>()
-        {
-            container.RegisterSingleton<TService, TImplementation>();
-        }
+			foreach (var kvp in servicesDictionary)
+			{
+				var type = kvp.Key;
+				var service = kvp.Value;
+				container.RegisterSingleton(type, service);
+			}
+		}
 
-        public void ServiceCollection(IServiceCollection serviceContainer)
-        {
-            var servicesDictionary = serviceContainer.GetAll();
-            serviceContainer.Lock();
-
-            foreach (var kvp in servicesDictionary)
-            {
-                var type = kvp.Key;
-                var service = kvp.Value;
-                container.RegisterSingleton(type, service);
-            }
-        }
-
-        public void Custom(Action<IContainer> callback)
-        {
-            callback?.Invoke(container);
-        }
-    }
+		public void Custom(Action<IContainer> callback)
+		{
+			callback?.Invoke(container);
+		}
+	}
 }
