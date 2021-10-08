@@ -20,11 +20,12 @@ namespace SLStudio
 
         public bool IsExecuting => handler.IsExecuting;
 
-        public bool CanExecute => handler.CanExecute(null);
+        public bool CanExecute => IsEnabled && handler.CanExecute(null);
 
         public void Execute()
         {
-            handler.Execute(null);
+            if (CanExecute)
+                handler.Execute(null);
         }
     }
 }

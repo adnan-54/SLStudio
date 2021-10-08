@@ -24,26 +24,30 @@ namespace SLStudio
 
         public bool IsToggling => handler.IsToggling;
 
-        public bool CanToggle => handler.CanToggle();
+        public bool CanToggle => IsEnabled && handler.CanToggle();
 
         public void Check()
         {
-            IsChecked = true;
+            if (CanToggle)
+                IsChecked = true;
         }
 
         public void Uncheck()
         {
-            IsChecked = false;
+            if (CanToggle)
+                IsChecked = false;
         }
 
         public void Toggle()
         {
-            IsChecked = !IsChecked;
+            if (CanToggle)
+                IsChecked = !IsChecked;
         }
 
         private void OnToggled()
         {
-            handler.Toggle();
+            if (CanToggle)
+                handler.Toggle();
         }
     }
 }
