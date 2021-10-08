@@ -5,7 +5,7 @@
         protected override void Build()
         {
             Item("file|");
-            Item("file|save|");
+            Item("file|save|", isVisible: false);
             Separator("file|separator|");
             Item("file|open|");
             Item("edit|");

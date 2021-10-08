@@ -10,7 +10,8 @@
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
         </MenuItem>
     </ItemContainerTemplate>
 
@@ -20,7 +21,8 @@
                   Header="{Binding Title}"
                   Command="{Binding Command}"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
         </MenuItem>
     </ItemContainerTemplate>
 
@@ -31,12 +33,14 @@
                   IsCheckable="True"
                   IsChecked="{Binding IsChecked}"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
         </MenuItem>
     </ItemContainerTemplate>
 
     <!--MenuSeparator-->
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuSeparator}">
-        <Separator Style="{DynamicResource ResourceKey={x:Static MenuItem.SeparatorStyleKey}}"/>
+        <Separator Style="{DynamicResource ResourceKey={x:Static MenuItem.SeparatorStyleKey}}"
+                   slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}"/>
     </ItemContainerTemplate>
 </ResourceDictionary>

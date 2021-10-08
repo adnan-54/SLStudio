@@ -23,7 +23,7 @@ namespace SLStudio
         protected override void Register(IModuleRegister register)
         {
             register.ServiceCollection(services);
-            register.RegisterResource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/Templates.xaml"));
+            register.RegisterResource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
         }
     }
 }
