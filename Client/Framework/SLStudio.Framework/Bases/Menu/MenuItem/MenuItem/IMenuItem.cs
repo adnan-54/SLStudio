@@ -22,8 +22,6 @@ namespace SLStudio
 
         string ToolTip { get; }
 
-        bool HasToolTip { get; }
-
         object Icon { get; }
 
         bool IsVisible { get; }

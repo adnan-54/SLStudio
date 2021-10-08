@@ -1,7 +1,7 @@
-﻿using System;
+﻿using DevExpress.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DevExpress.Mvvm;
 
 namespace SLStudio
 {
@@ -9,30 +9,18 @@ namespace SLStudio
     {
         private readonly BindableCollection<IMenuItem> children;
 
-        private bool isParentPathSet;
-        private string parentPath;
-
         public MenuItem()
         {
             children = new BindableCollection<IMenuItem>();
         }
 
-        public IMenuItem Parent
-        {
-            get; private set;
-        }
+        public IMenuItem Parent { get; private set; }
 
         public IEnumerable<IMenuItem> Children => children;
 
-        public int? Index
-        {
-            get; init;
-        }
+        public int? Index { get; init; }
 
-        public string Path
-        {
-            get; init;
-        }
+        public string Path { get; init; }
 
         public string ParentPath => GetParentPath();
 
@@ -49,14 +37,8 @@ namespace SLStudio
         public string ToolTip
         {
             get => GetValue<string>();
-            set
-            {
-                if (SetValue(value))
-                    RaisePropertyChanged(nameof(HasToolTip));
-            }
+            set => SetValue(value);
         }
-
-        public bool HasToolTip => !string.IsNullOrEmpty(ToolTip);
 
         public object Icon
         {
@@ -135,21 +117,11 @@ namespace SLStudio
 
         private string GetParentPath()
         {
-            if (!isParentPathSet)
-            {
-                if (Path.Count(c => c == '|') > 1)
-                {
-                    var parents = Path.Split('|', options: StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
-                    parentPath = $"{string.Join('|', parents)}|";
+            if (Path.Count(c => c == '|') == 1)
+                return null;
 
-                }
-                else
-                    parentPath = null;
-
-                isParentPathSet = true;
-            }
-
-            return parentPath;
+            var parents = Path.Split('|', options: StringSplitOptions.RemoveEmptyEntries).SkipLast(1);
+            return $"{string.Join('|', parents)}|";
         }
 
         public override string ToString()

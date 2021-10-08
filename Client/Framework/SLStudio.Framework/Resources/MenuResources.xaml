@@ -9,10 +9,12 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuItem}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  ToolTip="{Binding ToolTip}"
                   Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}"
+                  IsEnabled="{Binding IsEnabled}"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
-                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
         </MenuItem>
     </ItemContainerTemplate>
 
@@ -20,11 +22,14 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuButton}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  ToolTip="{Binding ToolTip}"
                   Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}"
+                  IsEnabled="{Binding IsEnabled}"
                   Command="{Binding Command}"
+                  InputGestureText="{Binding Shortcut}"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
-                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
         </MenuItem>
     </ItemContainerTemplate>
 
@@ -32,12 +37,15 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuToggle}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  ToolTip="{Binding ToolTip}"
                   Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
-                  IsCheckable="True"
+                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}"
+                  IsEnabled="{Binding IsEnabled}"
+                  InputGestureText="{Binding Shortcut}"
                   IsChecked="{Binding IsChecked}"
+                  IsCheckable="True"
                   UsesItemContainerTemplate="True"
-                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
-                  slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
+                  ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}">
         </MenuItem>
     </ItemContainerTemplate>
 
