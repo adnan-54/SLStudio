@@ -8,7 +8,7 @@ namespace SLStudio
         IReadOnlyDictionary<Type, object> GetAll();
 
         TService Get<TService>()
-            where TService : class, IService;
+            where TService : class;
 
         void Lock();
     }

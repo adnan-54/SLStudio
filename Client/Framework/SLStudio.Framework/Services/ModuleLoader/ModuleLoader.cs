@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio
 {
-    internal class ModuleLoader : Service, IModuleLoader
+    internal class ModuleLoader : IModuleLoader
     {
         private static readonly ILogger logger = LogManager.GetLogger<ModuleLoader>();
 

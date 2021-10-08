@@ -2,7 +2,7 @@
 
 namespace SLStudio.Web.Api
 {
-    public interface IRequestFactory : IService
+    public interface IRequestFactory
     {
         ApiRequest CreateRequest(RequestOptions options, HttpMethod method);
     }

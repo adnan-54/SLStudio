@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    internal class ObjectFactory : Service, IObjectFactory
+    internal class ObjectFactory : IObjectFactory
     {
         private readonly IContainer container;
 

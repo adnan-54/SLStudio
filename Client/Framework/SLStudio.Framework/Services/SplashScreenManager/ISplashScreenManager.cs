@@ -1,6 +1,6 @@
 ﻿namespace SLStudio
 {
-    public interface ISplashScreenManager : IService
+    public interface ISplashScreenManager
     {
         void UpdateStatus(string status);
 

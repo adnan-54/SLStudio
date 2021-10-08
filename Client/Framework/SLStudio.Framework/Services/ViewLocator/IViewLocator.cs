@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IViewLocator : IService
+    public interface IViewLocator
     {
         Type LocateView(Type viewModelType);
 

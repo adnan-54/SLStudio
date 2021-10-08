@@ -3,7 +3,7 @@ using System;
 
 namespace SLStudio
 {
-    internal class ModuleRegister : Service, IModuleRegister
+    internal class ModuleRegister : IModuleRegister
     {
         private readonly IContainer container;
         private readonly IApplicationInfo applicationInfo;

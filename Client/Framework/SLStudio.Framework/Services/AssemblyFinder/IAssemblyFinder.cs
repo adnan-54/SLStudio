@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IAssemblyFinder : IService
+    public interface IAssemblyFinder
     {
         IEnumerable<string> FindAssemblies();
     }

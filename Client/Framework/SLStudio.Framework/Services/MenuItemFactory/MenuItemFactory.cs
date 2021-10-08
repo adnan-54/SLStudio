@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    internal class MenuItemFactory : Service, IMenuItemFactory
+    internal class MenuItemFactory : IMenuItemFactory
     {
         private readonly IObjectFactory objectFactory;
 

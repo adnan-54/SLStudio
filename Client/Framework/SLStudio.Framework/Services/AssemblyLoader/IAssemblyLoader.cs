@@ -3,7 +3,7 @@ using System.Reflection;
 
 namespace SLStudio
 {
-    public interface IAssemblyLoader : IService
+    public interface IAssemblyLoader
     {
         IEnumerable<Assembly> LoadedAssemblies { get; }
 

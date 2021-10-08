@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IMenuItemFactory : IService
+    public interface IMenuItemFactory
     {
         IMenuItem CreateItem(string path, int? index, string title, string toolTip, object icon, bool isVisible, bool isEnabled);
 

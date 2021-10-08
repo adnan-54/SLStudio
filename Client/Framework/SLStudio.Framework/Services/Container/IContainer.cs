@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio
 {
-    public interface IContainer : IService, IAsyncDisposable, IDisposable, IServiceProvider
+    public interface IContainer : IAsyncDisposable, IDisposable, IServiceProvider
     {
         event EventHandler<ExpressionBuildingEventArgs> ExpressionBuilding;
 

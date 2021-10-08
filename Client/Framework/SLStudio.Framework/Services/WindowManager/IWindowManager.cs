@@ -1,6 +1,6 @@
 ﻿namespace SLStudio
 {
-    public interface IWindowManager : IService
+    public interface IWindowManager
     {
         TViewModel Show<TViewModel>()
             where TViewModel : class, IWindowViewModel;

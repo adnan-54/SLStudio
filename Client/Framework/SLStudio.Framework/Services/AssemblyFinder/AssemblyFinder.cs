@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace SLStudio
 {
-    internal class AssemblyFinder : Service, IAssemblyFinder
+    internal class AssemblyFinder : IAssemblyFinder
     {
         private static readonly ILogger logger = LogManager.GetLogger<AssemblyFinder>();
 

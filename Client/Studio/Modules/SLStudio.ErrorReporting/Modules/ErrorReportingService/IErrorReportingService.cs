@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.ErrorReporting
 {
-    public interface IErrorReportingService : IService
+    public interface IErrorReportingService
     {
         void ShowExceptionBox(Exception exception, bool isTerminating);
 

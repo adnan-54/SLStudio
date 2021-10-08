@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace SLStudio
 {
-    public interface IModuleRegister : IService
+    public interface IModuleRegister
     {
         void RegisterResource(Uri uri);
 
@@ -34,10 +34,10 @@ namespace SLStudio
             where TImplementation : class, TService;
 
         void Service<TConcrete>()
-            where TConcrete : class, IService;
+            where TConcrete : class;
 
         void Service<TService, TImplementation>()
-            where TService : class, IService
+            where TService : class
             where TImplementation : class, TService;
 
         void ServiceCollection(IServiceCollection serviceContainer);

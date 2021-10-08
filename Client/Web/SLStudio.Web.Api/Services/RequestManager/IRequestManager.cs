@@ -2,7 +2,7 @@
 
 namespace SLStudio.Web.Api
 {
-    public interface IRequestManager : IService
+    public interface IRequestManager
     {
         Task<ResponseResult> Get(RequestOptions options);
 

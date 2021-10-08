@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.ErrorReporting
 {
-    internal class ErrorReportingService : Service, IErrorReportingService
+    internal class ErrorReportingService : IErrorReportingService
     {
         private readonly IReportExceptionApi reportExceptionApi;
 

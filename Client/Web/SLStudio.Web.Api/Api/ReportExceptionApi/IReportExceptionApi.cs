@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Web.Api
 {
-    public interface IReportExceptionApi : IService
+    public interface IReportExceptionApi
     {
         Task<ApiResponse> ReportException(Exception exception, CancellationToken cancellationToken = default);
     }

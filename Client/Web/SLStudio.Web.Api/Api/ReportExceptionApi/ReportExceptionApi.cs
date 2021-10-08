@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Web.Api
 {
-    internal class ReportExceptionApi : Service, IReportExceptionApi
+    internal class ReportExceptionApi : IReportExceptionApi
     {
         private readonly IRequestManager requestManager;
 

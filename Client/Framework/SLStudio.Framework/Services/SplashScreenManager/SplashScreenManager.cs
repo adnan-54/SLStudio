@@ -1,6 +1,6 @@
 ﻿namespace SLStudio
 {
-    internal class SplashScreenManager : Service, ISplashScreenManager
+    internal class SplashScreenManager : ISplashScreenManager
     {
         private readonly IUiSynchronization uiSynchronization;
         private ISplashScreen splashScreen;

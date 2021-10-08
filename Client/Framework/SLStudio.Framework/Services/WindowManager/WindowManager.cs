@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace SLStudio
 {
-    internal class WindowManager : Service, IWindowManager
+    internal class WindowManager : IWindowManager
     {
         private readonly IApplicationInfo applicationInfo;
         private readonly IUiSynchronization uiSynchronization;

@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 namespace SLStudio
 {
-    public interface IApplicationInfo : IService
+    public interface IApplicationInfo
     {
         Application Application { get; }
 

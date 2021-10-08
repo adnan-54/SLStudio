@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 namespace SLStudio
 {
-    internal class UiSynchronization : Service, IUiSynchronization
+    internal class UiSynchronization : IUiSynchronization
     {
         private readonly Dispatcher dispatcher;
 

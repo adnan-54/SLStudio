@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SLStudio.Web.Api
 {
-    internal class RequestFactory : Service, IRequestFactory
+    internal class RequestFactory : IRequestFactory
     {
         public ApiRequest CreateRequest(RequestOptions options, HttpMethod method)
         {

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SLStudio
 {
-    internal class ModuleFinder : Service, IModuleFinder
+    internal class ModuleFinder : IModuleFinder
     {
         private static readonly ILogger logger = LogManager.GetLogger<ModuleFinder>();
 

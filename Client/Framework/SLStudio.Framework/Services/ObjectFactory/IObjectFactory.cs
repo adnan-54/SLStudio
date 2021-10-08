@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IObjectFactory : IService
+    public interface IObjectFactory
     {
         TObject Create<TObject>()
                where TObject : class;

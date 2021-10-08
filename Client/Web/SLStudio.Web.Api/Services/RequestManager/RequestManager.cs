@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio.Web.Api
 {
-    internal class RequestManager : Service, IRequestManager
+    internal class RequestManager : IRequestManager
     {
         private readonly IRequestFactory requestFactory;
         private readonly HttpClient client;

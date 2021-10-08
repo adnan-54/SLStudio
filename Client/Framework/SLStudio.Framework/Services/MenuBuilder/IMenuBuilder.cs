@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IMenuBuilder : IService
+    public interface IMenuBuilder
     {
         IReadOnlyDictionary<string, IMenuItem> Menus { get; }
 

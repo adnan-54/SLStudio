@@ -1,10 +1,10 @@
 ﻿namespace SLStudio
 {
-    internal class ModuleScheduler : Service, IModuleScheduler
+    internal class ModuleScheduler : IModuleScheduler
     {
     }
 
-    public interface IModuleScheduler : IService
+    public interface IModuleScheduler
     {
     }
 }

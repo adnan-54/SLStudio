@@ -1,11 +1,11 @@
-﻿using System;
+﻿using SLStudio.Logging;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
-using SLStudio.Logging;
 
 namespace SLStudio
 {
-    internal class AssemblyLoader : Service, IAssemblyLoader
+    internal class AssemblyLoader : IAssemblyLoader
     {
         private static readonly ILogger logger = LogManager.GetLogger<AssemblyLoader>();
 

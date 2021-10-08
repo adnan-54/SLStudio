@@ -5,7 +5,7 @@ using System.Windows.Threading;
 
 namespace SLStudio
 {
-    internal class ApplicationInfo : Service, IApplicationInfo
+    internal class ApplicationInfo : IApplicationInfo
     {
         public ApplicationInfo(Application application)
         {

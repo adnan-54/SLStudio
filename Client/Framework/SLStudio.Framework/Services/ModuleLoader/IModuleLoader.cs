@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace SLStudio
 {
-    public interface IModuleLoader : IService
+    public interface IModuleLoader
     {
         IEnumerable<IModule> LoadedModules { get; }
 

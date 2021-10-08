@@ -1,11 +1,11 @@
-﻿using System;
+﻿using DevExpress.Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using DevExpress.Mvvm;
 
 namespace SLStudio
 {
-    internal class MenuBuilder : Service, IMenuBuilder
+    internal class MenuBuilder : IMenuBuilder
     {
         private readonly IObjectFactory objectFactory;
         private readonly IMenuItemFactory menuItemFactory;

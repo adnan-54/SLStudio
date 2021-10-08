@@ -2,7 +2,7 @@
 
 namespace SLStudio
 {
-    public interface IModuleFinder : IService
+    public interface IModuleFinder
     {
         IEnumerable<IModule> FindModules();
     }

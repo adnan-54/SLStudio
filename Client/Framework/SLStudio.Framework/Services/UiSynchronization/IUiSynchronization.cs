@@ -4,7 +4,7 @@ using System.Windows.Threading;
 
 namespace SLStudio
 {
-    public interface IUiSynchronization : IService
+    public interface IUiSynchronization
     {
         void Execute(Action action);
 
