@@ -10,6 +10,8 @@ namespace SLStudio
 
         Dispatcher Dispatcher { get; }
 
+        Window MainWindow { get; }
+
         Window CurrentWindow { get; }
 
         void MergeResource(Uri uri);

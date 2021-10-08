@@ -9,6 +9,10 @@ namespace SLStudio
             InitializeComponent();
 
             VersionText.Text = SharedConstants.ProductVersion.ToString(3);
+
+#if DEBUG
+            Topmost = false;
+#endif
         }
 
         void ISplashScreen.UpdateStatus(string status)

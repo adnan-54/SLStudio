@@ -10,14 +10,14 @@ namespace SLStudio
         public ApplicationInfo(Application application)
         {
             Application = application;
+            Application.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
-        public Application Application
-        {
-            get;
-        }
+        public Application Application { get; }
 
         public Dispatcher Dispatcher => Application.Dispatcher;
+
+        public Window MainWindow => Application.MainWindow;
 
         public Window CurrentWindow => GetCurrentWindow();
 
@@ -29,11 +29,7 @@ namespace SLStudio
         private Window GetCurrentWindow()
         {
             var target = Application.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
-
-            if (target is null)
-                target = Application.MainWindow;
-
-            return target;
+            return target is null or ISplashScreen ? MainWindow : target;
         }
     }
 }

@@ -51,7 +51,9 @@ namespace SLStudio
             {
                 view = Activator.CreateInstance(viewType) as Window;
                 view.DataContext = viewModel;
-                view.Owner = applicationInfo.CurrentWindow;
+                var currentWindow = applicationInfo.CurrentWindow;
+                if (currentWindow != view)
+                    view.Owner = currentWindow;
 
                 AttachBehavior(view);
             });
