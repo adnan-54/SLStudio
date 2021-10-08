@@ -9,6 +9,7 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuItem}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
                   UsesItemContainerTemplate="True"
                   ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
                   slstudio:VisibilityHelper.IsVisible="{Binding IsVisible}">
@@ -19,6 +20,7 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuButton}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
                   Command="{Binding Command}"
                   UsesItemContainerTemplate="True"
                   ItemContainerTemplateSelector="{DynamicResource MenuItemTemplateSelector}"
@@ -30,6 +32,7 @@
     <ItemContainerTemplate DataType="{x:Type slstudio:MenuToggle}">
         <MenuItem ItemsSource="{Binding Children}" 
                   Header="{Binding Title}"
+                  Icon="{Binding Icon, Converter={slstudio:ImageSourceConverter}}"
                   IsCheckable="True"
                   IsChecked="{Binding IsChecked}"
                   UsesItemContainerTemplate="True"
