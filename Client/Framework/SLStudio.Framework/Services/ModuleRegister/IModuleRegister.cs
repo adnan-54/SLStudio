@@ -40,7 +40,7 @@ namespace SLStudio
             where TService : class
             where TImplementation : class, TService;
 
-        void ServiceCollection(IServiceCollection serviceContainer);
+        void ServiceContainer(IServiceContainer serviceContainer);
 
         void Custom(Action<IContainer> callback);
     }

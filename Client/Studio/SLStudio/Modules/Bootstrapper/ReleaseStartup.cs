@@ -13,7 +13,7 @@ namespace SLStudio
 
         public ReleaseStartup()
         {
-            var errorReportingService = ErrorReportingModule.ErrorReportingService;
+            var errorReportingService = ErrorReportingModule.ServiceContainer.GetService<IErrorReportingService>();
             ErrorHandler = new ReleaseErrorHandler(errorReportingService);
         }
 

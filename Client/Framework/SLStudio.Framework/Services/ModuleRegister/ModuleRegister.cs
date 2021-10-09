@@ -36,6 +36,7 @@ namespace SLStudio
 
         void IModuleRegister.ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
         {
+            container.Register<TImplementation>(lifeStyle.ToLifestyle());
             container.Register<TService, TImplementation>(lifeStyle.ToLifestyle());
 
             messenger.Send(new ViewModelRegisteredMessage(typeof(TService), typeof(TImplementation)));
@@ -77,20 +78,12 @@ namespace SLStudio
             container.RegisterSingleton<TService, TImplementation>();
         }
 
-        public void ServiceCollection(IServiceCollection serviceContainer)
+        void IModuleRegister.ServiceContainer(IServiceContainer serviceContainer)
         {
-            var servicesDictionary = serviceContainer.GetAll();
-            serviceContainer.Lock();
-
-            foreach (var kvp in servicesDictionary)
-            {
-                var type = kvp.Key;
-                var service = kvp.Value;
-                container.RegisterSingleton(type, service);
-            }
+            serviceContainer.RegisterToContainer(container);
         }
 
-        public void Custom(Action<IContainer> callback)
+        void IModuleRegister.Custom(Action<IContainer> callback)
         {
             callback?.Invoke(container);
         }

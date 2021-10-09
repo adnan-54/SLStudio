@@ -1,17 +1,12 @@
-﻿using System.ComponentModel;
-
-namespace SLStudio.ErrorReporting
+﻿namespace SLStudio.ErrorReporting
 {
     public class ErrorReportingModule : Module
     {
-        private static readonly IServiceCollection serviceCollection = new ErrorReportingServices();
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static IErrorReportingService ErrorReportingService => serviceCollection.Get<IErrorReportingService>();
+        public static readonly IServiceContainer ServiceContainer = new ErrorReportingServices();
 
         protected override void Register(IModuleRegister register)
         {
-            register.ServiceCollection(serviceCollection);
+            register.ServiceContainer(ServiceContainer);
         }
     }
 }

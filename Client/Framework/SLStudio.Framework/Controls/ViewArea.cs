@@ -10,13 +10,13 @@ namespace SLStudio
 
         public ViewArea()
         {
-            viewLocator = IoC.Get<IViewLocator>();
+            viewLocator = IoC.GetInstance<IViewLocator>();
         }
 
         public object ViewModel
         {
-            get { return GetValue(ViewModelProperty); }
-            set { SetValue(ViewModelProperty, value); }
+            get => GetValue(ViewModelProperty);
+            set => SetValue(ViewModelProperty, value);
         }
 
         public static readonly DependencyProperty ViewModelProperty =

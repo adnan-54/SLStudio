@@ -40,8 +40,7 @@ namespace SLStudio
 
         private async void OnApplicationStartup(object sender, StartupEventArgs e)
         {
-            var bootstrapper = Bootstrapper.Create(application, SplashScreen);
-            await bootstrapper.Run();
+            await Bootstrapper.Run(application, SplashScreen);
         }
 
         public static Startup GetStartup()

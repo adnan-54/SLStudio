@@ -5,48 +5,44 @@ namespace SLStudio.Core
 {
     public class Bootstrapper
     {
-        private readonly IServiceCollection serviceCollection;
         private readonly ISplashScreenManager splashScreenManager;
+        private readonly IAssemblyFinder assemblyFinder;
+        private readonly IAssemblyLoader assemblyLoader;
+        private readonly IModuleFinder moduleFinder;
+        private readonly IModuleLoader moduleLoader;
+        private readonly IWindowManager windowManager;
+        private readonly IContainer container;
 
-        public Bootstrapper(IServiceCollection serviceCollection, ISplashScreenManager splashScreenManager)
+        public Bootstrapper(IServiceContainer serviceContainer, ISplashScreenManager splashScreenManager)
         {
-            this.serviceCollection = serviceCollection;
             this.splashScreenManager = splashScreenManager;
+
+            assemblyFinder = serviceContainer.GetService<IAssemblyFinder>();
+            assemblyLoader = serviceContainer.GetService<IAssemblyLoader>();
+            moduleFinder = serviceContainer.GetService<IModuleFinder>();
+            moduleLoader = serviceContainer.GetService<IModuleLoader>();
+            windowManager = serviceContainer.GetService<IWindowManager>();
+            container = serviceContainer.GetService<IContainer>();
         }
 
-        public Task Run()
+        private async Task Run()
         {
-            return Task.Run(RunCore);
-        }
-
-        private async Task RunCore()
-        {
-            var assemblyFinder = serviceCollection.Get<IAssemblyFinder>();
-            var assemblyLoader = serviceCollection.Get<IAssemblyLoader>();
-            var moduleFinder = serviceCollection.Get<IModuleFinder>();
-            var moduleLoader = serviceCollection.Get<IModuleLoader>();
-            var windowManager = serviceCollection.Get<IWindowManager>();
-            var container = serviceCollection.Get<IContainer>();
-
             var assemblies = assemblyFinder.FindAssemblies();
             assemblyLoader.LoadAssemblies(assemblies);
-
             var modules = moduleFinder.FindModules();
             await moduleLoader.LoadModules(modules);
-
             container.Verify();
-
             windowManager.Show<IShell>();
-
             splashScreenManager.Close();
         }
 
-        public static Bootstrapper Create(Application application, ISplashScreen splashScreen)
+        public static Task Run(Application application, ISplashScreen splashScreen)
         {
-            var container = FrameworkModule.CreateServiceCollection(application);
-            var splashScreenManager = container.Get<ISplashScreenManager>();
+            var container = FrameworkModule.GetServiceContainer(application);
+            var splashScreenManager = container.GetService<ISplashScreenManager>();
             splashScreenManager.SetSplashScreen(splashScreen);
-            return new Bootstrapper(container, splashScreenManager);
+            var bootstrapper = new Bootstrapper(container, splashScreenManager);
+            return Task.Run(bootstrapper.Run);
         }
     }
 }

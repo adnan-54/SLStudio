@@ -2,11 +2,11 @@
 
 namespace SLStudio.ErrorReporting
 {
-    internal class ErrorReportingServices : ServiceCollection
+    internal class ErrorReportingServices : ServiceContainer
     {
-        protected override void RegisterServices()
+        protected override void Initialize()
         {
-            var reportExceptionApi = WebApiModule.ReportExceptionApi;
+            var reportExceptionApi = ApiModule.ServiceContainer.GetService<IReportExceptionApi>();
             var errorReportingService = new ErrorReportingService(reportExceptionApi) as IErrorReportingService;
 
             RegisterService(errorReportingService);

@@ -1,28 +1,24 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 
 namespace SLStudio
 {
     public class FrameworkModule : Module
     {
-        private static IServiceCollection services;
+        private static IServiceContainer serviceContainer;
 
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public static IServiceCollection CreateServiceCollection(Application application)
+        public static IServiceContainer GetServiceContainer(Application application)
         {
-            if (services != null)
-                throw new InvalidOperationException("Service collection already created.");
-
-            services = new FrameworkServices(application);
-            return services;
+            if (serviceContainer is null)
+                serviceContainer = new FrameworkServices(application);
+            return serviceContainer;
         }
 
         public override int Priority => int.MaxValue;
 
         protected override void Register(IModuleRegister register)
         {
-            register.ServiceCollection(services);
+            register.ServiceContainer(serviceContainer);
             register.RegisterResource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
         }
     }

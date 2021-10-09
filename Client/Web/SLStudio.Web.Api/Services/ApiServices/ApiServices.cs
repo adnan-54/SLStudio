@@ -1,8 +1,8 @@
 ﻿namespace SLStudio.Web.Api
 {
-    internal class ApiServices : ServiceCollection
+    internal class ApiServices : ServiceContainer
     {
-        protected override void RegisterServices()
+        protected override void Initialize()
         {
             var requestFactory = new RequestFactory() as IRequestFactory;
             var requestManager = new RequestManager(requestFactory) as IRequestManager;

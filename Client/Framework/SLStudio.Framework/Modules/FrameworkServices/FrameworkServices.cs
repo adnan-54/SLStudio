@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
+using System.Windows;
 
 namespace SLStudio
 {
-    internal class FrameworkServices : ServiceCollection
+    internal class FrameworkServices : ServiceContainer
     {
         private readonly Application application;
 
@@ -12,7 +12,7 @@ namespace SLStudio
             this.application = application;
         }
 
-        protected override void RegisterServices()
+        protected override void Initialize()
         {
             var applicationInfo = new ApplicationInfo(application) as IApplicationInfo;
             var uiSynchronization = new UiSynchronization(applicationInfo) as IUiSynchronization;
