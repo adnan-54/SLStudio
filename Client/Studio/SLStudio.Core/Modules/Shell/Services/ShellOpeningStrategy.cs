@@ -13,7 +13,6 @@ namespace SLStudio.Core
         {
             this.shell = shell;
             this.applicationInfo = applicationInfo;
-
             shell.Loaded += OnLoaded;
         }
 
@@ -22,12 +21,10 @@ namespace SLStudio.Core
             shell.Loaded -= OnLoaded;
 
             var application = applicationInfo.Application;
-
             var shellWindow = application.Windows.OfType<ShellView>().FirstOrDefault();
+
             shellWindow.Owner = null;
-
             application.MainWindow = shellWindow;
-
             application.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
     }

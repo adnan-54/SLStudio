@@ -3,8 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:slstudio="https://slstudio.app/client/2021/xaml/"
         xmlns:core="clr-namespace:SLStudio.Core"
+        xmlns:slstudio="https://slstudio.app/client/2021/xaml/"
         mc:Ignorable="d" Height="450" Width="800"
         d:DataContext="{d:DesignInstance Type=core:ShellViewModel}">
     <Grid>
@@ -15,8 +15,16 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
+        <!--MainMenu-->
         <slstudio:ViewArea Grid.Row="0" ViewModel="{Binding MainMenu}" />
         
-        <slstudio:ViewArea Grid.Row="4" ViewModel="{Binding StatusBar}" />
+        <!--ToolBar-->
+        <slstudio:ViewArea Grid.Row="1" ViewModel="{Binding ToolBar}" />
+        
+        <!--Workspace-->
+        <slstudio:ViewArea Grid.Row="2" ViewModel="{Binding Workspace}" />
+        
+        <!--StatusBar-->
+        <slstudio:ViewArea Grid.Row="3" ViewModel="{Binding StatusBar}" />
     </Grid>
 </Window>

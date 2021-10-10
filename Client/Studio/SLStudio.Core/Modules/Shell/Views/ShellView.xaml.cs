@@ -7,8 +7,6 @@ namespace SLStudio.Core
         public ShellView()
         {
             InitializeComponent();
-
-            Application.Current.MainWindow = this;
         }
     }
 }

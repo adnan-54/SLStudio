@@ -19,6 +19,14 @@
             //StatusBar
             register.ViewModel<IStatusBar, StatusBarViewModel>(LifeStyle.Singleton);
             register.View<StatusBarView, IStatusBar>();
+
+            //ToolBar
+            register.ViewModel<IToolBar, ToolBarViewModel>(LifeStyle.Singleton);
+            register.View<ToolBarView, IToolBar>();
+
+            //Workspace
+            register.ViewModel<IWorkspace, WorkspaceViewModel>(LifeStyle.Singleton);
+            register.View<WorkspaceView, IWorkspace>();
         }
     }
 }

@@ -10,7 +10,6 @@ namespace SLStudio
         public ApplicationInfo(Application application)
         {
             Application = application;
-            Application.ShutdownMode = ShutdownMode.OnMainWindowClose;
         }
 
         public Application Application { get; }
