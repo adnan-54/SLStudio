@@ -1,0 +1,5 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/SLStudio.Framework;component/Modules/Mvvm/Resources/Styles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

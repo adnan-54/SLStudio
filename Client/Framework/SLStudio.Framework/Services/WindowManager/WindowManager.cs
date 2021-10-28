@@ -1,70 +1,41 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SLStudio
 {
     internal class WindowManager : IWindowManager
     {
-        private readonly IApplicationInfo applicationInfo;
+        private readonly IViewModelFactory viewModelFactory;
+        private readonly IViewFactory viewFactory;
         private readonly IUiSynchronization uiSynchronization;
-        private readonly IObjectFactory objectFactory;
-        private readonly IViewLocator viewLocator;
 
-        public WindowManager(IApplicationInfo applicationInfo, IUiSynchronization uiSynchronization, IObjectFactory objectFactory, IViewLocator viewLocator)
+        public WindowManager(IViewModelFactory viewModelFactory, IViewFactory viewFactory, IUiSynchronization uiSynchronization)
         {
-            this.applicationInfo = applicationInfo;
+            this.viewModelFactory = viewModelFactory;
+            this.viewFactory = viewFactory;
             this.uiSynchronization = uiSynchronization;
-            this.objectFactory = objectFactory;
-            this.viewLocator = viewLocator;
         }
 
         TViewModel IWindowManager.Show<TViewModel>()
         {
-            Create<TViewModel>(out var view, out var viewModel);
-
+            (var view, var viewModel) = Create<TViewModel>();
             uiSynchronization.Execute(() => view.Show());
-
             return viewModel;
         }
 
         TViewModel IWindowManager.ShowDialog<TViewModel>()
         {
-            Create<TViewModel>(out var view, out var viewModel);
-
+            (var view, var viewModel) = Create<TViewModel>();
             uiSynchronization.Execute(() => view.ShowDialog());
-
             return viewModel;
         }
 
-        private void Create<TViewModel>(out Window view, out TViewModel viewModel) where TViewModel : class, IWindowViewModel
+        private (Window window, TViewModel viewModel) Create<TViewModel>()
+            where TViewModel : class, IWindowViewModel
         {
-            viewModel = objectFactory.Create<TViewModel>();
-            var viewType = viewLocator.LocateWindow<TViewModel>();
-            view = CreateWindow(viewModel, viewType);
-        }
+            var viewModel = viewModelFactory.Create<TViewModel>();
+            var view = viewFactory.Create<Window>(viewModel);
 
-        private Window CreateWindow(IWindowViewModel viewModel, Type viewType)
-        {
-            Window view = null;
-
-            uiSynchronization.Execute(() =>
-            {
-                view = Activator.CreateInstance(viewType) as Window;
-                view.DataContext = viewModel;
-                var currentWindow = applicationInfo.CurrentWindow;
-                if (currentWindow != view)
-                    view.Owner = currentWindow;
-
-                AttachBehavior(view);
-            });
-
-            return view;
-        }
-
-        private void AttachBehavior(Window view)
-        {
-            var behavior = new WindowBehavior(uiSynchronization);
-            behavior.Attach(view);
+            return (view, viewModel);
         }
     }
 }

@@ -1,59 +1,47 @@
 ﻿using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
+using System.Linq;
 
 namespace SLStudio
 {
     internal class ViewLocator : IViewLocator
     {
-        private readonly IViewModelLocator viewModelLocator;
-        private readonly Dictionary<Type, Type> views;
-        private readonly Dictionary<Type, Type> windows;
+        private record ViewDescriptor(Type ViewType, Type ViewModelType);
+        private readonly IViewModelResolver viewModelResolver;
+        private readonly List<ViewDescriptor> descriptions;
 
-        public ViewLocator(IViewModelLocator viewModelLocator, IMessenger messenger)
+        public ViewLocator(IViewModelResolver viewModelResolver, IMessenger messenger)
         {
-            this.viewModelLocator = viewModelLocator;
-            views = new Dictionary<Type, Type>();
-            windows = new Dictionary<Type, Type>();
-
+            this.viewModelResolver = viewModelResolver;
+            descriptions = new();
             messenger.Register<ViewRegisteredMessage>(this, OnViewRegistered);
         }
 
-        public Type LocateView(Type viewModelType)
+        public Type Locate(object viewModel)
         {
-            viewModelType = viewModelLocator.LocateFromViewModel(viewModelType);
-
-            if (views.TryGetValue(viewModelType, out var viewType))
-                return viewType;
-            throw new ArgumentException($"Could not find a view for '{viewModelType.Name}'");
+            var viewModelType = viewModelResolver.Resolve(viewModel.GetType());
+            return Locate(viewModelType);
         }
 
-        Type IViewLocator.LocateView<TViewModel>()
+        Type IViewLocator.Locate<TViewModel>()
         {
-            var viewModelType = typeof(TViewModel);
-
-            return LocateView(viewModelType);
+            return Locate(typeof(TViewModel));
         }
 
-        Type IViewLocator.LocateWindow<TViewModel>()
+        public Type Locate(Type viewModelType)
         {
-            var viewModelType = viewModelLocator.LocateFromViewModel(typeof(TViewModel));
-
-            if (windows.TryGetValue(viewModelType, out var windowType))
-                return windowType;
-
-            throw new ArgumentException($"Could not find a window for '{viewModelType.Name}'");
+            var descriptor = descriptions.FirstOrDefault(d => d.ViewModelType == viewModelType);
+            if (descriptor is null)
+                throw new InvalidOperationException($"Could not find a view for '{viewModelType.Name}'");
+            return descriptor.ViewType;
         }
 
         private void OnViewRegistered(ViewRegisteredMessage message)
         {
-            if (message.ViewType.IsAssignableTo(typeof(Window)))
-                windows.Add(message.ViewModelType, message.ViewType);
-            else
-            if (message.ViewType.IsAssignableTo(typeof(UserControl)))
-                views.Add(message.ViewModelType, message.ViewType);
+            var viewType = message.ViewType;
+            var viewModelType = message.ViewModelType;
+            descriptions.Add(new(viewType, viewModelType));
         }
     }
 }

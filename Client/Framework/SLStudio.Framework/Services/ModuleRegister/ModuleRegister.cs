@@ -16,7 +16,7 @@ namespace SLStudio
             this.messenger = messenger;
         }
 
-        void IModuleRegister.RegisterResource(Uri uri)
+        void IModuleRegister.Resource(Uri uri)
         {
             applicationInfo.MergeResource(uri);
         }
@@ -30,15 +30,13 @@ namespace SLStudio
         void IModuleRegister.ViewModel<TConcrete>(LifeStyle lifeStyle)
         {
             container.Register<TConcrete>(lifeStyle.ToLifestyle());
-
-            messenger.Send(new ViewModelRegisteredMessage(typeof(TConcrete), typeof(TConcrete)));
+            messenger.Send(new ViewModelRegisteredMessage(typeof(TConcrete)));
         }
 
         void IModuleRegister.ViewModel<TService, TImplementation>(LifeStyle lifeStyle)
         {
             container.Register<TImplementation>(lifeStyle.ToLifestyle());
             container.Register<TService, TImplementation>(lifeStyle.ToLifestyle());
-
             messenger.Send(new ViewModelRegisteredMessage(typeof(TService), typeof(TImplementation)));
         }
 
@@ -46,7 +44,6 @@ namespace SLStudio
         {
             var viewType = typeof(TView);
             var viewModelType = typeof(TViewModel);
-
             messenger.Send(new ViewRegisteredMessage(viewType, viewModelType));
         }
 
@@ -54,7 +51,6 @@ namespace SLStudio
         {
             var windowType = typeof(TWindow);
             var viewModelType = typeof(TViewModel);
-
             messenger.Send(new ViewRegisteredMessage(windowType, viewModelType));
         }
 

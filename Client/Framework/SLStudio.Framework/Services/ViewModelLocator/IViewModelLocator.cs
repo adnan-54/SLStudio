@@ -4,8 +4,11 @@ namespace SLStudio
 {
     public interface IViewModelLocator
     {
-        Type LocateFromView(Type viewType);
+        Type Locate(object view);
 
-        Type LocateFromViewModel(Type viewModelType);
+        Type Locate(Type viewType);
+
+        Type Locate<TView>()
+            where TView : class;
     }
 }

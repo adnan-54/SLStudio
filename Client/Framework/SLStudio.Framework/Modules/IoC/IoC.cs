@@ -6,29 +6,34 @@ namespace SLStudio
     public static class IoC
     {
         private static IContainer container;
-
         private static bool IsInitialized => container != null;
 
-        public static object GetInstance(Type service)
+        public static object Get(Type service)
         {
-            return container?.GetInstance(service);
+            if (IsInitialized)
+                return container.GetInstance(service);
+            return default;
         }
 
-        public static TService GetInstance<TService>() where TService : class
+        public static TService Get<TService>() where TService : class
         {
-            return container?.GetInstance(typeof(TService)) as TService;
+            if (IsInitialized)
+                return container.GetInstance(typeof(TService)) as TService;
+            return default;
         }
 
-        public static IEnumerable<object> GetAllInstances(Type service)
+        public static IEnumerable<object> GetAll(Type service)
         {
-            return container?.GetAllInstances(service);
+            if (IsInitialized)
+                return container.GetAllInstances(service);
+            return default;
+
         }
 
         internal static void Initialize(IContainer container)
         {
-            if (IsInitialized)
-                return;
-            IoC.container = container;
+            if (!IsInitialized)
+                IoC.container = container;
         }
     }
 }

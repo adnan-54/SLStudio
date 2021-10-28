@@ -1,4 +1,6 @@
-﻿namespace SLStudio.Core
+﻿using SLStudio.Core.Modules.StartPage;
+
+namespace SLStudio.Core
 {
     internal class ShellViewModel : WindowViewModel, IShell
     {
@@ -9,7 +11,14 @@
             Workspace = workspace;
             StatusBar = statusBar;
 
-            DisplayName = "SLStudio";
+            Loaded += ShellViewModel_Loaded;
+
+            Title = "SLStudio";
+        }
+
+        private void ShellViewModel_Loaded(object sender, System.EventArgs e)
+        {
+            Workspace.Show(new StartPageViewModel());
         }
 
         public IMainMenu MainMenu { get; }

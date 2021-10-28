@@ -1,8 +1,6 @@
-﻿using System.Windows;
-
-namespace SLStudio.Core
+﻿namespace SLStudio.Core
 {
-    public partial class ShellView : Window
+    public partial class ShellView
     {
         public ShellView()
         {

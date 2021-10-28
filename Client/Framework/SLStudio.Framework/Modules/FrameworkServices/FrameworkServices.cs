@@ -29,8 +29,11 @@ namespace SLStudio
             var moduleScheduler = new ModuleScheduler() as IModuleScheduler;
             var moduleLoader = new ModuleLoader(moduleRegister, moduleScheduler, objectFactory) as IModuleLoader;
             var viewModelLocator = new ViewModelLocator(messenger) as IViewModelLocator;
-            var viewLocator = new ViewLocator(viewModelLocator, messenger) as IViewLocator;
-            var windowManager = new WindowManager(applicationInfo, uiSynchronization, objectFactory, viewLocator) as IWindowManager;
+            var viewModelResolver = new ViewModelResolver(messenger) as IViewModelResolver;
+            var viewLocator = new ViewLocator(viewModelResolver, messenger) as IViewLocator;
+            var viewModelFactory = new ViewModelFactory(viewModelResolver, objectFactory) as IViewModelFactory;
+            var viewFactory = new ViewFactory(viewLocator, viewModelFactory, uiSynchronization) as IViewFactory;
+            var windowManager = new WindowManager(viewModelFactory, viewFactory, uiSynchronization) as IWindowManager;
 
             RegisterService(applicationInfo);
             RegisterService(uiSynchronization);
@@ -39,6 +42,7 @@ namespace SLStudio
             RegisterService(assemblyLoader);
             RegisterService(moduleFinder);
             RegisterService(container);
+            RegisterService(messenger);
             RegisterService(moduleRegister);
             RegisterService(objectFactory);
             RegisterService(menuItemFactory);
@@ -46,9 +50,11 @@ namespace SLStudio
             RegisterService(moduleScheduler);
             RegisterService(moduleLoader);
             RegisterService(viewModelLocator);
+            RegisterService(viewModelResolver);
             RegisterService(viewLocator);
+            RegisterService(viewModelFactory);
+            RegisterService(viewFactory);
             RegisterService(windowManager);
-            RegisterService(messenger);
 
             IoC.Initialize(container);
         }

@@ -19,7 +19,11 @@ namespace SLStudio
         protected override void Register(IModuleRegister register)
         {
             register.ServiceContainer(serviceContainer);
-            register.RegisterResource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
+            register.Resource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
+
+            //Workspace
+            register.ViewModel<IWorkspace, WorkspaceViewModel>(LifeStyle.Singleton);
+            register.View<WorkspaceView, IWorkspace>();
         }
     }
 }

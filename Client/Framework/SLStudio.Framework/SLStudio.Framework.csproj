@@ -9,9 +9,11 @@
 	<ItemGroup>
 		<Compile Include="..\..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
 		<Compile Include="..\..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
+		<Compile Include="..\..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Dirkster.AvalonDock" Version="4.60.0" />
 		<PackageReference Include="SharpVectors" Version="1.7.6" />
 		<PackageReference Include="SimpleInjector" Version="5.2.1" />
 	</ItemGroup>

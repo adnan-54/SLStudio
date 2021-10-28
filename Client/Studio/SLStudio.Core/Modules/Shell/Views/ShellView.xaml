@@ -16,15 +16,15 @@
         </Grid.RowDefinitions>
 
         <!--MainMenu-->
-        <slstudio:ViewArea Grid.Row="0" ViewModel="{Binding MainMenu}" />
+        <slstudio:View Grid.Row="0" ViewModel="{Binding MainMenu}" />
         
         <!--ToolBar-->
-        <slstudio:ViewArea Grid.Row="1" ViewModel="{Binding ToolBar}" />
+        <slstudio:View Grid.Row="1" ViewModel="{Binding ToolBar}" />
         
         <!--Workspace-->
-        <slstudio:ViewArea Grid.Row="2" ViewModel="{Binding Workspace}" />
+        <slstudio:View Grid.Row="2" ViewModel="{Binding Workspace}" />
         
         <!--StatusBar-->
-        <slstudio:ViewArea Grid.Row="3" ViewModel="{Binding StatusBar}" />
+        <slstudio:View Grid.Row="3" ViewModel="{Binding StatusBar}" />
     </Grid>
 </Window>

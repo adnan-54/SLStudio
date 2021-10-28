@@ -19,4 +19,8 @@
 	<ItemGroup>
 		<Folder Include="Shared\" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Dirkster.AvalonDock" Version="4.60.0" />
+	</ItemGroup>
 </Project>

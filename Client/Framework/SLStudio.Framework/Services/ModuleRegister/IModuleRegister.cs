@@ -6,7 +6,7 @@ namespace SLStudio
 {
     public interface IModuleRegister
     {
-        void RegisterResource(Uri uri);
+        void Resource(Uri uri);
 
         void MenuConfiguration<TConfiguratiton>()
             where TConfiguratiton : class, IMenuConfiguration;
@@ -19,7 +19,7 @@ namespace SLStudio
             where TImplementation : class, TService;
 
         void View<TView, TViewModel>()
-            where TView : UserControl
+            where TView : Control
             where TViewModel : class, IViewModel;
 
         void Window<TWindow, TViewModel>()

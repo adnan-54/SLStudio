@@ -1,55 +1,44 @@
 ﻿using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
-using System.Windows.Controls;
+using System.Linq;
 
 namespace SLStudio
 {
     internal class ViewModelLocator : IViewModelLocator
     {
-        private readonly Dictionary<Type, Type> fromViewModels;
-        private readonly Dictionary<Type, Type> fromViews;
+        private record ViewModelDescriptor(Type ViewModelType, Type ViewType);
+        private readonly List<ViewModelDescriptor> descriptions;
 
         public ViewModelLocator(IMessenger messenger)
         {
-            fromViewModels = new Dictionary<Type, Type>();
-            fromViews = new Dictionary<Type, Type>();
-
+            descriptions = new();
             messenger.Register<ViewRegisteredMessage>(this, OnViewRegistered);
-            messenger.Register<ViewModelRegisteredMessage>(this, OnViewModelRegistered);
         }
 
-        public Type LocateFromView(Type viewType)
+        public Type Locate(object view)
         {
-            if (viewType.IsAssignableTo(typeof(UserControl)) && fromViews.TryGetValue(viewType, out var viewModel))
-                return viewModel;
-
-            throw new ArgumentException($"Could not find a view model for '{viewType.Name}'");
+            return Locate(view.GetType());
         }
 
-        public Type LocateFromViewModel(Type viewModelType)
+        Type IViewModelLocator.Locate<TView>()
         {
-            if (viewModelType.IsAssignableTo(typeof(IViewModel)) && fromViewModels.TryGetValue(viewModelType, out var viewModel))
-                return viewModel;
+            return Locate(typeof(TView));
+        }
 
-            throw new ArgumentException($"Could not find a view model for '{viewModelType.Name}'");
+        public Type Locate(Type viewType)
+        {
+            var descriptor = descriptions.FirstOrDefault(d => d.ViewType == viewType);
+            if (descriptor is null)
+                throw new InvalidOperationException($"Could not find a view model for '{viewType.Name}'");
+            return descriptor.ViewModelType;
         }
 
         private void OnViewRegistered(ViewRegisteredMessage message)
         {
-            var viewType = message.ViewType;
             var viewModelType = message.ViewModelType;
-
-            fromViews.TryAdd(viewType, viewModelType);
-        }
-
-        private void OnViewModelRegistered(ViewModelRegisteredMessage message)
-        {
-            var serviceType = message.ServiceType;
-            var implementationType = message.ImplementationType;
-
-            fromViewModels.TryAdd(serviceType, serviceType);
-            fromViewModels.TryAdd(implementationType, serviceType);
+            var viewType = message.ViewType;
+            descriptions.Add(new(viewModelType, viewType));
         }
     }
 }
