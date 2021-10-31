@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Data;
 
 namespace SLStudio
 {
@@ -12,6 +13,8 @@ namespace SLStudio
         protected override void OnAttached()
         {
             base.OnAttached();
+
+            UpdateBindings();
 
             viewModel = AssociatedObject.DataContext as IWindowViewModel;
 
@@ -44,6 +47,12 @@ namespace SLStudio
         private void OnClosed(object sender, EventArgs e)
         {
             viewModel?.OnClosed();
+        }
+
+        private void UpdateBindings()
+        {
+            var titleBinding = new Binding(nameof(IWindowViewModel.Title));
+            AssociatedObject.SetBinding(Window.TitleProperty, titleBinding);
         }
     }
 }
