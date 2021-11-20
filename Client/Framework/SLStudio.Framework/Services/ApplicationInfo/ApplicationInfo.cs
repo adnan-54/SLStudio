@@ -22,7 +22,10 @@ namespace SLStudio
 
         public void MergeResource(Uri uri)
         {
-            Application.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = uri });
+            Application.Resources.MergedDictionaries.Add(new()
+            {
+                Source = uri
+            });
         }
 
         private Window GetCurrentWindow()

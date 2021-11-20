@@ -7,10 +7,9 @@ namespace SLStudio
     {
         public event EventHandler<CancelEventArgs> Hiding;
 
-        public bool IsVisible
+        void IWorkspaceTool.OnHiding(CancelEventArgs e)
         {
-            get => GetValue<bool>();
-            set => SetValue(value);
+            Hiding?.Invoke(this, e);
         }
     }
 }

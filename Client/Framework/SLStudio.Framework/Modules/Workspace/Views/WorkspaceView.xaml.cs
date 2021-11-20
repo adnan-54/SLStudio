@@ -1,8 +1,6 @@
-﻿using System.Windows.Controls;
-
-namespace SLStudio
+﻿namespace SLStudio
 {
-    public partial class WorkspaceView : UserControl
+    public partial class WorkspaceView
     {
         public WorkspaceView()
         {

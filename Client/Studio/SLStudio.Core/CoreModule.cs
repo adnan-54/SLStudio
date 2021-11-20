@@ -7,14 +7,21 @@
             //MenuConfiguration
             register.MenuConfiguration<CoreMenuConfiguration>();
 
-            //MainMenu
-            register.ViewModel<IMainMenu, MainMenuViewModel>(LifeStyle.Singleton);
-            register.View<MainMenuView, IMainMenu>();
 
             //Shell
             register.ViewModel<IShell, ShellViewModel>(LifeStyle.Singleton);
             register.Window<ShellView, IShell>();
             register.Singleton<ShellOpeningStrategy>();
+
+            //StartPage
+            register.ViewModel<IStartPage, StartPageViewModel>(LifeStyle.Singleton);
+            register.View<StartPageView, IStartPage>();
+
+
+            //todo: move this to framework
+            //MainMenu
+            register.ViewModel<IMainMenu, MainMenuViewModel>(LifeStyle.Singleton);
+            register.View<MainMenuView, IMainMenu>();
 
             //StatusBar
             register.ViewModel<IStatusBar, StatusBarViewModel>(LifeStyle.Singleton);

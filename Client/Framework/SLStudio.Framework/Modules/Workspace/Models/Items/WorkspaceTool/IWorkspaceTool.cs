@@ -7,6 +7,6 @@ namespace SLStudio
     {
         event EventHandler<CancelEventArgs> Hiding;
 
-        bool IsVisible { get; }
+        internal void OnHiding(CancelEventArgs e);
     }
 }

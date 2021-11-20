@@ -8,7 +8,6 @@ namespace SLStudio
         private readonly IObjectFactory objectFactory;
         private readonly BindableCollection<IWorkspaceDocument> documents;
         private readonly BindableCollection<IWorkspaceTool> tools;
-        private IWorkspaceService workspaceService;
 
         public WorkspaceViewModel(IObjectFactory objectFactory)
         {
@@ -19,11 +18,11 @@ namespace SLStudio
 
         public IEnumerable<IWorkspaceItem> Workspaces => Documents.Cast<IWorkspaceItem>().Concat(Tools).ToList();
 
-        public IEnumerable<IWorkspaceDocument> Documents => documents;
-
         public IEnumerable<IWorkspaceTool> Tools => tools;
 
-        public IWorkspaceDocument LastFocusedDocument => Documents.FirstOrDefault(d => d.IsLastFocusedDocument);
+        public IEnumerable<IWorkspaceDocument> Documents => documents;
+
+        public IWorkspaceDocument LastFocusedDocument => Documents.FirstOrDefault(d => d.LastFocusedDocument);
 
         public IWorkspaceItem SelectedWorkspace
         {
@@ -31,27 +30,60 @@ namespace SLStudio
             set => SetValue(value);
         }
 
-        protected IWorkspaceService WorkspaceService => workspaceService ??= GetService<IWorkspaceService>();
-
         TWorkspace IWorkspace.Show<TWorkspace>()
         {
             var workspace = objectFactory.Create<TWorkspace>();
-            return ShowCore(workspace) as TWorkspace;
+            ShowCore(workspace);
+            workspace.Activate();
+            return workspace;
         }
 
-        public IEnumerable<IWorkspaceItem> Show(params IWorkspaceItem[] workspaces)
+        public void Show(params IWorkspaceItem[] workspaces)
         {
             foreach (var workspace in workspaces)
-                yield return ShowCore(workspace);
+                ShowCore(workspace);
+
+            workspaces.Last().Activate();
+        }
+
+        public void Close(IWorkspaceItem workspace)
+        {
+            CloseCore(workspace);
         }
 
         public void Close(params IWorkspaceItem[] workspaces)
         {
+            foreach (var workspace in workspaces)
+                CloseCore(workspace);
         }
 
-        private IWorkspaceItem ShowCore(IWorkspaceItem workspace)
+        private void ShowCore(IWorkspaceItem workspace)
         {
-            return workspace;
+            if (workspace is IWorkspaceDocument document)
+                AddDocument(document);
+            else if (workspace is IWorkspaceTool tool)
+                AddTool(tool);
+
+            workspace.Show();
+        }
+
+        private void AddDocument(IWorkspaceDocument document)
+        {
+            if (!documents.Contains(document))
+                documents.Add(document);
+        }
+
+        private void AddTool(IWorkspaceTool tool)
+        {
+            if (!tools.Contains(tool))
+                tools.Add(tool);
+        }
+
+        private void CloseCore(IWorkspaceItem workspace)
+        {
+            if (workspace is IWorkspaceDocument document)
+                documents.Remove(document);
+            workspace.Close();
         }
     }
 }

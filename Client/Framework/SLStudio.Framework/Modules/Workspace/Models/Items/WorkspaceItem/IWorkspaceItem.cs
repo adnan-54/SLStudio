@@ -10,7 +10,9 @@ namespace SLStudio
 
         WorkspacePlacement Placement { get; }
 
-        bool IsActive { get; }
+        bool Active { get; }
+
+        bool Visible { get; }
 
         void Activate();
 

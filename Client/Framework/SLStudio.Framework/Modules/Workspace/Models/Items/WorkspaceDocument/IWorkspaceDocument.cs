@@ -9,6 +9,10 @@ namespace SLStudio
 
         event EventHandler Closed;
 
-        bool IsLastFocusedDocument { get; }
+        bool LastFocusedDocument { get; }
+
+        internal void OnClosing(CancelEventArgs e);
+
+        internal void OnClosed();
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 
 namespace SLStudio
 {
@@ -9,9 +8,7 @@ namespace SLStudio
 
         public static IServiceContainer GetServiceContainer(Application application)
         {
-            if (serviceContainer is null)
-                serviceContainer = new FrameworkServices(application);
-            return serviceContainer;
+            return serviceContainer ??= new FrameworkServices(application);
         }
 
         public override int Priority => int.MaxValue;
@@ -19,7 +16,8 @@ namespace SLStudio
         protected override void Register(IModuleRegister register)
         {
             register.ServiceContainer(serviceContainer);
-            register.Resource(new Uri("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
+            register.Resource(new("pack://application:,,,/SLStudio.Framework;component/Resources/MenuResources.xaml"));
+            register.Resource(new("pack://application:,,,/SLStudio.Framework;component/Modules/Workspace/Resources/WorkspaceResources.xaml"));
 
             //Workspace
             register.ViewModel<IWorkspace, WorkspaceViewModel>(LifeStyle.Singleton);

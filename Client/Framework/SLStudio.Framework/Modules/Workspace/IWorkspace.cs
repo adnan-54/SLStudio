@@ -6,6 +6,10 @@ namespace SLStudio
     {
         IEnumerable<IWorkspaceItem> Workspaces { get; }
 
+        IEnumerable<IWorkspaceTool> Tools { get; }
+
+        IEnumerable<IWorkspaceDocument> Documents { get; }
+
         IWorkspaceDocument LastFocusedDocument { get; }
 
         IWorkspaceItem SelectedWorkspace { get; }
@@ -13,7 +17,9 @@ namespace SLStudio
         TWorkspace Show<TWorkspace>()
             where TWorkspace : class, IWorkspaceItem;
 
-        IEnumerable<IWorkspaceItem> Show(params IWorkspaceItem[] workspaces);
+        void Show(params IWorkspaceItem[] workspaces);
+
+        void Close(IWorkspaceItem workspace);
 
         void Close(params IWorkspaceItem[] workspaces);
     }

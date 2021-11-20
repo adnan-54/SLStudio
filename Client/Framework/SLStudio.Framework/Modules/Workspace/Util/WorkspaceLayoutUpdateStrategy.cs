@@ -13,9 +13,10 @@ namespace SLStudio
 
         public bool BeforeInsertAnchorable(LayoutRoot layout, LayoutAnchorable anchorableToShow, ILayoutContainer destinationContainer)
         {
+            if (!EnsurePanes(layout))
+                return false;
             if (anchorableToShow.Content is not IWorkspaceTool toolItem)
                 return false;
-            EnsurePanes(layout);
 
             switch (toolItem.Placement)
             {
@@ -31,6 +32,7 @@ namespace SLStudio
                 case WorkspacePlacement.Right:
                     rightPane.Children.Add(anchorableToShow);
                     break;
+                case WorkspacePlacement.Document:
                 default:
                     documentPane.Children.Add(anchorableToShow);
                     break;
@@ -46,9 +48,10 @@ namespace SLStudio
 
         public bool BeforeInsertDocument(LayoutRoot layout, LayoutDocument doocumentToShow, ILayoutContainer destinationContainer)
         {
-            if (doocumentToShow.Content is not IWorkspaceDocument documentItem)
+            if (!EnsurePanes(layout))
                 return false;
-            EnsurePanes(layout);
+            if (doocumentToShow.Content is not IWorkspaceDocument)
+                return false;
 
             documentPane.Children.Add(doocumentToShow);
 
@@ -60,20 +63,28 @@ namespace SLStudio
             new WorkspaceDocumentBehavior().Attach(documentShown);
         }
 
-        //todo: try move this to constructor
-        private void EnsurePanes(LayoutRoot layout)
+        private bool EnsurePanes(LayoutRoot layout)
         {
             if (leftPane is not null && topPane is not null && bottomPane is not null && rightPane is not null && documentPane is not null)
-                return;
+                return true;
 
-            var anchorablePanes = layout.Descendents().OfType<LayoutAnchorablePane>();
-            var documentPanes = layout.Descendents().OfType<LayoutDocumentPane>();
+            try
+            {
+                var anchorablePanes = layout.Descendents().OfType<LayoutAnchorablePane>();
+                var documentPanes = layout.Descendents().OfType<LayoutDocumentPane>();
 
-            leftPane = anchorablePanes.First(p => p.Name == "LeftPane");
-            topPane = anchorablePanes.First(p => p.Name == "TopPane");
-            bottomPane = anchorablePanes.First(p => p.Name == "BottomPane");
-            rightPane = anchorablePanes.First(p => p.Name == "RightPane");
-            documentPane = documentPanes.First();
+                leftPane = anchorablePanes.First(p => p.Name == "LeftPane");
+                topPane = anchorablePanes.First(p => p.Name == "TopPane");
+                bottomPane = anchorablePanes.First(p => p.Name == "BottomPane");
+                rightPane = anchorablePanes.First(p => p.Name == "RightPane");
+                documentPane = documentPanes.First();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

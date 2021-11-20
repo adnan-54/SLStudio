@@ -7,6 +7,11 @@ namespace SLStudio
     {
         private IWindowService WindowService => GetService<IWindowService>();
 
+        protected WindowViewModel()
+        {
+            Title = GetType().Name;
+        }
+
         public event CancelEventHandler Closing;
 
         public event EventHandler Closed;
@@ -24,8 +29,8 @@ namespace SLStudio
             get => GetValue<object>();
             protected set
             {
-                SetValue(value);
-                RaisePropertyChanged(nameof(HasResult));
+                if (SetValue(value))
+                    RaisePropertyChanged(nameof(HasResult));
             }
         }
 

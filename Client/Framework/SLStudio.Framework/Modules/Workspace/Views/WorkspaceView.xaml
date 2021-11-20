@@ -11,10 +11,6 @@
     <avalonDock:DockingManager AnchorablesSource="{Binding Tools}"
                                DocumentsSource="{Binding Documents}"
                                ActiveContent="{Binding SelectedWorkspace}">
-        <dxmvvmm:Interaction.Behaviors>
-            <slstudio:WorkspaceService/>
-        </dxmvvmm:Interaction.Behaviors>
-        
         <avalonDock:DockingManager.LayoutUpdateStrategy>
             <slstudio:WorkspaceLayoutUpdateStrategy/>
         </avalonDock:DockingManager.LayoutUpdateStrategy>

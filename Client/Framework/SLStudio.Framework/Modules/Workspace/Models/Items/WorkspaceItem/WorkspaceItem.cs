@@ -7,23 +7,21 @@ namespace SLStudio
         protected WorkspaceItem()
         {
             Id = Guid.NewGuid();
-            Header = new WorkspaceHeader()
-            {
-                Title = "Untitled"
-            };
         }
 
         public Guid Id { get; }
 
-        public IWorkspaceHeader Header
-        {
-            get => GetValue<IWorkspaceHeader>();
-            set => SetValue(value);
-        }
+        public abstract IWorkspaceHeader Header { get; }
 
         public abstract WorkspacePlacement Placement { get; }
 
-        public bool IsActive
+        public bool Active
+        {
+            get => GetValue<bool>();
+            set => SetValue(value);
+        }
+
+        public bool Visible
         {
             get => GetValue<bool>();
             set => SetValue(value);
@@ -31,16 +29,17 @@ namespace SLStudio
 
         public void Activate()
         {
-            IsActive = true;
+            Active = true;
         }
 
-        public void Show()
+        public virtual void Show()
         {
-
+            Visible = true;
         }
 
-        public void Close()
+        public virtual void Close()
         {
+            Visible = false;
         }
     }
 }

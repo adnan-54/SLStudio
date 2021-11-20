@@ -9,8 +9,18 @@ namespace SLStudio
 
         public event EventHandler Closed;
 
-        public bool IsLastFocusedDocument { get; set; }
+        public bool LastFocusedDocument { get; set; }
 
         public override WorkspacePlacement Placement => WorkspacePlacement.Document;
+
+        void IWorkspaceDocument.OnClosing(CancelEventArgs e)
+        {
+            Closing?.Invoke(this, e);
+        }
+
+        void IWorkspaceDocument.OnClosed()
+        {
+            Closed?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
