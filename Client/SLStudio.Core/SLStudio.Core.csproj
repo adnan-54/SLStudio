@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<RootNamespace>SLStudio</RootNamespace>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
+		<Compile Include="..\Solution Items\SharedUsings.cs" Link="Shared\SharedUsings.cs" />
+		<Compile Include="..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Modules\Application\Interfaces\" />
+		<Folder Include="Shared\" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+	</ItemGroup>
+</Project>

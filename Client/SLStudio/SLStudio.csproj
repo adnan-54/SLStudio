@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<OutputType>WinExe</OutputType>
+		<Platforms>AnyCPU;x64;x86</Platforms>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
+		<Compile Include="..\Solution Items\SharedUsings.cs" Link="Shared\SharedUsings.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Shared\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+	</ItemGroup>
+</Project>
