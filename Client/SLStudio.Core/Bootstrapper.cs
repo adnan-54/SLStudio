@@ -10,7 +10,6 @@ public class Bootstrapper
 
     public static int Run()
     {
-        LogManager.Default.Initialize(new(LogLevel.Warning, LogLevel.Debug));
         return 0;
     }
 }

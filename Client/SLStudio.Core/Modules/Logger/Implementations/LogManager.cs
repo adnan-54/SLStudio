@@ -15,7 +15,7 @@ public partial class LogManager : ILogManager
         internalLogger = new InternalLogger(this);
         logsRepository = new LogsRepository(this, internalLogger);
         defaultLogger = new ExternalLogger(this, internalLogger, logsRepository, "Default Logger");
-        defaultConfiguration = new(LogLevel.Information, LogLevel.Information);
+        defaultConfiguration = new(false, false, false, LogLevel.Information, LogLevel.Information);
         currentConfiguration = defaultConfiguration;
     }
 
