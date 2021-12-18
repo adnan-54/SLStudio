@@ -12,12 +12,9 @@ public interface ILogManager
 
     void Initialize(LoggerConfiguration loggerConfiguration);
 
-    ILogger GetLogger(object? name);
+    ILogger GetLogger(string? name);
 
-    ILogger GetLogger<TType>()
-        where TType : class;
-
-    Task RequestDump();
+    Task Dump();
 
     internal void OnLogAdded(Log log);
 }

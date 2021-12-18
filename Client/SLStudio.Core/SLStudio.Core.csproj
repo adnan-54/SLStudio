@@ -15,6 +15,7 @@
 		<Compile Include="..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
 	</ItemGroup>
 	<ItemGroup>
+		<Folder Include="Modules\Application\Interfaces\" />
 		<Folder Include="Modules\Mvvm\Bases\" />
 		<Folder Include="Modules\Mvvm\Implementations\" />
 		<Folder Include="Modules\Mvvm\Interfaces\" />

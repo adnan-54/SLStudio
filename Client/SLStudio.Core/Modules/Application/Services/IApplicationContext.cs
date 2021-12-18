@@ -2,9 +2,16 @@
 
 public interface IApplicationContext
 {
-    int Run();
+    IEnumerable<ViewRegistration> Views { get; }
+}
 
-    void AddSingleton();
+public interface IConfigurationContext
+{
+    void AddViewModel();
 
-    void AddTransient();
+    void AddView<TView, TViewModel>();
+
+    void AddMenuConfiguration<TMenuConiguration>();
+
+    void ScheduleAction();
 }

@@ -1,6 +1,13 @@
-﻿namespace SLStudio;
+﻿using SimpleInjector;
 
-internal class ApplicationContext
+namespace SLStudio;
+
+internal class ApplicationContext : IApplicationContext
 {
+    private readonly Container globalContainer;
+    private readonly Container internalContainer;
 
+    public ApplicationContext()
+    {
+    }
 }

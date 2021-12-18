@@ -1,3 +1,3 @@
 ﻿namespace SLStudio.Logger;
 
-public record LoggerConfiguration(bool WriteToOutput, bool WriteToConsole, bool LogTrace, LogLevel DefaultLogLevel, LogLevel MinimumLogLevel);
+public record LoggerConfiguration(LogLevel DefaultLogLevel, LogLevel MinimumLogLevel);

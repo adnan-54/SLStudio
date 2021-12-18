@@ -4,19 +4,18 @@ namespace SLStudio.Mvvm;
 
 public interface IViewModel : INotifyPropertyChanged
 {
-    
-}
-
-public interface IComponentViewModel : IViewModel
-{
     event EventHandler Loaded;
 
     event EventHandler Unloaded;
 }
 
-public interface IWindowViewModel : IComponentViewModel
+public interface IWindowViewModel : IViewModel
 {
+    event EventHandler<CancelEventArgs> Closing;
 
+    event EventHandler Closed;
+
+    string Title { get; set; }
 }
 
 public interface IDialogViewModel<TResult> : IWindowViewModel

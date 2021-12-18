@@ -8,15 +8,4 @@ public partial class LogManager
     internal static readonly string InternalLoggerSeparator = new('-', 50);
 
     public static readonly ILogManager Default = new LogManager();
-
-    public static ILogger GetLogger(object? name)
-    {
-        return Default.GetLogger(name);
-    }
-
-    public static ILogger GetLogger<TType>()
-        where TType : class
-    {
-        return Default.GetLogger<TType>();
-    }
 }

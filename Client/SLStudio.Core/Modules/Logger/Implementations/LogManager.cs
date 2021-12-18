@@ -15,7 +15,7 @@ public partial class LogManager : ILogManager
         internalLogger = new InternalLogger(this);
         logsRepository = new LogsRepository(this, internalLogger);
         defaultLogger = new ExternalLogger(this, internalLogger, logsRepository, "Default Logger");
-        defaultConfiguration = new(false, false, false, LogLevel.Information, LogLevel.Information);
+        defaultConfiguration = new(LogLevel.Information, LogLevel.Information);
         currentConfiguration = defaultConfiguration;
     }
 
@@ -36,27 +36,21 @@ public partial class LogManager : ILogManager
         Initialized?.Invoke(this, EventArgs.Empty);
     }
 
-    ILogger ILogManager.GetLogger(object? name)
+    ILogger ILogManager.GetLogger(string? name)
     {
-        if (name is null)
+        if (string.IsNullOrEmpty(name))
             return defaultLogger;
 
-        var loggerName = name.ToString()!;
-        if (!cache.TryGetValue(loggerName, out var logger))
+        if (!cache.TryGetValue(name, out var logger))
         {
-            logger = new ExternalLogger(this, internalLogger, logsRepository, loggerName);
-            cache.Add(loggerName, logger);
+            logger = new ExternalLogger(this, internalLogger, logsRepository, name);
+            cache.Add(name, logger);
         }
 
         return logger;
     }
 
-    ILogger ILogManager.GetLogger<TType>()
-    {
-        return Default.GetLogger(typeof(TType).Name);
-    }
-
-    public Task RequestDump()
+    public Task Dump()
     {
         return logsRepository.DumpQueue();
     }
