@@ -11,7 +11,7 @@ public static class LogManagerExtensions
 
     public static ILogger GetLogger(this ILogManager logManager, [CallerFilePath] string? name = default)
     {
-        if (!string.IsNullOrEmpty(name))
+        if (!string.IsNullOrEmpty(name) && name.Contains(Path.DirectorySeparatorChar) && name.EndsWith(".cs"))
             name = Path.GetFileNameWithoutExtension(name);
         return logManager.GetLogger(name);
     }

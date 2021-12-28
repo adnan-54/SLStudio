@@ -1,4 +1,6 @@
-﻿namespace SLStudio.Logger;
+﻿using System.Runtime.CompilerServices;
+
+namespace SLStudio.Logger;
 
 public partial class LogManager
 {
@@ -8,4 +10,16 @@ public partial class LogManager
     internal static readonly string InternalLoggerSeparator = new('-', 50);
 
     public static readonly ILogManager Default = new LogManager();
+
+    public static ILogger GetLogger([CallerFilePath] string? name = default)
+    {
+        if (!string.IsNullOrEmpty(name) && name.Contains(Path.DirectorySeparatorChar) && name.EndsWith(".cs"))
+            name = Path.GetFileNameWithoutExtension(name);
+        return Default.GetLogger(name);
+    }
+
+    public static ILogger GetLogger<TType>() where TType : class
+    {
+        return GetLogger(nameof(TType));
+    }
 }
