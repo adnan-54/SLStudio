@@ -1,42 +1,16 @@
-﻿
+﻿namespace SLStudio.Logger;
 
-namespace SLStudio.Logger;
-
-internal class InternalLogger : ILogger
+internal class InternalLogger : LoggerBase
 {
-    private readonly ILogManager logManager;
+    public InternalLogger(ILogManager logManager) : base(logManager, "Internal Logger") { }
 
-    public InternalLogger(ILogManager logManager)
+    protected override Task Write(Log log)
     {
-        this.logManager = logManager;
-        Name = "Internal Logger";
-    }
+        var stringBuilder = new StringBuilder();
+        stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
+        stringBuilder.AppendLine(log.ToString());
+        stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
 
-    public string Name { get; }
-
-    public void Log(object message)
-    {
-        Log(message, null);
-    }
-
-    public async void Log(object message, LogLevel? level)
-    {
-        if (string.IsNullOrEmpty(message?.ToString()))
-            return;
-
-        try
-        {
-            var log = new Log(Guid.NewGuid(), Name, message.ToString()!, LogLevel.Error, DateTime.Now, Environment.StackTrace);
-
-            var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
-            stringBuilder.AppendLine(log.ToString());
-            stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
-
-            await File.AppendAllTextAsync(LogManager.LogsOutputFile, stringBuilder.ToString());
-
-            logManager.OnLogAdded(log);
-        }
-        catch { }
+        return File.AppendAllTextAsync(LogManager.LogsOutputFile, stringBuilder.ToString());
     }
 }

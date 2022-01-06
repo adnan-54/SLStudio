@@ -4,7 +4,7 @@ public interface ILogger
 {
     string Name { get; }
 
-    void Log(object message);
+    bool IsEnabled(LogLevel logLevel);
 
-    void Log(object message, LogLevel? level);
+    void Log(string message, LogLevel level);
 }
