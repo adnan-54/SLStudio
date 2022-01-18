@@ -4,39 +4,37 @@ namespace SLStudio;
 
 internal class Startup
 {
-    private readonly IApplication application;
-    private readonly ILogManager logManager;
+    private readonly IContainerHost host;
 
-    public Startup(IApplication application, ILogManager logManager)
+    public Startup(IContainerHost host)
     {
-        this.application = application;
-        this.logManager = logManager;
+        this.host = host;
     }
 
-    public async Task Configure()
+    public void Configure()
     {
-        var builder = new ContainerBuilder();
-        RegisterServices(builder);
-        var container = builder.Build();
-        
-        ConfigureLogger();
+        var container = host.Container;
+        var serviceProvider = host.ServiceProvider;
 
-        //Load Modules from ./SLStudio.*.dll
-        //Load Modules from ./Modules/*.dll
-        //Parse Commandline Args
+        var assemblyLoader = serviceProvider.GetService<IAssemblyLoader>()!;
+        var moduleLoader = serviceProvider.GetService<IModuleLoader>()!;
+
+        assemblyLoader.LoadAssemblies();
+        moduleLoader.LoadModules();
+
+        container.Verify();
+
+        IoC.Initialize(container);
+
+        //Todo:
         //Load Settings
         //Load Language
         //Load Theme
 
-        container.Verify();
-    }
+        var logManager = serviceProvider.GetService<ILogManager>()!;
+        logManager.Initialize(new(LogLevel.Information, LogLevel.Debug));
 
-    private void RegisterServices(ContainerBuilder builder)
-    {
-        builder.AddService();
-    }
-
-    private void ConfigureLogger()
-    {
+        //Todo:
+        //Run task scheduler
     }
 }

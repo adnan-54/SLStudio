@@ -7,9 +7,9 @@ internal class InternalLogger : LoggerBase
     protected override Task Write(Log log)
     {
         var stringBuilder = new StringBuilder();
-        stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
+        stringBuilder.AppendLine(LogManager.LineSeparator);
         stringBuilder.AppendLine(log.ToString());
-        stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
+        stringBuilder.AppendLine(LogManager.LineSeparator);
 
         return File.AppendAllTextAsync(LogManager.LogsOutputFile, stringBuilder.ToString());
     }

@@ -50,9 +50,9 @@ public partial class LogManager : ILogManager
         return logger;
     }
 
-    public Task Dump()
+    public void Dump()
     {
-        return logsRepository.DumpQueue();
+        logsRepository.DumpQueue();
     }
 
     void ILogManager.OnLogAdded(Log log)

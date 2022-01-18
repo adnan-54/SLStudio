@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 namespace SLStudio.Logger;
+
 internal partial class LogsRepository : ILogsRepository
 {
     private readonly ILogManager logManager;
@@ -102,31 +103,31 @@ internal partial class LogsRepository : ILogsRepository
         }
     }
 
-    Task ILogsRepository.DumpQueue()
+    void ILogsRepository.DumpQueue()
     {
         try
         {
             var stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
-            stringBuilder.AppendLine("Emergency dump requested");
+            stringBuilder.AppendLine(LogManager.LineSeparator);
+            stringBuilder.AppendLine($"Emergency dump requested at {DateTime.Now}");
             stringBuilder.AppendLine($"Dumping all {logsCache.Count} log(s) in cache:");
             stringBuilder.AppendLine();
 
             foreach (var log in logsCache)
+            {
                 stringBuilder.Append(log.ToString());
+                stringBuilder.AppendLine();
+            }
 
-            stringBuilder.AppendLine();
-            stringBuilder.AppendLine(LogManager.InternalLoggerSeparator);
+            stringBuilder.AppendLine(LogManager.LineSeparator);
 
-            return File.AppendAllTextAsync(LogManager.LogsOutputFile, stringBuilder.ToString());
+            File.AppendAllText(LogManager.LogsOutputFile, stringBuilder.ToString());
 
         }
         catch (Exception ex)
         {
             internalLogger.Exception(ex);
         }
-
-        return Task.CompletedTask;
     }
 
     public void Dispose()

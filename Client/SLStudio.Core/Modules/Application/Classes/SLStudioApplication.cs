@@ -5,16 +5,20 @@ namespace SLStudio;
 
 internal class SLStudioApplication : IApplication
 {
+    [DllImport("user32.dll")]
+    private static extern IntPtr GetActiveWindow();
     private static readonly ILogger logger = LogManager.GetLogger();
 
     private readonly Application application;
     private readonly SplashScreenView splashScreen;
+    private readonly ILogManager logManager;
     private bool isRunning;
 
     public SLStudioApplication(string[] args)
     {
         application = new();
         splashScreen = new();
+        logManager = LogManager.Default;
 
         Args = args;
         Dispatcher = new SLStudioDispatcher(application.Dispatcher);
@@ -41,7 +45,6 @@ internal class SLStudioApplication : IApplication
 
         splashScreen.Show();
         application.Startup += OnApplicationStartup;
-        application.Exit += OnApplicationExit;
 
         try
         {
@@ -50,9 +53,13 @@ internal class SLStudioApplication : IApplication
         }
         catch (Exception ex)
         {
+            logger.Fatal("A fatal exception occurred. Application runtime terminating.");
             logger.Exception(ex);
-            LogManager.Default.Dump();
             throw;
+        }
+        finally
+        {
+            logManager.Dump();
         }
     }
 
@@ -68,11 +75,6 @@ internal class SLStudioApplication : IApplication
         return resource is not null;
     }
 
-    private void OnApplicationExit(object sender, ExitEventArgs e)
-    {
-        LogManager.Default.Dump();
-    }
-
     private IWindowViewModel GetMainWindow()
     {
         if (application.MainWindow.DataContext is IWindowViewModel viewModel)
@@ -80,20 +82,22 @@ internal class SLStudioApplication : IApplication
         throw new ApplicationException("Could not find the application main window");
     }
 
-    [DllImport("user32.dll")]
-    private static extern IntPtr GetActiveWindow();
-
-    private IWindowViewModel GetCurrentWindow()
+    private static IWindowViewModel GetCurrentWindow()
     {
-        var handle = GetActiveWindow();
-        var hwndSource = HwndSource.FromHwnd(handle);
-        var window = hwndSource?.RootVisual as Window;
+        try
+        {
+            var handle = GetActiveWindow();
+            var hwndSource = HwndSource.FromHwnd(handle);
+            var window = hwndSource?.RootVisual as Window;
 
+            if (window is not null && window.DataContext is IWindowViewModel viewModel)
+                return viewModel;
+        }
+        catch (Exception ex)
+        {
+            logger.Exception(ex);
+        }
 
-        var windows = application.Windows.OfType<Window>();
-        var window = windows.FirstOrDefault(w => w.IsActive);
-        if (window is not null && window.DataContext is IWindowViewModel viewModel)
-            return viewModel;
         throw new ApplicationException("Could not find the application current window");
     }
 
@@ -111,9 +115,10 @@ internal class SLStudioApplication : IApplication
 
     private async void OnApplicationStartup(object sender, StartupEventArgs e)
     {
-        var startup = new Startup(this, LogManager.Default);
-        await startup.Configure();
-
+        var host = new ContainerHost(this, logManager);
+        var startup = new Startup(host);
+        await Task.Run(startup.Configure);
+        await Task.Delay(TimeSpan.FromSeconds(25));
         var shell = new Window();
         shell.Show();
         application.MainWindow = shell;

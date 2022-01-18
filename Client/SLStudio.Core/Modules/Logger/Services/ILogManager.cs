@@ -3,7 +3,6 @@
 public interface ILogManager
 {
     event EventHandler Initialized;
-
     event EventHandler<Log> LogAdded;
 
     LoggerConfiguration Configuration { get; }
@@ -14,7 +13,7 @@ public interface ILogManager
 
     ILogger GetLogger(string? name);
 
-    Task Dump();
+    void Dump();
 
     internal void OnLogAdded(Log log);
 }

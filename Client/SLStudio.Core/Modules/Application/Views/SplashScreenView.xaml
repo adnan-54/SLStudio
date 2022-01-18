@@ -8,5 +8,7 @@
         <TextBlock>
             Carregando...
         </TextBlock>
+
+        <ProgressBar IsIndeterminate="True"/>
     </Grid>
 </Window>

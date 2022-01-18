@@ -12,5 +12,5 @@ public interface ILogsRepository : IDisposable
 
     Task DeleteLogs();
 
-    internal Task DumpQueue();
+    internal void DumpQueue();
 }

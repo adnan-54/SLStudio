@@ -14,5 +14,5 @@ public interface IModule
 
     int Priority { get; }
 
-    void Configure(IApplicationContext context);
+    void Configure(IConfigurationContext context);
 }
