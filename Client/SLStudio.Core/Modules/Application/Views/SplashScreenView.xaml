@@ -3,12 +3,37 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" Title="Splash Screen" Height="450" Width="800">
-    <Grid>
-        <TextBlock>
-            Carregando...
-        </TextBlock>
+        mc:Ignorable="d" Title="SLStudio"
+        ResizeMode="NoResize" WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ShowInTaskbar="False" Topmost="True"
+        Height="300" Width="600"
+        Background="Transparent" Foreground="#FFF1F1F1"
+        AllowsTransparency="True">
+    <Grid Background="#FF007ACC" Margin="12">
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="6" Color="Black" Direction="315" Opacity="0.4" ShadowDepth="5" />
+        </Grid.Effect>
 
-        <ProgressBar IsIndeterminate="True"/>
+        <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center">
+            <!--Title-->
+            <TextBlock Text="SLStudio"
+                       FontSize="80" 
+                       FontFamily="Arial" 
+                       FontWeight="Black" />
+
+            <!--Version-->
+            <TextBlock x:Name="VersionText" 
+                       Text="0.0.0" 
+                       FontSize="18"
+                       VerticalAlignment="Bottom" 
+                       HorizontalAlignment="Right" />
+        </StackPanel>
+
+        <!--Progress-->
+        <ProgressBar VerticalAlignment="Bottom" Height="1"
+                     IsIndeterminate="True" BorderThickness="0"
+                     Background="Transparent" Foreground="#FFF1F1F1" />
     </Grid>
 </Window>

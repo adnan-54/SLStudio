@@ -1,4 +1,4 @@
-﻿namespace SLStudio.Mvvm;
+﻿namespace SLStudio;
 
 public class ResultChangedEventArgs<TResult> : EventArgs
 {

@@ -11,14 +11,12 @@ internal class SLStudioApplication : IApplication
 
     private readonly Application application;
     private readonly SplashScreenView splashScreen;
-    private readonly ILogManager logManager;
     private bool isRunning;
 
     public SLStudioApplication(string[] args)
     {
         application = new();
         splashScreen = new();
-        logManager = LogManager.Default;
 
         Args = args;
         Dispatcher = new SLStudioDispatcher(application.Dispatcher);
@@ -59,7 +57,7 @@ internal class SLStudioApplication : IApplication
         }
         finally
         {
-            logManager.Dump();
+            LogManager.Default.Dump();
         }
     }
 
@@ -115,10 +113,11 @@ internal class SLStudioApplication : IApplication
 
     private async void OnApplicationStartup(object sender, StartupEventArgs e)
     {
-        var host = new ContainerHost(this, logManager);
+        var host = new ContainerHost(this);
         var startup = new Startup(host);
+
         await Task.Run(startup.Configure);
-        await Task.Delay(TimeSpan.FromSeconds(25));
+
         var shell = new Window();
         shell.Show();
         application.MainWindow = shell;
