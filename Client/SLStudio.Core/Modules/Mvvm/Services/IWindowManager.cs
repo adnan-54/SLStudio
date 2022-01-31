@@ -2,16 +2,22 @@
 
 public interface IWindowManager
 {
-    void ShowModal<TViewModel>()
+    IEnumerable<IWindowInfo> Windows { get; }
+
+    IWindowInfo? MainWindow { get; }
+
+    IWindowInfo? CurrentWindow { get; }
+
+    TViewModel ShowModal<TViewModel>()
         where TViewModel : class, IWindowViewModel;
 
-    void ShowModal<TViewModel>(TViewModel viewModel)
+    TViewModel ShowModal<TViewModel>(TViewModel viewModel)
         where TViewModel : class, IWindowViewModel;
 
-    void ShowDialog<TViewModel>()
+    TViewModel ShowDialog<TViewModel>()
         where TViewModel : class, IWindowViewModel;
 
-    void ShowDialog<TViewModel>(TViewModel viewModel)
+    TViewModel ShowDialog<TViewModel>(TViewModel viewModel)
         where TViewModel : class, IWindowViewModel;
 
     void Activate<TViewModel>(TViewModel viewModel)
@@ -28,14 +34,4 @@ public interface IWindowManager
 
     void Close<TViewModel>(TViewModel viewModel)
         where TViewModel : class, IWindowViewModel;
-}
-
-internal interface IViewModelCache
-{
-
-}
-
-internal interface IViewCache
-{
-
 }

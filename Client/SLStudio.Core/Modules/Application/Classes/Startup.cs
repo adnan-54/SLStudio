@@ -15,16 +15,13 @@ internal class Startup
     {
         var container = host.Container;
         var serviceProvider = host.ServiceProvider;
+        IoC.SetProvider(serviceProvider);
 
-        var assemblyLoader = serviceProvider.GetService<IAssemblyLoader>()!;
-        var moduleLoader = serviceProvider.GetService<IModuleLoader>()!;
+        var assemblyLoader = serviceProvider.GetService<IAssemblyLoader>();
+        var moduleLoader = serviceProvider.GetService<IModuleLoader>();
 
-        assemblyLoader.LoadAssemblies();
-        moduleLoader.LoadModules();
-
-        container.Verify();
-
-        IoC.Initialize(container);
+        assemblyLoader?.LoadAssemblies();
+        moduleLoader?.LoadModules();
 
         //Todo:
         //Load Settings
@@ -33,6 +30,10 @@ internal class Startup
 
         var logManager = serviceProvider.GetService<ILogManager>()!;
         logManager.Initialize(new(LogLevel.Information, LogLevel.Debug));
+
+        container.Verify();
+        IoC.SetProvider(container);
+        IoC.Lock();
 
         //Todo:
         //Run task scheduler

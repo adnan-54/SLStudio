@@ -1,5 +1,5 @@
 ﻿namespace SLStudio;
 
-public interface IShell
+public interface IShell : IWindowViewModel
 {
 }

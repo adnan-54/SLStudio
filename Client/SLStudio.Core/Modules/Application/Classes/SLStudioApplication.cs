@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace SLStudio;
 
@@ -118,10 +119,10 @@ internal class SLStudioApplication : IApplication
 
         await Task.Run(startup.Configure);
 
-        var shell = new Window();
-        shell.Show();
-        application.MainWindow = shell;
+        var windowManager = host.ServiceProvider.GetService<IWindowManager>()!;
+        var shell = windowManager.ShowModal<IShell>();
+        var window = windowManager.Windows.First(w => w.ViewModel == shell).Window as StudioWindow;
+        application.MainWindow = window;
         splashScreen.Close();
-        shell.Activate();
     }
 }

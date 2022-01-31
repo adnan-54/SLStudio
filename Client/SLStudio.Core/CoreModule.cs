@@ -1,4 +1,6 @@
-﻿namespace SLStudio;
+﻿using SLStudio.Modules.Shell.Views;
+
+namespace SLStudio;
 
 internal class CoreModule : StudioModule
 {
@@ -6,5 +8,7 @@ internal class CoreModule : StudioModule
 
     protected override void OnConfigure(IConfigurationContext context)
     {
+        context.AddViewModel<IShell, ShellViewModel>(Lifestyle.Singleton);
+        context.AddView<ShellView, IShell>();
     }
 }

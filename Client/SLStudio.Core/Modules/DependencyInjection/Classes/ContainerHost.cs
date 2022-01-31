@@ -10,7 +10,9 @@ internal class ContainerHost : IContainerHost
     private readonly IAssemblyLoader assemblyLoader;
     private readonly IModuleLoader moduleLoader;
     private readonly IObjectFactory objectFactory;
-    private readonly IShell shell;
+    private readonly IViewModelFactory viewModelFactory;
+    private readonly IViewFactory viewFactory;
+    private readonly IWindowManager windowManager;
     private readonly IMessenger messenger;
 
     public ContainerHost(IApplication application)
@@ -25,7 +27,9 @@ internal class ContainerHost : IContainerHost
         assemblyLoader = new AssemblyLoader();
         moduleLoader = new ModuleLoader(configurationContext);
         objectFactory = new ObjectFactory(container);
-        shell = new ShellViewModel();
+        viewModelFactory = new ViewModelFactory(objectFactory);
+        viewFactory = new ViewFactory(objectFactory);
+        windowManager = new WindowManager(application, viewModelFactory, viewFactory);
         messenger = Messenger.Default;
 
         RegisterServices(container);
@@ -45,7 +49,9 @@ internal class ContainerHost : IContainerHost
         container.RegisterInstance(assemblyLoader);
         container.RegisterInstance(moduleLoader);
         container.RegisterInstance(objectFactory);
-        container.RegisterInstance(shell);
+        container.RegisterInstance(viewModelFactory);
+        container.RegisterInstance(viewFactory);
+        container.RegisterInstance(windowManager);
         container.RegisterInstance(messenger);
     }
 }

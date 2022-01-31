@@ -1,48 +1,56 @@
-﻿namespace SLStudio;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace SLStudio;
 
 public static class IoC
 {
-    private static IContainer? container;
+    private static IServiceProvider? Provider;
 
-    public static bool IsInitialized => container is not null;
+    private static bool IsLocked;
 
-    public static IEnumerable<object> GetAll(Type servicesType)
+    public static IEnumerable<object?> GetAll(Type servicesType)
     {
         CheckInitialized();
-        return container!.GetAllInstances(servicesType);
+        return Provider!.GetServices(servicesType);
     }
 
     public static IEnumerable<TService> GetAll<TService>()
         where TService : class
     {
         CheckInitialized();
-        return container!.GetAllInstances<TService>();
+        return Provider!.GetServices<TService>();
     }
 
     public static object Get(Type serviceType)
     {
         CheckInitialized();
-        return container!.GetInstance(serviceType);
+        return Provider!.GetService(serviceType) ?? throw new Exception($"Service '{serviceType}' not foud ");
     }
 
     public static TService Get<TService>()
         where TService : class
     {
         CheckInitialized();
-        return container!.GetInstance<TService>();
+        return Provider!.GetService<TService>() ?? throw new Exception($"Service '{typeof(TService)}' not foud ");
     }
 
-    internal static void Initialize(IContainer container)
+    internal static void SetProvider(IServiceProvider serviceProvider)
     {
-        if (IsInitialized)
-            throw new InvalidOperationException($"{nameof(IoC)} is already initialized");
+        if (IsLocked)
+            throw new InvalidOperationException($"{nameof(IoC)} container is already locked");
+        Provider = serviceProvider;
+    }
 
-        IoC.container = container;
+    internal static void Lock()
+    {
+        if (Provider is null)
+            throw new InvalidOperationException($"{nameof(IoC)} cannot be locked without a service provider");
+        IsLocked = true;
     }
 
     private static void CheckInitialized()
     {
-        if (!IsInitialized)
-            throw new InvalidOperationException($"{nameof(IoC)} is not initialized");
+        if (Provider is null)
+            throw new InvalidOperationException($"{nameof(IoC)} does not have a service provider");
     }
 }
