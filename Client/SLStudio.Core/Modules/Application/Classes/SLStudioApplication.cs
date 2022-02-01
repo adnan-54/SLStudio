@@ -74,6 +74,11 @@ internal class SLStudioApplication : IApplication
         return resource is not null;
     }
 
+    public void LoadResource(Uri path)
+    {
+        application.Resources.MergedDictionaries.Add(new ResourceDictionary() { Source = path });
+    }
+
     private IWindowViewModel GetMainWindow()
     {
         if (application.MainWindow.DataContext is IWindowViewModel viewModel)

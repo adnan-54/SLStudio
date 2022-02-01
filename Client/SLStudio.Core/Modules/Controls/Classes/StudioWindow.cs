@@ -98,7 +98,8 @@ public class StudioWindow : Window, IWindowView
 
     private void ApplyDefaultStyle()
     {
-        //todo: apply default window style
+        var style = Application.Current.TryFindResource("StudioWindowStyle") as Style;
+        Style = style;
     }
 
     private void OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)

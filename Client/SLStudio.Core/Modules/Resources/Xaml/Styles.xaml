@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:SLStudio">
+
+    <Style x:Key="StudioWindowStyle" TargetType="{x:Type local:StudioWindow}">
+        <Setter Property="Title" Value="{Binding Title}"/>
+    </Style>
+</ResourceDictionary>

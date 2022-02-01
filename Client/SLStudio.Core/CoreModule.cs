@@ -1,6 +1,4 @@
-﻿using SLStudio.Modules.Shell.Views;
-
-namespace SLStudio;
+﻿namespace SLStudio;
 
 internal class CoreModule : StudioModule
 {
@@ -10,5 +8,7 @@ internal class CoreModule : StudioModule
     {
         context.AddViewModel<IShell, ShellViewModel>(Lifestyle.Singleton);
         context.AddView<ShellView, IShell>();
+
+        context.AddResource(new Uri("pack://application:,,,/SLStudio.Core;component/Modules/Resources/Xaml/Styles.xaml"));
     }
 }

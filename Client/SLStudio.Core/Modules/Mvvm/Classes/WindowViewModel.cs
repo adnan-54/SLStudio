@@ -10,7 +10,7 @@ public abstract class WindowViewModel : ViewModelBase, IWindowViewModel
     public string? Title
     {
         get => GetValue<string>();
-        private set => SetValue(value);
+        protected set => SetValue(value);
     }
 
     public bool IsActivated

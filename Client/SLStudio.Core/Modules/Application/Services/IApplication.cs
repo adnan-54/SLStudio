@@ -17,4 +17,6 @@ public interface IApplication
     void Shutdown(int exitCode);
 
     bool TryFindResource(object resourceKey, out object resource);
+
+    void LoadResource(Uri path);
 }

@@ -43,4 +43,17 @@ public static class MvvmExtensions
 
         return context;
     }
+
+    public static IConfigurationContext AddResource(this IConfigurationContext context, string path)
+    {
+        AddResource(context, new Uri(path));
+        return context;
+    }
+
+    public static IConfigurationContext AddResource(this IConfigurationContext context, Uri path)
+    {
+        var application = context.GetService<IApplication>()!;
+        application.LoadResource(path);
+        return context;
+    }
 }
