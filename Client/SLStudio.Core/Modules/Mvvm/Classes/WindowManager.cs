@@ -30,7 +30,11 @@ internal class WindowManager : IWindowManager
     TViewModel IWindowManager.ShowModal<TViewModel>(TViewModel viewModel)
     {
         var window = CreateWindow(viewModel, true);
-        window.PerformAction(w => w.Show());
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                window.Show();
+        });
         return viewModel;
     }
 
@@ -43,51 +47,74 @@ internal class WindowManager : IWindowManager
     TViewModel IWindowManager.ShowDialog<TViewModel>(TViewModel viewModel)
     {
         var window = CreateWindow(viewModel, false);
-        window.PerformAction(w => w.ShowDialog());
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                window.ShowDialog();
+        });
         return viewModel;
     }
 
     void IWindowManager.Activate<TViewModel>(TViewModel viewModel)
     {
         var window = GetWindow(viewModel);
-        window.PerformAction(w =>
+        window.PerformAction(control =>
         {
-            if (w.WindowState == WindowState.Minimized)
-                SystemCommands.RestoreWindow(w);
+            if (control is not Window window)
+                return;
 
-            w.Activate();
-            w.Focus();
+            if (window.WindowState == WindowState.Minimized)
+                SystemCommands.RestoreWindow(window);
+
+            window.Activate();
+            window.Focus();
         });
     }
 
     void IWindowManager.Maximize<TViewModel>(TViewModel viewModel)
     {
         var window = GetWindow(viewModel);
-        window.PerformAction(w => SystemCommands.MaximizeWindow(w));
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                SystemCommands.MaximizeWindow(window);
+        });
     }
 
     void IWindowManager.Restore<TViewModel>(TViewModel viewModel)
     {
         var window = GetWindow(viewModel);
-        window.PerformAction(w => SystemCommands.RestoreWindow(w));
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                SystemCommands.RestoreWindow(window);
+        });
     }
 
     void IWindowManager.Minimize<TViewModel>(TViewModel viewModel)
     {
         var window = GetWindow(viewModel);
-        window.PerformAction(w => SystemCommands.MinimizeWindow(w));
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                SystemCommands.MinimizeWindow(window);
+        });
     }
 
     void IWindowManager.Close<TViewModel>(TViewModel viewModel)
     {
         var window = GetWindow(viewModel);
-        window.PerformAction(w => w.Close());
+        window.PerformAction(control =>
+        {
+            if (control is Window window)
+                window.Close();
+        });
     }
 
     private IWindowView CreateWindow<TViewModel>(TViewModel viewModel, bool isModal)
         where TViewModel : class, IWindowViewModel
     {
-        if (viewFactory.CreateFromViewModel<TViewModel>() is not StudioWindow view)
+        if (viewFactory.CreateFromViewModel<TViewModel>() is not ModalWindow view)
             throw new InvalidOperationException($"Could not find any window for {nameof(TViewModel)}");
 
         view.DataContext = viewModel;

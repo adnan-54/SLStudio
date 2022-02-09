@@ -8,6 +8,7 @@ internal class SLStudioApplication : IApplication
 {
     [DllImport("user32.dll")]
     private static extern IntPtr GetActiveWindow();
+
     private static readonly ILogger logger = LogManager.GetLogger();
 
     private readonly Application application;
@@ -126,7 +127,7 @@ internal class SLStudioApplication : IApplication
 
         var windowManager = host.ServiceProvider.GetService<IWindowManager>()!;
         var shell = windowManager.ShowModal<IShell>();
-        var window = windowManager.Windows.First(w => w.ViewModel == shell).Window as StudioWindow;
+        var window = windowManager.Windows.First(w => w.ViewModel == shell).Window as ModalWindow;
         application.MainWindow = window;
         splashScreen.Close();
     }

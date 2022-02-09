@@ -2,8 +2,12 @@
 
 internal class ShellViewModel : WindowViewModel, IShell
 {
-    public ShellViewModel()
+    public ShellViewModel(IMainMenu mainMenu)
     {
+        MainMenu = mainMenu;
+
         Title = "SLStudio";
     }
+
+    public IMainMenu MainMenu { get; }
 }

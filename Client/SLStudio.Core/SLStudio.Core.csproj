@@ -9,10 +9,10 @@
 		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Compile Remove="Modules\Application\Interfaces\**" />
-	  <EmbeddedResource Remove="Modules\Application\Interfaces\**" />
-	  <None Remove="Modules\Application\Interfaces\**" />
-	  <Page Remove="Modules\Application\Interfaces\**" />
+		<Compile Remove="Modules\Application\Interfaces\**" />
+		<EmbeddedResource Remove="Modules\Application\Interfaces\**" />
+		<None Remove="Modules\Application\Interfaces\**" />
+		<Page Remove="Modules\Application\Interfaces\**" />
 	</ItemGroup>
 	<ItemGroup>
 		<Compile Include="..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
@@ -24,10 +24,12 @@
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.8.0" />
 		<PackageReference Include="DevExpressMvvm" Version="21.1.5" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.0" />
-		<PackageReference Include="SimpleInjector" Version="5.3.2" />
+		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
+		<PackageReference Include="SimpleInjector" Version="5.3.3" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Folder Include="Modules\Controls\Resources\" />
+		<Folder Include="Modules\Application\Resources\" />
+		<Folder Include="Modules\Controls\Resources\" />
 	</ItemGroup>
 </Project>

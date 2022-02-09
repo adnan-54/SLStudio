@@ -1,4 +1,6 @@
-﻿namespace SLStudio;
+﻿using System.Windows.Controls;
+
+namespace SLStudio;
 
 public interface IView
 {
@@ -23,4 +25,6 @@ public interface IView
     object Tag { get; }
 
     Visibility Visibility { get; }
+
+    internal void PerformAction(Action<ContentControl> action);
 }

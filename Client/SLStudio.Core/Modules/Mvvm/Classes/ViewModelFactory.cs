@@ -20,6 +20,13 @@ internal class ViewModelFactory : IViewModelFactory
         return (TViewModel)objectFactory.GetObject(viewModelType);
     }
 
+    Type IViewModelFactory.GetMappedType(Type viewModelType)
+    {
+        if (viewModels.TryGetValue(viewModelType, out var mappedType))
+            return mappedType;
+        throw new InvalidOperationException($"Could not find any view model with type '{viewModelType}'");
+    }
+
     void IViewModelFactory.Register<TViewModel>()
     {
         var viewModelType = typeof(TViewModel);

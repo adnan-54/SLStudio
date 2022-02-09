@@ -28,7 +28,7 @@ internal class ContainerHost : IContainerHost
         moduleLoader = new ModuleLoader(configurationContext);
         objectFactory = new ObjectFactory(container);
         viewModelFactory = new ViewModelFactory(objectFactory);
-        viewFactory = new ViewFactory(objectFactory);
+        viewFactory = new ViewFactory(objectFactory, viewModelFactory);
         windowManager = new WindowManager(application, viewModelFactory, viewFactory);
         messenger = Messenger.Default;
 

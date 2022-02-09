@@ -15,6 +15,4 @@ public interface IWindowView : IView
     bool IsActive { get; }
 
     WindowState State { get; }
-
-    internal void PerformAction(Action<Window> action);
 }
