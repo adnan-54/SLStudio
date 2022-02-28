@@ -2,7 +2,7 @@
 
 namespace SLStudio;
 
-internal abstract class StudioModule : ModuleBase
+internal abstract class StudioModuleBase : ModuleBase
 {
     public override string Name => GetType().Name;
 

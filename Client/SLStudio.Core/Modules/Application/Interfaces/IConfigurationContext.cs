@@ -44,5 +44,8 @@ public interface IConfigurationContext : IServiceProvider
     IConfigurationContext AddInitializer<TService>(Action<TService> instanceInitializer)
         where TService : class;
 
+    IConfigurationContext AddSubModule<TSubModule>()
+        where TSubModule : class, ISubModule, new();
+
     internal IConfigurationContext AddCustom(Action<IContainer> action);
 }

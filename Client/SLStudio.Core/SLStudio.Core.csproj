@@ -1,35 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-		<RootNamespace>SLStudio</RootNamespace>
-		<Platforms>AnyCPU;x64;x86</Platforms>
 	</PropertyGroup>
+
 	<ItemGroup>
-		<Compile Remove="Modules\Application\Interfaces\**" />
-		<EmbeddedResource Remove="Modules\Application\Interfaces\**" />
-		<None Remove="Modules\Application\Interfaces\**" />
-		<Page Remove="Modules\Application\Interfaces\**" />
-	</ItemGroup>
-	<ItemGroup>
-		<Compile Include="..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
 		<Compile Include="..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
 		<Compile Include="..\Solution Items\SharedUsings.cs" Link="Shared\SharedUsings.cs" />
 		<Compile Include="..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
-		<Compile Include="Modules\Application\Interfaces\IConfigurationContext.cs" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.8.0" />
 		<PackageReference Include="DevExpressMvvm" Version="21.1.5" />
+		<PackageReference Include="Humanizer" Version="2.14.1" />
 		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
 		<PackageReference Include="SimpleInjector" Version="5.3.3" />
 	</ItemGroup>
+
 	<ItemGroup>
-		<Folder Include="Modules\Application\Resources\" />
-		<Folder Include="Modules\Controls\Resources\" />
+		<InternalsVisibleTo Include="SLStudio.Studio"/>
 	</ItemGroup>
 </Project>

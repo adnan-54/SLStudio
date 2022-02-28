@@ -1,26 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
-		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<TargetFramework>net6.0-windows</TargetFramework>
 		<UseWPF>true</UseWPF>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<OutputType>WinExe</OutputType>
-		<Platforms>AnyCPU;x64;x86</Platforms>
+		<StartupObject>SLStudio.Program</StartupObject>
+		<Version>21.2.0</Version>
 	</PropertyGroup>
-	<ItemGroup>
-		<Compile Include="..\Solution Items\SharedAssemblyInfo.cs" Link="Shared\SharedAssemblyInfo.cs" />
-		<Compile Include="..\Solution Items\SharedUsings.cs" Link="Shared\SharedUsings.cs" />
-	</ItemGroup>
+
 	<ItemGroup>
 		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Shared\" />
-	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.8.0" />
 		<PackageReference Include="DevExpressMvvm" Version="21.1.5" />
+		<PackageReference Include="Humanizer" Version="2.14.1" />
 		<PackageReference Include="MahApps.Metro" Version="2.4.9" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.1" />
 		<PackageReference Include="SimpleInjector" Version="5.3.3" />

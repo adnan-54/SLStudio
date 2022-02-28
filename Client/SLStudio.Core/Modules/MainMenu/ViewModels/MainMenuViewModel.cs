@@ -2,9 +2,12 @@
 
 internal class MainMenuViewModel : ViewModelBase, IMainMenu
 {
-}
+    private readonly IMenuService menuService;
 
-public interface IMainMenu : IViewModel
-{
+    public MainMenuViewModel(IMenuService menuService)
+    {
+        this.menuService = menuService;
+    }
 
+    public IEnumerable<IMenuItem> Menus => menuService.MenuItems;
 }

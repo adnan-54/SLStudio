@@ -107,6 +107,13 @@ internal class ConfigurationContext : IConfigurationContext
         return this;
     }
 
+    IConfigurationContext IConfigurationContext.AddSubModule<TSubModule>()
+    {
+        var subModule = new TSubModule();
+        subModule.OnConfigure(this);
+        return this;
+    }
+
     object? IServiceProvider.GetService(Type serviceType)
     {
         return services.GetService(serviceType);

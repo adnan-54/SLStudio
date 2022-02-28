@@ -6,5 +6,5 @@
                       xmlns:slstudio="clr-namespace:SLStudio"
                       mc:Ignorable="d"
                       d:DataContext="{d:DesignInstance Type=slstudio:MainMenuViewModel}">
-    <Menu IsMainMenu="True" />
+    <Menu IsMainMenu="True" ItemsSource="{Binding Menus}" />
 </slstudio:ViewContent>

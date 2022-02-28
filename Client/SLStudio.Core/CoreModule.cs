@@ -1,6 +1,6 @@
 ﻿namespace SLStudio;
 
-internal class CoreModule : StudioModule
+internal class CoreModule : StudioModuleBase
 {
     public override int Priority => int.MaxValue;
 

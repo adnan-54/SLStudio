@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<UseWPF>true</UseWPF>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="..\Solution Items\SharedConstants.cs" Link="Shared\SharedConstants.cs" />
+		<Compile Include="..\Solution Items\SharedUsings.cs" Link="Shared\SharedUsings.cs" />
+		<Compile Include="..\Solution Items\SharedWpfInfo.cs" Link="Shared\SharedWpfInfo.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\SLStudio.Core\SLStudio.Core.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Shared\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Modules\Menu\Resources\MenuResources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>MenuResources.resx</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Update="Modules\Menu\Resources\MenuResources.resx">
+	    <Generator>PublicResXFileCodeGenerator</Generator>
+	    <LastGenOutput>MenuResources.Designer.cs</LastGenOutput>
+	    <CustomToolNamespace>SLStudio.Studio.Menu</CustomToolNamespace>
+	  </EmbeddedResource>
+	</ItemGroup>
+</Project>

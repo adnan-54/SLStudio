@@ -14,6 +14,8 @@ internal class ContainerHost : IContainerHost
     private readonly IViewFactory viewFactory;
     private readonly IWindowManager windowManager;
     private readonly IMessenger messenger;
+    private readonly IMenuItemFactory menuItemFactory;
+    private readonly IMenuService menuService;
 
     public ContainerHost(IApplication application)
     {
@@ -31,6 +33,8 @@ internal class ContainerHost : IContainerHost
         viewFactory = new ViewFactory(objectFactory, viewModelFactory);
         windowManager = new WindowManager(application, viewModelFactory, viewFactory);
         messenger = Messenger.Default;
+        menuItemFactory = new MenuItemFactory(objectFactory);
+        menuService = new MenuService(objectFactory, menuItemFactory);
 
         RegisterServices(container);
         RegisterServices(serviceProvider);
@@ -53,5 +57,7 @@ internal class ContainerHost : IContainerHost
         container.RegisterInstance(viewFactory);
         container.RegisterInstance(windowManager);
         container.RegisterInstance(messenger);
+        container.RegisterInstance(menuItemFactory);
+        container.RegisterInstance(menuService);
     }
 }
