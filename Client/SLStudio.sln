@@ -3,13 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio", "SLStudio\SLStudio.csproj", "{F00D828B-C428-4727-A429-C1405C0754BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Studio", "SLStudio.Studio\SLStudio.Studio.csproj", "{1BADCE20-5181-4D54-AB53-287682A0A10A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SLStudio.Core", "SLStudio.Core\SLStudio.Core.csproj", "{608D7E31-16C3-40D8-AE19-34E2CBA32D81}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F00D828B-C428-4727-A429-C1405C0754BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F00D828B-C428-4727-A429-C1405C0754BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F00D828B-C428-4727-A429-C1405C0754BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F00D828B-C428-4727-A429-C1405C0754BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BADCE20-5181-4D54-AB53-287682A0A10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BADCE20-5181-4D54-AB53-287682A0A10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BADCE20-5181-4D54-AB53-287682A0A10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BADCE20-5181-4D54-AB53-287682A0A10A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{608D7E31-16C3-40D8-AE19-34E2CBA32D81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{608D7E31-16C3-40D8-AE19-34E2CBA32D81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{608D7E31-16C3-40D8-AE19-34E2CBA32D81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{608D7E31-16C3-40D8-AE19-34E2CBA32D81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		RESX_PrefixTranslations = False
-		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
 		BuildVersion_StartDate = 2000/1/1
+		SolutionGuid = {2E3F4373-6EF0-4BDE-83CC-7F3150FCF499}
+		RESX_PrefixTranslations = False
 	EndGlobalSection
 EndGlobal
